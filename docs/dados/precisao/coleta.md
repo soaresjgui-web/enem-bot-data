@@ -47,3 +47,87 @@ Arquivos: `gabarito_pratos.csv` (1 linha por prato, com fonte, URL, confiança e
 - **UFPR acervodigital**: erro de certificado TLS. O PDF da USP (e-disciplinas) exige login. Usei a cópia do nutritotal.
 
 Para ganhar pratos compostos brasileiros com foto real, os passos seriam: liberar `swiftbr.vteximg.com.br` (Liv Up já incluído no lote 5), e abrir o 99Food com navegador.
+
+---
+
+# v2 — dados ampliados (2026-11-08)
+
+Objetivo: ter mais pratos com **gabarito por componente**, para medir e corrigir os dois erros do v1. O primeiro é o peso de porções grandes de alimento único, subestimado. O segundo é a proporção de carne em prato composto, superestimada. Nada foi estimado nesta etapa: aqui só estão os dados, as ferramentas e os lotes cegos.
+**Regra de uso de fontes** (exigida pela usuária): só **fotos reais de câmera** (nada sintético, gerado ou aumentado por IA, nem de proveniência incerta) e só rótulos **medidos** (pesagem ou laboratório), nunca estimados por modelo. Dataset que falha em um dos dois critérios fica de fora, com o motivo anotado abaixo.
+
+## Resultado
+
+| Fonte | Itens | Split | Gabarito | Confiança |
+|---|---|---|---|---|
+| Nutrition5k v2, café 1 | 328 | calib 100 · teste 228 | pesagem incremental por ingrediente + USDA (CSV do prato) | A |
+| Nutrition5k v2, café 2 | 72 | calib 20 · teste 52 | massa total pesada; gramas por ingrediente fracionárias (rateio por receita); proteína = soma dos ingredientes (os totais do prato vêm zerados no CSV do café 2) | B |
+| Itens do v1 (UFPR 103, Nutrition5k 50, Liv Up 34, Seara 7) | 194 | `v1` (fora do ajuste) | como no v1 | como no v1 |
+| SNAPMe (USDA) | 150 selecionadas, **0 com imagem** | — | autorrelato ASA24 | C |
+| **Total nos lotes cegos v2** | **594** | | | |
+
+- `gabarito_componentes.csv` (`prato_id,componente,gramas,proteina_g,grupo,origem,confianca`): 2.870 componentes de 553 pratos. São 2.395 do Nutrition5k v2, 372 do Nutrition5k v1 e 103 do UFPR (um componente por foto). Liv Up e Seara não têm gabarito por componente.
+- `gabarito_v2.csv`: os 594 pratos no formato do `eval/score_precisao.py`, com uma linha por ingrediente no Nutrition5k (soma = proteína do prato, diferença ≤ 0,005 g).
+- `gabarito_pratos_v2.csv`: uma linha por prato com `origem`, `split`, `categoria`, peso, proteína, confiança e `lote_v2`. **É aqui que fica o mapeamento id → lote. As pastas dos lotes não têm nenhum rótulo.**
+- `n5k_v2_amostra.csv`: os 400 pratos novos (`d0001…d0400`) com `dish_id`, split, café, estratos, massa, proteína e ingredientes em gramas.
+- `snapme_selecao.csv`: 150 fotos do SNAPMe com o gabarito ASA24 (por foto e por alimento), prontas para quando as imagens puderem ser baixadas.
+
+### Nutrition5k v2 (`coleta_n5k_v2.py`, seed 20261110)
+- Candidatos: pratos com pasta `realsense_overhead` (3.490). Foram excluídos os 50 usados no v1, os pratos com massa < 20 g, os que têm ingrediente `deprecated`, `plate only` ou sem nome, e os que têm soma das proteínas (ou das gramas) dos ingredientes diferente do total do prato (±5% + 0,5 g / +2 g). Sobraram 3.353, dos quais 226 do café 2.
+- A amostra é estratificada por proteína (0–5, 5–15, 15–25, 25–40, > 40 g; 80 por faixa) × nº de ingredientes (1, 2–4, 5+; ~27 por célula, com as sobras completadas dentro da faixa). Em cada célula, ~20% vêm do café 2 quando há pratos disponíveis. Só existem 7 pratos > 40 g com 1 ingrediente, e o café 2 tem apenas 37 pratos ≥ 25 g.
+- O split é determinístico dentro de cada faixa de proteína: 24 calib + 56 teste, o que dá **120 calib / 280 teste**. As distribuições ficaram parecidas: proteína mediana de 20,2 g no calib e 19,4 g no teste; massa mediana de 200 g e 202 g.
+- **Achado:** o `dish_metadata_cafe2.csv` traz `total_calories/fat/carb/protein = 0` em todos os 238 pratos (só a massa total vem preenchida) e 77 nomes de ingrediente vazios. Reconstruí os totais pela soma dos ingredientes e os nomes pelo `ingr_id` do `ingredients_metadata.csv`. No café 1, conferi que gramas × proteína/g do `ingredients_metadata` reproduz a proteína por ingrediente (27.224 linhas, mediana do desvio 0).
+- Imagens: os 400 `rgb.png` (640×480, zenitais) foram baixados para o scratchpad. **Não estão no repositório.**
+
+### Profundidade overhead (análogo ao LiDAR/TrueDepth): viável como dado, não como solução pronta
+- `depth_raw.png` é 16 bits com 1 unidade = 0,1 mm, valores até ~4.000 (0,4 m) e ~14% de pixels sem leitura (mediana em 65 pratos). O dataset **não distribui intrínsecos da câmera**. O artigo (Thames et al., CVPR 2021) dá a distância câmera–base (35,9 cm) e a área por pixel nessa distância (5,957 × 10⁻³ cm²), o que basta para volume por soma de alturas.
+- Teste rápido em 65 pratos do calib: plano de apoio pela mediana da borda da imagem, altura > 8 mm, volume = Σ altura × área do pixel. A correlação de log(volume) com log(massa pesada) foi de só **r = 0,36**. Para servir de verdade seria preciso ajustar o plano por RANSAC, segmentar o prato/bandeja, separar a comida do prato e usar a densidade de cada alimento. No celular a situação é melhor, porque o iPhone entrega intrínsecos calibrados em `AVDepthData`. Conclusão: dá para usar como trilha de pesquisa; não entra no pipeline v2.
+
+### SNAPMe (USDA, Larke et al. 2023, *Nutrients* 15:4972): gabarito utilizável com ressalva, imagens bloqueadas
+- O repositório `github.com/JulesLarke-USDA/SNAPMe` é **CC BY-SA 4.0**. O `input/master_SNAPME_linkfile.csv` liga cada foto (`filename`) aos alimentos do recordatório **ASA24** (código FNDDS, `FoodAmt` em g e `PROT`, entre outros): 4.761 linhas, 1.679 fotos, 95 participantes. As fotos são reais, de celular, tiradas pelas participantes.
+- **O gabarito é autorrelatado, não pesado.** A participante escolhe a porção nas imagens e medidas do ASA24, e a proteína vem da FNDDS 2018. Por isso a confiança é **C**: serve para medir identificação e robustez em fotos do mundo real, **não** para calibrar peso de porção.
+- `coleta_snapme.py` seleciona 150 fotos sem alimento embalado e com no máximo 6 alimentos, 30 por faixa de proteína e no máximo 3 por participante por faixa.
+- **Imagens não obtidas.** O pacote de fotos está no Ag Data Commons, e `agdatacommons.nal.usda.gov` responde **HTTP 202 com desafio JavaScript do AWS WAF** (`x-amzn-waf-action: challenge`) a qualquer requisição sem navegador. Tentei de novo depois de alguns minutos, com o mesmo resultado. Para descobrir os ids dos arquivos (o download em si sai por `ndownloader.figshare.com`, que está liberado) seria preciso `api.figshare.com`, que está **bloqueado no proxy**. Caminhos possíveis: liberar `api.figshare.com` (se o Ag Data Commons expuser o artigo pela API pública do figshare) ou baixar o zip uma vez num navegador e copiar para o scratchpad.
+
+### Hugging Face (busca na API: nutrition, nutrition5k, food weight, calorie, portion, snapme…)
+| Dataset | Fotos reais? | Rótulo medido? | Decisão |
+|---|---|---|---|
+| **Codatta/MM-Food-100K** | Crowdsourcing (campanha Codatta × Binance); o próprio card traz `online_download_prob`, ou seja, parte das imagens pode ter sido baixada da web | **Não**: porção e nutrientes vêm de pré-anotação humana mais **GPT-4o/Qwen-max**, revisados por usuários; nada pesado | **Rejeitado** (rótulo estimado por modelo; proveniência das fotos incerta; OpenRAIL-M **não comercial**) |
+| issai/Food_Portion_Benchmark (FPB) | Sim: RealSense D455 e celulares, em laboratório | **Peso pesado** por item (g); sem proteína | Utilizável só para **peso**, mas é cozinha da Ásia Central, a licença é **CC BY-NC 4.0** e os rótulos de teste estão ocultos. Não baixado; candidato a teste extra de peso por porção |
+| zy12123/CalorieBench-80K | Card vazio | Desconhecido | **Rejeitado** (proveniência incerta) |
+| pinkieseb/nutrition_dataset (266 mil imagens com massa e macros) | Sem card (parece derivado do Nutrition5k) | Desconhecido | **Rejeitado**; usar a fonte original |
+| TeeA/nutrition5k-food-name-gemini, AustinNaung/…-processed | Derivados do Nutrition5k | Nomes gerados pelo Gemini | **Rejeitados** |
+| ai5labsOfficial/nutrition5k, panikos/…, thi3rrr/…, shashs/… | Espelhos do Nutrition5k | Herdam o original | Sem necessidade: usamos o bucket original do Google |
+| YashArya16/CalorieData, aryachakraborty/Food_Calorie_Dataset, sayanroy058/… | — | Texto de porção sem método, ou respostas de modelo | **Rejeitados** |
+| arunapb/food-density-nutrition | Sem imagens | Densidade e nutrientes por classe do FoodSeg103 (tabela) | Fora do escopo |
+
+### Referências brasileiras (`ref/`, gerado por `ref/monta_ref.py`)
+- `taco.csv`: TACO 4ª ed. (NEPA/UNICAMP, 2011), com 597 itens e as colunas `id,nome,grupo,proteina_100g,kcal_100g,lipidios_100g,carboidrato_100g,fibra_100g,umidade_100g`. Vem do CSV de `raulfdm/taco-api` (código MIT). A TACO é de uso livre com citação. **Conferência: 10/10 valores batem** com a 4ª ed.: arroz tipo 1 cozido 2,5; feijão carioca cozido 4,8; peito de frango sem pele grelhado 32,0; ovo cozido 13,3; pão francês 8,0; patinho grelhado 35,9; feijão preto cozido 4,5; queijo minas frescal 17,4; batata inglesa cozida 1,2; banana prata 1,3. Ressalva: 15 itens têm proteína vazia na fonte (óleos, sal, leite fluido integral e desnatado UHT, iogurte de abacaxi, aguardente, coco verde). O pipeline os ignora; para leite, use `USDA: milk`.
+- `medidas_ibge.csv`: IBGE, POF 2008-2009, *Tabela de Medidas Referidas para os Alimentos Consumidos no Brasil* (`tabelamedidas_bd.zip` do ftp.ibge.gov.br), com 11.801 linhas de alimento × preparação × medida caseira → gramas. As 722 linhas `PORCAO` são as porções típicas usadas como prior em `calibra.py`.
+- `composicao_ibge.csv`: IBGE, POF 2008-2009, *Tabelas de Composição Nutricional dos Alimentos Consumidos no Brasil* (`tabelacompleta.zip`), com 1.971 combinações de alimento × preparação, proteína e kcal por 100 g, montada a partir de TACO e USDA. É complemento para preparações que a TACO não tem (ex.: macarrão cozido 5,8 g). Dados públicos do IBGE: reprodução permitida com citação da fonte.
+- `n5k_ingredients.csv`: cópia do `ingredients_metadata.csv` do Nutrition5k (555 ingredientes, proteína por g da USDA; CC BY 4.0), usada para nomes genéricos.
+- **TBCA (USP/FoRC)**: `www.tbca.net.br` responde, mas só tem consulta item a item na web. A base completa exige assinar o "Termo de Confidencialidade TBCA". Não raspei o site. A composição do IBGE cobre as preparações que faltavam.
+
+## Pipeline v2 (`eval/`)
+1. `prompt_v2.md`: instrução ao estimador cego. A saída é **por componente** (`prato_id,componente,alimento_ref,gramas_estimadas,confianca,pista_escala`), com nome TACO ou genérico USDA, e **sem cálculo de proteína**. Inclui âncoras de escala (diâmetro de prato, talheres, marmitas, medidas caseiras do IBGE), o aviso de que porções grandes de carne costumam ser subestimadas e de que prato composto costuma ter menos carne do que parece, e listas de nomes conferidos contra as tabelas.
+2. `protein_from_components.py`: casa `alimento_ref` com a TACO e com o Nutrition5k/USDA. A ordem é: sinônimos, nome exato, sinônimo contido no nome e, por último, pontuação difflib + tokens + palavra-núcleo, com penalidade para itens crus. Grava a proteína por prato (formato do `score_precisao.py`) e por componente, e lista os nomes sem casamento em `<saida>.nao_casados.txt`.
+3. `calibra.py`: ajusta **só no calib** (multiplicador por grupo × tipo de prato, log-linear por grupo, ou encolhimento para a porção típica do IBGE), escolhe o modelo pelo erro no calib e reporta antes/depois no **teste** e nos itens do v1, todos fora do ajuste.
+4. `simula_seletor_componentes.py`: seletor de 6 tamanhos **no componente com mais proteína** (e, numa variante, nos dois primeiros), comparado com a foto sozinha e com o seletor do prato inteiro do v1.
+5. `grupos_alimentos.py`: grupos grossos (proteína animal, leguminosa, laticínio, amido, vegetal, gordura/molho, misto, outros), definidos por palavra-chave em pt/en e pelo grupo da TACO.
+
+Teste de fumaça: rodei as quatro ferramentas de ponta a ponta com um estimador **sintético** (gerado do gabarito com ruído; fica só no scratchpad e não é resultado). Todas rodaram, e só 1 nome ficou sem casamento (`deprecated`).
+
+Reproduzir a calibração quando chegarem as estimativas cegas:
+```
+python3 eval/protein_from_components.py est_v2.csv pratos_v2.csv --componentes comp_v2.csv --sistema nuvem_llm_v2
+python3 eval/score_precisao.py docs/dados/precisao/gabarito_v2.csv pratos_v2.csv
+python3 eval/calibra.py comp_v2.csv --saida pratos_v2_calibrado.csv --parametros calib.json
+python3 eval/simula_seletor_componentes.py comp_v2.csv
+```
+
+## Lotes cegos v2
+- `scratchpad/cego2/lote01 … lote15`: 594 imagens, 40 por pasta (a lote15 tem 34). Os itens vêm todos embaralhados juntos (seed 20261112). Os 400 novos têm ids `d0001…d0400`, sorteados sem relação com o conteúdo; os 194 do v1 mantêm os ids antigos (`b…`, `n…`, `c…`). As pastas têm **só imagens**. O mapeamento id → lote e o gabarito ficam somente em `gabarito_pratos_v2.csv`.
+- Montagem: `python3 monta_gabarito_v2.py <dir_n5k> <img_n5k_v2> <scratchpad>/cego <scratchpad>/cego2`.
+
+## Hosts
+- Usados: `storage.googleapis.com` (gsutil), `raw.githubusercontent.com`, `github.com` (git clone), `huggingface.co`, `ftp.ibge.gov.br`, `www.tbca.net.br`.
+- Bloqueios: `agdatacommons.nal.usda.gov` (desafio AWS WAF, não é bloqueio do proxy) e `api.figshare.com` (bloqueado no proxy). A API REST do GitHub (`gh api`) recusou o repositório do SNAPMe por política da sessão; o `git clone` público funcionou.
