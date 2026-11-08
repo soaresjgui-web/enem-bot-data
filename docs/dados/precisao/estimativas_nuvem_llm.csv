@@ -109,6 +109,40 @@ b107,nuvem_llm,17,60,filé mignon suíno fatiado:60,
 b108,nuvem_llm,33,110,bife bovino grelhado:110,
 b109,nuvem_llm,27,100,carne seca desfiada:100,
 b110,nuvem_llm,25,90,filé mignon suíno fatiado:90,
+c001,nuvem_llm,28,320,hamburguer bovino:120; arroz integral com brocolis:100; legumes salteados (vagem/milho/abobora):100,texto_visivel
+c002,nuvem_llm,43,300,frango teriyaki com gergelim:130; arroz frito com ovo/cenoura/ervilha:170,texto_visivel
+c003,nuvem_llm,36,285,salmao grelhado:130; risoto:150; castanhas picadas:5,texto_visivel
+c004,nuvem_llm,44,320,frango em cubos grelhado:130; arroz integral:90; creme de milho:100,texto_visivel
+c005,nuvem_llm,40,340,carne bovina ensopada:120; arroz branco:80; feijao carioca:100; farofa:40,texto_visivel
+c006,nuvem_llm,34,320,feijao carioca:110; carne moida com cenoura:120; arroz integral:90,texto_visivel
+c007,nuvem_llm,33,360,feijao preto:110; arroz branco:80; abobora assada:70; frango/carne desfiada:100,texto_visivel
+c008,nuvem_llm,42,290,file de peixe grelhado:130; cuscuz marroquino com legumes:150; amendoas laminadas:10,texto_visivel
+c009,nuvem_llm,40,290,sobrecoxa de frango assada:140; farofa:50; feijao:20; arroz branco:80,texto_visivel
+c010,nuvem_llm,48,340,tiras de frango grelhado:140; quinoa com legumes:80; brocolis:70; abobora:50,texto_visivel
+c011,nuvem_llm,38,320,file de frango empanado:140; arroz branco:80; creme de milho/polenta:100,texto_visivel
+c012,nuvem_llm,37,340,yakisoba macarrao:150; frango em cubos:90; legumes:100,texto_visivel
+c013,nuvem_llm,36,320,carne suina/bovina ensopada:120; arroz branco:80; feijao carioca:120,texto_visivel
+c014,nuvem_llm,30,300,macarrao parafuso ao sugo:180; almondegas bovinas:120,texto_visivel
+c015,nuvem_llm,23,330,escondidinho gratinado (pure + recheio de frango + queijo):330,texto_visivel; recheio nao visivel
+c016,nuvem_llm,26,360,carne moida vegetal/PTS:120; feijao carioca:110; arroz branco:60; brocolis:70,texto_visivel; possivel prato vegano
+c017,nuvem_llm,42,310,sobrecoxa de frango assada:150; farofa:60; feijao:20; arroz branco:80,texto_visivel
+c018,nuvem_llm,31,320,moqueca de peixe (peixe:110; molho:60); arroz com lascas de coco:150,texto_visivel
+c019,nuvem_llm,22,300,canelone/panqueca recheada:220; molho de tomate:80,texto_visivel; recheio nao visivel
+c020,nuvem_llm,35,330,feijao carioca:110; arroz branco:50; brocolis:60; frango desfiado:110,texto_visivel
+c021,nuvem_llm,27,330,frango ao molho cremoso/strogonoff:150; arroz integral com selvagem:90; brocolis:90,texto_visivel
+c022,nuvem_llm,25,310,camarao ao molho (camarao:100; molho:60); arroz com salsinha:150,texto_visivel
+c023,nuvem_llm,26,330,gratinado com almondegas e queijo (pure/massa + carne):330,texto_visivel; composicao interna incerta
+c024,nuvem_llm,25,320,batata assada:120; arroz branco:70; strogonoff de frango:130,texto_visivel
+c025,nuvem_llm,34,320,feijao carioca:120; arroz branco:70; carne bovina ensopada com batata:130,texto_visivel
+c026,nuvem_llm,28,310,camarao:110; arroz cremoso/risoto:190; ervilha:10,texto_visivel
+c027,nuvem_llm,21,330,camarao ao molho rose (camarao:90; molho:40); arroz branco:90; mandioca/batata assada:110,texto_visivel
+c028,nuvem_llm,20,330,arroz de forno/risoto gratinado com presunto e queijo:330,texto_visivel; recheio pouco visivel
+c029,nuvem_llm,25,340,arroz integral com graos:80; batata doce assada:70; brocolis:70; almondegas de frango ao sugo:120,texto_visivel
+c030,nuvem_llm,49,320,file de frango grelhado:140; arroz com brocolis:90; pure de batata:90,texto_visivel
+c031,nuvem_llm,30,330,polenta cremosa:110; carne moida com vagem:120; legumes (brocolis/cenoura/abobora):100,texto_visivel
+c032,nuvem_llm,11,310,curry de grao de bico com legumes:180; arroz branco:130,texto_visivel; prato vegetariano
+c033,nuvem_llm,24,310,almondegas ao sugo:120; abobora e vagem:110; arroz integral com graos:80,texto_visivel
+c034,nuvem_llm,37,310,sobrecoxa de frango:130; pure de batata/mandioquinha:80; batata doce assada:80; ervilha:20,texto_visivel
 n001,nuvem_llm,26,170,frango/peixe empanado:120; folhas com quinoa e cogumelo:40; cenoura assada:10,
 n002,nuvem_llm,37,120,peito de frango grelhado em cubos:120,
 n003,nuvem_llm,28,170,filé de truta/salmão:120; espinafre:30; trigo em grão:20,
