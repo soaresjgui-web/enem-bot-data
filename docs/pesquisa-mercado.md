@@ -1,5 +1,7 @@
 # Pesquisa de mercado: em qual setor construir um app pago, nativo e com IA on-device para mulheres
 
+> **Nota (08/11/2026):** as decisões finais de produto, nome (Nutrelle), posicionamento e preço estão em [`produto.md`](produto.md) e prevalecem sobre as recomendações deste relatório.
+
 **Data da pesquisa:** 08/11/2026 (dados coletados entre 15:45 e 16:40 UTC)
 **Base de evidência primária:** Google Trends (API `trends.google.com`, Brasil e mundo; janelas de 5 anos, 12 meses e 3 meses) e RevenueCat *State of Subscription Apps* 2026 e 2025 (texto completo das páginas públicas + 3 posts do blog).
 **Dados brutos auditáveis:** `docs/dados/trends/` (CSVs das séries, JSON das consultas relacionadas, `_summary.json`, scripts `trends.py`/`analyze.py`, planos de consulta e log da coleta).

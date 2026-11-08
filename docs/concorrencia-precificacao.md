@@ -1,5 +1,7 @@
 # Concorrência e precificação — app de rotina para mulheres em uso de caneta GLP-1 (América do Sul + EUA)
 
+> **Nota (08/11/2026):** as decisões finais de produto, nome (Nutrelle), posicionamento e preço estão em [`produto.md`](produto.md) e prevalecem sobre as recomendações deste relatório.
+
 **Data da coleta:** 08/11/2026 (16:40–17:40 UTC)
 **Produto:** app para mulheres 30–55 em transformação corporal; público inicial = usuárias de caneta GLP-1 (Mounjaro/Ozempic/Ozivy). Promessa: "perca gordura, não músculo", dados ficam no celular. v1: plano diário em uma tela (meta de proteína + check-in), proteína por foto on-device (TACO, faixa de incerteza, código de barras, favoritos), diário GLP-1 (dia da aplicação, náusea, apetite, intestino, energia, sono, água; correlações on-device; sem orientação de dose), progresso (Apple Health, fotos privadas, streaks, widget), privacidade como marca (sem conta, exportar/apagar). v1.5: modo perimenopausa. **Sem treinos guiados por câmera.**
 
