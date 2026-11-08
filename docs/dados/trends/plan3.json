@@ -1,0 +1,795 @@
+[
+{
+"name": "S_beleza",
+"kw": [
+"skincare",
+"cronograma capilar",
+"maquiagem",
+"análise de pele",
+"unhas decoradas"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_beleza",
+"kw": [
+"skincare",
+"cronograma capilar",
+"maquiagem",
+"análise de pele",
+"unhas decoradas"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_beleza",
+"kw": [
+"skincare",
+"cronograma capilar",
+"maquiagem",
+"análise de pele",
+"unhas decoradas"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_moda",
+"kw": [
+"provador virtual",
+"coloração pessoal",
+"look do dia",
+"armário cápsula",
+"análise de coloração"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_moda",
+"kw": [
+"provador virtual",
+"coloração pessoal",
+"look do dia",
+"armário cápsula",
+"análise de coloração"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_moda",
+"kw": [
+"provador virtual",
+"coloração pessoal",
+"look do dia",
+"armário cápsula",
+"análise de coloração"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_saude_fem",
+"kw": [
+"ciclo menstrual",
+"fertilidade",
+"gravidez",
+"menopausa",
+"endometriose"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_saude_fem",
+"kw": [
+"ciclo menstrual",
+"fertilidade",
+"gravidez",
+"menopausa",
+"endometriose"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_saude_fem",
+"kw": [
+"ciclo menstrual",
+"fertilidade",
+"gravidez",
+"menopausa",
+"endometriose"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_saude_fem2",
+"kw": [
+"SOP",
+"ovulação",
+"engravidar",
+"candidíase",
+"TPM"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_saude_fem2",
+"kw": [
+"SOP",
+"ovulação",
+"engravidar",
+"candidíase",
+"TPM"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_saude_fem2",
+"kw": [
+"SOP",
+"ovulação",
+"engravidar",
+"candidíase",
+"TPM"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_mental",
+"kw": [
+"ansiedade",
+"journaling",
+"meditação",
+"sono",
+"terapia"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_mental",
+"kw": [
+"ansiedade",
+"journaling",
+"meditação",
+"sono",
+"terapia"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_mental",
+"kw": [
+"ansiedade",
+"journaling",
+"meditação",
+"sono",
+"terapia"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_financas",
+"kw": [
+"organizar finanças",
+"controle de gastos",
+"planilha de gastos",
+"app de finanças",
+"educação financeira"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_financas",
+"kw": [
+"organizar finanças",
+"controle de gastos",
+"planilha de gastos",
+"app de finanças",
+"educação financeira"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_financas",
+"kw": [
+"organizar finanças",
+"controle de gastos",
+"planilha de gastos",
+"app de finanças",
+"educação financeira"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_maternidade",
+"kw": [
+"bebê",
+"amamentação",
+"sono do bebê",
+"introdução alimentar",
+"gestante"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_maternidade",
+"kw": [
+"bebê",
+"amamentação",
+"sono do bebê",
+"introdução alimentar",
+"gestante"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_maternidade",
+"kw": [
+"bebê",
+"amamentação",
+"sono do bebê",
+"introdução alimentar",
+"gestante"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_relacionamento",
+"kw": [
+"relacionamento",
+"namoro",
+"app de relacionamento",
+"tinder",
+"bumble"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_relacionamento",
+"kw": [
+"relacionamento",
+"namoro",
+"app de relacionamento",
+"tinder",
+"bumble"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_relacionamento",
+"kw": [
+"relacionamento",
+"namoro",
+"app de relacionamento",
+"tinder",
+"bumble"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_seguranca",
+"kw": [
+"segurança pessoal",
+"botão do pânico",
+"app de segurança para mulheres",
+"compartilhar localização",
+"medida protetiva"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_seguranca",
+"kw": [
+"segurança pessoal",
+"botão do pânico",
+"app de segurança para mulheres",
+"compartilhar localização",
+"medida protetiva"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_seguranca",
+"kw": [
+"segurança pessoal",
+"botão do pânico",
+"app de segurança para mulheres",
+"compartilhar localização",
+"medida protetiva"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_astro",
+"kw": [
+"mapa astral",
+"tarot",
+"horóscopo",
+"signo",
+"astrologia"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_astro",
+"kw": [
+"mapa astral",
+"tarot",
+"horóscopo",
+"signo",
+"astrologia"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_astro",
+"kw": [
+"mapa astral",
+"tarot",
+"horóscopo",
+"signo",
+"astrologia"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_produtividade",
+"kw": [
+"planner",
+"rotina",
+"organizar rotina",
+"agenda",
+"hábitos"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_produtividade",
+"kw": [
+"planner",
+"rotina",
+"organizar rotina",
+"agenda",
+"hábitos"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_produtividade",
+"kw": [
+"planner",
+"rotina",
+"organizar rotina",
+"agenda",
+"hábitos"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_educacao",
+"kw": [
+"curso online",
+"inglês",
+"concurso",
+"currículo",
+"linkedin"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_educacao",
+"kw": [
+"curso online",
+"inglês",
+"concurso",
+"currículo",
+"linkedin"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_educacao",
+"kw": [
+"curso online",
+"inglês",
+"concurso",
+"currículo",
+"linkedin"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "S_fitness",
+"kw": [
+"treino feminino",
+"pilates",
+"contar calorias",
+"mounjaro",
+"treino em casa"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": true
+},
+{
+"name": "S_fitness",
+"kw": [
+"treino feminino",
+"pilates",
+"contar calorias",
+"mounjaro",
+"treino em casa"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "S_fitness",
+"kw": [
+"treino feminino",
+"pilates",
+"contar calorias",
+"mounjaro",
+"treino em casa"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "X1",
+"kw": [
+"skincare",
+"menopausa",
+"ansiedade",
+"mapa astral",
+"controle de gastos"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": false
+},
+{
+"name": "X1",
+"kw": [
+"skincare",
+"menopausa",
+"ansiedade",
+"mapa astral",
+"controle de gastos"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": false
+},
+{
+"name": "X1",
+"kw": [
+"skincare",
+"menopausa",
+"ansiedade",
+"mapa astral",
+"controle de gastos"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "X2",
+"kw": [
+"skincare",
+"gravidez",
+"pilates",
+"mounjaro",
+"maquiagem"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": false
+},
+{
+"name": "X2",
+"kw": [
+"skincare",
+"gravidez",
+"pilates",
+"mounjaro",
+"maquiagem"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": false
+},
+{
+"name": "X2",
+"kw": [
+"skincare",
+"gravidez",
+"pilates",
+"mounjaro",
+"maquiagem"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "X3",
+"kw": [
+"skincare",
+"planner",
+"amamentação",
+"provador virtual",
+"inglês"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": false
+},
+{
+"name": "X3",
+"kw": [
+"skincare",
+"planner",
+"amamentação",
+"provador virtual",
+"inglês"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": false
+},
+{
+"name": "X3",
+"kw": [
+"skincare",
+"planner",
+"amamentação",
+"provador virtual",
+"inglês"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "X4",
+"kw": [
+"skincare",
+"ciclo menstrual",
+"meditação",
+"coloração pessoal",
+"treino feminino"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": false
+},
+{
+"name": "X4",
+"kw": [
+"skincare",
+"ciclo menstrual",
+"meditação",
+"coloração pessoal",
+"treino feminino"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": false
+},
+{
+"name": "X4",
+"kw": [
+"skincare",
+"ciclo menstrual",
+"meditação",
+"coloração pessoal",
+"treino feminino"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "X5",
+"kw": [
+"skincare",
+"contar calorias",
+"cronograma capilar",
+"tarot",
+"relacionamento"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": false
+},
+{
+"name": "X5",
+"kw": [
+"skincare",
+"contar calorias",
+"cronograma capilar",
+"tarot",
+"relacionamento"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": false
+},
+{
+"name": "X5",
+"kw": [
+"skincare",
+"contar calorias",
+"cronograma capilar",
+"tarot",
+"relacionamento"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "X6",
+"kw": [
+"skincare",
+"bebê",
+"sono",
+"segurança pessoal",
+"rotina"
+],
+"geo": "BR",
+"time": "today 12-m",
+"related": false
+},
+{
+"name": "X6",
+"kw": [
+"skincare",
+"bebê",
+"sono",
+"segurança pessoal",
+"rotina"
+],
+"geo": "BR",
+"time": "today 3-m",
+"related": false
+},
+{
+"name": "X6",
+"kw": [
+"skincare",
+"bebê",
+"sono",
+"segurança pessoal",
+"rotina"
+],
+"geo": "BR",
+"time": "today 5-y",
+"related": false
+},
+{
+"name": "W1",
+"kw": [
+"skincare",
+"menopause",
+"journaling",
+"astrology",
+"budgeting app"
+],
+"geo": "",
+"time": "today 12-m",
+"related": false
+},
+{
+"name": "W1",
+"kw": [
+"skincare",
+"menopause",
+"journaling",
+"astrology",
+"budgeting app"
+],
+"geo": "",
+"time": "today 3-m",
+"related": true
+},
+{
+"name": "W2",
+"kw": [
+"color analysis",
+"virtual try on",
+"cycle syncing",
+"pilates",
+"calorie counter"
+],
+"geo": "",
+"time": "today 12-m",
+"related": false
+},
+{
+"name": "W2",
+"kw": [
+"color analysis",
+"virtual try on",
+"cycle syncing",
+"pilates",
+"calorie counter"
+],
+"geo": "",
+"time": "today 3-m",
+"related": true
+}
+]

@@ -1,0 +1,22 @@
+[
+ {"name":"amplo","kw":["emagrecer","dieta","treino","menopausa","ozempic"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"solo_ozempic","kw":["ozempic"],"geo":"BR","time":"today 5-y"},
+ {"name":"modalidades","kw":["treino em casa","academia","pilates","musculação","corrida"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"fem_12m","kw":["treino de glúteo","treino feminino","treino para mulheres","pilates em casa","treino abdominal"],"geo":"BR","time":"today 12-m","related":false},
+ {"name":"world_niche","kw":["ai calorie counter","cycle syncing workout","perimenopause","pelvic floor exercises","posture corrector"],"geo":"","time":"today 5-y"},
+ {"name":"massa","kw":["massa magra","sarcopenia","ganhar massa muscular","flacidez","perder gordura"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"glp1_long","kw":["dieta mounjaro","o que comer tomando mounjaro","efeitos colaterais mounjaro","mounjaro e treino","perda de massa muscular"],"geo":"BR","time":"today 12-m"},
+ {"name":"solo_dieta","kw":["dieta"],"geo":"BR","time":"today 12-m"},
+ {"name":"solo_treino_casa","kw":["treino em casa"],"geo":"BR","time":"today 12-m"},
+ {"name":"solo_calorias","kw":["calorias"],"geo":"BR","time":"today 12-m"},
+ {"name":"solo_app_treino","kw":["app de treino"],"geo":"BR","time":"today 12-m"},
+ {"name":"solo_assoalho","kw":["assoalho pélvico"],"geo":"BR","time":"today 5-y"},
+ {"name":"solo_skincare_5y","kw":["skincare"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"solo_menopausa_5y","kw":["menopausa"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"solo_mounjaro_5y","kw":["mounjaro"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"solo_pilates_5y","kw":["pilates"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"solo_contar_calorias_5y","kw":["contar calorias"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"solo_ciclo_5y","kw":["ciclo menstrual"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"solo_gluteo_5y","kw":["treino de glúteo"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"solo_postura_5y","kw":["postura"],"geo":"BR","time":"today 5-y","related":false}
+]

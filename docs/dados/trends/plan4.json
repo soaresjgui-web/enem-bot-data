@@ -1,0 +1,9 @@
+[
+ {"name":"X7","kw":["skincare","contador de calorias","app de treino","app menstruação","mapa astral"],"geo":"BR","time":"today 12-m","related":false},
+ {"name":"X7","kw":["skincare","contador de calorias","app de treino","app menstruação","mapa astral"],"geo":"BR","time":"today 3-m","related":false},
+ {"name":"X7","kw":["skincare","contador de calorias","app de treino","app menstruação","mapa astral"],"geo":"BR","time":"today 5-y","related":false},
+ {"name":"X8","kw":["skincare","perimenopausa","caneta emagrecedora","treino de glúteo","journaling"],"geo":"BR","time":"today 12-m","related":false},
+ {"name":"X8","kw":["skincare","perimenopausa","caneta emagrecedora","treino de glúteo","journaling"],"geo":"BR","time":"today 3-m","related":false},
+ {"name":"apps_fem_3m","kw":["app de treino","app menstruação","app de skincare","app de finanças","app de meditação"],"geo":"BR","time":"today 3-m","related":true},
+ {"name":"apps_fem_12m","kw":["app de treino","app menstruação","app de skincare","app de finanças","app de meditação"],"geo":"BR","time":"today 12-m","related":false}
+]

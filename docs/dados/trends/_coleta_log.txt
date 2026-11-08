@@ -1,0 +1,483 @@
+=== ideias_cross | ['contar calorias', 'mounjaro', 'menopausa', 'pilates', 'postura'] | BR | today 5-y
+avg: {'contar calorias': 0.0, 'mounjaro': 22.6, 'menopausa': 19.1, 'pilates': 22.7, 'postura': 10.3}
+related[contar calorias] rising: [('qual o melhor app para contar calorias gratuito', 'Aumento repentino'), ('pare de contar calorias', 'Mais 250%'), ('melhor app para contar calorias', 'Mais 200%'), ('app para contar calorias grátis', 'Mais 180%'), ('app de contar calorias', 'Mais 80%'), ('app contar calorias', 'Mais 50%')]
+related[mounjaro] rising: [('mounjaro preço', 'Aumento repentino'), ('mounjaro valor', 'Aumento repentino'), ('mounjaro 5mg', 'Aumento repentino'), ('ozempic', 'Aumento repentino'), ('caneta mounjaro', 'Aumento repentino'), ('mounjaro comprar', 'Aumento repentino'), ('mounjaro tirzepatida', 'Aumento repentino'), ('tirzepatida', 'Aumento repentino')]
+related[menopausa] rising: [('neovadiol menopausa', 'Mais 2.150%'), ('vichy menopausa', 'Mais 1.100%'), ('menopausa cancelada', 'Mais 700%'), ('como eu sei que estou entrando na menopausa', 'Mais 450%'), ('utrogestan', 'Mais 350%'), ('peri menopausa', 'Mais 300%'), ('pomada para ressecamento na menopausa', 'Mais 250%'), ('o que a menopausa causa no corpo', 'Mais 200%')]
+related[pilates] rising: [('aera pilates', 'Aumento repentino'), ('wellhub', 'Aumento repentino'), ('pilates de parede funciona', 'Mais 4.950%'), ('authentic pilates le', 'Mais 2.900%'), ('pilates na parede', 'Mais 2.400%'), ('pilates perto de mim', 'Mais 1.250%'), ('studio de pilates perto de mim', 'Mais 850%'), ('kit pilates em casa', 'Mais 500%')]
+related[postura] rising: [('minha postura quebra quando ela me olha assim', 'Aumento repentino'), ('postura tatica mw3', 'Aumento repentino'), ('qual deve ser a postura do radiologista e da médica em relação aos constantes pedidos de dona sônia', 'Aumento repentino'), ('como mejorar la postura corporal', 'Aumento repentino'), ('a escola contribui para a formação dos sujeitos pautada na submissão e aceitação ou os motiva para a criticidade, criatividade e postura ética?', 'Mais 3.950%'), ('come migliorare la postura', 'Mais 2.400%'), ('corretor de postura inteligente', 'Mais 400%'), ('nucleo de postura para galinhas', 'Mais 350%')]
+=== ideias_cross | ['contar calorias', 'mounjaro', 'menopausa', 'pilates', 'postura'] | BR | today 12-m
+avg: {'contar calorias': 0.0, 'mounjaro': 65.1, 'menopausa': 22.0, 'pilates': 27.8, 'postura': 10.4}
+=== dieta | ['contador de calorias', 'calorias por foto', 'cal ai', 'myfitnesspal', 'yazio'] | BR | today 5-y
+avg: {'contador de calorias': 25.6, 'calorias por foto': 0.3, 'cal ai': 2.6, 'myfitnesspal': 23.2, 'yazio': 12.6}
+related[contador de calorias] rising: [('contador de calorias online grátis', 'Mais 1.750%'), ('melhor app contador de calorias gratuito', 'Mais 1.200%'), ('contador de calorias gratuito', 'Mais 500%'), ('calculadora de calorias', 'Mais 50%')]
+related[calorias por foto] rising: []
+related[cal ai] rising: [('character ai', 'Aumento repentino'), ('zach yadegari', 'Aumento repentino'), ('gemini ai', 'Aumento repentino'), ('cal ai price', 'Mais 250%')]
+related[myfitnesspal] rising: [('myfitnesspal premium apk reddit', 'Aumento repentino'), ('myfitnesspal api', 'Mais 1.700%'), ('cronometer', 'Mais 1.300%'), ('yazio', 'Mais 900%'), ('myfitnesspal login', 'Mais 130%'), ('myfitnesspal app', 'Mais 80%'), ('myfitnesspal online', 'Mais 80%'), ('myfitnesspal android', 'Mais 60%')]
+related[yazio] rising: [('yazio vs myfitnesspal', 'Aumento repentino'), ('myfitnesspal', 'Mais 400%'), ('yazio login', 'Mais 350%'), ('yazio online', 'Mais 170%'), ('yazio gasto calorico', 'Mais 40%'), ('yazio premium', 'Mais 40%')]
+=== dieta | ['contador de calorias', 'calorias por foto', 'cal ai', 'myfitnesspal', 'yazio'] | BR | today 12-m
+avg: {'contador de calorias': 17.2, 'calorias por foto': 0.5, 'cal ai': 12.0, 'myfitnesspal': 27.7, 'yazio': 16.1}
+=== glp1 | ['ozempic', 'mounjaro', 'caneta emagrecedora', 'wegovy', 'ozivy'] | BR | today 5-y
+avg: {'ozempic': 21.4, 'mounjaro': 22.6, 'caneta emagrecedora': 1.1, 'wegovy': 5.7, 'ozivy': 1.0}
+related[ozempic] rising: [('mounjaro', 'Aumento repentino'), ('monjaro', 'Aumento repentino'), ('mounjaro preço', 'Aumento repentino'), ('mounjaro valor', 'Aumento repentino'), ('mounjaro ou ozempic', 'Aumento repentino'), ('wegovy ou ozempic', 'Aumento repentino'), ('monjauro', 'Aumento repentino'), ('wegovy valor', 'Aumento repentino')]
+related[mounjaro] rising: [('mounjaro preço', 'Aumento repentino'), ('mounjaro valor', 'Aumento repentino'), ('mounjaro 5mg', 'Aumento repentino'), ('ozempic', 'Aumento repentino'), ('caneta mounjaro', 'Aumento repentino'), ('mounjaro comprar', 'Aumento repentino'), ('mounjaro tirzepatida', 'Aumento repentino'), ('tirzepatida', 'Aumento repentino')]
+related[caneta emagrecedora] rising: [('caneta brasileira emagrecedora', 'Aumento repentino'), ('mounjaro', 'Aumento repentino'), ('caneta mounjaro', 'Aumento repentino'), ('caneta ems emagrecedora', 'Aumento repentino'), ('ems', 'Aumento repentino'), ('caneta emagrecedora brasil', 'Aumento repentino'), ('caneta emagrecedora olire', 'Aumento repentino'), ('olire', 'Aumento repentino')]
+related[wegovy] rising: [('mounjaro', 'Aumento repentino'), ('caneta wegovy', 'Aumento repentino'), ('wegovy semaglutida', 'Aumento repentino'), ('ozempic e wegovy', 'Aumento repentino'), ('wegovy 1 mg', 'Aumento repentino'), ('wegovy brasil', 'Aumento repentino'), ('wegovy 2.4', 'Aumento repentino'), ('wegovy para que serve', 'Aumento repentino')]
+related[ozivy] rising: [('ozivy caneta', 'Aumento repentino'), ('ozivy preço', 'Aumento repentino'), ('ozivy 1mg', 'Aumento repentino'), ('semaglutida', 'Aumento repentino'), ('semaglutida ozivy', 'Aumento repentino'), ('ems ozivy', 'Aumento repentino'), ('ems', 'Aumento repentino'), ('ozempic', 'Aumento repentino')]
+=== glp1 | ['ozempic', 'mounjaro', 'caneta emagrecedora', 'wegovy', 'ozivy'] | BR | today 12-m
+avg: {'ozempic': 13.3, 'mounjaro': 65.1, 'caneta emagrecedora': 4.4, 'wegovy': 9.6, 'ozivy': 4.9}
+=== musculo_proteina | ['perda de massa muscular', 'proteína por dia', 'whey protein', 'creatina', 'treino de força'] | BR | today 5-y
+avg: {'perda de massa muscular': 0.0, 'proteína por dia': 0.5, 'whey protein': 19.7, 'creatina': 58.7, 'treino de força': 0.1}
+related[perda de massa muscular] rising: [('qual vulcão está localizado na antártida', 'Aumento repentino'), ('qual desses vulcões está localizado na antártida', 'Aumento repentino'), ('em que cidade está situado o maior conservatório musical da américa latina', 'Mais 250%')]
+related[proteína por dia] rising: [('quantos gramas de proteína por kg hipertrofia', 'Mais 2.750%'), ('quantos gramas de proteína por dia para hipertrofia', 'Mais 130%'), ('quantidade de proteína por dia musculação', 'Mais 110%'), ('100g de frango tem quanto de proteína', 'Mais 80%')]
+related[whey protein] rising: [('whey protein soldiers', 'Aumento repentino'), ('whey protein dark lab', 'Aumento repentino'), ('whey protein parmalat', 'Mais 3.950%'), ('whey protein adaptogen', 'Mais 650%'), ('creatina growth', 'Mais 500%'), ('body protein equaliv', 'Mais 350%'), ('whey protein isolado dux', 'Mais 300%'), ('dux whey', 'Mais 300%')]
+related[creatina] rising: [('dark lab', 'Aumento repentino'), ('creatina masterway', 'Aumento repentino'), ('dark lab creatina', 'Aumento repentino'), ('creatina em goma', 'Aumento repentino'), ('creatina dark lab é boa', 'Aumento repentino'), ('darklab creatina', 'Aumento repentino'), ('abenutri creatina', 'Aumento repentino'), ('soldiers creatina', 'Aumento repentino')]
+related[treino de força] rising: [('treino de força exercícios', 'Mais 70%'), ('treino de força em casa', 'Mais 50%'), ('o que é treino de força', 'Mais 40%')]
+=== menopausa | ['menopausa', 'perimenopausa', 'climatério', 'fogachos', 'reposição hormonal'] | BR | today 5-y
+avg: {'menopausa': 59.5, 'perimenopausa': 2.5, 'climatério': 3.0, 'fogachos': 1.1, 'reposição hormonal': 8.2}
+related[menopausa] rising: [('neovadiol menopausa', 'Mais 2.150%'), ('vichy menopausa', 'Mais 1.100%'), ('menopausa cancelada', 'Mais 700%'), ('como eu sei que estou entrando na menopausa', 'Mais 450%'), ('utrogestan', 'Mais 350%'), ('peri menopausa', 'Mais 300%'), ('pomada para ressecamento na menopausa', 'Mais 250%'), ('o que a menopausa causa no corpo', 'Mais 200%')]
+related[perimenopausa] rising: [('progesterona', 'Mais 80%'), ('estradiol', 'Mais 60%')]
+related[climatério] rising: [('método ressignifique a menopausa e climatério', 'Aumento repentino'), ('climatério sintomas físicos', 'Mais 800%'), ('climatério sintomas iniciais', 'Mais 400%'), ('estradiol', 'Mais 250%'), ('perimenopausa', 'Mais 180%'), ('progesterona', 'Mais 80%'), ('sobrac', 'Mais 60%'), ('o que é', 'Mais 50%')]
+related[fogachos] rising: [('o que é fogachos', 'Mais 130%'), ('fogachos na menopausa', 'Mais 40%')]
+related[reposição hormonal] rising: [('qual o melhor medicamento para reposição hormonal masculina', 'Aumento repentino'), ('vagifem é reposição hormonal', 'Aumento repentino'), ('reposição hormonal masculina é segura', 'Aumento repentino'), ('ceci reposição hormonal', 'Mais 4.600%'), ('antrofi é reposição hormonal', 'Mais 1.650%'), ('qual o melhor medicamento para reposição hormonal feminina', 'Mais 950%'), ('qual a melhor testosterona para reposição hormonal', 'Mais 350%'), ('libiam é reposição hormonal', 'Mais 250%')]
+=== menopausa | ['menopausa', 'perimenopausa', 'climatério', 'fogachos', 'reposição hormonal'] | BR | today 12-m
+avg: {'menopausa': 83.3, 'perimenopausa': 8.9, 'climatério': 3.9, 'fogachos': 1.6, 'reposição hormonal': 12.8}
+=== ciclo | ['ciclo menstrual', 'treinar menstruada', 'fase folicular', 'fase lútea', 'cycle syncing'] | BR | today 5-y
+avg: {'ciclo menstrual': 68.0, 'treinar menstruada': 1.0, 'fase folicular': 12.9, 'fase lútea': 5.6, 'cycle syncing': 0.0}
+related[ciclo menstrual] rising: [('quantos dias de atraso menstrual é considerado gravidez ciclo irregular', 'Aumento repentino'), ('melhor app ciclo menstrual grátis', 'Aumento repentino'), ('fases do ciclo menstrual e humor', 'Mais 1.500%'), ('as 4 fases do ciclo menstrual', 'Mais 900%'), ('app ciclo menstrual gratuito', 'Mais 700%'), ('quantos dias de atraso menstrual é considerado gravidez', 'Mais 450%'), ('quantos dias dura um ciclo menstrual irregular', 'Mais 400%'), ('meu ciclo menstrual encurtou', 'Mais 190%')]
+related[treinar menstruada] rising: []
+related[fase folicular] rising: [('fase folicular tardia', 'Mais 300%'), ('o que é fase folicular na mulher', 'Mais 150%'), ('fase folicular media o que significa', 'Mais 140%'), ("o'que é fase folicular", 'Mais 100%'), ('o que é fase folicular media', 'Mais 60%')]
+related[fase lútea] rising: [('fase lútea síntomas', 'Aumento repentino'), ('o que é fase lútea da mulher', 'Mais 200%'), ('o que é fase lútea no exame', 'Mais 180%'), ('o que é fase lútea na mulher', 'Mais 150%'), ('fase lútea sintomas', 'Mais 140%'), ('sintomas da fase lútea', 'Mais 100%')]
+related[cycle syncing] rising: [('cycle syncing workouts', 'Aumento repentino')]
+=== execucao | ['execução do exercício', 'agachamento correto', 'personal trainer online', 'treino em casa', 'hip thrust'] | BR | today 5-y
+avg: {'execução do exercício': 8.1, 'agachamento correto': 0.3, 'personal trainer online': 3.5, 'treino em casa': 57.5, 'hip thrust': 16.3}
+related[execução do exercício] rising: []
+related[agachamento correto] rising: []
+related[personal trainer online] rising: [('personal trainer certificate online', 'Aumento repentino'), ('personal trainer online brasil', 'Mais 200%'), ('best online personal trainer', 'Mais 130%'), ('consultoria online personal', 'Mais 50%'), ('consultoria online', 'Mais 50%'), ('consultoria personal trainer', 'Mais 50%')]
+related[treino em casa] rising: [('se todo a é b, nenhum b é c e algum c é d, pode-se concluir, corretamente,', 'Aumento repentino'), ('alceu, bruno e caio jogavam pingue-pongue. o derrotado de cada partida cedia lugar ao jogador que os assistia. ao término das disputas, verificou-se que alceu venceu 12 partidas e bruno, 21. se caio só começou a jogar na segunda partida, alceu e bruno se', 'Aumento repentino'), ('três gorilas e duas onças são expostos num zoológico lado a lado. o número de maneiras pelas quais eles podem ser apresentados de modo que as onças fiquem juntas, uma ao lado da outra,', 'Aumento repentino'), ('num torneio de voleibol, cada equipe enfrenta todas as outras apenas uma vez e aquela que obtém mais pontos é a campeã. cada vitória conquistada dá 3 pontos, cada empate, 1 ponto, e as derrotas não geram pontos. o time campeão deste ano foi o melhor dos 36 times da região e acumulou 70 pontos. sabendo que esse time só foi derrotado 7 vezes, quantas vitórias pode-se concluir que ele teve?', 'Mais 1.000%'), ('treino para perder barriga e afinar cintura', 'Mais 850%'), ('treino calistenia em casa', 'Mais 450%'), ('calistenia', 'Mais 450%'), ('treino de calistenia em casa', 'Mais 450%')]
+related[hip thrust] rising: [('levantamento terra romeno', 'Aumento repentino'), ('cadeira flexora', 'Aumento repentino'), ('hip thrust pesado', 'Aumento repentino'), ('hip thrust máquina', 'Mais 1.350%'), ('hip thrust na máquina', 'Mais 900%'), ('afundo', 'Mais 700%'), ('mesa flexora', 'Mais 650%'), ('dead bug', 'Mais 550%')]
+=== fitness_fem | ['treino feminino', 'treino de glúteo', 'pilates', 'musculação feminina', 'treino para mulheres'] | BR | today 5-y
+avg: {'treino feminino': 4.1, 'treino de glúteo': 0.3, 'pilates': 35.1, 'musculação feminina': 0.0, 'treino para mulheres': 0.0}
+related[treino feminino] rising: [('tênis sola reta para treino feminino nike', 'Aumento repentino'), ('tênis sola reta para treino feminino', 'Aumento repentino'), ('treino pdmm feminino', 'Mais 3.000%'), ('tênis de treino feminino under armour tribase reps', 'Mais 2.750%'), ('under armour', 'Mais 750%'), ('tenis under armour feminino', 'Mais 650%'), ('vans', 'Mais 550%'), ('tênis olympikus treino feminino', 'Mais 500%')]
+related[treino de glúteo] rising: [('ponte de glúteo', 'Aumento repentino'), ('elevação pélvica', 'Mais 180%'), ('cadeira abdutora', 'Mais 160%'), ('treino de posterior e glúteo feminino', 'Mais 120%'), ('treino de quadríceps', 'Mais 100%')]
+related[pilates] rising: [('aera pilates', 'Aumento repentino'), ('wellhub', 'Aumento repentino'), ('pilates de parede funciona', 'Mais 4.950%'), ('authentic pilates le', 'Mais 2.900%'), ('pilates na parede', 'Mais 2.400%'), ('pilates perto de mim', 'Mais 1.250%'), ('studio de pilates perto de mim', 'Mais 850%'), ('kit pilates em casa', 'Mais 500%')]
+related[musculação feminina] rising: [('benefícios da musculação feminina', 'Mais 450%'), ('luva musculação feminina', 'Mais 190%'), ('luva de musculação feminina', 'Mais 130%')]
+related[treino para mulheres] rising: []
+=== gestacao_pelvico | ['exercício na gravidez', 'pós-parto', 'assoalho pélvico', 'pompoarismo', 'diástase'] | BR | today 5-y
+avg: {'exercício na gravidez': 0.2, 'pós-parto': 26.2, 'assoalho pélvico': 11.4, 'pompoarismo': 43.8, 'diástase': 39.1}
+related[exercício na gravidez] rising: []
+related[pós-parto] rising: [('estabilidade gestante pós-parto', 'Aumento repentino'), ('lista de alimentos pós-parto cesária', 'Mais 1.200%'), ('hemorragia pós-parto pode levar a morte', 'Mais 1.150%'), ('menstruação pós-parto cesária', 'Mais 650%'), ('o que usar no pós-parto cesária', 'Mais 650%'), ('fralda para gestante pós-parto', 'Mais 600%'), ('água inglesa pós-parto', 'Mais 180%'), ('fralda pós-parto', 'Mais 160%')]
+related[assoalho pélvico] rising: [('enfraquecimento do assoalho pélvico', 'Mais 120%'), ('como fortalecer o assoalho pélvico', 'Mais 60%'), ('exercício assoalho pélvico', 'Mais 40%')]
+related[pompoarismo] rising: [('fisioterapia pelvica', 'Mais 190%'), ('pompoarismo letra', 'Mais 140%'), ('pompoarismo musica', 'Mais 100%'), ('oque significa pompoarismo', 'Mais 60%'), ('benefícios do pompoarismo', 'Mais 60%'), ('o que é pompoarismo masculino', 'Mais 60%'), ('pompoarismo em ingles', 'Mais 50%'), ('pompoarismo oq e', 'Mais 40%')]
+related[diástase] rising: [('qual o melhor exercício para fechar diástase', 'Aumento repentino'), ('como fechar a diástase com 7 exercícios', 'Aumento repentino'), ('fotos de barriga com diástase antes e depois', 'Mais 1.200%'), ('quem tem diástase pode fazer prancha', 'Mais 300%'), ('exercícios para fechar diástase', 'Mais 160%'), ('fotos de barriga com diástase', 'Mais 160%'), ('como fechar a diástase', 'Mais 150%'), ('quem tem diástase pode fazer abdominal', 'Mais 150%')]
+=== pele | ['análise de pele', 'skincare', 'rotina de skincare', 'melasma', 'tipo de pele'] | BR | today 5-y
+avg: {'análise de pele': 0.5, 'skincare': 41.4, 'rotina de skincare': 1.3, 'melasma': 56.4, 'tipo de pele': 12.9}
+related[análise de pele] rising: []
+related[skincare] rising: [('medicube', 'Aumento repentino'), ('centella skincare', 'Aumento repentino'), ('popo skincare', 'Aumento repentino'), ('kit skincare niina secrets', 'Aumento repentino'), ('best skincare for oily skin', 'Mais 2.900%'), ('kit skincare principia', 'Mais 2.600%'), ('bubble skincare', 'Mais 2.450%'), ('alastin skincare', 'Mais 2.250%')]
+related[rotina de skincare] rising: [('principia', 'Mais 1.950%'), ('creamy', 'Mais 450%'), ('retinol', 'Mais 400%'), ('rotina de skincare dia e noite', 'Mais 200%')]
+related[melasma] rising: [('principia', 'Aumento repentino'), ('principia melasma', 'Aumento repentino'), ('principia para melasma', 'Aumento repentino'), ('nivea luminous 630 melasma', 'Aumento repentino'), ('face clean creme clareador de pele contra manchas e melasma', 'Mais 2.850%'), ('serum melasma clear', 'Mais 2.300%'), ('7 erros que pioram o melasma', 'Mais 2.000%'), ('eucerin anti pigment', 'Mais 1.100%')]
+related[tipo de pele] rising: []
+=== postura | ['postura', 'corrigir postura', 'corretor postural', 'escoliose', 'dor nas costas'] | BR | today 5-y
+avg: {'postura': 34.5, 'corrigir postura': 1.1, 'corretor postural': 1.0, 'escoliose': 19.6, 'dor nas costas': 63.3}
+related[postura] rising: [('minha postura quebra quando ela me olha assim', 'Aumento repentino'), ('postura tatica mw3', 'Aumento repentino'), ('qual deve ser a postura do radiologista e da médica em relação aos constantes pedidos de dona sônia', 'Aumento repentino'), ('como mejorar la postura corporal', 'Aumento repentino'), ('a escola contribui para a formação dos sujeitos pautada na submissão e aceitação ou os motiva para a criticidade, criatividade e postura ética?', 'Mais 3.950%'), ('come migliorare la postura', 'Mais 2.400%'), ('corretor de postura inteligente', 'Mais 400%'), ('nucleo de postura para galinhas', 'Mais 350%')]
+related[corrigir postura] rising: [('colete para corrigir postura corcunda feminina', 'Mais 250%'), ('fita para corrigir postura', 'Mais 190%'), ('exercícios para corrigir postura corcunda', 'Mais 140%'), ('colete para corrigir postura corcunda', 'Mais 100%'), ('exercícios para corrigir postura', 'Mais 80%'), ('corrigir postura corcunda', 'Mais 80%'), ('corrigir postura costas', 'Mais 40%')]
+related[corretor postural] rising: [('corretor postural pro elite', 'Aumento repentino'), ('corretor postural inteligente', 'Mais 850%'), ('corretor postural ortopédico', 'Mais 150%'), ('hidrolight corretor postural', 'Mais 60%'), ('sutiã corretor postural', 'Mais 50%')]
+related[escoliose] rising: [('baleia com escoliose', 'Aumento repentino'), ('o que não pode fazer quando tem escoliose', 'Mais 300%'), ('quem tem escoliose pode se aposentar', 'Mais 250%'), ('colete 3d para escoliose', 'Mais 250%'), ('escoliose aposenta', 'Mais 150%'), ('escoliose pode matar', 'Mais 130%'), ("o'que é escoliose na coluna", 'Mais 120%'), ('escoliose lombar tem cura', 'Mais 110%')]
+related[dor nas costas] rising: [('quando a dor nas costas pode ser preocupante', 'Mais 1.450%'), ('dor na barriga como se fosse cólica e nas costas', 'Mais 600%'), ('dor nas costas lado direito próximo à cintura', 'Mais 550%'), ('dor nas costas na parte de cima do lado esquerdo', 'Mais 500%'), ('dor forte na boca do estômago e nas costas', 'Mais 400%'), ('dor nas costas do lado direito na altura do pulmão', 'Mais 300%'), ('dor nas costas acima das nádegas', 'Mais 250%'), ('dor nas costas na parte de cima', 'Mais 250%')]
+=== apps | ['app de treino', 'aplicativo de dieta', 'app contar calorias', 'app menstruação', 'app treino feminino'] | BR | today 5-y
+avg: {'app de treino': 35.6, 'aplicativo de dieta': 5.9, 'app contar calorias': 3.6, 'app menstruação': 15.8, 'app treino feminino': 0.1}
+related[app de treino] rising: [('melhores app para treino de academia grátis', 'Aumento repentino'), ('hevy app', 'Aumento repentino'), ('app treino academia grátis', 'Mais 550%'), ('app treino musculação grátis', 'Mais 500%')]
+related[aplicativo de dieta] rising: [('aplicativo de dieta para emagrecer grátis', 'Mais 300%'), ('aplicativo de dieta gratuito', 'Mais 100%')]
+related[app contar calorias] rising: []
+related[app menstruação] rising: [('app menstruação gratis', 'Mais 160%')]
+related[app treino feminino] rising: []
+=== cross_12m | ['proteína', 'ozempic', 'menopausa', 'pilates', 'calorias'] | BR | today 12-m
+avg: {'proteína': 15.5, 'ozempic': 9.0, 'menopausa': 14.9, 'pilates': 18.8, 'calorias': 63.4}
+=== world_cross | ['calorie counter', 'mounjaro', 'menopause', 'cycle syncing', 'pilates'] |  | today 5-y
+avg: {'calorie counter': 1.1, 'mounjaro': 22.9, 'menopause': 24.5, 'cycle syncing': 0.0, 'pilates': 53.8}
+related[calorie counter] rising: [('best free calorie counter app 2022', 'Aumento repentino'), ('photo calorie counter app free', 'Aumento repentino'), ('ai calorie counter', 'Aumento repentino'), ('free calorie counter app no subscription', 'Mais 2.850%'), ('free calorie counter app with barcode scanner', 'Mais 1.500%'), ('free calorie deficit calculator', 'Mais 1.250%'), ('best free calorie counter app reddit', 'Mais 1.050%'), ('cronometer', 'Mais 750%')]
+related[mounjaro] rising: [('mounjaro weight loss', 'Aumento repentino'), ('ozempic', 'Aumento repentino'), ('wegovy', 'Aumento repentino'), ('mounjaro price', 'Aumento repentino'), ('tirzepatide', 'Aumento repentino'), ('mounjaro uk', 'Aumento repentino'), ('what is mounjaro', 'Aumento repentino'), ('mounjaro dose', 'Aumento repentino')]
+related[menopause] rising: [('femibion menopause', 'Aumento repentino'), ('frozen shoulder menopause', 'Mais 850%'), ('north american menopause society', 'Mais 750%'), ('genitourinary syndrome of menopause', 'Mais 550%'), ('the new menopause', 'Mais 550%'), ('menopause society', 'Mais 500%'), ('peri menopause age', 'Mais 450%'), ('perimenopause vs menopause', 'Mais 350%')]
+related[cycle syncing] rising: [('cycle syncing workouts', 'Mais 800%'), ('menstrual phases', 'Mais 250%'), ('menstrual cycle phases', 'Mais 200%'), ('cycle syncing nutrition', 'Mais 140%'), ('cycle phases', 'Mais 110%'), ('menstrual phase', 'Mais 90%'), ('follicular phase', 'Mais 90%'), ('luteal phase', 'Mais 70%')]
+related[pilates] rising: [('wall pilates challenge', 'Aumento repentino'), ('wall pilates free', 'Aumento repentino'), ('pilates by izzy', 'Aumento repentino'), ('betterme pilates', 'Aumento repentino'), ('28 day wall pilates challenge', 'Aumento repentino'), ('pilates al muro', 'Aumento repentino'), ('wall pilates workout', 'Aumento repentino'), ('pilates przy scianie', 'Mais 4.850%')]
+=== world_apps | ['cal ai', 'form check', 'menopause app', 'glp-1 diet', 'protein intake'] |  | today 5-y
+avg: {'cal ai': 2.4, 'form check': 23.9, 'menopause app': 0.9, 'glp-1 diet': 0.5, 'protein intake': 18.2}
+related[cal ai] rising: [('cal ai calorie tracker', 'Aumento repentino'), ('myfitnesspal', 'Aumento repentino'), ('claude ai', 'Aumento repentino'), ('cal ai founder', 'Aumento repentino'), ('cal ai app store', 'Aumento repentino'), ('cal raleigh', 'Aumento repentino'), ('gemini ai', 'Aumento repentino'), ('cal ai acquisition', 'Aumento repentino')]
+related[form check] rising: [('how to check ssd health', 'Mais 4.000%'), ('how to check if eggs are fresh', 'Mais 2.200%'), ('how to check oil level in car', 'Mais 2.150%'), ('how to check transmission fluid level', 'Mais 1.950%'), ('how to check for malware on mac', 'Mais 1.650%'), ('how to check brake pads', 'Mais 1.350%'), ('how to check cpu temperature', 'Mais 1.000%'), ('check mark', 'Mais 50%')]
+related[menopause app] rising: [('new york times', 'Aumento repentino'), ('sora menopause app', 'Aumento repentino'), ('walmart near me', 'Aumento repentino'), ('how to use signal app', 'Aumento repentino'), ('how to change app permissions android', 'Aumento repentino'), ('menopause news', 'Mais 750%'), ('nhs app', 'Mais 350%'), ('menopause supplements', 'Mais 250%')]
+related[glp-1 diet] rising: [('tirzepatide', 'Aumento repentino'), ('glp-1 pills', 'Aumento repentino'), ('best glp-1 for weight loss', 'Aumento repentino'), ('glp-1 supplement', 'Aumento repentino'), ('mounjaro', 'Aumento repentino'), ('glp-1 diet plan pdf free', 'Aumento repentino'), ('glp-1 for weight loss', 'Mais 250%'), ('what is a glp-1 diet', 'Mais 110%')]
+related[protein intake] rising: [('ai news today', 'Aumento repentino'), ('2025-2030 dietary guidelines protein intake', 'Mais 4.900%'), ('aging and protein intake research', 'Mais 3.550%'), ('mike mentzer protein intake', 'Mais 2.750%'), ('walmart near me', 'Mais 1.850%'), ('calorie deficit', 'Mais 500%'), ('protein intake per kg', 'Mais 450%'), ('protein intake recommendations', 'Mais 250%')]
+=== solo_menopausa | ['menopausa'] | BR | today 12-m
+avg: {'menopausa': 83.4}
+related[menopausa] rising: [('qual hormônio é reduzido drasticamente quando a mulher entra na menopausa', 'Aumento repentino'), ('como se define aquilo que foi pago sem ser devido', 'Aumento repentino'), ('qual o hormônio é reduzido drasticamente quando a mulher entra na menopausa', 'Mais 4.750%'), ('veoza', 'Mais 2.250%'), ('anvisa aprova medicamento para menopausa', 'Mais 1.250%'), ('congresso mundial de menopausa 2026', 'Mais 650%'), ('peri menopausa', 'Mais 100%'), ('qual é o sintoma da menopausa', 'Mais 80%')]
+=== solo_mounjaro | ['mounjaro'] | BR | today 12-m
+avg: {'mounjaro': 65.1}
+related[mounjaro] rising: [('ozivy', 'Aumento repentino'), ('poviztra', 'Mais 4.100%'), ('combo mounjaro', 'Mais 3.450%'), ('gelatina mounjaro', 'Mais 2.200%'), ('mounjaro pancreatite aguda', 'Mais 1.500%'), ('seringa para mounjaro', 'Mais 850%'), ('mounjaro tg', 'Mais 800%'), ('tg', 'Mais 750%')]
+=== solo_contar_calorias | ['contar calorias'] | BR | today 12-m
+avg: {'contar calorias': 45.9}
+related[contar calorias] rising: [('qual o melhor app para contar calorias gratuito', 'Mais 160%')]
+=== solo_pilates | ['pilates'] | BR | today 12-m
+avg: {'pilates': 72.7}
+related[pilates] rising: [('aera pilates bh', 'Mais 1.050%'), ('aera pilates', 'Mais 650%'), ('ellora pilates', 'Mais 500%'), ('aera pilates itaim', 'Mais 300%'), ('aura pilates', 'Mais 190%'), ('velocity', 'Mais 190%'), ('area pilates', 'Mais 150%'), ('wellhub', 'Mais 120%')]
+=== solo_gluteo | ['treino de glúteo'] | BR | today 12-m
+avg: {'treino de glúteo': 56.8}
+related[treino de glúteo] rising: [('elevação pélvica', 'Mais 140%'), ('stiff', 'Mais 100%')]
+=== solo_ciclo | ['ciclo menstrual'] | BR | today 12-m
+avg: {'ciclo menstrual': 83.2}
+related[ciclo menstrual] rising: [('implanon', 'Mais 200%'), ('meu ciclo menstrual', 'Mais 50%'), ('aplicativo de ciclo menstrual', 'Mais 40%')]
+=== solo_whey | ['whey protein'] | BR | today 12-m
+avg: {'whey protein': 77.8}
+related[whey protein] rising: [('beef protein', 'Mais 350%'), ('whey beef protein', 'Mais 350%'), ('elite whey protein', 'Mais 300%'), ('protein powder whey', 'Mais 250%'), ('whey protein isolate', 'Mais 170%'), ('whey protein new millen', 'Mais 100%'), ('dark lab', 'Mais 80%'), ('whey protein bold', 'Mais 80%')]
+=== solo_perimenopausa | ['perimenopausa'] | BR | today 5-y
+avg: {'perimenopausa': 21.6}
+related[perimenopausa] rising: [('progesterona', 'Mais 80%'), ('estradiol', 'Mais 60%')]
+=== solo_caneta | ['caneta emagrecedora'] | BR | today 12-m
+avg: {'caneta emagrecedora': 40.1}
+related[caneta emagrecedora] rising: [('ozivy', 'Aumento repentino'), ('retratutida', 'Aumento repentino'), ('mantecorp caneta emagrecedora', 'Aumento repentino'), ('semavy', 'Aumento repentino'), ('lula prometeu caneta emagrecedora', 'Aumento repentino'), ('caneta emagrecedora lula', 'Mais 3.200%'), ('poviztra', 'Mais 2.200%'), ('tg', 'Mais 650%')]
+=== solo_postura | ['postura'] | BR | today 12-m
+avg: {'postura': 80.3}
+related[postura] rising: [('como mejorar la postura corporal', 'Aumento repentino'), ('come migliorare la postura', 'Mais 4.250%'), ('luz no beat postura não se vende', 'Mais 3.900%'), ('martins flow postura não se compra', 'Mais 300%'), ('como melhorar a postura corporal', 'Mais 190%'), ('mc anjim postura de bandido mau', 'Mais 80%'), ('fiscal de postura o que faz', 'Mais 50%'), ('como melhorar a postura da coluna', 'Mais 50%')]
+=== solo_skincare | ['skincare'] | BR | today 12-m
+avg: {'skincare': 61.8}
+related[skincare] rising: [('how to start a skincare routine', 'Aumento repentino'), ('chantecaille skincare', 'Aumento repentino'), ('best skincare for oily skin', 'Aumento repentino'), ('walmart near me', 'Aumento repentino'), ('la prairie skincare', 'Mais 1.850%'), ('new york times', 'Mais 950%'), ('mantecorp skincare pielus forte', 'Mais 450%'), ('diatena skincare', 'Mais 350%')]
+DONE
+=== amplo | ['emagrecer', 'dieta', 'treino', 'menopausa', 'ozempic'] | BR | today 5-y
+avg: {'emagrecer': 39.5, 'dieta': 39.9, 'treino': 71.3, 'menopausa': 14.2, 'ozempic': 16.0}
+=== solo_ozempic | ['ozempic'] | BR | today 5-y
+avg: {'ozempic': 33.5}
+related[ozempic] rising: [('mounjaro', 'Aumento repentino'), ('monjaro', 'Aumento repentino'), ('mounjaro preço', 'Aumento repentino'), ('mounjaro valor', 'Aumento repentino'), ('mounjaro ou ozempic', 'Aumento repentino'), ('wegovy ou ozempic', 'Aumento repentino'), ('monjauro', 'Aumento repentino'), ('wegovy valor', 'Aumento repentino')]
+=== modalidades | ['treino em casa', 'academia', 'pilates', 'musculação', 'corrida'] | BR | today 5-y
+avg: {'treino em casa': 0.3, 'academia': 49.3, 'pilates': 5.2, 'musculação': 3.9, 'corrida': 26.4}
+=== fem_12m | ['treino de glúteo', 'treino feminino', 'treino para mulheres', 'pilates em casa', 'treino abdominal'] | BR | today 12-m
+avg: {'treino de glúteo': 9.8, 'treino feminino': 69.8, 'treino para mulheres': 3.6, 'pilates em casa': 14.0, 'treino abdominal': 10.5}
+=== world_niche | ['ai calorie counter', 'cycle syncing workout', 'perimenopause', 'pelvic floor exercises', 'posture corrector'] |  | today 5-y
+avg: {'ai calorie counter': 0.2, 'cycle syncing workout': 0.0, 'perimenopause': 46.1, 'pelvic floor exercises': 7.3, 'posture corrector': 5.2}
+related[ai calorie counter] rising: [('free calorie counter', 'Aumento repentino'), ('cal ai', 'Aumento repentino'), ('cal ai app', 'Aumento repentino'), ('best calorie counter apps', 'Aumento repentino'), ('snapcalorie', 'Aumento repentino'), ('photo calorie counter app free', 'Aumento repentino'), ('calorie counter app', 'Mais 550%')]
+related[cycle syncing workout] rising: [('cycle syncing workouts', 'Aumento repentino')]
+related[perimenopause] rising: [('itchy ears perimenopause', 'Mais 1.850%'), ('what are the 34 symptoms of perimenopause', 'Mais 1.200%'), ('pre menstrual syndrome', 'Mais 1.200%'), ('magnesium glycinate', 'Mais 850%'), ('frozen shoulder perimenopause', 'Mais 800%'), ('health and her perimenopause', 'Mais 450%'), ('perimenopause symptomer', 'Mais 300%'), ('hrt for perimenopause', 'Mais 250%')]
+related[pelvic floor exercises] rising: [('deep core and pelvic floor exercises', 'Mais 1.500%'), ('deep core pelvic floor exercises', 'Mais 1.200%'), ('deep core exercises', 'Mais 1.150%'), ('pelvic floor exercises nhs', 'Mais 300%'), ('hypertonic pelvic floor exercises', 'Mais 250%'), ('erectile dysfunction', 'Mais 250%'), ('best pelvic floor exercises for men', 'Mais 200%'), ('pelvic floor exercises pdf', 'Mais 180%')]
+related[posture corrector] rising: [('frido', 'Aumento repentino'), ('frido posture corrector', 'Aumento repentino'), ('corecare posture corrector', 'Aumento repentino'), ('vortalex posture corrector', 'Aumento repentino'), ('frido orthotics posture corrector', 'Aumento repentino'), ('core care posture corrector', 'Aumento repentino'), ('corecare posture corrector reviews', 'Aumento repentino'), ('axzenia posture corrector', 'Aumento repentino')]
+=== massa | ['massa magra', 'sarcopenia', 'ganhar massa muscular', 'flacidez', 'perder gordura'] | BR | today 5-y
+avg: {'massa magra': 15.3, 'sarcopenia': 13.6, 'ganhar massa muscular': 52.5, 'flacidez': 26.3, 'perder gordura': 24.5}
+=== glp1_long | ['dieta mounjaro', 'o que comer tomando mounjaro', 'efeitos colaterais mounjaro', 'mounjaro e treino', 'perda de massa muscular'] | BR | today 12-m
+avg: {'dieta mounjaro': 11.8, 'o que comer tomando mounjaro': 2.5, 'efeitos colaterais mounjaro': 54.7, 'mounjaro e treino': 0.2, 'perda de massa muscular': 17.0}
+related[dieta mounjaro] rising: [('dieta para quem toma mounjaro', 'Mais 110%')]
+related[o que comer tomando mounjaro] rising: []
+related[efeitos colaterais mounjaro] rising: [('efeitos colaterais do mounjaro', 'Mais 80%')]
+related[mounjaro e treino] rising: []
+related[perda de massa muscular] rising: [('mesmo significado de rosto', 'Aumento repentino'), ('pera prende o intestino', 'Aumento repentino'), ('alface prende o intestino', 'Aumento repentino'), ('qual das seguintes palavras tem o mesmo significado de rosto', 'Aumento repentino'), ('qual desses vulcões está localizado na antártida', 'Aumento repentino'), ('qual vulcão está localizado na antártida', 'Mais 300%'), ('em que cidade está situado o maior conservatório musical da américa latina', 'Mais 110%'), ('qual palavra tem o mesmo significado de rosto', 'Mais 70%')]
+=== solo_dieta | ['dieta'] | BR | today 12-m
+avg: {'dieta': 68.9}
+related[dieta] rising: [('dieta do haaland', 'Mais 4.250%'), ('dieta para quem toma mounjaro', 'Mais 700%'), ('dieta da selva', 'Mais 600%'), ('dieta low fodmap', 'Mais 110%'), ('dieta para pre diabetico', 'Mais 110%'), ('dieta sgsc', 'Mais 80%'), ('dieta fodmaps', 'Mais 60%'), ('dieta low food.map', 'Mais 60%')]
+=== solo_treino_casa | ['treino em casa'] | BR | today 12-m
+avg: {'treino em casa': 66.4}
+related[treino em casa] rising: [('elastico para treino', 'Mais 100%'), ('treino pra fazer em casa', 'Mais 90%'), ('elastico para treino em casa', 'Mais 80%'), ('treino de muay thai em casa', 'Mais 80%'), ('bicicleta ergometrica', 'Mais 60%')]
+=== solo_calorias | ['calorias'] | BR | today 12-m
+avg: {'calorias': 63.4}
+related[calorias] rising: [('imperio ultra calorias', 'Mais 180%'), ('quantas calorias tem dois ovos', 'Mais 100%'), ('quantas calorias tem um pêssego', 'Mais 80%'), ('quantas calorias tem 2 ovos', 'Mais 60%'), ('quantas calorias tem um tomate', 'Mais 50%'), ('michelob ultra calorias', 'Mais 50%'), ('calorias tomate', 'Mais 50%'), ('calorias abacate', 'Mais 40%')]
+=== solo_app_treino | ['app de treino'] | BR | today 12-m
+avg: {'app de treino': 48.6}
+related[app de treino] rising: [('melhores app para treino de academia grátis', 'Mais 2.000%'), ('hevy app', 'Mais 70%'), ('app para treino de academia', 'Mais 40%'), ('app treino academia grátis', 'Mais 40%')]
+=== solo_assoalho | ['assoalho pélvico'] | BR | today 5-y
+avg: {'assoalho pélvico': 61.3}
+related[assoalho pélvico] rising: [('enfraquecimento do assoalho pélvico', 'Mais 120%'), ('como fortalecer o assoalho pélvico', 'Mais 60%'), ('exercício assoalho pélvico', 'Mais 40%')]
+=== solo_skincare_5y | ['skincare'] | BR | today 5-y
+avg: {'skincare': 41.4}
+=== solo_menopausa_5y | ['menopausa'] | BR | today 5-y
+avg: {'menopausa': 59.5}
+=== solo_mounjaro_5y | ['mounjaro'] | BR | today 5-y
+avg: {'mounjaro': 22.6}
+=== solo_pilates_5y | ['pilates'] | BR | today 5-y
+avg: {'pilates': 35.1}
+=== solo_contar_calorias_5y | ['contar calorias'] | BR | today 5-y
+avg: {'contar calorias': 43.5}
+=== solo_ciclo_5y | ['ciclo menstrual'] | BR | today 5-y
+avg: {'ciclo menstrual': 68.0}
+=== solo_gluteo_5y | ['treino de glúteo'] | BR | today 5-y
+avg: {'treino de glúteo': 41.6}
+=== solo_postura_5y | ['postura'] | BR | today 5-y
+avg: {'postura': 76.7}
+DONE
+=== S_beleza | ['skincare', 'cronograma capilar', 'maquiagem', 'análise de pele', 'unhas decoradas'] | BR | today 12-m
+avg: {'skincare': 11.0, 'cronograma capilar': 3.8, 'maquiagem': 65.6, 'análise de pele': 0.0, 'unhas decoradas': 4.6}
+related[skincare] rising: [('celimax', 'Mais 1.150%'), ('mantecorp skincare pielus forte', 'Mais 450%'), ('kokeshi', 'Mais 350%'), ('medicube skincare', 'Mais 300%'), ('medicube', 'Mais 250%'), ('retinal', 'Mais 200%'), ('best pizza near me', 'Mais 160%'), ('hidrabene', 'Mais 110%')]
+related[cronograma capilar] rising: [('cronograma capilar ybera', 'Mais 250%'), ('ybera', 'Mais 250%'), ('como fazer cronograma capilar em casa', 'Mais 120%'), ('cronograma capilar para cabelos com progressiva', 'Mais 70%'), ('kerastase', 'Mais 60%'), ('meu cronograma capilar', 'Mais 60%'), ('cronograma capilar kerastase', 'Mais 60%'), ('qual o melhor cronograma capilar', 'Mais 50%')]
+related[maquiagem] rising: [('mano brown maquiagem', 'Aumento repentino'), ('mano brown de maquiagem', 'Aumento repentino'), ('ana mary b sem maquiagem', 'Mais 4.650%'), ('deolane sem maquiagem', 'Mais 4.050%'), ('maquiagem copa', 'Mais 1.600%'), ('maquiagem ysl', 'Mais 350%'), ('maquiagem do brasil', 'Mais 170%'), ('mascavo maquiagem', 'Mais 110%')]
+related[análise de pele] rising: []
+related[unhas decoradas] rising: [('unhas decoradas do brasil', 'Mais 2.050%'), ('unhas decoradas brasil', 'Mais 1.100%'), ('unhas decoradas modernas', 'Mais 350%')]
+=== S_beleza | ['skincare', 'cronograma capilar', 'maquiagem', 'análise de pele', 'unhas decoradas'] | BR | today 3-m
+avg: {'skincare': 4.5, 'cronograma capilar': 1.3, 'maquiagem': 30.8, 'análise de pele': 0.0, 'unhas decoradas': 1.7}
+related[skincare] rising: [('kit de skincare completo', 'Mais 140%'), ('faixa de cabelo skincare', 'Mais 130%'), ('guava skincare', 'Mais 100%'), ('kit skincare masculino', 'Mais 90%'), ('principia', 'Mais 70%'), ('skincare principia', 'Mais 70%'), ('celimax', 'Mais 60%'), ('mascara de skincare', 'Mais 60%')]
+related[cronograma capilar] rising: [('epoca cosmeticos', 'Aumento repentino'), ('etapas do cronograma capilar', 'Mais 130%'), ('acidificante capilar', 'Mais 90%'), ('acidificante', 'Mais 80%'), ('cronograma capilar essendy', 'Mais 60%'), ('cronograma capilar loreal profissional', 'Mais 50%'), ('ordem do cronograma capilar', 'Mais 50%')]
+related[maquiagem] rising: [('maquiagem de halloween masculino', 'Aumento repentino'), ('maquiagem de halloween infantil', 'Mais 3.400%'), ('maquiagem halloween fácil', 'Mais 2.300%'), ('maquiagem halloween', 'Mais 2.150%'), ('maquiagem de halloween', 'Mais 1.700%'), ('maquiagem vampira', 'Mais 1.650%'), ('maquiagem de vampira', 'Mais 1.600%'), ('maquiagem de halloween fácil', 'Mais 1.300%')]
+related[análise de pele] rising: []
+related[unhas decoradas] rising: [('unhas decoradas para natal', 'Aumento repentino'), ('unhas pretas decoradas simples', 'Aumento repentino'), ('unhas decoradas para o natal', 'Mais 4.300%'), ('unhas decoradas nudi com dourado', 'Mais 1.700%'), ('unhas decoradas natal', 'Mais 350%'), ('unhas decoradas de onça', 'Mais 150%'), ('imagem de unhas decoradas', 'Mais 150%'), ('unhas decoradas vermelhas delicadas', 'Mais 100%')]
+=== S_beleza | ['skincare', 'cronograma capilar', 'maquiagem', 'análise de pele', 'unhas decoradas'] | BR | today 5-y
+avg: {'skincare': 3.1, 'cronograma capilar': 2.8, 'maquiagem': 33.1, 'análise de pele': 0.0, 'unhas decoradas': 4.8}
+=== S_moda | ['provador virtual', 'coloração pessoal', 'look do dia', 'armário cápsula', 'análise de coloração'] | BR | today 12-m
+avg: {'provador virtual': 14.9, 'coloração pessoal': 18.4, 'look do dia': 68.4, 'armário cápsula': 0.0, 'análise de coloração': 2.0}
+related[provador virtual] rising: [('zara provador virtual', 'Mais 700%'), ('bruna tavares', 'Mais 300%'), ('zara', 'Mais 250%')]
+related[coloração pessoal] rising: [('prompt para analise de coloração pessoal', 'Aumento repentino'), ('prompt coloração pessoal chatgpt', 'Mais 400%')]
+related[look do dia] rising: [('look do dia em ingles', 'Mais 80%')]
+related[armário cápsula] rising: []
+related[análise de coloração] rising: []
+=== S_moda | ['provador virtual', 'coloração pessoal', 'look do dia', 'armário cápsula', 'análise de coloração'] | BR | today 3-m
+avg: {'provador virtual': 2.0, 'coloração pessoal': 2.3, 'look do dia': 35.3, 'armário cápsula': 0.0, 'análise de coloração': 0.5}
+related[provador virtual] rising: [('provador virtual base boca rosa', 'Mais 60%')]
+related[coloração pessoal] rising: [('teste de coloração pessoal online grátis', 'Mais 250%'), ('como saber minha coloração pessoal', 'Mais 50%'), ('paleta de cores coloração pessoal', 'Mais 50%')]
+related[look do dia] rising: []
+related[armário cápsula] rising: []
+related[análise de coloração] rising: []
+=== S_moda | ['provador virtual', 'coloração pessoal', 'look do dia', 'armário cápsula', 'análise de coloração'] | BR | today 5-y
+avg: {'provador virtual': 8.7, 'coloração pessoal': 34.4, 'look do dia': 61.9, 'armário cápsula': 0.0, 'análise de coloração': 2.3}
+=== S_saude_fem | ['ciclo menstrual', 'fertilidade', 'gravidez', 'menopausa', 'endometriose'] | BR | today 12-m
+avg: {'ciclo menstrual': 2.0, 'fertilidade': 2.0, 'gravidez': 77.9, 'menopausa': 13.4, 'endometriose': 12.0}
+related[ciclo menstrual] rising: [('implanon', 'Mais 200%'), ('meu ciclo menstrual', 'Mais 50%'), ('aplicativo de ciclo menstrual', 'Mais 40%')]
+related[fertilidade] rising: [('fleury fertilidade', 'Mais 180%'), ('clínica de fertilidade', 'Mais 90%')]
+related[gravidez] rising: [('tabela chinesa gravidez 2026', 'Mais 2.300%'), ('virginia gravidez', 'Mais 100%'), ('como abordar gravidez na adolescência em casa', 'Mais 90%'), ('13 semana de gravidez são quantos meses', 'Mais 90%')]
+related[menopausa] rising: [('qual hormônio é reduzido drasticamente quando a mulher entra na menopausa', 'Aumento repentino'), ('como se define aquilo que foi pago sem ser devido', 'Aumento repentino'), ('qual o hormônio é reduzido drasticamente quando a mulher entra na menopausa', 'Mais 4.700%'), ('veoza', 'Mais 2.250%'), ('anvisa aprova medicamento para menopausa', 'Mais 1.250%'), ('congresso mundial de menopausa 2026', 'Mais 650%'), ('peri menopausa', 'Mais 100%'), ('qual é o sintoma da menopausa', 'Mais 80%')]
+related[endometriose] rising: [('o que é endometriose na mulher', 'Mais 90%'), ('implanon', 'Mais 80%'), ('adenomiose e endometriose', 'Mais 60%'), ('endometriose e adenomiose', 'Mais 60%')]
+=== S_saude_fem | ['ciclo menstrual', 'fertilidade', 'gravidez', 'menopausa', 'endometriose'] | BR | today 3-m
+HTTP 429 on try 1 for https://trends.google.com/trends/api/widgetdata/multiline?hl=pt-BR&tz=180&req=%7B%22time%22%3A+%222026-08-08+2026-11-08%
+avg: {'ciclo menstrual': 2.2, 'fertilidade': 2.0, 'gravidez': 74.0, 'menopausa': 13.8, 'endometriose': 13.4}
+related[ciclo menstrual] rising: [('quantos dias dura um ciclo menstrual irregular', 'Aumento repentino'), ('grafico hormonios ciclo menstrual', 'Mais 150%'), ('como calcular meu ciclo menstrual', 'Mais 70%'), ('fases do ciclo menstrual e humor', 'Mais 70%'), ('como conta o ciclo menstrual', 'Mais 70%'), ('cid ciclo menstrual irregular', 'Mais 70%'), ('fase secretora do ciclo menstrual', 'Mais 60%'), ('fsh', 'Mais 50%')]
+related[fertilidade] rising: [('teste de fertilidade masculina needs', 'Aumento repentino'), ('calculadora fertilidade feminina', 'Aumento repentino'), ('monitor de fertilidade', 'Mais 350%'), ('teste de fertilidade masculina de farmácia', 'Mais 170%'), ('teste de fertilidade masculina', 'Mais 150%'), ('teste fertilidade masculina', 'Mais 140%'), ('teste fertilidade masculino', 'Mais 70%'), ('templo da fertilidade', 'Mais 60%')]
+related[gravidez] rising: [('lady gaga gravidez', 'Mais 2.300%'), ('32 semanas são quantos meses de gravidez', 'Mais 60%'), ('remedio para enjoo gravidez', 'Mais 40%')]
+related[menopausa] rising: [('dia mundial da menopausa', 'Mais 4.250%'), ('sintomas da menopausa aos 48 anos', 'Mais 2.850%'), ('a menopausa começa com quantos anos', 'Mais 60%'), ('fase lutea', 'Mais 60%')]
+related[endometriose] rising: [('endometriose cerebral', 'Mais 350%'), ('endometriose incha a barriga', 'Mais 110%'), ('desogestrel', 'Mais 70%'), ('endometriose é genetico', 'Mais 60%'), ('cid de endometriose', 'Mais 50%')]
+=== S_saude_fem | ['ciclo menstrual', 'fertilidade', 'gravidez', 'menopausa', 'endometriose'] | BR | today 5-y
+avg: {'ciclo menstrual': 1.7, 'fertilidade': 1.1, 'gravidez': 69.1, 'menopausa': 7.3, 'endometriose': 7.1}
+=== S_saude_fem2 | ['SOP', 'ovulação', 'engravidar', 'candidíase', 'TPM'] | BR | today 12-m
+avg: {'SOP': 14.6, 'ovulação': 15.2, 'engravidar': 78.2, 'candidíase': 33.6, 'TPM': 24.0}
+related[SOP] rising: [('somp', 'Aumento repentino'), ('sop novo nome', 'Aumento repentino'), ('drjota on the beats kiuck sop', 'Mais 4.250%')]
+related[ovulação] rising: [('a ovulação acontece antes ou depois da menstruação', 'Mais 100%'), ('teste de ovulação famivita', 'Mais 90%'), ('a ovulação ocorre antes ou depois da menstruação', 'Mais 90%'), ('teste de ovulação farmácia', 'Mais 50%'), ('o que é ovulação tardia', 'Mais 50%')]
+related[engravidar] rising: [('implanon', 'Mais 120%'), ('chip para não engravidar', 'Mais 90%'), ('adesivo para não engravidar', 'Mais 70%'), ('quero engravidar o que fazer', 'Mais 40%')]
+related[candidíase] rising: [('tirinha rosa para candidíase', 'Mais 800%'), ('remédio bom para candidíase', 'Mais 60%'), ('o que causa candidíase na mulher', 'Mais 50%'), ('qual o remédio bom para candidíase', 'Mais 40%'), ('sintomas da candidíase na mulher', 'Mais 40%')]
+related[TPM] rising: []
+=== S_saude_fem2 | ['SOP', 'ovulação', 'engravidar', 'candidíase', 'TPM'] | BR | today 3-m
+avg: {'SOP': 16.6, 'ovulação': 15.4, 'engravidar': 81.8, 'candidíase': 32.1, 'TPM': 24.8}
+related[SOP] rising: []
+related[ovulação] rising: [('remedio para estimular a ovulação', 'Aumento repentino'), ('dor da ovulação dura quantos dias', 'Mais 300%'), ('colica na ovulação é normal', 'Mais 70%'), ('ovulação dolorosa', 'Mais 70%'), ('é normal sangrar na ovulação', 'Mais 60%'), ('ovulação feminina', 'Mais 60%'), ('dor na ovulação pode ser gravidez', 'Mais 40%')]
+related[engravidar] rising: [('é possível engravidar sem penetração', 'Mais 400%'), ('quantos dias apos a menstruação pode engravidar', 'Mais 110%'), ('tem como engravidar estando gravida', 'Mais 100%'), ('quem tem lupus pode engravidar', 'Mais 70%'), ('da pra engravidar menstruada', 'Mais 60%'), ('é possível engravidar tomando injeção de 3 meses', 'Mais 50%'), ('cisto no ovario pode engravidar', 'Mais 50%')]
+related[candidíase] rising: [("o'que causa candidíase", 'Mais 50%'), ('qual é o melhor comprimido para candidíase', 'Mais 50%'), ('candidíase passa para o homem', 'Mais 40%')]
+related[TPM] rising: []
+=== S_saude_fem2 | ['SOP', 'ovulação', 'engravidar', 'candidíase', 'TPM'] | BR | today 5-y
+avg: {'SOP': 9.1, 'ovulação': 15.4, 'engravidar': 70.4, 'candidíase': 28.6, 'TPM': 19.1}
+=== S_mental | ['ansiedade', 'journaling', 'meditação', 'sono', 'terapia'] | BR | today 12-m
+avg: {'ansiedade': 71.2, 'journaling': 1.6, 'meditação': 6.8, 'sono': 89.9, 'terapia': 40.1}
+related[ansiedade] rising: [('menos foco mais ansiedade', 'Mais 110%'), ('anciedade ou ansiedade', 'Mais 80%'), ('remédio pra ansiedade', 'Mais 60%'), ('escitalopram', 'Mais 50%'), ('o que é crise de ansiedade', 'Mais 40%'), ('remédio ansiedade', 'Mais 40%')]
+related[journaling] rising: [('wikipedia', 'Aumento repentino'), ('journaling suggestions iphone', 'Aumento repentino'), ('interstitial journaling', 'Aumento repentino'), ('best pens for journaling', 'Aumento repentino'), ('how to start journaling', 'Aumento repentino'), ('how to start journaling for beginners', 'Mais 1.400%'), ('walmart near me', 'Mais 60%')]
+related[meditação] rising: [('meditação do por do sol 2026', 'Aumento repentino'), ('meditação iasd 2026', 'Aumento repentino'), ('meditação por do sol 2026', 'Aumento repentino'), ('meditação da mulher 2026', 'Aumento repentino'), ('meditação jovem 2026', 'Mais 3.200%'), ('meditação por do sol hoje', 'Mais 120%'), ('meditação diária só por hoje', 'Mais 100%'), ('meditação por do sol', 'Mais 50%')]
+related[sono] rising: [('sono & conforto prim', 'Mais 700%'), ('mounjaro da sono', 'Mais 180%'), ('como dormir sem sono', 'Mais 70%'), ('ilha do sono colchõ', 'Mais 70%'), ('sono ia', 'Mais 60%'), ('dá sono', 'Mais 40%')]
+related[terapia] rising: [('a terapia certa filme', 'Aumento repentino'), ('casais em terapia netflix', 'Mais 5.000%'), ('danilo & davi eu não sou terapia', 'Mais 4.050%'), ('a terapia certa', 'Mais 350%'), ('casais em terapia', 'Mais 160%'), ('psymeet terapia online', 'Mais 80%'), ('prisma terapia', 'Mais 70%'), ('terapia baseada em processos', 'Mais 70%')]
+=== S_mental | ['ansiedade', 'journaling', 'meditação', 'sono', 'terapia'] | BR | today 3-m
+avg: {'ansiedade': 66.0, 'journaling': 2.6, 'meditação': 5.5, 'sono': 84.7, 'terapia': 37.2}
+related[ansiedade] rising: [('mc iguinho menos foco mais ansiedade 2', 'Aumento repentino'), ('menos foco mais ansiedade 2 letra', 'Aumento repentino'), ('menos foco mais ansiedade 2', 'Mais 4.000%'), ('em um relacionamento abusivo com a ansiedade', 'Mais 150%'), ('calmante natural para ansiedade e nervosismo', 'Mais 130%'), ('menos foco mais ansiedade', 'Mais 110%'), ('menos foco mais ansiedade letra', 'Mais 90%')]
+related[journaling] rising: [('o que é journaling', 'Mais 60%')]
+related[meditação] rising: [('musicas para meditação espiritual', 'Aumento repentino'), ('meditação jovem 2025', 'Mais 300%'), ('meditação diária de narcóticos anônimos', 'Mais 170%'), ('headspace meditação guiada', 'Mais 90%'), ('meditação cristã', 'Mais 80%'), ('meditação vipassana', 'Mais 70%'), ('versiculo para meditação', 'Mais 70%'), ('meditação do evangelho de hoje', 'Mais 70%')]
+related[sono] rising: [('livro enquanto o sono não vem', 'Mais 3.400%'), ('o sono da morte', 'Mais 70%'), ('doutor sono', 'Mais 60%'), ('praia do sono paraty', 'Mais 50%')]
+related[terapia] rising: [('terapia certa filme', 'Aumento repentino'), ('danilo & davi eu não sou terapia', 'Mais 2.350%'), ('terapia certa', 'Mais 1.200%'), ('a terapia certa', 'Mais 900%'), ('terapia transpessoal', 'Mais 110%'), ('eu nao sou terapia', 'Mais 90%'), ('prisma terapia', 'Mais 60%'), ('terapia cognitivo comportamental o que é', 'Mais 50%')]
+=== S_mental | ['ansiedade', 'journaling', 'meditação', 'sono', 'terapia'] | BR | today 5-y
+avg: {'ansiedade': 70.2, 'journaling': 0.3, 'meditação': 8.7, 'sono': 72.7, 'terapia': 34.0}
+=== S_financas | ['organizar finanças', 'controle de gastos', 'planilha de gastos', 'app de finanças', 'educação financeira'] | BR | today 12-m
+avg: {'organizar finanças': 5.0, 'controle de gastos': 18.8, 'planilha de gastos': 25.1, 'app de finanças': 1.8, 'educação financeira': 61.2}
+related[organizar finanças] rising: []
+related[controle de gastos] rising: [('organizar entradas e saídas de dinheiro ajuda a controlar os gastos do dia a dia e a evitar despesas maiores do que o valor disponível. explique por que identificar as entradas e as saídas é importante para manter o controle do orçamento pessoal.', 'Aumento repentino'), ('tabela para controle de gastos', 'Mais 130%'), ('tabela controle de gastos', 'Mais 70%'), ('tabela de controle de gastos', 'Mais 70%')]
+related[planilha de gastos] rising: [('planilha de gastos mensais gratuita', 'Mais 120%'), ('como fazer uma planilha de gastos mensais', 'Mais 100%'), ('como fazer planilha de gastos mensais', 'Mais 70%'), ('como montar uma planilha de gastos no excel', 'Mais 70%'), ('em uma planilha de gastos, para deixarmos os valores negativos automaticamente na cor vermelha e os positivos na cor azul, qual recurso devemos utilizar?', 'Mais 60%'), ('como criar uma planilha de gastos', 'Mais 60%')]
+related[app de finanças] rising: []
+related[educação financeira] rising: [('a colocação do pronome em “vacine-se” está de acordo com a norma-padrão da língua, porque essa construção indica uma ação obrigatória. tem um valor negativo implícito. substitui o sujeito desinencial da oração. ocorre no modo imperativo afirmativo.', 'Aumento repentino'), ('o que é educação financeira', 'Mais 70%'), ('cursos de educação financeira', 'Mais 60%')]
+=== S_financas | ['organizar finanças', 'controle de gastos', 'planilha de gastos', 'app de finanças', 'educação financeira'] | BR | today 3-m
+avg: {'organizar finanças': 0.6, 'controle de gastos': 8.3, 'planilha de gastos': 9.3, 'app de finanças': 0.2, 'educação financeira': 36.0}
+related[organizar finanças] rising: [('app para organizar finanças', 'Mais 60%'), ('aplicativo para organizar finanças', 'Mais 60%')]
+related[controle de gastos] rising: [('planilha de gastos pessoais excel grátis', 'Mais 400%'), ('app para controle de gastos pessoais grátis', 'Mais 250%'), ('planilha de gastos mensais excel grátis', 'Mais 70%')]
+related[planilha de gastos] rising: [('planilha de gastos domesticos', 'Mais 250%'), ('planilha de gastos mensais gratuita', 'Mais 120%'), ('planilha de gastos pessoais excel grátis', 'Mais 70%')]
+related[app de finanças] rising: []
+related[educação financeira] rising: [('a colocação do pronome em “vacine-se” está de acordo com a norma-padrão da língua, porque essa construção indica uma ação obrigatória. tem um valor negativo implícito. substitui o sujeito desinencial da oração. ocorre no modo imperativo afirmativo.', 'Aumento repentino'), ('olitef', 'Mais 170%'), ('educação financeira para crianças', 'Mais 130%'), ('livro de educação financeira', 'Mais 70%'), ('livro sobre educação financeira', 'Mais 70%'), ('livro educação financeira', 'Mais 60%')]
+=== S_financas | ['organizar finanças', 'controle de gastos', 'planilha de gastos', 'app de finanças', 'educação financeira'] | BR | today 5-y
+avg: {'organizar finanças': 2.1, 'controle de gastos': 9.0, 'planilha de gastos': 18.2, 'app de finanças': 0.4, 'educação financeira': 37.1}
+=== S_maternidade | ['bebê', 'amamentação', 'sono do bebê', 'introdução alimentar', 'gestante'] | BR | today 12-m
+avg: {'bebê': 83.4, 'amamentação': 4.5, 'sono do bebê': 0.0, 'introdução alimentar': 1.0, 'gestante': 22.4}
+related[bebê] rising: [('bebê helena', 'Mais 200%'), ('meu bebê', 'Mais 70%'), ('bebê sim', 'Mais 70%'), ('bebê reborn de silicone sólido', 'Mais 40%')]
+related[amamentação] rising: [('bico de prata amamentação', 'Mais 120%'), ('lista de alimentos que causam cólicas no bebê durante a amamentação', 'Mais 90%'), ('regata amamentação', 'Mais 70%'), ('bico de silicone para amamentação', 'Mais 50%'), ('blusa de amamentação', 'Mais 40%')]
+related[sono do bebê] rising: [('como melhorar o sono do bebê', 'Mais 90%'), ('oleo do sono', 'Mais 70%')]
+related[introdução alimentar] rising: [('o que é blw na introdução alimentar', 'Mais 90%'), ('introdução alimentar com 5 meses', 'Mais 40%')]
+related[gestante] rising: [('caderneta da gestante 2026', 'Aumento repentino'), ('oleo muriel gestante', 'Mais 60%'), ('caderneta gestante', 'Mais 50%')]
+=== S_maternidade | ['bebê', 'amamentação', 'sono do bebê', 'introdução alimentar', 'gestante'] | BR | today 3-m
+avg: {'bebê': 79.6, 'amamentação': 4.5, 'sono do bebê': 0.0, 'introdução alimentar': 1.0, 'gestante': 22.7}
+related[bebê] rising: [('coral das quebradas vou tacar na peka das bebê', 'Mais 2.450%'), ('piscina de bolinha para bebê', 'Mais 200%'), ('ropek moda bebê', 'Mais 70%'), ('tati machado perdeu o bebê', 'Mais 50%')]
+related[amamentação] rising: [('sutiã de amamentação com bojo', 'Mais 170%'), ('posições de amamentação', 'Mais 90%'), ('vestido amamentação', 'Mais 80%'), ('vestido de amamentação', 'Mais 70%'), ('almofada de amamentação grande', 'Mais 70%'), ('capa almofada amamentação', 'Mais 60%'), ('almofada de amamentação fom', 'Mais 60%'), ('absorvente de amamentação', 'Mais 50%')]
+related[sono do bebê] rising: [('oleo do sono', 'Mais 70%')]
+related[introdução alimentar] rising: [('sinais de prontidão para introdução alimentar', 'Mais 400%'), ('colher para introdução alimentar', 'Mais 70%')]
+related[gestante] rising: [('benefício variavel gestante', 'Mais 130%'), ('creme anti estrias gestante', 'Mais 80%'), ('dia da gestante', 'Mais 50%')]
+=== S_maternidade | ['bebê', 'amamentação', 'sono do bebê', 'introdução alimentar', 'gestante'] | BR | today 5-y
+avg: {'bebê': 71.9, 'amamentação': 4.9, 'sono do bebê': 0.0, 'introdução alimentar': 1.0, 'gestante': 19.3}
+=== S_relacionamento | ['relacionamento', 'namoro', 'app de relacionamento', 'tinder', 'bumble'] | BR | today 12-m
+avg: {'relacionamento': 74.4, 'namoro': 59.8, 'app de relacionamento': 2.0, 'tinder': 35.1, 'bumble': 3.9}
+related[relacionamento] rising: [('metas de relacionamento filme', 'Mais 3.300%'), ('coach de relacionamento que casou na tailandia', 'Mais 600%'), ('d4sign site de relacionamento', 'Mais 200%'), ('cobrança de cesta de relacionamento', 'Mais 80%'), ('relacionamento rebote', 'Mais 60%'), ('aplicativo de relacionamento gay', 'Mais 60%'), ('portal de relacionamento grendene', 'Mais 50%')]
+related[namoro] rising: [('marrone assume namoro', 'Aumento repentino'), ('júlia kudiess namoro', 'Aumento repentino'), ('acabou o namoro e não acabou o amor', 'Mais 2.050%'), ('william bonner namoro', 'Mais 200%'), ('namoro de mentira com meu rico inimigo', 'Mais 120%'), ('aliança de namoro é em qual mão', 'Mais 70%'), ('namoro qualificado', 'Mais 70%')]
+related[app de relacionamento] rising: [('novo app de relacionamento', 'Mais 150%')]
+related[tinder] rising: [('chris from tinder', 'Mais 250%'), ('bumble', 'Mais 70%'), ('badoo login', 'Mais 60%'), ('grindr', 'Mais 50%'), ('tinder plus', 'Mais 50%'), ('tinder brasil', 'Mais 50%'), ('instalar o tinder', 'Mais 50%'), ('app tinder', 'Mais 50%')]
+related[bumble] rising: [('bumble and bumble dry shampoo', 'Aumento repentino'), ('hinge', 'Mais 350%'), ('bumble date', 'Mais 250%'), ('bumble brasil', 'Mais 200%'), ('bumble tea', 'Mais 200%'), ('bumble and bumble shampoo', 'Mais 190%'), ('bumble and bumble', 'Mais 190%'), ('bumble online', 'Mais 180%')]
+=== S_relacionamento | ['relacionamento', 'namoro', 'app de relacionamento', 'tinder', 'bumble'] | BR | today 3-m
+avg: {'relacionamento': 80.5, 'namoro': 65.7, 'app de relacionamento': 1.8, 'tinder': 36.3, 'bumble': 3.8}
+related[relacionamento] rising: [('marrone assume relacionamento', 'Mais 450%'), ('livro em um relacionamento abusivo com a ansiedade', 'Mais 190%'), ('em um relacionamento abusivo com a ansiedade', 'Mais 160%'), ('site de relacionamento gratuito e confiável online grátis whatsapp', 'Mais 40%'), ('o que é um relacionamento tóxico', 'Mais 40%')]
+related[namoro] rising: [('camila pitanga anuncia namoro', 'Aumento repentino'), ('marrone assume namoro com leo dias', 'Aumento repentino'), ('marrone assume namoro', 'Mais 950%'), ('namoro qualificado', 'Mais 180%'), ('em qual mao usa a aliança de namoro', 'Mais 150%'), ('duda freire terminou o namoro', 'Mais 130%'), ('william bonner namoro', 'Mais 110%'), ('william bonner', 'Mais 110%')]
+related[app de relacionamento] rising: [('app de relacionamento internacional confiável grátis', 'Mais 4.350%'), ('app de relacionamento mais usado', 'Mais 60%'), ('qual o melhor app de relacionamento', 'Mais 50%'), ('bumble', 'Mais 40%')]
+related[tinder] rising: [('tinder valorant', 'Aumento repentino'), ('tinder lanches', 'Mais 250%'), ('o golpista do tinder filme', 'Mais 90%'), ('como desativar o tinder', 'Mais 80%'), ('tin', 'Mais 70%'), ('como baixar o tinder', 'Mais 60%'), ('como excluir conta no tinder', 'Mais 50%')]
+related[bumble] rising: [('the bumble nums', 'Aumento repentino'), ('bumblee', 'Mais 800%'), ('bumble nums', 'Mais 190%'), ('bumble tradução', 'Mais 140%'), ('bumble como funciona', 'Mais 100%'), ('app de relacionamento', 'Mais 60%'), ('bumble app relacionamento', 'Mais 60%')]
+=== S_relacionamento | ['relacionamento', 'namoro', 'app de relacionamento', 'tinder', 'bumble'] | BR | today 5-y
+avg: {'relacionamento': 60.3, 'namoro': 57.7, 'app de relacionamento': 1.4, 'tinder': 36.8, 'bumble': 2.1}
+=== S_seguranca | ['segurança pessoal', 'botão do pânico', 'app de segurança para mulheres', 'compartilhar localização', 'medida protetiva'] | BR | today 12-m
+avg: {'segurança pessoal': 4.8, 'botão do pânico': 0.1, 'app de segurança para mulheres': 0.0, 'compartilhar localização': 5.5, 'medida protetiva': 44.8}
+related[segurança pessoal] rising: []
+related[botão do pânico] rising: []
+related[app de segurança para mulheres] rising: []
+related[compartilhar localização] rising: [('compartilhar localização instagram', 'Mais 110%')]
+related[medida protetiva] rising: [('alanis guillen medida protetiva', 'Aumento repentino'), ('andre janones', 'Aumento repentino'), ('andre janones medida protetiva', 'Aumento repentino'), ('paulo miklos medida protetiva', 'Aumento repentino'), ('medida protetiva janones', 'Aumento repentino'), ('janones tem medida protetiva', 'Aumento repentino'), ('leandra guedes', 'Aumento repentino'), ('andré janones medida protetiva', 'Mais 1.750%')]
+=== S_seguranca | ['segurança pessoal', 'botão do pânico', 'app de segurança para mulheres', 'compartilhar localização', 'medida protetiva'] | BR | today 3-m
+avg: {'segurança pessoal': 1.8, 'botão do pânico': 0.1, 'app de segurança para mulheres': 0.0, 'compartilhar localização': 2.2, 'medida protetiva': 27.5}
+related[segurança pessoal] rising: []
+related[botão do pânico] rising: []
+related[app de segurança para mulheres] rising: []
+related[compartilhar localização] rising: []
+related[medida protetiva] rising: [('medida protetiva janones', 'Aumento repentino'), ('janones tem medida protetiva', 'Aumento repentino'), ('andre janones', 'Aumento repentino'), ('janones e medida protetiva', 'Aumento repentino'), ('andré janones medida protetiva', 'Aumento repentino'), ('mulher de janones tem medida protetiva', 'Aumento repentino'), ('pq janones tem medida protetiva', 'Aumento repentino'), ('janones rachadinha', 'Aumento repentino')]
+=== S_seguranca | ['segurança pessoal', 'botão do pânico', 'app de segurança para mulheres', 'compartilhar localização', 'medida protetiva'] | BR | today 5-y
+avg: {'segurança pessoal': 3.9, 'botão do pânico': 0.0, 'app de segurança para mulheres': 0.0, 'compartilhar localização': 4.2, 'medida protetiva': 29.4}
+=== S_astro | ['mapa astral', 'tarot', 'horóscopo', 'signo', 'astrologia'] | BR | today 12-m
+avg: {'mapa astral': 3.5, 'tarot': 18.6, 'horóscopo': 10.2, 'signo': 59.6, 'astrologia': 3.6}
+related[mapa astral] rising: [('mapa astral 2026 gratuito', 'Mais 1.900%'), ('mapa astral 2026', 'Mais 1.750%'), ('ana paula renault mapa astral', 'Mais 1.300%'), ('mapa astral do lula', 'Mais 500%'), ('mapa astral lula', 'Mais 250%'), ('astroseek mapa astral', 'Mais 190%'), ('mapa astral védico', 'Mais 170%'), ('melhor mapa astral gratuito', 'Mais 160%')]
+related[tarot] rising: [('o hierofante tarot', 'Mais 50%'), ('templo de afrodite tarot', 'Mais 40%')]
+related[horóscopo] rising: [('horóscopo 2026', 'Mais 2.750%'), ('2026', 'Mais 2.600%'), ('horóscopo chinês 2026', 'Mais 900%'), ('signos do zodíaco', 'Mais 600%'), ('tarô', 'Mais 550%'), ('astrologia', 'Mais 300%'), ('anjo da guarda', 'Mais 300%'), ('zodíaco', 'Mais 200%')]
+related[signo] rising: [('signo chines', 'Mais 40%')]
+related[astrologia] rising: [('cor do ano 2026', 'Aumento repentino'), ('cor do ano de 2026 astrologia', 'Aumento repentino'), ('anjo da guarda', 'Aumento repentino'), ('calendario lunar 2026', 'Aumento repentino'), ('astrologia signos 2026', 'Mais 1.250%'), ('2026', 'Mais 1.100%'), ('signos do zodíaco', 'Mais 250%'), ('prosperidade', 'Mais 200%')]
+=== S_astro | ['mapa astral', 'tarot', 'horóscopo', 'signo', 'astrologia'] | BR | today 3-m
+avg: {'mapa astral': 4.4, 'tarot': 25.9, 'horóscopo': 14.8, 'signo': 75.5, 'astrologia': 5.5}
+related[mapa astral] rising: [('mapa astral de lula', 'Aumento repentino'), ('mapa astral do lula', 'Aumento repentino'), ('mapa astral da anitta', 'Aumento repentino'), ('mapa astral lula', 'Mais 850%'), ('mapa astral anitta', 'Mais 550%'), ('astro.com mapa astral gratuito', 'Mais 250%'), ('astrocartografia', 'Mais 160%'), ('mapa astral gratuito sem cadastro', 'Mais 150%')]
+related[tarot] rising: [('rainhas do tarot', 'Mais 110%')]
+related[horóscopo] rising: [('signos do zodíaco', 'Mais 200%'), ('tarô', 'Mais 200%'), ('zodíaco', 'Mais 150%'), ('horóscopo de hoje metrópoles', 'Mais 140%')]
+related[signo] rising: [('signo do lula', 'Mais 500%'), ('22 de outubro signo', 'Mais 90%'), ('signo outubro', 'Mais 90%'), ('22 de setembro signo', 'Mais 80%'), ('setembro signo', 'Mais 80%'), ('signo de outubro', 'Mais 80%'), ('24 de outubro signo', 'Mais 80%'), ('signo de setembro', 'Mais 70%')]
+related[astrologia] rising: [('astroseek', 'Aumento repentino'), ('13 de agosto', 'Mais 4.000%'), ('eclipse lunar astrologia', 'Mais 1.100%'), ('horóscopo chinês', 'Mais 150%'), ('grupo venus astrologia', 'Mais 130%'), ('diferença entre astrologia e astronomia', 'Mais 90%'), ('signos do zodíaco', 'Mais 80%'), ('astrologia sistemica youtube', 'Mais 70%')]
+=== S_astro | ['mapa astral', 'tarot', 'horóscopo', 'signo', 'astrologia'] | BR | today 5-y
+avg: {'mapa astral': 3.2, 'tarot': 9.0, 'horóscopo': 9.7, 'signo': 45.1, 'astrologia': 1.3}
+=== S_produtividade | ['planner', 'rotina', 'organizar rotina', 'agenda', 'hábitos'] | BR | today 12-m
+avg: {'planner': 12.9, 'rotina': 18.1, 'organizar rotina': 0.1, 'agenda': 72.7, 'hábitos': 4.2}
+related[planner] rising: [('bitget', 'Aumento repentino'), ('hostinger promo code', 'Aumento repentino'), ('hostinger discount', 'Aumento repentino'), ('shein promo', 'Aumento repentino'), ('surfshark promo code', 'Aumento repentino'), ('emergent', 'Aumento repentino'), ('eldorado.gg', 'Aumento repentino'), ('pokerstars promo code', 'Aumento repentino')]
+related[rotina] rising: [('com base no que você aprendeu, escreva três frases sobre sua rotina diária. em cada frase, inclua um frequency adverb e uma time expression, como no exemplo a i always wake up early. i wake up at 7 a.m. every day.”', 'Aumento repentino'), ('com base no que você aprendeu, escreva quatro frases sobre a rotina de pete.', 'Aumento repentino'), ('rotina pedagógica sedu 2026', 'Mais 2.650%'), ('ao observar a rotina de trabalho mostrada em tempos modernos e considerar as transformações da segunda revolução industrial na segunda fase da globalização, explique como a expansão da indústria modificou ao mesmo tempo o trabalho e a vida nas cidades.', 'Mais 1.050%'), ('mc tuto rotina de bacana', 'Mais 400%'), ('rotina da manhã', 'Mais 80%'), ('minha rotina', 'Mais 70%'), ('cid puericultura rotina', 'Mais 40%')]
+related[organizar rotina] rising: [('com base no que você aprendeu, escreva quatro frases sobre a rotina de pete.', 'Aumento repentino')]
+related[agenda] rising: [('how to write meeting agenda', 'Aumento repentino'), ('agenda 2027', 'Aumento repentino'), ('agenda copa do mundo 2026', 'Mais 4.100%'), ('agenda da copa do mundo 2026', 'Mais 3.900%'), ('agenda henrique e juliano 2026', 'Mais 1.600%'), ('agenda 2026', 'Mais 1.400%'), ('agenda da copa', 'Mais 1.150%'), ('agenda copa do mundo', 'Mais 1.000%')]
+related[hábitos] rising: [('a charge apresenta uma crítica a hábitos considerados ruins ao meio ambiente. explique de que modo essa crítica é construída na charge.', 'Aumento repentino'), ('livro 365 habitos poderosos', 'Aumento repentino'), ('365 hábitos poderosos pdf', 'Mais 4.500%'), ('365 habitos poderosos', 'Mais 3.700%'), ('365 hábitos poderosos', 'Mais 3.100%'), ('365 hábitos simples e poderosos', 'Mais 2.550%')]
+=== S_produtividade | ['planner', 'rotina', 'organizar rotina', 'agenda', 'hábitos'] | BR | today 3-m
+avg: {'planner': 11.6, 'rotina': 15.3, 'organizar rotina': 0.2, 'agenda': 54.3, 'hábitos': 3.5}
+related[planner] rising: [('surfshark', 'Aumento repentino'), ('surfshark discount', 'Aumento repentino'), ('vpn surfshark', 'Aumento repentino'), ('surfshark pricing', 'Aumento repentino'), ('surfshark coupon', 'Aumento repentino'), ('surfshark free', 'Aumento repentino'), ('surfshark review', 'Aumento repentino'), ('surfshark download', 'Aumento repentino')]
+related[rotina] rising: [('com base no que você aprendeu, escreva três frases sobre sua rotina diária. em cada frase, inclua um frequency adverb e uma time expression, como no exemplo a i always wake up early. i wake up at 7 a.m. every day.”', 'Aumento repentino'), ('com base no que você aprendeu, escreva quatro frases sobre a rotina de pete.', 'Aumento repentino'), ('mc tuto rotina de bacana', 'Aumento repentino'), ('cid puericultura rotina', 'Mais 120%')]
+related[organizar rotina] rising: [('apps para organizar rotina', 'Aumento repentino')]
+related[agenda] rising: [('agenda flavio bolsonaro hoje', 'Aumento repentino'), ('agenda tributaria setembro 2026', 'Mais 1.700%'), ('agenda de flavio bolsonaro', 'Mais 900%'), ('planner 2027', 'Mais 800%'), ('agenda de flávio bolsonaro hoje', 'Mais 800%'), ('agenda flavio bolsonaro', 'Mais 800%'), ('agenda personalizada 2027', 'Mais 500%'), ('agenda de lula hoje', 'Mais 400%')]
+related[hábitos] rising: [('censo socioeconômico e hábitos de vida dos estudantes do ensino superior', 'Aumento repentino'), ('animais com hábitos noturnos', 'Mais 250%'), ('animais de hábitos noturnos', 'Mais 110%')]
+=== S_produtividade | ['planner', 'rotina', 'organizar rotina', 'agenda', 'hábitos'] | BR | today 5-y
+avg: {'planner': 11.0, 'rotina': 13.7, 'organizar rotina': 0.0, 'agenda': 62.0, 'hábitos': 3.8}
+=== S_educacao | ['curso online', 'inglês', 'concurso', 'currículo', 'linkedin'] | BR | today 12-m
+avg: {'curso online': 2.9, 'inglês': 65.9, 'concurso': 80.3, 'currículo': 5.3, 'linkedin': 19.2}
+related[curso online] rising: [('curso de digitação online gratuito', 'Mais 70%'), ('santander open academy', 'Mais 40%')]
+related[inglês] rising: [("traduza sorry, i can't edit images for you yet. can i generate an image instead, or help with something else? do inglês", 'Aumento repentino'), ("traduza something went wrong and an ai response wasn't generated. do inglês", 'Mais 1.450%'), ('google tradutor português para inglês com voz', 'Mais 1.400%'), ('inglês paraná high', 'Mais 250%'), ('mensagem inglês tradutor', 'Mais 120%'), ('classificação do campeonato inglês', 'Mais 50%'), ('música em inglês', 'Mais 40%'), ('soco inglês', 'Mais 40%')]
+related[concurso] rising: [('transpetro concurso 2026', 'Aumento repentino'), ('resultado da mega da virada concurso 2955', 'Aumento repentino'), ('concurso ifce 2026', 'Aumento repentino'), ('ibge concurso 2026', 'Aumento repentino'), ('concurso camara dos depútados 2026', 'Aumento repentino'), ('concurso petrobras 2026', 'Mais 4.600%'), ('concurso prf administrativo 2026', 'Mais 3.400%'), ('concurso público 2026', 'Mais 2.400%')]
+related[currículo] rising: [('modelos de currículo 2026', 'Aumento repentino'), ('modelo de currículo 2026', 'Aumento repentino'), ('meu currículo', 'Mais 100%'), ('gerar currículo linkedin pelo celular', 'Mais 60%'), ('fazer um currículo grátis', 'Mais 60%'), ('criar um currículo', 'Mais 40%')]
+related[linkedin] rising: [('how to create a linkedin profile', 'Aumento repentino'), ('walmart near me', 'Aumento repentino'), ('new york times', 'Mais 1.200%'), ('linkedin jobs', 'Mais 650%'), ('linkedin games', 'Mais 350%'), ('github', 'Mais 250%'), ('linkedin site', 'Mais 130%'), ('linkedin brasil', 'Mais 120%')]
+=== S_educacao | ['curso online', 'inglês', 'concurso', 'currículo', 'linkedin'] | BR | today 3-m
+avg: {'curso online': 2.5, 'inglês': 60.0, 'concurso': 76.6, 'currículo': 4.6, 'linkedin': 16.6}
+related[curso online] rising: [('moodle ifrs cursos online', 'Mais 350%'), ('curso gratuito online com certificado reconhecido pelo mec', 'Mais 110%'), ('curso de ingles online gratuito com certificado reconhecido pelo mec', 'Mais 90%'), ('curso de inglês online gratuitos com certificado', 'Mais 70%'), ('cursos online gratuitos com certificado reconhecido pelo mec', 'Mais 70%'), ('educa mais brasil', 'Mais 60%')]
+related[inglês] rising: [('traduza widget do inglês', 'Mais 950%'), ('setembro em inglês', 'Mais 450%'), ('outubro em inglês', 'Mais 350%'), ('cachecol em inglês', 'Mais 90%'), ('agosto em inglês', 'Mais 80%'), ('google tradutor de inglês para português', 'Mais 40%')]
+related[concurso] rising: [('mega sena concurso 3071', 'Aumento repentino'), ('resultado da mega-sena concurso 3071', 'Aumento repentino'), ('resultado da mega-sena concurso 3073', 'Aumento repentino'), ('resultado da mega sena concurso 3070', 'Aumento repentino'), ('resultado da mega-sena concurso 3066', 'Aumento repentino'), ('resultado da mega-sena concurso 3048', 'Aumento repentino'), ('resultado da lotofácil concurso 3775', 'Mais 4.800%'), ('resultado da mega sena concurso 3056', 'Mais 4.350%')]
+related[currículo] rising: [('currículo de flávio bolsonaro', 'Mais 750%'), ('plataforma lattes buscar currículo', 'Mais 90%'), ('habilidades e competências para colocar no currículo', 'Mais 70%'), ('gerar currículo linkedin pelo celular', 'Mais 50%'), ('criar currículo lattes', 'Mais 50%'), ('como criar um currículo', 'Mais 40%')]
+related[linkedin] rising: []
+=== S_educacao | ['curso online', 'inglês', 'concurso', 'currículo', 'linkedin'] | BR | today 5-y
+avg: {'curso online': 2.3, 'inglês': 51.1, 'concurso': 57.6, 'currículo': 4.7, 'linkedin': 11.6}
+=== S_fitness | ['treino feminino', 'pilates', 'contar calorias', 'mounjaro', 'treino em casa'] | BR | today 12-m
+avg: {'treino feminino': 2.6, 'pilates': 27.8, 'contar calorias': 0.0, 'mounjaro': 65.1, 'treino em casa': 2.2}
+related[treino feminino] rising: [('new balance 530', 'Mais 180%'), ('olympikus treino feminino', 'Mais 140%'), ('olympikus', 'Mais 130%'), ('tênis olympikus treino feminino', 'Mais 130%'), ('tenis olympikus', 'Mais 80%'), ('tenis on', 'Mais 80%'), ('nike metcon', 'Mais 70%'), ('tênis de treino feminino under armour tribase reps', 'Mais 70%')]
+related[pilates] rising: [('aera pilates bh', 'Mais 1.050%'), ('aera pilates', 'Mais 650%'), ('ellora pilates', 'Mais 500%'), ('aera pilates itaim', 'Mais 300%'), ('aura pilates', 'Mais 190%'), ('velocity', 'Mais 190%'), ('area pilates', 'Mais 150%'), ('wellhub', 'Mais 120%')]
+related[contar calorias] rising: [('qual o melhor app para contar calorias gratuito', 'Mais 160%')]
+related[mounjaro] rising: [('ozivy', 'Aumento repentino'), ('poviztra', 'Mais 4.100%'), ('combo mounjaro', 'Mais 3.450%'), ('gelatina mounjaro', 'Mais 2.200%'), ('mounjaro pancreatite aguda', 'Mais 1.500%'), ('seringa para mounjaro', 'Mais 850%'), ('mounjaro tg', 'Mais 800%'), ('tg', 'Mais 750%')]
+related[treino em casa] rising: [('elastico para treino', 'Mais 100%'), ('treino pra fazer em casa', 'Mais 90%'), ('elastico para treino em casa', 'Mais 80%'), ('treino de muay thai em casa', 'Mais 80%'), ('bicicleta ergometrica', 'Mais 60%')]
+=== S_fitness | ['treino feminino', 'pilates', 'contar calorias', 'mounjaro', 'treino em casa'] | BR | today 3-m
+avg: {'treino feminino': 3.3, 'pilates': 43.0, 'contar calorias': 0.0, 'mounjaro': 73.7, 'treino em casa': 3.2}
+related[treino feminino] rising: [('treino full body feminino', 'Mais 60%'), ('short de treino feminino', 'Mais 40%')]
+related[pilates] rising: [('pilates na parede', 'Mais 400%'), ('core haus pilates', 'Mais 300%'), ('core haus', 'Mais 250%'), ('professor de pilates', 'Mais 250%'), ('meia para pilates feminina', 'Mais 100%'), ('ellora pilates', 'Mais 60%'), ('pilates em casa gratuito', 'Mais 60%'), ('hot pilates', 'Mais 40%')]
+related[contar calorias] rising: []
+related[mounjaro] rising: [('mounjaro 5mg emagrece quantos quilos em 1 mês', 'Mais 250%'), ('mounjaro 2 5mg emagrece quantos quilos em 1 mês', 'Mais 180%'), ('pode tomar mounjaro amamentando', 'Mais 60%'), ('mounjaro corta o efeito do anticoncepcional', 'Mais 60%'), ('mounjaro sus', 'Mais 50%')]
+related[treino em casa] rising: [('treino funcional para fazer em casa', 'Aumento repentino')]
+=== S_fitness | ['treino feminino', 'pilates', 'contar calorias', 'mounjaro', 'treino em casa'] | BR | today 5-y
+avg: {'treino feminino': 2.7, 'pilates': 22.7, 'contar calorias': 0.0, 'mounjaro': 22.6, 'treino em casa': 2.0}
+=== X1 | ['skincare', 'menopausa', 'ansiedade', 'mapa astral', 'controle de gastos'] | BR | today 12-m
+avg: {'skincare': 12.6, 'menopausa': 29.4, 'ansiedade': 86.0, 'mapa astral': 7.6, 'controle de gastos': 1.1}
+=== X1 | ['skincare', 'menopausa', 'ansiedade', 'mapa astral', 'controle de gastos'] | BR | today 3-m
+avg: {'skincare': 11.2, 'menopausa': 26.6, 'ansiedade': 80.5, 'mapa astral': 6.7, 'controle de gastos': 0.8}
+=== X1 | ['skincare', 'menopausa', 'ansiedade', 'mapa astral', 'controle de gastos'] | BR | today 5-y
+avg: {'skincare': 5.8, 'menopausa': 17.6, 'ansiedade': 70.1, 'mapa astral': 9.5, 'controle de gastos': 1.0}
+=== X2 | ['skincare', 'gravidez', 'pilates', 'mounjaro', 'maquiagem'] | BR | today 12-m
+avg: {'skincare': 5.8, 'gravidez': 77.9, 'pilates': 16.9, 'mounjaro': 39.8, 'maquiagem': 34.5}
+=== X2 | ['skincare', 'gravidez', 'pilates', 'mounjaro', 'maquiagem'] | BR | today 3-m
+avg: {'skincare': 4.5, 'gravidez': 57.1, 'pilates': 15.3, 'mounjaro': 26.2, 'maquiagem': 30.8}
+=== X2 | ['skincare', 'gravidez', 'pilates', 'mounjaro', 'maquiagem'] | BR | today 5-y
+avg: {'skincare': 2.4, 'gravidez': 69.1, 'pilates': 8.7, 'mounjaro': 8.6, 'maquiagem': 25.5}
+=== X3 | ['skincare', 'planner', 'amamentação', 'provador virtual', 'inglês'] | BR | today 12-m
+avg: {'skincare': 2.3, 'planner': 3.1, 'amamentação': 2.6, 'provador virtual': 0.0, 'inglês': 89.6}
+=== X3 | ['skincare', 'planner', 'amamentação', 'provador virtual', 'inglês'] | BR | today 3-m
+avg: {'skincare': 2.2, 'planner': 3.5, 'amamentação': 2.2, 'provador virtual': 0.0, 'inglês': 81.3}
+=== X3 | ['skincare', 'planner', 'amamentação', 'provador virtual', 'inglês'] | BR | today 5-y
+avg: {'skincare': 1.2, 'planner': 2.6, 'amamentação': 2.5, 'provador virtual': 0.0, 'inglês': 77.0}
+=== X4 | ['skincare', 'ciclo menstrual', 'meditação', 'coloração pessoal', 'treino feminino'] | BR | today 12-m
+avg: {'skincare': 61.8, 'ciclo menstrual': 23.1, 'meditação': 39.7, 'coloração pessoal': 2.0, 'treino feminino': 16.9}
+=== X4 | ['skincare', 'ciclo menstrual', 'meditação', 'coloração pessoal', 'treino feminino'] | BR | today 3-m
+avg: {'skincare': 15.9, 'ciclo menstrual': 6.2, 'meditação': 9.5, 'coloração pessoal': 0.0, 'treino feminino': 4.2}
+=== X4 | ['skincare', 'ciclo menstrual', 'meditação', 'coloração pessoal', 'treino feminino'] | BR | today 5-y
+avg: {'skincare': 34.5, 'ciclo menstrual': 24.0, 'meditação': 51.7, 'coloração pessoal': 3.6, 'treino feminino': 14.7}
+=== X5 | ['skincare', 'contar calorias', 'cronograma capilar', 'tarot', 'relacionamento'] | BR | today 12-m
+avg: {'skincare': 21.3, 'contar calorias': 0.3, 'cronograma capilar': 7.5, 'tarot': 67.9, 'relacionamento': 82.2}
+=== X5 | ['skincare', 'contar calorias', 'cronograma capilar', 'tarot', 'relacionamento'] | BR | today 3-m
+avg: {'skincare': 15.9, 'contar calorias': 0.0, 'cronograma capilar': 4.8, 'tarot': 54.7, 'relacionamento': 63.8}
+=== X5 | ['skincare', 'contar calorias', 'cronograma capilar', 'tarot', 'relacionamento'] | BR | today 5-y
+avg: {'skincare': 10.8, 'contar calorias': 0.1, 'cronograma capilar': 9.7, 'tarot': 50.9, 'relacionamento': 69.0}
+=== X6 | ['skincare', 'bebê', 'sono', 'segurança pessoal', 'rotina'] | BR | today 12-m
+avg: {'skincare': 4.2, 'bebê': 83.3, 'sono': 35.3, 'segurança pessoal': 0.0, 'rotina': 7.8}
+=== X6 | ['skincare', 'bebê', 'sono', 'segurança pessoal', 'rotina'] | BR | today 3-m
+avg: {'skincare': 4.2, 'bebê': 79.6, 'sono': 38.0, 'segurança pessoal': 0.1, 'rotina': 9.0}
+=== X6 | ['skincare', 'bebê', 'sono', 'segurança pessoal', 'rotina'] | BR | today 5-y
+avg: {'skincare': 2.3, 'bebê': 71.9, 'sono': 29.2, 'segurança pessoal': 0.0, 'rotina': 6.3}
+=== W1 | ['skincare', 'menopause', 'journaling', 'astrology', 'budgeting app'] |  | today 12-m
+avg: {'skincare': 56.1, 'menopause': 24.9, 'journaling': 5.8, 'astrology': 34.7, 'budgeting app': 0.8}
+=== W1 | ['skincare', 'menopause', 'journaling', 'astrology', 'budgeting app'] |  | today 3-m
+avg: {'skincare': 34.7, 'menopause': 16.5, 'journaling': 3.8, 'astrology': 21.0, 'budgeting app': 0.2}
+related[skincare] rising: [('hc andersen født', 'Aumento repentino'), ('email marketing for restaurants', 'Aumento repentino'), ('saily esim', 'Mais 2.200%'), ('best budget smartphone', 'Mais 1.250%'), ('what is a 401k', 'Mais 1.200%'), ('what is a roth ira', 'Mais 1.100%'), ('nordvpn review', 'Mais 800%'), ('reale actives skincare', 'Mais 700%')]
+related[menopause] rising: [('how to bake a cake', 'Mais 3.400%'), ('how to make sushi', 'Mais 1.850%'), ('top tourist attractions in paris', 'Mais 1.300%'), ('red light therapy vibrator for menopause symptoms', 'Mais 950%'), ('menopause awareness month', 'Mais 200%'), ('musculoskeletal syndrome of menopause', 'Mais 90%'), ('climax menopause', 'Mais 90%'), ('over the counter menopause meds', 'Mais 90%')]
+related[journaling] rising: [('antagonistic journaling', 'Mais 500%'), ('stmt diy journaling set', 'Mais 500%'), ('hobonichi', 'Mais 250%'), ('esv single column journaling bible', 'Mais 140%'), ('stickers for journaling', 'Mais 110%'), ('journaling or journalling', 'Mais 100%'), ('solo journaling games', 'Mais 90%'), ('junk journal', 'Mais 80%')]
+related[astrology] rising: [('amy demure astrology forecast zodiac', 'Aumento repentino'), ('astrology forecast difficult period ends', 'Mais 3.750%'), ('how to bake a cake', 'Mais 3.250%'), ('best time to visit maldives', 'Mais 2.900%'), ('astrology virgo season lucky signs', 'Mais 2.550%'), ('how to make sushi', 'Mais 1.850%'), ('cheapest flights to tokyo', 'Mais 1.750%'), ('august 12 2026 astrology forecast', 'Mais 1.300%')]
+related[budgeting app] rising: [('how to bake a cake', 'Aumento repentino'), ('hc andersen født', 'Aumento repentino'), ('how to make sushi', 'Aumento repentino'), ('how do you think using a budgeting app could help you to maintain a budget?', 'Mais 300%'), ('you need a budget', 'Mais 130%'), ('dave ramsey budgeting app', 'Mais 100%'), ('best free budgeting app for couples', 'Mais 100%'), ('empower budget app', 'Mais 80%')]
+=== W2 | ['color analysis', 'virtual try on', 'cycle syncing', 'pilates', 'calorie counter'] |  | today 12-m
+avg: {'color analysis': 5.0, 'virtual try on': 1.0, 'cycle syncing': 0.0, 'pilates': 78.6, 'calorie counter': 1.3}
+=== W2 | ['color analysis', 'virtual try on', 'cycle syncing', 'pilates', 'calorie counter'] |  | today 3-m
+avg: {'color analysis': 2.6, 'virtual try on': 0.9, 'cycle syncing': 0.0, 'pilates': 69.7, 'calorie counter': 1.0}
+related[color analysis] rising: [('cheapest flights to tokyo', 'Aumento repentino'), ('how to bake a cake', 'Aumento repentino'), ('how to make sushi', 'Aumento repentino'), ('best time to visit maldives', 'Mais 1.650%'), ('top tourist attractions in paris', 'Mais 1.250%'), ('best laptop for work', 'Mais 500%'), ('international image institute color analysis', 'Mais 350%'), ('wardah color analysis', 'Mais 200%')]
+related[virtual try on] rising: [('anywear', 'Aumento repentino'), ('anywhere live virtual try on', 'Aumento repentino'), ('how to make sushi', 'Aumento repentino'), ('virtual try on anywear', 'Mais 2.200%'), ('virtual try on anywhere', 'Mais 450%'), ('anywear live virtual try on', 'Mais 350%'), ('costco virtual glasses try on', 'Mais 190%'), ('anywear live virtual try-on', 'Mais 170%')]
+related[cycle syncing] rising: [('cycle syncing meal plan', 'Aumento repentino')]
+related[pilates] rising: [('pilates reformer vicino a me', 'Mais 160%'), ('méthode pilates', 'Mais 90%'), ('professor de pilates', 'Mais 90%'), ('corespine pilates', 'Mais 70%'), ('cours de pilates', 'Mais 50%')]
+related[calorie counter] rising: [('starbucks calorie calculator', 'Aumento repentino'), ('bmr calculator', 'Mais 150%'), ('is my fitness pal free', 'Mais 140%'), ('panda express calorie counter', 'Mais 110%'), ('qdoba calorie counter', 'Mais 90%'), ('polar calorie counter watch', 'Mais 80%'), ('how many calories should i eat a day', 'Mais 80%'), ('how many calories in a banana', 'Mais 70%')]
+DONE
+=== X7 | ['skincare', 'contador de calorias', 'app de treino', 'app menstruação', 'mapa astral'] | BR | today 12-m
+avg: {'skincare': 61.8, 'contador de calorias': 1.1, 'app de treino': 3.3, 'app menstruação': 1.1, 'mapa astral': 36.8}
+=== X7 | ['skincare', 'contador de calorias', 'app de treino', 'app menstruação', 'mapa astral'] | BR | today 3-m
+avg: {'skincare': 15.9, 'contador de calorias': 0.0, 'app de treino': 0.3, 'app menstruação': 0.0, 'mapa astral': 9.4}
+=== X7 | ['skincare', 'contador de calorias', 'app de treino', 'app menstruação', 'mapa astral'] | BR | today 5-y
+avg: {'skincare': 20.1, 'contador de calorias': 0.9, 'app de treino': 1.1, 'app menstruação': 0.6, 'mapa astral': 32.7}
+=== X8 | ['skincare', 'perimenopausa', 'caneta emagrecedora', 'treino de glúteo', 'journaling'] | BR | today 12-m
+avg: {'skincare': 61.8, 'perimenopausa': 15.5, 'caneta emagrecedora': 29.0, 'treino de glúteo': 2.4, 'journaling': 9.4}
+=== X8 | ['skincare', 'perimenopausa', 'caneta emagrecedora', 'treino de glúteo', 'journaling'] | BR | today 3-m
+avg: {'skincare': 15.9, 'perimenopausa': 5.5, 'caneta emagrecedora': 11.9, 'treino de glúteo': 0.3, 'journaling': 4.6}
+=== apps_fem_3m | ['app de treino', 'app menstruação', 'app de skincare', 'app de finanças', 'app de meditação'] | BR | today 3-m
+avg: {'app de treino': 10.0, 'app menstruação': 2.7, 'app de skincare': 0.0, 'app de finanças': 1.2, 'app de meditação': 0.0}
+related[app de treino] rising: []
+related[app menstruação] rising: []
+related[app de skincare] rising: []
+related[app de finanças] rising: []
+related[app de meditação] rising: []
+=== apps_fem_12m | ['app de treino', 'app menstruação', 'app de skincare', 'app de finanças', 'app de meditação'] | BR | today 12-m
+avg: {'app de treino': 48.6, 'app menstruação': 16.2, 'app de skincare': 5.4, 'app de finanças': 8.1, 'app de meditação': 0.0}
+DONE

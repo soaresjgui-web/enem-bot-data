@@ -1,530 +1,378 @@
-# Pesquisa de mercado: app pago de rotina diária para mulheres com IA on-device (edge AI)
+# Pesquisa de mercado: em qual setor construir um app pago, nativo e com IA on-device para mulheres
 
-**Data da pesquisa:** 08/11/2026
-**Para quem:** desenvolvedor(a) solo no Brasil decidindo qual app pago construir
-**Ideias avaliadas:** (A) dieta por foto, (B) coach de execução na academia, (C) força + proteína para mulheres em uso de GLP-1, (D) treino/nutrição sincronizados ao ciclo, (E) perimenopausa/menopausa, (F) gestação/pós-parto + assoalho pélvico, (G) análise de pele por câmera, (H) avaliação de postura/glúteo
+**Data da pesquisa:** 08/11/2026 (dados coletados entre 15:45 e 16:40 UTC)
+**Base de evidência primária:** Google Trends (API `trends.google.com`, Brasil e mundo; janelas de 5 anos, 12 meses e 3 meses) e RevenueCat *State of Subscription Apps* 2026 e 2025 (texto completo das páginas públicas + 3 posts do blog).
+**Dados brutos auditáveis:** `docs/dados/trends/` (CSVs das séries, JSON das consultas relacionadas, `_summary.json`, scripts `trends.py`/`analyze.py`, planos de consulta e log da coleta).
+**Para quem:** desenvolvedor(a) solo no Brasil escolhendo setor + ideia de app pago para mulheres com IA de borda (edge AI).
 
----
-
-## 0. Como ler este documento e limitações
-
-- Preferência por dados de 2025–2026. Dados mais antigos ou de fontes fracas (blogs de concorrentes, relatórios de "market research" genéricos) estão **sinalizados**.
-- **Google Trends não pôde ser consultado diretamente** nesta sessão (acesso de rede bloqueado para `trends.google.com`, `revenuecat.com`, `healio.com` etc.). Os sinais de busca abaixo vêm de reportagens e relatórios que citam o Trends; recomendo você mesmo abrir o Google Trends (filtro Brasil, 12 meses e 5 anos) para os termos listados na seção 2.4 antes de decidir.
-- Onde não encontrei número confiável, digo "não encontrado" em vez de inventar.
-- Preços em R$ de concorrentes foram obtidos das fichas da App Store brasileira ou de sites oficiais; podem variar por testes A/B.
+> **Aviso sobre gênero:** o Google Trends **não segmenta por gênero**. Usei termos com forte viés feminino (menopausa, ciclo menstrual, treino de glúteo, skincare, cronograma capilar, coloração pessoal, amamentação etc.) como proxy. Tudo que não vem do Trends ou da RevenueCat está marcado como **[secundário]**.
 
 ---
 
 ## 1. Resumo executivo
 
-**Recomendação ranqueada (detalhe na seção 6):**
+### 1.1 Ranking de setores (Brasil, termos com viés feminino)
 
-| # | Ideia | Nota geral (1–5) | Veredito em uma linha |
-|---|-------|------------------|-----------------------|
-| 1 | **(C) Força + proteína para mulheres em uso de caneta GLP-1** | **4,2** | Onda real e recente no Brasil (R$ 13,3 bi em canetas, genérico desde jun/2026), dor concreta (perda de massa magra), público já paga caro pelo remédio, quase nenhum concorrente em PT-BR, baixa dificuldade técnica |
-| 2 | **(E) Rotina para perimenopausa/menopausa (35–60 anos)** | **4,0** | Mercado bilionário em formação, apps brasileiros ainda incipientes (Raquel Menopausa grátis; Namu B2B), público com renda; exige cuidado com alegações médicas. **Combina naturalmente com a #1** (mesma faixa etária, mesmas necessidades: força, proteína, sono) |
-| 3 | (D) Treino/nutrição sincronizados ao ciclo | 3,4 | Demanda em alta no TikTok (buscas +62%/+124%), privacidade de dados menstruais é argumento forte para edge AI, mas base científica fraca e Flo já oferece |
-| 4 | (A) Dieta por foto (calorias/macros) | 3,0 | Maior demanda de todas, mas commoditizado (Cal AI comprado pelo MyFitnessPal; dezenas de clones em PT-BR a R$ 49,90/ano); precisão ruim (~-33%). **Faz sentido como *recurso* dentro da #1/#2, não como produto** |
-| 5 | (F) Gestação/pós-parto + assoalho pélvico | 3,0 | Demanda estável e previsível, mas janela de uso curta (LTV baixo), sensibilidade regulatória alta |
-| 6 | (B) Coach de execução com pose estimation | 2,6 | Tecnicamente sedutor, mas histórico ruim: Kemtai migrou para fisioterapia B2B, Zenia foi absorvida, Zing Vision é criticado por falsos alertas; erro angular ~10° no melhor caso; monetização fraca |
-| 7 | (G) Análise de pele por câmera | 2,4 | Dominado por L'Oréal/Perfect Corp (US$ 69 M de receita) e marcas; difícil cobrar assinatura por algo que marcas dão de graça |
-| 8 | (H) Postura/glúteo por foto | 2,0 | Micro-nicho recém-inundado de apps (abr/2026), baixa retenção |
+| # | Setor | Últimos 12 meses | Últimos 3 meses (ago–nov/2026) | Monetização (RevenueCat 2026) | Veredito |
+|---|---|---|---|---|---|
+| **1** | **Saúde & fitness feminino: "corpo em transformação" (GLP-1 + força/glúteo + pilates em casa)** | `mounjaro` **+61%** a/a e 6,9× o volume de `skincare`; `caneta emagrecedora` **+275%**; `treino de glúteo` **+30%**; `hip thrust` **+157%**; `app de treino` **+20%**; `pilates` +6% (recorde da série em 2025–26); `sarcopenia` +54% | `caneta emagrecedora` **+34%** vs. 3 m anteriores (pico 13/09/2026); `ozivy` +26%; `pilates` **+11%** (pico 20/09/2026, "pilates na parede" +400%); `treino de glúteo` **+15%**; `treino em casa` +12%; `app de treino` +8% (+32% dentro da janela) | Health & Fitness lidera **todas** as métricas: trial→pago 37,7%, download→pago 2,9%, RPI D14 US$ 0,48, RLTV Y1 US$ 35,64, renovação ativa anual 86,4% | **Construir aqui** |
+| **2** | **Saúde da mulher 40+ (perimenopausa/menopausa)** | `perimenopausa` **+184%** a/a (5 anos: +1.472%); `menopausa` +6% e 2,3× `skincare` (volume alto e estável); `reposição hormonal` +20%; rising: `veoza` +2.250%, "anvisa aprova medicamento para menopausa" +1.250% | `perimenopausa` **+28%** vs. 3 m anteriores (pico ago/2026); `menopausa` −5%, mas "dia mundial da menopausa" +4.250% e "sintomas da menopausa aos 48 anos" +2.850% | Mesma categoria RevenueCat (Health & Fitness inclui Medical) | **Construir aqui** (combina com o #1: mesma mulher, mesmo motor) |
+| 3 | Beleza/skincare | `skincare` +56% a/a (5 anos +134%), mas `análise de pele` = 0 e `cronograma capilar` −22% | `skincare` **−19%** (sazonal: pico dez/2025); `maquiagem` +5% (Halloween) | Vira Photo & Video / Lifestyle: trial→pago 22,2% (pior), renovação anual 23–25% | Alto interesse, **baixo encaixe** com app pago (rising = marcas de produto, não apps) |
+| 4 | Produtividade/rotina feminina | `rotina` +4% a/a (+26% dentro da janela); `planner` sazonal | `planner` **+37%** ("planner 2027" +800%); "apps para organizar rotina" **breakout**; `rotina` +9% | Productivity: 77% mensal, renovação anual **23%** (pior), reembolso 4,7% (maior), 41% já são apps de IA | Médio; IA de borda pouco diferenciadora |
+| 5 | Finanças pessoais | `app de finanças` +411% (base ínfima); `controle de gastos` −8%; `planilha de gastos` −34% | "app para controle de gastos pessoais **grátis**" +250%; `organizar finanças` −25% | Utilities (inclui Finance): renovação anual 35%, download→trial 6,5% | Volume baixo (0,09× `skincare`) e intenção "grátis" |
+| 6 | Saúde mental/sono | `sono` 8,4× `skincare` mas flat (+3%); `ansiedade` −2%; `meditação` **−18%** (5 anos −53%); `journaling` micro-pico em jul/2026 | `ansiedade` 0%; `meditação` −7%; `journaling` −29% | Health & Fitness (boa), mas demanda estagnada e incumbentes globais | Maduro/declinante |
+| 7 | Saúde reprodutiva/ciclo | `ciclo menstrual` −12% a/a (5 anos −28%); `gravidez` **−19%** (5 anos −43%); `SOP` +6%; `app menstruação` +25% | `ciclo` −1%, `gravidez` −6%, `SOP` −14%; rising "monitor de fertilidade" +350%, "calculadora fertilidade feminina" breakout, "melhor app ciclo menstrual **grátis**" breakout | Health & Fitness | Estrutural em queda (natalidade) + Flo domina + intenção "grátis" |
+| 8 | Maternidade | `bebê` +13% a/a (5 anos −20%); `amamentação` −16% (5 anos −34%) | `bebê` −7%; `amamentação` −5% | Sem categoria própria (Lifestyle/Health) | Declínio estrutural, LTV curto |
+| 9 | Moda/estilo | `provador virtual` +16% (puxado por "zara provador virtual" +700%); `coloração pessoal` **−39%** (5 anos −68%); rising "prompt coloração pessoal chatgpt" +400% | `look do dia` −15%; `coloração pessoal` −10% | Lifestyle/Photo & Video (fracas) | ChatGPT já canibaliza a análise de coloração |
+| 10 | Relacionamentos | `relacionamento` +6%; `tinder` −11% (5 anos −47%); `namoro` 5 anos −44% | tudo negativo (−1% a −17%) | Social & Lifestyle: **piores renovações** (anual 25%, mensal 42%), 43,6% sem trial | Evitar |
+| 11 | Astrologia/espiritualidade | `signo` −14% (5 anos −55%), `mapa astral` −9% (5 anos −61%), `horóscopo` 5 anos −70%; `tarot` +16% | `tarot` −14%, `mapa astral` −11%; picos só em dez/jan ("mapa astral 2026 gratuito" +1.900%) | Lifestyle | Declínio + "gratuito" |
+| 12 | Educação/carreira | `inglês` −10% (5 anos −18%); `currículo` −17% | tudo negativo; rising "curso de inglês online gratuito com certificado" | Education: preço anual mais alto (US$ 44,99) mas renovação anual 24% e reembolso 4,86% (2025) | Fora do perfil |
+| 13 | Segurança pessoal | `medida protetiva` +40% (notícias de celebridades); `app de segurança para mulheres` = 0 | `medida protetiva` +33% (idem) | — | Sem intenção de app |
 
-**Sugestão de produto final:** um único app — *rotina diária de força + proteína para mulheres 35+* — lançado primeiro para o nicho GLP-1 (aquisição mais fácil, dor mais aguda) e expandido para perimenopausa. Edge AI usada em: (1) estimativa de proteína por foto no aparelho, (2) contagem de repetições/tempo sob tensão com a câmera, (3) todos os dados sensíveis (medicação, sintomas, ciclo) **nunca saem do celular** — argumento de marketing forte depois do veredito Flo × Meta (ago/2025).
+### 1.2 Recomendação em uma frase
+
+**Construir um app nativo iOS-first de rotina diária de força + proteína para mulheres em transformação corporal, lançado para quem usa caneta GLP-1 (o tema feminino que mais cresce no Brasil em 12 e 3 meses), com treino de glúteo/pilates em casa guiado por câmera on-device, estimativa de proteína por foto on-device e um "modo 40+" (perimenopausa) na v1.5.** Dieta por foto e coach de execução, as ideias originais, entram como *recursos* desse app, não como produto: `contador de calorias` caiu 45% a/a (−19% nos últimos 3 m) e os termos de "execução correta" têm volume quase nulo.
 
 ---
 
-## 2. Panorama de mercado e sinais de demanda
+## 2. Metodologia
 
-### 2.1 Tamanho e dinâmica da categoria Saúde & Fitness
+### 2.1 Google Trends
 
-| Métrica | Valor | Fonte / observação |
+- **Como foi puxado:** script Python (`docs/dados/trends/trends.py`) contra a API não documentada do Trends: (1) `GET https://trends.google.com/trends/?geo=BR` para cookie; (2) `GET /trends/api/explore?hl=pt-BR&tz=180&req={"comparisonItem":[{"keyword":k,"geo":"BR","time":janela}...],"category":0,"property":""}`; (3) com os `token`/`request` de cada widget, `GET /trends/api/widgetdata/multiline` (interesse ao longo do tempo) e `/widgetdata/relatedsearches` (consultas relacionadas *top* e *rising*). Prefixo `)]}'` removido antes do parse. Pausas aleatórias de 2,5–4,5 s entre chamadas; 1 único HTTP 429 em ~800 chamadas, resolvido com retry.
+- **Parâmetros:** `hl=pt-BR`, `tz=180` (UTC−3), `geo=BR` (ou vazio = mundo), `category=0`, `property=""` (busca web). Janelas: `today 5-y` (semanal, 261 pontos), `today 12-m` (semanal, 53 pontos) e `today 3-m` (diário, 92 pontos). Último ponto parcial descartado.
+- **Grupos de comparação:** até 5 termos por consulta (limite do Trends; todos ficam na mesma escala 0–100, em que 100 = pico do termo mais buscado do grupo no período). Para comparar setores **entre grupos**, incluí o termo-âncora `skincare` em todas as comparações cruzadas (`X1`–`X8`) e expressei cada termo como múltiplo da média de `skincare` no mesmo grupo/janela (tabela 3.1). Isso introduz erro de arredondamento (valores baixos ficam em 0–1 na escala) — termos com média < 1 devem ser lidos como "ordem de grandeza", não como medida precisa.
+- **Métricas derivadas (`analyze.py`):** "12 m vs. 12 m anteriores" = média das últimas 52 semanas / 52 anteriores (série de 5 anos); "5 anos" = últimas 52 semanas / primeiras 52; "3 m vs. 3 m anteriores" = média das últimas 13 semanas / 13 anteriores (série de 12 meses); "dentro da janela de 3 m" = 2ª metade / 1ª metade da série diária. Pico = data do valor máximo.
+- **Rising queries:** lista "Em ascensão" do Trends; "Aumento repentino" (*breakout*) significa crescimento > 5.000% ou termo novo. Descartei manualmente ruído óbvio (letras de música em `postura`, notícias de celebridades em `medida protetiva`, questões escolares em `rotina`).
+- **Limitações:** índice relativo, não volume absoluto; sem recorte de gênero; termos de nicho aparecem como 0 quando comparados a termos de massa (ex.: `contar calorias` vs. `mounjaro`) — por isso há consultas "solo" e grupos temáticos para cada ideia.
+- **Arquivos:** `<grupo>__<BR|WORLD>__<janela>.csv` (colunas: data, termos, isPartial), `<grupo>__...__related.json` (top/rising por termo), `_summary.json` (métricas), `_coleta_log.txt`.
+
+### 2.2 RevenueCat
+
+- Baixei o HTML público de `https://www.revenuecat.com/state-of-subscription-apps` (SOSA 2026; 115 mil+ apps, US$ 16 bi em receita, >1 bi de transações, período-alvo 2025) e `/state-of-subscription-apps-2025`, extraí o texto (sem scripts) e li as seções por nome. Também usei os posts do blog "Average subscription renewal rates by app category (2026 benchmarks)", "How long should your free trial be? Data from 17,000+ apps" e "5 quick fixes for bad default global pricing on app stores".
+- Categorias da RevenueCat são "baldes": **Health & Fitness inclui Medical**; **Utilities inclui Finance**; **Social & Lifestyle inclui Lifestyle, Social Networking e Dating**; **Productivity inclui Graphics & Design**; **Photo & Video inclui Photography**. "Latin America" = Brasil, México, Argentina, Chile, Colômbia, Peru.
+- Uma inconsistência do próprio relatório: a seção "Which plan durations do subscribers choose by category?" diz que Health & Fitness "lidera adoção anual com 68%", enquanto "Where do weekly vs. yearly plans dominate" diz "Health & Fitness is monthly-heavy (68%)". A seção de receita é inequívoca: **59% da receita de H&F vem de planos anuais**.
+
+---
+
+## 3. Google Trends: o que as mulheres (proxy) estão buscando
+
+### 3.1 Volume relativo entre setores (Brasil, âncora `skincare` = 1,00)
+
+Médias do índice em cada janela, encadeadas pelos grupos `X1`–`X8`. Leia como "quantas vezes o volume de `skincare`".
+
+| Termo (setor) | 5 anos | 12 meses | 3 meses | Direção 12 m vs. anteriores | Direção 3 m vs. anteriores |
+|---|---|---|---|---|---|
+| inglês (educação) | 64,3 | 39,0 | 37,0 | −10% | −5% |
+| bebê (maternidade) | 31,3 | 19,9 | 18,9 | +13% (5 a: −20%) | −7% |
+| gravidez (saúde fem.) | 28,8 | 13,5 | 12,7 | −19% (5 a: −43%) | −6% |
+| sono (mental) | 12,7 | 8,4 | 9,1 | +3% | 0% |
+| **mounjaro (GLP-1)** | 3,6 | **6,9** | 5,8 | **+61%** | −12% (pico jan/2026) |
+| ansiedade (mental) | 12,1 | 6,8 | 7,1 | −2% (5 a: −24%) | 0% |
+| maquiagem (beleza) | 10,7 | 6,0 | 6,9 | +1% (5 a: −33%) | +5% |
+| relacionamento | 6,4 | 3,8 | 4,0 | +6% (5 a: −22%) | −1% |
+| tarot (astro) | 4,7 | 3,2 | 3,4 | +16% | −14% |
+| **pilates (fitness)** | 3,6 | 3,0 | 3,4 | +6% (5 a: **+55%**) | **+11%** |
+| **menopausa** | 3,0 | 2,3 | 2,4 | +6% (5 a: **+34%**) | −5% |
+| rotina (produtividade) | 2,7 | 1,9 | 2,1 | +4% (5 a: +17%) | +9% |
+| planner | 2,2 | 1,35 | 1,6 | −5% | **+37%** |
+| amamentação | 2,1 | 1,1 | 1,0 | −16% (5 a: −34%) | −5% |
+| **skincare (beleza)** | **1,00** | **1,00** | **1,00** | **+56%** (5 a: +134%) | **−19%** |
+| meditação | 1,5 | 0,64 | 0,60 | −18% (5 a: −53%) | −7% |
+| mapa astral | 1,6 | 0,60 | 0,59 | −9% (5 a: −61%) | −11% |
+| **caneta emagrecedora** | — | 0,47 | **0,75** | **+275%** | **+34%** |
+| ciclo menstrual | 0,70 | 0,37 | 0,39 | −12% (5 a: −28%) | −1% |
+| cronograma capilar | 0,90 | 0,35 | 0,30 | −22% (5 a: −56%) | −20% |
+| treino feminino | 0,43 | 0,27 | 0,26 | −5% | −6% |
+| **perimenopausa** | — | 0,25 | **0,35** | **+184%** (5 a: +1.472%) | **+28%** |
+| journaling | — | 0,15 | 0,29 | pico isolado jul/2026 | −29% |
+| controle de gastos (finanças) | 0,17 | 0,09 | 0,07 | −8% | −3% |
+| app de treino | 0,06 | 0,05 | 0,02 | **+20%** (5 a: +104%) | +8% |
+| treino de glúteo | — | 0,04 | 0,02 | **+30%** (5 a: +90%) | **+15%** |
+| coloração pessoal (moda) | 0,10 | 0,03 | 0,00 | −39% (5 a: −68%) | −10% |
+| contador de calorias (dieta) | 0,04 | 0,02 | 0,00 | **−45%** (5 a: −23%) | −19% |
+| app menstruação | 0,03 | 0,02 | 0,00 | +25% | 0% |
+| provador virtual / segurança pessoal / análise de pele | ~0 | ~0 | ~0 | — | — |
+
+Fontes: `X1`–`X8__BR__*.csv`, `*__BR__today_5_y.csv`, `_summary.json`. Direções vêm dos grupos temáticos (seções 3.2–3.5), onde a escala é mais fina.
+
+**Intenção explícita de app, mesma escala (grupo `apps_fem_12m`, BR, 12 m):** `app de treino` média **48,7** (+8% no trimestre) · `app menstruação` 16,1 (−7%) · `app de finanças` 8,1 (−1%) · `app de skincare` 5,5 (zerou nos últimos 3 m) · `app de meditação` ≈ 0. Ou seja, entre as mulheres (proxy), a busca ativa por *aplicativo* se concentra em treino — 3× ciclo, 6× finanças, 9× skincare.
+
+**Leitura:** os termos de grande volume (inglês, bebê, gravidez, sono, ansiedade, maquiagem) são estáveis ou em queda e pertencem a setores de app com monetização fraca ou dominados por incumbentes. Os únicos temas femininos com volume relevante **e** crescimento forte em 12 m e em 3 m são **GLP-1/caneta**, **pilates/glúteo/treino em casa** e **perimenopausa**. `skincare` cresce no ano mas cai no trimestre e não gera intenção de app.
+
+### 3.2 Setor 1 — Saúde & fitness feminino (grupos `glp1`, `musculo_proteina`, `fitness_fem`, `fem_12m`, `execucao`, `modalidades`, `apps`, `dieta`)
+
+| Termo | 5 anos | 12 m vs. ant. | 3 m vs. ant. | Pico | Rising queries relevantes (janela) |
+|---|---|---|---|---|---|
+| mounjaro | novo (0 → 65) | **+61%** | −12% | jan/2026 | 12 m: `ozivy` breakout, `poviztra` +4.100%, `combo mounjaro` +3.450%, `mounjaro pancreatite aguda` +1.500%. 3 m: "mounjaro 5mg emagrece quantos quilos em 1 mês" +250%, **"pode tomar mounjaro amamentando" +60%, "mounjaro corta o efeito do anticoncepcional" +60%**, "mounjaro sus" +50% |
+| caneta emagrecedora | novo | **+275%** | **+34%** | 13/09/2026 | breakout: `ozivy`, `retatrutida`, `mantecorp caneta emagrecedora`, `semavy`, "caneta emagrecedora lula" +3.200%, `poviztra` +2.200% |
+| ozivy (genérico EMS) | novo (jun/2026) | — | +26% | 14/06/2026 | "ozivy preço", "ozivy 1mg", "semaglutida ozivy" (todos breakout) |
+| ozempic | −2% | −50% | −20% | mar/2024 | migração para `mounjaro` ("mounjaro ou ozempic" breakout) |
+| dieta mounjaro / o que comer tomando mounjaro | — | — | −13% / −12% | jan/2026 | "dieta para quem toma mounjaro" +700% (dentro de `dieta`) |
+| perda de massa muscular | — | — | +12% | pico 21/12/2025 | — |
+| sarcopenia | **+200%** | **+54%** | — | dez/2025 | — |
+| massa magra / flacidez | −13% / −9% | +14% / +12% | — | — | — |
+| proteína | — | +21% (dentro de 12 m) | +5% | mar/2026 | "quantos gramas de proteína por kg hipertrofia" **+2.750%** |
+| creatina / whey protein | +30% / +4% | −20% / −3% | — / −3% | dez/2024 | marcas (Dark Lab, Growth) |
+| **pilates** | **+55%** | +6% | **+11%** | 20/09/2026 (12 m) | 12 m: "pilates de parede funciona" +4.950%, "pilates na parede" +2.400%, "kit pilates em casa" +500%, `wellhub`; 3 m: **"pilates na parede" +400%**, "pilates em casa gratuito" +60%, "hot pilates" +40%, "professor de pilates" +250% |
+| pilates em casa | — | — | **+35%** | jan/2026 | — |
+| **treino de glúteo** | **+90%** | **+30%** | **+15%** | jan/2026 | "ponte de glúteo" breakout, "elevação pélvica" +180%, "cadeira abdutora" +160%, "treino de posterior e glúteo feminino" +120% |
+| hip thrust | +1.196% | **+157%** | — | ago/2026 | "hip thrust máquina" +1.350%, "afundo" +700%, "dead bug" +550% |
+| treino em casa | +32% | +8% | **+12%** | — | "treino funcional para fazer em casa" breakout, "elástico para treino em casa" +80% |
+| treino abdominal | — | — | +13% | — | — |
+| **app de treino** | **+104%** | **+20%** | +8% (+32% dentro da janela) | jan/2026 | "melhores app para treino de academia **grátis**" +2.000%, `hevy app` |
+| treino feminino / treino para mulheres | +9% / ~0 | −5% | −6% | — | rising = tênis (Olympikus, Under Armour): termo de **produto**, não de treino |
+| academia / corrida | +27% / **+89%** | +3% / +11% | — | jan/2026 / abr/2026 | — |
+| execução do exercício | +127% | +1% | — | set/2025 | nenhuma rising |
+| agachamento correto | −36% | +129% (base ~0) | — | — | nenhuma rising |
+| **contador de calorias** | −23% | **−45%** | **−19%** | jan/2025 | "contador de calorias online **grátis**" +1.750%, "melhor app contador de calorias **gratuito**" +1.200% |
+| contar calorias (solo) | −15% | −30% | −21% | jan/2026 | "pare de contar calorias" +250% |
+| calorias por foto | ~0 | — | — | — | nenhuma |
+| cal ai | novo | +947% (base 0) | **−50%** | nov/2025 | "cal ai price" +250% |
+| myfitnesspal / yazio | +41% / +225% | +29% / −12% | −65% / −18% | jul/2026 / jan/2025 | "yazio vs myfitnesspal", `cronometer` +1.300% |
+| aplicativo de dieta / app contar calorias | −47% / −11% | −47% / −44% | — | — | "aplicativo de dieta para emagrecer **grátis**" +300% |
+| postura (solo) | −3% | +4% | +1% | — | rising = letras de música; "corretor postural" −21% |
+| assoalho pélvico (solo) | +21% | +14% | — | ago/2026 | "enfraquecimento do assoalho pélvico" +120%, "como fortalecer" +60% |
+| diástase | +38% | +18% | — | jan/2026 | "qual o melhor exercício para fechar diástase" breakout, "quem tem diástase pode fazer prancha" +300% |
+| pós-parto / exercício na gravidez | −8% / −94% | +9% / −67% | — | — | — |
+
+**Mundo (grupos `world_*`, 5 anos):** `mounjaro` +3.365% (12 m +28%), `protein intake` **+613%** (12 m **+194%**, pico mai/2026; rising "protein intake per kg" +450%), `pilates` +167% (12 m +14%), `pelvic floor exercises` +122% (12 m +45%), `posture corrector` +111% (12 m +37%), `ai calorie counter` 12 m +186% (base ínfima; rising `cal ai`, `snapcalorie`, "photo calorie counter app **free**"), `cal ai` pico mar/2026 (aquisição) e `calorie counter` flat (+2%). `cycle syncing` e `cycle syncing workout` = 0 na escala de `pilates`; rising "cycle syncing meal plan" breakout.
+
+**Síntese do setor:** a demanda migrou de **"contar calorias"** (em queda e com intenção "grátis") para **"caneta + proteína + não perder músculo + glúteo/pilates em casa"**. As rising queries de `mounjaro` nos últimos 3 meses são explicitamente femininas (amamentação, anticoncepcional). `app de treino` é o único termo de "app" do estudo com crescimento consistente em 5 anos, 12 m e 3 m.
+
+### 3.3 Setor 2 — Saúde da mulher 40+ (grupo `menopausa`, `solo_perimenopausa`, `S_saude_fem`)
+
+| Termo | 5 anos | 12 m vs. ant. | 3 m vs. ant. | Pico | Rising |
+|---|---|---|---|---|---|
+| menopausa (solo) | **+34%** | +6% | −5% | mar/2025 | 5 a: `neovadiol menopausa` +2.150%, `vichy menopausa` +1.100%, "menopausa cancelada" +700%, "como eu sei que estou entrando na menopausa" +450%, `utrogestan` +350%, "peri menopausa" +300%. 12 m: `veoza` +2.250%, "anvisa aprova medicamento para menopausa" +1.250%, "qual hormônio é reduzido…" +4.700%. 3 m: "dia mundial da menopausa" +4.250%, "sintomas da menopausa aos 48 anos" +2.850% |
+| **perimenopausa (solo)** | **+1.472%** | **+184%** | **+28–30%** | ago/2026 | `progesterona` +80%, `estradiol` +60% |
+| climatério | +41% | +1% | +2% | set/2025 | "climatério sintomas físicos" +800%, "climatério sintomas iniciais" +400%, `sobrac` +60% |
+| reposição hormonal | +70% | +20% | +1% | ago/2025 | "qual o melhor medicamento para reposição hormonal feminina", `vagifem` |
+| fogachos | +31% | +14% | −28% | jan/2024 | "o que é fogachos" +130% |
+| endometriose / SOP | +4% / +71% | +4% / +6% | +2% / −14% | — | "endometriose cerebral" +350%; `SOP` sem rising |
+
+**Mundo:** `perimenopause` 5 a **+322%**, 12 m +28%, pico mai/2026 (rising "what are the 34 symptoms of perimenopause" +1.200%, `magnesium glycinate` +850%, "hrt for perimenopause" +250%); `menopause` 5 a +74%, 12 m +27% (rising "frozen shoulder menopause" +850%, "genitourinary syndrome of menopause" +550%); `menopause app` 12 m +289% (base ínfima).
+
+**Síntese:** `menopausa` já é um termo de massa estável (2,3× `skincare`) e `perimenopausa` é o termo de saúde feminina que mais cresce no Brasil nas duas janelas. As rising queries mostram uma mulher **procurando entender sintomas iniciais (40–48 anos)** e sendo educada por marcas (Vichy/Neovadiol) e por notícias de medicamentos (Veoza/ANVISA) — não há nenhuma rising query de "app", o que indica **espaço vazio**, não ausência de demanda.
+
+### 3.4 Setores de interesse alto mas encaixe fraco
+
+**Beleza (`S_beleza`, `pele`):** `skincare` 5 a +134%, 12 m +56%, mas 3 m **−19%** (pico 28/12/2025 — sazonal); `maquiagem` 5 a −33%; `cronograma capilar` 5 a −56%; `análise de pele` e `rotina de skincare` ≈ 0; `tipo de pele` +24%. Rising (12 m e 3 m): `medicube`, `celimax`, `principia`, `kokeshi`, "kit skincare completo", "kit skincare masculino" — **100% produtos/marcas**. Mundo: `skincare` 3 m −32%. → Interesse enorme, mas em **comprar produto**, não em pagar app.
+
+**Moda (`S_moda`):** `coloração pessoal` 5 a −68%, 12 m −39%; rising "prompt para análise de coloração pessoal" (breakout) e "prompt coloração pessoal chatgpt" +400%, "teste de coloração pessoal online **grátis**" +250% → o LLM genérico já substitui o app. `provador virtual` +16% (puxado por "zara provador virtual" +700% — recurso de varejista). `armário cápsula` ≈ 0.
+
+**Saúde mental (`S_mental`):** `sono` e `ansiedade` são termos de massa estáveis (8,4× e 6,8× `skincare`), `meditação` −18% (5 a −53%), `journaling` praticamente inexistente em PT-BR (pico isolado em jul/2026; rising em inglês). Curiosidade útil: "mounjaro dá sono" +180% dentro de `sono` — mais um sinal da onda GLP-1.
+
+**Produtividade/rotina (`S_produtividade`):** `rotina` +17% em 5 a, +26% dentro de 12 m, +9% no trimestre; "apps para organizar rotina" **breakout** (3 m); `planner` +37% (sazonal: "planner 2027" +800%); `hábitos` −8% (rising = livro "365 hábitos poderosos"). Demanda real, porém pequena (1,9× `skincare`) e com monetização fraca (seção 4).
+
+**Finanças (`S_financas`):** `controle de gastos` 0,09× `skincare`; `app de finanças` +411% a/a sobre base ínfima; rising "app para controle de gastos pessoais **grátis**" +250%, "planilha … **grátis**". Intenção de pagar baixa.
+
+**Saúde reprodutiva/ciclo (`S_saude_fem`, `S_saude_fem2`, `ciclo`):** `gravidez` 5 a −43%, `engravidar` −23%, `ovulação` −34%, `ciclo menstrual` −28%; `app menstruação` +25% a/a mas rising "app menstruação **grátis**" +160%, "melhor app ciclo menstrual **grátis**" breakout, "app ciclo menstrual gratuito" +700%. "fases do ciclo menstrual e humor" +1.500% e "as 4 fases do ciclo menstrual" +900% mostram curiosidade sobre fases, mas `treinar menstruada` e `cycle syncing` têm volume ≈ 0 no Brasil.
+
+**Relacionamentos, astrologia, educação, maternidade, segurança:** todos com tendência de 5 anos negativa (−20% a −70%) ou sem intenção de app (`app de segurança para mulheres` = 0). Detalhes nos CSVs `S_*`.
+
+### 3.5 O que os últimos 3 meses dizem (ago–nov/2026) — ranking de momentum
+
+Ordenado por crescimento vs. os 3 meses anteriores, considerando só termos com volume mínimo e rising queries com intenção real:
+
+1. **Caneta emagrecedora +34%** (e `ozivy` +26%; `mounjaro` ainda 5,8× `skincare`): genérico brasileiro, promessa política ("caneta emagrecedora lula"), novas marcas (Poviztra, TG, Semavy, retatrutida) e perguntas femininas (amamentação, anticoncepcional).
+2. **Perimenopausa +28%** (pico 09/08/2026) + Dia Mundial da Menopausa (18/10) gerando "sintomas da menopausa aos 48 anos" +2.850%.
+3. **Pilates +11%** (pico 20/09/2026; "pilates na parede" +400%, "pilates em casa gratuito" +60%), **pilates em casa +35%**, **treino de glúteo +15%**, treino abdominal +13%, treino em casa +12%, app de treino +8%.
+4. **Planner +37% / rotina +9%** ("apps para organizar rotina" breakout) — sazonal de fim de ano.
+5. Finanças: "app para controle de gastos pessoais grátis" +250% — intenção gratuita.
+6. Beleza: `skincare` −19%, `maquiagem` +5% (Halloween).
+7. Saúde reprodutiva: `gravidez` −6%, `SOP` −14%; "monitor de fertilidade" +350%.
+8. Mental, moda, astro, relacionamentos, educação, maternidade: estáveis ou negativos.
+
+---
+
+## 4. RevenueCat: monetização por categoria (SOSA 2026, com 2025 onde indicado)
+
+### 4.1 Comparativo entre categorias
+
+| Métrica (mediana, salvo indicação) | Health & Fitness (incl. Medical) | Productivity | Education | Photo & Video | Social & Lifestyle (incl. Dating) | Utilities (incl. Finance) | Business | Todas |
+|---|---|---|---|---|---|---|---|---|
+| Download → trial (D30) | **6,9%** (top: >23%) | — | 6,5% | — | — | 6,5% | 9,1% | ~5–6% |
+| Trial → pago | **37,7%** (Q3 >51,4%) | — | — | **22,2%** (pior) | — | — | — | Travel 43,5% é a maior |
+| Download → pago (D35) | **2,9%** (Q3 >6,2%) | — | "lag" (2025) | — | — | — | 2,6% | Gaming 1,0% |
+| RPI D14 / D60 | **US$ 0,48 / 0,66** | — | 0,30 / — | — | — | — | 0,31 / 0,50 | 0,23 / 0,34 |
+| RLTV por pagante mês 1 / ano 1 | **US$ 24,23 / 35,64** (top >60) | — / 24,95 | — / 22,82 | — | — | — | 18,76 / 35,48 | Gaming 8,41 / 11,22 |
+| Preço mediano mensal / anual | **US$ 9,99 / 39,94** (semanal 4,99) | — | 9,99 / **44,99** | — | 9,99 / — | — | semanal 6,89 | 9,99 / 34,80 |
+| Mix de assinaturas | anual 68% (seção de planos) | **77% mensal** | anual 59–66% | semanal 33% nos paywalls | semanal 47% (maior) | — | — | 42% mensal, 34% anual |
+| Share da receita por plano | **59% anual** | 91% mensal | anual majoritário | — | — | — | — | — |
+| 1ª renovação anual (Q1 / med / Q3) | 16% / **25%** / 37% | 14% / 23% / 38% | 17% / 24% / 32% | 15% / 23% / 35% | 13% / 25% / 41% | 21% / 35% / 52% | 21% / 40% / 53% | 23–40% |
+| 1ª renovação mensal | 46% / **57%** / 68% | 40% / 54% / 66% | 48% / 56% / 66% | 35% / 48% / 59% | 27% / **42%** / 61% (pior) | 43% / 57% / 70% | 49% / 61% / 74% | 42–61% |
+| Renovação ativa anual | **86,4%** (líder) | 85,6% (mensal 28,2%, pior) | — | — | — | — | — | 83,4% |
+| Retenção 6 m (semanal / mensal) | — | — | — | — | 11% / 24% (pior) | — | 26% / 40% | 3–6% / 14–26% |
+| Reembolso | 3–4% (2025: 4,71%) | **4,7%** (maior) | 4,86% (2025) | alto | — | — | 2,7–2,9% | 3–4% |
+| Estratégia de trial | 59% mista; só 18,3% sem trial; **54% trials de 5–9 dias** | — | 50% de 5–9 d | 68% ≤4 d | **43,6% sem trial** | — | — | 46,5% ≤4 d |
+| Share de apps de IA | baixo | **41,1%** | — | **61,4%** | — | — | 19,1% | 27,1% |
+| Tempo até US$ 1k MRR / % que chega a US$ 10k | >100 dias p/ US$ 10k | — | — | 21,4% chegam a 1k, **7,3% a 10k** (maior) | 45 dias p/ 1k | — | 113 dias p/ 1k | 4,6% chegam a 10k em 2 anos |
+| Churn "custo" / "pouco uso" (Google Play) | — | **44% custo** | — | — | — | — | — | 25–45% / 26–40% |
+
+Fontes: SOSA 2026 — seções "How does D30 download-to-trial conversion vary by app category?", "How does trial-to-paid conversion vary by app category?", "Which categories best convert downloads into paid users?", "What's the D14 revenue benchmark?", "How does revenue grow from D14 to D60?", "What's monthly revenue per paying customer?", "What's yearly revenue per payer?", "What do apps charge by category?", "Which plan durations drive revenue by category?", "How do active renewal rates compare by category and plan duration?", "What are typical refund rates by category?", "What trial strategy do different app categories favour?", "What category footprint do AI apps have?", "How long does it take apps to reach monthly revenue milestones?", "Why do users cancel subscriptions?"; blog "Average subscription renewal rates by app category (2026)"; SOSA 2025 seções "Refund rate by app category", "Average revenue per install".
+
+**Leitura:** Health & Fitness é a única categoria que lidera simultaneamente conversão, receita por instalação, valor por pagante e renovação anual — e é onde caem os setores #1 e #2 do ranking do Trends (fitness, GLP-1, menopausa, pelve). Produtividade (setor "rotina") tem a pior renovação anual, o maior reembolso e já é 41% IA. Photo & Video (onde cairia um app de análise de pele/coloração) tem a pior conversão trial→pago e é 61% IA. Social & Lifestyle (relacionamentos, astrologia, lifestyle) tem as piores renovações.
+
+### 4.2 Benchmarks transversais que definem o desenho do produto
+
+| Decisão | Dado RevenueCat 2026 | Implicação |
 |---|---|---|
-| Receita IAP global Saúde & Fitness 2025 | **US$ 4,5 bi (+13% a/a)**, recorde | Sensor Tower, fev/2026 |
-| Downloads globais 2025 | 3,96 bi (+0,8%) | Sensor Tower — ou seja, crescimento vem de monetização, não de volume |
-| Categorias que mais cresceram em receita | Corrida/ciclismo (Strava, Runna) e **nutrição com IA (Cal AI, MacroFactor, YAZIO)** | Sensor Tower |
-| Mercado de apps fitness (estimativa ampla) | US$ 12,1 bi em 2025 → US$ 33,6 bi em 2033 | Grand View Research — relatório genérico, usar com cautela |
-| MyFitnessPal | ~900 mil downloads e **US$ 13 M/mês** | Sensor Tower via Fitt Insider, mar/2026 |
+| Hard paywall vs. freemium | D35 **10,7% vs. 2,1%** (5×); top 10% de hard paywall 38,7%; RPI D14 US$ 2,32 vs. 0,27 (9×); retenção Y1 igual (27% vs. 28%); reembolso igual (2,5% vs. 2,9%) | Paywall logo após o onboarding; freemium só se precisar de boca a boca |
+| Duração do trial | trial→pago: ≤4 d 25,5%; 5–9 d 37,4%; 10–16 d 35,4%; 17–32 d 42,5%. H&F prefere 5–9 d (54%). Anual: conversão 24% → 44,6% e 1ª renovação 18,3% → 47,5% ao ir de ≤4 d para 17–32 d (blog) | **7 dias** na v1; testar 14 dias para o plano anual |
+| Plano | Y1 retenção: anual 20–40%, mensal 6–14%, semanal 1–2%. Renovação ativa anual 83,4% (H&F 86,4%). H&F: 59% da receita anual | Anual em destaque, mensal como alternativa, **sem semanal** |
+| Preço | H&F US$ 9,99/mês e ~US$ 39,99/ano; anual mediano geral subiu de US$ 31,60 → 34,80. Baixo preço retém melhor no anual (36% vs. 23% alto) mas RLTV Y1 alto preço US$ 62,19 vs. 10,69; reembolso 2,7% → 4,5% | Faixa média: R$ 24,90–29,90/mês, R$ 149–179/ano no Brasil; US$ 9,99 / 49,99–59,99 fora |
+| Apps de IA | +52% trial start (8,5% vs. 5,6%), +20% download→pago (2,4% vs. 2,0%), RLTV Y1 US$ 30,16 vs. 21,37 (+41%), **mas** retenção 12 m anual 21,1% vs. 30,7%, mensal 6,1% vs. 9,5%; reembolso 4,2% vs. 3,5%; 60% das assinaturas de IA são mensais | Vender a **rotina**, não "a IA"; IA on-device evita custo marginal por usuária (RevenueCat alerta para custo de LLM em apps de IA) |
+| iOS vs. Android | D35 iOS 2,6% vs. Play 0,9% (2,9×); H&F iOS 3,5%; trial→pago praticamente igual (32,6% vs. 32,5%); erros de cobrança = 32,2% dos cancelamentos no Play vs. 15,2% na App Store | iOS primeiro; no Android, tratar billing errors (grace period) |
+| Framework | D35: React Native 2,5%, Native 2,0%, Flutter 1,8%; RPI D60 RN US$ 0,51 / Native 0,31 / Flutter 0,29; variação dentro de cada stack 10–30× maior que entre stacks ("the framework doesn't matter — until it does") | Sem penalidade por nativo; escolha pelo produto (IA on-device = nativo) |
+| Primeiro mês | 35% dos cancelamentos anuais acontecem no mês 1; D0 concentra 50,6% das conversões; 82,1% dos trials de H&F começam no D0 | Onboarding → valor em minutos; lembrete de renovação honesto |
+| Ofertas | só 9,3% dos apps usam promoções (H&F 14%); desconto mediano −50%; apps "hobby" dependem 65–99% de intro offers, top performers 0–10% | Intro offer só como experimento, não como muleta |
+| Metas realistas | mediana de receita 1 ano após lançamento ≈ US$ 72/mês; top quartil US$ 429; 4,6% chegam a US$ 10k MRR em 2 anos; H&F leva >100 dias para US$ 10k | Planejar 12–18 meses de runway |
 
-### 2.2 Brasil
+### 4.3 América Latina vs. América do Norte
 
-- Android domina: **~75–79% Android vs. 21–25% iOS** (StatCounter, jun–ago/2026). Implicação: iOS é minoria, mas concentra renda e conversão; ver seção 8.
-- Ranking de receita (Google Play BR, Similarweb, snapshots mai e ago/2026): **Strava** em 1º; Befit, Foodvisor e Yazio entre o 3º e 5º. Flo e Yazio aparecem nos tops da Appfigures BR. Não encontrei ranking de receita iOS BR confiável e atual.
-- **Queima Diária** (Smart Fit): 438 mil clientes no 4T25 (+19% a/a), R$ 500 M faturados desde a fundação, público majoritariamente feminino; plano anual a R$ 39,90/mês. Prova de que mulher brasileira paga assinatura fitness recorrente.
-- Mercado fitness BR: ABA diz que **~55% das mensalidades de academia são de mulheres**; IBOPE Repucom: **mulheres são 60% dos novos praticantes**; musculação é 16% da oferta mas 39% das matrículas (ABC EVO via Pacto, 2026). Dados de gênero divergem entre fontes (38% a 49,7% de mulheres praticantes).
-- Think with Google BR: buscas por corrida +122%, academias +56%, **whey/creatina +205%** (comparação de dois anos; data exata não indicada).
-- Estudo citado pelo Futuro da Saúde: **75% dos usuários de apps fitness no Brasil são mulheres**, faixa mais engajada 25–34 anos — **dado antigo (~2023), metodologia não clara**.
-- 47% dos brasileiros pesquisam saúde/bem-estar no Google (Agência Qcom, data não verificada).
-
-### 2.3 Mulheres: uso de apps e disposição a pagar
-
-- Flo: ~**80 M MAU** (ago/2026), ~5 M assinantes pagos (jun/2024), receita estimada entre US$ 157 M e US$ 275 M em 2025 (estimativas de terceiros divergem; a empresa não publica), valuation > US$ 1 bi (General Atlantic, jul/2024). É a prova máxima de que mulheres pagam por apps de saúde.
-- Sweat (Kayla Itsines): ~US$ 65 M/ano, 1 M+ usuárias ativas/mês, mas receita caiu de US$ 100 M (2021) → US$ 71 M → US$ 65 M após corte de marketing. Lição: **categoria de treino genérico para mulheres depende de mídia paga pesada**.
-- Calorie trackers: ~58% dos usuários são mulheres (2025), caindo de 62% em 2020 porque foto-IA atraiu homens (Statista via blog do Nutrola — **não verificado na fonte primária**). Cal AI: base principal **homens de 15–25 anos** (Forbes).
-- Estudo PLOS ONE 2025 (n=259 mulheres, China): intenção de continuar usando prediz comportamento de pagamento; valor "de saúde" e utilitário pesam mais que hedônico (Healthcare 2024, n=395). Transferível com cautela.
-- McKinsey Future of Wellness 2026 (prévia): 84% dos consumidores dizem que bem-estar é prioridade máxima; Gen Z e millennials lideram. Sem recorte de gênero disponível.
-- **Não encontrei** pesquisa 2025–2026 com disposição a pagar separada por gênero. Lacuna real.
-
-### 2.4 Tendências de busca e redes sociais (proxies para Google Trends)
-
-| Termo/tendência | Sinal | Fonte | Confiabilidade |
+| Métrica | América Latina | América do Norte | Fonte |
 |---|---|---|---|
-| Pilates (Brasil) | **Maior patamar anual da série histórica do Google em 2025**; destaque Sudeste e Sul | Band/Sala Digital, 09/12/2025 | Boa |
-| Pilates (global) | Modalidade mais reservada no ClassPass pelo 3º ano, **+66% a/a**; força +27%; low-impact +112% | ClassPass Look Back 2025 | Boa (jan–out/2025) |
-| Pilates (ACSM 2026) | "Balance, Flow and Core Strength" em 5º nas tendências 2026 | ACSM via ABPilates | Boa |
-| Treino de força feminino | Strava: treino de força **+21% entre mulheres** em 2025 | Strava Year in Sport 2025 (via blogs) | Média |
-| "Cycle syncing" | Buscas **+124% a/a em 2024**; "cycle syncing workout" **+62% a/a em 2025**; "cycle syncing diet" dobrou desde 2022 | Living360, WorldHealth.net citando Google Trends | Média-baixa (não verificado no Trends) |
-| Ciclo menstrual + treino (BR) | Imprensa BR (Band fev/2026, Terra, Brasil em Folhas set/2026) cobre o tema e **alerta que a ciência não comprova** benefício | Imprensa | Boa |
-| Perimenopausa/menopausa | Mercado global US$ 17,8 bi (2024) → US$ 24,4 bi (2030); imprensa BR (Estado de Minas set/2026) fala em "mercado bilionário" e alerta para *menowashing* | Grand View via EM | Média |
-| #gymtok / #pilates / #menopause (TikTok) | ~259 bi / ~7,5 bi / ~6 bi de views acumuladas | Agregadores de hashtags, sem data | Baixa (ordem de grandeza) |
-| GLP-1 (Brasil) | **R$ 13,3 bi** em Mounjaro+Wegovy+Ozempic (mai/2025–mai/2026); Mounjaro de 208 mil → **4,5 M unidades/mês (+2.070%)**; genérico Ozivy (EMS) lançado 15/06/2026; UBS projeta ~R$ 20 bi em 2026 | ICTQ/Close-Up, InvestNews, NeoFeed/IQVIA | Boa |
-| GLP-1 (EUA) | 11% dos adultos usam para emagrecer (Gallup 2026); apps: Shotsy 250 mil MAU, MeAgain 372 mil cadastros | Medscape 2026 | Boa |
-| Whey/creatina (BR) | Buscas +205% | Think with Google BR | Média |
+| Download → pago D35 | **1,5%** | 2,6% (P90 10,4%) | 2026, "D35 conversion by developer HQ" |
+| Download → trial | 3,0–3,7% | 7,1% (Q3 15%) | 2026 |
+| Trial → pago | ~20–23% (2025: 25,0%, top 53,3%) | 34,2% (Q3 47,9%) | 2026/2025 |
+| RPI D14 / D60 | ~US$ 0,10 / "mais perto da Europa que de IN/SEA" (2025: 0,06–0,09) | US$ 0,38 / 0,55 | 2026/2025 |
+| RLTV Y1 por pagante | abaixo da mediana global (US$ 23) | US$ 32 | 2026 |
+| Preços | **abaixo de MEA em todas as durações** ("unusual given GDP") | mais altos: US$ 9,99 mensal, 39,99 anual | 2026 |
+| Mix de planos | **29% semanal (maior do mundo)** | 40% anual (maior) | 2026 |
+| Crescimento MRR mediano | **+17,2% (maior do mundo)** | — | 2026 |
+| Reembolsos | outliers na casa dos 30%; P25–P75 2–8% | 3,4% (mais previsível) | 2026 |
+| 1ª renovação semanal | 44% | 55% | 2026 |
+| Conversões tardias | mais conversões na semana 6+ | — | 2025 |
+| Caso | ancorar o anual como "só R$ X/mês" subiu trial start +30% e take rate anual +10% sem mudar preço (Latin America) | — | 2026, ensaio "How do monetization strategies differ across geographies?" |
+| Caso | app de meditação dobrou assinaturas na LatAm em 14 dias com preço regional; "em Brasil você pode estar cobrando 5× mais que o concorrente local" | — | blog "5 quick fixes…" |
 
-**Termos sugeridos para você checar no Google Trends (BR, 5 anos):** "contador de calorias", "calorias por foto", "treino de glúteo", "pilates", "treino para mulheres", "menopausa sintomas", "perimenopausa", "Mounjaro", "proteína por dia", "treinar de acordo com o ciclo", "fortalecer assoalho pélvico".
+**Implicação:** no Brasil, esperar ~metade da conversão dos EUA e ~1/4 da receita por instalação; compensar com preço regional, plano anual ancorado em "R$/mês", paywall em PT-BR, e **vender também em EUA/Portugal** desde o dia 1 (mesmo binário, preço por loja).
 
 ---
 
-## 3. Benchmarks de monetização (RevenueCat State of Subscription Apps 2025/2026 e outros)
+## 5. Ideias de app nos setores vencedores, com IA de borda como diferencial real
 
-> Observação: os números abaixo vieram de resumos de terceiros do relatório RevenueCat 2026 (o site da RevenueCat estava bloqueado nesta sessão). Confirme no relatório original.
+Escala 1–5 (5 = melhor). **Demanda** e **Momentum 3 m** vêm do Trends; **Monetização** da RevenueCat; **IA de borda** = quanto a IA no aparelho é diferencial defensável; **Facilidade** = viabilidade para dev solo em 6–10 semanas. Concorrência vem da pesquisa secundária (seção 7) e pesa menos.
 
-| Métrica (Saúde & Fitness) | Mediana | Top quartil / top 10% | Fonte |
-|---|---|---|---|
-| Trial → pago | **37,7%** (2026); 39,9% (2025) | > 51,4% (top 25%); 68,3% (top 10%, 2025) | RevenueCat via Sahha, Singular |
-| Download → pago (D35) | **2,9%** | > 6,2% | RevenueCat 2026 via Sahha |
-| Download → trial | 6,9% | > 23% | idem |
-| Receita por instalação | **US$ 0,48 (D14), US$ 0,66 (D60)** — maior de todas as categorias | — | RevenueCat 2026 via Tasu |
-| Renovação | mensal 57%; **anual 25%** | — | RevenueCat blog 2026 |
-| Mix de receita | **~59–61% vem de planos anuais** (exceção à tendência de semanal) | — | RevenueCat 2026 (um resumo diz 68% mensal — conflito; verificar) |
-| Preço mediano | **US$ 9,99/mês; US$ 4,99/semana** | — | RevenueCat 2026 |
-| Duração de trial | 5–9 dias converte melhor em H&F (46,8%) que 10–16 dias (40,4%); trials ≥17 dias: 42,5% geral | — | RevenueCat blog |
-| Hard paywall vs freemium | Hard paywall converte **~5× mais** downloads em pagantes, com retenção anual semelhante | — | RevenueCat 2026 via BuildMVPFast |
-| 82% dos trials começam no dia da instalação | — | — | Sahha |
+| Ideia | Setor | Demanda 12 m | Momentum 3 m | Monetização | IA de borda | Facilidade | **Geral** |
+|---|---|---|---|---|---|---|---|
+| **C. Força + proteína para mulheres em uso de caneta GLP-1** (rotina diária; foto→proteína on-device; contador de repetições; diário de efeitos) | 1 | 5 (`mounjaro` +61%, `caneta` +275%, `sarcopenia` +54%) | 5 (`caneta` +34%, `ozivy` +26%, perguntas femininas) | 5 (H&F) | 4 | 5 | **4,8** |
+| **I. Pilates em casa / glúteo com câmera on-device** (pilates na parede, elevação pélvica; alinhamento e contagem de repetições sem vídeo sair do aparelho) | 1 | 4 (`pilates` recorde, `glúteo` +30%, `app de treino` +20%) | 5 (`pilates` +11%, `pilates em casa` +35%, `glúteo` +15%) | 5 (H&F) | 4 | 3 | **4,3** |
+| **E. Rotina para perimenopausa/menopausa** (sintomas × sono × treino × proteína com padrões detectados no aparelho) | 2 | 4 (`perimenopausa` +184%, `menopausa` estável alto) | 4 (+28%) | 5 (H&F) | 3 | 4 | **4,1** |
+| **F'. Assoalho pélvico + diástase** (Kegel guiado, programa pós-parto; sem hardware) | 1/2 | 3 (`assoalho pélvico` +14%, `diástase` +18%) | 3 | 4 | 2 | 4 | 3,3 |
+| **A. Dieta por foto (calorias/macros)** | 1 | 2 (`contador de calorias` −45%; rising "grátis") | 1 (−19%; `cal ai` −50%) | 4 (H&F, mas apps de IA churnam 30% mais) | 3 (Foundation Models iOS 27 roda imagem on-device) | 3 | 2,7 |
+| **J. Rotina/hábitos feminina com planner inteligente** | 4 | 3 (`rotina` +26% na janela; "apps para organizar rotina" breakout) | 4 (`planner` +37%) | 2 (Productivity: renovação anual 23%, reembolso 4,7%, 41% IA) | 2 | 5 | 3,0 |
+| **D. Treino sincronizado ao ciclo** | 7 | 2 (`ciclo` −12%; `cycle syncing` ≈ 0 no BR) | 2 | 4 | 3 (dados do ciclo só no aparelho) | 4 | 2,9 |
+| **L. Fertilidade/ciclo privacy-first** | 7 | 2 (`gravidez` −19%; "monitor de fertilidade" +350%) | 3 | 4 | 3 | 4 | 2,9 |
+| **B. Coach de execução (ângulos articulares, "forma correta")** | 1 | 1 (`execução do exercício` flat; `agachamento correto` ≈ 0) | 1 | 3 | 4 | 1 | 2,0 |
+| **G. Análise de pele por câmera** | 3 | 1 (`análise de pele` = 0; `skincare` −19% no trimestre) | 1 | 1 (Photo & Video: trial→pago 22%) | 3 | 3 | 1,8 |
+| **M. Coloração pessoal / provador virtual** | 9 | 1 (`coloração pessoal` −39%; ChatGPT canibaliza) | 2 (pico isolado) | 1 | 3 | 3 | 1,8 |
+| **H. Postura/glúteo por foto (avaliação)** | 1 | 1 (`postura` flat; `corretor postural` −21%) | 1 | 3 | 3 | 4 | 2,0 |
+| **K. Finanças pessoais femininas** | 5 | 1 (0,09× `skincare`; "grátis") | 2 | 3 (Utilities: renovação anual 35%) | 1 | 4 | 2,1 |
 
-**América Latina vs. América do Norte (RevenueCat 2026):**
-- Download → pago D35: **LATAM 1,5% vs. NA 2,6%**; só a NA chega a dois dígitos no top 10%.
-- LATAM tem os **menores preços de todas as regiões** (abaixo até de MEA) e a menor receita por instalação (US$ 0,06–0,09 em 2025).
-- Mas LATAM é a região de **crescimento mais rápido de MRR (+17,2%)**.
-- LTV por pagante: NA US$ 32 vs. mediana global US$ 23.
-- Traduzir o paywall para os 5 principais idiomas gera +37% de LTV — mais que mexer no preço. Um app de meditação dobrou assinaturas na LATAM em 14 dias só com preço regional.
-- Taxas de reembolso atípicas na LATAM chegam à casa dos 30%.
+**Por que C e I lideram:** são as únicas ideias em que **demanda em alta nas duas janelas**, **melhor categoria de monetização** e **IA de borda com função clara** coincidem. Em C a IA de borda resolve privacidade (medicação e peso nunca saem do aparelho — argumento forte após o veredito Flo × Meta [secundário]) e custo marginal zero (RevenueCat alerta que apps de IA com LLM em nuvem têm custo por assinante). Em I a IA de borda resolve o que mata apps de "wall pilates" genéricos (conteúdo passivo): a câmera conta repetições, tempo sob tensão e alinhamento básico em exercícios de solo/parede — poses simples, câmera fixa, sem barra ocluindo o corpo, ao contrário do agachamento com barra da ideia B.
 
-**Preços praticados no Brasil (App Store BR / sites oficiais, nov/2026):**
+**Por que A e B caem:** o Trends mostra o termo de dieta mais buscado caindo 45% a/a e 19% no trimestre, com rising queries dominadas por "grátis"; `cal ai` caiu 50% no trimestre no Brasil; e a RevenueCat mostra que apps de IA convertem melhor mas retêm pior (anual 21,1% vs. 30,7%). Para B, não existe demanda mensurável por "execução correta" em PT-BR, e os termos de forma estão zerados.
 
-| App | Preço BR | Observação |
+---
+
+## 6. Recomendação final e MVP
+
+### 6.1 O produto
+
+**Nome de trabalho:** "Rotina de força e proteína para mulheres em transformação" — v1 posicionada para quem usa caneta (GLP-1), com treino de glúteo/pilates em casa e proteína por foto; v1.5 adiciona o "modo 40+" (perimenopausa).
+
+**Promessa:** "Perca gordura, não músculo — 25 minutos por dia, sem academia, com seus dados só no seu celular."
+
+**Por que juntar C + I (+E):** a mesma usuária aparece nas três rising lists — "pode tomar mounjaro amamentando", "mounjaro corta o efeito do anticoncepcional", "pilates na parede", "elevação pélvica", "quantos gramas de proteína por kg", "sintomas da menopausa aos 48 anos". É uma mulher de 30–55 anos mudando o corpo e procurando rotina em casa. Um único motor (rotina diária + proteína + treino em casa + registro de sintomas) atende às três com *modos* diferentes.
+
+### 6.2 Escopo da v1 (6–10 semanas, iOS nativo)
+
+| Semana | Entrega | Dado que sustenta |
 |---|---|---|
-| MyFitnessPal Premium | **R$ 31,90/mês; R$ 162,90/ano** (também R$ 82,90 e R$ 329,90 listados — Premium+?) | Ficha App Store BR; EUA: US$ 79,99/ano Premium, US$ 99,99 Premium+ |
-| Queima Diária | R$ 39,90/mês no plano anual | Site oficial |
-| Olho no Prato (foto-IA, BR) | R$ 9,90/mês; **R$ 49,90/ano** | App Store BR |
-| Vitaliz AI (foto-IA, BR) | R$ 119,90/ano | Site |
-| Cal AI (EUA) | US$ 2,99–3,99/sem; US$ 9,99/mês; **US$ 29,99/ano** (testes A/B de US$ 19,99 a 49,99); trial 3 dias; hard paywall para foto | Blogs de concorrentes — aproximado |
-| MacroFactor (EUA) | US$ 11,99/mês; US$ 71,99/ano; sem versão grátis | Blogs |
-| Yazio PRO (EUA) | ~US$ 40–48/ano | Blogs |
-| Lose It! (EUA) | subiu de US$ 39,99 → US$ 79,99/ano e removeu mensal | Blogs |
-| Balance+ (menopausa, EUA) | ~US$ 4–11/mês; US$ 50–99/ano | Blog out/2026 |
-| Apps de postura (EUA, 2026) | US$ 9,99/mês; US$ 39,99–99,99/ano | App Store |
-| Apps gestação (mercado) | US$ 4,99–19,99/mês; US$ 39,99–99,99/ano; 21,8% dos usuários pagam e geram 68% da receita | Dataintelo/Mordor — relatórios genéricos |
+| 1–2 | Onboarding em PT-BR (peso, altura, objetivo, nível, "usa caneta? qual dia aplica?" opcional, fase da vida) → meta de proteína 1,2–1,6 g/kg [secundário: consenso 2025] e plano de 3 treinos/semana. **Hard paywall** com trial de **7 dias**, plano **anual ancorado em "R$ 14/mês"** + mensal R$ 29,90. SwiftData criptografado, sem conta obrigatória. | RevenueCat: hard paywall 5×; H&F 54% trials 5–9 d; LatAm +30% trial start com âncora mensal; 59% da receita de H&F é anual |
+| 3–4 | **Registro de proteína:** base TACO/TBCA embarcada, favoritos, código de barras (Vision + Open Food Facts), **foto → itens + porção aproximada com Foundation Models (iOS 27, on-device)**, sempre com faixa de incerteza e correção em 1 toque; fallback: busca manual (ou Gemini Flash opt-in). | Trends: "quantos gramas de proteína por kg" +2.750%; RevenueCat: custo marginal de IA em nuvem pressiona margem |
+| 5–6 | **Treino em casa guiado por câmera:** 2 programas (halteres/elástico; pilates de solo e parede) com 20–30 exercícios em vídeo curto; **Vision 2D (`VNDetectHumanBodyPoseRequest`) conta repetições, tempo sob tensão e amplitude** em 6–8 exercícios de solo (elevação pélvica, ponte, afundo, agachamento livre, prancha, dead bug, wall pilates). Vídeo nunca é gravado — só keypoints. | Trends: `pilates na parede` +400%, `elevação pélvica` +180%, `ponte de glúteo` breakout, `treino funcional para fazer em casa` breakout |
+| 7 | **Diário de bem-estar (modo caneta):** náusea, apetite, constipação, energia, sono, hidratação, dia da aplicação (sem recomendar dose); gráficos semanais on-device; lembretes gentis. | Trends: "efeitos colaterais mounjaro" é o termo-satélite mais buscado (55 de média); "mounjaro dá sono" +180% |
+| 8 | Apple Health (peso, passos, sono), widgets/Live Activity "proteína de hoje", exportar/apagar dados (LGPD), tela "Fontes" e disclaimers (Apple 1.4.1). | RevenueCat: 35% dos cancelamentos anuais no mês 1 → valor visível no dia 0 |
+| 9–10 | Beta TestFlight com 30–50 mulheres de grupos de "caneta" e de pilates em casa; ajustar paywall; publicar em BR + EUA + PT. | RevenueCat: D0 = 50% das conversões; traduzir paywall vale +37% LTV [relatório 2026, via resumo — verificar] |
 
-**Faixa recomendada para o seu app (Brasil):** R$ 24,90–29,90/mês e **R$ 149–189/ano** (ancorar como "R$ 12–16/mês"), trial de 7 dias, hard paywall após onboarding. Para iOS EUA/Europa: US$ 9,99/mês e US$ 49,99–59,99/ano.
+**v1.5 (semanas 11–16):** modo 40+ (fogachos, sono, humor, padrões detectados on-device entre sintomas × treino × proteína), conteúdo SOBRAC-based, integração Apple Watch. **v2:** Android nativo (Kotlin + ML Kit Pose + ML Kit GenAI/Gemini Nano onde houver), B2B2C com farmácias/telemedicina.
 
----
+**Fora da v1:** calorias totais como foco (Trends em queda), "forma perfeita" com ângulos (sem demanda, alto risco de falso positivo), coloração/pele (encaixe fraco), comunidade, chat com IA.
 
-## 4. Avaliação detalhada por ideia
+### 6.3 Métricas-alvo (benchmarks RevenueCat 2026, mediana → top quartil de Health & Fitness)
 
-### 4.1 Ideia A — Dieta por foto (calorias, proteína, carbo, gordura)
-
-**Demanda**
-- Maior demanda bruta do estudo: nutrição com IA foi um dos segmentos de maior crescimento de receita em 2025 (Sensor Tower). Cal AI: **15 M+ downloads, > US$ 30 M/ano** (MyFitnessPal/TechCrunch, mar/2026); fundador alega US$ 40 M+; estimativas de terceiros US$ 2 M/mês (jul/2026). Gastava > US$ 1 M/mês em anúncios (não verificado).
-- Mas: público do Cal AI é **masculino, 15–25 anos** (Forbes). Mulheres são ~58% dos calorie trackers em geral (não verificado).
-
-**Concorrência (saturação altíssima)**
-- Cal AI **adquirido pelo MyFitnessPal** (fechado dez/2025, anunciado 02/03/2026) — o incumbente de 200 M de contas agora tem a melhor marca de foto-IA.
-- MyFitnessPal Meal Scan, Yazio, Lose It!, MacroFactor, SnapCalorie (LiDAR em iPhone Pro), Foodvisor (top 5 receita Play BR), Fitia.
-- **Em PT-BR já há dezenas de clones**: ContaCal (WhatsApp), CalorIA, Olho no Prato (R$ 49,90/ano), Vitaliz AI (R$ 119,90/ano), NutriPic, Nutrion (usa Gemini 2.5) — competição em preço já começou.
-
-**Reclamações recorrentes (lacunas)**
-- Porções e pratos mistos: variação de 25–50%; mesma foto re-escaneada dá valores diferentes; estimativa "pela metade" vs. balança; Cal AI afirma "90% de precisão" sem citar fonte.
-- Estudo independente (NIH, congresso NUTRITION 2026, cozinha metabólica controlada, 4 apps): **subestimam calorias em ~1/3; Cal AI errou ~345 kcal em média; gordura subestimada em ~30 g** (via Healio, ago/2026). LLMs genéricos: erro médio ~36% (GPT-4o/Claude 3.5) e ~64% (Gemini 1.5 Pro) em 52 fotos; GPT-5 ~30% só com foto, ~14% com ingredientes informados.
-- Lacunas exploráveis: comida brasileira (arroz-feijão-farofa, marmita, PF), foco em **proteína** (não só calorias), correção rápida por voz/texto, consistência (mesmo prato = mesmo número), transparência de incerteza ("entre 28 e 40 g de proteína").
-
-**Viabilidade técnica on-device (solo)**
-- **iOS 27 (jun/2026): Foundation Models aceita imagem + texto no aparelho**, com ferramentas de Vision (OCR, código de barras) chamáveis pelo modelo — isso torna "foto → alimentos → porção aproximada" viável 100% on-device em iPhones compatíveis com Apple Intelligence (iPhone 15 Pro+). Sem custo de API. Precisão do modelo pequeno (~3B) para porções **não foi medida publicamente** — teste com 50 pratos brasileiros antes de prometer.
-- **Android: ML Kit GenAI (Gemini Nano) tem "image description"** via AICore em Pixel 9/10/11, Galaxy S25/S26 e alguns MediaTek/Snapdragon — cobertura pequena na base brasileira (Android de entrada). Alternativa: Gemma 3n/4 via LiteRT (modelo de ~3,6 GB — pesado) ou classificador Core ML/TFLite fine-tunado (só reconhece classes, não porção).
-- **Fallback em nuvem é barato**: Gemini 2.5 Flash US$ 0,30/M tokens de entrada; uma foto custa ~258 tokens (imagem ≤384px; imagens maiores são fatiadas em blocos de 258 tokens — valor da documentação do Google segundo meu conhecimento, confirme) → **~US$ 0,0003–0,002 por foto com prompt e saída; ~US$ 0,05–0,30/usuária/mês a 5 fotos/dia**. Totalmente absorvível em R$ 149/ano.
-- Bases nutricionais: **TACO (Unicamp)** — sem API oficial; APIs de terceiros (REST com 1.000 req/mês grátis; GraphQL open source) — verificar licença/manutenção. **TBCA (USP/FoRC)**: ~1.900–3.500 alimentos, app Android, sem API oficial encontrada. **Open Food Facts**: códigos de barras, API aberta, cobertura BR razoável. USDA FoodData Central para fallback.
-- Porção continua sendo o problema não resolvido: LiDAR de celular tem resolução espacial insuficiente para avaliação dietética (revisão 2026, arXiv).
-
-**Monetização**: comprovada (Cal AI US$ 29,99/ano; MFP R$ 162,90/ano no BR), mas compressão de preço em PT-BR (R$ 49,90/ano). Como produto standalone, você competiria em preço contra clones; como **recurso** dentro de um app de nicho, vira diferencial sem precisar ser o melhor scanner do mundo.
-
-**Riscos**: Apple 1.4.1 exige disclose de metodologia para "medições de saúde" — apps de calorias passam com disclaimer e fontes (TACO/USDA). Risco reputacional se mulher confiar em -33% kcal. Saturação → CAC alto.
-
-**Notas**: Demanda 5 · Concorrência (quanto menor, melhor) 1 · Diferenciação 2 · Facilidade técnica 3 · Monetização 4 · **Geral 3,0**
-
----
-
-### 4.2 Ideia B — Coach de execução (pose estimation + ângulos articulares)
-
-**Demanda**
-- Nicho de "form check" existe (Gymscore, CueForm AI, AiKYNETIX, FormLens, Zing Vision) mas **não há nenhum caso público de receita relevante** em B2C. Mulheres em musculação crescem (+21% Strava; "muscle mommy" 44 M views), mas a dor delas é "não sei montar o treino/não vejo resultado", mais que "quero ângulo do joelho".
-
-**Concorrência e histórico (sinal de alerta)**
-- **Kemtai** (Israel) começou em fitness, admitiu que precisava de mais precisão e **migrou para fisioterapia B2B** ("mercado difícil").
-- **Zenia** (yoga com câmera) foi **absorvida pela Zing Coach** (fev/2024).
-- **Tempo** (hardware 3D, US$ 220 M Series C) segue operando (218 funcionários, set/2026) — mas é hardware.
-- **Zing Vision**: avaliações dizem que "detecta um arqueamento leve nas costas", mas também "alerta erro quando a execução estava certa", "feedback chega depois do movimento", problemas em pouca luz. Nota Trustpilot 3,5; 32% de 1 estrela (maioria por cobrança). Gymscore: travamentos no upload de vídeo.
-- Guia 2026: "AI form checkers identificam erros óbvios, mas ainda não substituem um coach".
-
-**Viabilidade técnica (solo)**
-- Modelos: **Apple Vision** (`VNDetectHumanBodyPoseRequest` 2D 19 pontos; `VNDetectHumanBodyPose3DRequest` 3D 17 articulações em metros, iOS 17+), **MediaPipe Pose Landmarker/BlazePose** (33 pontos, 3D "world landmarks", iOS/Android), **MoveNet** (17 pontos 2D, mais rápido: 34 fps vs 11–12 fps BlazePose em Pixel 5, dado de fornecedor).
-- Precisão: preprint 2025 — pipeline pós-processado sobre BlazePose atinge **erro angular médio de 10,6°** (meta de 12° para coaching); BlazePose cru é ~17% pior. Comparativos: MoveNet mais robusto no geral; MediaPipe melhor em 7 de 14 ações. **Nenhum benchmark público do 3D da Apple.**
-- Problemas práticos: oclusão (barra, banco, roupa larga), ângulo de câmera (precisa tripé lateral), profundidade monocular ruim para agachamento visto de frente, iluminação de academia, 1 pessoa por vez. Regras de "forma correta" dependem de antropometria (fêmur longo = tronco mais inclinado) → falsos positivos que irritam.
-- Esforço de MVP realista para 5 exercícios (agachamento, hip thrust, afundo, RDL, remada) com regras + overlay: 8–12 semanas só nisso, sem conteúdo.
-- Flutter/React Native: plugins MediaPipe existem mas são novos, pequenos, Android-first (flutter_mp_pose_landmarker 0.1.8 abr/2026, "iOS requer mais testes"; RN: `@gymbrosinc/react-native-mediapipe-pose`, VisionCamera v4; Expo Go não roda). Nativo é o caminho seguro.
-
-**Monetização**: incerta; público disposto a pagar por isso é pequeno e majoritariamente masculino (powerlifting). Pode ser **recurso** ("conte minhas repetições e avise se eu não desci o suficiente") dentro de um app de rotina.
-
-**Riscos**: Apple 1.4.1 se prometer "evitar lesão"; frustração com falsos alertas → churn; vídeo do corpo é dado sensível (edge AI resolve, mas a percepção "a câmera me filma na academia" é barreira para mulheres).
-
-**Notas**: Demanda 2 · Concorrência 3 · Diferenciação 3 · Facilidade técnica 1 · Monetização 2 · **Geral 2,6**
-
----
-
-### 4.3 Ideia C — Força + proteína para mulheres em uso de GLP-1 (companion de "caneta")
-
-**Demanda**
-- Brasil: **R$ 13,3 bi** em 12 meses; **Mounjaro 4,5 M unidades/mês** (mai/2026, +2.070% a/a); patente da semaglutida caiu em 20/03/2026 e **Ozivy (EMS) lançado em 15/06/2026** → preço cai, base explode em 2026–2027. UBS: ~R$ 20 bi em 2026.
-- Dor clínica concreta: **26–40% do peso perdido é massa magra** (SURMOUNT-1/STEP 1); abstract ENDO 2025 sugere que **mulheres perdem massa magra desproporcionalmente** e que mais proteína na 12ª semana reduziu a perda (preliminar). Consenso 2025 de 4 sociedades: **1,2–1,6 g proteína/kg/dia + treino de força**. Medscape 2026: "nichos como mulheres na menopausa em GLP-1" estão sendo atacados por founders.
-- EUA: Shotsy 250 mil MAU, MeAgain 372 mil cadastros, MyNetDiary lançou "GLP-1 Companion"; Gallup: 11% dos adultos americanos usam GLP-1. Categoria "GLP-1 companion" reconhecida (Trends.vc lista 20 empresas).
-- **Não encontrei** recorte por sexo dos usuários de GLP-1 no Brasil — lacuna; em pesquisas internacionais mulheres são maioria dos usuários para emagrecimento (não verificado aqui).
-
-**Concorrência**
-- Em PT-BR: praticamente **nenhum app dedicado** encontrado. Apps de calorias genéricos não endereçam náusea, saciedade precoce, sarcopenia, hidratação, constipação, "food noise".
-- Risco de entrada: MyFitnessPal/Cal AI podem lançar modo GLP-1 (MyNetDiary já lançou). Diferencial defensável: PT-BR, comida brasileira, treino em casa com halteres, acolhimento feminino, privacidade.
-
-**Viabilidade técnica**: **a mais simples do estudo**. Núcleo é produto/conteúdo: meta proteica, registro rápido (foto on-device/nuvem barata, código de barras OFF, favoritos), treino de força 3×/semana com vídeos, lembretes de dose (sem recomendar dose), diário de efeitos colaterais, medidas corporais. Edge AI opcional: estimativa de proteína por foto (Foundation Models iOS 27) e contador de repetições (Vision 2D, bem mais fácil que "forma correta").
-
-**Monetização**: público já gasta **R$ 1.000–2.000+/mês** no remédio; R$ 29,90/mês é <3% disso — ancoragem perfeita ("proteja o músculo que você está pagando para perder peso"). Planos anuais fazem sentido (tratamento dura 12+ meses). Possível B2B2C com farmácias/clínicas/telemedicina (Ozivy/EMS, redes de farmácia).
-
-**Riscos**
-- **Apple 1.4.1**: diário de medicação é permitido (Apple Health faz isso); NÃO sugerir dose, titulação ou "pule a dose". Incluir fontes (consenso 2025) e disclaimer.
-- **ANVISA RDC 657/2022**: software "para bem-estar" (exercício, hábitos) está **fora** da regulação de SaMD, desde que não prometa tratar/diagnosticar. Não falar em "tratamento de obesidade".
-- **LGPD**: uso de medicamento = dado sensível de saúde (art. 5º, II; art. 11). Armazenar on-device, sem analytics de eventos de saúde para terceiros (lição Flo × Meta). Criptografia + opção de exportar/apagar.
-- Publicidade de medicamento controlado: não usar nomes comerciais em anúncios de forma que pareça promover o remédio (termos como "caneta", "GLP-1", "em tratamento para emagrecimento" são seguros).
-- Dependência de ciclo de hype: se preço do genérico cair muito, base cresce; se houver restrição regulatória, encolhe.
-
-**Notas**: Demanda 4 · Concorrência 5 · Diferenciação 4 · Facilidade técnica 5 · Monetização 4 · **Geral 4,2**
-
----
-
-### 4.4 Ideia D — Treino e nutrição sincronizados ao ciclo menstrual
-
-**Demanda**: buscas "cycle syncing" +124% (2024) e "cycle syncing workout" +62% (2025); tendência TikTok reconhecida pela imprensa brasileira (Band, Terra, Brasil em Folhas 2026). Público 18–35, muito ativo no TikTok/Instagram → aquisição orgânica mais barata.
-
-**Concorrência**: **Flo** (80 M MAU) já vende "cycle syncing" de treino/comida/trabalho no Premium; 28 (vídeos por fase), Wild.AI e FitrWoman (atletas), Clue (sem treino), Lively, Svelta. No Brasil: nenhum dedicado encontrado.
-
-**Diferenciação possível**: privacidade radical (dados do ciclo só no aparelho — depois do júri da Califórnia condenar a Meta por coletar dados de menstruação do Flo em 01/08/2025, e 84% dos apps de ciclo compartilharem dados com terceiros segundo ORCHA), treino de força periodizado em PT-BR, integração com Apple Health/Health Connect.
-
-**Viabilidade técnica**: fácil (regras por fase + conteúdo). Edge AI real é pequena: previsão de ciclo on-device e, opcionalmente, foto de alimentos.
-
-**Monetização**: moderada — público mais jovem, menor renda, Flo oferece quase de graça no plano premium. Preço BR provavelmente R$ 14,90–19,90/mês.
-
-**Riscos**: **ciência fraca** (revisões sistemáticas não acham benefício; imprensa BR já faz essa crítica) → risco reputacional e de rejeição 1.4.1 se alegar performance. Previsão de ciclo + "anticoncepção" entra na RDC 657 — não prometer isso. Contrainte: muita usuária usa anticoncepcional hormonal e não tem ciclo natural.
-
-**Notas**: Demanda 4 · Concorrência 3 · Diferenciação 3 · Facilidade técnica 4 · Monetização 3 · **Geral 3,4**
-
----
-
-### 4.5 Ideia E — Rotina para perimenopausa/menopausa (35–60 anos)
-
-**Demanda**
-- Mercado global de menopausa US$ 17,8 bi (2024) → US$ 24,4 bi (2030) (Grand View via Estado de Minas, set/2026). Apps de "hormone balancing": estimativas de **US$ 0,6 bi a US$ 1,8 bi em 2026** (relatórios divergem 3×; baixa confiabilidade).
-- UVA: 55% das mulheres de 30–35 anos relatam sintomas moderados/severos de perimenopausa (citado por Living360). Varejo brasileiro (Vichy/Neovadiol) está "educando" o público via Instagram (Times Brasil). Imprensa BR (set/2026) trata como mercado bilionário em formação.
-- ClassPass: Pilates e low-impact (+112%) crescem — modalidades preferidas desta faixa. Mulheres 40+ têm renda e tempo; "Silver fitness" nas redes Smart Fit/Bodytech.
-- **Lacuna**: não encontrei volume de busca BR para "menopausa"/"perimenopausa" — checar no Trends.
-
-**Concorrência**: EUA/UK — Balance (Editors' Choice, ORCHA; balance+ US$ 50–99/ano), Midday (Lisa Health, clínica), Peppy (B2B), Health & Her, Clue. **Brasil**: Raquel Menopausa (gratuito, pesquisa com 300 usuárias out/2026), Namu Mulher (B2B, nov/2026). Ou seja, **nenhum app pago B2C em PT-BR consolidado**.
-
-**Diferenciação**: rotina diária prática (força 3×/semana para massa óssea/muscular, proteína 1,2–1,6 g/kg, sono, registro de fogachos/humor com padrões detectados no aparelho), linguagem brasileira, sem venda de suplemento (anti-menowashing). Edge AI: detecção de padrões de sintomas × sono × treino on-device; foto de refeição para proteína; contador de repetições.
-
-**Viabilidade técnica**: fácil-média (conteúdo + regras + ML leve). Integração com Apple Watch/Health (sono, FC) é diferencial.
-
-**Monetização**: alta — público com renda, problema crônico (LTV longo: 5–10 anos de climatério), já paga por suplementos e consultas. Preço BR R$ 29,90/mês ou R$ 189/ano é plausível. Possível B2B (RH/benefícios, como Peppy/Namu).
-
-**Riscos**: **linha tênue com medicina** (TRH, sintomas severos) → manter como bem-estar, encaminhar para médico, citar fontes (SOBRAC, NAMS). Apple 1.4.1 exige fontes/disclaimer. Aquisição: público 40+ é menos TikTok, mais Instagram/Facebook/YouTube e indicação médica — CAC pode ser maior, mas concorrência em anúncios é menor que em "calorias".
-
-**Notas**: Demanda 4 · Concorrência 4 · Diferenciação 4 · Facilidade técnica 4 · Monetização 4 · **Geral 4,0**
-
----
-
-### 4.6 Ideia F — Gestação/pós-parto + assoalho pélvico
-
-**Demanda**: mercado de apps de gestação/pós-parto 2026 estimado entre **US$ 0,41 bi e US$ 2,1 bi** (quatro relatórios divergem 5×). Incontinência urinária: prevalência global ~27% das mulheres (Rostami 2025, variação 3–60%); estudo BR 2025 em praticantes de atividade física: muitas conhecem fisioterapia pélvica, poucas fizeram. Demanda constante (nascimentos) mas **janela de uso curta** (~12–18 meses), e cada usuária precisa ser reconquistada.
-
-**Concorrência**: Baby2Body, Juna, Expectful, Every Mother (EUA); trainers com hardware Elvie (US$ 149–249) e Perifit (US$ 99–149), Squeezy (NHS, US$ 3). Brasil: apps de gestação de grandes players (BabyCenter etc.) são de conteúdo, não de treino. Fisioterapia pélvica cresce como profissão no Brasil.
-
-**Viabilidade técnica**: conteúdo + lembretes; Kegel guiado por áudio/háptico; detecção de diástase por foto é **arriscada** (alegação diagnóstica). Edge AI limitada.
-
-**Monetização**: 21,8% pagam e geram 68% da receita; US$ 5–15/mês em iOS (relatórios genéricos). LTV curto é o problema central.
-
-**Riscos**: gestação é zona médica — Apple e ANVISA mais exigentes; responsabilidade em caso de evento adverso; LGPD sensível.
-
-**Notas**: Demanda 3 · Concorrência 3 · Diferenciação 3 · Facilidade técnica 4 · Monetização 2 · **Geral 3,0**
-
----
-
-### 4.7 Ideia G — Análise de pele por câmera
-
-**Demanda**: alta entre mulheres, mas o mercado de "AI skin analysis" (US$ 2,1–3,8 bi em 2026, relatórios divergentes) é **B2B/varejo**: Perfect Corp (YouCam, Skincare Pro) faturou **US$ 69,2 M em 2025**; Haut.AI vende para NAOS/Bioderma; L'Oréal Skin Genius é gratuito para vender creme.
-
-**Concorrência/diferenciação**: marcas oferecem análise grátis; apps independentes (TroveSkin, Skin Bliss) — não encontrei receita. Difícil cobrar assinatura pelo que a Vichy dá de graça.
-
-**Viabilidade técnica**: Vision face landmarks + modelo de classificação de acne/manchas on-device é factível, mas **alegações de "medir" pele** caem na 1.4.1 (validação de metodologia) e iluminação/câmera variam demais.
-
-**Monetização**: fraca em assinatura; melhor em afiliação de produtos (modelo diferente do pedido).
-
-**Notas**: Demanda 3 · Concorrência 2 · Diferenciação 2 · Facilidade técnica 3 · Monetização 2 · **Geral 2,4**
-
----
-
-### 4.8 Ideia H — Avaliação de postura/glúteo por foto
-
-**Demanda**: baixa e pontual (uma avaliação, depois esquece). Entre fev e abr/2026 surgiram vários apps idênticos na App Store (Posture Scan, PosturePal US$ 89,99–99,99/ano, StatueMax on-device US$ 39,99/ano, FixMyPosture US$ 180,99/ano, PhysioAI) — a maioria **sem avaliações** → sinal de mercado pequeno saturado por indies.
-
-**Viabilidade**: fácil (Vision 2D + ângulos), por isso saturou. "Avaliação de glúteo" por foto é tecnicamente frágil (volume ≠ silhueta) e esbarra em body shaming.
-
-**Notas**: Demanda 2 · Concorrência 2 · Diferenciação 2 · Facilidade técnica 4 · Monetização 2 · **Geral 2,0**
-
----
-
-## 5. Tabela comparativa
-
-Escala 1–5 (5 = melhor para você). "Concorrência" = quanto menos saturado, maior a nota. "Facilidade técnica" = 5 significa fácil para dev solo em 6–10 semanas.
-
-| Ideia | Demanda (mulheres) | Concorrência | Diferenciação | Facilidade técnica | Monetização | **Geral** |
-|---|---|---|---|---|---|---|
-| **C. Força + proteína p/ mulheres em GLP-1** | 4 | 5 | 4 | 5 | 4 | **4,2** |
-| **E. Perimenopausa/menopausa** | 4 | 4 | 4 | 4 | 4 | **4,0** |
-| D. Treino sincronizado ao ciclo | 4 | 3 | 3 | 4 | 3 | 3,4 |
-| A. Dieta por foto | 5 | 1 | 2 | 3 | 4 | 3,0 |
-| F. Gestação/pós-parto + pélvico | 3 | 3 | 3 | 4 | 2 | 3,0 |
-| B. Coach de execução (pose) | 2 | 3 | 3 | 1 | 2 | 2,6 |
-| G. Pele por câmera | 3 | 2 | 2 | 3 | 2 | 2,4 |
-| H. Postura/glúteo por foto | 2 | 2 | 2 | 4 | 2 | 2,0 |
-
-Pesos usados no "Geral": demanda 25%, concorrência 15%, diferenciação 20%, facilidade técnica 20%, monetização 20%.
-
----
-
-## 6. Recomendação ranqueada e raciocínio
-
-### 1º — Construir **C** agora, com **E** como expansão natural (mesmo app, mesma persona 35+)
-
-Por quê:
-1. **Timing único no Brasil**: genérico de semaglutida (jun/2026) + Mounjaro em 4,5 M unidades/mês criam milhões de novas usuárias em 2026–2027 com uma dor que nenhum app PT-BR resolve: perder peso sem perder músculo. Não há "Cal AI" dessa categoria aqui ainda.
-2. **Disposição a pagar comprovada por comportamento**: quem gasta R$ 1.000+/mês no remédio e já compra whey (+205% buscas) paga R$ 29,90/mês sem fricção. Isso compensa a conversão LATAM mais baixa (1,5% D35).
-3. **Baixo risco técnico**: o núcleo é rotina + conteúdo + registro. A edge AI entra como diferencial (foto → proteína on-device no iOS 27; contador de repetições com Vision), não como pré-requisito. Você consegue lançar em 6–10 semanas.
-4. **Privacidade como argumento de venda**: "seus dados de medicação, peso e ciclo nunca saem do seu celular" — concreto e verificável, ao contrário do que o Flo prometia. Reduz risco LGPD e evita o erro do Flo (SDKs de analytics com eventos de saúde).
-5. **Caminho de expansão**: a mesma usuária 35–55 entra na perimenopausa; força + proteína + sono + registro de sintomas são o mesmo motor. A ideia E dobra o mercado endereçável sem reescrever o app.
-
-### 2º — E (menopausa) sozinha, se você preferir evitar qualquer proximidade com medicamento
-Mercado maior e mais duradouro que GLP-1, concorrência BR quase zero, mas aquisição mais lenta e tom mais "médico". Nota 4,0.
-
-### 3º — D (ciclo), como módulo opcional, não como produto
-Boa para aquisição orgânica no TikTok, mas ciência frágil e Flo já faz. Ofereça "ajuste pelo ciclo" como toggle dentro do app, com linguagem honesta ("algumas mulheres preferem…").
-
-### 4º — A (dieta por foto) como recurso, nunca como produto
-Você não vai vencer MyFitnessPal+Cal AI nem os clones a R$ 49,90/ano. Mas um scanner de **proteína** on-device, calibrado para comida brasileira (TACO/TBCA), dentro do app C/E, é um diferencial que ninguém pequeno terá.
-
-### 5º–8º — F, B, G, H
-B é a mais tentadora tecnicamente e a que mais consumiria seu tempo com menor retorno: todos os players consumer de "form check" por câmera ou pivotaram (Kemtai), foram absorvidos (Zenia) ou colecionam reclamações de falsos alertas (Zing). Use pose estimation só para **contar repetições e tempo sob tensão** (problema 10× mais fácil e útil para quem treina em casa).
-
----
-
-## 7. MVP sugerido (v1 em 6–10 semanas) — "Rotina de força + proteína para mulheres 35+ (modo caneta GLP-1)"
-
-**Princípios**: iOS-first nativo, hard paywall após onboarding (trial 7 dias), tudo on-device por padrão, zero SDK de analytics com dados de saúde.
-
-| Semana | Entrega |
-|---|---|
-| 1–2 | Onboarding (peso, altura, objetivo, nível, "uso caneta? qual dia da aplicação?" opcional, fase da vida: ciclo regular / perimenopausa / menopausa) → meta de proteína (1,2–1,6 g/kg com fontes) e plano de 3 treinos/semana. Paywall (RevenueCat ou StoreKit 2). Modelo de dados em SwiftData com criptografia. |
-| 3–4 | **Registro de proteína**: busca em base TACO/TBCA embarcada (SQLite), favoritos, código de barras (Vision + Open Food Facts), **foto → lista de alimentos + estimativa de porção com Foundation Models (iOS 27)**, com fallback de busca manual em aparelhos sem Apple Intelligence (ou Gemini Flash opcional com consentimento). Sempre mostrar faixa de incerteza e botão "ajustar porção". |
-| 5–6 | **Treino de força em casa/academia**: 2 programas (halteres/elástico em casa; máquinas básicas) com vídeos curtos de 20–30 exercícios (pode gravar você mesma/o ou licenciar), timer, registro de carga, progressão automática. **Contador de repetições com Vision 2D** para 4–5 exercícios simples (agachamento, afundo, elevação pélvica, remada curvada, flexão apoiada) — só contagem + "amplitude baixa", sem julgar "forma". |
-| 7 | **Diário de bem-estar** (opcional): náusea, apetite, constipação, energia, fogachos, sono, hidratação; lembretes gentis (água, proteína no café, dia de aplicação sem citar dose). Gráficos semanais on-device (peso, proteína, treinos, sintomas). |
-| 8 | Integração Apple Health (peso, passos, sono, treinos) · Widgets e Live Activity para "proteína de hoje" · Exportar/apagar dados (LGPD). |
-| 9–10 | Polimento, beta no TestFlight com 30–50 mulheres de grupos de Facebook/Telegram de "caneta" e de perimenopausa, ajuste de paywall e preço, textos de 1.4.1 (fontes, disclaimers), lançamento. |
-
-**Fora da v1**: Android, modo ciclo completo, chat com IA, comunidade, receitas elaboradas, integração com Apple Watch nativa (fazer na v1.1).
-
-**Métricas de validação (60 dias)**: trial-start ≥ 10% dos downloads; trial→pago ≥ 35% (mediana H&F 37,7%); D30 retention de pagantes ≥ 40%; ≥ 3 registros de proteína/dia nas pagantes.
-
----
-
-## 8. Posicionamento e nicho
-
-- **Nome/claim (exemplos)**: "Perca gordura, não músculo." / "A rotina de força e proteína para mulheres em tratamento com caneta — e para a fase 40+."
-- **Promessas verificáveis**: (1) meta de proteína baseada em consenso médico 2025; (2) treino de força de 25 min, 3×/semana; (3) seus dados nunca saem do seu iPhone — sem rastreadores.
-- **Não prometer**: emagrecimento, tratamento de obesidade/menopausa, ajuste de dose, diagnóstico, "forma perfeita".
-- **Canais**: grupos de Facebook/Telegram/WhatsApp de usuárias de Mounjaro/Ozempic/Ozivy (enormes no Brasil), creators de nutrição e musculação feminina no Instagram/TikTok (micro-influenciadoras 10–100 mil), parcerias com nutricionistas e fisios pélvicas (código de indicação), SEO em PT-BR ("quanto de proteína tomando Mounjaro", "perda de massa magra Ozempic treino").
-- **Preço**: R$ 29,90/mês · **R$ 169,90/ano** (ancorar "R$ 14/mês"); trial 7 dias; sem plano semanal (evita reembolso/churn LATAM). Internacional: US$ 9,99/mês · US$ 59,99/ano.
-- **Expansão**: v1.5 modo perimenopausa com registro de fogachos/sono e padrões on-device; v2 Android; v2.5 B2B2C (farmácias, telemedicina, RH).
-
----
-
-## 9. Stack técnica recomendada
-
-| Camada | Recomendação | Por quê |
+| Métrica | Mínimo aceitável (mediana H&F) | Meta (top quartil) |
 |---|---|---|
-| Plataforma v1 | **iOS nativo (Swift 6 / SwiftUI / SwiftData)**, iOS 17+ com recursos de IA em iOS 26/27 | Toda a edge AI que você quer é nativa Apple: Foundation Models (imagem+texto on-device, iOS 27), Vision (pose 2D/3D, OCR, barcode), Core ML, HealthKit, StoreKit 2. Zero ponte, zero plugin abandonado. iOS = 22% do Brasil, mas é onde está a renda e a conversão; RevenueCat mostra que H&F monetiza melhor em iOS. |
-| Pose/repetições | `VNDetectHumanBodyPoseRequest` (2D, 19 pontos) para contagem; 3D só se precisar de ângulo no plano sagital | 2D é suficiente para contar e detectar amplitude; mais estável e rápido |
-| Foto → alimento | Foundation Models com `@Generable` (lista de itens + porção estimada + confiança) → lookup na base TACO/TBCA local; fallback Gemini 2.5 Flash via backend minúsculo (Cloudflare Workers/Supabase Edge) só com opt-in | Sem custo em aparelhos compatíveis; custo residual ~US$ 0,05–0,30/usuária/mês no fallback |
-| Base nutricional | SQLite embarcado com TACO (Unicamp) + TBCA (USP) + USDA para fallback; Open Food Facts para barcodes | Dados brasileiros; verificar licenças (TACO é pública; TBCA pedir autorização de uso) |
-| Pagamentos | StoreKit 2 + RevenueCat (grátis até US$ 2,5 mil MTR; 1% depois) | Paywalls remotos, A/B, métricas de trial |
-| Backend | Quase nenhum: iCloud/CloudKit para backup criptografado opcional; sem contas obrigatórias | Reduz LGPD, custo e superfície de ataque |
-| Analytics | TelemetryDeck ou Apple App Analytics; **nunca** enviar eventos com peso/medicação/sintomas | Evita o erro Flo × Meta (SDKs com "custom app events") |
-| Android (fase 2) | **Kotlin nativo** com ML Kit Pose + ML Kit GenAI (Gemini Nano, onde disponível) + CameraX; ou Kotlin Multiplatform para compartilhar regras de negócio | Plugins Flutter/RN de MediaPipe são imaturos (0.x, Android-first, "iOS requer testes"); Expo Go não roda nativo |
-| Por que não React Native/Flutter agora | Perde Foundation Models e Vision nativos, depende de pontes para câmera em tempo real, e a economia de "um código, duas lojas" não vale para um app cujo diferencial é IA on-device | — |
+| Download → trial (D30) | 6,9% | >15% (NA Q3) / H&F top >23% |
+| Trial → pago | 37,7% | >51,4% |
+| Download → pago D35 (global; Brasil esperar ~metade) | 2,9% | >6,2% |
+| RPI D60 | US$ 0,66 | >US$ 1,39 (NA Q3) |
+| 1ª renovação anual / mensal | 25% / 57% | 37% / 68% |
+| Retenção Y1 do plano anual | 28% | 32–59% |
+| Reembolso | <4% | <2,7% |
+| Receita 12 meses após lançamento | US$ 72/mês (mediana geral) | >US$ 429/mês (top quartil) |
 
----
+### 6.4 Preço e posicionamento
 
-## 10. Riscos transversais e como mitigar
+- **Brasil:** R$ 29,90/mês · **R$ 169,90/ano** (mostrar "R$ 14,16/mês"); trial 7 dias; sem semanal (LatAm já é 29% semanal e o semanal retém 1–2% em Y1).
+- **EUA/Europa/Portugal:** US$ 9,99/mês · US$ 59,99/ano (H&F medianas: US$ 9,99 / 39,94; anual mediano geral subindo).
+- **Canais (dos próprios rising queries):** grupos e creators de "caneta" (perguntas sobre amamentação/anticoncepcional mostram público feminino), creators de pilates na parede e glúteo, nutricionistas e fisios pélvicas (código de indicação), SEO em PT-BR para "o que comer tomando mounjaro", "quantos gramas de proteína por kg", "pilates na parede funciona", "exercício para fechar diástase".
+- **Não prometer:** emagrecimento, tratamento, dose, "forma perfeita", diagnóstico.
 
-| Risco | Impacto | Mitigação |
+### 6.5 Stack
+
+| Camada | Escolha | Justificativa |
 |---|---|---|
-| **Apple 1.4.1** (saúde/dano físico): exige fontes para recomendações, disclaimers, metodologia para "medições" | Rejeição/atraso | Tela "Fontes" (consenso 2025, SOBRAC, OMS), disclaimer "não substitui orientação médica", nunca usar "diagnóstico", "tratamento", "dose"; estimativa de porção rotulada como "aproximada" |
-| **ANVISA RDC 657/2022** (SaMD) | Enquadramento como dispositivo médico | Manter finalidade declarada como bem-estar (exercício/hábitos) — explicitamente excluída da norma; não prometer prevenir/tratar/contracepção |
-| **LGPD** (dados de saúde = sensíveis) | Multas, perda de confiança | Processamento on-device, base legal consentimento explícito, exportar/apagar, DPO nomeado, sem compartilhamento com ad-tech |
-| Privacidade percebida (câmera/vídeo do corpo, ciclo, medicação) | Barreira de adoção | Edge AI real + comunicação clara ("nada sai do aparelho"); vídeos nunca salvos, só keypoints |
-| Saturação (ideias A/B/H) | CAC alto, compressão de preço | Escolher C/E; usar foto-IA como recurso |
-| Conversão LATAM baixa (1,5%) e reembolsos | Receita abaixo do esperado | Preço regional, plano anual ancorado, trial 7 dias, paywall em PT-BR, também vender em EUA/Portugal |
-| Dependência do hype GLP-1 | Base encolhe se regulação/escassez mudar | Expandir para perimenopausa (crônico) desde a v1.5 |
-| Precisão da foto-IA (-33% kcal) | Reclamações, 1 estrela | Focar proteína (menos sensível a óleo/porção que calorias), mostrar faixa, permitir correção em 1 toque, aprender porções frequentes da usuária |
-| Hardware Apple Intelligence (iPhone 15 Pro+) limita quem usa foto on-device | Recurso indisponível em parte da base | Fallback nuvem com opt-in ou busca manual; comunicar claramente |
+| Plataforma | **iOS nativo (Swift 6 / SwiftUI / SwiftData)**, iOS 17+, recursos de IA em iOS 26/27 | RevenueCat: iOS converte 2,9× o Play e H&F iOS 3,5%; sem penalidade de monetização para nativo (D35 2,0% vs. RN 2,5%, dispersão interna 10–30× maior); Foundation Models (imagem+texto on-device, iOS 27), Vision, HealthKit, StoreKit 2 são nativos |
+| Pose/repetições | Vision 2D (19 pontos); 3D só se precisar de ângulo sagital | Exercícios de solo/parede com câmera fixa são o caso fácil |
+| Foto → alimento | Foundation Models `@Generable` → lookup TACO/TBCA local; fallback opcional Gemini 2.5 Flash via backend mínimo | Zero custo marginal na maioria dos iPhones compatíveis; RevenueCat alerta sobre custo de IA em nuvem |
+| Pagamentos | StoreKit 2 + RevenueCat (paywalls remotos, A/B, métricas) | Benchmarks desta pesquisa vêm da mesma base |
+| Backend/analytics | CloudKit opcional; TelemetryDeck/App Analytics; **nenhum evento com peso, medicação ou sintomas** | LGPD (dado de saúde = sensível) e lição Flo × Meta [secundário] |
+| Android (fase 2) | Kotlin nativo + ML Kit Pose + ML Kit GenAI (Gemini Nano) | Plugins Flutter/RN de MediaPipe ainda 0.x e Android-first [secundário]; Play tem 32% de cancelamentos por erro de cobrança → implementar grace period |
 
 ---
 
-## 11. Fontes
+## 7. Evidência secundária (fora de Trends/RevenueCat) — marcada e resumida
 
-**Monetização / benchmarks**
-- RevenueCat, State of Subscription Apps 2026: https://www.revenuecat.com/state-of-subscription-apps (não acessível nesta sessão; dados via resumos abaixo)
-- RevenueCat 2025: https://www.revenuecat.com/state-of-subscription-apps-2025
-- Sahha, Health & Fitness conversion benchmarks 2026: https://sahha.ai/blog/health-app-monetization-first-month/
-- Singular, 17 learnings RevenueCat: https://www.singular.net/blog/subscription-apps/
-- RevenueCat, renovação por categoria: https://www.revenuecat.com/blog/growth/average-subscription-renewal-rates-by-app-category
-- RevenueCat, duração de trial: https://www.revenuecat.com/blog/growth/free-trial-length
-- Tasu, RPI por categoria: https://tasu.ai/library/app-category-revenue-per-install-benchmark
-- BuildMVPFast, hard paywall vs trial: https://www.buildmvpfast.com/blog/hard-paywall-vs-free-trial-revenuecat-indie-app-2026
-- Medium (Chuvak), RevenueCat + Adapty 2026: https://chuvak-pavel.medium.com/state-of-app-monetization-2026-key-trends-from-revenuecat-and-adapty-8bdc23a4bb6f
-- SaaStr, top 10 learnings: https://www.saastr.com/the-top-10-learnings-from-revenuecats-state-of-subscription-apps-how-115000-mobile-apps-deliver-16b-in-revenue-whats-working-whats-quietly-killing-growth/
-- RevenueCat, preços globais: https://www.revenuecat.com/blog/growth/5-quick-fixes-for-bad-default-global-pricing-on-app-stores
+Mantida apenas como contexto; nenhuma decisão acima depende dela.
 
-**Mercado Saúde & Fitness**
-- Sensor Tower, H&F revenue fueled by AI (fev/2026): https://sensortower.com/blog/health-and-fitness-apps-ai
-- Sensor Tower, Top 5 H&F US Q2 2025: https://sensortower.com/blog/2025-q2-unified-top-5-health%20and%20fitness-units-us-600af518241bc16eb8dce802
-- Fitt Insider, MyFitnessPal acquires Cal AI: https://insider.fitt.co/myfitnesspal-acquires-rival-food-tracker-cal-ai/
-- Grand View Research, fitness app market: https://www.grandviewresearch.com/industry-analysis/fitness-app-market
-- Similarweb, top grossing H&F Google Play Brasil: https://www.similarweb.com/pt/top-apps/google/brazil/health-fitness/top-grossing/
-- Appfigures, top H&F iOS Brasil: https://app.appfigures.com/top-apps/ios-app-store/brazil/iphone/health-and-fitness
-- StatCounter, OS mobile Brasil: https://gs.statcounter.com/os-market-share/mobile/brazil
+- **[secundário] Mercado GLP-1 no Brasil:** R$ 13,3 bi em Mounjaro+Wegovy+Ozempic (mai/2025–mai/2026, Close-Up via ICTQ); Mounjaro de 208 mil → 4,5 M unidades/mês (+2.070%); Ozivy (EMS) lançado 15/06/2026; UBS projeta ~R$ 20 bi em 2026 (InvestNews). Coerente com o Trends (`caneta emagrecedora` pico set/2026, `ozivy` jun/2026).
+- **[secundário] Perda de massa magra em GLP-1:** 26–40% do peso perdido (SURMOUNT-1/STEP 1, via resumos); ENDO 2025 sugere perda desproporcional em mulheres; consenso 2025 de 4 sociedades: 1,2–1,6 g proteína/kg + treino de força.
+- **[secundário] Concorrência dieta por foto:** Cal AI (15 M+ downloads, >US$ 30 M/ano) comprado pelo MyFitnessPal (anunciado 02/03/2026, TechCrunch); clones PT-BR a R$ 49,90/ano (Olho no Prato), R$ 119,90/ano (Vitaliz); estudo NIH (NUTRITION 2026, via Healio) — apps subestimam calorias em ~33%, Cal AI ~345 kcal. Coerente com a queda de `contador de calorias` e `cal ai` no Trends.
+- **[secundário] Coach de execução:** Kemtai migrou para fisioterapia B2B; Zenia absorvida pela Zing (2024); Zing Vision criticado por falsos alertas; erro angular ~10,6° no melhor pipeline (preprint 2025).
+- **[secundário] Menopausa:** mercado global US$ 17,8 bi (2024) → 24,4 bi (2030) (Grand View via Estado de Minas, set/2026); apps BR: Raquel Menopausa (grátis), Namu Mulher (B2B, nov/2026); Balance+ US$ 50–99/ano.
+- **[secundário] Mulheres e pagamento:** Flo ~80 M MAU, ~5 M pagantes (2024), valuation >US$ 1 bi; Queima Diária (Smart Fit) 438 mil clientes no 4T25, R$ 39,90/mês; ABA: 55% das mensalidades de academia são de mulheres.
+- **[secundário] Privacidade:** júri federal (Califórnia, 01/08/2025) condenou a Meta por coletar dados menstruais de usuárias do Flo via SDK; ORCHA: 84% dos apps de ciclo compartilham dados com terceiros.
+- **[secundário] Regulatório:** ANVISA RDC 657/2022 exclui "softwares para bem-estar" (exercício, hábitos) da regulação de SaMD; Apple 1.4.1 exige fontes/disclaimers para recomendações de saúde; LGPD trata dados de saúde como sensíveis (art. 5º, II; art. 11).
+- **[secundário] Edge AI:** Apple Foundation Models aceita imagem + texto on-device no iOS 27 (anúncio 08/06/2026, developer.apple.com); ML Kit GenAI image description via Gemini Nano em Pixel 9/10/11 e Galaxy S25/S26; Gemini 2.5 Flash US$ 0,30/M tokens de entrada (~US$ 0,05–0,30/usuária/mês a 5 fotos/dia, estimativa).
+- **[secundário] Android no Brasil:** 75–79% Android vs. 21–25% iOS (StatCounter, jun–ago/2026).
 
-**Brasil: fitness, mulheres, GLP-1, menopausa**
-- Smart Fit, Resultados 4T25 (Queima Diária 438 mil clientes): https://api.mziq.com/mzfilemanager/v2/d/757d3905-6a2d-496a-bbb0-32ddd17de6a0/544a3617-557a-963c-e276-3ea9cc4f7243?origin=2
-- Diário do Comércio, Queima Diária: https://diariodocomercio.com.br/negocios/queima-diaria-revolucionou-mercado-fitness/
-- Queima Diária, preços: https://www.queimadiaria.com/assinar/
-- Pacto, mercado fitness BR 2026: https://blog.sistemapacto.com.br/mercado-fitness-brasil-2026-panorama-setorial/
-- Bling, mercado fitness BR 2025: https://blog.bling.com.br/mercado-fitness-no-brasil/
-- IBOPE Repucom, mulheres 60% dos novos praticantes: https://www.iboperepucom.com/br/noticias/mulheres-sao-maioria-entre-os-novos-praticantes-de-atividades-fisicas-no-brasil/
-- Futuro da Saúde, apps de atividade física (75% mulheres, dado antigo): https://futurodasaude.com.br/aplicativos-para-atividades-fisicas/
-- Think with Google BR, bem-estar: https://business.google.com/br/think/consumer-insights/paradoxo-bem-estar-brasil/
-- Band, pilates recorde no Google 2025: https://www.band.com.br/noticias/tendencias-esporte-202512091653
-- ABPilates, ACSM 2026: https://abpilates.com.br/atualizacao-2026-pilates-top-5-tendencias-fitness-acsm/
-- Vitacore Pilates (Strava +21% força mulheres): https://www.vitacorepilates.com.br/post/7-tend%C3%AAncias-de-bem-estar-em-2025-que-explicam-o-boom-do-pilates-no-brasil
-- ICTQ, canetas R$ 13,3 bi: https://ictq.com.br/varejo-farmaceutico/5308-canetas-emagrecedoras-movimentam-r-13-3-bilhoes-em-um-ano-no-brasil
-- InvestNews, mercado pode dobrar em 2026: https://investnews.com.br/negocios/ozempic-mounjaro-2026-brasil-genericos/
-- NeoFeed/IQVIA: https://neofeed.com.br/negocios/o-efeito-das-canetas-emagrecedoras-ozempic-e-mounjaro-no-varejo-farmaceutico-brasileiro/
-- Estado de Minas, menopausa mercado bilionário (set/2026): http://www.em.com.br/bem-viver/2026/09/7502813-menopausa-vira-mercado-bilionario-mas-preocupa-medicos.html
-- Times Brasil, menopausa e varejo: https://timesbrasil.com.br/colunas/economia-prateada/menopausa-o-varejo-educa-o-que-o-sistema-nao-ensinou-e-agora/
-- Raquel Menopausa (app BR): https://www.raquelmenopausa.com/
-- Namu Mulher (nov/2026): https://www.onortao.com.br/2026/11/da-primeira-menstruacao-menopausa-namu.html
-- Band, treinar conforme o ciclo (fev/2026): https://www.band.com.br/saude/noticias/treinar-conforme-o-ciclo-menstrual-funciona-o-que-diz-a-ciencia-202602161337
-- Brasil em Folhas, sincronizar ao ciclo sem comprovação (set/2026): https://www.brasilemfolhas.com.br/2026/09/sincronizar-dieta-e-treino-ao-ciclo-menstrual-nao-tem-comprovacao-cientifica/
+---
 
-**Dieta por foto / concorrentes**
-- TechCrunch, MyFitnessPal adquire Cal AI: https://techcrunch.com/2026/03/02/myfitnesspal-has-acquired-cal-ai-the-viral-calorie-app-built-by-teens/
-- Forbes, Cal AI (público 15–25, masculino): https://www.forbes.com/sites/josipamajic/2024/11/02/meet-the-17-year-old-ceo-behind-a-12m-ai-powered-nutrition-app/
-- Superframeworks, Cal AI case study: https://superframeworks.com/case-study/cal-ai
-- Healio, apps subestimam calorias em 33% (ago/2026): https://www.healio.com/news/primary-care/20260804/ai-photobased-calorietracking-tools-underestimate-them-by-33
-- Callie, revisão de estudos 2023–2026: https://www.mycallie.app/en/blog/ai-calorie-accuracy-research
-- Kcalm, ChatGPT accuracy review: https://kcalm.app/blog/chatgpt-calorie-counting-accuracy/
-- Fitia, precisão apps por foto: https://fitia.app/learn/article/ai-calorie-photo-apps-accuracy-2026/
-- JustUseApp, reviews Cal AI: https://justuseapp.com/en/app/6480417616/cal-ai-calorie-tracking/reviews
-- Eesel, Cal AI pricing: https://www.eesel.ai/blog/cal-ai-pricing
-- Nutrola, por que Cal AI é caro: https://nutrola.app/en/blog/why-is-cal-ai-so-expensive
-- Nutrola, market share calorie apps (58% mulheres, não verificado): https://nutrola.app/en/blog/calorie-tracking-app-market-share-2026-most-users
-- MyFitnessPal App Store BR (preços R$): https://apps.apple.com/br/app/myfitnesspal-di%C3%A1rio-alimentar/id341232718
-- Olho no Prato (BR): https://apps.apple.com/br/app/id6757802677
-- Vitaliz AI (BR): https://www.vitaliz.app/
-- ContaCal (BR): https://contacal.com/en
-- SnapCalorie App Store: https://apps.apple.com/us/app/-/id1574239307
-- arXiv, revisão de estimativa de porção 2026: https://arxiv.org/pdf/2602.05078
-- Fitia, melhores macro trackers 2026: https://fitia.app/learn/article/best-macro-tracker-apps-2026/
+## 8. Riscos e mitigação
 
-**Pose estimation / form check**
-- Zing adquire Zenia (fev/2024): https://www.prweb.com/releases/zing-coach-acquires-interactive-workout-pioneer-zenia-to-increase-personalization-and-responsivity-within-its-ai-driven-fitness-app-302061746.html
-- Kemtai, pivot para fisioterapia (podcast Mindbowser): https://www.mindbowser.com/podcast/building-the-future-of-physiotherapy-kemtais-journey-with-mike-telem/
-- Kemtai site: https://kemtai.com/?p=2424
-- Tracxn, Tempo: https://tracxn.com/d/companies/tempo/__MprfUYMasaeKMrJrA3D7B_IcBGSl1q5FDwEEDAO6SVc
-- Techpoint, Zing Coach 45 dias: https://techpoint.africa/guide/zing-coach-ai-review/
-- Trustpilot Zing Coach: https://www.trustpilot.com/review/zing.coach
-- Sensai, best form check apps 2026: https://www.sensai.fit/blog/best-ai-workout-form-check-apps-2026
-- Kensoforge, form checkers 2026: https://kensoforge.com/insights/ai-form-checker-computer-vision-lifting-apps-2026
-- arXiv, physics-informed posture (10,6° erro): https://arxiv.org/pdf/2512.06783
-- MDPI, comparativo skeleton-based (MoveNet vs MediaPipe): https://www.mdpi.com/1999-5903/14/12/380
-- PoseTracker, best pose model 2026: https://www.posetracker.com/news/best-pose-estimation-model-in-2026-the-real-time-mobile-guide
-- Flutter plugin flutter_mp_pose_landmarker: https://pub.dev/packages/flutter_mp_pose_landmarker
-- RN MediaPipe pose: https://www.npmjs.com/package/@gymbrosinc/react-native-mediapipe-pose
+| Risco | Evidência | Mitigação |
+|---|---|---|
+| Ciclo de hype do GLP-1 | `mounjaro` −44% do pico de jan/2026 aos últimos 3 m (mas `caneta` +34% e `ozivy` +26% — a onda muda de marca, não de tamanho) | Posicionar por **problema** (manter músculo, rotina em casa), não por remédio; modo 40+ como segunda perna |
+| Apps de IA retêm pior | RevenueCat: retenção anual 21,1% vs. 30,7%; reembolso 4,2% vs. 3,5% | IA como recurso; a assinatura vende rotina + treino + registro; on-device evita custo por usuária |
+| Conversão LatAm baixa | D35 1,5% vs. 2,6%; RPI ~US$ 0,10; preços abaixo de MEA | Preço regional, âncora mensal, vender em NA/EU desde o dia 1 |
+| Semanal/churn no Brasil | LatAm 29% semanal; semanal retém 1–2% em Y1 | Não oferecer semanal |
+| Intenção "grátis" em PT-BR | rising queries "app … grátis" em calorias, ciclo, treino, finanças | Hard paywall; comunicar valor premium (IA on-device, privacidade, PT-BR, comida brasileira) |
+| Apple 1.4.1 / ANVISA / LGPD | [secundário] | Fontes e disclaimers; finalidade "bem-estar"; dados on-device; sem SDK de ads/analytics com saúde |
+| Falsos positivos da câmera | [secundário] Zing/Kemtai | Só contagem, tempo e amplitude; nunca "sua forma está errada" |
 
-**Edge AI (Apple/Google)**
-- Apple, What's new iOS (Foundation Models multimodal): https://developer.apple.com/ios/whats-new/
-- MacRumors, Xcode/Foundation Models (jun/2026): https://www.macrumors.com/2026/06/08/apple-unveils-xcode-and-models-improvements/
-- Blake Crosley, Foundation Models image input iOS 27: https://blakecrosley.com/blog/foundation-models-image-input-ios-27
-- Android Developers, Gemini Nano: https://developer.android.com/ai/gemini-nano
-- Android Developers Blog, ML Kit GenAI (ago/2025): https://android-developers.googleblog.com/2025/08/the-latest-gemini-nano-with-on-device-ml-kit-genai-apis.html
-- Forasoft, on-device AI Android 2026: https://www.forasoft.com/blog/article/neural-networks-on-android-369
-- Google Cloud, preços Gemini: https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing
+---
 
-**Bases nutricionais BR**
-- TabNews, TACO API REST: https://www.tabnews.com.br/dnts0/transformei-a-tabela-taco-unicamp-em-uma-api-rest-moderna-com-ia-e-gerador-de-rotulos
-- TACO GraphQL: https://www.blog.brightcoding.dev/2026/07/06/taco-api-the-essential-graphql-tool-for-nutrition-data
-- Agência FAPESP, TBCA ecossistema digital: https://agencia.fapesp.br/tabela-brasileira-de-composicao-de-alimentos-se-transforma-em-ecossistema-digital-de-pesquisa/59305
-- Nutritotal, TBCA app 3.500 alimentos: https://nutritotal.com.br/pro/material/tabela-brasileira-de-composicao-dos-alimentos/
+## 9. Fontes primárias
 
-**Mulheres / femtech / menopausa / GLP-1**
-- Business of Apps, Flo statistics: https://www.businessofapps.com/data/flo-statistics/
-- General Atlantic, Flo unicórnio: https://www.generalatlantic.com/media-article/flo-health-secures-more-than-200m-investment-from-general-atlantic-to-revolutionize-womens-health-first-purely-digital-consumer-womens-health-app-to-achieve-unicorn-status/
-- Flo, Anonymous Mode FAQ: https://amp.flo.health/privacy-portal/anonymous-mode-faq
-- Forbes Australia, Sweat (US$ 65 M): https://www.forbes.com.au/covers/entrepreneurs/im-the-boss-now-kayla-itsines-on-being-back-at-sweats-helm/
-- PLOS ONE 2025, She-economy pagamento fitness: https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0319246
-- Phase, best cycle syncing apps 2026: https://cyclesyncedlifting.com/blog/best-cycle-syncing-apps
-- Living360, trends 2026 (cycle syncing +124%): https://living360.uk/5-fitness-trends-2026-ai-personal-training/
-- WorldHealth.net, cycle syncing hype: https://worldhealth.net/news/cycle-syncing-social-media-hyp-hormone-health/
-- Wellphases, menopause apps 2026 (Balance preços): https://wellphases.com/best-menopause-apps/
-- Research and Markets, menopause app market: https://www.researchandmarkets.com/reports/6178247/menopause-digital-hormone-balancing-app-market
-- Medscape, GLP-1 apps (2026): https://www.medscape.com/viewarticle/glp-1-apps-helpful-companions-or-false-sense-security-2026a1000i9n
-- Trends.vc, GLP-1 companion apps: https://trends.vc/opportunities/glp-1-companion-apps
-- ClinicalTrials.gov LEAN-PREP: https://clinicaltrials.gov/study/NCT06885736
-- Second Nature, GLP-1 muscle/protein planner (1,2–1,6 g/kg): https://www.secondnature.io/guides/weight-loss-medications/glp1-muscle-protein-planner
-- ClassPass Look Back 2025: https://classpass.com/blog/2025-classpass-look-back-report/
-- Market.us, pregnancy/postpartum apps: https://market.us/report/pregnancy-tracking-and-postpartum-care-apps-market/
-- Markwide, pelvic floor exerciser market: https://markwideresearch.com/pelvic-floor-exerciser-market
-- Perfect Corp (receita 2025): https://en.wikipedia.org/wiki/Perfect_Corp
-- Apps de postura 2026: https://apps.apple.com/app/id6758010343 · https://apps.apple.com/app/id6790813674
+**Google Trends (coleta própria, 08/11/2026):** 118 séries (CSV) e 62 arquivos de consultas relacionadas em `docs/dados/trends/` — grupos `ideias_cross`, `dieta`, `glp1`, `glp1_long`, `musculo_proteina`, `massa`, `menopausa`, `ciclo`, `execucao`, `fitness_fem`, `fem_12m`, `modalidades`, `gestacao_pelvico`, `pele`, `postura`, `apps`, `apps_fem_*`, `amplo`, `cross_12m`, `S_beleza`, `S_moda`, `S_saude_fem`, `S_saude_fem2`, `S_mental`, `S_financas`, `S_maternidade`, `S_relacionamento`, `S_seguranca`, `S_astro`, `S_produtividade`, `S_educacao`, `S_fitness`, `X1`–`X8`, `W1`–`W2`, `world_cross`, `world_apps`, `world_niche`, `solo_*`. Endpoint: `https://trends.google.com/trends/api/explore`, `/widgetdata/multiline`, `/widgetdata/relatedsearches`.
 
-**Regulatório / privacidade**
-- ANVISA, Perguntas & Respostas RDC 657/2022: https://bibliotecadigital.anvisa.gov.br/jspui/bitstream/anvisa/16043/1/perguntas-respostas-rdc-657-de-2022-v1-01-09-2022.pdf
-- Mattos Filho, novo marco SaMD: https://www.mattosfilho.com.br/unico/anvisa-softwares-dispositivos/
-- Apple Developer Forums, 1.4.1 wellness vs medical: https://developer.apple.com/forums/thread/807508
-- ConductAtlas, resumo 1.4.1: https://conductatlas.com/platform/apple/apple-app-store-review-guidelines/health-and-medical-app-requirements/
-- TechCrunch, júri condena Meta no caso Flo (ago/2025): https://techcrunch.com/2025/08/05/jury-rules-meta-violated-california-privacy-laws-by-collecting-menstrual-health-data-from-flo
-- HIPAA Journal, Flo × Meta: https://www.hipaajournal.com/jury-trial-meta-flo-health-consumer-privacy/
-- Campaign, 84% dos apps de ciclo compartilham dados (ORCHA): https://campaignlive.com/article/period-tracker-app-flo-turns-anonymous-mode-will-ease-user-privacy-concerns/1799360
+**RevenueCat:**
+- State of Subscription Apps 2026 — https://www.revenuecat.com/state-of-subscription-apps (seções citadas na tabela 4.1 e 4.2; "Methodology", "Regional definitions", "Category bucketing", "Where are subscription apps growing fastest…", "What annual value does each payer generate?", "What's the D35 download-to-paid conversion rate by developer HQ geography?", "How do monetization strategies differ across geographies?", "Which geographies generate the highest D14 revenue?", "How does D60 revenue vary by geography?", "Does trial length affect trial-to-paid conversion rate?", "Does access method impact download-to-paid conversion within 35 days?", "Does freemium vs. hard paywall affect Y1 retention?", "Do pricing tiers affect Y1 retention?", "How does subscription duration mix vary across geographies?", "Median price per plan duration by geography", "How do renewal rates vary by geography and subscription duration?", "How much variance exists in geographic refund rates?", "Why do subscriptions end on each platform?", "When do annual subscribers cancel during their first year?", "How do D35 conversion rates compare between categories and stores?", "Does development framework affect download-to-paid conversion?", "How does D60 RPI compare by framework?", "Do AI apps…" (todas), "How widely are promotional offers used across categories?", "What share of apps hit monthly revenue milestones?").
+- State of Subscription Apps 2025 — https://www.revenuecat.com/state-of-subscription-apps-2025 ("Trial to paid, by category/by geography", "Average revenue per install", "Realized LTV per payer", "Refund rate by app category", "Active Renewal Rate, By Category").
+- Blog: https://www.revenuecat.com/blog/growth/average-subscription-renewal-rates-by-app-category · https://www.revenuecat.com/blog/growth/free-trial-length · https://www.revenuecat.com/blog/growth/5-quick-fixes-for-bad-default-global-pricing-on-app-stores
+
+**Secundárias (seção 7):** TechCrunch (02/03/2026, Cal AI), Healio (04/08/2026, estudo NIH), ICTQ/Close-Up, InvestNews, NeoFeed/IQVIA, Estado de Minas (set/2026), Smart Fit Resultados 4T25, TechCrunch/HIPAA Journal (Flo × Meta, ago/2025), ANVISA (Perguntas & Respostas RDC 657/2022), Apple Developer ("What's new in iOS"), Android Developers (ML Kit GenAI), StatCounter, Grand View Research, ClassPass Look Back 2025, PRWeb (Zing/Zenia), Mindbowser (Kemtai), arXiv 2512.06783.
