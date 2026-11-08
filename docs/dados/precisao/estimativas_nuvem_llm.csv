@@ -1,0 +1,161 @@
+prato_id,sistema,proteina_estimada_g,peso_total_estimado_g,itens,observacoes
+b001,nuvem_llm,22,80,bife bovino grelhado:80,bife pequeno isolado no prato
+b002,nuvem_llm,22,70,peito de frango grelhado:70,pedaco pequeno de frango
+b003,nuvem_llm,14,220,arroz:140; calabresa/feijao:50; ovo/batata:30,arroz misto tipo carreteiro
+b004,nuvem_llm,19,300,arroz:190; calabresa/feijao:70; batata/abacaxi:40,arroz misto em prato fundo
+b005,nuvem_llm,9,40,salame fatiado:40,~8 fatias
+b006,nuvem_llm,29,90,file de frango grelhado:90,
+b007,nuvem_llm,18,80,salame fatiado:80,~16 fatias
+b008,nuvem_llm,6,110,macarrao com molho e legumes:110,porcao pequena
+b009,nuvem_llm,50,150,lombo/file suino assado:150,5 medalhoes
+b010,nuvem_llm,34,350,carne bovina ensopada:120; batata:150; molho:80,ensopado de carne com batata
+b011,nuvem_llm,18,90,camarao cozido:90,~12 camaroes
+b012,nuvem_llm,38,120,bife bovino grelhado:120,
+b013,nuvem_llm,10,400,arroz branco:400,prato cheio de arroz
+b014,nuvem_llm,106,320,lombo/file suino assado:320,~14 pedacos
+b015,nuvem_llm,6,250,arroz branco:250,
+b016,nuvem_llm,21,150,presunto fatiado:150,~10 fatias
+b017,nuvem_llm,9,150,lentilha/feijao cozido escorrido:150,
+b018,nuvem_llm,21,220,carne bovina ensopada:70; batata:90; molho:60,ensopado em prato fundo
+b019,nuvem_llm,35,140,tiras de carne suina frita/torresmo:140,
+b020,nuvem_llm,28,300,feijao preto:180; carnes de feijoada:80; caldo:40,feijoada
+b021,nuvem_llm,11,75,presunto fatiado:75,~5 fatias
+b022,nuvem_llm,38,350,feijao preto:200; carnes de feijoada:120; caldo:30,feijoada
+b023,nuvem_llm,48,150,peito de frango grelhado:150,
+b024,nuvem_llm,16,55,bife bovino grelhado:55,bife pequeno
+b025,nuvem_llm,35,360,carne desfiada acebolada:120; arroz:120; pure de batata:120,marmita
+b026,nuvem_llm,32,130,tiras de carne suina frita/torresmo:130,
+b027,nuvem_llm,19,110,carne/frango ensopado:70; ervilha e cenoura:40,fricasse pequeno
+b028,nuvem_llm,6,90,arroz:60; calabresa/feijao:20; batata:10,arroz misto porcao pequena
+b029,nuvem_llm,17,120,presunto fatiado:120,~8 fatias
+b030,nuvem_llm,34,360,frango desfiado:120; arroz:120; creme de milho:120,marmita
+b031,nuvem_llm,34,180,camarao cozido:180,
+b032,nuvem_llm,32,100,file de frango grelhado:100,
+b033,nuvem_llm,15,250,feijao branco cozido:250,
+b034,nuvem_llm,48,200,file de peixe/bacalhau cozido:200,
+b035,nuvem_llm,58,180,bife bovino grelhado:180,
+b036,nuvem_llm,57,300,camarao cozido:300,prato cheio
+b037,nuvem_llm,24,400,feijao branco cozido:400,prato cheio
+b038,nuvem_llm,6,100,arroz:65; calabresa/feijao:25; batata:10,arroz misto porcao pequena
+b039,nuvem_llm,17,70,tiras de carne suina frita/torresmo:70,
+b040,nuvem_llm,10,160,arroz:105; calabresa/feijao:40; batata/abacaxi:15,arroz misto
+b041,nuvem_llm,6.5,25,salame fatiado:25,6 fatias pequenas
+b042,nuvem_llm,17.0,280,macarrao ao molho com presunto/legumes:280,prato cheio
+b043,nuvem_llm,25.8,100,salame fatiado:100,cerca de 25 fatias
+b044,nuvem_llm,12.0,40,carne branca grelhada (frango/porco):40,pedaco pequeno
+b045,nuvem_llm,7.5,25,carne branca grelhada (frango/porco):25,pedaco muito pequeno
+b046,nuvem_llm,40.5,150,carne seca desfiada:150,prato fundo cheio
+b047,nuvem_llm,7.5,300,arroz branco cozido:300; salsinha:2,prato cheio
+b048,nuvem_llm,9.0,150,macarrao ao molho com presunto/legumes:150,meia porcao
+b049,nuvem_llm,75.0,250,lombo/file mignon assado fatiado:250,8 medalhoes
+b050,nuvem_llm,36.0,120,lombo suino assado fatiado:120,4 fatias
+b051,nuvem_llm,46.0,200,file de peixe branco cozido:200,
+b052,nuvem_llm,55.0,250,file de peixe cozido:250,2 files
+b053,nuvem_llm,9.6,120,feijao cozido (graos escorridos):120,
+b054,nuvem_llm,27.5,110,file de peixe/carne branca cozido:110,
+b055,nuvem_llm,28.5,150,camarao cozido:150,
+b056,nuvem_llm,30.0,300,feijoada (carnes + caldo de feijao preto):300,prato fundo; carnes ~100g
+b057,nuvem_llm,38.0,200,camarao cozido:200,
+b058,nuvem_llm,5.8,40,presunto fatiado:40,2 fatias
+b059,nuvem_llm,18.0,60,lombo suino assado fatiado:60,2 fatias
+b060,nuvem_llm,3.2,150,brocolis cozido:150,
+b061,nuvem_llm,41.6,130,bife bovino grelhado:130,
+b062,nuvem_llm,40.0,400,feijoada (carnes + caldo de feijao preto):400,prato fundo cheio
+b063,nuvem_llm,5.0,200,arroz branco cozido:200; salsinha:2,
+b064,nuvem_llm,40.0,300,fricasse de carne branca com ervilha e cenoura:300,carne ~150g
+b065,nuvem_llm,14.0,200,feijao preto cozido:200,meio prato
+b066,nuvem_llm,57.0,300,camarao cozido:300,prato cheio
+b067,nuvem_llm,3.6,25,presunto fatiado:25,1 fatia
+b068,nuvem_llm,14.4,350,feijao preto com linguica:150; arroz branco:120; couve refogada:80,marmita
+b069,nuvem_llm,16.0,200,feijao cozido (graos escorridos):200,
+b070,nuvem_llm,18.0,70,salame fatiado:70,
+b071,nuvem_llm,30.0,110,carne seca desfiada:110,meio prato
+b072,nuvem_llm,27.0,330,linguica calabresa acebolada:100; arroz branco:100; feijao carioca:130,marmita
+b073,nuvem_llm,18.0,300,feijao preto cozido:300,
+b074,nuvem_llm,25.0,100,pedacos fritos de carne (frango/torresmo):100,
+b075,nuvem_llm,42.0,220,camarao cozido:220,
+b076,nuvem_llm,32.0,340,carne moida com legumes:120; arroz branco:100; feijao carioca:120,marmita
+b077,nuvem_llm,32.0,400,arroz com feijao calabresa e queijo (baiao/carreteiro):400,prato cheio
+b078,nuvem_llm,50.0,200,tiras de carne frita (torresmo/frango):200,
+b079,nuvem_llm,27.0,90,lombo suino assado fatiado:90,2 fatias
+b080,nuvem_llm,24.0,90,carne seca desfiada:90,meio prato
+b081,nuvem_llm,19,250,lentilha cozida:250,
+b082,nuvem_llm,48,170,lombo/filé suíno assado fatiado:170,
+b083,nuvem_llm,20,90,salame fatiado:90,
+b084,nuvem_llm,48,240,camarão cozido:240,
+b085,nuvem_llm,22,350,macarrão parafuso:280; presunto/linguiça em cubos:50; legumes:20,
+b086,nuvem_llm,1.2,200,mandioca cozida:200,
+b087,nuvem_llm,13,210,macarrão:170; presunto em cubos:25; legumes:15,
+b088,nuvem_llm,12,50,filé de frango empanado/grelhado pequeno:50,
+b089,nuvem_llm,5,150,batata frita:150,
+b090,nuvem_llm,54,200,carne seca desfiada:200,possível repolho roxo
+b091,nuvem_llm,42,150,lombo assado fatiado:150; salsa:2,
+b092,nuvem_llm,2.4,200,batata cozida:200,
+b093,nuvem_llm,30,330,frango desfiado com tomate:110; arroz com brócolis:120; purê de batata:100,
+b094,nuvem_llm,27,320,carne bovina com osso em molho:120; quiabo/abobrinha:90; molho:110,
+b095,nuvem_llm,3.3,130,arroz branco:130,
+b096,nuvem_llm,11,150,feijoada (feijão preto):120; linguiça/carnes:30,
+b097,nuvem_llm,20,100,camarão cozido:100,
+b098,nuvem_llm,2.2,180,batata cozida em cubos:180,
+b099,nuvem_llm,19,300,feijão cozido:300,
+b100,nuvem_llm,14,50,carne seca desfiada:50,
+b101,nuvem_llm,50,250,camarão cozido pequeno:250,
+b102,nuvem_llm,3.5,100,batata frita:100,
+b103,nuvem_llm,24,320,frango ao curry:120; arroz branco:100; batata em cubos:100,
+b104,nuvem_llm,5.5,220,arroz branco:220,
+b105,nuvem_llm,21,150,presunto fatiado:150,
+b106,nuvem_llm,14,50,lombo assado fatia:50,
+b107,nuvem_llm,17,60,filé mignon suíno fatiado:60,
+b108,nuvem_llm,33,110,bife bovino grelhado:110,
+b109,nuvem_llm,27,100,carne seca desfiada:100,
+b110,nuvem_llm,25,90,filé mignon suíno fatiado:90,
+n001,nuvem_llm,26,170,frango/peixe empanado:120; folhas com quinoa e cogumelo:40; cenoura assada:10,
+n002,nuvem_llm,37,120,peito de frango grelhado em cubos:120,
+n003,nuvem_llm,28,170,filé de truta/salmão:120; espinafre:30; trigo em grão:20,
+n004,nuvem_llm,43,280,filé de peixe:120; bolo de carne/peixe:100; espinafre:30; trigo em grão:20; arroz:10,
+n005,nuvem_llm,2,60,folhas verdes:30; quinoa:15; cenoura:10; cogumelo:5,
+n006,nuvem_llm,40,330,atum/frango desfiado:150; tofu/peixe selado:80; cenoura ralada:40; tomate cereja:40; amêndoas:10; arroz:10,
+n007,nuvem_llm,32,230,filé de peixe assado:150; mix de folhas:80,
+n008,nuvem_llm,14,250,espinafre:60; brócolis:70; cenoura ralada:40; queijo feta/frango em cubos:60; ovo:20,
+n009,nuvem_llm,2,70,mix de folhas:60; tomate:10,
+n010,nuvem_llm,48,420,coxa e sobrecoxa de frango:150; arroz integral:150; salada verde:90; grão-de-bico:20; queijo:10,
+n011,nuvem_llm,1.0,36,espinafre:30; mirtilo:6,prato quase vazio
+n012,nuvem_llm,30.0,410,salada caesar:180; pizza queijo:60; carne assada:70; abobora assada:100,
+n013,nuvem_llm,22.0,305,peixe branco:90; arroz integral:50; vagem:90; mix folhas:60; repolho:15,
+n014,nuvem_llm,24.0,400,maca:150; amendoas:40; uva:100; linguica:90; espinafre:20,
+n015,nuvem_llm,9.0,315,salada caesar:130; brocolis:100; arroz vermelho:40; tofu:15; pimentao/tomate:30,
+n016,nuvem_llm,34.0,360,salada caesar:120; pizza queijo:110; brocolis:70; frango grelhado:60,
+n017,nuvem_llm,10.0,48,amendoas:48,
+n018,nuvem_llm,11.0,90,pizza com almondega/linguica:90,
+n019,nuvem_llm,1.5,38,rucula:35; amendoa laminada:3,
+n020,nuvem_llm,29.0,360,clara de ovo mexida:250; batata doce assada:110,
+n021,nuvem_llm,0.5,180,maca:180,
+n022,nuvem_llm,17.5,300,clara de ovo:120; pudim de chia:100; mirtilo:70; pessego:10,
+n023,nuvem_llm,1.2,150,morango:45; mirtilo:15; melao cantalupo:90,
+n024,nuvem_llm,16.0,213,clara de ovo:120; pudim de chia:80; pessego:10; mirtilo:3,
+n025,nuvem_llm,13.0,260,arroz vermelho com rucula e cenoura:100; milho espiga:110; empanado frango/peixe:50,
+n026,nuvem_llm,0.2,40,melao honeydew:40,
+n027,nuvem_llm,25.0,115,frango desfiado:90; folhas/ervas:25,
+n028,nuvem_llm,20.0,465,ovo mexido:150; batata assada:90; brocolis:70; morango:50; mirtilo:15; abacaxi:90,
+n029,nuvem_llm,76.0,500,pizza havaiana:260; frango em cubos:150; tomate cereja:90,texto_visivel
+n030,nuvem_llm,0.3,40,morango:40,
+n031,nuvem_llm,12.7,60,amendoas:60,
+n032,nuvem_llm,55.0,430,salada caesar:120; pizza queijo:110; brocolis:70; frango grelhado:130,
+n033,nuvem_llm,31.0,250,peito de peru/lombo:110; melao honeydew:140,
+n034,nuvem_llm,19.0,400,vagem:100; espinafre:50; pizza queijo:120; arroz amarelo:130,
+n035,nuvem_llm,25.0,270,peixe branco:110; arroz integral:70; vagem:90,
+n036,nuvem_llm,7.6,36,amendoas:36,
+n037,nuvem_llm,10.0,48,amendoas:48,
+n038,nuvem_llm,15.5,122,ovo mexido:110; bacon:12,
+n039,nuvem_llm,11.0,260,clara de ovo:70; batata rosti:40; batata doce:90; frutas vermelhas:60,
+n040,nuvem_llm,35.0,250,arroz:130; frango assado com osso (parte comestivel):120,
+n041,nuvem_llm,17.7,420,cenoura assada:130; couve-flor:70; amendoas:70; maca:150,
+n042,nuvem_llm,29.5,370,clara de ovo mexida:260; melao cantalupo:110,
+n043,nuvem_llm,21.0,70,frango em pedacos:70,qr_codes_visiveis
+n044,nuvem_llm,3.3,130,salada caesar:70; salada rucula/folhas:50; azeitona:10,
+n045,nuvem_llm,16.7,225,muffin ingles/pao:50; cream cheese:25; clara de ovo:80; batata assada:70,
+n046,nuvem_llm,77.0,590,pizza havaiana:260; frango em cubos:150; abacaxi:90; tomate cereja:90,texto_visivel
+n047,nuvem_llm,37.0,310,arroz:130; frango assado com osso (parte comestivel):120; milho:60,
+n048,nuvem_llm,4.0,75,cenoura:40; pao/pizza:35,
+n049,nuvem_llm,19.0,290,ovo mexido:150; mix folhas:60; couve de bruxelas:70; framboesa:10,
+n050,nuvem_llm,11.0,110,ovo mexido:110,
