@@ -1,0 +1,712 @@
+Implied Apple FX (local per USD, median over matched tiers): {'mx': 17.018, 'pe': 3.898, 'pt': 1.111, 'br': 4.284, 'ar': 1.0, 'cl': 0.91, 'co': 4443.518} {'mx': 54, 'pe': 51, 'pt': 56, 'br': 63, 'ar': 43, 'cl': 48, 'co': 46}
+
+## Shotsy (id 6499510249)
+  us: r=4.8 n=34646 | monthly: [9.99, 14.99] | yearly: [39.99, 49.99, 59.99] | priv: none=False linked=False track=False
+  br: r=4.9 n=2547 | monthly: [25.9, 49.9, 79.9, 129.9] | yearly: [127.9, 139.0] | priv: none=False linked=False track=False
+  mx: r=4.8 n=613 | monthly: [139.0, 179.0, 299.0, 399.0] | yearly: [599.0, 669.0, 899.0] | priv: none=False linked=False track=False
+  ar: r=4.9 n=65 | monthly: [4.9, 7.99, 12.99, 19.99] | yearly: [22.9, 39.99] | priv: none=False linked=False track=False
+  cl: r=4.8 n=34 | monthly: [5.39, 9.99, 14.99, 22.99] | yearly: [26.99, 49.99] | priv: none=False linked=False track=False
+  co: r=5.0 n=100 | monthly: [16500.0, 39900.0, 59900.0, 99900.0] | yearly: [82500.0, 199900.0] | priv: none=False linked=False track=False
+  pe: r=4.7 n=33 | monthly: [22.9, 34.9, 59.9, 89.9] | yearly: [113.9, 129.9, 179.9] | priv: none=False linked=False track=False
+  pt: r=4.8 n=320 | monthly: [7.09, 9.99, 14.99, 22.99] | yearly: [34.99, 44.99, 49.99] | priv: none=False linked=False track=False
+## MeAgain (id 6744178534)
+  us: r=4.8 n=40259 | lifetime/unlimited: [14.99, 19.99, 24.99, 34.99, 39.99, 59.99, 69.99, 119.99] | priv: none=False linked=True track=True
+  br: r=4.5 n=19 | lifetime/unlimited: [99.9, 129.9, 229.9, 249.9, 399.9, 799.9] | priv: none=False linked=True track=True
+  mx: r=4.9 n=108 | lifetime/unlimited: [299.0, 399.0, 899.0, 1299.0, 2499.0] | priv: none=False linked=False track=True
+  ar: r=4.9 n=12 | lifetime/unlimited: [14.99, 34.99, 39.99, 59.99, 79.99, 119.99] | priv: none=False linked=False track=True
+  cl: r=4.8 n=6 | lifetime/unlimited: [17.99, 39.99, 49.99, 69.99, 79.99, 99.99, 129.99] | priv: none=False linked=False track=True
+  co: r=5.0 n=11 | lifetime/unlimited: [69900.0, 149900.0, 199900.0, 299900.0, 399900.0, 599900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=6 | lifetime/unlimited: [44.9, 69.9, 149.9, 179.9, 249.9, 299.9, 349.9, 499.9] | priv: none=False linked=False track=True
+  pt: r=4.8 n=20 | lifetime/unlimited: [17.99, 22.99, 39.99, 44.99, 69.99, 89.99, 129.99] | priv: none=False linked=False track=False
+## Glapp (id 6756984097)
+  us: r=4.8 n=1075 | monthly: [9.99] | yearly: [39.99] | weekly: [4.99] | priv: none=False linked=True track=False
+  br: r=4.6 n=14 | monthly: [59.9] | yearly: [249.9] | weekly: [29.9] | priv: none=False linked=True track=False
+  mx: r=4.8 n=19 | monthly: [199.0] | yearly: [899.0] | weekly: [99.0] | priv: none=False linked=False track=False
+  ar: r=5.0 n=3 | yearly: [39.99] | monthly: [9.99] | weekly: [4.99] | priv: none=False linked=False track=False
+  cl: r=5.0 n=2 | monthly: [9.99] | yearly: [49.99] | weekly: [5.99] | priv: none=False linked=False track=False
+  co: r=5.0 n=5 | yearly: [199900.0] | monthly: [49900.0] | weekly: [24900.0] | priv: none=False linked=False track=False
+  pe: r=5.0 n=1 | yearly: [179.9] | monthly: [44.9] | weekly: [22.9] | priv: none=False linked=False track=False
+  pt: r=4.9 n=15 | monthly: [9.99] | yearly: [44.99] | weekly: [5.99] | priv: none=False linked=False track=False
+## Pep AI (id 6758682710)
+  us: r=4.7 n=4017 | yearly: [29.99, 39.99, 44.99, 49.99] | monthly: [9.99] | other: [29.99] | priv: none=False linked=True track=True
+  br: r=5.0 n=3 | monthly: [59.9, 129.9] | yearly: [129.9, 199.9, 249.9, 299.9, 399.9] | priv: none=False linked=True track=True
+  mx: r=5.0 n=6 | monthly: [199.0, 399.0] | yearly: [399.0, 599.0, 899.0, 999.0] | other: [599.0] | priv: none=False linked=False track=True
+  ar: r= n= | yearly: [19.99, 29.99, 39.99, 49.99, 59.99] | monthly: [19.99] | other: [29.99] | weekly: [3.99] | priv: none=False linked=False track=True
+  cl: r= n= | yearly: [22.99, 34.99, 49.99, 59.99, 69.99] | monthly: [22.99] | other: [34.99] | weekly: [4.99] | priv: none=False linked=False track=True
+  co: r=5.0 n=2 | other: [129900.0] | yearly: [99900.0, 129900.0, 199900.0, 229900.0, 299900.0] | monthly: [99900.0] | weekly: [19900.0] | priv: none=False linked=False track=True
+  pe: r= n= | yearly: [89.9, 129.9, 179.9, 229.9, 249.9] | monthly: [89.9] | other: [129.9] | weekly: [17.9] | priv: none=False linked=False track=True
+  pt: r=5.0 n=1 | yearly: [22.99, 34.99, 44.99, 49.99, 59.99, 69.99] | monthly: [22.99] | other: [34.99] | priv: none=False linked=False track=False
+## Pep (Shred Apps) (id 6504788281)
+  us: r=4.7 n=967 | other: [9.99, 19.99, 29.99, 34.99, 39.99, 59.99] | yearly: [39.99] | priv: none=False linked=True track=False
+  br: r=4.7 n=32 | other: [24.9, 29.9, 64.9, 74.9, 99.9, 199.9] | yearly: [99.9] | monthly: [24.9] | priv: none=False linked=True track=False
+  mx: r=4.9 n=18 | other: [199.0, 399.0, 599.0, 799.0, 899.0, 1299.0] | yearly: [899.0] | monthly: [199.0] | priv: none=False linked=False track=False
+  ar: r=5.0 n=2 | other: [9.99, 19.99, 29.99, 34.99, 39.99, 59.99] | yearly: [39.99] | monthly: [9.99] | priv: none=False linked=False track=False
+  cl: r=5.0 n=1 | other: [9.99, 22.99, 34.99, 39.99, 49.99, 69.99] | yearly: [49.99] | monthly: [9.99] | priv: none=False linked=False track=False
+  co: r=4.7 n=3 | other: [49900.0, 99900.0, 129900.0, 149900.0, 199900.0, 299900.0] | yearly: [199900.0] | monthly: [49900.0] | priv: none=False linked=False track=False
+  pe: r=5.0 n=2 | other: [44.9, 89.9, 119.9, 129.9, 149.9, 249.9] | yearly: [149.9] | monthly: [39.9] | priv: none=False linked=False track=False
+  pt: r=5.0 n=5 | other: [9.99, 22.99, 34.99, 39.99, 44.99, 69.99] | yearly: [44.99] | monthly: [9.99] | priv: none=False linked=False track=False
+## Zepbound & Mounjaro Tracker (id 6670317407)
+  us: r=4.8 n=3399 | other: [9.99, 19.99, 24.99, 34.99, 39.99, 49.99, 69.99] | yearly: [29.99] | weekly: [13.99] | priv: none=False linked=False track=False
+  br: r=4.9 n=83 | other: [49.9, 99.9, 229.9, 249.9, 299.9, 499.9] | yearly: [149.9, 499.9] | lifetime/unlimited: [1299.9] | weekly: [99.9] | priv: none=False linked=False track=False
+  mx: r=4.9 n=49 | other: [199.0, 399.0, 799.0, 999.0, 1499.0] | yearly: [599.0, 1499.0] | lifetime/unlimited: [3999.0] | weekly: [299.0] | priv: none=False linked=False track=False
+  ar: r= n= | other: [34.99, 39.99, 49.99, 59.99, 69.99] | lifetime/unlimited: [199.99] | weekly: [12.99, 13.99] | yearly: [69.99] | priv: none=False linked=False track=False
+  cl: r=5.0 n=1 | other: [22.99, 39.99, 49.99, 59.99, 79.99] | yearly: [34.99, 79.99] | lifetime/unlimited: [229.99] | weekly: [14.99] | priv: none=False linked=False track=False
+  co: r=5.0 n=5 | other: [149900.0, 199900.0, 229900.0, 299900.0] | lifetime/unlimited: [999900.0] | weekly: [59900.0] | yearly: [299900.0] | priv: none=False linked=False track=False
+  pe: r=5.0 n=4 | other: [39.9, 149.9, 179.9, 229.9, 249.9] | lifetime/unlimited: [899.9] | weekly: [59.9] | yearly: [299.9] | priv: none=False linked=False track=False
+  pt: r=4.9 n=26 | other: [9.99, 22.99, 39.99, 44.99, 59.99, 79.99] | yearly: [34.99, 79.99] | lifetime/unlimited: [229.99] | weekly: [14.99] | priv: none=False linked=False track=False
+## GLP AI (OutliveAI) (id 6755669956)
+  us: r=4.7 n=830 | monthly: [19.99, 24.99, 99.99] | yearly: [39.99, 59.99, 79.99] | other: [19.99, 79.99, 119.99] | priv: none=False linked=True track=False
+  br: r=4.9 n=969 | yearly: [179.9, 249.9, 334.9] | other: [59.9, 249.9, 499.9] | monthly: [99.9, 129.9, 459.9] | priv: none=False linked=True track=False
+  mx: r=4.9 n=468 | yearly: [599.0, 899.0, 1199.0] | other: [199.0, 899.0, 1799.0] | monthly: [299.0, 399.0, 1199.0] | priv: none=False linked=False track=False
+  ar: r=5.0 n=1 | yearly: [26.99, 39.99, 52.99] | monthly: [14.99, 19.99, 69.99] | other: [9.99, 39.99, 79.99] | priv: none=False linked=False track=False
+  cl: r=5.0 n=15 | monthly: [17.99, 22.99, 79.99] | yearly: [34.99, 49.99, 65.0] | other: [9.99, 49.99, 99.99] | priv: none=False linked=False track=False
+  co: r=4.8 n=12 | yearly: [129900.0, 199900.0, 264900.0] | monthly: [69900.0, 99900.0, 299900.0] | other: [49900.0, 199900.0, 399900.0] | priv: none=False linked=False track=False
+  pe: r=5.0 n=5 | yearly: [119.9, 179.9, 239.0] | monthly: [69.9, 89.9, 299.9] | other: [44.9, 179.9, 359.9] | priv: none=False linked=False track=False
+  pt: r=4.7 n=24 | yearly: [24.99, 39.99, 52.99] | monthly: [14.99, 22.99, 69.99] | other: [9.99, 44.99, 79.99] | priv: none=False linked=False track=False
+## OzemPro (id 6753301974)
+  us: r=4.8 n=459 | monthly: [9.99, 19.99] | yearly: [19.99, 24.99, 34.99, 39.99, 44.99, 49.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=18137 | yearly: [99.9, 129.9, 149.9, 199.9, 229.9, 249.9] | monthly: [59.9, 69.9, 79.9] | priv: none=False linked=True track=True
+  mx: r=4.9 n=527 | yearly: [399.0, 499.0, 599.0, 999.0] | monthly: [199.0, 299.0, 399.0] | priv: none=False linked=False track=True
+  ar: r=4.7 n=157 | monthly: [9.99, 14.99, 19.99] | yearly: [19.99, 24.99, 29.99, 44.99, 49.99] | priv: none=False linked=False track=True
+  cl: r=4.9 n=145 | yearly: [22.99, 29.99, 34.99, 39.99, 49.99, 59.99] | monthly: [9.99, 17.99] | priv: none=False linked=False track=True
+  co: r=4.9 n=408 | yearly: [99900.0, 119900.0, 129900.0, 149900.0, 199900.0, 229900.0] | monthly: [69900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=32 | yearly: [89.9, 99.9, 149.9, 179.9, 199.9, 229.9, 249.9] | monthly: [69.9, 89.9] | priv: none=False linked=False track=True
+  pt: r=4.7 n=166 | yearly: [22.99, 29.99, 39.99, 44.99, 49.99, 59.99] | monthly: [9.99, 12.99, 22.99] | priv: none=False linked=False track=False
+## Monju (id 6761790660)
+  us: r=4.9 n=230 | yearly: [25.9, 34.99, 39.99, 49.99] | monthly: [14.9] | weekly: [5.99] | priv: none=False linked=True track=True
+  br: r=4.9 n=23357 | yearly: [99.9, 129.9, 149.9, 199.9] | monthly: [59.9] | weekly: [39.9] | priv: none=False linked=True track=True
+  mx: r=4.9 n=1090 | yearly: [399.0, 599.0] | monthly: [249.0] | weekly: [129.0] | priv: none=False linked=False track=True
+  ar: r=4.8 n=129 | yearly: [19.99, 24.99, 29.99, 34.99] | monthly: [14.99] | weekly: [5.99] | priv: none=False linked=False track=True
+  cl: r=4.8 n=94 | yearly: [22.99, 34.99] | monthly: [9.99] | weekly: [6.99] | priv: none=False linked=False track=True
+  co: r=4.9 n=733 | yearly: [89900.0, 99900.0, 129900.0] | monthly: [49900.0] | weekly: [29900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=67 | yearly: [89.9, 129.9] | monthly: [44.9] | weekly: [24.9] | priv: none=False linked=False track=True
+  pt: r=4.8 n=144 | yearly: [22.99, 34.99] | monthly: [14.99] | weekly: [6.99] | priv: none=False linked=False track=False
+## MeuGLP (id 6758341986)
+  br: r=4.9 n=2486 | other: [39.9] | yearly: [149.9] | priv: none=False linked=True track=True
+## GlipOne (id 6757106230)
+  us: r=5.0 n=5 | yearly: [29.99, 39.99] | weekly: [2.99, 4.99, 5.99, 6.99] | monthly: [7.99, 9.99] | priv: none=False linked=False track=True
+  br: r=4.9 n=1089 | yearly: [199.9, 249.9, 299.9] | weekly: [19.9, 29.9, 39.9] | monthly: [49.9, 59.9, 69.9] | priv: none=False linked=False track=True
+  mx: r= n= | yearly: [599.0, 999.0] | weekly: [69.0, 99.0, 129.0, 149.0] | monthly: [179.0, 199.0] | priv: none=False linked=False track=True
+  ar: r=5.0 n=1 | yearly: [29.99, 49.99] | weekly: [2.99, 4.99, 5.99, 6.99] | monthly: [7.99, 9.99] | priv: none=False linked=False track=True
+  cl: r= n= | yearly: [34.99, 59.99] | weekly: [2.99, 5.99, 6.99, 7.99] | monthly: [9.99] | priv: none=False linked=False track=True
+  co: r= n= | yearly: [129900.0, 229900.0] | weekly: [14900.0, 24900.0, 29900.0] | monthly: [39900.0, 49900.0] | priv: none=False linked=False track=True
+  pe: r= n= | yearly: [129.9, 229.9] | weekly: [12.9, 22.9, 24.9, 29.9] | monthly: [34.9, 44.9] | priv: none=False linked=False track=True
+  pt: r=5.0 n=9 | yearly: [34.99, 59.99] | monthly: [8.99, 9.99] | weekly: [2.99, 5.99, 6.99, 7.99] | priv: none=False linked=False track=False
+## MounjaPRO (id 6755938737)
+  us: r=4.6 n=13 | weekly: [1.99] | yearly: [34.99, 49.99] | monthly: [7.99, 8.99, 12.99] | lifetime/unlimited: [99.99] | priv: none=False linked=False track=False
+  br: r=4.8 n=1060 | weekly: [2.9] | monthly: [14.9, 19.9, 39.9] | yearly: [79.9, 99.9] | lifetime/unlimited: [299.9] | priv: none=False linked=False track=False
+  mx: r=4.8 n=8 | yearly: [799.0, 999.0] | weekly: [39.0] | monthly: [179.0, 199.0, 299.0] | lifetime/unlimited: [1999.0] | priv: none=False linked=False track=False
+  ar: r=5.0 n=1 | monthly: [7.99, 8.99, 12.99] | lifetime/unlimited: [99.99] | yearly: [34.99, 49.99] | weekly: [1.99] | priv: none=False linked=False track=False
+  cl: r=5.0 n=1 | yearly: [39.99, 59.99] | monthly: [9.99, 14.99] | lifetime/unlimited: [99.99] | weekly: [1.99] | priv: none=False linked=False track=False
+  co: r=5.0 n=1 | monthly: [39900.0, 59900.0] | lifetime/unlimited: [499900.0] | yearly: [149900.0, 229900.0] | weekly: [9900.0] | priv: none=False linked=False track=False
+  pe: r= n= | monthly: [34.9, 39.9, 59.9] | lifetime/unlimited: [449.9] | yearly: [149.9, 229.9] | weekly: [9.9] | priv: none=False linked=False track=False
+  pt: r=4.6 n=106 | weekly: [1.99] | monthly: [8.99, 9.99, 14.99] | yearly: [39.99, 59.99] | lifetime/unlimited: [99.99] | priv: none=False linked=False track=False
+## Mingo (id 6756276105)
+  us: r=4.7 n=68 | other: [34.99] | lifetime/unlimited: [34.99, 39.9, 49.9, 49.99] | yearly: [29.99, 34.9, 69.99] | monthly: [11.9, 24.9] | priv: none=False linked=False track=True
+  br: r=4.9 n=214 | monthly: [9.9, 39.9, 79.9] | yearly: [129.9, 149.9, 229.9] | lifetime/unlimited: [159.9, 199.9, 299.9, 599.9] | priv: none=False linked=False track=True
+  mx: r=4.7 n=468 | lifetime/unlimited: [590.0, 740.0, 999.0] | other: [600.0] | monthly: [249.0, 399.0, 1299.0] | yearly: [799.0, 1799.0] | priv: none=False linked=False track=True
+  ar: r= n= | lifetime/unlimited: [27.9, 35.9, 49.9] | monthly: [11.9, 17.9, 59.9] | yearly: [23.49, 29.99, 34.9, 79.9] | priv: none=False linked=False track=True
+  cl: r= n= | lifetime/unlimited: [29.49, 47.0, 59.99] | monthly: [12.99, 19.99, 69.99] | yearly: [34.99, 38.0, 39.99, 99.99] | priv: none=False linked=False track=True
+  co: r=4.7 n=12 | monthly: [22000.0, 59900.0, 79900.0, 299900.0] | other: [102900.0] | lifetime/unlimited: [102900.0, 229900.0] | yearly: [135900.0, 149900.0, 399900.0] | priv: none=False linked=False track=True
+  pe: r=5.0 n=1 | other: [94.0] | lifetime/unlimited: [93.9, 145.9, 229.9] | monthly: [49.9, 79.9, 249.9] | yearly: [116.9, 149.9, 349.9] | priv: none=False linked=False track=True
+  pt: r=4.6 n=10 | other: [30.95] | lifetime/unlimited: [30.9, 38.49, 59.9] | monthly: [12.9, 19.9, 64.9] | yearly: [39.9, 51.99, 84.9] | priv: none=False linked=False track=False
+## Cal AI (id 6480417616)
+  us: r=4.8 n=374535 | lifetime/unlimited: [2.99, 5.99, 9.99, 19.99, 29.99] | other: [0.99] | priv: none=False linked=False track=True
+  br: r=4.9 n=6053 | lifetime/unlimited: [14.9, 29.9, 44.9, 49.9, 99.9, 129.9, 149.9, 199.9, 249.9] | priv: none=False linked=False track=True
+  mx: r=4.8 n=28158 | lifetime/unlimited: [69.0, 107.0, 199.0, 215.0, 320.0, 399.0, 599.0] | other: [19.0] | priv: none=False linked=False track=True
+  ar: r=4.8 n=10565 | lifetime/unlimited: [2.09, 4.19, 6.29, 6.99, 9.99, 19.99, 29.99, 49.99] | other: [0.99] | priv: none=False linked=False track=True
+  cl: r=4.8 n=5730 | lifetime/unlimited: [3.79, 8.7, 9.99, 13.29, 19.99, 22.99, 29.99, 34.99] | other: [69.99, 990.0] | priv: none=False linked=False track=True
+  co: r=4.8 n=8278 | lifetime/unlimited: [14900.0, 15900.0, 31900.0, 41500.0, 49900.0, 99900.0, 129900.0, 229900.0] | other: [4900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=4267 | lifetime/unlimited: [12.9, 18.5, 22.9, 37.5, 39.9, 56.0, 79.9, 89.9, 119.9] | other: [4.9] | priv: none=False linked=False track=True
+  pt: r=4.8 n=2818 | lifetime/unlimited: [2.99, 6.89, 9.99, 15.49, 22.99, 24.0, 34.99] | other: [0.99] | priv: none=False linked=False track=False
+## MyFitnessPal (id 341232718)
+  us: r=4.7 n=2390557 | monthly: [9.99, 19.99] | yearly: [49.99, 79.99] | other: [9.99, 49.99] | priv: none=False linked=True track=True
+  br: r=4.9 n=99104 | other: [31.9, 129.9, 162.9] | monthly: [31.9, 82.9] | yearly: [31.9, 162.9, 329.9] | priv: none=False linked=True track=True
+  mx: r=4.8 n=32460 | other: [169.0, 899.0] | monthly: [169.0, 399.0] | yearly: [169.0, 899.0, 1599.0] | priv: none=False linked=False track=True
+  ar: r=4.8 n=10013 | other: [9.99, 49.99] | monthly: [9.99, 19.99] | yearly: [9.99, 49.99, 79.99] | priv: none=False linked=False track=True
+  cl: r=4.8 n=15804 | other: [6.5, 32.9] | monthly: [6.5, 14.5] | yearly: [6.5, 32.9, 57.9] | priv: none=False linked=False track=True
+  co: r=4.9 n=15297 | other: [27900.0, 142900.0, 374900.0] | monthly: [27900.0, 82900.0] | yearly: [27900.0, 142900.0, 334900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=4112 | other: [31.9, 162.9] | monthly: [31.9, 67.9, 89.9] | yearly: [31.9, 162.9, 269.9] | priv: none=False linked=False track=True
+  pt: r=4.7 n=13492 | other: [9.99, 20.49, 49.99, 80.99] | monthly: [9.99, 21.99] | yearly: [9.99, 49.99, 87.99] | priv: none=False linked=False track=False
+## Lose It! (id 297368629)
+  us: r=4.8 n=783867 | other: [9.99, 11.99, 19.99, 23.99, 29.99, 39.99, 79.99] | lifetime/unlimited: [49.99, 59.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=1932 | other: [31.9, 40.9, 64.9, 97.9, 119.9, 129.9, 199.9, 309.9] | priv: none=False linked=True track=True
+  mx: r=4.8 n=1641 | other: [169.0, 199.0, 349.0, 499.0, 699.0, 749.0, 1549.0] | priv: none=False linked=False track=True
+  ar: r=4.7 n=461 | other: [4.99, 9.99, 11.99, 19.99, 23.99, 29.99, 39.99, 79.99] | priv: none=False linked=False track=True
+  cl: r=4.7 n=371 | other: [6.5, 7.2, 9.99, 13.2, 19.9, 23.9, 26.5, 35.9, 56.9] | priv: none=False linked=False track=True
+  co: r=4.8 n=368 | other: [27900.0, 41900.0, 54900.0, 84900.0, 99900.0, 114900.0, 117900.0, 319900.0] | priv: none=False linked=False track=True
+  pe: r=4.9 n=137 | other: [31.9, 33.9, 64.9, 78.9, 97.9, 99.9, 129.9, 169.9, 269.9] | priv: none=False linked=False track=True
+  pt: r=4.7 n=562 | other: [5.99, 10.99, 17.99, 19.99, 29.99, 38.99, 39.99, 85.99] | lifetime/unlimited: [59.99, 69.99] | priv: none=False linked=False track=False
+## Yazio (id 946099227)
+  us: r=4.7 n=51726 | yearly: [23.9, 34.99, 47.9] | other: [11.9, 29.99, 32.99] | monthly: [23.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=70977 | yearly: [89.9, 214.9] | other: [47.9, 59.9, 64.9] | quarterly: [89.99, 150.0] | semiannual: [79.9] | priv: none=False linked=True track=True
+  mx: r=4.8 n=18258 | yearly: [299.0, 599.0, 699.0] | other: [149.0, 219.0, 329.0, 499.0] | quarterly: [299.0] | semiannual: [249.0, 449.0] | priv: none=False linked=False track=True
+  ar: r=4.8 n=7816 | yearly: [19.99, 39.99, 109.99] | other: [9.99, 13.49, 19.99, 39.99] | quarterly: [19.99] | semiannual: [34.99] | monthly: [19.99] | priv: none=False linked=False track=True
+  cl: r=4.8 n=11627 | yearly: [11.5, 18.9, 22.9] | other: [5.5, 7.2, 9.9, 12.9] | quarterly: [11.5] | semiannual: [6.9, 11.5] | priv: none=False linked=False track=True
+  co: r=4.8 n=7448 | other: [24900.0, 25900.0, 38900.0, 62900.0] | yearly: [49900.0, 89900.0, 99900.0, 159900.0] | quarterly: [49900.0] | semiannual: [54900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=3062 | other: [24.9, 37.9, 56.9, 59.9] | yearly: [49.9, 89.9, 99.9, 159.9] | quarterly: [49.9] | semiannual: [59.9] | priv: none=False linked=False track=True
+  pt: r=4.7 n=7589 | yearly: [19.99, 35.9, 39.99, 79.99] | other: [9.99, 17.99, 26.99] | quarterly: [23.99] | semiannual: [14.99, 24.99] | priv: none=False linked=False track=False
+## MacroFactor (id 1553503471)
+  us: r=4.8 n=23891 | monthly: [9.99, 11.99] | yearly: [47.99, 59.99, 71.99, 89.99] | priv: none=False linked=True track=False
+  br: r=4.8 n=105 | monthly: [49.9, 61.9, 66.9] | yearly: [264.9, 399.9, 599.9] | priv: none=False linked=True track=False
+  mx: r=4.8 n=256 | monthly: [239.0, 279.0, 289.0] | yearly: [1159.0, 1749.0, 1999.0] | priv: none=False linked=False track=False
+  ar: r=4.7 n=35 | monthly: [11.99] | yearly: [47.99, 71.99, 89.99] | priv: none=False linked=False track=False
+  cl: r=4.7 n=42 | monthly: [8.7, 10.2, 10.5] | yearly: [40.9, 61.9] | priv: none=False linked=False track=False
+  co: r=4.8 n=60 | monthly: [44900.0, 48900.0, 52900.0] | yearly: [204900.0, 269900.0, 309900.0, 399900.0] | priv: none=False linked=False track=False
+  pe: r=4.8 n=17 | monthly: [39.9, 43.9, 44.9] | yearly: [177.9, 269.9, 399.9] | priv: none=False linked=False track=False
+  pt: r=4.9 n=101 | monthly: [11.99, 12.49] | yearly: [48.99, 73.99, 99.99] | priv: none=False linked=False track=False
+## Fitia (id 1448277011)
+  us: r=4.9 n=24139 | yearly: [53.99, 58.99, 59.99, 89.99] | monthly: [19.99, 23.99, 35.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=200 | yearly: [143.9, 150.0, 159.0, 169.0, 249.0] | monthly: [23.9, 51.9, 56.9, 85.9] | priv: none=False linked=True track=True
+  mx: r=4.9 n=72842 | yearly: [609.0, 659.0, 679.0, 1029.0] | monthly: [115.0, 149.0, 219.0] | semiannual: [539.0] | quarterly: [359.0] | priv: none=False linked=False track=True
+  ar: r=4.9 n=21709 | yearly: [24.99, 26.99, 27.99, 41.99] | monthly: [5.99, 8.99] | semiannual: [23.49] | quarterly: [14.49] | priv: none=False linked=False track=True
+  cl: r=4.9 n=31951 | yearly: [22.49, 23.9, 24.9, 37.9] | monthly: [4.2, 7.99] | quarterly: [10.7] | semiannual: [16.9] | priv: none=False linked=False track=True
+  co: r=4.9 n=34154 | yearly: [86900.0, 95900.0, 96900.0, 145900.0] | monthly: [15900.0, 31900.0] | quarterly: [37900.0] | semiannual: [54900.0] | priv: none=False linked=False track=True
+  pe: r=4.9 n=17392 | yearly: [86.9, 95.9, 96.9, 145.9] | monthly: [19.9, 31.9] | semiannual: [79.9] | quarterly: [49.9] | priv: none=False linked=False track=True
+  pt: r=4.8 n=61 | yearly: [35.99, 38.99, 39.99, 59.99] | monthly: [9.99, 12.99, 19.99, 35.99] | priv: none=False linked=False track=False
+## Lifesum (id 286906691)
+  us: r=4.6 n=151008 | yearly: [99.99, 119.99] | monthly: [29.99, 39.99, 69.99] | other: [21.99, 29.99, 44.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=14288 | monthly: [21.99, 31.9, 69.9] | quarterly: [54.9, 59.9, 199.9] | yearly: [149.9, 499.9] | other: [31.9] | priv: none=False linked=True track=True
+  mx: r=4.7 n=7591 | other: [169.0] | monthly: [169.0, 199.0, 229.0] | yearly: [989.0] | quarterly: [349.0, 499.0] | priv: none=False linked=False track=True
+  ar: r=4.7 n=2296 | other: [9.99] | quarterly: [16.99, 24.99] | monthly: [9.99] | yearly: [49.99] | priv: none=False linked=False track=True
+  cl: r=4.7 n=2804 | monthly: [6.5, 7.2, 8.7] | quarterly: [11.2, 17.9] | yearly: [35.9] | other: [6.5] | priv: none=False linked=False track=True
+  co: r=4.8 n=1549 | quarterly: [48900.0, 104900.0] | other: [27900.0, 127900.0] | yearly: [209900.0] | monthly: [27900.0, 41900.0] | priv: none=False linked=False track=True
+  pe: r=4.7 n=825 | other: [21.9, 28.9, 31.9] | quarterly: [54.9, 84.9] | monthly: [31.9, 33.9] | yearly: [169.9] | priv: none=False linked=False track=True
+  pt: r=4.6 n=2150 | monthly: [9.99, 14.99] | yearly: [99.99] | quarterly: [21.99, 39.99] | other: [9.99] | priv: none=False linked=False track=False
+## Fastic (id 1459260306)
+  us: r=4.8 n=246096 | other: [12.99, 19.99, 29.99, 39.99, 79.99] | monthly: [14.99, 27.99] | priv: none=False linked=True track=True
+  br: r=4.9 n=21828 | other: [49.9, 99.9, 179.9, 299.9] | monthly: [79.9, 107.9] | priv: none=False linked=True track=True
+  mx: r=4.9 n=12579 | other: [249.0, 499.0, 699.0, 1299.0] | monthly: [299.0, 539.0] | priv: none=False linked=False track=True
+  ar: r=4.8 n=7469 | other: [9.99, 12.99, 19.99, 29.99, 39.99, 79.99] | priv: none=False linked=False track=True
+  cl: r=4.8 n=7987 | other: [8.9, 11.9, 19.9, 26.9, 49.9] | monthly: [14.99, 18.9] | priv: none=False linked=False track=True
+  co: r=4.9 n=5069 | other: [54900.0, 74900.0, 119900.0, 124900.0, 299900.0] | monthly: [89900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=1833 | other: [39.9, 49.9, 75.9, 99.9, 109.9, 114.9, 299.9] | monthly: [92.9] | priv: none=False linked=False track=True
+  pt: r=4.8 n=8767 | other: [12.99, 29.99, 39.99, 79.99] | monthly: [17.99] | priv: none=False linked=False track=False
+## Simple (id 1467720176)
+  us: r=4.7 n=411418 | other: [14.99, 29.99, 39.99, 49.99, 59.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=6882 | other: [58.9, 61.9, 117.9, 124.9, 149.9, 152.9, 167.9, 194.9, 204.9, 299.9] | priv: none=False linked=True track=True
+  mx: r=4.7 n=3863 | other: [299.0, 589.0, 599.0, 739.0, 759.0, 979.0, 1149.0, 1299.0] | priv: none=False linked=False track=True
+  ar: r=4.7 n=930 | other: [14.99, 29.99, 39.99, 49.99, 59.99] | priv: none=False linked=False track=True
+  cl: r=4.7 n=1672 | other: [10.7, 10.9, 21.5, 21.9, 27.5, 28.9, 29.99, 35.9, 42.9, 59.99] | priv: none=False linked=False track=True
+  co: r=4.8 n=1440 | other: [59900.0, 62900.0, 119900.0, 124900.0, 129900.0, 142900.0, 152900.0, 199900.0, 209900.0, 299900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=433 | other: [50.9, 102.9, 119.9, 132.9, 169.9, 229.9] | priv: none=False linked=False track=True
+  pt: r=4.6 n=1731 | other: [15.99, 16.49, 31.99, 32.99, 34.99, 39.99, 42.99, 55.99, 69.99] | priv: none=False linked=False track=False
+## Flo (id 1038369065)
+  us: r=4.7 n=2017395 | other: [1.99, 7.49, 11.49, 14.99, 43.99, 47.99, 49.99, 59.99] | priv: none=False linked=True track=True
+  br: r=4.9 n=912065 | other: [9.9, 17.9, 19.99, 29.9, 29.99, 49.99, 79.99] | priv: none=False linked=True track=True
+  mx: r=4.8 n=451139 | other: [39.0, 68.0, 69.0, 119.0, 137.0, 179.0, 279.0] | priv: none=False linked=False track=True
+  ar: r=4.8 n=74105 | other: [1.99, 2.99, 3.49, 4.99, 5.99, 11.49, 19.99, 29.99, 39.99] | priv: none=False linked=False track=True
+  cl: r=4.8 n=70313 | other: [1.99, 2.29, 3.49, 4.5, 4.99, 5.2, 25.9, 29.99] | priv: none=False linked=False track=True
+  co: r=4.8 n=120497 | other: [9900.0, 20900.0, 24900.0, 28900.0, 124900.0, 149900.0] | priv: none=False linked=False track=True
+  pe: r=4.8 n=50528 | other: [7.9, 9.99, 11.5, 19.9, 22.99, 46.5, 49.9, 102.9, 123.9, 129.9] | priv: none=False linked=False track=True
+  pt: r=4.7 n=51654 | other: [4.99, 6.99, 9.99, 16.49, 16.99, 26.99, 39.49, 39.99] | priv: none=False linked=False track=False
+## Balance (id 1503345959)
+  us: r=4.7 n=1162 | monthly: [3.99, 4.99, 10.99] | yearly: [49.99, 98.99] | priv: none=False linked=True track=False
+  br: r=5.0 n=11 | monthly: [19.9, 24.9, 61.9] | yearly: [249.9, 579.9] | priv: none=False linked=True track=False
+  mx: r=4.9 n=14 | monthly: [89.0, 99.0, 279.0] | yearly: [999.0, 2399.0] | priv: none=False linked=False track=False
+  ar: r=4.8 n=6 | monthly: [3.99, 4.99, 10.99] | yearly: [49.99, 98.99] | priv: none=False linked=False track=False
+  cl: r=3.7 n=3 | monthly: [3.99, 4.99, 10.7] | yearly: [49.99, 104.9] | priv: none=False linked=False track=False
+  co: r=5.0 n=2 | monthly: [19900.0, 29900.0, 52900.0] | yearly: [299900.0, 469900.0] | priv: none=False linked=False track=False
+  pe: r=5.0 n=2 | monthly: [14.9, 19.9, 44.9] | yearly: [199.9, 399.9] | priv: none=False linked=False track=False
+  pt: r=4.8 n=25 | monthly: [4.99, 5.99, 11.99] | yearly: [59.99, 105.99] | priv: none=False linked=False track=False
+## Lila (Peri Weight Loss Coach) (id 6667108028)
+  us: r=4.7 n=1730 | lifetime/unlimited: [5.99, 19.99, 39.99, 59.99, 69.99, 79.99, 464.99] | priv: none=False linked=True track=True
+  br: r=5.0 n=3 | lifetime/unlimited: [0.0, 99.9, 129.9, 199.9, 399.9, 499.9, 2999.9] | other: [129.9] | priv: none=False linked=True track=True
+  mx: r=5.0 n=7 | lifetime/unlimited: [0.0, 399.0, 1299.0, 1499.0, 1799.0, 9999.0] | other: [399.0] | priv: none=False linked=False track=True
+  ar: r=5.0 n=1 | other: [19.99] | lifetime/unlimited: [0.0, 19.99, 29.99, 59.99, 69.99] | priv: none=False linked=False track=True
+  cl: r= n= | lifetime/unlimited: [0.0, 22.99, 34.99, 49.99, 69.99, 79.99, 499.99] | other: [22.99] | priv: none=False linked=False track=True
+  co: r=5.0 n=1 | lifetime/unlimited: [0.0, 99900.0, 129900.0, 299900.0, 1999900.0] | other: [99900.0] | priv: none=False linked=False track=True
+  pe: r=5.0 n=1 | other: [89.9] | lifetime/unlimited: [0.0, 89.9, 129.9, 249.9, 299.9] | priv: none=False linked=False track=True
+  pt: r=3.0 n=3 | lifetime/unlimited: [0.0, 22.99, 34.99, 69.99, 79.99, 499.99] | other: [22.99] | priv: none=False linked=False track=False
+## Raquel Menopausa (id 6743498501)
+  us: r=5.0 n=21 |  | priv: none=False linked=True track=False
+  br: r=5.0 n=408 |  | priv: none=False linked=True track=False
+  mx: r=5.0 n=2 |  | priv: none=False linked=False track=False
+  ar: r= n= |  | priv: none=False linked=False track=False
+  cl: r= n= |  | priv: none=False linked=False track=False
+  co: r= n= |  | priv: none=False linked=False track=False
+  pe: r= n= |  | priv: none=False linked=False track=False
+  pt: r= n= |  | priv: none=False linked=False track=False
+## Tecnonutri (id 574794938)
+  us: r=4.7 n=266 | monthly: [7.99, 9.49, 9.99, 18.99, 22.99, 57.99] | yearly: [57.99, 61.99] | quarterly: [21.99, 28.99] | priv: none=False linked=True track=True
+  br: r=4.6 n=26031 | quarterly: [31.9, 61.9, 89.9] | monthly: [25.9, 30.9, 39.9, 239.9] | yearly: [239.9] | priv: none=False linked=True track=True
+  mx: r=3.8 n=41 | monthly: [175.0, 619.0] | quarterly: [339.0, 449.0, 669.0, 1649.0] | other: [1149.0] | yearly: [1189.0, 1999.0] | semiannual: [2899.0] | priv: none=False linked=False track=True
+  ar: r=4.1 n=28 | monthly: [7.99, 9.49, 30.99] | quarterly: [18.99, 22.99, 28.99, 66.99, 81.99] | yearly: [86.99] | semiannual: [144.99] | priv: none=False linked=False track=True
+  cl: r=3.6 n=18 | quarterly: [12.5, 15.9, 16.5, 24.9, 59.9] | monthly: [5.2, 6.2] | yearly: [43.9, 74.9] | semiannual: [104.9] | priv: none=False linked=False track=True
+  co: r=4.5 n=13 | quarterly: [54900.0, 119900.0, 274900.0, 339900.0] | monthly: [27900.0, 102900.0, 129900.0] | yearly: [359900.0] | semiannual: [479900.0, 599900.0] | priv: none=False linked=False track=True
+  pe: r=3.7 n=6 | quarterly: [61.9, 77.9, 97.9, 224.9, 279.9] | monthly: [30.9, 107.9] | yearly: [204.9, 294.9] | semiannual: [489.9] | priv: none=False linked=False track=True
+  pt: r=4.3 n=76 | quarterly: [18.99, 24.99, 31.99, 89.99] | yearly: [66.99, 96.99] | monthly: [9.49, 9.99, 33.99] | semiannual: [159.99] | priv: none=False linked=False track=False
+## FatSecret (id 347184248)
+  us: r=4.7 n=15479 | monthly: [10.49, 14.99] | quarterly: [19.99, 20.0, 28.99] | yearly: [38.99, 59.99] | priv: none=False linked=True track=False
+  br: r=4.9 n=22562 | monthly: [37.9, 53.9] | quarterly: [53.9, 74.99, 107.9] | yearly: [82.9, 140.9, 234.9] | priv: none=False linked=True track=False
+  mx: r=4.8 n=4253 | monthly: [135.0, 194.0] | quarterly: [194.0, 270.0, 389.0] | yearly: [290.0, 499.0, 830.0] | priv: none=False linked=False track=False
+  ar: r=4.8 n=1293 | monthly: [7.0, 9.99] | quarterly: [11.99, 13.99, 19.99] | yearly: [21.49, 25.9, 42.99] | priv: none=False linked=False track=False
+  cl: r=4.8 n=2350 | monthly: [6.29, 8.99] | quarterly: [8.99, 12.59, 17.99] | yearly: [13.99, 28.0, 39.99] | priv: none=False linked=False track=False
+  co: r=4.8 n=799 | monthly: [29000.0, 41500.0] | quarterly: [41500.0, 57900.0, 82900.0] | yearly: [62500.0, 125900.0, 179000.0] | priv: none=False linked=False track=False
+  pe: r=4.8 n=287 | monthly: [25.9, 36.9] | quarterly: [52.0, 74.9] | yearly: [112.9, 160.9] | priv: none=False linked=False track=False
+  pt: r=4.8 n=1799 | monthly: [9.39, 13.49] | quarterly: [18.0, 25.9] | yearly: [35.0, 37.49, 53.9] | priv: none=False linked=False track=False
+## Foodvisor (id 1064020872)
+  us: r=4.6 n=18351 | other: [23.99, 29.99, 59.99, 71.99, 83.99] | monthly: [14.99, 29.99, 39.99, 59.99, 89.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=11431 | other: [47.9, 83.9, 179.9, 199.9, 399.9] | monthly: [90.0, 199.9, 319.9, 479.9] | priv: none=False linked=True track=True
+  mx: r=4.8 n=9113 | other: [119.0, 239.0, 599.0, 1109.0] | monthly: [300.0, 869.0, 909.0, 1349.0] | priv: none=False linked=False track=True
+  ar: r=4.7 n=2276 | other: [11.99, 23.99, 29.99, 47.99, 57.99, 59.99, 69.99] | monthly: [24.0, 38.99, 56.99] | priv: none=False linked=False track=True
+  cl: r=4.7 n=384 | other: [19.99, 29.5, 36.9, 39.9] | monthly: [13.5, 19.99, 26.5, 26.9, 35.9, 54.9] | priv: none=False linked=False track=True
+  co: r=4.8 n=589 | other: [49900.0, 99900.0, 119900.0, 139900.0, 169900.0, 177900.0] | monthly: [99900.0, 182900.0, 254900.0, 384900.0] | priv: none=False linked=False track=True
+  pe: r=4.7 n=287 | other: [39.9, 79.9, 154.9, 189.9, 194.9] | monthly: [66.9, 79.9, 152.9, 229.9, 339.9] | priv: none=False linked=False track=True
+  pt: r=4.7 n=2312 | other: [9.99, 14.99, 29.99, 59.99] | monthly: [15.0, 38.99, 39.99, 60.99, 90.99] | priv: none=False linked=False track=False
+## SnapCalorie (id 1574239307)
+  us: r=4.7 n=7012 | other: [9.99, 15.99, 19.99, 39.99, 49.99, 59.99, 79.99, 99.99] | yearly: [149.0] | monthly: [19.99] | priv: none=False linked=False track=False
+  br: r=4.9 n=120 | other: [59.9, 79.9, 129.9, 249.9, 399.9, 599.9] | yearly: [799.9] | monthly: [99.9] | priv: none=False linked=False track=False
+  mx: r=4.7 n=231 | other: [199.0, 349.0, 399.0, 899.0, 999.0, 1299.0, 1799.0, 1999.0] | yearly: [2999.0] | monthly: [399.0] | priv: none=False linked=False track=False
+  ar: r=4.8 n=84 | other: [9.99, 15.99, 19.99, 39.99, 49.99, 59.99, 79.99, 99.99] | yearly: [149.0] | priv: none=False linked=False track=False
+  cl: r=4.9 n=47 | other: [9.99, 14.99, 22.99, 49.99, 69.99, 99.99] | monthly: [19.99] | yearly: [129.99] | priv: none=False linked=False track=False
+  co: r=4.8 n=91 | other: [49900.0, 69900.0, 99900.0, 199900.0, 229900.0, 299900.0, 399900.0, 499900.0] | monthly: [99900.0] | yearly: [799900.0] | priv: none=False linked=False track=False
+  pe: r=4.6 n=38 | other: [44.9, 59.9, 89.9, 179.9, 249.9, 299.9, 449.9] | yearly: [599.9] | monthly: [79.9] | priv: none=False linked=False track=False
+  pt: r=4.9 n=100 | other: [9.99, 17.99, 22.99, 44.99, 59.99, 69.99, 89.99, 99.99] | yearly: [179.0] | monthly: [22.99] | priv: none=False linked=False track=False
+## Protein Pal (id 1541193285)
+  us: r=4.7 n=10882 | other: [3.99, 4.99, 23.99, 29.99, 35.99] | priv: none=False linked=False track=False
+  br: r=4.9 n=17 | other: [20.9, 99.9, 119.9, 127.9, 129.9, 149.9, 199.9, 399.9, 799.9] | priv: none=False linked=False track=False
+  mx: r=4.9 n=32 | other: [95.0, 299.0, 399.0, 499.0, 569.0, 1299.0, 2499.0] | priv: none=False linked=False track=False
+  ar: r=4.6 n=10 | other: [3.99, 14.99, 19.99, 23.99, 59.99, 119.99] | priv: none=False linked=False track=False
+  cl: r=5.0 n=13 | other: [4.5, 17.99, 22.5, 22.99, 29.99, 69.99, 129.99] | priv: none=False linked=False track=False
+  co: r=4.9 n=13 | other: [69900.0, 99900.0, 109900.0, 299900.0, 599900.0] | priv: none=False linked=False track=False
+  pe: r=4.7 n=7 | other: [69.9, 89.9, 94.9, 249.9, 499.9] | priv: none=False linked=False track=False
+  pt: r=4.9 n=19 | other: [3.99, 17.99, 22.99, 23.99, 24.99, 69.99, 129.99] | priv: none=False linked=False track=False
+## Noom (id 634598719)
+  us: r=4.7 n=874107 | other: [44.99, 98.99, 129.99, 159.99, 199.99] | priv: none=False linked=True track=True
+  br: r=4.4 n=520 | other: [144.9, 169.9, 489.9, 499.9, 629.9, 649.9, 799.9, 999.9] | priv: none=False linked=True track=True
+  mx: r=4.3 n=1526 | other: [869.0, 2299.0, 3099.0, 3799.0, 4499.0] | priv: none=False linked=False track=True
+  ar: r=4.2 n=395 | other: [44.99, 98.99, 129.99, 159.99, 199.99] | priv: none=False linked=False track=True
+  cl: r=4.1 n=539 | other: [29.5, 29.9, 93.9, 99.9, 124.9, 129.9, 149.9, 159.9, 189.9, 199.9] | priv: none=False linked=False track=True
+  co: r=4.2 n=386 | other: [127900.0, 139900.0, 439900.0, 469900.0, 579900.0, 599900.0, 699900.0, 749900.0, 899900.0, 949900.0] | priv: none=False linked=False track=True
+  pe: r=4.3 n=183 | other: [144.9, 147.9, 369.9, 379.9, 489.9, 499.9, 599.9, 749.9] | priv: none=False linked=False track=True
+  pt: r=4.2 n=311 | other: [47.99, 110.99, 114.99, 144.99, 149.99, 179.99, 184.99, 224.99, 229.99] | priv: none=False linked=False track=False
+## Healthi (id 404299862)
+  us: r=4.8 n=89968 | other: [11.99, 14.99, 17.99, 19.99, 23.99, 29.99, 35.99] | yearly: [29.99, 44.99] | monthly: [35.99] | priv: none=False linked=True track=True
+  br: r=5.0 n=9 | yearly: [149.9, 229.9, 249.9, 499.9] | other: [97.9] | monthly: [119.9, 179.9, 199.9, 249.9] | priv: none=False linked=True track=True
+## Lilly Health (id 6744534749)
+  us: r=4.8 n=5363 |  | priv: none=False linked=True track=False
+## Cronometer (id 1145935738)
+  us: r=4.8 n=100483 | monthly: [10.99] | yearly: [59.99] | other: [10.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=189 | monthly: [44.9, 69.9] | yearly: [219.9, 319.0, 319.9, 399.9] | other: [69.9] | priv: none=False linked=True track=True
+## MyNetDiary (id 287529757)
+  us: r=4.8 n=171852 | other: [8.99, 14.99, 29.99, 39.99, 59.99] | priv: none=False linked=False track=True
+  br: r=4.8 n=82 | other: [28.9, 124.9, 194.9, 249.9] | monthly: [59.9, 149.9, 299.9, 399.9] | priv: none=False linked=False track=True
+## BitePal (id 6479529917)
+  us: r=4.7 n=57570 | weekly: [3.99, 4.99, 5.99] | yearly: [23.99, 35.99, 59.99] | other: [0.99, 4.99] | monthly: [9.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=16955 | yearly: [69.9, 119.9, 149.9, 199.9, 399.9] | weekly: [19.9, 24.9] | priv: none=False linked=True track=True
+## Stardust (id 1495829322)
+  us: r=4.8 n=120644 | yearly: [24.99, 29.99, 39.99] | other: [2.99, 3.99, 4.99, 24.99] | monthly: [6.99] | priv: none=False linked=False track=True
+  br: r=4.9 n=796 | yearly: [54.99, 129.9, 199.9] | monthly: [11.99, 14.0] | other: [14.9, 20.9] | priv: none=False linked=False track=True
+## Wild.AI (id 1482294997)
+  us: r=4.3 n=412 | other: [14.99] | yearly: [79.99] | priv: none=False linked=True track=True
+## Caria (id 1477621356)
+  us: r=4.6 n=1431 | monthly: [5.99] | yearly: [47.99] | priv: none=False linked=True track=False
+  br: r=4.5 n=13 |  | priv: none=False linked=True track=False
+## Menelle (id 6757102221)
+  us: r=4.8 n=203 | other: [5.99, 29.99] | priv: none=False linked=False track=False
+  br: r= n= | other: [39.9, 199.9] | priv: none=False linked=False track=False
+## Health & Her (id 1519199698)
+  us: r=4.7 n=961 |  | priv: none=False linked=True track=True
+  br: r=4.8 n=8 |  | priv: none=False linked=True track=True
+## Clearblue Menopause Stage (id 6451383937)
+  us: r=4.6 n=2779 |  | priv: none=False linked=True track=False
+## Sweat (id 1049234587)
+  us: r=4.6 n=43342 | monthly: [13.99, 19.99, 24.99] | other: [19.99] | yearly: [134.99] | quarterly: [54.99] | priv: none=False linked=True track=True
+  br: r=4.3 n=874 | monthly: [44.9, 50.0, 64.9] | other: [64.9, 177.9] | yearly: [300.0] | priv: none=False linked=True track=True
+## WebDiet (id 1195115431)
+  us: r=4.9 n=3855 |  | priv: none=True linked=False track=False
+  br: r=4.9 n=202126 |  | priv: none=True linked=False track=False
+## Dietbox (id 648610153)
+  us: r=4.9 n=1192 |  | priv: none=False linked=True track=False
+  br: r=4.9 n=71464 |  | priv: none=False linked=True track=False
+## Alimente-se (id 6474789081)
+  us: r=4.6 n=17 | quarterly: [19.99] | yearly: [39.99] | monthly: [6.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=5946 | yearly: [239.9] | quarterly: [119.9] | monthly: [44.9] | priv: none=False linked=True track=True
+## Protein Tracker (Oelfke) (id 6468394305)
+  us: r=4.8 n=1833 | lifetime/unlimited: [1.99, 19.99] | priv: none=False linked=False track=False
+  br: r=5.0 n=26 | lifetime/unlimited: [9.9, 99.9] | priv: none=False linked=False track=False
+## ZOE (id 1471632228)
+  us: r=4.8 n=7103 | other: [15.99, 99.99] | priv: none=False linked=True track=False
+## Found (id 1581179653)
+  us: r=4.7 n=8878 |  | priv: none=False linked=True track=False
+## Mochi Health (id 6479331846)
+  us: r=4.9 n=18186 |  | priv: none=False linked=True track=False
+## WeightWatchers (id 331308914)
+  us: r=4.8 n=2366864 | monthly: [19.99, 21.99, 23.99, 24.99, 108.99] | priv: none=False linked=True track=True
+## Perda de Peso para Mulheres (Leap) (id 1502526521)
+  us: r=4.8 n=2356 | yearly: [39.99] | other: [23.99] | monthly: [9.99, 14.99] | quarterly: [24.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=747 | yearly: [119.9, 164.9, 199.9] | monthly: [40.9, 79.9] | quarterly: [129.9] | priv: none=False linked=True track=True
+## MounHealth (id 6760874134)
+  us: r=4.6 n=7 | yearly: [29.99, 49.99] | monthly: [5.99, 9.99, 19.99] | priv: none=False linked=True track=True
+  br: r=4.8 n=171 | yearly: [129.9, 149.9] | monthly: [34.9, 39.9] | semiannual: [129.9] | priv: none=False linked=True track=True
+## Canetinha (id 6761579709)
+  us: r= n= | weekly: [5.99] | other: [29.99] | priv: none=False linked=False track=False
+  br: r=4.6 n=17 | other: [69.9] | weekly: [19.9] | priv: none=False linked=False track=False
+## DreamMe (id 6755569693)
+  us: r=4.7 n=3356 | monthly: [14.99] | yearly: [39.99, 62.99, 69.99] | quarterly: [24.99] | other: [0.99, 4.99, 9.99] | priv: none=False linked=True track=True
+  br: r= n= | yearly: [249.9, 399.9, 499.9] | other: [6.9, 29.9, 59.9] | quarterly: [149.9] | monthly: [99.9] | priv: none=False linked=True track=True
+## Glippy (id 6748223909)
+  us: r=4.8 n=476 |  | priv: none=False linked=False track=False
+## Workout for Women (Fast Builder) (id 839285684)
+  us: r=4.8 n=532303 | yearly: [29.99, 39.99, 49.99] | other: [4.99, 5.99, 9.99, 19.99, 29.99, 59.99] | priv: none=False linked=True track=True
+  br: r=4.9 n=1225 | yearly: [79.9, 99.9, 249.9, 399.9] | other: [24.9, 49.9, 79.9, 149.9] | priv: none=False linked=True track=True
+## BetterWeight (Habitics) (id 1603811000)
+  us: r=4.8 n=770 | yearly: [11.99] | monthly: [2.99] | lifetime/unlimited: [14.99, 29.99] | priv: none=False linked=False track=False
+  br: r=4.9 n=662 | other: [5.5, 29.9] | lifetime/unlimited: [49.99, 99.99] | priv: none=False linked=False track=False
+## SnapCal (id 6747375157)
+  us: r=4.8 n=12641 | yearly: [29.99, 36.99, 39.99, 49.99, 59.99] | monthly: [14.99, 16.99] | priv: none=False linked=False track=True
+  br: r=5.0 n=17 | yearly: [199.9, 229.9, 249.9, 399.9] | monthly: [129.9] | priv: none=False linked=False track=True
+
+
+### REVIEWS (<=3 stars) summary
+- Shotsy [us]: n=50 recentes, distrib={1: 7, 2: 1, 3: 3, 4: 5, 5: 34}, ≤3★=11, temas={'privacidade': 7, 'paywall/trial': 5, 'preço/caro': 3, 'falta recurso': 3}
+     ★1 Keeps losing my info — Paid the $65 for the upgraded version but I’ve had to start from scratch and enter data four separate times. Just logged in and it’s lost again. Can’t even get fully logged into ge
+     ★1 Be careful — While trying to sign up for the “free trial” i was immediately charged over $65 for the year. I immediately tried to get a refund but the App Store wouldn’t let me. My apple accoun
+     ★1 What happened? — All my data is gone! It’s wanting me to start over and pay?! Don’t get this ap!
+- Shotsy [br]: n=50 recentes, distrib={4: 2, 5: 48}, ≤3★=0, temas={}
+- MeAgain [us]: n=50 recentes, distrib={1: 1, 3: 2, 4: 9, 5: 38}, ≤3★=3, temas={'privacidade': 1, 'falta recurso': 1}
+     ★3 Fresh Start — I’m just getting started so I can’t really rate.
+     ★3 Nice looking but messy navigation — This app looks really nice. Friendly vibe. Good food database. But there are so many places to click around it’s frustrating. Very disorganized.  That being said, I haven’t been ab
+     ★1 Not what I expected — I thought this app would give me more specific information to help me manage reactions and to plan out specifically what I should eat and drink on shot days such as amount of prote
+- MeAgain [mx]: n=4 recentes, distrib={4: 1, 5: 3}, ≤3★=0, temas={}
+- Glapp [us]: n=50 recentes, distrib={1: 2, 2: 1, 3: 5, 4: 3, 5: 39}, ≤3★=8, temas={'paywall/trial': 4, 'privacidade': 2, 'falta recurso': 2, 'preço/caro': 1}
+     ★1 No longer loads on iOS 27 and new iPhone 18 Pro — App no longer loads. Loved and used it up until now but it doesn’t work anymore.
+     ★2 Too few features in free app — Need to upgrade for the true value of this app. Started out strong but then they started removing features from the free version. No longer worth my time.
+     ★3 Not as good after the update — Everything that made this “free” app good is now paid.   Probably will delete
+- Glapp [br]: n=1 recentes, distrib={5: 1}, ≤3★=0, temas={}
+- Glapp [mx]: n=2 recentes, distrib={3: 1, 5: 1}, ≤3★=1, temas={}
+     ★3 Hard — Difícil de entender no puedes agregar todas las dosis aplicadas si ya vas avanzado . Al parecer es para antes de iniciar el tratamiento y no cuando ya estás en el
+- Pep AI [us]: n=50 recentes, distrib={1: 32, 2: 7, 3: 5, 4: 1, 5: 5}, ≤3★=44, temas={'preço/caro': 12, 'bugs/sync': 4, 'falta recurso': 4, 'precisão/IA': 2}
+     ★1 Don’t do it. — This app was worth it at one point. Then they changed everything removed features that were beneficial; added an AI thing that no one asked for. So many bugs that are never fixed. 
+     ★3 Inaccurate nutrition data — Nutrition data not accurate.
+     ★1 Stop messing with things — I used to like this app. But they constantly change things and not for the better either, to the point I cancelled my subscription … don’t waste your time and money on this app as 
+- Pep (Shred Apps) [us]: n=50 recentes, distrib={1: 9, 2: 5, 3: 3, 4: 4, 5: 29}, ≤3★=17, temas={'falta recurso': 7, 'preço/caro': 6, 'paywall/trial': 6, 'bugs/sync': 4}
+     ★3 A few things would make this so much better — A few things would make this app better: 1. It would be nice if the weight automatically imported from apple health.  2. I wish the nutrition connected with water. For example, I h
+     ★1 Advertised a 7-day trial, but charged $40 immediately — Be careful before subscribing. The app showed me a page saying I would get a 7-day free trial, so I went ahead and subscribed. Instead, I was immediately charged $40 for the full y
+     ★2 Scanning food — You still have to describe it and hope you have it right
+- Pep (Shred Apps) [br]: n=1 recentes, distrib={1: 1}, ≤3★=1, temas={'precisão/IA': 1}
+     ★1 Não está salvando minhas refeições diárias — Não atendendo o q mais preciso
+- Zepbound & Mounjaro Tracker [us]: n=50 recentes, distrib={4: 4, 5: 46}, ≤3★=0, temas={}
+- Zepbound & Mounjaro Tracker [br]: n=7 recentes, distrib={5: 7}, ≤3★=0, temas={}
+- Zepbound & Mounjaro Tracker [mx]: n=2 recentes, distrib={4: 1, 5: 1}, ≤3★=0, temas={}
+- GLP AI (OutliveAI) [us]: n=20 recentes, distrib={1: 1, 2: 3, 3: 2, 4: 1, 5: 13}, ≤3★=6, temas={'preço/caro': 2, 'bugs/sync': 2, 'precisão/IA': 2, 'privacidade': 1}
+     ★2 Bummer — Layout is convenient.. won’t let you do most things unless you pay.. deleting now
+     ★3 Just started — Just now started with GLP one and this app
+     ★3 Doesn’t work anymore — I loved this app until it deleted all my data and won’t let me do anything on the app at all.
+- GLP AI (OutliveAI) [br]: n=17 recentes, distrib={2: 1, 4: 1, 5: 15}, ≤3★=1, temas={}
+     ★2 Aplicativo não atualiza as aplicações — Estou usando a versão gratuita do app.Toda semana eu marco no app o dia e lugar da aplicação,mas o aplicativo está no dia 18/09  ja tentei varias vez atualizar mas por ser uma vers
+- GLP AI (OutliveAI) [mx]: n=2 recentes, distrib={3: 1, 4: 1}, ≤3★=1, temas={}
+     ★3 Se traba mucho — Se congela por periodos prolongados la aplicación, no me deja registrar de manera optima las dosis y se traba con los objetivos del dia de la inyección, deben optimizar mejor la ap
+- OzemPro [us]: n=8 recentes, distrib={1: 1, 2: 1, 4: 1, 5: 5}, ≤3★=2, temas={}
+     ★1 No sirve — No es la gran cosa el registro de comida nunca es exacto No gasten el dinero
+     ★2 Se está hackeando — A veces se queda pegado y no quiere abrir 🥺
+- OzemPro [br]: n=50 recentes, distrib={1: 25, 2: 3, 3: 1, 4: 1, 5: 20}, ≤3★=29, temas={'preço/caro': 16, 'privacidade': 8, 'bugs/sync': 3, 'precisão/IA': 3}
+     ★1 Bug imenso — Aplicativo com bug, apresenta cupom de desconto para finalizar a assinatura mas não dá desconto algum
+     ★1 Bug imenso — Aplicativo com bug, apresenta cupom de desconto para finalizar a assinatura mas não dá desconto algum
+     ★3 Fiquei chateada — Aderi ao OzemPro em agosto, anotando tudo… e hj, dia da anotação de aplicação ele zera e faz como se tivesse tudo de início. Fiquei chateada
+- OzemPro [mx]: n=9 recentes, distrib={1: 3, 2: 1, 3: 1, 5: 4}, ≤3★=5, temas={'preço/caro': 1}
+     ★2 Se traba continuamente — No cumple con su función adecuadamente, por desgracia ya pagué un año y su mayor problema es que se congela continuamente y dejó estar desinstalando e instalando cada momento.
+     ★3 Duda relación costo beneficio — Es buena opción de aplicación, solo que es muuuuuy lenta, se traba demasiado
+     ★1 No funciona — Se desprograma siempre y no veo nada de funcionalidad quisiera cancelar la suscripción
+- Monju [br]: n=50 recentes, distrib={1: 9, 2: 1, 3: 3, 4: 3, 5: 34}, ≤3★=13, temas={'ads': 3, 'preço/caro': 3, 'privacidade': 1}
+     ★1 Ineficiente — Um app que promete uma coisa e entrega outra. Muito enganosa a propaganda
+     ★2 Tudo só funciona se pagar — Poxa o aplicativo é ótimo, entendo que tem funções que devem ser privadas pras pessoas investirem um valor no app, mas Poh pra mexer em tudo tem que pagar, pra editar meu avanço de
+     ★3 Não salva outro valor — Se não é valor padrão quando vc clica em outro valor não desaparece o teclado pra vc salvar. Arrumem isso!
+- Monju [mx]: n=6 recentes, distrib={3: 1, 5: 5}, ≤3★=1, temas={}
+     ★3 Muy cara — Deberían permitir que se use unos días de prueba para ver si vale la pena comprarla
+- MeuGLP [br]: n=47 recentes, distrib={1: 16, 2: 2, 3: 1, 4: 4, 5: 24}, ≤3★=19, temas={'bugs/sync': 5, 'falta recurso': 4, 'privacidade': 4, 'paywall/trial': 3}
+     ★1 Sem Suporte — Não consigo trocar a senha, o campo para digitação da nova senha não é editável. Não tem suporte.
+     ★1 Falta muitos dados — Falta muitos dados de comidas básicas, ele agora simplismente não abre mais, não dá opções de voltar com o meu plano. Muiiito defeitos básicos para um app simples
+     ★3 Atualização piorou — Depois da última atualização não abre mais
+- GlipOne [br]: n=17 recentes, distrib={1: 6, 2: 1, 3: 2, 5: 8}, ≤3★=9, temas={'preço/caro': 5, 'falta recurso': 3, 'precisão/IA': 2}
+     ★1 Reembolso — Fui induzida a comprar o aplicativo e agora estou tentando reembolso o mesmo não permite desde o dia da compra e o mesmo não reembolsa. Péssimo aplicativo, me senti lesada por uma 
+     ★3 Pouca personalização — Não permite a edição de uma aplicação, sem querer coloquei 2 no mesmo dia e não permite deletar ou editar a aplicação. Outro ponto é que estou com aplicações quinzenais e o aplicat
+     ★3 É bom mas poderia ser melhor — A começar pelo preço, você não consegue usar se não pagar, e além disso o valor é bem alto vs benefícios que o app entrega pra realmente valer a pena o valor.  Uma coisa que poderi
+- Mingo [us]: n=4 recentes, distrib={1: 1, 3: 1, 4: 1, 5: 1}, ≤3★=2, temas={'falta recurso': 1}
+     ★1 Meal versatility — I’m frustrated that I don’t have more customization for my meals I have a specific breakfast I eat every morning and the app does not get the measurements right of my macros and wo
+     ★3 It’s ok — Bought the $50 lifetime but kinda wish I hadn’t. Food tracking leaves a lot to be desired. I use a different app that pulls into my Apple Health app but Mingo doesn’t pull the nutr
+- Mingo [br]: n=11 recentes, distrib={3: 1, 5: 10}, ≤3★=1, temas={'precisão/IA': 1}
+     ★3 App pago — A proposta do app é ótima mas pra quem está buscando anotações sobre o Mounjaro essa parte vc só consegue pagando
+- Mingo [mx]: n=16 recentes, distrib={1: 4, 2: 1, 3: 1, 4: 1, 5: 9}, ≤3★=6, temas={'preço/caro': 2}
+     ★1 Carísimo — Te ofrecen costo por mes y te terminan cobrando todo el año, y más caro de lo que te lo ofrecen al principio. No contraten.
+     ★1 App con costo — La app es engañosa pide todos tus datos  baja toda tu info y luego te solicita un pago de 50 UDS Mensuales para registrar que días te inyectas y que apuntes cuantos vasos de aguas 
+     ★1 Yo — Puedo
+- Cal AI [us]: n=50 recentes, distrib={1: 17, 2: 8, 3: 7, 4: 9, 5: 9}, ≤3★=32, temas={'precisão/IA': 13, 'paywall/trial': 10, 'bugs/sync': 7, 'preço/caro': 7}
+     ★2 Ai cannot read it good at all — it like is alright but you don’t know if it’s getting meals 100% right all the time
+     ★3 Good for high level tracking only — I want to like this app and am still giving it a chance since I already paid for it. It gives me a general idea of what macros I’m eating but it’s hard to trust its accuracy in ord
+     ★3 Serving customization — Have been using the “create meal” feature to add meals I’ve cooked before but when I go to track the food I can’t add how much I’ve eaten of that food. Im new to tracking my calori
+- Cal AI [mx]: n=50 recentes, distrib={1: 21, 2: 2, 3: 3, 4: 3, 5: 21}, ≤3★=26, temas={'preço/caro': 8, 'precisão/IA': 4, 'falta recurso': 3, 'privacidade': 2}
+     ★1 tienes q pagar — mal
+     ★1 Roba dinero — Esta aplicación roba dinero, a pesar de que cancele la suscripción y borre mi cuenta me sigue cobrando incluso 1 mes después
+     ★3 Le faltan cosas — La aplicación es buena llevo 1 año usándola pero no es muy precisa con la comida y verdad te cobran por todo me cobran por recuperar mi racha pero la app sirve como cualquier app p
+- MyFitnessPal [us]: n=50 recentes, distrib={1: 17, 2: 8, 3: 7, 4: 5, 5: 13}, ≤3★=32, temas={'precisão/IA': 16, 'ads': 6, 'paywall/trial': 5, 'falta recurso': 5}
+     ★3 Could Improve — I like this app, but I wish the scanning-of-barcodes option was free. I just found another app that allows me to use that feature for free. I’ll probably stop using this one if tha
+     ★1 Servings vs weight — Users are not able to input a recipe by ingredients and log an amount (cups, g, or oz). If I’m cooking with whole ingredients and the amount I eat (a serving) varies by day or meal
+     ★2 Latest version buggy — I can’t copy my friend’s meals. The triple dot button for each meal is there, but the option menu doesn’t appear when I press on it.
+- MyFitnessPal [br]: n=50 recentes, distrib={1: 17, 2: 4, 3: 4, 4: 3, 5: 22}, ≤3★=25, temas={'precisão/IA': 6, 'falta recurso': 3, 'preço/caro': 2, 'ads': 2}
+     ★1 Ruim — Contratei pelo Gympass e o app tenta cobrar por fora. O suporte não atende.
+     ★2 Too Experience — In a world where people are increasingly obese, I think creating a mechanism—a way to help and guide people in changing their habits—would be excellent. This app could be one of th
+     ★1 Mal construído — O app é confuso para achar as características de cada alimento, tem qu rolar a tela demais, tem muita propaganda e é sabor grátis.
+- MyFitnessPal [mx]: n=50 recentes, distrib={1: 10, 2: 3, 3: 4, 4: 2, 5: 31}, ≤3★=17, temas={'falta recurso': 2, 'paywall/trial': 1, 'bugs/sync': 1, 'precisão/IA': 1}
+     ★2 No puedes usar tu cuenta de Apple — No puedes usar tu cuenta de Apple  Debes registrarte con otra cuenta  Mala
+     ★1 Horrible updates — Hate the updates.
+     ★1 Mala actualización — Está terrible la actualización, mal diseñada, enredosa y visualmente muy fea.
+- Lose It! [us]: n=50 recentes, distrib={1: 15, 2: 4, 3: 2, 4: 3, 5: 26}, ≤3★=21, temas={'bugs/sync': 5, 'preço/caro': 5, 'precisão/IA': 4, 'ads': 3}
+     ★1 App keeps crashing — Was working fine for weeks. Crashing at open now.
+     ★2 Intrusive ads in paid version — The app works well, similar to MyFitnessPal. However, I found the intrusive ads in the Premium paid version unacceptable.
+     ★1 App has been destroyed — The app recently switched from FitBit to Google Health, and that switch has made it so nothing from my Fitbit inputs into the app now. I paid for a lifetime membership for somethin
+- Lose It! [br]: n=50 recentes, distrib={1: 9, 2: 5, 3: 5, 4: 4, 5: 27}, ≤3★=19, temas={'privacidade': 7, 'precisão/IA': 6, 'bugs/sync': 4, 'preço/caro': 3}
+     ★3 VOLTEM COM A ASSINATURA ANUAL — uso desde 2019 e todo ano eu pagava a assinatura anual mas agora ele só tem a opção de assinatura vitalícia que é um absurdo de caro, R$1999,90 = $391,56.
+     ★1 iOS 26 — Ainda estou com problema no meu App, quem resolverá?
+     ★3 Dificuldade com ferramentas premium — Não tenho conseguido usar o snap it ou o diga isso. Não estão disponíveis nas opções
+- Yazio [br]: n=50 recentes, distrib={1: 15, 2: 6, 3: 12, 4: 7, 5: 10}, ≤3★=33, temas={'precisão/IA': 9, 'preço/caro': 6, 'falta recurso': 6, 'bugs/sync': 5}
+     ★1 Um formulário enorme pra no final ter que assinar plano pra  — Um formulário enorme pra no final ter que assinar plano pra entrar no app só fez perder meu tempo
+     ★3 Foco! — Positiva!
+     ★3 Não calcula cafeína! O recurso do jejum precisa evoluir muit — O recurso do jejum precisa evoluir muito ainda
+- MacroFactor [us]: n=50 recentes, distrib={1: 12, 2: 7, 3: 3, 4: 7, 5: 21}, ≤3★=22, temas={'precisão/IA': 10, 'privacidade': 7, 'preço/caro': 6, 'falta recurso': 5}
+     ★2 Bugs need fixing — The price is not justified considering the bugs in the app. My biggest peeve is that you can't manually change the macro or calorie values after a quick add entry. You have to dele
+     ★1 No iPhone Duo support — Releases app updates after the release of the IPhone Duo that do not support it
+     ★2 Tracking is easy and nice coaching is a waste of money — The coaching feature is a waste of money it gives the same plan every week and I’m following it and it making 0 progress towards my goals.
+- MacroFactor [br]: n=18 recentes, distrib={1: 3, 3: 4, 5: 11}, ≤3★=7, temas={'preço/caro': 2, 'falta recurso': 2, 'privacidade': 1}
+     ★1 Not have langusge for brazillian — Not have langusge for Brazil
+     ★3 Few Languages — I missed the Portuguese (Brazil) language
+     ★3 Amazing Value - not so amazing cost — The app is amazing, all the features work great and the only thing I could nitpick is the fact you can’t reorder food items in a recipe – it’s annoying when you want to change a it
+- MacroFactor [mx]: n=20 recentes, distrib={1: 1, 2: 2, 3: 1, 4: 2, 5: 14}, ≤3★=4, temas={'preço/caro': 3, 'paywall/trial': 2}
+     ★1 Not Free — App IS NOT FREE. You can download it for free but can’t use it without paying for a plan. Have this in mind when you try it.
+     ★3 I have a big problem with it — The app is great I love it, I’ve had eating problems for all my life and this really helps me BUT seems I can’t pay the year subscription, I have no idea why, I’m in Mexico :( I re
+     ★2 Payement impossible — I really wanted to like this app. But the payment doesn’t work from MX and no idea why I bought a new subscription to another food tracker instead and had no issue. That’s frustrat
+- Fitia [us]: n=50 recentes, distrib={1: 10, 2: 1, 3: 2, 4: 1, 5: 36}, ≤3★=13, temas={'precisão/IA': 3, 'bugs/sync': 2, 'preço/caro': 2, 'paywall/trial': 2}
+     ★1 Awful and inaccurate — I made the mistake of getting the premium for $60 given the good reviews and the seemingly good user interface. Day 1, I took a photo of my food which was very easily identifiable 
+     ★2 Annoying — I really wanted to like this app, but it isn’t accurate. Example: If I import a recipe manually, of course I will have to use raw weights to measure out in order to cooked, but onc
+     ★1 Pagado — Todo tiene que ser pagado para mi eso arruina la escencia de querer ayudar a cualquiera que lo nesecite, no la recomiendo
+- Fitia [mx]: n=50 recentes, distrib={1: 5, 2: 4, 3: 1, 4: 1, 5: 39}, ≤3★=10, temas={'precisão/IA': 2, 'preço/caro': 2, 'privacidade': 1, 'falta recurso': 1}
+     ★1 Mal contador — La cantidad de calorias que te cuenta está muy mal. Hice la prueba con mis alimentos y algo que usualmente son 200kcal me las contó como 800kcal.  Ademas está basado en contar el p
+     ★2 Todo premium — Está buena la aplicación y te ayuda bastante a recordarte de registrar tus comidas con sus notificaciones, pero para todo necesitas tener el premium, si quieres ver cuánta azúcar c
+     ★1 Mala app — La utilicé algunos años atrás y me parecía buena app, ahora que la volví a descargar después de la actualización no me gustó, para poderla utilizar correctamente ocupas ser premium
+- Lifesum [br]: n=50 recentes, distrib={1: 19, 2: 5, 3: 9, 4: 6, 5: 11}, ≤3★=33, temas={'bugs/sync': 17, 'precisão/IA': 10, 'privacidade': 8, 'falta recurso': 3}
+     ★1 Não abre! — Comecei a usar o app ontem e funcionou normalmente, hoje não está abrindo. Já reinstalei e nada! 😢
+     ★3 Tons of bugs — I’ve been a subscriber for a few years and it bothers me the amount of bugs the app still has when I try to track more than one item in a meal - I always have to close the app and 
+     ★3 É bom, mas... — É inacreditável que ainda não tenha a opção de personalizar calorias por dia e mais opções de widgets. O app parou no tempo. A concorrência está muito melhor.
+- Lifesum [mx]: n=50 recentes, distrib={1: 6, 2: 1, 3: 6, 4: 3, 5: 34}, ≤3★=13, temas={'preço/caro': 4, 'precisão/IA': 3, 'falta recurso': 3, 'bugs/sync': 2}
+     ★3 Muchos errores — Llevo años usándolo y últimamente he encontrado muchos errores en la app. Las calorías quemadas ya no se sincronizan desde la app de Health, en ocasiones tarda mucho en actualizar 
+     ★3 No se respetan las kcal — Tengo un solo día usando la app y no entiendo porque si la aplicación te dice que debes tener una ingesta de por ejemplo 1120kcal, las comidas que te planifica superan por mucho es
+     ★1 Slow, inconsistent — I payed the yearly subscription and days later they remove the fasting timer, and its getting ridiculously slow when opening, last year i use it…
+- Fastic [us]: n=50 recentes, distrib={1: 27, 2: 4, 3: 3, 4: 1, 5: 15}, ≤3★=34, temas={'paywall/trial': 13, 'preço/caro': 10, 'ads': 5, 'privacidade': 4}
+     ★1 Relentless advertising — Re-started after going off app for 2+ yrs … I’m on free version, and wow … the pop-up ads are non-stop - pretty much after every entry or going to another feature gives another pop
+     ★1 This App Is Trash — I was a user when this app was first developed, however the constant ads are distracting.  Instead of focusing on my fast, I have to chase bears around in adverts. I was a paid mem
+     ★1 I WANT OUT — After nearly a year of continuing to have problems and issues with this app, I simply want out. I cannot seem to locate how to end my subscription. Links that I click in the app on
+- Fastic [br]: n=50 recentes, distrib={1: 2, 2: 1, 3: 1, 4: 3, 5: 43}, ≤3★=4, temas={'bugs/sync': 3, 'precisão/IA': 1, 'falta recurso': 1, 'privacidade': 1}
+     ★1 Terrible — Worst and most unbearable onboarding process.  At this point I don’t even care if the actual app is good or not.  Ridiculous.
+     ★2 Comunicação — Gostaria que fosse possível fazer o upload de dados do Strava referente aos treinos assim facilita monitorar as calorias queimadas para controle do que gastou e do que consumiu.
+     ★1 Muito bug — Fiz 20 vezes todo o processo do questionário inicial e sempre que fecho aplicativo e torno a abrir, volta para o inicio e pede que preencha tudo novamente!
+- Simple [us]: n=50 recentes, distrib={1: 2, 2: 1, 3: 3, 4: 13, 5: 31}, ≤3★=6, temas={'falta recurso': 5, 'precisão/IA': 3, 'privacidade': 1, 'preço/caro': 1}
+     ★1 Waste — It’s not at all like it used to be. You can’t customize how long to lose weight and how many calories you need to have a day they don’t let you do any of that. There’s no one to ta
+     ★2 Simple - Blinky — I wish the app offered a better way to capture info. Lots of info I want to entered doesn’t scan by barcode or scan.
+     ★3 Okay but could be better — The AI is not accurate. Often when I scan items they don’t have them in the database. When I scan foods knowing the calories and nutrition info it is very different.
+- Simple [br]: n=50 recentes, distrib={1: 25, 2: 3, 3: 4, 4: 4, 5: 14}, ≤3★=32, temas={'preço/caro': 19, 'privacidade': 5, 'ads': 4, 'precisão/IA': 3}
+     ★1 Propaganda enganosa — Fiz uma assinatura de três meses, motivado pela propaganda massiva do “tai chi de cadeira para idosos”, porém nem existe isso no app, me empurraram um programa de ioga. Além disso 
+     ★3 Razoável — Parece razoável mas cobra os livros sem deixar claro que serão cobrados a parte. Não recomendo
+     ★2 como saio do aplicativo? — nao encontrei a saida, nao quero deixar sempre ativo
+- Simple [mx]: n=50 recentes, distrib={1: 16, 2: 4, 4: 7, 5: 23}, ≤3★=20, temas={'preço/caro': 10, 'bugs/sync': 1}
+     ★1 Fraudulenta — Es una APP engañosa que no sirve para nada difícil de entender y te ofrecen los ejercicios gratis lo cual nunca te envían al correo y te meten a esta aplicaciones sin tu consentimi
+     ★1 FRAUDE — DECÍA GRATIS Y COBRARON, NISO QUIERA PUDE IMPRIMR LO QUE OFRECEN GRATIS QUERÍAN MÁS DINERO Y CANCELE TODO OERO AÚN ASÍ COBRARON
+     ★1 Fraude — Compré un paquete básico y ahora me cobran un paquete completo sin mi consentimiento, no la bajen!
+- Flo [us]: n=50 recentes, distrib={1: 11, 2: 2, 3: 8, 4: 5, 5: 24}, ≤3★=21, temas={'preço/caro': 10, 'paywall/trial': 7, 'ads': 5, 'falta recurso': 4}
+     ★1 FALSE ADVERTISING, if i could give 0 stars i for sure would — If you are wanting this app to help track your pregnancy! 10/10 do NOT recommend. i purchased flo family it’s $90 for a year. but it said i could add 1-6 people. that is definitely
+     ★1 реклама — недавно стало ужасно много рекламы подписки даже без возможности сразу ее пропустить, кошмар.
+     ★1 Used to be so good. Looking for something else now — I used this app for yeaaaars and also when I was pregnant. Recently redownloaded and they want you to pay for the upgraded version, you can’t just say no once you’re bombarded with
+- Flo [br]: n=50 recentes, distrib={1: 5, 2: 3, 3: 1, 4: 6, 5: 35}, ≤3★=9, temas={'paywall/trial': 2, 'falta recurso': 2, 'preço/caro': 2, 'privacidade': 1}
+     ★2 Notificações irrelevantes — Adoro o Flo e uso há anos, tenho notificações ativadas por causa do contraceptivo. Mas ultimamente nessas últimas atualizações toda hora tem notificações irrelevantes, de um animal
+     ★1 Voltem a ser o flo de antes — O flo ERA ótimo, mas resolveram mudam e infantilizaram o app! Aquela “pilha” andando com o cão fico HORROROSO!!! Por favor, o flo de antes era MUITAS VEZES MELHOR. VOLTEM AO FLO DE
+     ★3 Não muito diferente — Achei quase a mesma coisa do Flo e de outros gratuitos
+- Flo [mx]: n=50 recentes, distrib={1: 6, 2: 1, 3: 3, 4: 6, 5: 34}, ≤3★=10, temas={'preço/caro': 3}
+     ★3 Ame — La app es muy buena, solo que muchas cosas que se necesitan saber tienes que pagar 😭
+     ★1 Una Estrella — Pesimo de que cobre cada cosa por separator
+     ★1 Post parto — No me gusta que no lleva el postparto
+- Balance [us]: n=21 recentes, distrib={1: 7, 2: 3, 3: 3, 4: 1, 5: 7}, ≤3★=13, temas={'privacidade': 3, 'falta recurso': 3, 'paywall/trial': 3, 'bugs/sync': 2}
+     ★3 I want to like it — I want to like this, but I can’t get it to integrate with my Apple Health.
+     ★3 Hate latest changes — The most recent changes make the calendar very hard to read. To the point of being useless. Too much information, too cluttered and made my favorite feature of the app, my least fa
+     ★2 Used to love it, but this update is awful. — The new “Insights Calendar” is showing a different, incorrect, set of data from the “Cycle History” calendar. Also, I can’t click on a date in the “Cycle History” view to see what 
+- Balance [br]: n=1 recentes, distrib={5: 1}, ≤3★=0, temas={}
+- Lila (Peri Weight Loss Coach) [us]: n=43 recentes, distrib={1: 17, 2: 3, 3: 4, 5: 19}, ≤3★=24, temas={'paywall/trial': 12, 'preço/caro': 9, 'falta recurso': 5, 'bugs/sync': 4}
+     ★3 Not really helpful for perimenopause — I like the food tracking but the check in is generally useless
+     ★1 Accidental purchase — I tried to do a trial previously but there were technical bugs so I didn’t. I rechecked and went to trial again only to have to actually purchase for the year 🤦🏼‍♀️. It’s fine but 
+     ★3 Too many bugs but useful — I liked it at first, but there are way too many bugs that need to be fixed. The AI is very helpful, but after a while it gets redundant and keeps recommending the same thing over a
+- Raquel Menopausa [us]: n=10 recentes, distrib={5: 10}, ≤3★=0, temas={}
+- Raquel Menopausa [br]: n=50 recentes, distrib={5: 50}, ≤3★=0, temas={}
+- Tecnonutri [us]: n=50 recentes, distrib={1: 11, 2: 2, 3: 2, 4: 5, 5: 30}, ≤3★=15, temas={'bugs/sync': 5, 'precisão/IA': 3, 'privacidade': 1, 'falta recurso': 1}
+     ★1 Funções sem funcionar — Copiar uma refeição para outro dia simplesmente não funciona. 🥴
+     ★1 Didn’t complete setup — Unable to change language from French during set up. Set up asks for you phone number. Y’all don’t need that.
+     ★2 Muito ruim! — Eu realmente não sei como esse app tem boas avaliações. De todos os apps de nutrição, diário calórico e acompanhamento de dieta que já usei, este é sem dúvida o pior!!!!
+- Tecnonutri [br]: n=50 recentes, distrib={1: 18, 2: 9, 3: 6, 4: 3, 5: 14}, ≤3★=33, temas={'bugs/sync': 16, 'precisão/IA': 9, 'privacidade': 8, 'falta recurso': 5}
+     ★2 Erro no aplicativo — Há dias o aplicativo está com erro na busca e não permite mais encontrar os alimentos.
+     ★1 Experiencia inicial ruim — Erro na selecao de alimentos no diario, termo de concordancia que nao abre para leitura e obrigando a aceitar os termos sem leitura
+     ★3 Termos de uso não abre — Os termos de uso e a política de privacidade não abrem qdo vou iniciar o app
+- Tecnonutri [mx]: n=14 recentes, distrib={1: 9, 4: 2, 5: 3}, ≤3★=9, temas={'bugs/sync': 1, 'preço/caro': 1, 'precisão/IA': 1, 'privacidade': 1}
+     ★1 Horrible 🤮🤮🤮 — no se entiende por que lo ponen en brasileño y parese que te quiere robar tus datos
+     ★1 Pésimo — No pasas de tus datos no menús ni nada una pérdida de tiempo
+     ★1 Horrible — Pésima aplicación ni siquiera puedo introducir mi peso me marca “error” y me saca de la aplicación es una basura =(
+- FatSecret [br]: n=50 recentes, distrib={1: 4, 2: 1, 3: 3, 4: 2, 5: 40}, ≤3★=8, temas={'bugs/sync': 2, 'falta recurso': 1}
+     ★3 Linguagem neutra — Para quem preza pela norma culta é desagradável ler os textos escritos em linguagem neutra.
+     ★3 Coloquem um buscador nas refeições salvas, pelo amor de Deus — Só falta isso pra ficar maravilhoso. É muito ruim ficar procurando na lista, um buscador, aba de pesquisa é o básico ali.
+     ★1 Erros de Português — App possui erros de gramática, agora imagina se vai conseguir nos ajudar em nossos objetivos?
+- FatSecret [mx]: n=50 recentes, distrib={1: 2, 2: 1, 3: 2, 4: 8, 5: 37}, ≤3★=5, temas={}
+     ★1 Destruyeron su app — Buenos días. Tenían una app muy buena ahora la volvieron disfuncional en su intento de mejorar, ahora perdemos más el tiempo en introducir los alimentos. Si siguen así regresaré a 
+     ★1 Fallo — Tiene unos días que está fallando la app y no deja meter alimentos
+     ★3 Todo bien hasta la ultima actualización (junio 2026) — El funcionamiento de la app es sencillo. Sin embargo, en esta ultima versión, sale una ventana indicando que debes actualizar. Lo haces, pero no se quita y no deja utilizarlo. Prác
+- Foodvisor [br]: n=50 recentes, distrib={1: 14, 2: 4, 3: 1, 4: 3, 5: 28}, ≤3★=19, temas={'preço/caro': 12, 'paywall/trial': 5, 'privacidade': 3, 'falta recurso': 2}
+     ★1 Cobrança indevida — Fiz um cancelamento dentro de 7 dias, mas ainda estão me cobrando o valor de 83 reais
+     ★1 Cobrança com valor maior — Fui testar o app, apareceu uma promoção com valor baixo e falou que poderia ser cancelado. Na hora do pagamento cobrou o valor anual, quero meu estorno!!!
+     ★3 é ótimo, mas não oferece uma exportação completa do diário a — não oferece uma exportação completa do diário alimentar
+- Foodvisor [mx]: n=50 recentes, distrib={1: 15, 2: 3, 3: 2, 4: 2, 5: 28}, ≤3★=20, temas={'preço/caro': 5, 'bugs/sync': 2, 'precisão/IA': 2}
+     ★1 No funciona — Falla al registrarse
+     ★2 Se quiere cobrar — La pobre para saber qué tal y la cancela antes de que cumpliera el plaza y ahora me  esta haciendo el cobro a mi tarjeta
+     ★3 No puedo iniciar sesión — Compré la suscripción anual y ya no puedo iniciar sesión.
+- SnapCalorie [us]: n=50 recentes, distrib={1: 2, 4: 2, 5: 46}, ≤3★=2, temas={'paywall/trial': 2, 'preço/caro': 1}
+     ★1 Customer service and subscription scam — Stay clear of this product, you can use many other free AI products that do exactly what this does.   When you have a customer service issue they don’t care about the customer they
+     ★1 Lie — Absolutely a lie says you don’t have to use a card to get the free one week trial . Absolutely lie can’t get it unless u put in ur card . Scam scam scam scam scam
+- SnapCalorie [br]: n=7 recentes, distrib={1: 1, 5: 6}, ≤3★=1, temas={}
+     ★1 App pago — Qdo vc se loga ele entra em uma tela te oferecendo a versão paga e você não consegue passar dela. Ou seja, ou paga, ou não usa
+- SnapCalorie [mx]: n=12 recentes, distrib={1: 1, 3: 1, 5: 10}, ≤3★=2, temas={}
+     ★3 🤬 — Está en inglés y no entiendo
+     ★1 Restauración de compra — Cambié de celular, cerró mi sesión, ingresó mis datos, no llega mi correo de verificación y no logro restaurar mi compra
+- Protein Pal [us]: n=50 recentes, distrib={1: 19, 2: 1, 3: 6, 4: 4, 5: 20}, ≤3★=26, temas={'paywall/trial': 8, 'preço/caro': 7, 'precisão/IA': 2, 'falta recurso': 1}
+     ★1 Complicated — Not simple, deleting
+     ★1 NOT FREE — Once you open the app and fill in your details you can’t use the app unless you pay $3 a month.  It’s a scam.
+     ★1 No sub, no tracking — You can’t log anything without going for the pro subscription.
+- Noom [us]: n=50 recentes, distrib={1: 22, 2: 7, 3: 3, 4: 3, 5: 15}, ≤3★=32, temas={'falta recurso': 10, 'preço/caro': 6, 'privacidade': 5, 'precisão/IA': 4}
+     ★1 Disreputable company — There are many free and cheaper apps that do FAR better.  Dealing with Noom support about their charges and the lies their support team tell you is enough to give a person a heart 
+     ★1 Still Got Charged After Canceling Subscription — I cancelled on the app, and confirmed it, but it still tried to charge me after. Disappointing.
+     ★1 Scam — Not paying out gift cards and support is not helpful
+- Noom [br]: n=50 recentes, distrib={1: 33, 2: 4, 3: 1, 4: 2, 5: 10}, ≤3★=38, temas={'preço/caro': 23, 'privacidade': 7, 'paywall/trial': 7, 'falta recurso': 5}
+     ★1 Worst Support — App did not synch with Apple Watch. Reaching for support was the worst experience. Left the App because of poor and unfriendly support.
+     ★1 Worst money ever stolen — This app is ok. Its fees, the worst thing I ever had to endure in a foreign currency for nothing. Their pieces of general material got me nowhere. I’m heavier than ever, and also p
+     ★1 Don't believe in promo codes — I was charged twice for a promo plan. And I was charged a full subscription!!! And noom was not at apple subscriptions. Your app and method is fine, you don't need to steel money f
+- Noom [mx]: n=50 recentes, distrib={1: 31, 2: 1, 3: 3, 4: 1, 5: 14}, ≤3★=35, temas={'preço/caro': 19, 'bugs/sync': 4, 'falta recurso': 2, 'privacidade': 2}
+     ★1 Pésimo — No me deja cancelar, me siguen cobrando
+     ★1 Robo — La aplicación decía 7 días de prueba gratuita y de inmediato me cobró. Me parece publicidad engañosa y una estrategia sucia.
+     ★1 Tengan cuidado en aceptar pruebas gratis! — Tienen pésimo Servicio a Cliente, te dicen que te van a contestar en unas horas y pasan días sin respuesta, te mandan un mundo de ofertas de pruebas gratis, al ya estar tu en una, 
+- Healthi [us]: n=50 recentes, distrib={1: 25, 2: 8, 3: 7, 4: 5, 5: 5}, ≤3★=40, temas={'bugs/sync': 12, 'preço/caro': 11, 'falta recurso': 9, 'precisão/IA': 4}
+     ★2 Can’t upgrade through Apple? — If I could use my Apple ID and purchase the pro version I would but when I click to upgrade it asks for a credit card.  Why?
+     ★2 The search function is not helpful and needs to be improved — First, I want to say I like the idea of the app overall. The program works for me and my lifestyle. However, the search function in the app is abysmal. It’s impossible to search fo
+     ★1 Garbage — Will scam you plus it’s a trash product
+- Healthi [br]: n=6 recentes, distrib={1: 1, 3: 2, 4: 1, 5: 2}, ≤3★=3, temas={'privacidade': 2, 'falta recurso': 1, 'bugs/sync': 1, 'paywall/trial': 1}
+     ★3 Suggestion — It's a nice app. You should create a possibilite do get online, so onde could acess data through multiples devices. It'd be easier to keep data or, at least, create a possibily to 
+     ★3 Versão — A versão nova esta bem melhor
+     ★1 Disappointed — Disappointed, there is no option for metric system (kilos, cm), no categories for food ( diner, snack, lunch etc.), not user friendly, difficult to input, can't see straight away f
+- Lilly Health [us]: n=50 recentes, distrib={1: 19, 2: 4, 3: 6, 4: 8, 5: 13}, ≤3★=29, temas={'precisão/IA': 6, 'paywall/trial': 6, 'privacidade': 5, 'bugs/sync': 4}
+     ★1 It locks up — Ever since the update 2 weeks ago, it locks up every time I try to log something!  Loved it before!  Now…am deleting it!!
+     ★1 Worst customer service — Terrible organization. Employees have no accountability and unethical.
+     ★1 Doesn't work on iPad — Barcode scanner doesn't recognize barcodes. Buttons appear below the bottom of the screen so you can't click them. You can only select left or right for the stomach, I switch betwe
+- Cronometer [us]: n=50 recentes, distrib={1: 9, 2: 5, 3: 5, 4: 8, 5: 23}, ≤3★=19, temas={'precisão/IA': 5, 'ads': 4, 'bugs/sync': 3, 'privacidade': 3}
+     ★1 DON’T WASTE YOUR MONEY!!! — This App is NOT user-friendly. Most of the foods I eat are not listed and portion sizes are pre-set.  I was never able to sync it to my Oura ring or reach support.
+     ★1 NEW UI SUCKS! — This app has been great, but the UI for the latest update blows. Consistently misclicking when trying to add something to my diary and it is so frustrating.  Please add an option t
+     ★3 2 year review — I’ve been using Cronometer for about 2 years now just about everyday. This app used to be 5/5 and is currently 3/5 sliding towards a 2/5. The data base of food, scanning, and abili
+- Cronometer [br]: n=11 recentes, distrib={1: 1, 2: 2, 4: 3, 5: 5}, ≤3★=3, temas={'falta recurso': 2}
+     ★2 Parece ser bom mas não tem versão em português. — 2
+     ★1 App para o Brasil — Queremos app em português!!
+     ★2 Poderia ter opção brasileira — Falta opção brasileira
+- MyNetDiary [us]: n=50 recentes, distrib={1: 1, 3: 3, 4: 4, 5: 42}, ≤3★=4, temas={'precisão/IA': 2, 'paywall/trial': 2, 'falta recurso': 2, 'preço/caro': 1}
+     ★3 it’s ok — it’s ok, but they should have more features for people who don’t wanna pay and need to track or want to track their food with the AI, but they only have three uses if you don’t pay
+     ★3 The use — Over all this app is very easy and simple to work with. It is not confusing and easy for new users to work with but my only problem is that you have to pay for the scan and describ
+     ★3 I like this app, but it could be better — I love the ability to customize recipes for free! I also like that you can customize the serving size for each helping, instead of staying with an unknown general serving size, lik
+- MyNetDiary [br]: n=45 recentes, distrib={3: 1, 4: 13, 5: 31}, ≤3★=1, temas={}
+     ★3 Very Good app — I've been using it for years. It helps you undertand and eat better. I've paid for it, but now they came with new restrictions. To unlock its full potencial you have to pay again. 
+- BitePal [us]: n=50 recentes, distrib={1: 4, 2: 1, 3: 3, 4: 8, 5: 34}, ≤3★=8, temas={'precisão/IA': 4, 'falta recurso': 4, 'preço/caro': 1, 'paywall/trial': 1}
+     ★1 Fasting tracker not customizable enough — Love the app and the ai features to automatically scan and list foods/dishes. The issue mainly comes from the fasting tracker being really rigid as to when you can edit or start/st
+     ★3 Inaccurate entries — A lot of food entries specific for brands are not accurate with the company’s info but you can’t always change the values. So I spend a lot of time trying to find an accurate match
+     ★1 Scam — Impossible to cancel and will not refund. It is a scam when companies hide the cancel option to collect subscription fees to feed their bottom line.
+- BitePal [br]: n=50 recentes, distrib={1: 5, 3: 2, 4: 2, 5: 41}, ≤3★=7, temas={'preço/caro': 5, 'privacidade': 2, 'precisão/IA': 1, 'paywall/trial': 1}
+     ★3 primeira impressão — primeira impressão está sendo ótima, bastante didático e auto explicativo gostei bastante
+     ★1 GOLPE!!! — se tivesse como dar 0 estrelas eu daria. apareceu uma “promoção” de 9,99 mensal e eles me cobraram o valor do anual, debitou 119,90 da minha conta! uma vergonha!
+     ★3 Nao conecta na camera — O app é legal, mas a função de camera nao conecta no iphone. A permissão de uso da camera não parece ter sido configurada, somente a de acesso ao album de fotos.
+- Stardust [us]: n=50 recentes, distrib={1: 7, 2: 5, 3: 10, 4: 6, 5: 22}, ≤3★=22, temas={'falta recurso': 5, 'precisão/IA': 4, 'bugs/sync': 4, 'preço/caro': 3}
+     ★3 LOVE THE APP! But- — I LOVE the stardust app! All my friends and I have it and it makes tracking your cycle fun, informative, and easy! The only reason I’m not giving 5/5 stars is because it started do
+     ★3 Don’t like the messages — The app was pretty and tracked my period decently but the daily notifications were… odd. I’m pretty sure it was encouraging a teen pregnancy for me at one point.
+     ★3 too long to load! — ever since i got the app i noticed how long it takes the load or sometimes it doesnt load at all!! it's always up to date but the issue still stays.
+- Stardust [br]: n=28 recentes, distrib={1: 1, 2: 3, 3: 2, 4: 6, 5: 16}, ≤3★=6, temas={'bugs/sync': 2, 'falta recurso': 2, 'privacidade': 1}
+     ★2 Qual o sentido de baixar um app lunar se não posso mais acom — O aplicativo era maravilhoso, até essa nova atualização que exige pagamento para que acompanhemos nossas luas, isso é um absurdo! O diferencial do stardust era objetivamente o olha
+     ★2 Poderia melhorar — Trava muito ao iniciar o aplicativo.  Muitas funcionalidades pagas
+     ★2 less than expected — even on payed version there is constant netflix adds.  too bad.  also not so easy to add personalized symptoms or activities
+- Wild.AI [us]: n=50 recentes, distrib={1: 25, 2: 11, 3: 5, 5: 9}, ≤3★=41, temas={'bugs/sync': 19, 'privacidade': 12, 'paywall/trial': 10, 'preço/caro': 8}
+     ★1 Once wonderful, now unusable — I used to LOVE this app. I would tell everyone about it, I paid for a subscription, I even invested in it. But since the sale of the app, it’s become basically unusable. I get logg
+     ★2 wont let me sign up — downloaded but it wont let me sign up
+     ★1 The app doesn’t work — The app want login, takes a long time and crashes. This is mentioned in other reviews and hasn’t been addressed. Is this product still live?
+- Caria [us]: n=36 recentes, distrib={1: 10, 2: 4, 3: 7, 4: 5, 5: 10}, ≤3★=21, temas={'falta recurso': 9, 'privacidade': 4, 'bugs/sync': 3, 'preço/caro': 1}
+     ★1 Stopped working, can’t get my personal information — I’ve used this app successfully for years, but within the past month or so, it’s completely broken. There is an error “Hmm. That didn’t work… 503” on every module.  At this point I
+     ★1 Disappointing — The supporting articles are so basic they are totally unhelpful. None of the resources amount to real knowledge. I’m cancelling and deleting this app.
+     ★1 Uninstalled and happy with alternative — It always gave me an error:500.  Meaning I couldn’t save anything. I spent 20 minutes genuinely trying to figure it out.
+- Health & Her [us]: n=50 recentes, distrib={1: 3, 2: 2, 3: 5, 4: 8, 5: 32}, ≤3★=10, temas={'falta recurso': 4, 'privacidade': 1, 'ads': 1, 'preço/caro': 1}
+     ★2 Basic — It’s a basic app to track perimenopausal symptoms and periods but it tends to focus only on the negatives. There’s no place to log in positives, seems the assumption is that you do
+     ★1 Stopped working — After downloading and inputting four years of data, it just stopped working. It won’t even open.
+     ★3 Needs a few tweaks!! — I really like the app; it was very interesting. I deleted it after using it for a few hours. I’m 45 years old and had a partial hysterectomy at 40. Now, being premenopausal, it wou
+- Health & Her [br]: n=1 recentes, distrib={4: 1}, ≤3★=0, temas={}
+- Clearblue Menopause Stage [us]: n=50 recentes, distrib={1: 34, 2: 5, 3: 6, 5: 5}, ≤3★=45, temas={'privacidade': 11, 'falta recurso': 10, 'bugs/sync': 10, 'precisão/IA': 6}
+     ★1 No ability to see what features app has — Before you can explore app and see what features it has it requires you to sign up for an account.  Hard pass, purely for data mining.
+     ★2 Initial start — Have to sign information processing only before getting started I do not want my information dispersed for any other reason except my own private results to myself only
+     ★1 More security than a bank — It was ridiculous what I was having to go through just to create my account with the password! No password I used was good enough! I have lesser for my bank and more important acco
+- Sweat [us]: n=50 recentes, distrib={1: 1, 2: 2, 3: 1, 4: 5, 5: 41}, ≤3★=4, temas={'preço/caro': 2, 'paywall/trial': 1, 'bugs/sync': 1, 'falta recurso': 1}
+     ★2 Disappointing postpartum — Their ig marketing oversells the actual content. The circuit workouts I tried felt unnatural and unengaging. Short video transitions felt carelessly spliced together. Disappointed 
+     ★1 False free — Not sure if the app works because you have to pay for it
+     ★3 App keeps force closing — What good is the app if it won’t open? I’ve been a sweat user for years like 7+ years. The last couple months I’ve had so many issues opening the app. Yes my phone is new, yes the 
+- Sweat [br]: n=50 recentes, distrib={1: 2, 2: 1, 4: 2, 5: 45}, ≤3★=3, temas={'preço/caro': 2, 'paywall/trial': 2, 'falta recurso': 1}
+     ★1 Unauthorized charge! — Unauthorized charge! I signed up for the free trial, but my credit card was charged immediately! This happened long before the free trial even ended. I feel completely misled and d
+     ★1 teste grátis é falso — Gente, não tem teste grátis. Quando vc clica, ele cobra o valor na hora, apesar de dizer que tem teste grátis por 7 dias.
+     ★2 Não está mais funcionando na appletv — Não está mais funcionando na appletv
+- WebDiet [us]: n=7 recentes, distrib={1: 4, 2: 1, 4: 2}, ≤3★=5, temas={'precisão/IA': 1, 'falta recurso': 1, 'privacidade': 1}
+     ★1 Pessimo — Assinei a versão plus recentemente. Quando vc tira fotos dos alimentos para registrar no seu consumo diário o aplicativo atribui as calorias, proteínas, etc automaticamente. O prob
+     ★1 Resolver — Não consigo ver minha nova dieta com outro nutricionista, já deletei e iniciei novamente e não resolveu aguardando um retorno
+     ★1 Help — Olá! Como fazer para entrar pelo aplicativo com uma nova nutricionista ? Coloco os dados mas só aparece a antiga.
+- WebDiet [br]: n=50 recentes, distrib={1: 19, 2: 5, 3: 9, 4: 5, 5: 12}, ≤3★=33, temas={'precisão/IA': 14, 'bugs/sync': 8, 'falta recurso': 7, 'privacidade': 4}
+     ★1 Notificação não some — App tem uma notificação que não some de jeito nenhum. Contato com o atendimento falaram que não tem o que fazer. Para quem não gosta de notificações não lidas fica péssimo.
+     ★1 IA de macro nutrientes muito imprecisa — O aplicativo não consegue registrar corretamente os macronutrientes de suplementos usuais, mesmo quando a identificação destes e a respectiva quantidade é informada corretamente. P
+     ★3 Áudio — Não consigo enviar áudio para adicionar a alimentação
+- Dietbox [us]: n=11 recentes, distrib={1: 1, 2: 1, 3: 2, 4: 2, 5: 5}, ≤3★=4, temas={'bugs/sync': 2, 'falta recurso': 1}
+     ★1 Bad UI — Really bad interface, UI and UX.
+     ★2 Muitos erros — A ideia do aplicativo é ótima, mas o app é cheio de erros. Eu estava registrando todas as minhas refeições, até que eu percebi que algumas simplesmente sumiam e meu diário estava u
+     ★3 Depois que atualizaram ficou impossível de usar. — Queria voltar a versão anterior, n era perfeita mas ao menos funcionava o básico.
+- Dietbox [br]: n=50 recentes, distrib={1: 27, 2: 3, 3: 9, 4: 5, 5: 6}, ≤3★=39, temas={'bugs/sync': 15, 'precisão/IA': 6, 'falta recurso': 5, 'privacidade': 4}
+     ★1 Péssimo! — Preciso fazer login e criar uma senha noda TODA vez que entro no app, um saco isso, só hoje criei uma senha nova mais de 5x. Precisam ajustar isso com urgência, tá chato já.
+     ★1 Falha — Toda as vezes que entro pede para fazer login mesmo salvando as informações
+     ★3 Deixou a desejar — O app não salva as refeições corretamente, vc registra certinho e quando vai ver fica como se a gente não tivesse seguido a dieta correta.
+- Alimente-se [br]: n=38 recentes, distrib={1: 19, 2: 2, 3: 1, 4: 1, 5: 15}, ≤3★=22, temas={'preço/caro': 10, 'bugs/sync': 9, 'privacidade': 9, 'paywall/trial': 2}
+     ★1 Bug no app — Estou tentando adicionar a refeição e o app fecha sozinho, já desinstalei e instalei e não para
+     ★1 Bug o tempo inteiro — Acabei de assinar o Premium, tentando adicionar a minha dieta personalizada porém o app fecha o tempo todo e não conclui nunca. As opções de café, almoço abrem apenas algumas vezes
+     ★1 Informações imprecisas e não dá pra cancelar — As receitas são muito estranhas, tem uma de cafe da manha que sugere 4 paes pra emagrecer. Além disso, a meta diária de proteína é 136 gramas, sendo que o ideal seria cerca de 65 g
+- Protein Tracker (Oelfke) [br]: n=5 recentes, distrib={5: 5}, ≤3★=0, temas={}
+- ZOE [us]: n=50 recentes, distrib={1: 17, 2: 5, 3: 8, 4: 5, 5: 15}, ≤3★=30, temas={'precisão/IA': 10, 'privacidade': 6, 'falta recurso': 6, 'preço/caro': 4}
+     ★1 Find another app — There are better ones out there.
+     ★3 Removed?! — I have use this app everyday for two years, but yesterday suddenly the “calorie” macro was removed. ive used this app to help me eat clean with proper nutrition while on a fitness 
+     ★2 Big gap with new app — Although I appreciate the better scoring of individual foods, there are a few major downsides of the new app and program:  1. The new program/gut health testing continues to be una
+- Found [us]: n=50 recentes, distrib={1: 41, 2: 1, 3: 1, 4: 1, 5: 6}, ≤3★=43, temas={'preço/caro': 16, 'falta recurso': 10, 'privacidade': 10, 'precisão/IA': 2}
+     ★1 Misleading, basically a scam. — This app will charge you a monthly subscription, and then charge you for every single thing you need in the app after that - after saying the subscription covers it. A 10 min doc c
+     ★1 Hidden fees — My subscription cost repeatedly increased due to changes in medication which were made mandatory because Found stopped offering my specific brand and/or dosing. Practitioners are u
+     ★1 Scam — You’re advertising and app are deceiving. You make it seem like the first month including the medicine is $50. I feel scammed. I’m not paying another $150. Waste of time, hope, etc
+- Mochi Health [us]: n=50 recentes, distrib={1: 11, 3: 1, 4: 1, 5: 37}, ≤3★=12, temas={'preço/caro': 6, 'falta recurso': 3, 'bugs/sync': 1, 'privacidade': 1}
+     ★1 Weak GLP-1 — Weak watered-down tirzepatide. I could feel no difference in my appetite. They use a bunch of different pharmacy's, so it’s like picking straws to get a good vile. The price is sup
+     ★1 Update on 10/26 - can no longer open the app — With the latest app update I am no longer able to open the app on my phone.
+     ★1 App Crashes — The app crashes every time I try and open it. Reinstalled and got the same result. Hard power down and got the same result.
+- WeightWatchers [us]: n=50 recentes, distrib={1: 1, 4: 2, 5: 47}, ≤3★=1, temas={'preço/caro': 1, 'falta recurso': 1}
+     ★1 Shady Practices — I’ll never support companies that ‘lock’ you in to a subscription and make it almost impossible to end it on the basis of a ‘discount’. Adobe did the same and got sued. Really wish
+- Perda de Peso para Mulheres (Leap) [br]: n=30 recentes, distrib={1: 2, 3: 9, 4: 3, 5: 16}, ≤3★=11, temas={'preço/caro': 3, 'bugs/sync': 3, 'falta recurso': 2, 'precisão/IA': 2}
+     ★3 Tempo dos treinos — Coloquem o tempo que a pessoa deseja treinar, tempo de 9 min pra um treino é muito pouco.
+     ★3 Bom, mas pode melhorar — Achei o app muito bom. Estou no 2° dia e já vejo diferença. Só que os treinos “avulsos” são necessários todos a assinatura. Acho um tanto desnecessário. Mas recomendo igualmente
+     ★3 Poderia incluir nutrição e exercícios de pilates — O app é bom, adquiri a versão paga, pelo valor ele poderia ser mais completo. Incluir nutrição, dicas de alimentação, exercícios de pilates também.
+- MounHealth [us]: n=1 recentes, distrib={5: 1}, ≤3★=0, temas={}
+- MounHealth [br]: n=12 recentes, distrib={3: 1, 4: 1, 5: 10}, ≤3★=1, temas={'precisão/IA': 1}
+     ★3 Não registra a refeição — Em vários dias eu tento registrar a minha refeição e o app não registra. Acabo perdendo a minha quantidade de calorias por isso.
+- DreamMe [us]: n=50 recentes, distrib={1: 14, 2: 4, 3: 3, 4: 10, 5: 19}, ≤3★=21, temas={'preço/caro': 7, 'privacidade': 6, 'bugs/sync': 5, 'paywall/trial': 4}
+     ★1 Scam — Delted account unsubscribe and they still charged me
+     ★1 Waste of time unless you are upgrading and paying — This app is a waste of time unless you pay for it. It says free version but it’s not. You can log a couple of items a day and then it cuts you off and wants you to pay. So pick bre
+     ★1 Not made for eating at home — Tried for 3 days and realized it wasn’t for me. We cook at home so entering in recipes was difficult and confusing. Simple ingredients came up as suggestions from fast food restaur
+- Glippy [us]: n=36 recentes, distrib={1: 1, 2: 1, 3: 1, 4: 2, 5: 31}, ≤3★=3, temas={'privacidade': 1}
+     ★3 Newly — Just started using the app. I like what I see so far.
+     ★1 Not Working — App not working. Can’t put in any info.
+     ★2 It’s not working. Can’t submit feedback or get support. — All my data is gone out of nowhere, a year of logs all gone out of nowhere.
+- Workout for Women (Fast Builder) [us]: n=50 recentes, distrib={1: 10, 2: 2, 3: 4, 4: 3, 5: 31}, ≤3★=16, temas={'preço/caro': 6, 'paywall/trial': 5, 'ads': 5, 'falta recurso': 4}
+     ★1 Payment — I don't like that you need to pay
+     ★1 I miss my FREE workout app — I started using this back a couple years ago when the service was free. At first they changed it to make you watch unskippable ads before the workout. Already annoying. Now I try a
+     ★1 Nty. — I couldn’t even start day 2 without it trying to make me pay for a stupid subscription. I wanna workout, not PAY to work out.
+- Workout for Women (Fast Builder) [br]: n=50 recentes, distrib={1: 1, 5: 49}, ≤3★=1, temas={'preço/caro': 1}
+     ★1 Cancelar . Ruim — Muito ruim, tem aplicativos melhores com os treinos mais montados e definidos
