@@ -1,0 +1,1451 @@
+prato_id,sistema,componente,alimento_ref,ref_casado,tabela,similaridade,proteina_100g,grupo,gramas_estimadas,proteina_g,confianca,pista_escala
+b019,nuvem_llm_v2,torresmo / tiras de porco fritas,"Porco, torresmo, frito","Toucinho, frito",TACO,0.9,27.3,proteina_animal,120.0,32.76,baixa,"prato raso ~26 cm; monte ~13x11 cm, ~2 cm de altura"
+b030,nuvem_llm_v2,frango desfiado ao molho,"Frango, peito, sem pele, cozido","Frango, peito, sem pele, cozido",TACO,1.0,31.5,proteina_animal,100.0,31.5,media,"marmita ~19x14 cm; frango ocupa ~1/3, ~2,5 cm altura"
+b030,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,110.0,2.75,media,"marmita ~19x14 cm; arroz ~1/3, ~2,5 cm altura"
+b030,nuvem_llm_v2,creme de milho,"Milho, verde, creme de milho","Milho, verde, enlatado, drenado",TACO,0.726,3.2,amido,110.0,3.52,baixa,"marmita ~19x14 cm; creme ~1/3, ~2 cm altura"
+b042,nuvem_llm_v2,macarrão com linguiça ao molho,"Macarrão, trigo, cozido (USDA 20121)","Macarrão, trigo, cozido (USDA 20121)",EXTRA,1.0,5.8,amido,300.0,17.4,media,"prato raso ~26 cm; monte ~17x14 cm, ~3 cm altura"
+b047,nuvem_llm_v2,arroz com queijo ralado,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,330.0,8.25,media,"prato raso ~26 cm; arroz cobre ~20x14 cm, ~2,5 cm altura"
+b059,nuvem_llm_v2,2 fatias de carne assada (lombo),"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,85.0,30.35,media,"prato raso ~26 cm; 2 fatias ~8x6 cm, ~1 cm espessura"
+b071,nuvem_llm_v2,carne seca desfiada,"Carne, bovina, charque, cozido","Carne, bovina, charque, cozido",TACO,1.0,36.4,proteina_animal,170.0,61.88,baixa,"prato raso ~26 cm; monte ~14x13 cm, ~2 cm altura"
+b077,nuvem_llm_v2,baião de dois com carne seca e queijo coalho,"Baião de dois, arroz e feijão-de-corda","Baião de dois, arroz e feijão-de-corda",TACO,1.0,6.2,misto,450.0,27.9,media,"prato raso ~26 cm; cobre quase toda a área útil, ~3 cm altura"
+b106,nuvem_llm_v2,fatia de lombo assado,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,75.0,26.77,media,"prato raso ~26 cm; fatia ~12x7 cm, ~1 cm espessura"
+d0006,nuvem_llm_v2,frango grelhado em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,140.0,31.64,media,prato fundo ~22 cm; ~30 cubos de ~2 cm
+d0006,nuvem_llm_v2,mix de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,folhas cobrindo base do prato ~20 cm
+d0010,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,110.0,11.0,media,"prato quadrado ~24 cm; monte ~11x9 cm, ~2 cm altura"
+d0015,nuvem_llm_v2,couve-flor cozida,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,120.0,2.16,media,prato quadrado ~22 cm; 7 floretes médios ~15-20 g
+d0026,nuvem_llm_v2,carne bovina grelhada fatiada,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,120.0,30.0,media,"prato descartável ~22 cm; 5 fatias ~5x3 cm, ~1,5 cm"
+d0026,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,100.0,1.8,baixa,"prato ~22 cm; ~1/4 do prato, ~3 cm"
+d0026,nuvem_llm_v2,frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,80.0,24.88,baixa,prato ~22 cm; cubos parcialmente sob couve-flor
+d0027,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,35.0,12.95,media,prato ~26 cm; 3 tiras ~16 cm
+d0027,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"prato ~26 cm; monte ~14x10 cm, ~2,5 cm"
+d0027,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,50.0,1.2,media,3-4 floretes
+d0030,nuvem_llm_v2,arroz integral,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,60.0,1.56,media,"prato quadrado ~25 cm; ~7x6 cm, ~2 cm"
+d0030,nuvem_llm_v2,carne de porco/frango assada em pedaços,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,90.0,23.4,baixa,~6 pedaços de ~4x2 cm
+d0030,nuvem_llm_v2,mix de folhas e radicchio,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,folhas soltas ~1/3 do prato
+d0030,nuvem_llm_v2,aspargos grelhados,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,15.0,0.27,baixa,1-2 talos
+d0089,nuvem_llm_v2,carne bovina fatiada ao molho,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,80.0,20.8,baixa,"prato quadrado ~25 cm; 3 fatias ~6x3 cm, ~1 cm"
+d0089,nuvem_llm_v2,rúcula,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,metade do prato de folhas soltas
+d0089,nuvem_llm_v2,acelga/chard refogada,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,40.0,1.2,baixa,"~8x6 cm, ~1,5 cm"
+d0089,nuvem_llm_v2,rabanete,USDA: radishes,radishes,USDA,1.0,0.7,vegetal,10.0,0.07,baixa,2 fatias
+d0095,nuvem_llm_v2,carne de panela,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,180.0,46.8,baixa,prato ~22 cm; 3 pedaços grandes ~6x5x3 cm
+d0095,nuvem_llm_v2,cenoura cozida,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,40.0,0.36,baixa,2-3 pedaços
+d0095,nuvem_llm_v2,cebola cozida,USDA: onions,onions,USDA,1.0,1.1,vegetal,10.0,0.11,baixa,1 pedaço
+d0119,nuvem_llm_v2,batata assada em cubos,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,110.0,2.31,media,prato ~26 cm; ~8 cubos de ~3 cm
+d0119,nuvem_llm_v2,hambúrguer/bolo de carne,USDA: ground beef,ground beef,USDA,1.0,14.2,proteina_animal,100.0,14.2,media,"disco ~9 cm, ~1,5 cm"
+d0119,nuvem_llm_v2,purê de batata gratinado,USDA: mashed potatoes,mashed potatoes,USDA,1.0,1.7,amido,130.0,2.21,baixa,"~10x8 cm, ~3 cm"
+d0146,nuvem_llm_v2,azeitonas kalamata,USDA: olives,olives,USDA,1.0,0.8,vegetal,55.0,0.44,media,14 azeitonas ~4 g
+d0146,nuvem_llm_v2,bulgur/trigo,USDA: couscous,couscous,USDA,1.0,3.8,amido,70.0,2.66,media,"prato quadrado ~25 cm; ~10x6 cm, ~1,5 cm"
+d0146,nuvem_llm_v2,arroz selvagem com legumes,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,60.0,1.56,baixa,"~10x8 cm, ~1,5 cm"
+d0146,nuvem_llm_v2,cenoura cozida,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,50.0,0.45,media,6 rodelas ~3 cm
+d0146,nuvem_llm_v2,vagem e erva-doce,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,25.0,0.45,baixa,poucas tiras
+d0157,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,160.0,16.0,media,"prato quadrado ~24 cm; monte ~15x12 cm, ~2 cm"
+d0174,nuvem_llm_v2,salada caesar (alface romana com molho),USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,70.0,0.98,media,prato quadrado ~25 cm; ~1/3 do prato
+d0174,nuvem_llm_v2,frango em fatias,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,60.0,18.66,baixa,~6 pedaços pequenos
+d0174,nuvem_llm_v2,trigo em grão/farro,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,30.0,0.78,baixa,pequena porção sob frango
+d0174,nuvem_llm_v2,tiras de carne/seitan,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,70.0,18.2,baixa,"5 tiras ~6x1,5 cm, ~1 cm"
+d0174,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,60.0,1.26,baixa,4 cubos ~3 cm
+d0174,nuvem_llm_v2,couve-flor e brócolis assados,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,40.0,0.72,baixa,2-3 floretes
+d0174,nuvem_llm_v2,lentilha com tomate,USDA: lentils,lentils,USDA,1.0,9.0,leguminosa,40.0,3.6,baixa,"~6x4 cm, ~1,5 cm"
+d0184,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,12.0,4.44,media,prato quadrado ~22 cm; 1 tira ~18 cm
+d0196,nuvem_llm_v2,coxa de frango assada,USDA: roast chicken,roast chicken,USDA,1.0,23.5,proteina_animal,80.0,18.8,media,"prato quadrado ~25 cm; coxinha ~11 cm, sem osso"
+d0196,nuvem_llm_v2,recheio/linguiça com tomate,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,60.0,11.58,baixa,"~8x6 cm, ~2 cm"
+d0196,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,60.0,1.26,media,3 pedaços ~4 cm
+d0196,nuvem_llm_v2,cogumelos,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,50.0,1.55,media,~8 cogumelos pequenos
+d0196,nuvem_llm_v2,espinafre refogado,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,60.0,1.8,baixa,"~10x8 cm, ~1,5 cm"
+d0196,nuvem_llm_v2,brócolis/couve,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,40.0,0.96,baixa,~8x6 cm
+d0196,nuvem_llm_v2,tomate cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,15.0,0.11,baixa,2-3 unidades
+d0204,nuvem_llm_v2,milho na espiga (grãos),USDA: corn,corn,USDA,1.0,3.4,amido,70.0,2.38,media,"prato ~22 cm; 2 rodelas ~5 cm diâmetro x 4 cm, sem sabugo"
+d0215,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,25.0,9.25,media,prato quadrado ~22 cm; 2 tiras ~20 cm
+d0216,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,85.0,19.04,media,"prato descartável ~15 cm; ~70 amêndoas ~1,2 g (camada dupla)"
+d0227,nuvem_llm_v2,cenoura cozida,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,110.0,0.99,media,prato quadrado ~22 cm; ~16 pedaços ~5x2 cm
+d0230,nuvem_llm_v2,maçã inteira,USDA: apple,apple,USDA,1.0,0.3,vegetal,170.0,0.51,media,"prato ~26 cm; maçã ~7,5 cm"
+d0230,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,42.0,9.41,media,"~35 amêndoas ~1,2 g"
+d0230,nuvem_llm_v2,couve-de-bruxelas,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,130.0,4.42,media,14 unidades ~9 g
+d0230,nuvem_llm_v2,cenoura cozida,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,120.0,1.08,media,~18 pedaços
+d0239,nuvem_llm_v2,pizza de pepperoni,USDA: pizza,pizza,USDA,1.0,11.0,misto,170.0,18.7,media,"prato quadrado ~25 cm; ~1,5 fatia grande ~15x10 cm"
+d0246,nuvem_llm_v2,lascas de parmesão,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,40.0,10.0,baixa,tigela ~26 cm; monte de lascas ~12x10 cm
+d0246,nuvem_llm_v2,cebola roxa,USDA: onions,onions,USDA,1.0,1.1,vegetal,40.0,0.44,baixa,várias rodelas finas
+d0246,nuvem_llm_v2,tomate cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,60.0,0.42,baixa,~6 unidades visíveis no fundo
+d0246,nuvem_llm_v2,frango (parcialmente oculto),USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,40.0,12.44,baixa,"pedaços sob o queijo, inferido"
+d0246,nuvem_llm_v2,pimentão e cenoura,USDA: bell peppers,bell peppers,USDA,1.0,2.0,vegetal,25.0,0.5,baixa,pedaços no fundo
+d0275,nuvem_llm_v2,rúcula/espinafre,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,prato quadrado ~25 cm; monte ~14x12 cm solto
+d0275,nuvem_llm_v2,cenoura ralada,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,8.0,0.07,baixa,poucas tiras
+d0275,nuvem_llm_v2,uva-passa,USDA: raisins,raisins,USDA,1.0,3.1,vegetal,5.0,0.15,baixa,3-4 passas
+d0289,nuvem_llm_v2,omelete,USDA: omelets,omelets,USDA,1.0,10.4,proteina_animal,150.0,15.6,media,"prato ~26 cm; omelete ~16x7 cm, ~2,5 cm"
+d0294,nuvem_llm_v2,salmão assado,USDA: salmon,salmon,USDA,1.0,24.0,proteina_animal,140.0,33.6,media,"prato quadrado ~25 cm; 2 pedaços ~10x5 cm, ~2 cm"
+d0294,nuvem_llm_v2,bok choy,USDA: bok choy,bok choy,USDA,1.0,1.5,vegetal,70.0,1.05,media,~1/4 do prato
+d0294,nuvem_llm_v2,peixe/cavala com alcachofra,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,60.0,11.04,baixa,~6x5 cm
+d0294,nuvem_llm_v2,couve-flor assada,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,50.0,0.9,baixa,~6 floretes pequenos
+d0294,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,40.0,0.84,baixa,2 pedaços
+d0294,nuvem_llm_v2,hambúrguer vegetal/bolinho,USDA: veggie burger,veggie burgers,USDA,0.993,15.9,misto,40.0,6.36,baixa,"disco ~7 cm, ~1 cm"
+d0294,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,25.0,0.22,baixa,1 pedaço ~5x3 cm
+d0297,nuvem_llm_v2,salada caesar com croutons,USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,60.0,0.84,baixa,prato descartável ~22 cm; ~10x8 cm
+d0297,nuvem_llm_v2,berinjela assada,USDA: eggplant,eggplant,USDA,1.0,1.0,vegetal,80.0,0.8,baixa,~8 pedaços ~3 cm
+d0297,nuvem_llm_v2,abobrinha recheada com quinoa,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,60.0,0.66,baixa,"~8x4 cm, ~2 cm"
+d0316,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,"prato quadrado ~25 cm; ~12x10 cm, ~2,5 cm"
+d0316,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,100.0,1.8,media,"~1/3 do prato, ~2 cm"
+d0316,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,30.0,11.1,media,3 tiras
+d0323,nuvem_llm_v2,espinafre cru,USDA: spinach,,,0.422,0.0,vegetal,40.0,0.0,media,prato ~26 cm; folhas cobrindo quase tudo
+d0323,nuvem_llm_v2,frango em pedaços,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,70.0,21.77,baixa,parcialmente sob folhas
+d0323,nuvem_llm_v2,batata/tofu assado,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,50.0,1.05,baixa,2-3 pedaços parcialmente ocultos
+d0323,nuvem_llm_v2,cogumelo,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,15.0,0.47,baixa,1-2 pedaços
+d0336,nuvem_llm_v2,berinjela assada,USDA: eggplant,eggplant,USDA,1.0,1.0,vegetal,120.0,1.2,media,prato quadrado ~25 cm; ~18 cubos ~3 cm
+d0336,nuvem_llm_v2,purê de couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,110.0,1.98,baixa,"~12x9 cm, ~2 cm"
+d0356,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,"prato quadrado ~25 cm; metade do prato, ~2,5 cm"
+d0356,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,100.0,1.0,media,"~10 cubos ~2,5 cm"
+d0356,nuvem_llm_v2,melão cantalupo,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,60.0,0.48,media,~6 cubos ~2 cm
+d0356,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,70.0,0.42,media,~7 cubos
+d0356,nuvem_llm_v2,morango,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,40.0,0.28,media,3-4 morangos
+d0356,nuvem_llm_v2,mirtilo,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,10.0,0.07,media,7 mirtilos
+d0370,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,90.0,0.63,media,prato quadrado ~22 cm; ~17 uvas ~5 g
+d0370,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,110.0,0.66,media,6 cubos ~3-4 cm
+d0370,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,70.0,1.47,media,6 pedaços pequenos
+d0380,nuvem_llm_v2,frango empanado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,140.0,43.54,media,prato quadrado ~25 cm; ~8 pedaços
+d0380,nuvem_llm_v2,frango à parmegiana com pepperoni,USDA: pizza,pizza,USDA,1.0,11.0,misto,70.0,7.7,baixa,"~10x6 cm, ~1,5 cm"
+d0380,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,90.0,0.81,media,5 pedaços ~5x3 cm
+d0380,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,80.0,1.92,media,5 floretes
+n031,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,70.0,15.68,media,"prato descartável ~15 cm; ~55 amêndoas ~1,2 g"
+b001,nuvem_llm_v2,bife grelhado,"Carne, bovina, contra-filé, sem gordura, grelhado","Carne, bovina, contra-filé, sem gordura, grelhado",TACO,1.0,35.9,proteina_animal,80.0,28.72,media,"prato raso ~27 cm com garfo e faca; bife ~10x6 cm, ~1,5 cm de espessura"
+b037,nuvem_llm_v2,feijão branco cozido,"USDA: white beans, cooked",white beans,USDA,0.687,9.7,leguminosa,320.0,31.04,media,"prato raso ~27 cm; feijão ocupa círculo ~18x16 cm, ~2 cm de altura"
+b048,nuvem_llm_v2,macarrão com molho e carne,USDA: pasta with meat sauce,pasta sauce,USDA,0.847,1.3,amido,230.0,2.99,media,"prato raso ~27 cm; meia-lua ~14x13 cm, ~3 cm de altura"
+b050,nuvem_llm_v2,lombo de porco em fatias,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,160.0,57.12,media,"prato raso ~27 cm; 4 fatias ~9x6 cm, ~0,8 cm de espessura"
+b053,nuvem_llm_v2,feijão branco cozido,"USDA: white beans, cooked",white beans,USDA,0.687,9.7,leguminosa,140.0,13.58,media,"prato raso ~27 cm; meia porção ~12x9 cm, ~2 cm de altura"
+b074,nuvem_llm_v2,pedaços de frango frito,USDA: fried chicken pieces,fried chicken,USDA,0.693,30.4,proteina_animal,140.0,42.56,baixa,"prato raso ~27 cm; monte ~14x11 cm, ~2 cm, pedaços soltos"
+b075,nuvem_llm_v2,camarão cozido,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,200.0,38.0,media,"prato raso ~27 cm; ~25 camarões ~8 g cada, área ~17x14 cm"
+b099,nuvem_llm_v2,feijão branco cozido,"USDA: white beans, cooked",white beans,USDA,0.687,9.7,leguminosa,340.0,32.98,media,"prato raso ~27 cm; círculo ~18x16 cm, ~2,2 cm de altura"
+b109,nuvem_llm_v2,carne seca desfiada,"Carne, bovina, charque, cozido","Carne, bovina, charque, cozido",TACO,1.0,36.4,proteina_animal,110.0,40.04,baixa,"prato raso ~27 cm; meia-lua ~13x8 cm, ~1,5 cm, desfiado solto"
+c003,nuvem_llm_v2,salmão grelhado,"Salmão, sem pele, fresco, grelhado","Salmão, sem pele, fresco, grelhado",TACO,1.0,26.1,proteina_animal,130.0,33.93,media,"marmita ~19x14 cm; filé ~18x6 cm, ~2 cm"
+c003,nuvem_llm_v2,risoto,USDA: risotto,risotto,USDA,1.0,4.3,misto,170.0,7.31,baixa,"marmita ~19x14 cm; risoto por baixo do salmão, parcialmente escondido"
+c003,nuvem_llm_v2,farofa de castanhas e ervas,USDA: mixed nuts,mixed nuts,USDA,1.0,20.6,outros,12.0,2.47,baixa,cobertura esparsa sobre o salmão
+c005,nuvem_llm_v2,carne de panela,"Carne, bovina, acém, sem gordura, cozido","Carne, bovina, acém, sem gordura, cozido",TACO,1.0,27.3,proteina_animal,110.0,30.03,media,"marmita ~19x14 cm; carne ocupa ~1/3, ~3 cm"
+c005,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,70.0,1.75,media,marmita ~19x14 cm; faixa ~5 cm de largura
+c005,nuvem_llm_v2,feijão,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,90.0,4.32,media,marmita ~19x14 cm; faixa ~5 cm com caldo
+c005,nuvem_llm_v2,farofa,"Mandioca, farofa, temperada","Mandioca, farofa, temperada",TACO,1.0,2.1,amido,40.0,0.84,media,marmita ~19x14 cm; faixa ~4 cm na lateral
+c012,nuvem_llm_v2,macarrão yakisoba,USDA: noodles,noodles,USDA,1.0,4.5,amido,150.0,6.75,baixa,marmita ~19x14 cm; massa entremeada
+c012,nuvem_llm_v2,frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,90.0,27.99,baixa,marmita ~19x14 cm; ~8 pedaços de ~11 g visíveis
+c012,nuvem_llm_v2,legumes salteados,USDA: mixed vegetables,mixed vegetables,USDA,1.0,1.7,outros,90.0,1.53,baixa,"marmita ~19x14 cm; brócolis, cenoura, pimentão, cebolinha"
+d0001,nuvem_llm_v2,batatas assadas,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,110.0,2.31,baixa,prato quadrado ~23 cm; ~6 pedaços ~3 cm
+d0001,nuvem_llm_v2,couve-flor assada,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,70.0,1.26,baixa,prato quadrado ~23 cm; ~1/5 do prato
+d0001,nuvem_llm_v2,melão cantalupo,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,110.0,0.88,media,6 cubos ~3x3x4 cm
+d0001,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,90.0,9.0,baixa,"prato quadrado ~23 cm; área ~10x8 cm, ~2 cm"
+d0012,nuvem_llm_v2,trigo em grão (farro),"USDA: wheat berries, cooked",spinach (cooked),USDA,0.619,3.0,vegetal,110.0,3.3,baixa,prato quadrado ~26 cm; monte ~12x10 cm
+d0012,nuvem_llm_v2,salmão,USDA: salmon,salmon,USDA,1.0,24.0,proteina_animal,60.0,14.4,baixa,2 pedaços pequenos parcialmente cobertos
+d0012,nuvem_llm_v2,abobrinha,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,70.0,0.77,baixa,~8 pedaços de abobrinha verde e amarela
+d0012,nuvem_llm_v2,rúcula,USDA: arugula,arugula,USDA,1.0,2.6,vegetal,8.0,0.21,baixa,algumas folhas
+d0025,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,110.0,11.0,media,"prato quadrado ~23 cm; área ~11x9 cm, ~2 cm"
+d0025,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,25.0,9.25,media,3 tiras
+d0025,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,120.0,1.2,baixa,"~12 cubos ~2,5 cm"
+d0025,nuvem_llm_v2,melão honeydew,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,130.0,0.65,media,8 cubos ~3 cm
+d0034,nuvem_llm_v2,arroz branco,USDA: white rice,white rice,USDA,1.0,2.7,amido,150.0,4.05,media,"prato quadrado ~26 cm; monte ~12x9 cm, ~3 cm"
+d0034,nuvem_llm_v2,carne de porco grelhada,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,110.0,28.6,baixa,"~8 tiras ~6x2 cm, ~1 cm"
+d0034,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,70.0,0.7,media,~11 fatias/meias-fatias
+d0043,nuvem_llm_v2,linguiça,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,60.0,11.58,media,3 pedaços ~4 cm
+d0043,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,100.0,2.1,media,5 pedaços ~4 cm
+d0043,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,90.0,0.54,media,~6 cubos ~3 cm
+d0060,nuvem_llm_v2,rúcula,USDA: arugula,arugula,USDA,1.0,2.6,vegetal,40.0,1.04,baixa,"monte ~ metade do prato, folhas soltas"
+d0060,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,100.0,2.4,baixa,~6 floretes
+d0060,nuvem_llm_v2,berinjela/abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,60.0,0.54,baixa,~6 fatias
+d0073,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,110.0,2.64,media,"~7 floretes, ~1/3 do prato"
+d0073,nuvem_llm_v2,peixe grelhado,USDA: salmon,salmon,USDA,1.0,24.0,proteina_animal,100.0,24.0,baixa,"2 pedaços ~9x4 cm, ~2 cm"
+d0073,nuvem_llm_v2,carne bovina,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,70.0,17.5,baixa,"2 pedaços ~6x4 cm, ~1,5 cm"
+d0130,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,170.0,0.51,media,maçã média ~8 cm de diâmetro
+d0130,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,22.0,4.93,media,~18 amêndoas
+d0130,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,55.0,0.39,media,9 uvas
+d0165,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"prato quadrado ~26 cm; área ~14x9 cm, ~2 cm"
+d0165,nuvem_llm_v2,batata rösti (hash brown),USDA: hash browns,hash browns,USDA,1.0,2.6,amido,80.0,2.08,baixa,"área ~10x9 cm, ~1 cm"
+d0165,nuvem_llm_v2,folhas mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,25.0,0.55,baixa,punhado de folhas
+d0165,nuvem_llm_v2,framboesas,USDA: raspberries,raspberries,USDA,1.0,1.2,vegetal,8.0,0.1,media,2 framboesas
+d0167,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,90.0,9.9,media,2 pedaços triangulares ~12x8 cm
+d0170,nuvem_llm_v2,batata rösti (hash brown),USDA: hash browns,hash browns,USDA,1.0,2.6,amido,110.0,2.86,baixa,"prato ~25 cm; área ~14x10 cm, ~1,5 cm"
+d0170,nuvem_llm_v2,salsa de tomate e molho verde,USDA: salsa,salsa,USDA,1.0,1.5,gordura_molho,40.0,0.6,baixa,cobertura sobre a batata
+d0170,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,35.0,12.95,media,3 tiras grossas
+d0198,nuvem_llm_v2,coxa de frango,USDA: roast chicken,roast chicken,USDA,1.0,23.5,proteina_animal,70.0,16.45,media,"coxa média ~13 cm, sem osso"
+d0198,nuvem_llm_v2,arroz integral pilaf,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,90.0,2.34,baixa,monte ~8x7 cm
+d0198,nuvem_llm_v2,vagem/aspargos,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,60.0,1.08,baixa,~12 hastes
+d0198,nuvem_llm_v2,salada caesar,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,90.0,2.88,baixa,"~1/3 do prato, folhas com molho"
+d0198,nuvem_llm_v2,pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,70.0,7.7,media,pedaço ~9x7 cm
+d0212,nuvem_llm_v2,salmão assado,USDA: salmon,salmon,USDA,1.0,24.0,proteina_animal,130.0,31.2,media,"3 pedaços ~7x5 cm, ~2 cm"
+d0212,nuvem_llm_v2,cenoura assada,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,80.0,0.72,baixa,~10 rodelas
+d0212,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,130.0,0.65,media,"~14 cubos ~2,5 cm"
+d0231,nuvem_llm_v2,couve-flor cozida,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,180.0,3.24,media,"prato quadrado ~26 cm; ~1/2 do prato, ~20 floretes"
+d0231,nuvem_llm_v2,carne com chimichurri,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,55.0,13.75,baixa,"pedaço ~7x5 cm, ~1,5 cm"
+d0244,nuvem_llm_v2,linguiça em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,75.0,14.47,media,prato redondo ~26 cm; ~11 rodelas ~3 cm
+d0244,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,31.0,6.94,media,~26 amêndoas
+d0244,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,60.0,0.42,media,12 uvas
+d0255,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,"prato quadrado ~26 cm; área ~12x10 cm, ~2 cm"
+d0255,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,40.0,14.8,media,4 tiras
+d0255,nuvem_llm_v2,folhas mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,35.0,0.77,baixa,monte ~12x8 cm
+d0267,nuvem_llm_v2,bagel (metade),USDA: bagel,bagels,USDA,0.982,10.1,amido,50.0,5.05,media,metade de bagel ~10 cm
+d0267,nuvem_llm_v2,cream cheese,USDA: cream cheese,cream cheese,USDA,1.0,6.2,laticinio,20.0,1.24,media,camada sobre o bagel
+d0267,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,120.0,12.0,media,"área ~13x8 cm, ~2 cm"
+d0267,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,90.0,0.63,media,~7 metades de morango grande
+d0318,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,180.0,0.54,media,"maçã média ~8,5 cm"
+d0318,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,85.0,0.6,media,~15 uvas
+d0318,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,18.0,4.03,media,~15 amêndoas
+d0318,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,70.0,1.26,baixa,~6 floretes pequenos/médios
+d0331,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,110.0,11.0,baixa,"prato quadrado ~26 cm; área ~11x10 cm, ~2 cm"
+d0331,nuvem_llm_v2,linguiça,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,90.0,17.37,media,8 pedaços ~3 cm
+d0334,nuvem_llm_v2,salada caesar (alface com molho),USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,100.0,3.2,baixa,prato quadrado ~26 cm; ~1/3 do prato
+d0334,nuvem_llm_v2,quinoa/cuscuz,USDA: quinoa,quinoa,USDA,1.0,4.4,amido,35.0,1.54,baixa,porção pequena sob a salada
+d0334,nuvem_llm_v2,parmesão em lascas,USDA: parmesan cheese,parmesan cheese,USDA,1.0,38.4,laticinio,5.0,1.92,baixa,1-2 lascas
+d0377,nuvem_llm_v2,pizza retangular,USDA: pizza,pizza,USDA,1.0,11.0,misto,110.0,12.1,media,pedaço ~13x9 cm
+d0377,nuvem_llm_v2,carne bovina,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,70.0,18.2,baixa,"2 pedaços ~6x5 cm, parcialmente fora do quadro"
+d0377,nuvem_llm_v2,aspargos,USDA: asparagus,asparagus,USDA,1.0,2.2,vegetal,10.0,0.22,baixa,2 pedaços
+d0383,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,110.0,0.55,media,~8 palitos
+d0383,nuvem_llm_v2,mirtilos,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,40.0,0.28,media,~25 mirtilos
+d0383,nuvem_llm_v2,couve-de-bruxelas,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,60.0,2.04,baixa,~8 unidades
+d0383,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,15.0,0.11,media,2 pedaços
+d0383,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,90.0,9.0,baixa,área ~10x8 cm
+d0383,nuvem_llm_v2,batatas assadas,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,80.0,1.68,baixa,~6 pedaços
+d0391,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,220.0,22.0,media,"prato quadrado ~26 cm; ~45% do prato, ~3 cm"
+d0391,nuvem_llm_v2,batatas assadas,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,130.0,2.73,media,"~14 cubos ~2,5 cm"
+d0391,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,80.0,0.48,media,4 cubos ~3 cm
+d0391,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,60.0,0.42,media,10 uvas
+d0392,nuvem_llm_v2,espinafre cru,USDA: spinach (raw),spinach (raw),USDA,1.0,2.9,vegetal,50.0,1.45,baixa,tigela ~24 cm; camada de folhas
+d0392,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,80.0,0.8,media,~12 fatias
+d0392,nuvem_llm_v2,azeitonas kalamata,USDA: olives,olives,USDA,1.0,0.8,vegetal,70.0,0.56,media,"~20 azeitonas ~3,5 g"
+d0392,nuvem_llm_v2,frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,80.0,24.88,baixa,~14 cubos pequenos
+d0400,nuvem_llm_v2,frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,120.0,37.32,media,"tigela inox ~28 cm; ~40 cubos ~1,5-2 cm"
+n024,nuvem_llm_v2,claras cozidas/mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,100.0,10.0,baixa,prato quadrado ~26 cm; área ~12x10 cm
+n024,nuvem_llm_v2,pudim de chia,USDA: chia pudding,puddings,USDA,0.79,3.2,outros,90.0,2.88,baixa,"área ~12x8 cm, ~1 cm"
+n024,nuvem_llm_v2,pêssego em cubos,USDA: peaches,peaches,USDA,1.0,0.9,vegetal,15.0,0.13,baixa,4 cubos pequenos
+n037,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,55.0,12.32,media,~45 amêndoas
+n038,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,100.0,10.0,media,"prato quadrado ~26 cm; área ~12x10 cm, ~1,5 cm"
+n038,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,10.0,3.7,media,1 tira
+b095,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,130.0,3.25,media,"prato raso ~27 cm vs garfo; arroz ~10x14 cm, ~2 cm de altura"
+d0220,nuvem_llm_v2,frango assado (coxa e sobrecoxa parciais),"Frango, coxa, com pele, assada","Frango, coxa, com pele, assada",TACO,1.0,28.5,proteina_animal,75.0,21.38,baixa,prato quadrado ~25 cm; pedaços ~8x5 cm sem osso
+d0220,nuvem_llm_v2,molho/cobertura com grãos,USDA: couscous,couscous,USDA,1.0,3.8,amido,12.0,0.46,baixa,camada fina sobre o frango
+c017,nuvem_llm_v2,frango (sobrecoxa) grelhado,"Frango, sobrecoxa, sem pele, assada","Frango, sobrecoxa, sem pele, assada",TACO,1.0,29.2,proteina_animal,150.0,43.8,media,"marmita ~750 ml ~19x14 cm; carne cobre ~1/2 da caixa, ~3 cm"
+c017,nuvem_llm_v2,farofa,"Mandioca, farofa, temperada","Mandioca, farofa, temperada",TACO,1.0,2.1,amido,60.0,1.26,media,"faixa esquerda ~5x12 cm, ~2,5 cm"
+c017,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,90.0,2.25,media,faixa direita ~5x12 cm
+c017,nuvem_llm_v2,feijão (parcialmente escondido),"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,50.0,2.4,baixa,visível só no fundo atrás da carne
+d0351,nuvem_llm_v2,salada de grão-de-bico com tomate e cebola,USDA: chickpeas,chickpeas,USDA,1.0,9.0,leguminosa,150.0,13.5,media,"prato quadrado ~25 cm; ~1/4 do prato, ~3 cm"
+d0351,nuvem_llm_v2,espinafre cru,USDA: spinach (raw),spinach (raw),USDA,1.0,2.9,vegetal,45.0,1.31,media,"metade direita do prato, folhas soltas"
+d0351,nuvem_llm_v2,carne em fatias (frango/porco),USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,110.0,24.86,baixa,"4 fatias ~7x3 cm, ~1,5 cm"
+d0351,nuvem_llm_v2,cobertura de cenoura e brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,30.0,0.72,baixa,sobre as fatias
+d0351,nuvem_llm_v2,rodela de milho na espiga,USDA: corn,corn,USDA,1.0,3.4,amido,35.0,1.19,media,"rodela ~6 cm diâmetro, ~3 cm, peso comestível"
+n030,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,40.0,0.28,media,4 pedaços médios num prato ~23 cm
+d0193,nuvem_llm_v2,cenoura cozida/assada,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,95.0,0.76,media,"prato quadrado ~22 cm; monte ~9x9 cm, ~2 cm"
+b108,nuvem_llm_v2,bife grelhado,"Carne, bovina, contra-filé, sem gordura, grelhado","Carne, bovina, contra-filé, sem gordura, grelhado",TACO,1.0,35.9,proteina_animal,140.0,50.26,media,"prato ~27 cm; bife ~13x8 cm, ~1,5 cm"
+n040,nuvem_llm_v2,arroz temperado,USDA: white rice,white rice,USDA,1.0,2.7,amido,130.0,3.51,media,"prato ~25 cm; 2 montes ~8x7 cm, ~2,5 cm"
+n040,nuvem_llm_v2,frango assado (peito e coxa),"Frango, coxa, com pele, assada","Frango, coxa, com pele, assada",TACO,1.0,28.5,proteina_animal,110.0,31.35,baixa,"2 peças ~9x6 cm, sem osso"
+d0181,nuvem_llm_v2,mix de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,prato ~25 cm; folhas ocupando ~1/3
+d0137,nuvem_llm_v2,bacon frito,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,75.0,27.75,media,~8 fatias ~15 cm num prato ~22 cm
+d0057,nuvem_llm_v2,framboesas e amoras,USDA: berries,berries,USDA,1.0,0.7,vegetal,55.0,0.39,media,prato ~25 cm; ~12 frutinhas
+d0057,nuvem_llm_v2,melancia em cubos,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,120.0,0.72,media,"~12 cubos ~2,5 cm"
+d0057,nuvem_llm_v2,abacaxi em cubos,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,110.0,0.55,media,~12 pedaços ~3 cm
+d0057,nuvem_llm_v2,legumes assados (batata-doce/abóbora),USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,120.0,1.2,media,"~15 cubos ~2,5 cm"
+d0057,nuvem_llm_v2,queijo cottage,USDA: cottage cheese,cottage cheese,USDA,1.0,11.0,laticinio,90.0,9.9,media,"monte ~9x6 cm, ~2,5 cm"
+d0038,nuvem_llm_v2,frango ao curry,USDA: chicken curry,chicken,USDA,0.615,31.0,proteina_animal,170.0,52.7,media,"prato redondo ~23 cm; ~1/3 do prato, ~3 cm"
+d0038,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,140.0,3.5,media,"monte ~10x9 cm, ~3 cm"
+d0114,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,60.0,13.44,media,"~50 unidades x 1,2 g"
+d0322,nuvem_llm_v2,pizza de muçarela,USDA: pizza,pizza,USDA,1.0,11.0,misto,190.0,20.9,media,meia pizza ~25 cm em prato ~22 cm
+d0166,nuvem_llm_v2,espinafre cru,USDA: spinach (raw),spinach (raw),USDA,1.0,2.9,vegetal,45.0,1.31,media,prato ~25 cm; salada ~12x10 cm
+d0166,nuvem_llm_v2,cenoura ralada,"Cenoura, crua","Cenoura, crua",TACO,1.0,1.3,vegetal,12.0,0.16,baixa,fios por cima
+d0166,nuvem_llm_v2,mirtilos,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,8.0,0.06,media,~6 unidades
+d0166,nuvem_llm_v2,sementes de abóbora,USDA: pumpkin seeds,pumpkin seeds,USDA,1.0,19.0,outros,5.0,0.95,baixa,algumas sementes
+d0031,nuvem_llm_v2,rúcula,USDA: arugula,arugula,USDA,1.0,2.6,vegetal,35.0,0.91,media,prato ~25 cm; ~1/3 do prato
+d0031,nuvem_llm_v2,arroz vermelho com legumes,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,170.0,4.42,media,"monte ~11x9 cm, ~2,5 cm"
+n039,nuvem_llm_v2,clara de ovo cozida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,70.0,7.0,media,prato ~25 cm; pedaços ocupando ~10x7 cm
+n039,nuvem_llm_v2,batata ralada frita (hash brown),USDA: hash browns,hash browns,USDA,1.0,2.6,amido,45.0,1.17,baixa,monte ~6x6 cm
+n039,nuvem_llm_v2,frutas vermelhas,USDA: berries,berries,USDA,1.0,0.7,vegetal,50.0,0.35,media,~8 frutinhas
+n039,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,90.0,0.9,media,"~9 cubos ~2,5 cm"
+d0257,nuvem_llm_v2,clara de ovo mexida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,200.0,20.0,media,"prato ~25 cm; ~1/2 do prato, ~3 cm"
+d0257,nuvem_llm_v2,melancia em cubos,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,90.0,0.54,media,"~10 cubos ~2,5 cm"
+d0257,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,100.0,1.0,media,"~12 cubos ~2,5 cm"
+d0341,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,42.0,9.41,media,"~35 unidades x 1,2 g"
+d0368,nuvem_llm_v2,peixe com cobertura,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,65.0,11.96,baixa,prato ~17 cm; filé ~7x4 cm
+d0368,nuvem_llm_v2,arroz/grão com legumes,USDA: white rice,white rice,USDA,1.0,2.7,amido,90.0,2.43,baixa,"base ~9x7 cm, ~2 cm"
+d0368,nuvem_llm_v2,tomate e ervas por cima,"Tomate, com semente, cru","Tomate, com semente, cru",TACO,1.0,1.1,vegetal,12.0,0.13,baixa,pedaços pequenos
+n032,nuvem_llm_v2,salada caesar,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,90.0,2.88,media,prato ~27 cm; ~1/4 do prato
+n032,nuvem_llm_v2,pizza de queijo (fatia quadrada),USDA: pizza,pizza,USDA,1.0,11.0,misto,120.0,13.2,media,fatia ~14x9 cm
+n032,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,60.0,1.26,media,~5 floretes
+n032,nuvem_llm_v2,frango grelhado,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,120.0,27.12,media,~9 pedaços ~4 cm
+d0240,nuvem_llm_v2,salmão com queijo e molho,"Salmão, sem pele, fresco, grelhado","Salmão, sem pele, fresco, grelhado",TACO,1.0,26.1,proteina_animal,110.0,28.71,media,"prato ~25 cm; peça ~10x7 cm, ~2 cm"
+d0240,nuvem_llm_v2,carne em pedaços,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,50.0,13.0,baixa,2 pedaços misturados ao arroz
+d0240,nuvem_llm_v2,arroz integral,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,60.0,1.56,baixa,ao redor da carne
+d0240,nuvem_llm_v2,espinafre refogado,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,20.0,0.6,media,pequena porção ~5x5 cm
+d0172,nuvem_llm_v2,frango em cubos,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,130.0,41.6,media,tigela inox ~28 cm; ~25 cubos ~2 cm
+d0172,nuvem_llm_v2,cenoura ralada,"Cenoura, crua","Cenoura, crua",TACO,1.0,1.3,vegetal,50.0,0.65,media,monte ~10x8 cm
+d0172,nuvem_llm_v2,tomate cereja,"Tomate, com semente, cru","Tomate, com semente, cru",TACO,1.0,1.1,vegetal,30.0,0.33,baixa,parcialmente escondido sob o frango
+d0172,nuvem_llm_v2,pimentão/cebola,USDA: bell peppers,bell peppers,USDA,1.0,2.0,vegetal,15.0,0.3,baixa,pedaços parcialmente escondidos
+d0133,nuvem_llm_v2,pizza de pepperoni (pedaço),USDA: pizza,pizza,USDA,1.0,11.0,misto,50.0,5.5,media,pedaço ~8x7 cm em prato ~25 cm
+d0315,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,140.0,14.0,media,"prato ~22 cm; ~1/2 do prato, ~2,5 cm"
+d0315,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,60.0,1.26,media,~6 floretes
+d0315,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,70.0,0.7,media,~6 pedaços
+b107,nuvem_llm_v2,lombo de porco (medalhões),"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,70.0,24.99,media,"prato ~27 cm; 2 medalhões ~5 cm diâm., ~2,5 cm"
+c019,nuvem_llm_v2,filé de peixe enrolado,"Merluza, filé, assado","Merluza, filé, assado",TACO,1.0,26.6,proteina_animal,180.0,47.88,baixa,marmita ~750 ml ~19x14 cm; 2 rolos ~14x5 cm
+c019,nuvem_llm_v2,molho de tomate,USDA: tomato sauce,pasta sauce,USDA,0.714,1.3,amido,70.0,0.91,baixa,cobre os rolos e o fundo
+d0042,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,140.0,0.42,media,prato ~26 cm; maçã ~7 cm
+d0042,nuvem_llm_v2,melão cantalupo,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,130.0,1.04,media,~12 pedaços ~4x2 cm
+d0042,nuvem_llm_v2,tomate uva,"Tomate, com semente, cru","Tomate, com semente, cru",TACO,1.0,1.1,vegetal,50.0,0.55,media,5 unidades ~10 g
+d0365,nuvem_llm_v2,salmão grelhado,"Salmão, sem pele, fresco, grelhado","Salmão, sem pele, fresco, grelhado",TACO,1.0,26.1,proteina_animal,150.0,39.15,media,"prato ~25 cm; 2 pedaços ~8x4 cm, ~2,5 cm"
+d0365,nuvem_llm_v2,tomate uva,"Tomate, com semente, cru","Tomate, com semente, cru",TACO,1.0,1.1,vegetal,80.0,0.88,media,8 unidades ~10 g
+d0308,nuvem_llm_v2,carne ensopada,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,110.0,28.6,baixa,prato ~24 cm; pedaços ~1/4 do prato
+d0308,nuvem_llm_v2,arroz/macarrão com repolho refogado,USDA: fried rice,fried rice,USDA,1.0,4.7,misto,170.0,7.99,baixa,"monte ~12x10 cm, ~2,5 cm"
+d0285,nuvem_llm_v2,arroz frito com legumes,USDA: fried rice,fried rice,USDA,1.0,4.7,misto,160.0,7.52,media,"prato ~25 cm; ~1/3 do prato, ~2,5 cm"
+d0285,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,110.0,11.0,media,~1/4 do prato
+d0285,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,30.0,11.1,media,3 fatias
+d0285,nuvem_llm_v2,brócolis/repolho,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,20.0,0.48,baixa,poucos pedaços
+d0017,nuvem_llm_v2,pizza margherita (fatia),USDA: pizza,pizza,USDA,1.0,11.0,misto,110.0,12.1,media,prato ~23 cm; fatia ~12x10 cm
+b039,nuvem_llm_v2,tiras de carne de porco fritas,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,90.0,23.4,baixa,prato ~27 cm; monte ~10x7 cm
+n005,nuvem_llm_v2,couve com quinoa,USDA: kale,kale,USDA,1.0,3.3,vegetal,25.0,0.82,baixa,prato ~25 cm; porção ~10x6 cm
+n005,nuvem_llm_v2,quinoa,USDA: quinoa,quinoa,USDA,1.0,4.4,amido,10.0,0.44,baixa,grãos entre as folhas
+n005,nuvem_llm_v2,cogumelo,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,10.0,0.31,baixa,2 fatias
+n005,nuvem_llm_v2,cenoura assada,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,8.0,0.06,media,1 pedaço ~5 cm
+d0036,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,160.0,0.48,media,"prato ~22 cm; maçã ~7,5 cm"
+b105,nuvem_llm_v2,presunto fatiado,"Presunto, sem capa de gordura","Presunto, sem capa de gordura",TACO,1.0,14.3,proteina_animal,100.0,14.3,media,prato ~27 cm; ~5 fatias ~15x10 cm
+d0330,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,48.0,10.75,media,"~40 unidades x 1,2 g"
+d0329,nuvem_llm_v2,peito de frango,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,70.0,21.77,media,prato ~25 cm; 2 pedaços ~7x4 cm
+d0329,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,55.0,0.49,media,3 pedaços ~4 cm
+d0329,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,60.0,1.08,media,2 floretes grandes
+d0329,nuvem_llm_v2,carne de porco desfiada/assada,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,80.0,20.8,baixa,pedaços ~1/5 do prato
+d0329,nuvem_llm_v2,pizza de pepperoni,USDA: pizza,pizza,USDA,1.0,11.0,misto,90.0,9.9,media,pedaço ~10x7 cm
+d0386,nuvem_llm_v2,pizza de queijo quadrada,USDA: pizza,pizza,USDA,1.0,11.0,misto,100.0,11.0,media,prato ~25 cm; 2 quadrados ~7x7 cm
+d0241,nuvem_llm_v2,pudim de chia,USDA: chia pudding,puddings,USDA,0.79,3.2,outros,110.0,3.52,baixa,"tigela ~14 cm; ~1/2 da área, ~3 cm"
+d0241,nuvem_llm_v2,manga/pêssego em cubos,USDA: mango,mangos,USDA,0.982,0.8,vegetal,60.0,0.48,media,~10 cubos ~2 cm
+n018,nuvem_llm_v2,fatia de pizza com carne e pimentão,USDA: pizza,pizza,USDA,1.0,11.0,misto,75.0,8.25,media,"prato quadrado ~25 cm; fatia ~10x6 cm, ~1,5 cm altura"
+b035,nuvem_llm_v2,bife grelhado,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,180.0,45.0,media,"prato raso ~27 cm com garfo e faca; bife ~13x9 cm, ~2 cm espessura"
+b033,nuvem_llm_v2,feijão cozido (grão claro),"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,200.0,9.6,media,"prato raso ~27 cm; monte ~14x12 cm, ~1,5 cm altura"
+d0357,nuvem_llm_v2,frango assado,USDA: roast chicken,roast chicken,USDA,1.0,23.5,proteina_animal,100.0,23.5,baixa,"prato quadrado ~25 cm; peça ~12x6 cm, ~2,5 cm"
+d0357,nuvem_llm_v2,lentilha,"Lentilha, cozida","Lentilha, cozida",TACO,1.0,6.3,leguminosa,12.0,0.76,baixa,~20 grãos espalhados sobre o frango
+d0357,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,50.0,1.05,media,2 pedaços ~5x4 cm
+d0357,nuvem_llm_v2,nozes,USDA: walnuts,walnuts,USDA,1.0,15.1,outros,8.0,1.21,media,2 metades de noz
+d0179,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,60.0,22.2,media,prato ~24 cm; 3 tiras grossas ~20 cm
+d0066,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,100.0,0.5,media,prato quadrado ~25 cm; 7 pedaços ~4x2 cm
+d0066,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,120.0,0.72,media,"~12 cubos ~2,5 cm + 1 pedaço maior"
+d0066,nuvem_llm_v2,uva verde,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,50.0,0.35,alta,10 uvas ~5 g
+d0044,nuvem_llm_v2,tortilla/tostada,USDA: tortilla,tortilla,USDA,1.0,6.0,amido,30.0,1.8,baixa,prato ~25 cm; tortilla ~13 cm
+d0044,nuvem_llm_v2,carne de porco desfiada,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,75.0,19.5,baixa,"cobertura ~10 cm diâmetro, ~1,5 cm"
+d0044,nuvem_llm_v2,cebola roxa em conserva e coentro,USDA: onions,onions,USDA,1.0,1.1,vegetal,10.0,0.11,baixa,algumas tiras
+d0238,nuvem_llm_v2,espinafre cru,USDA: spinach (raw),spinach (raw),USDA,1.0,2.9,vegetal,50.0,1.45,baixa,tigela ~22 cm; folhas cobrindo base
+d0238,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,60.0,1.44,media,~6 floretes
+d0238,nuvem_llm_v2,parmesão em lascas,USDA: parmesan cheese,parmesan cheese,USDA,1.0,38.4,laticinio,25.0,9.6,media,camada de lascas no centro ~10 cm
+d0238,nuvem_llm_v2,azeitona preta,USDA: olives,olives,USDA,1.0,0.8,vegetal,30.0,0.24,baixa,~8 azeitonas parcialmente escondidas
+d0238,nuvem_llm_v2,maçã/abacate em fatias,USDA: apple,apple,USDA,1.0,0.3,vegetal,15.0,0.04,baixa,2 fatias pequenas
+d0108,nuvem_llm_v2,quinoa/cuscuz com ervas,USDA: quinoa,quinoa,USDA,1.0,4.4,amido,60.0,2.64,baixa,"prato ~25 cm; porção ~8x6 cm, ~2 cm + bolinha à parte"
+d0108,nuvem_llm_v2,legumes refogados com tomate e queijo,USDA: mixed vegetables,mixed vegetables,USDA,1.0,1.7,outros,110.0,1.87,baixa,"área ~10x9 cm, ~2 cm altura"
+d0108,nuvem_llm_v2,queijo ralado,USDA: parmesan cheese,parmesan cheese,USDA,1.0,38.4,laticinio,8.0,3.07,baixa,polvilhado por cima
+n049,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,"prato quadrado ~25 cm; ovos ~12x8 cm, ~2,5 cm"
+n049,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,60.0,2.04,media,5 unidades ~12 g
+n049,nuvem_llm_v2,mix de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,"área ~1/4 do prato, solta"
+n049,nuvem_llm_v2,framboesa,USDA: raspberries,raspberries,USDA,1.0,1.2,vegetal,8.0,0.1,media,2 framboesas
+d0309,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,45.0,10.08,alta,"~38 amêndoas ~1,2 g"
+d0051,nuvem_llm_v2,cogumelos salteados,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,70.0,2.17,media,prato quadrado ~25 cm; 7 cogumelos ~10 g
+d0051,nuvem_llm_v2,espinafre e couve,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,60.0,1.8,baixa,"área ~1/3 do prato, folhas soltas"
+d0051,nuvem_llm_v2,tomate e pimentão,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,20.0,0.14,baixa,1 tomate-cereja + pedaços de pimentão
+c011,nuvem_llm_v2,frango empanado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,140.0,43.54,media,"marmita ~19x14 cm; 2 filés ~15x5 cm, ~1,5 cm"
+c011,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,90.0,2.25,media,"faixa ~1/4 da marmita, parcialmente sob o frango"
+c011,nuvem_llm_v2,creme de milho/polenta cremosa,USDA: creamed corn,corn,USDA,0.75,3.4,amido,110.0,3.74,baixa,"metade direita da marmita sob o frango, ~2 cm"
+d0221,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,130.0,1.17,baixa,"tigela ~14 cm; pedaços ocupando ~2/3, ~3 cm"
+d0221,nuvem_llm_v2,molho de iogurte,"Iogurte, natural","Iogurte, natural",TACO,1.0,4.1,laticinio,15.0,0.61,baixa,fio de molho branco
+n021,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,180.0,0.54,alta,maçã inteira ~8 cm diâmetro em prato ~25 cm
+d0154,nuvem_llm_v2,frango assado (peito/asa),USDA: roast chicken,roast chicken,USDA,1.0,23.5,proteina_animal,80.0,18.8,baixa,"prato quadrado ~28 cm; peça ~9x6 cm, sem osso"
+d0154,nuvem_llm_v2,coxa de frango,"Frango, coxa, com pele, assada","Frango, coxa, com pele, assada",TACO,1.0,28.5,proteina_animal,60.0,17.1,media,"1 coxa ~10 cm, sem osso"
+d0154,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,70.0,1.26,media,feixe ~12x8 cm
+d0154,nuvem_llm_v2,salada caesar (alface com molho),USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,80.0,1.12,baixa,"~1/4 do prato, folhas soltas com molho"
+d0154,nuvem_llm_v2,arroz integral/selvagem com cogumelos,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,130.0,3.38,media,"monte ~11x8 cm, ~2 cm"
+d0154,nuvem_llm_v2,pizza retangular,USDA: pizza,pizza,USDA,1.0,11.0,misto,130.0,14.3,media,2 pedaços ~9x7 cm
+d0339,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,130.0,0.78,media,"prato quadrado ~24 cm; ~14 cubos ~2,5 cm"
+d0152,nuvem_llm_v2,pão sírio,USDA: bread,bread,USDA,1.0,13.5,amido,60.0,8.1,baixa,prato parcialmente visível ~26 cm; 2 triângulos dobrados
+d0152,nuvem_llm_v2,frango/recheio sob o pão,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,50.0,11.3,baixa,"parcialmente escondido sob o pão, fora do quadro"
+d0152,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,40.0,0.4,media,4 fatias longas
+d0152,nuvem_llm_v2,abóbora/pimentão assado,USDA: squash,squash,USDA,1.0,0.9,vegetal,100.0,0.9,media,~6 cubos ~3 cm
+d0152,nuvem_llm_v2,cebola assada,USDA: onions,onions,USDA,1.0,1.1,vegetal,20.0,0.22,baixa,2 pedaços
+d0262,nuvem_llm_v2,salada de alface com milho pimentão e pepino,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,110.0,2.42,baixa,"prato quadrado ~26 cm; ~1/4 do prato, ~3 cm"
+d0262,nuvem_llm_v2,carne salteada com legumes,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,110.0,28.6,baixa,"~1/4 do prato, pedaços finos"
+d0262,nuvem_llm_v2,arroz branco,USDA: white rice,white rice,USDA,1.0,2.7,amido,40.0,1.08,baixa,porções pequenas misturadas à carne
+d0224,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,110.0,0.66,media,"prato quadrado ~22 cm; ~10 cubos ~2,5 cm"
+d0224,nuvem_llm_v2,ovos mexidos com molho picante,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"área ~12x8 cm, ~2,5 cm"
+d0053,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,20.0,7.4,media,2 tiras
+d0053,nuvem_llm_v2,batata rösti (hash brown),USDA: potatoes,potatoes,USDA,1.0,2.0,amido,80.0,1.6,baixa,"prato quadrado ~26 cm; área ~9x7 cm, ~1,5 cm"
+d0053,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,110.0,11.0,media,"área ~10x8 cm, ~2 cm"
+d0053,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,90.0,0.45,media,"6 pedaços ~4x2,5 cm"
+b024,nuvem_llm_v2,bife pequeno,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,60.0,15.0,media,"prato raso ~27 cm; bife ~7x5 cm, ~1,5 cm"
+b084,nuvem_llm_v2,camarão cozido,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,280.0,53.2,media,"prato raso ~27 cm; monte ~20x14 cm, ~2,5 cm"
+d0366,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,40.0,8.96,alta,"~33 amêndoas ~1,2 g"
+b064,nuvem_llm_v2,carne em molho cremoso (blanquette),USDA: beef,beef,USDA,1.0,26.0,proteina_animal,190.0,49.4,media,"prato raso ~27 cm; ensopado ~15x12 cm, ~2,5 cm; inclui molho"
+b064,nuvem_llm_v2,cenoura,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,40.0,0.32,media,~10 rodelas
+b064,nuvem_llm_v2,ervilha,USDA: peas,peas,USDA,1.0,5.4,leguminosa,25.0,1.35,media,~30 ervilhas
+b093,nuvem_llm_v2,frango desfiado com tomate,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,120.0,37.32,baixa,"marmita ~19x14 cm (estimada); 1/3 da área, ~3 cm"
+b093,nuvem_llm_v2,arroz com ervas,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,110.0,2.75,baixa,1/3 da marmita
+b093,nuvem_llm_v2,purê de batata,USDA: mashed potatoes,mashed potatoes,USDA,1.0,1.7,amido,100.0,1.7,baixa,1/3 da marmita
+b027,nuvem_llm_v2,carne em molho cremoso,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,65.0,16.9,media,prato raso ~27 cm; porção ~8x6 cm
+b027,nuvem_llm_v2,cenoura,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,15.0,0.12,media,3 rodelas
+b027,nuvem_llm_v2,ervilha,USDA: peas,peas,USDA,1.0,5.4,leguminosa,10.0,0.54,media,~12 ervilhas
+d0127,nuvem_llm_v2,linguiça em rodelas,"Lingüiça, porco, grelhada","Lingüiça, porco, grelhada",TACO,1.0,23.2,proteina_animal,100.0,23.2,media,prato quadrado ~27 cm; ~10 rodelas ~10 g
+d0127,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,30.0,11.1,media,~3 tiras
+d0127,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,140.0,14.0,media,"área ~12x9 cm, ~2,5 cm"
+d0127,nuvem_llm_v2,espinafre com cenoura ralada,USDA: spinach (raw),spinach (raw),USDA,1.0,2.9,vegetal,50.0,1.45,baixa,"~1/5 do prato, folhas soltas"
+d0127,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,90.0,2.16,media,~7 floretes
+d0372,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,110.0,0.55,media,prato quadrado ~27 cm; ~10 pedaços
+d0372,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,110.0,0.66,media,~8 cubos ~3 cm
+d0372,nuvem_llm_v2,amora,USDA: blackberries,blackberries,USDA,1.0,1.4,vegetal,40.0,0.56,media,~8 amoras
+d0372,nuvem_llm_v2,framboesa,USDA: raspberries,raspberries,USDA,1.0,1.2,vegetal,40.0,0.48,media,~12 framboesas
+d0372,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,90.0,9.0,media,"área ~10x8 cm, ~1,5 cm"
+b036,nuvem_llm_v2,camarão pequeno cozido,USDA: shrimp,shrimp,USDA,1.0,24.0,proteina_animal,220.0,52.8,media,"prato raso ~27 cm; monte ~16x14 cm, ~2 cm"
+c028,nuvem_llm_v2,risoto/arroz cremoso gratinado com presunto,USDA: risotto,risotto,USDA,1.0,4.3,misto,300.0,12.9,baixa,"marmita ~19x14 cm cheia, ~3 cm"
+d0291,nuvem_llm_v2,bagel (metade),USDA: bagel,bagels,USDA,0.982,10.1,amido,55.0,5.56,baixa,prato quadrado ~26 cm; bagel ~10 cm diâmetro
+d0291,nuvem_llm_v2,cream cheese,USDA: cream cheese,cream cheese,USDA,1.0,6.2,laticinio,30.0,1.86,media,"camada ~0,5 cm sobre o bagel"
+c032,nuvem_llm_v2,curry de grão-de-bico com vagem e legumes,USDA: chickpeas,chickpeas,USDA,1.0,9.0,leguminosa,200.0,18.0,baixa,"marmita ~19x14 cm; metade esquerda, ~3 cm; inclui molho"
+c032,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,130.0,3.25,media,"metade direita da marmita, ~3 cm"
+d0270,nuvem_llm_v2,pizza quadrada (2 pedaços),USDA: pizza,pizza,USDA,1.0,11.0,misto,150.0,16.5,media,"prato quadrado ~28 cm; ~12x9 cm, ~1,5 cm"
+d0270,nuvem_llm_v2,enrolado de massa recheado (stromboli),USDA: bread,bread,USDA,1.0,13.5,amido,60.0,8.1,baixa,2 pedaços ~7x4 cm
+d0007,nuvem_llm_v2,cubos brancos tostados (tofu/nabo),USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,90.0,7.2,baixa,prato quadrado ~27 cm; ~9 cubos ~3 cm
+d0007,nuvem_llm_v2,abobrinha verde e amarela,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,70.0,0.77,media,~7 fatias longas
+d0007,nuvem_llm_v2,cuscuz marroquino,USDA: couscous,couscous,USDA,1.0,3.8,amido,110.0,4.18,media,"monte ~10x9 cm, ~2 cm"
+d0045,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,20.0,7.4,media,2 tiras
+d0045,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,110.0,11.0,media,"prato quadrado ~22 cm; área ~10x7 cm, ~2 cm"
+d0045,nuvem_llm_v2,melão,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,80.0,0.64,media,~7 cubos
+d0045,nuvem_llm_v2,framboesa,USDA: raspberries,raspberries,USDA,1.0,1.2,vegetal,50.0,0.6,media,~12 framboesas
+b055,nuvem_llm_v2,camarão cozido,USDA: shrimp,shrimp,USDA,1.0,24.0,proteina_animal,130.0,31.2,media,"prato raso ~27 cm; monte ~12x9 cm, ~2 cm"
+d0300,nuvem_llm_v2,frango grelhado em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,130.0,29.38,media,"prato quadrado ~27 cm; área ~12x10 cm, ~2 cm"
+d0300,nuvem_llm_v2,salada caesar (alface com molho e croutons),USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,90.0,1.26,baixa,~1/4 do prato
+d0300,nuvem_llm_v2,aspargos,USDA: asparagus,asparagus,USDA,1.0,2.2,vegetal,70.0,1.54,media,6 talos ~15 cm
+d0228,nuvem_llm_v2,melão verde,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,120.0,0.6,media,prato quadrado ~27 cm; ~10 cubos ~3 cm
+d0228,nuvem_llm_v2,rúcula,USDA: arugula,arugula,USDA,1.0,2.6,vegetal,50.0,1.3,baixa,"~1/3 do prato, folhas soltas"
+d0228,nuvem_llm_v2,arroz vermelho/farro,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,70.0,1.82,baixa,"monte ~8x6 cm, ~1,5 cm"
+d0228,nuvem_llm_v2,vagem/aspargo,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,50.0,0.9,media,~8 talos
+d0228,nuvem_llm_v2,feijão preto,USDA: black beans,black beans,USDA,1.0,8.9,leguminosa,10.0,0.89,media,~6 grãos
+d0093,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,55.0,12.32,alta,"prato de papel ~18 cm; ~45 amêndoas ~1,2 g"
+b003,nuvem_llm_v2,arroz,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,150.0,3.75,media,"prato raso ~26 cm; mistura ~12x13 cm, ~2 cm de altura"
+b003,nuvem_llm_v2,linguiça/presunto em cubos,"Lingüiça, porco, grelhada","Lingüiça, porco, grelhada",TACO,1.0,23.2,proteina_animal,40.0,9.28,baixa,cubos pequenos misturados ao arroz
+b003,nuvem_llm_v2,ovo mexido,"Ovo, de galinha, inteiro, frito","Ovo, de galinha, inteiro, frito",TACO,1.0,15.6,proteina_animal,25.0,3.9,baixa,pedaços amarelos misturados; ~1/2 ovo
+b013,nuvem_llm_v2,macarrão curto/aletria,"Macarrão, trigo, cozido (USDA 20121)","Macarrão, trigo, cozido (USDA 20121)",EXTRA,1.0,5.8,amido,450.0,26.1,media,"prato raso ~26 cm quase todo coberto, ~2,5 cm altura; garfo e faca"
+b016,nuvem_llm_v2,presunto fatiado,"Presunto, sem capa de gordura","Presunto, sem capa de gordura",TACO,1.0,14.3,proteina_animal,160.0,22.88,media,pilha ~18x13 cm de ~8-10 fatias no prato de 26 cm
+b063,nuvem_llm_v2,arroz,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,190.0,4.75,media,"prato raso 26 cm; monte ~11x14 cm, ~2 cm altura"
+b088,nuvem_llm_v2,filé de frango grelhado,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,50.0,16.0,media,"peça ~8x5 cm, ~1 cm espessura vs. prato 26 cm"
+b092,nuvem_llm_v2,batata cozida,"Batata, inglesa, cozida","Batata, inglesa, cozida",TACO,1.0,1.2,amido,200.0,2.4,media,8 pedaços ~25 g cada; prato 26 cm
+c007,nuvem_llm_v2,feijão preto,"Feijão, preto, cozido","Feijão, preto, cozido",TACO,1.0,4.5,leguminosa,110.0,4.95,media,"marmita ~19x14 cm, feijão ocupa ~1/3"
+c007,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,80.0,2.0,media,faixa central ~1/4 da marmita
+c007,nuvem_llm_v2,abóbora,"Abóbora, cabotian, cozida","Abóbora, cabotian, cozida",TACO,1.0,1.4,vegetal,70.0,0.98,media,4 cubos ~3 cm
+c007,nuvem_llm_v2,carne desfiada,"Carne, bovina, acém, moído, cozido","Carne, bovina, acém, moído, cozido",TACO,1.0,26.7,proteina_animal,90.0,24.03,media,"~1/4 da marmita, ~3 cm altura"
+c031,nuvem_llm_v2,purê/polenta cremosa,"Polenta, pré-cozida","Polenta, pré-cozida",TACO,1.0,2.3,amido,130.0,2.99,media,marmita ~19x14 cm; ~1/3 do recipiente
+c031,nuvem_llm_v2,carne moída,"Carne, bovina, acém, moído, cozido","Carne, bovina, acém, moído, cozido",TACO,1.0,26.7,proteina_animal,100.0,26.7,media,"faixa central ~1/3, ~2,5 cm altura"
+c031,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,45.0,0.94,media,3-4 floretes
+c031,nuvem_llm_v2,cenoura,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,40.0,0.32,media,~6 cubos
+c031,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,15.0,0.27,baixa,3 pedaços
+c033,nuvem_llm_v2,almôndegas com molho de tomate,USDA: meatballs,meatballs,USDA,1.0,14.0,proteina_animal,140.0,19.6,media,3 almôndegas ~5 cm com molho; marmita ~19x14 cm
+c033,nuvem_llm_v2,batata-doce/abóbora,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,90.0,0.54,media,~7 cubos ~3 cm
+c033,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,25.0,0.45,media,~5 vagens
+c033,nuvem_llm_v2,arroz integral com lentilha,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,80.0,2.08,media,~1/4 da marmita
+d0009,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,60.0,13.44,media,"~50 amêndoas x 1,2 g; prato de papel ~18 cm"
+d0011,nuvem_llm_v2,rúcula,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,50.0,1.1,media,"prato quadrado ~25 cm, folhas cobrem ~1/2"
+d0011,nuvem_llm_v2,aspargos,USDA: asparagus,asparagus,USDA,1.0,2.2,vegetal,45.0,0.99,media,4 aspargos ~15 cm
+d0011,nuvem_llm_v2,berinjela assada,USDA: eggplant,eggplant,USDA,1.0,1.0,vegetal,70.0,0.7,baixa,~10 pedaços ~3 cm
+d0016,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,90.0,9.0,media,monte ~9x8 cm; prato quadrado ~25 cm
+d0016,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,80.0,0.56,media,~7 morangos
+d0016,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,50.0,0.25,media,4 palitos
+d0016,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,25.0,0.15,baixa,1 pedaço
+d0016,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,35.0,0.25,media,6 uvas
+d0016,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,50.0,0.3,baixa,~6 cubos
+d0016,nuvem_llm_v2,batata ralada (hash brown),USDA: hash browns,hash browns,USDA,1.0,2.6,amido,70.0,1.82,baixa,monte ~8x7 cm
+d0063,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,48.0,10.75,alta,"~40 amêndoas x 1,2 g"
+d0070,nuvem_llm_v2,bolinhos/linguiça em pedaços,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,80.0,15.44,baixa,5 pedaços ~3-4 cm; prato quadrado ~22 cm
+d0070,nuvem_llm_v2,uvas vermelhas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,85.0,0.6,media,~17 uvas x 5 g
+d0070,nuvem_llm_v2,batata em cubo,"Batata, inglesa, cozida","Batata, inglesa, cozida",TACO,1.0,1.2,amido,25.0,0.3,baixa,1 cubo ~4 cm
+d0085,nuvem_llm_v2,fatia de pão integral,"Pão, trigo, forma, integral","Pão, trigo, forma, integral",TACO,1.0,9.4,amido,45.0,4.23,baixa,"fatia ~11x9 cm, prato redondo ~25 cm"
+d0090,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,90.0,1.62,media,~10 floretes; prato ~26 cm
+d0090,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,100.0,0.7,media,~9 metades grandes
+d0090,nuvem_llm_v2,mirtilos,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,10.0,0.07,media,~8 mirtilos
+d0090,nuvem_llm_v2,tangerina inteira,USDA: orange,orange,USDA,1.0,0.9,vegetal,110.0,0.99,media,fruta ~7 cm diâmetro (peso sem casca)
+d0090,nuvem_llm_v2,pera,USDA: pear,pears,USDA,0.978,0.4,vegetal,170.0,0.68,media,pera ~11x8 cm
+d0096,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,90.0,9.0,media,monte ~10x8 cm; prato ~25 cm
+d0096,nuvem_llm_v2,arroz frito com milho,USDA: fried rice,fried rice,USDA,1.0,4.7,misto,90.0,4.23,baixa,"monte ~8x9 cm, ~2 cm"
+d0096,nuvem_llm_v2,fatia de presunto/carne,USDA: ham,ham,USDA,1.0,21.0,proteina_animal,50.0,10.5,baixa,tira ~15x4 cm
+d0096,nuvem_llm_v2,melão,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,100.0,0.5,media,~7 cubos ~3 cm
+d0123,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,60.0,2.04,media,5 metades ~4 cm; prato ~25 cm
+d0131,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,100.0,10.0,baixa,só parte do prato visível
+d0131,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,40.0,0.28,baixa,parcialmente visíveis
+d0131,nuvem_llm_v2,molho/salsa,USDA: salsa,salsa,USDA,1.0,1.5,gordura_molho,20.0,0.3,baixa,porção sobre os ovos
+d0134,nuvem_llm_v2,salada caesar (alface romana com molho e parmesão),USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,110.0,3.52,baixa,cobre ~1/3 do prato ~25 cm
+d0134,nuvem_llm_v2,arroz com carne,USDA: white rice,white rice,USDA,1.0,2.7,amido,80.0,2.16,baixa,monte ~8x7 cm parcialmente sob a salada
+d0142,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,70.0,15.82,media,"~30 cubos de ~1,5 cm; prato ~25 cm"
+d0151,nuvem_llm_v2,salada caesar com croutons,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,70.0,2.24,media,monte ~10x8 cm
+d0151,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,50.0,0.35,media,4 tomates-uva ~12 g
+d0151,nuvem_llm_v2,azeitona,USDA: olives,olives,USDA,1.0,0.8,vegetal,4.0,0.03,media,1 azeitona
+d0155,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,200.0,20.0,media,"cobre ~2/3 do prato quadrado ~22 cm, ~2,5 cm altura"
+d0155,nuvem_llm_v2,queijo cheddar ralado,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,20.0,5.0,media,fios por cima
+d0160,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,200.0,22.0,media,pizza individual ~18 cm em 4 pedaços
+d0161,nuvem_llm_v2,arroz amarelo,USDA: white rice,white rice,USDA,1.0,2.7,amido,90.0,2.43,media,monte ~8x7 cm
+d0161,nuvem_llm_v2,salada caesar,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,100.0,3.2,baixa,~1/3 do prato ~26 cm
+d0161,nuvem_llm_v2,pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,100.0,11.0,media,2 fatias finas ~12x6 cm
+d0161,nuvem_llm_v2,folhas mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,35.0,0.77,media,~1/4 do prato
+d0163,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,cobre ~2/3 do prato ~22 cm
+d0163,nuvem_llm_v2,linguiça em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,100.0,19.3,media,~10 rodelas ~4 cm
+d0163,nuvem_llm_v2,molho de pimenta verde,USDA: gravy,gravy,USDA,1.0,2.0,gordura_molho,20.0,0.4,baixa,pequena porção
+d0177,nuvem_llm_v2,quesadilla,USDA: quesadilla,quesadillas,USDA,0.99,16.0,misto,120.0,19.2,media,2 metades ~14 cm
+d0177,nuvem_llm_v2,frango/atum desfiado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,100.0,31.1,baixa,"monte ~10x8 cm, ~2 cm"
+d0177,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,25.0,5.65,baixa,~5 cubos sob a quesadilla
+d0177,nuvem_llm_v2,pimentões,USDA: bell peppers,bell peppers,USDA,1.0,2.0,vegetal,70.0,1.4,media,~15 tiras
+d0177,nuvem_llm_v2,cenoura ralada,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,5.0,0.04,baixa,fios
+d0194,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,160.0,16.0,media,"~1/3 do prato ~25 cm, ~3 cm altura"
+d0194,nuvem_llm_v2,brócolis assado,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,80.0,1.92,media,~5 floretes
+d0194,nuvem_llm_v2,fatias de presunto/carne,USDA: ham,ham,USDA,1.0,21.0,proteina_animal,70.0,14.7,baixa,2 tiras ~18x4 cm
+d0211,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,110.0,0.66,media,~20 cubos ~2 cm
+d0211,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,45.0,0.32,media,9 uvas
+d0211,nuvem_llm_v2,clara de ovo cozida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,50.0,5.0,baixa,pedaços brancos
+d0211,nuvem_llm_v2,ovo mexido/gema,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,60.0,6.0,baixa,monte ~7x6 cm
+d0229,nuvem_llm_v2,pepino em palitos,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,120.0,1.2,baixa,~8 palitos; só parte do prato visível
+d0229,nuvem_llm_v2,peito de peru/presunto,USDA: turkey,turkey,USDA,1.0,29.0,proteina_animal,40.0,11.6,baixa,parcialmente visível na borda
+d0247,nuvem_llm_v2,pão sírio/flatbread,USDA: bread,bread,USDA,1.0,13.5,amido,140.0,18.9,baixa,2 pães ~12 cm; prato ~25 cm
+d0247,nuvem_llm_v2,carne de porco desfiada,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,80.0,20.8,baixa,recheio sobre os pães
+d0247,nuvem_llm_v2,cebola roxa e coentro,USDA: onions,onions,USDA,1.0,1.1,vegetal,15.0,0.16,baixa,guarnição
+d0247,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,130.0,1.17,media,~10 pedaços ~3-4 cm
+d0259,nuvem_llm_v2,cubos assados (rabanada/batata),USDA: french toast,french toast,USDA,1.0,7.8,amido,120.0,9.36,baixa,~12 cubos ~3 cm
+d0259,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,50.0,0.25,media,4 pedaços
+d0259,nuvem_llm_v2,melão cantalupe,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,70.0,0.56,media,4 pedaços
+d0259,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,70.0,0.49,media,~6 morangos
+d0259,nuvem_llm_v2,mirtilos,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,15.0,0.11,media,~10
+d0259,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,80.0,0.48,media,4 pedaços
+d0283,nuvem_llm_v2,fatias de lombo/peru assado,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,100.0,26.0,media,"2 fatias ~12x7 cm, ~1 cm"
+d0283,nuvem_llm_v2,omelete com espinafre e molho,USDA: omelets,omelets,USDA,1.0,10.4,proteina_animal,60.0,6.24,baixa,pedaço ~9x7 cm
+d0292,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,85.0,19.04,media,"~70 amêndoas x 1,2 g"
+d0317,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,150.0,33.9,media,~45 cubos ~2 cm; tigela ~25 cm
+d0317,nuvem_llm_v2,espinafre cru,USDA: spinach,,,0.422,0.0,vegetal,50.0,0.0,media,folhas na base
+d0317,nuvem_llm_v2,azeitonas kalamata,USDA: olives,olives,USDA,1.0,0.8,vegetal,30.0,0.24,media,~10 azeitonas
+d0317,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,25.0,0.25,baixa,rodelas parcialmente escondidas
+d0328,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,90.0,33.3,baixa,~6 tiras grossas; prato ~25 cm
+d0328,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,70.0,7.0,media,monte ~8x7 cm
+d0328,nuvem_llm_v2,espinafre refogado,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,70.0,2.1,media,monte ~9x7 cm
+d0350,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,36.0,8.06,alta,"~30 amêndoas x 1,2 g"
+d0379,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,90.0,1.62,media,~25 vagens; prato ~25 cm
+d0379,nuvem_llm_v2,folhas mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,60.0,1.32,media,~1/2 do prato
+n028,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,~1/3 do prato ~25 cm
+n028,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,90.0,1.89,media,5 pedaços ~4 cm
+n028,nuvem_llm_v2,brócolis assado,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,60.0,1.44,media,~5 floretes
+n028,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,50.0,0.35,media,4 morangos
+n028,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,70.0,0.35,media,~6 pedaços
+n028,nuvem_llm_v2,mirtilos,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,15.0,0.11,media,~10
+n029,nuvem_llm_v2,pizza havaiana,USDA: pizza,pizza,USDA,1.0,11.0,misto,220.0,24.2,media,4 pedaços ~10x8 cm
+n029,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,130.0,29.38,media,~35 cubos ~2 cm
+n029,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,90.0,0.63,media,8 tomates ~11 g
+b002,nuvem_llm_v2,peito de frango cozido,"Frango, peito, sem pele, cozido","Frango, peito, sem pele, cozido",TACO,1.0,31.5,proteina_animal,85.0,26.77,media,"prato raso ~27 cm com garfo e faca; peça ~10x6 cm, ~2,5 cm altura"
+b008,nuvem_llm_v2,macarrão com carne moída ao molho,USDA: pasta with meat sauce,pasta sauce,USDA,0.847,1.3,amido,110.0,1.43,media,"prato raso ~27 cm; porção ~9x10 cm, ~2,5 cm altura"
+b009,nuvem_llm_v2,lombo de porco fatiado,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,190.0,67.83,media,prato raso ~27 cm; 5 fatias ~6 cm diâm x 2 cm
+b045,nuvem_llm_v2,pedaço de frango grelhado,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,40.0,12.8,media,"prato raso ~27 cm; pedaço ~7x4 cm, ~1,5 cm altura"
+b062,nuvem_llm_v2,feijoada,Feijoada,Feijoada,TACO,1.0,8.7,misto,380.0,33.06,media,prato fundo ~22 cm cheio quase até a borda
+b069,nuvem_llm_v2,feijão branco/manteiga cozido,USDA: white beans cooked,white beans,USDA,0.687,9.7,leguminosa,240.0,23.28,media,"prato raso ~27 cm; monte ~13x11 cm, ~3 cm altura"
+b087,nuvem_llm_v2,macarrão ao molho com legumes,USDA: pasta with tomato sauce,pasta sauce,USDA,0.839,1.3,amido,280.0,3.64,media,"prato raso ~27 cm; ocupa ~1/2 da área útil, ~3 cm altura"
+b089,nuvem_llm_v2,batata frita,"Batata, inglesa, frita","Batata, inglesa, frita",TACO,1.0,5.0,amido,190.0,9.5,media,"prato raso ~27 cm; ocupa ~2/3 da área útil, camada ~2-3 cm"
+b096,nuvem_llm_v2,feijoada,Feijoada,Feijoada,TACO,1.0,8.7,misto,160.0,13.92,media,prato fundo ~22 cm; porção ~10 cm diâm no fundo
+c020,nuvem_llm_v2,feijão,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,130.0,6.24,media,"marmita ~19x14 cm; feijão ocupa ~1/3, cheio"
+c020,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,50.0,1.25,baixa,marmita; arroz parcialmente escondido sob brócolis
+c020,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,50.0,1.05,media,2 floretes grandes
+c020,nuvem_llm_v2,frango desfiado,"Frango, peito, sem pele, cozido","Frango, peito, sem pele, cozido",TACO,1.0,31.5,proteina_animal,100.0,31.5,media,"marmita; frango ocupa ~1/3, ~3 cm altura"
+c029,nuvem_llm_v2,arroz integral com grãos,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,90.0,2.34,media,marmita ~19x14 cm; ocupa ~1/4
+c029,nuvem_llm_v2,abóbora/batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,70.0,0.42,media,~6 cubos ~3 cm
+c029,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,60.0,1.26,media,~5 floretes
+c029,nuvem_llm_v2,almôndegas ao molho de tomate,"Carne, bovina, acém, moído, cozido","Carne, bovina, acém, moído, cozido",TACO,1.0,26.7,proteina_animal,110.0,29.37,media,3 almôndegas ~5 cm com molho
+c030,nuvem_llm_v2,filé de frango grelhado,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,130.0,41.6,media,"marmita ~19x14 cm; 2 filés ~12x6 cm, ~1,5 cm"
+c030,nuvem_llm_v2,purê de batata,USDA: mashed potatoes,mashed potatoes,USDA,1.0,1.7,amido,100.0,1.7,media,"ocupa ~1/4 da marmita, parte sob o frango"
+c030,nuvem_llm_v2,arroz,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,75.0,1.88,baixa,"faixa lateral da marmita, parte sob o frango"
+c030,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,20.0,0.42,media,pedaços pequenos misturados ao arroz
+d0075,nuvem_llm_v2,grão (farro) refogado com carne,USDA: farro cooked,spinach (cooked),USDA,0.689,3.0,vegetal,110.0,3.3,baixa,prato quadrado ~26 cm; grão ocupa ~1/5
+d0075,nuvem_llm_v2,carne em tiras,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,60.0,15.6,baixa,"pedaços de carne misturados no grão, parte inferior"
+d0075,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,80.0,2.72,media,~10 unidades pequenas
+d0075,nuvem_llm_v2,salada caesar,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,100.0,3.2,baixa,"ocupa ~1/4 do prato, folhas soltas"
+d0076,nuvem_llm_v2,lombo de porco empanado fatiado,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,130.0,46.41,media,"prato quadrado ~26 cm; 4 fatias ~7x4 cm, ~1,5 cm"
+d0076,nuvem_llm_v2,espinafre cru,USDA: spinach raw,spinach (raw),USDA,0.983,2.9,vegetal,45.0,1.31,media,monte de folhas ~1/3 do prato
+d0076,nuvem_llm_v2,milho na espiga (rodela),USDA: corn,corn,USDA,1.0,3.4,amido,35.0,1.19,media,"rodela ~6 cm diâm, ~3 cm altura; peso sem sabugo"
+d0076,nuvem_llm_v2,legumes com cenoura ralada,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,35.0,0.28,baixa,pequeno monte ~6x4 cm
+d0076,nuvem_llm_v2,ameixa/azeitona,USDA: prunes,prunes,USDA,1.0,2.2,outros,10.0,0.22,baixa,1 unidade
+d0077,nuvem_llm_v2,kimchi,USDA: kimchi,kimchi,USDA,1.0,1.6,outros,50.0,0.8,media,prato quadrado ~26 cm; monte ~8x6 cm
+d0077,nuvem_llm_v2,azeitonas kalamata,USDA: olives,olives,USDA,1.0,0.8,vegetal,35.0,0.28,media,~12 azeitonas ~3 g cada
+d0077,nuvem_llm_v2,tofu/queijo em cubos,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,70.0,5.6,media,"~20 cubos ~1,5 cm"
+d0079,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,180.0,3.78,media,prato quadrado ~24 cm; ~14 pedaços ~3-4 cm
+d0079,nuvem_llm_v2,tangerina,USDA: tangerine,,,0.133,0.0,outros,80.0,0.0,media,"1 tangerina ~6 cm diâm, sem casca"
+d0080,nuvem_llm_v2,bife/rosbife,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,110.0,27.5,media,"prato quadrado ~26 cm; 3 fatias ~7x5 cm, 2 cm"
+d0080,nuvem_llm_v2,frango assado,USDA: roast chicken,roast chicken,USDA,1.0,23.5,proteina_animal,90.0,21.15,baixa,pedaços ~1/6 do prato
+d0080,nuvem_llm_v2,cogumelos salteados,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,80.0,2.48,media,~12 champignons
+d0080,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,150.0,3.15,media,"~8 floretes grandes, ~1/3 do prato"
+d0110,nuvem_llm_v2,pizza (pedaço),USDA: pizza,pizza,USDA,1.0,11.0,misto,60.0,6.6,media,prato quadrado ~28 cm; pedaço ~10x7 cm
+d0117,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,65.0,0.46,media,13 uvas ~5 g cada
+d0120,nuvem_llm_v2,frango empanado,USDA: breaded chicken,chicken,USDA,0.777,31.0,proteina_animal,150.0,46.5,media,"prato quadrado ~26 cm; ~6 pedaços, ~1/4 do prato"
+d0120,nuvem_llm_v2,pizza (pedaço),USDA: pizza,pizza,USDA,1.0,11.0,misto,80.0,8.8,media,fatia ~10x8 cm sob outros itens
+d0120,nuvem_llm_v2,arroz com legumes,USDA: white rice,white rice,USDA,1.0,2.7,amido,50.0,1.35,baixa,monte pequeno ~7x5 cm
+d0120,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,80.0,0.72,media,4 pedaços ~5 cm
+d0120,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,90.0,1.89,media,~5 floretes
+d0120,nuvem_llm_v2,folhas verdes,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,10.0,0.22,baixa,folhas esparsas
+d0121,nuvem_llm_v2,carne suína/bovina fatiada,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,130.0,46.41,media,"tigela oval ~24 cm; 4 fatias grossas ~7x5 cm, 2 cm"
+d0121,nuvem_llm_v2,mix de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,60.0,1.32,media,folhas cobrindo a tigela
+d0128,nuvem_llm_v2,carne com repolho e grãos,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,80.0,20.8,baixa,prato quadrado ~26 cm; pedaços de carne ~1/6 do prato
+d0128,nuvem_llm_v2,salada de repolho/grãos,USDA: coleslaw,coleslaw,USDA,1.0,1.0,vegetal,35.0,0.35,baixa,misturado à carne
+d0128,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,80.0,2.72,media,~12 metades
+d0143,nuvem_llm_v2,peixe assado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,75.0,13.8,media,embalagem isopor ~23 cm; filé ~9x5 cm
+d0143,nuvem_llm_v2,peixe/bolinho recheado,USDA: stuffed fish,fish,USDA,0.75,18.4,proteina_animal,90.0,16.56,baixa,pedaço ~10x7 cm
+d0143,nuvem_llm_v2,milho na espiga,USDA: corn,corn,USDA,1.0,3.4,amido,70.0,2.38,media,2 rodelas ~6 cm; sem sabugo
+d0169,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,70.0,0.63,media,prato quadrado ~26 cm; ~6 cubos
+d0169,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,70.0,1.47,media,~4 floretes
+d0169,nuvem_llm_v2,peixe/frango empanado,USDA: breaded chicken,chicken,USDA,0.777,31.0,proteina_animal,70.0,21.7,baixa,pedaço ~10x5 cm
+d0169,nuvem_llm_v2,carne em pedaços,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,70.0,18.2,baixa,~5 pedaços com arroz
+d0169,nuvem_llm_v2,arroz,USDA: white rice,white rice,USDA,1.0,2.7,amido,40.0,1.08,baixa,espalhado entre a carne
+d0169,nuvem_llm_v2,abobrinha,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,40.0,0.44,baixa,rodelas
+d0169,nuvem_llm_v2,pêssego/maçã,USDA: peach,peach,USDA,1.0,0.9,vegetal,50.0,0.45,baixa,~5 fatias
+d0169,nuvem_llm_v2,folhas verdes,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,20.0,0.44,baixa,folhas sob os itens
+d0171,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,95.0,0.67,media,6 morangos grandes ~16 g
+d0171,nuvem_llm_v2,mirtilos,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,10.0,0.07,media,7 unidades
+d0210,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,100.0,1.8,media,prato redondo ~23 cm; ~1/3 do prato
+d0210,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,120.0,2.52,media,~8 pedaços ~3 cm
+d0210,nuvem_llm_v2,hambúrguer/bife empanado,USDA: ground beef,ground beef,USDA,1.0,14.2,proteina_animal,120.0,17.04,baixa,"2 discos ~9 cm, 1,5 cm"
+d0214,nuvem_llm_v2,carne de porco assada,"Porco, pernil, assado","Porco, pernil, assado",TACO,1.0,32.1,proteina_animal,170.0,54.57,media,"prato quadrado ~28 cm; 2 fatias ~10x7 cm, 2,5 cm"
+d0214,nuvem_llm_v2,acelga/folhas refogadas com beterraba,USDA: swiss chard cooked,spinach (cooked),USDA,0.659,3.0,vegetal,50.0,1.5,media,monte ~8x6 cm
+d0226,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,160.0,16.0,media,"prato quadrado ~24 cm; ~1/3 do prato, 3 cm"
+d0226,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,130.0,1.3,media,~10 cubos ~3 cm
+d0226,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,45.0,16.65,media,4-5 fatias grossas
+d0268,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,200.0,20.0,media,"prato quadrado ~26 cm; ~1/3 do prato, 3-4 cm"
+d0268,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,110.0,1.1,media,"~12 cubos ~2,5 cm"
+d0273,nuvem_llm_v2,carne desfiada ao molho com omelete,USDA: pulled pork,pork,USDA,0.757,26.0,proteina_animal,90.0,23.4,baixa,"prato quadrado ~28 cm; porção ~10x8 cm, fina"
+d0274,nuvem_llm_v2,peixe/frango ao curry com arroz,USDA: chicken curry,chicken,USDA,0.615,31.0,proteina_animal,150.0,46.5,baixa,prato quadrado ~24 cm; porção ~12x9 cm
+d0284,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,prato quadrado ~24 cm; ~1/3 do prato
+d0284,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,20.0,7.4,media,2 fatias
+d0286,nuvem_llm_v2,muffin inglês (metade),USDA: english muffin,english muffins,USDA,0.993,7.8,amido,30.0,2.34,media,metade ~10 cm diâm
+d0286,nuvem_llm_v2,cream cheese,USDA: cream cheese,cream cheese,USDA,1.0,6.2,laticinio,20.0,1.24,media,camada sobre o muffin
+d0286,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,80.0,0.56,media,6 morangos
+d0286,nuvem_llm_v2,mirtilos,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,12.0,0.08,media,~9 unidades
+d0286,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,100.0,1.0,media,~12 cubos
+d0286,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,18.0,6.66,media,3 fatias
+d0307,nuvem_llm_v2,arroz frito com tofu,USDA: fried rice,fried rice,USDA,1.0,4.7,misto,130.0,6.11,media,"prato quadrado ~28 cm; faixa ~16x6 cm, 2 cm"
+d0307,nuvem_llm_v2,tofu em cubos,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,45.0,3.6,media,"~6 cubos ~2,5 cm"
+d0335,nuvem_llm_v2,frango ao molho de tomate,USDA: chicken stew,stews,USDA,0.744,11.0,misto,300.0,33.0,media,"prato quadrado ~24 cm; cobre ~3/4, 3 cm"
+d0346,nuvem_llm_v2,ervilha-torta,USDA: snow peas,snow peas,USDA,1.0,5.0,leguminosa,70.0,3.5,media,prato redondo ~26 cm; ~12 vagens
+d0346,nuvem_llm_v2,salmão/peixe com cenoura ralada,USDA: salmon,salmon,USDA,1.0,24.0,proteina_animal,90.0,21.6,baixa,pedaço ~8x6 cm sob a cenoura
+d0346,nuvem_llm_v2,salada de cenoura/repolho,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,35.0,0.31,baixa,cobertura sobre o peixe
+d0346,nuvem_llm_v2,farro/trigo em grão,USDA: farro cooked,spinach (cooked),USDA,0.689,3.0,vegetal,90.0,2.7,media,"~1/5 do prato, 2 cm"
+d0346,nuvem_llm_v2,flatbread/pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,70.0,7.7,baixa,pedaço ~10x7 cm
+d0373,nuvem_llm_v2,lombo/carne fatiada,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,140.0,36.4,media,prato quadrado ~28 cm; ~7 fatias ~7x3 cm
+d0373,nuvem_llm_v2,pizza de pepperoni,USDA: pizza,pizza,USDA,1.0,11.0,misto,110.0,12.1,media,2 pedaços ~11x7 cm
+d0373,nuvem_llm_v2,brownie,USDA: brownie,brownies,USDA,0.987,6.2,outros,35.0,2.17,media,"pedaço ~6x4 cm, 2,5 cm"
+d0381,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,60.0,0.54,media,prato quadrado ~28 cm; 4 cubos ~4 cm
+d0381,nuvem_llm_v2,salada de couve kale com parmesão,USDA: kale salad,salads,USDA,0.775,1.0,vegetal,80.0,0.8,media,"~1/4 do prato, solto"
+n017,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,45.0,10.08,alta,"~38 amêndoas ~1,2 g cada em prato de papel ~18 cm"
+n022,nuvem_llm_v2,claras cozidas/mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,110.0,11.0,media,prato quadrado ~26 cm; ~1/4 do prato
+n022,nuvem_llm_v2,pudim de chia,USDA: chia pudding,puddings,USDA,0.79,3.2,outros,80.0,2.56,baixa,base sob os mirtilos ~12x10 cm
+n022,nuvem_llm_v2,mirtilos,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,60.0,0.42,media,~35 unidades
+b032,nuvem_llm_v2,peito de frango grelhado,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,95.0,30.4,media,"prato raso ~27 cm entre garfo e faca; peça ~13x7 cm, ~1,5 cm de altura"
+b038,nuvem_llm_v2,arroz integral com castanhas e frutas secas,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,150.0,3.9,baixa,"prato raso ~27 cm; ocupa ~1/5 do prato, camada ~1,5 cm"
+b043,nuvem_llm_v2,salame fatiado,USDA: salami,salami,USDA,1.0,22.0,proteina_animal,130.0,28.6,media,prato raso ~27 cm; ~25 fatias finas de ~7 cm sobrepostas
+b051,nuvem_llm_v2,filé de peixe branco cozido,USDA: cod,cod,USDA,1.0,18.9,proteina_animal,210.0,39.69,media,"prato raso ~27 cm; filé ~17x11 cm, ~2 cm de altura"
+b058,nuvem_llm_v2,presunto fatiado,"Presunto, sem capa de gordura","Presunto, sem capa de gordura",TACO,1.0,14.3,proteina_animal,60.0,8.58,media,prato raso ~27 cm; 2-3 fatias ~15x10 cm empilhadas
+b060,nuvem_llm_v2,brócolis cozido,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,150.0,3.15,media,"prato raso ~27 cm; buquês ocupam ~1/3 do prato, ~5 cm de altura"
+b078,nuvem_llm_v2,tiras de carne de porco fritas com cenoura/pimentão,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,220.0,57.2,baixa,"prato raso ~27 cm; tiras ocupam ~1/2 da área útil, ~2 cm de altura"
+b081,nuvem_llm_v2,lentilha cozida,"Lentilha, cozida","Lentilha, cozida",TACO,1.0,6.3,leguminosa,250.0,15.75,media,"prato raso ~27 cm; ocupa ~16x12 cm, ~2 cm de altura"
+b086,nuvem_llm_v2,mandioca cozida,"Mandioca, cozida","Mandioca, cozida",TACO,1.0,0.6,amido,200.0,1.2,media,prato raso ~27 cm; 4 pedaços ~7x4x4 cm
+b098,nuvem_llm_v2,batata cozida em cubos,"Batata, inglesa, cozida","Batata, inglesa, cozida",TACO,1.0,1.2,amido,200.0,2.4,media,prato raso ~27 cm; ~20 cubos de ~3 cm
+c004,nuvem_llm_v2,arroz integral,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,110.0,2.86,media,"marmita de papel ~18x12 cm; arroz ocupa ~1/3, ~3 cm de altura"
+c004,nuvem_llm_v2,frango em cubos grelhado,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,130.0,41.6,media,~14 cubos de ~3 cm no centro da marmita
+c004,nuvem_llm_v2,creme de milho/polenta cremosa,USDA: creamed corn,corn,USDA,0.75,3.4,amido,120.0,4.08,baixa,"ocupa ~1/3 da marmita, ~2,5 cm de altura"
+c015,nuvem_llm_v2,escondidinho gratinado (purê com recheio por baixo),"Escondidinho, de frango com purê de mandioca, gratinado",,,0.399,0.0,misto,350.0,0.0,baixa,"marmita de papel ~18x13 cm, ~4 cm de altura; recheio escondido sob o purê"
+d0008,nuvem_llm_v2,linguiça defumada em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,130.0,25.09,media,prato ~26 cm; ~16 rodelas de ~3 cm
+d0008,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,160.0,3.36,media,~10 pedaços de ~3-4 cm
+d0008,nuvem_llm_v2,uva,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,110.0,0.77,media,~22 uvas de ~5 g
+d0018,nuvem_llm_v2,pizza de queijo com espinafre,USDA: pizza,pizza,USDA,1.0,11.0,misto,180.0,19.8,baixa,prato ~26 cm; 2 fatias retangulares ~14x9 cm
+d0023,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,180.0,1.62,baixa,prato ~26 cm; ~8 pedaços de ~4-6 cm
+d0041,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,40.0,14.8,media,prato ~26 cm; 3 tiras grossas ~15 cm
+d0041,nuvem_llm_v2,brócolis cozido,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,80.0,1.92,media,4-5 buquês médios
+d0054,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,35.0,12.95,media,prato quadrado ~25 cm; 4 tiras ~18 cm
+d0058,nuvem_llm_v2,frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,160.0,49.76,media,prato quadrado ~25 cm; ~45 cubos pequenos de ~2 cm
+d0061,nuvem_llm_v2,morango fatiado,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,130.0,0.91,media,tigela ~11 cm cheia
+d0062,nuvem_llm_v2,azeitona preta,USDA: olives,olives,USDA,1.0,0.8,vegetal,70.0,0.56,media,"tigela de inox ~28 cm; ~20 azeitonas de ~3,5 g"
+d0088,nuvem_llm_v2,folhas verdes mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,baixa,prato quadrado ~25 cm; folhas ~1/4 do prato
+d0088,nuvem_llm_v2,macarrão parafuso/cotovelo,USDA: pasta,pasta,USDA,1.0,5.1,amido,45.0,2.29,baixa,~10 peças de macarrão misturadas
+d0088,nuvem_llm_v2,maçã/cenoura/aipo picados,USDA: apples,apple,USDA,0.982,0.3,vegetal,25.0,0.07,baixa,pedaços pequenos na salada
+d0097,nuvem_llm_v2,ovos mexidos com molho,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,95.0,9.5,media,"prato quadrado ~25 cm; ~9x8 cm, ~2 cm"
+d0097,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,130.0,2.73,media,~10 cubos de ~3-4 cm
+d0097,nuvem_llm_v2,espinafre cru,USDA: spinach,,,0.422,0.0,vegetal,25.0,0.0,baixa,folhas soltas ~1/6 do prato
+d0097,nuvem_llm_v2,folhas mistas com frutas vermelhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,baixa,folhas e amoras ~1/6 do prato
+d0097,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,60.0,0.3,media,4-5 pedaços de ~3 cm
+d0097,nuvem_llm_v2,morango,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,25.0,0.17,media,2-3 morangos
+d0097,nuvem_llm_v2,linguiça,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,30.0,5.79,baixa,1-2 pedaços de ~4 cm
+d0099,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,160.0,16.0,media,"prato quadrado ~25 cm; ~14x11 cm, ~2,5 cm"
+d0099,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,30.0,11.1,media,3 tiras
+d0115,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,150.0,16.5,media,prato quadrado ~25 cm; 3 pedaços ~9x7 cm
+d0135,nuvem_llm_v2,torrada com abacate e rúcula,USDA: bread,bread,USDA,1.0,13.5,amido,60.0,8.1,baixa,prato ~26 cm; fatia de pão ~15x9 cm
+d0135,nuvem_llm_v2,abacate amassado,USDA: avocado,avocado,USDA,1.0,2.0,vegetal,50.0,1.0,baixa,camada fina sobre a torrada
+d0135,nuvem_llm_v2,disco crocante com repolho roxo,USDA: hash browns,hash browns,USDA,1.0,2.6,amido,40.0,1.04,baixa,disco ~7 cm de diâmetro
+d0139,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,50.0,1.05,media,prato quadrado ~25 cm; 3 pedaços ~4 cm
+d0139,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,20.0,7.4,media,2 tiras
+d0140,nuvem_llm_v2,ovos mexidos/omelete,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,"prato ~26 cm; área ~18x9 cm, fina"
+d0162,nuvem_llm_v2,ovos mexidos com queijo,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"prato de papel ~18 cm; ovos ocupam ~13 cm, ~2,5 cm altura"
+d0245,nuvem_llm_v2,cenoura cozida,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,60.0,0.54,baixa,prato ~26 cm; ~6 pedaços
+d0245,nuvem_llm_v2,repolho roxo assado,USDA: red cabbage,cabbage,USDA,0.806,1.3,vegetal,80.0,1.04,baixa,2 gomos ~12 cm
+d0245,nuvem_llm_v2,frango em pedaços com brócolis,USDA: chicken thighs,chicken thighs,USDA,1.0,23.9,proteina_animal,90.0,21.51,baixa,~8 pedaços pequenos
+d0245,nuvem_llm_v2,vagem/brócolis,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,20.0,0.36,baixa,poucos pedaços
+d0254,nuvem_llm_v2,carne bovina ensopada,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,120.0,31.2,baixa,prato ~26 cm; ~5 pedaços de ~4 cm
+d0254,nuvem_llm_v2,massa assada com queijo e molho,USDA: baked ziti,,,0.342,0.0,outros,160.0,0.0,baixa,"~1/3 do prato, ~3 cm"
+d0254,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,120.0,13.2,media,2 fatias ~10x7 cm
+d0276,nuvem_llm_v2,peixe branco assado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,80.0,14.72,media,prato quadrado ~25 cm; filé ~10x4 cm
+d0276,nuvem_llm_v2,arroz integral,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,40.0,1.04,baixa,porção pequena sob o peixe
+d0276,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,80.0,1.44,media,~25 vagens
+d0276,nuvem_llm_v2,folhas verdes mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,35.0,0.77,baixa,~1/4 do prato
+d0276,nuvem_llm_v2,carne bovina/porco fatiada,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,110.0,28.6,baixa,~4 pedaços ~5 cm
+d0276,nuvem_llm_v2,tomate cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,20.0,0.14,media,2 tomates
+d0281,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,90.0,20.16,media,"prato quadrado ~20 cm; ~75 amêndoas de ~1,2 g"
+d0293,nuvem_llm_v2,pedaço de bolo/pão,USDA: cake,cakes,USDA,0.978,3.0,outros,30.0,0.9,baixa,prato ~26 cm; pedaço ~6x5 cm
+d0311,nuvem_llm_v2,melão honeydew,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,100.0,0.5,media,prato quadrado ~25 cm; ~10 cubos ~3 cm
+d0311,nuvem_llm_v2,salada de rúcula com feijão preto,USDA: arugula,arugula,USDA,1.0,2.6,vegetal,45.0,1.17,baixa,monte ~1/3 do prato
+d0320,nuvem_llm_v2,salada de espinafre com tomate e cenoura,USDA: spinach,,,0.422,0.0,vegetal,55.0,0.0,baixa,prato quadrado ~25 cm; ~1/3 do prato
+d0320,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,30.0,11.1,media,3 tiras
+d0338,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,170.0,17.0,media,"prato quadrado ~25 cm; ~1/3 do prato, ~3 cm"
+d0338,nuvem_llm_v2,ovos mexidos/purê amarelo,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,70.0,7.0,baixa,monte ~8 cm
+d0338,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,90.0,1.89,media,~15 cubos ~2 cm
+d0384,nuvem_llm_v2,milho na espiga (pedaço),USDA: corn,corn,USDA,1.0,3.4,amido,40.0,1.36,media,"prato quadrado ~25 cm; rodela de espiga ~6 cm de diâmetro, ~4 cm altura"
+n026,nuvem_llm_v2,melão honeydew,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,35.0,0.17,media,prato quadrado ~25 cm; 3 pedaços ~3 cm
+n042,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,200.0,20.0,media,"prato quadrado ~25 cm; ~2/3 do prato, ~3 cm"
+n042,nuvem_llm_v2,melão cantaloupe,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,110.0,0.88,media,~10 pedaços ~3-4 cm
+n048,nuvem_llm_v2,cenoura cozida,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,25.0,0.22,baixa,"prato quadrado; 3 rodelas, parcialmente fora da foto"
+n048,nuvem_llm_v2,pizza/pão com queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,40.0,4.4,baixa,pedaço parcialmente fora da foto ~9x5 cm
+b005,nuvem_llm_v2,salame fatiado,USDA: salami,salami,USDA,1.0,22.0,proteina_animal,50.0,11.0,media,prato raso ~26 cm com garfo/faca; ~10 fatias finas ~6 cm
+b011,nuvem_llm_v2,camarão cozido,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,100.0,19.0,media,prato raso ~26 cm; ~12 camarões médios ocupando ~1/6 do prato
+b014,nuvem_llm_v2,lombo de porco assado em pedaços,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,320.0,114.24,media,prato raso ~26 cm; ~13 pedaços ~4x4x3 cm ocupando ~1/2 da área útil
+b040,nuvem_llm_v2,arroz com feijão misturado e batata,"Baião de dois, arroz e feijão-de-corda","Baião de dois, arroz e feijão-de-corda",TACO,1.0,6.2,misto,210.0,13.02,media,"prato raso ~26 cm; meia-lua ~16x9 cm, altura ~1,5 cm"
+b046,nuvem_llm_v2,carne seca desfiada,"Carne, bovina, charque, cozido","Carne, bovina, charque, cozido",TACO,1.0,36.4,proteina_animal,230.0,83.72,media,"prato raso ~26 cm; cobre área útil ~20x13 cm, altura ~1,5 cm, solta"
+b065,nuvem_llm_v2,feijão preto,"Feijão, preto, cozido","Feijão, preto, cozido",TACO,1.0,4.5,leguminosa,210.0,9.45,media,"prato raso ~26 cm; meia-lua ~16x10 cm, altura ~1,5 cm"
+b072,nuvem_llm_v2,linguiça calabresa com cebola,"Lingüiça, porco, grelhada","Lingüiça, porco, grelhada",TACO,1.0,23.2,proteina_animal,80.0,18.56,baixa,marmita ~750 ml assumida; ~1/3 da área com ~8 rodelas
+b072,nuvem_llm_v2,cebola refogada,"USDA: onions, cooked",spinach (cooked),USDA,0.685,3.0,vegetal,15.0,0.45,baixa,tiras por cima da linguiça
+b072,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,110.0,2.75,baixa,faixa central da marmita ~1/3
+b072,nuvem_llm_v2,feijão carioca,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,120.0,5.76,baixa,faixa inferior ~1/3 da marmita
+b100,nuvem_llm_v2,carne seca desfiada,"Carne, bovina, charque, cozido","Carne, bovina, charque, cozido",TACO,1.0,36.4,proteina_animal,50.0,18.2,media,prato raso ~26 cm; montinho ~7x8 cm
+b101,nuvem_llm_v2,camarão cozido,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,380.0,72.2,media,"prato raso ~26 cm; cobre área útil ~20x14 cm, altura ~2 cm"
+b102,nuvem_llm_v2,batata frita palito,"Batata, inglesa, frita","Batata, inglesa, frita",TACO,1.0,5.0,amido,130.0,6.5,media,prato raso ~26 cm; monte ~13x12 cm
+c001,nuvem_llm_v2,hambúrguer bovino grelhado,USDA: ground beef,ground beef,USDA,1.0,14.2,proteina_animal,130.0,18.46,media,"marmita retangular ~19x14 cm; disco ~11 cm, ~1,5 cm altura"
+c001,nuvem_llm_v2,legumes assados (batata-doce/vagem/milho/beterraba),USDA: roasted vegetables,mixed vegetables,USDA,0.728,1.7,outros,100.0,1.7,baixa,terço esquerdo da marmita
+c001,nuvem_llm_v2,arroz integral,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,70.0,1.82,baixa,"terço direito, misturado com brócolis"
+c001,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,40.0,0.84,baixa,floretes no terço direito
+c021,nuvem_llm_v2,frango ao molho cremoso,Estrogonofe de frango,Estrogonofe de frango,TACO,1.0,17.6,misto,160.0,28.16,media,"marmita ~19x14 cm; ~40% da área, ~3 cm altura"
+c021,nuvem_llm_v2,arroz integral/selvagem,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,80.0,2.08,media,faixa central ~5 cm
+c021,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,80.0,1.68,media,~5 floretes grandes
+c022,nuvem_llm_v2,camarão ao molho,USDA: shrimp curry,shrimp,USDA,0.608,24.0,proteina_animal,160.0,38.4,media,marmita ~19x14 cm; metade esquerda com ~7 camarões no molho
+c022,nuvem_llm_v2,arroz branco com salsa,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,120.0,3.0,media,"metade direita, ~3 cm altura"
+d0022,nuvem_llm_v2,carne bovina cozida desfiada com molho,USDA: pot roast beef,roast beef,USDA,0.877,29.1,proteina_animal,110.0,32.01,baixa,prato ~27 cm; pedaços sobre o purê
+d0022,nuvem_llm_v2,purê de batata,USDA: mashed potatoes,mashed potatoes,USDA,1.0,1.7,amido,140.0,2.38,baixa,"por baixo da carne, ~1/4 do prato"
+d0022,nuvem_llm_v2,brocolini,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,60.0,1.26,media,2-3 talos longos ~20 cm
+d0052,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,130.0,3.25,media,prato quadrado ~26 cm; dois montes ~10x8 cm
+d0052,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,90.0,1.89,media,~5 floretes
+d0055,nuvem_llm_v2,batata assada em cubos,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,110.0,2.31,media,"prato quadrado ~26 cm; ~15 cubos ~2,5 cm"
+d0055,nuvem_llm_v2,clara de ovo mexida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,200.0,20.0,media,"metade direita do prato, ~2 cm altura"
+d0081,nuvem_llm_v2,arroz vermelho/integral com legumes,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,120.0,3.12,media,prato quadrado ~26 cm; ~1/4 do prato
+d0081,nuvem_llm_v2,tofu em cubos,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,70.0,5.6,media,~8 cubos ~2 cm
+d0081,nuvem_llm_v2,salada de rúcula e rabanete,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,25.0,0.55,media,folhas soltas e 2 fatias de rabanete
+d0102,nuvem_llm_v2,waffle,USDA: waffles,waffles,USDA,1.0,7.9,amido,130.0,10.27,media,prato quadrado ~26 cm; ~3 pedaços de waffle
+d0102,nuvem_llm_v2,tofu mexido com brócolis,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,70.0,5.6,baixa,monte ~10x6 cm sobre o waffle
+d0153,nuvem_llm_v2,pizza de pepperoni,USDA: pizza,pizza,USDA,1.0,11.0,misto,180.0,19.8,media,prato ~25 cm; 2 fatias quadradas ~10x10 cm
+d0176,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,prato quadrado ~26 cm; monte ~10x14 cm
+d0176,nuvem_llm_v2,linguiça em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,110.0,21.23,media,~22 rodelas ~3 cm
+d0182,nuvem_llm_v2,clara de ovo mexida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,prato quadrado ~26 cm; ~1/2 do prato
+d0182,nuvem_llm_v2,melão cantaloupe,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,110.0,0.88,media,~7 cubos ~3 cm
+d0182,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,70.0,0.35,media,~5 cubos ~3 cm
+d0209,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,100.0,10.0,baixa,prato ~26 cm; parcialmente coberto pelo molho
+d0209,nuvem_llm_v2,salsa/pesto com tomate,USDA: salsa,salsa,USDA,1.0,1.5,gordura_molho,40.0,0.6,baixa,cobertura sobre ovos
+d0209,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,120.0,2.52,media,~10 pedaços
+d0209,nuvem_llm_v2,ketchup,USDA: ketchup,ketchup,USDA,1.0,1.3,gordura_molho,15.0,0.2,media,fios sobre batatas
+d0234,nuvem_llm_v2,lombo de porco assado fatiado,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,140.0,49.98,media,"prato quadrado ~26 cm; 2 fatias ~11x6x1,2 cm"
+d0234,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,130.0,3.25,media,monte ~10x9 cm
+d0234,nuvem_llm_v2,frango com molho e pesto,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,50.0,15.55,baixa,pedaço fino ~7x8 cm
+d0251,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,180.0,0.54,media,maçã inteira ~8 cm em prato ~26 cm
+d0253,nuvem_llm_v2,clara de ovo mexida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,230.0,23.0,media,"prato quadrado ~26 cm; ~1/2 do prato, ~2 cm altura"
+d0265,nuvem_llm_v2,fatias de peito de peru/presunto,USDA: turkey,turkey,USDA,1.0,29.0,proteina_animal,60.0,17.4,baixa,prato parcialmente fora da foto; algumas fatias dobradas
+d0271,nuvem_llm_v2,clara de ovo mexida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,170.0,17.0,media,prato quadrado ~26 cm; ~1/3 do prato
+d0272,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,60.0,13.44,media,"~48 amêndoas ~1,2 g cada"
+d0295,nuvem_llm_v2,pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,90.0,9.9,baixa,prato quadrado ~26 cm; 1 fatia
+d0295,nuvem_llm_v2,frango com queijo e molho,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,90.0,27.99,baixa,pedaço ~8x7 cm
+d0295,nuvem_llm_v2,bife,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,120.0,30.0,media,3 fatias ~7x4x2 cm
+d0295,nuvem_llm_v2,arroz amarelo temperado,USDA: white rice,white rice,USDA,1.0,2.7,amido,160.0,4.32,media,"~1/3 do prato, ~2 cm altura"
+d0310,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,80.0,0.4,media,~8 cubos ~3 cm
+d0310,nuvem_llm_v2,acelga/bok choy,"USDA: bok choy, cooked",bok choy,USDA,0.674,1.5,vegetal,50.0,0.75,media,3 talos
+d0310,nuvem_llm_v2,couve-de-bruxelas,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,60.0,2.04,media,~5 unidades
+d0310,nuvem_llm_v2,berinjela/abobrinha à parmegiana,USDA: eggplant parmesan,eggplant,USDA,0.603,1.0,vegetal,100.0,1.0,baixa,retângulo ~8x6 cm
+d0310,nuvem_llm_v2,tofu com legumes,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,60.0,4.8,baixa,~6 cubos ~2 cm com legumes
+d0310,nuvem_llm_v2,peixe empanado com ervas,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,90.0,16.56,baixa,filé ~10x4 cm
+d0312,nuvem_llm_v2,granola com frutas,USDA: granola,granola,USDA,1.0,10.0,amido,50.0,5.0,baixa,tigela pequena ~14 cm
+d0312,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,15.0,0.11,baixa,3 uvas
+d0312,nuvem_llm_v2,banana/figo em pedaços,USDA: banana,banana,USDA,1.0,1.1,vegetal,30.0,0.33,baixa,poucos pedaços
+d0324,nuvem_llm_v2,morango,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,60.0,0.42,media,4 morangos cortados
+d0324,nuvem_llm_v2,melão cantaloupe,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,60.0,0.48,media,4 cubos ~3 cm
+d0324,nuvem_llm_v2,mirtilo,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,10.0,0.07,media,~7 mirtilos
+d0327,nuvem_llm_v2,frango grelhado em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,110.0,24.86,media,tigela ~25 cm; ~10 cubos
+d0327,nuvem_llm_v2,queijo parmesão em lascas,USDA: parmesan cheese,parmesan cheese,USDA,1.0,38.4,laticinio,30.0,11.52,media,~15 lascas
+d0327,nuvem_llm_v2,abacate,USDA: avocado,avocado,USDA,1.0,2.0,vegetal,50.0,1.0,media,2 fatias
+d0327,nuvem_llm_v2,folhas verdes,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,60.0,1.32,baixa,base da tigela
+d0327,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,40.0,0.96,baixa,~4 floretes
+d0367,nuvem_llm_v2,peixe branco assado com ervas,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,200.0,36.8,media,"prato quadrado ~27 cm; 3 filés ~10x6x1,5 cm"
+d0367,nuvem_llm_v2,berinjela assada,"USDA: eggplant, cooked",spinach (cooked),USDA,0.691,3.0,vegetal,80.0,2.4,media,~10 cubos
+d0367,nuvem_llm_v2,cenoura,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,50.0,0.4,media,~5 rodelas grandes
+d0367,nuvem_llm_v2,tofu em cubos,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,70.0,5.6,media,"~7 cubos ~2,5 cm"
+d0367,nuvem_llm_v2,carne bovina em pedaços com espinafre,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,45.0,11.7,baixa,poucos pedaços sobre espinafre
+d0367,nuvem_llm_v2,espinafre refogado,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,20.0,0.6,baixa,sob a carne
+d0371,nuvem_llm_v2,pão de fermentação natural,USDA: bread,bread,USDA,1.0,13.5,amido,60.0,8.1,media,"1 fatia ~13x10 cm, ~1,5 cm"
+d0390,nuvem_llm_v2,salada caesar (alface romana com molho),USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,70.0,0.98,baixa,prato quadrado ~24 cm; folhas com molho
+d0390,nuvem_llm_v2,molho caesar,USDA: salad dressing,salad dressing,USDA,1.0,0.8,gordura_molho,15.0,0.12,baixa,brilho sobre folhas
+d0390,nuvem_llm_v2,crouton,USDA: croutons,croutons,USDA,1.0,12.0,outros,8.0,0.96,baixa,1 crouton ~3 cm
+n019,nuvem_llm_v2,rúcula,USDA: arugula,arugula,USDA,1.0,2.6,vegetal,40.0,1.04,media,prato quadrado ~26 cm; ~1/3 do prato
+n019,nuvem_llm_v2,amêndoa laminada,USDA: almonds,almonds,USDA,1.0,22.4,outros,5.0,1.12,baixa,poucos pedaços
+n025,nuvem_llm_v2,arroz vermelho com rúcula e legumes,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,100.0,2.6,media,prato quadrado ~26 cm; monte ~10x9 cm
+n025,nuvem_llm_v2,cenoura,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,20.0,0.16,media,2 tiras
+n025,nuvem_llm_v2,milho na espiga,USDA: corn,corn,USDA,1.0,3.4,amido,70.0,2.38,media,2 rodelas (~6 cm e ~4 cm); peso comestível
+n025,nuvem_llm_v2,frango empanado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,50.0,15.55,baixa,pedaço ~7x5 cm
+n041,nuvem_llm_v2,cenoura assada,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,120.0,0.96,media,prato ~27 cm; ~14 rodelas grandes
+n041,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,70.0,1.26,media,~4 floretes
+n041,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,60.0,13.44,media,~50 amêndoas
+n041,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,160.0,0.48,media,"maçã ~7,5 cm"
+n047,nuvem_llm_v2,arroz temperado,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,140.0,3.5,media,prato quadrado ~26 cm; 2 montes
+n047,nuvem_llm_v2,frango (sobrecoxa e coxa) cozido,"Frango, sobrecoxa, sem pele, assada","Frango, sobrecoxa, sem pele, assada",TACO,1.0,29.2,proteina_animal,120.0,35.04,baixa,2 pedaços com osso; peso sem osso
+n047,nuvem_llm_v2,milho na espiga,USDA: corn,corn,USDA,1.0,3.4,amido,50.0,1.7,media,2 rodelas ~5 cm; peso comestível
+d0059,nuvem_llm_v2,tofu em cubos,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,110.0,8.8,baixa,tigela ~25 cm; ~30 cubos de ~2 cm
+d0059,nuvem_llm_v2,azeitonas pretas,USDA: olives,olives,USDA,1.0,0.8,vegetal,60.0,0.48,media,"~18 azeitonas kalamata ~3,5 g"
+d0059,nuvem_llm_v2,espinafre cru,USDA: spinach (raw),spinach (raw),USDA,1.0,2.9,vegetal,40.0,1.16,baixa,base de folhas cobrindo tigela de ~25 cm
+d0059,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,60.0,0.6,media,5 fatias longas ~8 cm
+b021,nuvem_llm_v2,presunto fatiado,"Presunto, sem capa de gordura","Presunto, sem capa de gordura",TACO,1.0,14.3,proteina_animal,60.0,8.58,media,pilha de ~3 fatias ~13x9 cm em prato raso ~26 cm
+b018,nuvem_llm_v2,batata cozida em molho,"Batata, inglesa, cozida","Batata, inglesa, cozida",TACO,1.0,1.2,amido,130.0,1.56,baixa,2 pedaços ~7x4 cm em prato fundo ~22 cm
+b018,nuvem_llm_v2,carne bovina ensopada,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,80.0,20.8,baixa,2 pedaços escuros ~6x4 cm
+b018,nuvem_llm_v2,molho do ensopado,USDA: gravy,gravy,USDA,1.0,2.0,gordura_molho,70.0,1.4,baixa,camada rasa no fundo do prato fundo
+d0235,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,120.0,2.16,media,prato quadrado ~25 cm; ~8 floretes ocupando ~1/4
+b029,nuvem_llm_v2,presunto fatiado,"Presunto, sem capa de gordura","Presunto, sem capa de gordura",TACO,1.0,14.3,proteina_animal,80.0,11.44,media,pilha de ~4 fatias ~15x10 cm em prato raso ~26 cm
+c024,nuvem_llm_v2,batata assada em cubos,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,150.0,3.15,media,"marmita ~750 ml 19x14 cm; batata ocupa ~1/3, ~4 cm altura"
+c024,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,90.0,2.25,media,faixa central ~1/4 da marmita
+c024,nuvem_llm_v2,estrogonofe de frango,Estrogonofe de frango,Estrogonofe de frango,TACO,1.0,17.6,misto,160.0,28.16,media,~1/3 da marmita com molho
+d0056,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,100.0,10.0,media,prato ~26 cm; área ~10x8 cm
+d0056,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,70.0,1.47,media,4 pedaços ~4 cm
+d0261,nuvem_llm_v2,bolinho de siri/peixe,USDA: crab cake,cakes,USDA,0.764,3.0,outros,100.0,3.0,baixa,"disco ~10x8 cm, ~2 cm, prato quadrado ~27 cm"
+d0261,nuvem_llm_v2,abóbora amarela,USDA: squash,squash,USDA,1.0,0.9,vegetal,60.0,0.54,baixa,3 pedaços ~5 cm
+d0261,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,80.0,0.8,media,6 cubos ~3 cm
+d0261,nuvem_llm_v2,salada caesar,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,80.0,2.56,baixa,monte ~12x8 cm
+d0078,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,100.0,2.4,media,prato quadrado ~27 cm; ~6 floretes ocupando ~1/4
+d0078,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"área ~14x12 cm, ~2 cm"
+d0332,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,230.0,25.3,baixa,2 fatias grandes ~18 cm em prato ~25 cm
+d0332,nuvem_llm_v2,pão de alho com queijo,USDA: garlic bread,garlic bread,USDA,1.0,8.2,amido,90.0,7.38,baixa,fatia ~16x8 cm
+d0233,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,100.0,0.7,media,~20 uvas ~5 g; prato quadrado ~24 cm
+d0233,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,80.0,0.56,media,~6 morangos
+d0233,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,100.0,0.6,media,5 cubos ~4 cm
+d0233,nuvem_llm_v2,almôndegas pequenas,USDA: meatballs,meatballs,USDA,1.0,14.0,proteina_animal,80.0,11.2,baixa,6 bolinhas ~3 cm
+d0233,nuvem_llm_v2,queijo grelhado em cubo,USDA: halloumi cheese,cheese,USDA,0.764,25.0,laticinio,20.0,5.0,baixa,1 cubo ~4x3 cm
+d0396,nuvem_llm_v2,salada caesar,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,110.0,3.52,baixa,monte ~15x12 cm em prato quadrado ~25 cm
+b097,nuvem_llm_v2,camarão cozido,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,100.0,19.0,media,~18 camarões ~5-6 g em prato raso ~27 cm
+d0183,nuvem_llm_v2,azeitonas kalamata,USDA: olives,olives,USDA,1.0,0.8,vegetal,25.0,0.2,media,6 azeitonas ~4 g; prato quadrado ~25 cm
+d0333,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,65.0,14.56,media,"~55 amêndoas ~1,2 g"
+d0213,nuvem_llm_v2,lombo de porco fatiado,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,110.0,39.27,baixa,~6 fatias ~5 cm em prato quadrado ~27 cm
+d0213,nuvem_llm_v2,salada de espinafre,USDA: spinach (raw),spinach (raw),USDA,1.0,2.9,vegetal,50.0,1.45,baixa,monte de folhas ~1/4 do prato
+d0213,nuvem_llm_v2,tira empanada (frango),USDA: breaded chicken,chicken,USDA,0.777,31.0,proteina_animal,40.0,12.4,baixa,parcialmente escondida sob a salada
+b090,nuvem_llm_v2,carne seca desfiada,"Carne, bovina, charque, cozido","Carne, bovina, charque, cozido",TACO,1.0,36.4,proteina_animal,170.0,61.88,baixa,"disco ~19 cm, ~1,5 cm altura, solto; prato raso ~27 cm"
+d0105,nuvem_llm_v2,linguiça em pedaços,"Lingüiça, porco, grelhada","Lingüiça, porco, grelhada",TACO,1.0,23.2,proteina_animal,85.0,19.72,media,7 pedaços ~3 cm; prato quadrado ~27 cm
+d0263,nuvem_llm_v2,carne bovina grelhada fatiada,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,110.0,27.5,baixa,~4 fatias ~8x4 cm em tigela ~24 cm
+d0263,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,70.0,1.68,media,~7 floretes pequenos
+d0263,nuvem_llm_v2,folhas mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,50.0,1.1,baixa,base de folhas da tigela
+d0299,nuvem_llm_v2,carne assada (pot roast),USDA: beef,beef,USDA,1.0,26.0,proteina_animal,120.0,31.2,baixa,3-4 pedaços ~5 cm; prato ~26 cm
+d0299,nuvem_llm_v2,batata assada,USDA: potatoes,potatoes,USDA,1.0,2.0,amido,60.0,1.2,baixa,2 pedaços ~5 cm
+d0299,nuvem_llm_v2,cenoura cozida,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,40.0,0.32,media,2 pedaços ~6 cm
+d0175,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,área ~15x8 cm; prato quadrado ~27 cm
+d0175,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,35.0,12.95,media,4 tiras ~15 cm
+d0175,nuvem_llm_v2,linguiça em pedaços,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,80.0,15.44,baixa,~6 pedaços ~3 cm
+d0180,nuvem_llm_v2,pera,USDA: pear,pears,USDA,0.978,0.4,vegetal,160.0,0.64,media,pera inteira ~8 cm; prato quadrado ~25 cm
+d0180,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,80.0,0.56,media,~7 metades/morangos
+d0049,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,50.0,1.2,media,2 floretes ~7 cm
+d0049,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,90.0,9.0,media,área ~10x7 cm; prato quadrado ~27 cm
+d0049,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,18.0,6.66,media,2 tiras
+d0071,nuvem_llm_v2,bagel,USDA: bagel,bagels,USDA,0.982,10.1,amido,95.0,9.6,baixa,metade visível ~10 cm + outra metade sob os ovos
+d0071,nuvem_llm_v2,cream cheese,USDA: cream cheese,cream cheese,USDA,1.0,6.2,laticinio,25.0,1.55,media,camada fina sobre meia rodela
+d0071,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,110.0,11.0,media,área ~12x8 cm; prato quadrado ~25 cm
+d0020,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,100.0,2.5,baixa,tigela ~15 cm; maior parte escondida sob a carne
+d0020,nuvem_llm_v2,carne bovina desfiada,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,90.0,23.4,baixa,cobertura ~10x8 cm na tigela
+d0020,nuvem_llm_v2,molho de ervas (chimichurri),USDA: salsa verde,salsa,USDA,0.6,1.5,gordura_molho,10.0,0.15,baixa,cobertura verde fina
+c008,nuvem_llm_v2,filé de peixe com ervas,"Merluza, filé, assado","Merluza, filé, assado",TACO,1.0,26.6,proteina_animal,130.0,34.58,media,filé ~16x8 cm na marmita ~19x14 cm
+c008,nuvem_llm_v2,cuscuz marroquino com legumes,USDA: couscous,couscous,USDA,1.0,3.8,amido,160.0,6.08,baixa,"base da marmita, ~3 cm, em parte sob o peixe"
+c008,nuvem_llm_v2,amêndoas laminadas,USDA: almonds,almonds,USDA,1.0,22.4,outros,8.0,1.79,media,~25 lâminas
+d0047,nuvem_llm_v2,iogurte,"Iogurte, natural","Iogurte, natural",TACO,1.0,4.1,laticinio,120.0,4.92,baixa,tigela ~12 cm
+d0047,nuvem_llm_v2,aveia/granola,USDA: oatmeal,oatmeal,USDA,1.0,2.4,amido,20.0,0.48,baixa,cobertura central
+d0047,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,35.0,0.25,media,3 pedaços
+d0195,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,70.0,0.7,media,5 tiras ~10 cm; prato parcialmente fora da foto
+d0195,nuvem_llm_v2,abóbora assada com cebola,USDA: squash,squash,USDA,1.0,0.9,vegetal,90.0,0.81,baixa,~7 cubos ~3 cm
+d0195,nuvem_llm_v2,peito de peru fatiado,USDA: turkey,turkey,USDA,1.0,29.0,proteina_animal,40.0,11.6,baixa,parcialmente fora da foto
+d0147,nuvem_llm_v2,linguiça em pedaços,"Lingüiça, porco, grelhada","Lingüiça, porco, grelhada",TACO,1.0,23.2,proteina_animal,140.0,32.48,media,8 pedaços ~4-6 cm em prato de papel ~18 cm
+n007,nuvem_llm_v2,filé de peixe assado com páprica,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,220.0,40.48,baixa,"2 filés ~9x7 cm, ~2 cm; prato quadrado ~24 cm"
+n007,nuvem_llm_v2,folhas mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,60.0,1.32,baixa,base de folhas sob os filés
+d0002,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,120.0,2.52,media,~12 pedaços ~3 cm; prato quadrado ~27 cm
+d0002,nuvem_llm_v2,salada de couve,USDA: kale salad,salads,USDA,0.775,1.0,vegetal,90.0,0.9,baixa,faixa ~16x7 cm
+c006,nuvem_llm_v2,feijão,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,120.0,5.76,media,~1/3 da marmita 19x14 cm
+c006,nuvem_llm_v2,carne moída,"Carne, bovina, acém, moído, cozido","Carne, bovina, acém, moído, cozido",TACO,1.0,26.7,proteina_animal,110.0,29.37,media,~1/3 central da marmita
+c006,nuvem_llm_v2,cenoura cozida,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,25.0,0.2,media,~8 cubos na carne
+c006,nuvem_llm_v2,arroz integral,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,90.0,2.34,media,~1/3 da marmita
+d0178,nuvem_llm_v2,grão de trigo/farro,USDA: farro,,,0.145,0.0,outros,100.0,0.0,baixa,monte ~14x10 cm; prato quadrado ~27 cm
+d0178,nuvem_llm_v2,carne de porco em pedaços,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,70.0,18.2,baixa,~6 pedaços ~3 cm
+n034,nuvem_llm_v2,pizza/flatbread de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,110.0,12.1,baixa,retângulo ~12x8 cm; prato quadrado ~27 cm
+n034,nuvem_llm_v2,arroz amarelo,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,130.0,3.25,media,"área ~12x9 cm, ~2 cm"
+n034,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,80.0,1.44,media,monte ~15x8 cm
+n034,nuvem_llm_v2,espinafre,USDA: spinach (raw),spinach (raw),USDA,1.0,2.9,vegetal,30.0,0.87,baixa,folhas ao lado
+n033,nuvem_llm_v2,lombo de porco fatiado,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,100.0,35.7,media,4 fatias ~8x5 cm; prato quadrado ~27 cm
+n033,nuvem_llm_v2,melão,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,130.0,0.65,media,~12 cubos ~3 cm
+b079,nuvem_llm_v2,lombo de porco assado,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,80.0,28.56,media,2 fatias ~10x6 cm em prato raso ~27 cm
+d0369,nuvem_llm_v2,bacon grosso caramelizado,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,55.0,20.35,baixa,2 tiras ~17x3 cm em prato ~26 cm
+d0208,nuvem_llm_v2,peito de frango em cubos,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,120.0,38.4,media,~20 cubos ~2 cm; prato quadrado ~27 cm
+d0208,nuvem_llm_v2,atum/frango desfiado com cenoura,USDA: tuna,tuna,USDA,1.0,29.0,proteina_animal,110.0,31.9,baixa,área ~12x9 cm
+d0208,nuvem_llm_v2,pimentões,USDA: bell peppers,bell peppers,USDA,1.0,2.0,vegetal,80.0,1.6,media,~12 tiras
+b061,nuvem_llm_v2,bife grelhado,"Carne, bovina, filé mingnon, sem gordura, grelhado","Carne, bovina, filé mingnon, sem gordura, grelhado",TACO,1.0,32.8,proteina_animal,130.0,42.64,media,"~11x7 cm, ~2 cm, em prato raso ~27 cm"
+n027,nuvem_llm_v2,frango desfiado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,80.0,24.88,baixa,monte ~12x8 cm; prato quadrado ~27 cm
+n027,nuvem_llm_v2,folhas e ervas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,15.0,0.33,baixa,folhas misturadas
+b006,nuvem_llm_v2,filé de frango grelhado,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,85.0,27.2,media,"prato raso ~27 cm; filé ~11×6 cm, ~1,5 cm alto"
+b007,nuvem_llm_v2,salame fatiado,USDA: salami,salami,USDA,1.0,22.0,proteina_animal,80.0,17.6,media,"prato ~27 cm; ~16 fatias de ~8 cm, finas (~5 g cada)"
+b012,nuvem_llm_v2,bife grelhado,"Carne, bovina, contra-filé, sem gordura, grelhado","Carne, bovina, contra-filé, sem gordura, grelhado",TACO,1.0,35.9,proteina_animal,160.0,57.44,media,"prato ~27 cm; bife ~13×8 cm, ~2 cm alto"
+b015,nuvem_llm_v2,macarrão fino/talharim,USDA: noodles,noodles,USDA,1.0,4.5,amido,180.0,8.1,baixa,"prato ~27 cm; monte ~17 cm diâm., ~1,5 cm alto, solto"
+b049,nuvem_llm_v2,lombo de porco em medalhões,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,270.0,96.39,media,"prato ~27 cm; 8 medalhões ~6 cm diâm. × 2,5 cm (~34 g cada)"
+b082,nuvem_llm_v2,lombo de porco em medalhões,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,200.0,71.4,media,"prato raso ~27 cm; 6 medalhões ~6 cm diâm. × 2,5 cm (~34 g cada)"
+b091,nuvem_llm_v2,lombo de porco assado fatiado,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,170.0,60.69,media,"prato ~27 cm; 4 fatias ~10×7 cm, ~1,2 cm"
+b068,nuvem_llm_v2,feijão preto com caldo,"Feijão, preto, cozido","Feijão, preto, cozido",TACO,1.0,4.5,leguminosa,160.0,7.2,baixa,marmita ~750 ml; feijão ocupa ~1/3 do recipiente
+b068,nuvem_llm_v2,linguiça em rodelas,"Lingüiça, porco, grelhada","Lingüiça, porco, grelhada",TACO,1.0,23.2,proteina_animal,40.0,9.28,baixa,~5 rodelas sobre o feijão
+b068,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,110.0,2.75,baixa,faixa central ~1/3 da marmita
+b068,nuvem_llm_v2,couve refogada,"Couve, manteiga, refogada","Couve, manteiga, refogada",TACO,1.0,1.7,vegetal,70.0,1.19,baixa,faixa inferior ~1/3 da marmita
+c016,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,60.0,1.26,media,marmita retangular ~19×14 cm; ~1/4 do espaço
+c016,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,60.0,1.5,media,faixa estreita ~1/6 da marmita
+c016,nuvem_llm_v2,carne moída,"Carne, bovina, acém, moído, cozido","Carne, bovina, acém, moído, cozido",TACO,1.0,26.7,proteina_animal,120.0,32.04,media,"~1/3 da marmita, ~3 cm alto"
+c016,nuvem_llm_v2,feijão carioca com caldo,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,110.0,5.28,media,~1/4 da marmita com caldo
+d0024,nuvem_llm_v2,abacate,USDA: avocado,avocado,USDA,1.0,2.0,vegetal,45.0,0.9,media,prato quadrado ~26 cm; 2 fatias ~9 cm
+d0024,nuvem_llm_v2,acelga refogada,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,60.0,1.8,baixa,"monte ~9×8 cm, baixo"
+d0029,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,65.0,7.15,media,prato quadrado ~26 cm; pedaço ~9×7 cm
+d0029,nuvem_llm_v2,abobrinha/abóbora assada,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,80.0,0.88,baixa,~6 pedaços à esquerda
+d0029,nuvem_llm_v2,couve-de-bruxelas,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,50.0,1.7,media,5 unidades ~3 cm
+d0029,nuvem_llm_v2,frango assado,USDA: roast chicken,roast chicken,USDA,1.0,23.5,proteina_animal,40.0,9.4,baixa,pedaço ~7×4 cm
+d0029,nuvem_llm_v2,salada de couve com abóbora,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,60.0,1.32,baixa,"~1/6 do prato, alto direito"
+d0029,nuvem_llm_v2,salada caesar,USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,100.0,1.4,baixa,~1/4 do prato com molho
+d0029,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,15.0,0.32,baixa,1 pedaço pequeno
+d0048,nuvem_llm_v2,grão-de-bico,USDA: chickpeas,chickpeas,USDA,1.0,9.0,leguminosa,60.0,5.4,media,~40 grãos; prato quadrado ~26 cm
+d0048,nuvem_llm_v2,espinafre/rúcula,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,50.0,1.5,baixa,faixa de folhas ~1/4 do prato
+d0048,nuvem_llm_v2,pera fatiada,USDA: pear,pears,USDA,0.978,0.4,vegetal,15.0,0.06,baixa,1 fatia fina
+d0048,nuvem_llm_v2,mirtilo,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,6.0,0.04,media,4 unidades
+d0083,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,"prato quadrado ~26 cm; ~1/2 do prato, ~3 cm alto"
+d0083,nuvem_llm_v2,batata assada em cubos,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,100.0,2.1,media,"~14 cubos ~2,5 cm"
+d0107,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,170.0,17.0,media,"prato quadrado ~26 cm; monte ~14×16 cm, ~2,5 cm alto"
+d0113,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,90.0,9.0,media,prato ~22 cm; ~1/4 do prato
+d0113,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,25.0,9.25,media,~3 tiras
+d0113,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,80.0,1.92,media,"~1/4 do prato, floretes"
+d0122,nuvem_llm_v2,salada de atum,USDA: tuna,tuna,USDA,1.0,29.0,proteina_animal,130.0,37.7,media,"prato quadrado ~26 cm; monte ~11×12 cm, ~2,5 cm alto"
+d0124,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,"prato ~26 cm; ~1/2 do prato, ~3 cm alto"
+d0124,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,150.0,1.5,media,~15 pedaços ~3 cm
+d0132,nuvem_llm_v2,frango empanado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,45.0,13.99,baixa,prato ~26 cm; peça ~6×5 cm
+d0132,nuvem_llm_v2,cogumelos refogados,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,20.0,0.62,baixa,pequena porção sob o frango
+d0132,nuvem_llm_v2,vagem/aspargo,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,10.0,0.18,baixa,2 pedaços
+d0138,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,70.0,1.68,media,prato ~26 cm; ~1/5 do prato
+d0138,nuvem_llm_v2,rúcula,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,"~1/3 do prato, folhas leves"
+d0138,nuvem_llm_v2,lentilha,USDA: lentils,lentils,USDA,1.0,9.0,leguminosa,50.0,4.5,media,monte ~7×6 cm
+d0190,nuvem_llm_v2,carne de porco desfiada,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,100.0,26.0,baixa,prato ~23 cm; monte ~9×7 cm
+d0190,nuvem_llm_v2,carne com cenoura cozida,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,35.0,0.28,baixa,pedaços de cenoura à direita
+d0190,nuvem_llm_v2,carne ensopada (pedaços à direita),USDA: pork,pork,USDA,1.0,26.0,proteina_animal,35.0,9.1,baixa,pedaços pequenos com cenoura
+d0190,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,30.0,0.3,media,2 fatias longas ~10 cm
+d0191,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,110.0,2.31,media,prato ~24 cm; ~14 pedaços ~3 cm
+d0197,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,20.0,7.4,media,2 tiras inteiras
+d0197,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"prato ~24 cm; ~1/2 do prato, ~2,5 cm alto"
+d0207,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,30.0,11.1,media,3 tiras
+d0207,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,80.0,8.0,baixa,prato ~26 cm; ~1/5 do prato
+d0207,nuvem_llm_v2,batata hash brown,USDA: hash browns,hash browns,USDA,1.0,2.6,amido,120.0,3.12,baixa,~1/3 do prato
+d0207,nuvem_llm_v2,salsa de tomate,USDA: salsa,salsa,USDA,1.0,1.5,gordura_molho,25.0,0.38,baixa,porção sobre os ovos
+d0217,nuvem_llm_v2,linguiça em pedaços,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,110.0,21.23,media,prato descartável ~18 cm; 8 pedaços ~4 cm
+d0237,nuvem_llm_v2,tofu,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,40.0,3.2,media,prato ~26 cm; 4 cubos ~3 cm
+d0237,nuvem_llm_v2,lentilha/trigo,USDA: lentils,lentils,USDA,1.0,9.0,leguminosa,25.0,2.25,baixa,~25 grãos espalhados
+d0237,nuvem_llm_v2,salada de repolho e cenoura,"Repolho, branco, cru","Repolho, branco, cru",TACO,1.0,0.9,vegetal,20.0,0.18,baixa,poucas tiras
+d0243,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,"prato ~22 cm; ~2/3 do prato, ~2,5 cm alto"
+d0243,nuvem_llm_v2,molho verde/salsa,USDA: salsa,salsa,USDA,1.0,1.5,gordura_molho,40.0,0.6,baixa,porções sobre os ovos
+d0258,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,140.0,14.0,media,"prato ~23 cm; monte ~10×15 cm, ~2 cm alto"
+d0269,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,90.0,3.06,media,prato ~26 cm; ~13 unidades/metades
+d0305,nuvem_llm_v2,couve-de-bruxelas,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,80.0,2.72,media,prato ~26 cm; ~8 unidades
+d0305,nuvem_llm_v2,batata hash brown,USDA: hash browns,hash browns,USDA,1.0,2.6,amido,100.0,2.6,media,~1/4 do prato
+d0305,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,~1/4 do prato
+d0305,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,30.0,11.1,media,3 tiras
+d0321,nuvem_llm_v2,peixe assado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,90.0,16.56,baixa,prato ~26 cm; 2 pedaços ~8×5 cm
+d0321,nuvem_llm_v2,carne bovina,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,110.0,27.5,baixa,"~1/6 do prato, ~2 cm alto"
+d0321,nuvem_llm_v2,cuscuz/quinoa,USDA: couscous,couscous,USDA,1.0,3.8,amido,60.0,2.28,baixa,monte ~8×7 cm
+d0321,nuvem_llm_v2,batatas pequenas,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,40.0,0.84,baixa,2-3 pedaços sob o cuscuz
+d0321,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,40.0,0.72,media,~8 vagens
+d0321,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,50.0,0.35,media,4 unidades
+d0321,nuvem_llm_v2,abacate,USDA: avocado,avocado,USDA,1.0,2.0,vegetal,70.0,1.4,media,2 fatias grandes
+d0321,nuvem_llm_v2,abobrinha assada,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,40.0,0.44,baixa,1 pedaço
+d0321,nuvem_llm_v2,beterraba/cogumelos,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,35.0,1.08,baixa,porção escura ao lado da vagem
+d0344,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,35.0,7.84,media,prato ~26 cm; ~30 unidades
+d0344,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,100.0,0.7,media,~20 uvas
+d0344,nuvem_llm_v2,melão cantalupo,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,70.0,0.56,media,6 cubos ~3 cm
+d0344,nuvem_llm_v2,linguiça em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,90.0,17.37,media,"~14 rodelas ~3,5 cm"
+d0354,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,prato ~26 cm; ~1/3 do prato
+d0354,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,45.0,16.65,media,~5 tiras sobrepostas
+d0354,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,80.0,1.68,media,~9 pedaços
+d0355,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,80.0,1.44,media,prato ~26 cm; ~1/4 do prato
+d0355,nuvem_llm_v2,couve/acelga refogada,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,90.0,2.7,baixa,~1/3 do prato
+d0355,nuvem_llm_v2,quinoa,USDA: quinoa,quinoa,USDA,1.0,4.4,amido,110.0,4.84,media,"faixa ~12×6 cm, ~2 cm alto"
+d0355,nuvem_llm_v2,carne grelhada,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,60.0,15.0,baixa,2 fatias ~8×4 cm
+d0358,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,170.0,17.0,media,prato ~26 cm; ~1/2 do prato
+d0358,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,70.0,0.42,media,"~8 cubos ~2,5 cm"
+d0363,nuvem_llm_v2,chili com carne,USDA: chili con carne,chili,USDA,0.5,1.8,misto,230.0,4.14,baixa,tigela ~15 cm cheia
+d0363,nuvem_llm_v2,creme azedo,USDA: sour cream,sour cream,USDA,1.0,2.4,gordura_molho,15.0,0.36,baixa,1 colherada
+d0363,nuvem_llm_v2,queijo cheddar ralado,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,10.0,2.5,baixa,fios por cima
+d0385,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,180.0,3.24,media,"prato ~26 cm; ~1/2 do prato, floretes"
+d0399,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,180.0,40.68,media,tigela oval ~25 cm; ~35 cubos ~2 cm
+d0399,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,70.0,1.68,media,~7 floretes
+d0399,nuvem_llm_v2,folhas verdes,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,50.0,1.1,media,base de folhas da tigela
+n001,nuvem_llm_v2,frango empanado recheado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,120.0,37.32,baixa,"prato ~26 cm; peça ~10×7 cm, ~3 cm alto"
+n001,nuvem_llm_v2,salada de couve com quinoa,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,35.0,0.77,baixa,monte ~9×5 cm
+n001,nuvem_llm_v2,cenoura assada,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,10.0,0.08,baixa,1 pedaço
+n008,nuvem_llm_v2,espinafre,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,50.0,1.1,media,tigela ~25 cm; base de folhas
+n008,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,60.0,1.44,media,~6 floretes
+n008,nuvem_llm_v2,cenoura ralada,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,30.0,0.27,media,2 montinhos
+n008,nuvem_llm_v2,frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,60.0,18.66,baixa,~10 cubos brancos
+n008,nuvem_llm_v2,queijo feta esfarelado,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,30.0,7.5,baixa,esfarelado no centro
+n011,nuvem_llm_v2,espinafre,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,30.0,0.9,media,prato ~26 cm; monte ~9×7 cm
+n011,nuvem_llm_v2,mirtilo,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,6.0,0.04,media,4 unidades
+b028,nuvem_llm_v2,arroz com feijão e legumes,USDA: rice and beans with vegetables,mixed vegetables,USDA,0.652,1.7,outros,70.0,1.19,media,"prato grande ~28 cm vs garfo 19 cm; faixa ~5x9 cm, ~2 cm alt"
+b031,nuvem_llm_v2,camarão cozido,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,160.0,30.4,media,"prato ~28 cm; monte ~11x9 cm, ~2,5 cm alt"
+b054,nuvem_llm_v2,filé de peixe assado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,120.0,22.08,media,"peça ~13x8 cm, ~1,5 cm esp vs garfo"
+b085,nuvem_llm_v2,macarrão com presunto e pimentão,USDA: macaroni with ham and vegetables,mixed vegetables,USDA,0.647,1.7,outros,340.0,5.78,media,"ocupa ~70% do prato ~28 cm, ~3 cm alt"
+c014,nuvem_llm_v2,macarrão parafuso com molho de tomate,"Macarrão, trigo, cozido (USDA 20121)","Macarrão, trigo, cozido (USDA 20121)",EXTRA,1.0,5.8,amido,180.0,10.44,media,"marmita ~19x14 cm; massa ocupa ~60%, ~3 cm"
+c014,nuvem_llm_v2,almôndegas ao molho,USDA: meatballs,meatballs,USDA,1.0,14.0,proteina_animal,120.0,16.8,media,3 almôndegas ~5 cm diâm ~40 g cada
+c026,nuvem_llm_v2,arroz cremoso com molho,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,170.0,4.25,media,"marmita ~19x14 cm, base ~3 cm sob camarões"
+c026,nuvem_llm_v2,camarão,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,100.0,19.0,media,~9 camarões ~11 g cada
+c026,nuvem_llm_v2,ervilha,USDA: green peas,green peas,USDA,1.0,5.0,leguminosa,10.0,0.5,media,~6 ervilhas
+c027,nuvem_llm_v2,camarão ao molho rosé,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,110.0,20.9,media,terço esquerdo da marmita ~19x14 cm
+c027,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,100.0,2.5,media,"terço central da marmita, ~3 cm"
+c027,nuvem_llm_v2,batata assada em cubos,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,110.0,2.31,baixa,"terço direito, cubos ~2,5 cm"
+c034,nuvem_llm_v2,sobrecoxa de frango assada,"Frango, sobrecoxa, sem pele, assada","Frango, sobrecoxa, sem pele, assada",TACO,1.0,29.2,proteina_animal,140.0,40.88,media,"3 pedaços ~7x5 cm sobre o purê, marmita ~19x14 cm"
+c034,nuvem_llm_v2,purê de batata,USDA: mashed potatoes,mashed potatoes,USDA,1.0,1.7,amido,80.0,1.36,baixa,"parte escondida sob o frango, lado esquerdo"
+c034,nuvem_llm_v2,batata-doce/abóbora assada em cubos,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,90.0,0.54,media,"~8 cubos ~2,5 cm"
+c034,nuvem_llm_v2,ervilha,USDA: green peas,green peas,USDA,1.0,5.0,leguminosa,25.0,1.25,media,~18 ervilhas
+d0019,nuvem_llm_v2,tofu em cubos,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,180.0,14.4,media,"bacia inox ~26 cm; cubos ~2 cm, área ~12x15 cm"
+d0019,nuvem_llm_v2,queijo ralado em lascas,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,30.0,7.5,baixa,lascas no lado direito
+d0019,nuvem_llm_v2,molho de amendoim,USDA: salad dressing,salad dressing,USDA,1.0,0.8,gordura_molho,30.0,0.24,media,poça ~6x7 cm
+d0019,nuvem_llm_v2,cebola roxa,USDA: onions,onions,USDA,1.0,1.1,vegetal,15.0,0.16,baixa,tiras visíveis nas bordas
+d0019,nuvem_llm_v2,cenoura e pimentão,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,20.0,0.18,baixa,"tiras sob o tofu, parcialmente escondidas"
+d0028,nuvem_llm_v2,mix de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,50.0,1.1,media,"tigela oval ~22 cm, folhas cobrindo metade"
+d0028,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,90.0,2.16,media,~6 floretes médios
+d0028,nuvem_llm_v2,parmesão em lascas,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,15.0,3.75,media,~6 lascas finas
+d0039,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,"prato quadrado ~24 cm; monte ~14x12 cm, ~2,5 cm"
+d0039,nuvem_llm_v2,cheddar ralado,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,15.0,3.75,media,fios por cima ~6x8 cm
+d0039,nuvem_llm_v2,salsa/molho de tomate,USDA: salsa,salsa,USDA,1.0,1.5,gordura_molho,20.0,0.3,baixa,faixas vermelhas sob o queijo
+d0065,nuvem_llm_v2,lasanha,USDA: lasagna,lasagna,USDA,1.0,7.2,misto,180.0,12.96,baixa,"prato ~26 cm; pedaço ~13x10 cm, ~2,5 cm alt"
+d0068,nuvem_llm_v2,peixe com espinafre e tomate,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,150.0,27.6,baixa,prato ~26 cm; peça ~16x8 cm sob cobertura
+d0068,nuvem_llm_v2,cobertura de espinafre e tomate,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,70.0,2.1,baixa,camada sobre o peixe
+d0084,nuvem_llm_v2,abacaxi em pedaços,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,120.0,0.6,media,"prato quadrado ~24 cm; 13 pedaços ~4x2x1,5 cm"
+d0116,nuvem_llm_v2,peixe empanado com ervas,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,60.0,11.04,baixa,marmita isopor ~22 cm; pedaço ~8x5 cm
+d0116,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,110.0,2.64,media,~5 floretes grandes
+d0116,nuvem_llm_v2,minipimentão e pimentão vermelho,USDA: bell peppers,bell peppers,USDA,1.0,2.0,vegetal,35.0,0.7,media,1 minipimentão ~8 cm + tira vermelha
+d0116,nuvem_llm_v2,abobrinha,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,10.0,0.11,media,1 rodela
+d0118,nuvem_llm_v2,tofu em cubos com molho,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,130.0,10.4,media,bacia inox ~26 cm; ~30 cubos ~2 cm
+d0118,nuvem_llm_v2,mix de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,60.0,1.32,baixa,"cobre metade da bacia, volume solto"
+d0118,nuvem_llm_v2,cenoura ralada,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,30.0,0.27,media,monte ~8x6 cm
+d0118,nuvem_llm_v2,repolho roxo e cebola,USDA: red cabbage,cabbage,USDA,0.806,1.3,vegetal,25.0,0.33,baixa,tiras na parte inferior
+d0118,nuvem_llm_v2,molho cremoso,USDA: salad dressing,salad dressing,USDA,1.0,0.8,gordura_molho,15.0,0.12,baixa,cobertura rosada sobre o tofu
+d0136,nuvem_llm_v2,frango glaceado,USDA: chicken thighs,chicken thighs,USDA,1.0,23.9,proteina_animal,100.0,23.9,media,prato quadrado ~24 cm; peça ~9x7 cm
+d0136,nuvem_llm_v2,arroz amarelo,USDA: white rice,white rice,USDA,1.0,2.7,amido,70.0,1.89,media,"monte ~7x5 cm, ~2 cm"
+d0136,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,40.0,0.36,media,1 fatia ~5x4 cm
+d0136,nuvem_llm_v2,salada caesar,USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,70.0,0.98,baixa,folhas ~10x8 cm com molho
+d0136,nuvem_llm_v2,salada de pepino/acelga,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,35.0,0.35,baixa,porção ~6x5 cm
+d0156,nuvem_llm_v2,melão,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,70.0,0.35,media,4 pedaços ~4x3 cm
+d0156,nuvem_llm_v2,alface,USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,40.0,0.56,media,folhas ~12x10 cm
+d0156,nuvem_llm_v2,morango,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,40.0,0.28,media,3 metades de morango médio
+d0156,nuvem_llm_v2,mirtilo,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,20.0,0.14,media,~12 mirtilos
+d0158,nuvem_llm_v2,dumplings/guioza,USDA: dumplings,dumplings,USDA,1.0,6.2,outros,100.0,6.2,baixa,tigela ~14 cm; ~3 unidades
+d0158,nuvem_llm_v2,rabanete,USDA: radish,radishes,USDA,0.971,0.7,vegetal,10.0,0.07,media,3 rodelas finas
+d0158,nuvem_llm_v2,amendoim picado,USDA: peanuts,peanuts,USDA,1.0,25.3,outros,8.0,2.02,baixa,pedacinhos por cima
+d0186,nuvem_llm_v2,mix de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,50.0,1.1,media,prato quadrado ~24 cm; metade superior
+d0186,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,120.0,2.88,media,~6 floretes médios/grandes
+d0186,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,10.0,0.07,alta,1 unidade
+d0199,nuvem_llm_v2,bagel (metade),USDA: bagel,bagels,USDA,0.982,10.1,amido,50.0,5.05,media,prato ~24 cm; meia bagel ~9 cm
+d0199,nuvem_llm_v2,cream cheese,USDA: cream cheese,cream cheese,USDA,1.0,6.2,laticinio,25.0,1.55,media,camada sobre a bagel
+d0199,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,50.0,0.3,media,~8 cubos ~2 cm
+d0199,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,10.0,3.7,alta,1 fatia
+d0199,nuvem_llm_v2,framboesa,USDA: raspberries,raspberries,USDA,1.0,1.2,vegetal,25.0,0.3,media,5 unidades
+d0199,nuvem_llm_v2,amora,USDA: blackberries,blackberries,USDA,1.0,1.4,vegetal,25.0,0.35,media,5 unidades
+d0200,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,120.0,12.0,media,"prato quadrado ~24 cm; monte ~12x9 cm, ~2,5 cm"
+d0222,nuvem_llm_v2,ovos mexidos com queijo,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,prato ~24 cm; área ~12x8 cm
+d0222,nuvem_llm_v2,morango,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,50.0,0.35,media,3 morangos médios
+d0222,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,70.0,1.68,media,2 floretes grandes
+d0222,nuvem_llm_v2,linguiça/salsicha em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,70.0,13.51,media,~9 rodelas grossas ~3 cm
+d0223,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,80.0,8.0,media,prato quadrado ~24 cm; área ~8x7 cm
+d0223,nuvem_llm_v2,morango,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,60.0,0.42,media,~8 metades
+d0223,nuvem_llm_v2,framboesa,USDA: raspberries,raspberries,USDA,1.0,1.2,vegetal,25.0,0.3,media,~5 unidades
+d0223,nuvem_llm_v2,mirtilo,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,10.0,0.07,media,~6 unidades
+d0223,nuvem_llm_v2,melancia,USDA: watermelon,watermelon,USDA,1.0,0.6,vegetal,40.0,0.24,baixa,~5 cubos pequenos
+d0223,nuvem_llm_v2,abacaxi,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,110.0,0.55,media,~12 pedaços
+d0223,nuvem_llm_v2,salsicha em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,35.0,6.75,media,4 rodelas ~3 cm
+d0250,nuvem_llm_v2,espinafre cru,USDA: spinach,,,0.422,0.0,vegetal,40.0,0.0,media,prato ~26 cm; folhas cobrindo ~1/3
+d0250,nuvem_llm_v2,cenoura assada,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,100.0,0.9,media,"~10 pedaços ~5x1,5 cm"
+d0250,nuvem_llm_v2,pera,USDA: pear,pears,USDA,0.978,0.4,vegetal,170.0,0.68,media,1 pera média ~8 cm
+d0252,nuvem_llm_v2,frango/peru desfiado,USDA: turkey,turkey,USDA,1.0,29.0,proteina_animal,35.0,10.15,baixa,prato ~26 cm; porção ~6x5 cm
+d0260,nuvem_llm_v2,cogumelos salteados,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,100.0,3.1,media,prato ~24 cm; área ~11x8 cm
+d0260,nuvem_llm_v2,carne bovina,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,110.0,28.6,media,"~4 pedaços ~4x3 cm, ~2 cm"
+d0260,nuvem_llm_v2,pesto,USDA: pesto,pesto,USDA,1.0,12.1,gordura_molho,10.0,1.21,baixa,pequena porção verde
+d0301,nuvem_llm_v2,espinafre,USDA: spinach,,,0.422,0.0,vegetal,40.0,0.0,media,prato ~24 cm; folhas ocupando ~1/3
+d0301,nuvem_llm_v2,cenoura ralada,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,10.0,0.09,media,fios por cima
+d0303,nuvem_llm_v2,carne bovina ao molho,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,90.0,23.4,baixa,prato ~26 cm; peça ~7x7 cm
+d0303,nuvem_llm_v2,macarrão/gratinado de queijo,USDA: macaroni and cheese,macaroni and cheese,USDA,1.0,7.0,misto,110.0,7.7,baixa,"porção ~10x8 cm, ~2,5 cm"
+d0348,nuvem_llm_v2,peito de frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,130.0,40.43,media,bacia inox ~26 cm; ~40 cubos ~2 cm
+d0349,nuvem_llm_v2,ovos mexidos com queijo,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"prato quadrado ~24 cm; área ~13x10 cm, ~2 cm"
+d0375,nuvem_llm_v2,mix de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,prato ~26 cm; área ~10x8 cm
+d0375,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,10.0,0.07,alta,1 unidade
+d0375,nuvem_llm_v2,abobrinha e abóbora amarela,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,90.0,0.99,media,~8 meias-luas
+d0375,nuvem_llm_v2,pizza/flatbread,USDA: pizza,pizza,USDA,1.0,11.0,misto,80.0,8.8,media,fatia ~11x7 cm
+d0375,nuvem_llm_v2,coxa de frango,USDA: roast chicken,roast chicken,USDA,1.0,23.5,proteina_animal,60.0,14.1,media,"1 coxa pequena, sem osso"
+d0375,nuvem_llm_v2,cenoura cozida,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,70.0,0.63,media,~7 rodelas ~4 cm
+d0376,nuvem_llm_v2,peixe empanado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,110.0,20.24,media,prato ~26 cm; 2 filés ~9x6 cm
+d0376,nuvem_llm_v2,folhas de acelga/mix,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,baixa,área ~12x8 cm
+d0376,nuvem_llm_v2,cebola em conserva,USDA: onions,onions,USDA,1.0,1.1,vegetal,15.0,0.16,media,anéis rosados
+d0376,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,10.0,0.07,alta,1 unidade
+d0376,nuvem_llm_v2,alcachofra,USDA: artichokes,artichokes,USDA,1.0,3.3,vegetal,30.0,0.99,baixa,~3 pedaços
+d0376,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,70.0,1.47,media,3 batatas pequenas
+d0376,nuvem_llm_v2,nabo/batata assado,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,30.0,0.63,baixa,2 pedaços brancos
+d0376,nuvem_llm_v2,pizza/flatbread,USDA: pizza,pizza,USDA,1.0,11.0,misto,90.0,9.9,media,3 pedaços ~6x5 cm
+d0387,nuvem_llm_v2,frango desfiado ao molho,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,130.0,40.43,media,prato ~24 cm; área ~12x8 cm
+d0387,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,80.0,2.72,media,~6 metades
+d0394,nuvem_llm_v2,salmão,"Salmão, sem pele, fresco, grelhado","Salmão, sem pele, fresco, grelhado",TACO,1.0,26.1,proteina_animal,140.0,36.54,media,prato ~24 cm; 2 postas ~8x5 cm + lascas
+d0394,nuvem_llm_v2,arroz integral com espinafre e pimentão,"Arroz, integral, cozido","Arroz, integral, cozido",TACO,1.0,2.6,amido,160.0,4.16,media,"área ~11x9 cm, ~2,5 cm"
+n004,nuvem_llm_v2,peixe (cavala) assado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,80.0,14.72,baixa,prato ~24 cm; filé ~10x5 cm
+n004,nuvem_llm_v2,bolo de carne/peixe,USDA: meatloaf,meatloaf,USDA,1.0,15.0,proteina_animal,80.0,12.0,baixa,"fatia ~7x5 cm, ~2 cm"
+n004,nuvem_llm_v2,farro/cevada,USDA: barley,barley,USDA,1.0,2.3,amido,25.0,0.57,baixa,grãos espalhados
+n004,nuvem_llm_v2,espinafre,USDA: spinach,,,0.422,0.0,vegetal,15.0,0.0,media,poucas folhas
+n015,nuvem_llm_v2,salada caesar,USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,120.0,1.68,media,prato ~24 cm; área ~14x10 cm com molho
+n015,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,80.0,1.92,media,2 floretes + florete no arroz
+n015,nuvem_llm_v2,arroz selvagem/vermelho,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,40.0,1.04,baixa,área ~6x5 cm
+n015,nuvem_llm_v2,legumes e tofu,USDA: bell peppers,bell peppers,USDA,1.0,2.0,vegetal,30.0,0.6,baixa,"tomate, pimentão, 1 cubo de tofu"
+n016,nuvem_llm_v2,salada caesar com croutons,USDA: lettuce,lettuce,USDA,1.0,1.4,vegetal,110.0,1.54,media,prato ~26 cm; área ~13x10 cm
+n016,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,110.0,12.1,media,fatia ~15x10 cm
+n016,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,60.0,1.44,media,~5 floretes
+n016,nuvem_llm_v2,frango grelhado em tiras,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,70.0,15.82,media,3 tiras ~6x3 cm
+n043,nuvem_llm_v2,frango em pedaços,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,70.0,21.77,media,prato descartável ~18 cm; área ~8x8 cm
+n045,nuvem_llm_v2,muffin inglês/bagel (metade),USDA: bread,bread,USDA,1.0,13.5,amido,35.0,4.72,media,prato ~24 cm; metade ~9 cm
+n045,nuvem_llm_v2,cream cheese,USDA: cream cheese,cream cheese,USDA,1.0,6.2,laticinio,20.0,1.24,media,camada sobre o pão
+n045,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,60.0,6.0,media,área ~9x6 cm
+n045,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,60.0,0.36,media,~12 cubos ~2 cm
+b010,nuvem_llm_v2,carne cozida em molho,"Carne, bovina, acém, cozido","Carne, bovina, contra-filé, sem gordura, grelhado",TACO,0.9,35.9,proteina_animal,170.0,61.03,baixa,"prato fundo ~22 cm; carne ocupa ~1/3 da área útil, ~3 cm alto, com molho"
+b010,nuvem_llm_v2,batata cozida,"Batata, inglesa, cozida","Batata, inglesa, cozida",TACO,1.0,1.2,amido,170.0,2.04,media,prato fundo ~22 cm; ~8 pedaços de batata ~5x3 cm
+b020,nuvem_llm_v2,feijoada,Feijoada,Feijoada,TACO,1.0,8.7,misto,320.0,27.84,media,"prato fundo ~22 cm cheio até ~2/3 da área, ~3 cm de profundidade"
+b022,nuvem_llm_v2,feijoada,Feijoada,Feijoada,TACO,1.0,8.7,misto,330.0,28.71,media,"prato fundo ~22 cm; área útil quase toda coberta, ~3 cm"
+b057,nuvem_llm_v2,camarão pequeno cozido,"Camarão, Rio Grande, grande, cozido","Camarão, Rio Grande, grande, cozido",TACO,1.0,19.0,proteina_animal,200.0,38.0,media,"prato raso ~26 cm; monte ~14x12 cm, ~2,5 cm alto"
+b073,nuvem_llm_v2,arroz negro (com tinta de lula),USDA: rice with squid ink,,,0.483,0.0,proteina_animal,260.0,0.0,baixa,"prato raso ~26 cm; mancha ~15x13 cm, ~2 cm alto"
+b076,nuvem_llm_v2,carne moída com legumes,"Carne, bovina, acém, moído, cozido","Carne, bovina, acém, moído, cozido",TACO,1.0,26.7,proteina_animal,110.0,29.37,baixa,"marmita ~19x14 cm; 1/3 da área, ~2,5 cm"
+b076,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,100.0,2.5,baixa,marmita ~19x14 cm; faixa central ~1/3
+b076,nuvem_llm_v2,feijão,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,110.0,5.28,baixa,marmita ~19x14 cm; 1/3 da área
+b083,nuvem_llm_v2,salame fatiado,USDA: salami,salami,USDA,1.0,22.0,proteina_animal,70.0,15.4,media,prato raso ~26 cm; ~15 fatias finas de ~8 cm
+b104,nuvem_llm_v2,macarrão miúdo (pastina) com queijo,"Macarrão, trigo, cozido (USDA 20121)","Macarrão, trigo, cozido (USDA 20121)",EXTRA,1.0,5.8,amido,230.0,13.34,media,"prato raso ~26 cm; monte ~16x14 cm, ~2,5 cm alto"
+b110,nuvem_llm_v2,carne assada fatiada (lombo),"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,130.0,46.41,media,"prato raso ~26 cm; 3 rodelas ~6 cm diâmetro, ~2,5 cm espessura"
+c025,nuvem_llm_v2,feijão branco/carioca,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,110.0,5.28,media,marmita ~19x14 cm; feijão ocupa ~1/3
+c025,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,75.0,1.88,media,marmita; faixa central estreita de arroz
+c025,nuvem_llm_v2,carne de panela com abóbora,"Carne, bovina, acém, cozido","Carne, bovina, contra-filé, sem gordura, grelhado",TACO,0.9,35.9,proteina_animal,130.0,46.67,media,"marmita; ~1/3 da área, ~3 cm, cubos de carne e abóbora"
+d0004,nuvem_llm_v2,abacaxi em cubos,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,110.0,0.55,media,prato quadrado ~25 cm; ~9 cubos ~3 cm
+d0004,nuvem_llm_v2,abobrinha verde e amarela,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,130.0,1.43,media,prato ~25 cm; ~10 fatias grossas
+d0004,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,70.0,2.38,media,prato ~25 cm; ~7 metades
+d0004,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,100.0,11.0,media,pedaço retangular ~10x8 cm
+d0014,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,140.0,15.4,media,3 tiras ~8x5 cm em prato ~25 cm
+d0014,nuvem_llm_v2,salada de espinafre/folhas,USDA: spinach,,,0.422,0.0,vegetal,40.0,0.0,baixa,monte de folhas ~1/4 do prato
+d0014,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,40.0,0.4,baixa,~8 rodelas/pedaços
+d0014,nuvem_llm_v2,azeitona preta,USDA: olives,olives,USDA,1.0,0.8,vegetal,25.0,0.2,baixa,~6 azeitonas kalamata
+d0014,nuvem_llm_v2,tomate,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,15.0,0.11,baixa,poucos pedaços
+d0021,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,55.0,0.39,media,7 tomates-cereja ~8 g cada
+d0021,nuvem_llm_v2,azeitona preta,USDA: olives,olives,USDA,1.0,0.8,vegetal,35.0,0.28,media,8 azeitonas kalamata ~4 g cada
+d0035,nuvem_llm_v2,clara de ovo mexida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,220.0,22.0,media,"prato quadrado ~23 cm; monte ~16x13 cm, ~2,5 cm"
+d0040,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,110.0,12.1,media,prato de papel ~23 cm; pedaço ~10x9 cm
+d0046,nuvem_llm_v2,pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,190.0,20.9,media,prato ~25 cm; 2 pedaços sobrepostos ~15x8 cm
+d0046,nuvem_llm_v2,salada com molho cremoso,USDA: salad,salads,USDA,0.982,1.0,vegetal,90.0,0.9,baixa,monte ~12x8 cm
+d0074,nuvem_llm_v2,linguiça/chouriço fatiado,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,90.0,17.37,media,prato ~25 cm; ~12 rodelas
+d0074,nuvem_llm_v2,uvas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,150.0,1.05,media,~30 uvas ~5 g
+d0074,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,50.0,11.2,media,"~40 amêndoas ~1,2 g"
+d0091,nuvem_llm_v2,peixe empanado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,130.0,23.92,media,prato ~25 cm; 2 filés ~10x6 cm
+d0091,nuvem_llm_v2,pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,120.0,13.2,media,2 pedaços ~9x7 cm
+d0091,nuvem_llm_v2,batata assada pequena,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,50.0,1.05,media,2 batatas bolinha
+d0100,nuvem_llm_v2,espinafre refogado,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,80.0,2.4,baixa,prato ~25 cm; monte ~1/3 do prato
+d0100,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,90.0,2.16,media,3 floretes grandes
+d0101,nuvem_llm_v2,bolo de carne,USDA: meatloaf,meatloaf,USDA,1.0,15.0,proteina_animal,90.0,13.5,baixa,"prato ~25 cm; pedaço ~8x6 cm, ~3 cm"
+d0101,nuvem_llm_v2,purê/couve-flor com ervas,USDA: mashed potatoes,mashed potatoes,USDA,1.0,1.7,amido,110.0,1.87,baixa,monte ~10x8 cm
+d0101,nuvem_llm_v2,brócolis rabe,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,90.0,2.16,baixa,~1/3 do prato
+d0109,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,100.0,11.0,media,prato ~25 cm; fatia ~12x9 cm
+d0125,nuvem_llm_v2,pizza de pepperoni,USDA: pizza,pizza,USDA,1.0,11.0,misto,140.0,15.4,media,2 pedaços ~11x6 cm
+d0125,nuvem_llm_v2,pão (triângulos),USDA: bread,bread,USDA,1.0,13.5,amido,70.0,9.45,media,2 triângulos de pão ~11 cm
+d0149,nuvem_llm_v2,iogurte,USDA: greek yogurt,greek yogurt,USDA,1.0,10.0,laticinio,80.0,8.0,baixa,tigela ~12 cm
+d0149,nuvem_llm_v2,granola,USDA: granola,granola,USDA,1.0,10.0,amido,35.0,3.5,baixa,cobertura na tigela
+d0149,nuvem_llm_v2,pera/maçã em cubos,USDA: pear,pears,USDA,0.978,0.4,vegetal,25.0,0.1,baixa,poucos cubos
+d0164,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,20.0,7.4,media,2 tiras em prato ~23 cm
+d0187,nuvem_llm_v2,clara de ovo mexida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,200.0,20.0,media,"prato ~25 cm; ~1/2 do prato, ~2 cm"
+d0187,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,80.0,0.8,media,"~9 cubos ~2,5 cm"
+d0187,nuvem_llm_v2,melão,USDA: melon,honeydew melons,USDA,0.75,0.5,vegetal,90.0,0.45,media,5 pedaços
+d0202,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,90.0,1.62,media,prato ~25 cm; ~35 vagens
+d0205,nuvem_llm_v2,torrada com rúcula e queijo,USDA: toast,toast,USDA,1.0,13.0,amido,90.0,11.7,baixa,fatia ~14x8 cm em prato ~25 cm
+d0205,nuvem_llm_v2,carne desfiada com repolho,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,110.0,28.6,baixa,monte ~12x9 cm
+d0225,nuvem_llm_v2,linguiça grelhada em pedaços,"Lingüiça, porco, grelhada","Lingüiça, porco, grelhada",TACO,1.0,23.2,proteina_animal,150.0,34.8,media,prato papel ~18 cm; ~11 pedaços ~3 cm
+d0232,nuvem_llm_v2,abobrinha assada,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,90.0,0.99,media,6 pedaços ~5 cm em prato ~25 cm
+d0236,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,150.0,33.9,media,"tigela ~25 cm; ~22 cubos ~2,5 cm"
+d0236,nuvem_llm_v2,folhas verdes,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,50.0,1.1,baixa,base da tigela
+d0236,nuvem_llm_v2,abacate,USDA: avocado,avocado,USDA,1.0,2.0,vegetal,50.0,1.0,baixa,~4 fatias
+d0256,nuvem_llm_v2,clara de ovo mexida,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,200.0,20.0,media,prato ~25 cm; monte ~16x14 cm
+d0264,nuvem_llm_v2,brócolis rabe,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,100.0,2.4,baixa,prato ~25 cm; ~1/2 do prato
+d0264,nuvem_llm_v2,hambúrguer/patty sob o brócolis,USDA: chicken,chicken,USDA,1.0,31.0,proteina_animal,70.0,21.7,baixa,parcialmente escondido; ~9 cm de diâmetro
+d0266,nuvem_llm_v2,peito de frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,150.0,46.65,media,prato ~25 cm; ~40 cubos pequenos
+d0266,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,70.0,0.49,media,7 tomates-cereja ~10 g
+d0277,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,25.0,9.25,media,3 tiras em prato ~23 cm
+d0314,nuvem_llm_v2,espinafre cru,USDA: spinach,,,0.422,0.0,vegetal,50.0,0.0,baixa,tigela ~26 cm; base de folhas
+d0314,nuvem_llm_v2,frango em cubos,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,80.0,24.88,baixa,~20 pedaços pequenos
+d0314,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,80.0,1.92,media,~8 floretes
+d0325,nuvem_llm_v2,filé de peixe grelhado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,90.0,16.56,media,prato ~25 cm; 2 pedaços ~8x5 cm
+d0352,nuvem_llm_v2,couve refogada,"Couve, manteiga, refogada","Couve, manteiga, refogada",TACO,1.0,1.7,vegetal,90.0,1.53,baixa,prato ~25 cm; ~1/3 do prato
+d0352,nuvem_llm_v2,arroz,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,100.0,2.5,baixa,~1/4 do prato sob o frango
+d0352,nuvem_llm_v2,frango,USDA: chicken,chicken,USDA,1.0,31.0,proteina_animal,50.0,15.5,baixa,pedaços sobre o arroz
+d0352,nuvem_llm_v2,omelete/fritada,USDA: omelets,omelets,USDA,1.0,10.4,proteina_animal,100.0,10.4,baixa,~1/4 do prato
+d0352,nuvem_llm_v2,abóbora amarela,USDA: squash,squash,USDA,1.0,0.9,vegetal,30.0,0.27,baixa,poucos pedaços
+d0361,nuvem_llm_v2,pão sírio,USDA: pita bread,pita bread,USDA,1.0,8.8,amido,60.0,5.28,baixa,~3 triângulos; prato ~25 cm parcialmente fora
+d0361,nuvem_llm_v2,homus,USDA: hummus,hummus,USDA,1.0,7.9,leguminosa,60.0,4.74,baixa,monte ~8 cm
+d0361,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,120.0,1.08,baixa,~8 cubos ~4 cm
+d0361,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,40.0,0.4,baixa,~4 palitos
+d0361,nuvem_llm_v2,frios (peito de peru),USDA: turkey,turkey,USDA,1.0,29.0,proteina_animal,30.0,8.7,baixa,fatias parcialmente visíveis no topo
+n036,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,36.0,8.06,media,"~30 amêndoas ~1,2 g em prato ~23 cm"
+n044,nuvem_llm_v2,salada caesar,USDA: salad,salads,USDA,0.982,1.0,vegetal,70.0,0.7,baixa,prato ~25 cm; monte ~12x8 cm
+n044,nuvem_llm_v2,salada de rúcula com mirtilos,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,60.0,1.32,baixa,monte ~12x9 cm
+b023,nuvem_llm_v2,peito de frango grelhado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,160.0,49.76,media,"prato raso ~27 cm entre garfo e faca; peito ~14x8 cm, ~2,5 cm de altura"
+b034,nuvem_llm_v2,filé de peixe branco cozido,USDA: cod,cod,USDA,1.0,18.9,proteina_animal,210.0,39.69,media,"prato raso ~27 cm; filé ~15x10 cm, ~2,5 cm de altura"
+b041,nuvem_llm_v2,fatias de salame,USDA: salami,salami,USDA,1.0,22.0,proteina_animal,35.0,7.7,media,prato ~27 cm; ~6 fatias finas de ~8 cm empilhadas
+b066,nuvem_llm_v2,camarão cozido descascado,USDA: shrimp,shrimp,USDA,1.0,24.0,proteina_animal,260.0,62.4,media,"prato ~27 cm; camarões cobrem ~60% da área útil, camada ~2 cm"
+c010,nuvem_llm_v2,tiras de frango grelhado,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,160.0,36.16,media,"embalagem de papel tipo 750 ml (~19x14 cm); frango ocupa ~1/3, ~10 tiras"
+c010,nuvem_llm_v2,salada de quinoa com repolho roxo e cenoura,USDA: quinoa,quinoa,USDA,1.0,4.4,amido,80.0,3.52,baixa,"embalagem ~19x14 cm; faixa central ~1/4 da área, ~3 cm altura"
+c010,nuvem_llm_v2,brócolis cozido,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,90.0,1.89,media,embalagem ~19x14 cm; ~5 floretes grandes
+c010,nuvem_llm_v2,abóbora/batata-doce em cubos,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,60.0,0.36,baixa,"~7 cubos de ~2,5 cm"
+d0013,nuvem_llm_v2,maçã inteira,USDA: apple,apple,USDA,1.0,0.3,vegetal,180.0,0.54,media,prato ~26 cm; maçã ~8 cm diâmetro
+d0013,nuvem_llm_v2,pedaço de milho na espiga,"Milho, verde, cozido","Milho, verde, enlatado, drenado",TACO,0.729,3.2,amido,40.0,1.28,baixa,rodela de espiga ~6 cm de diâmetro; só grãos comestíveis
+d0013,nuvem_llm_v2,uvas vermelhas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,125.0,0.88,media,prato ~26 cm; ~25 uvas de ~5 g
+d0013,nuvem_llm_v2,couve-flor crua,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,110.0,1.98,media,"~8 floretes médios, ~1/4 do prato"
+d0086,nuvem_llm_v2,pedaço de carne escura,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,25.0,6.5,baixa,"guardanapo ~20x33 cm; pedaço ~5x6 cm, fino"
+d0087,nuvem_llm_v2,hambúrgueres/bolinhos de carne,USDA: ground beef,ground beef,USDA,1.0,14.2,proteina_animal,150.0,21.3,baixa,"prato ~26 cm; 3 discos ~7 cm, ~1,5 cm altura"
+d0087,nuvem_llm_v2,legumes assados (batata e abóbora),USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,100.0,2.1,baixa,cubos ~2-3 cm sobre e ao lado da carne
+d0087,nuvem_llm_v2,abobrinha assada,USDA: zucchini,zucchini,USDA,1.0,1.1,vegetal,20.0,0.22,baixa,1 pedaço ~6 cm
+d0103,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,50.0,11.2,media,"prato quadrado ~24 cm; ~40 amêndoas de ~1,2 g"
+d0103,nuvem_llm_v2,uvas vermelhas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,90.0,0.63,media,~18 uvas de ~5 g
+d0103,nuvem_llm_v2,brócolis cozido,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,45.0,0.94,media,~4 floretes
+d0129,nuvem_llm_v2,azeitonas kalamata,USDA: olives,olives,USDA,1.0,0.8,vegetal,22.0,0.18,media,prato quadrado ~24 cm; 6 azeitonas ~4 g (sem caroço)
+d0129,nuvem_llm_v2,pedaços de frango desfiado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,60.0,18.66,baixa,"~6 pedaços pequenos, área ~8x6 cm"
+d0148,nuvem_llm_v2,queijo cottage,USDA: cottage cheese,cottage cheese,USDA,1.0,11.0,laticinio,150.0,16.5,media,"tigela ~16 cm; cottage ocupa ~10 cm de diâmetro, ~3 cm altura"
+d0150,nuvem_llm_v2,melão honeydew em cubos,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,120.0,0.6,media,prato quadrado ~24 cm; ~14 cubos de ~2 cm
+d0150,nuvem_llm_v2,abacaxi em pedaços,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,90.0,0.45,media,~8 bastões ~4x2 cm
+d0150,nuvem_llm_v2,couve-flor cozida picada,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,60.0,1.08,baixa,monte ~7x6 cm
+d0173,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,110.0,3.74,media,prato ~26 cm; ~13 unidades de ~8 g
+d0173,nuvem_llm_v2,melão honeydew em cubos,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,160.0,0.8,media,~10 cubos de ~3 cm
+d0173,nuvem_llm_v2,brócolis cozido,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,120.0,2.52,media,"~1/3 do prato, ~7 floretes"
+d0185,nuvem_llm_v2,pizza (2 pedaços),USDA: pizza,pizza,USDA,1.0,11.0,misto,130.0,14.3,baixa,prato quadrado ~24 cm; 2 fatias ~10x6 cm
+d0185,nuvem_llm_v2,aspargos,USDA: asparagus,asparagus,USDA,1.0,2.2,vegetal,25.0,0.55,media,2 talos ~13 cm
+d0185,nuvem_llm_v2,cogumelos salteados,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,60.0,1.86,media,~7 cogumelos médios
+d0188,nuvem_llm_v2,azeitonas kalamata,USDA: olives,olives,USDA,1.0,0.8,vegetal,70.0,0.56,media,prato quadrado ~26 cm; ~18 azeitonas
+d0188,nuvem_llm_v2,carne grelhada,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,50.0,12.5,baixa,"pedaço ~8x6 cm, ~1 cm"
+d0188,nuvem_llm_v2,filé de frango/peixe branco,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,50.0,15.55,baixa,pedaço ~9x5 cm fino
+d0189,nuvem_llm_v2,rodelas de linguiça de frango,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,40.0,7.72,media,"prato quadrado ~24 cm; 5 rodelas ~3,5 cm"
+d0189,nuvem_llm_v2,framboesas,USDA: raspberries,raspberries,USDA,1.0,1.2,vegetal,60.0,0.72,media,~14 framboesas de ~4 g
+d0203,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,80.0,1.44,media,prato ~26 cm; ~8 floretes pequenos
+d0203,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,80.0,1.68,media,~6 floretes
+d0203,nuvem_llm_v2,morangos,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,60.0,0.42,media,4 metades/morangos grandes
+d0203,nuvem_llm_v2,cenoura assada,"Cenoura, cozida","Cenoura, cozida",TACO,1.0,0.8,vegetal,100.0,0.8,media,~12 pedaços ~4 cm
+d0218,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,"prato quadrado ~24 cm; ocupa ~2/3, ~2 cm altura"
+d0249,nuvem_llm_v2,suco (laranja/toranja) no copo,USDA: orange juice,orange juice,USDA,1.0,0.7,vegetal,250.0,1.75,baixa,"copo ~9 cm de diâmetro visto de cima, cheio"
+d0278,nuvem_llm_v2,pepino em palitos,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,100.0,1.0,media,prato ~26 cm; 6 palitos ~11 cm
+d0282,nuvem_llm_v2,crepe/tortilha recheada,USDA: tortilla,tortilla,USDA,1.0,6.0,amido,70.0,4.2,baixa,prato ~26 cm; crepe dobrado ~12x8 cm
+d0282,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,"~1/4 do prato, ~2 cm altura"
+d0282,nuvem_llm_v2,batata salteada com pimentão,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,110.0,2.31,baixa,"~1/5 do prato, cubos ~2 cm"
+d0287,nuvem_llm_v2,pizza (1 pedaço quadrado),USDA: pizza,pizza,USDA,1.0,11.0,misto,90.0,9.9,media,prato quadrado ~24 cm; pedaço ~10x8 cm
+d0290,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,65.0,14.56,media,prato ~26 cm; ~55 amêndoas
+d0290,nuvem_llm_v2,tomate uva,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,80.0,0.56,media,8 tomates de ~10 g
+d0290,nuvem_llm_v2,melão cantaloupe em palitos,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,90.0,0.72,media,6 palitos ~5x2 cm
+d0306,nuvem_llm_v2,melão cantaloupe em cubos,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,150.0,1.2,media,prato ~26 cm; ~11 cubos de ~3 cm
+d0306,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,100.0,0.6,media,"~10 cubos ~2,5 cm"
+d0306,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,25.0,9.25,media,3 fatias
+d0313,nuvem_llm_v2,fritada/omelete assada,USDA: omelets,omelets,USDA,1.0,10.4,proteina_animal,180.0,18.72,baixa,"prato ~26 cm; quadrado ~10x10 cm, ~3 cm altura"
+d0319,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,90.0,0.54,media,prato quadrado ~24 cm; 9 cubos ~3 cm
+d0347,nuvem_llm_v2,pizza (3 pedaços),USDA: pizza,pizza,USDA,1.0,11.0,misto,170.0,18.7,baixa,prato quadrado ~26 cm; ~3 pedaços totalizando ~1/3 do prato
+d0353,nuvem_llm_v2,trigo-sarraceno/grão cozido,USDA: buckwheat groats,,,0.119,0.0,outros,100.0,0.0,baixa,"prato quadrado ~26 cm; monte ~10x8 cm, ~2 cm"
+d0353,nuvem_llm_v2,frango empanado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,70.0,21.77,baixa,2 tiras ~10x3 cm
+d0353,nuvem_llm_v2,pimentão vermelho assado,USDA: bell peppers,bell peppers,USDA,1.0,2.0,vegetal,20.0,0.4,media,~5 tiras
+d0353,nuvem_llm_v2,abacaxi em cubos,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,110.0,0.55,media,"~12 pedaços de ~2,5 cm"
+d0359,nuvem_llm_v2,melão honeydew em cubos,USDA: honeydew melon,honeydew melons,USDA,0.993,0.5,vegetal,110.0,0.55,media,prato quadrado ~26 cm; ~11 cubos
+d0359,nuvem_llm_v2,salada de rúcula,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,45.0,0.99,baixa,"~1/3 do prato, folhas soltas"
+d0359,nuvem_llm_v2,feijão preto,"Feijão, preto, cozido","Feijão, preto, cozido",TACO,1.0,4.5,leguminosa,15.0,0.68,baixa,~12 grãos espalhados
+d0359,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,70.0,1.26,media,~20 vagens finas
+d0360,nuvem_llm_v2,linguiça defumada em pedaços,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,100.0,19.3,media,prato quadrado ~24 cm; 6 pedaços ~3 cm
+d0364,nuvem_llm_v2,salada caesar,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,110.0,2.42,baixa,prato quadrado ~28 cm; ~1/3 do prato
+d0364,nuvem_llm_v2,brócolis,"Brócolis, cozido","Brócolis, cozido",TACO,1.0,2.1,vegetal,50.0,1.05,media,2 floretes
+d0364,nuvem_llm_v2,frango ao molho de tomate,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,140.0,43.54,baixa,"~1/4 do prato, ~3 cm altura com molho"
+d0364,nuvem_llm_v2,arroz integral/selvagem,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,50.0,1.3,baixa,monte parcialmente coberto ~8x6 cm
+d0364,nuvem_llm_v2,legumes salteados (brócolis/tomate/tofu),USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,40.0,0.96,baixa,sobre o arroz
+d0378,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"prato quadrado ~26 cm; ~1/3 do prato, ~2 cm"
+d0378,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,60.0,6.0,media,monte ~8x7 cm
+d0378,nuvem_llm_v2,batata-doce assada,"Batata, doce, cozida","Batata, doce, cozida",TACO,1.0,0.6,amido,80.0,0.48,media,~10 cubos
+d0382,nuvem_llm_v2,atum/frango desfiado com cenoura,USDA: tuna,tuna,USDA,1.0,29.0,proteina_animal,95.0,27.55,baixa,"prato quadrado ~26 cm; monte ~10x8 cm, ~2 cm"
+d0395,nuvem_llm_v2,claras cozidas/queijo fresco em pedaços,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,200.0,20.0,baixa,"prato quadrado ~26 cm; ocupa ~1/2, ~3 cm altura"
+d0398,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,72.0,16.13,media,prato quadrado ~22 cm; ~60 amêndoas
+n003,nuvem_llm_v2,filé de salmão/truta,USDA: salmon,salmon,USDA,1.0,24.0,proteina_animal,110.0,26.4,baixa,prato quadrado ~26 cm; ~3 pedaços totalizando ~12x8 cm
+n003,nuvem_llm_v2,espinafre,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,20.0,0.6,baixa,poucas folhas
+n003,nuvem_llm_v2,grãos de trigo,USDA: wheat berries,berries,USDA,0.79,0.7,vegetal,15.0,0.11,baixa,~30 grãos espalhados
+n006,nuvem_llm_v2,frango/atum desfiado,USDA: tuna,tuna,USDA,1.0,29.0,proteina_animal,150.0,43.5,baixa,tigela inox ~24 cm; monte central ~14 cm
+n006,nuvem_llm_v2,cenoura ralada,"Cenoura, crua","Cenoura, crua",TACO,1.0,1.3,vegetal,20.0,0.26,baixa,fios espalhados
+n006,nuvem_llm_v2,tomate cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,30.0,0.21,media,3 tomates
+n006,nuvem_llm_v2,pedaços escuros de carne grelhada,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,60.0,15.6,baixa,"2 pedaços ~7x5 cm, parcialmente escondidos"
+n013,nuvem_llm_v2,filé de peixe branco,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,90.0,16.56,baixa,prato quadrado ~26 cm; filé ~11x6 cm
+n013,nuvem_llm_v2,arroz integral,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,40.0,1.04,baixa,monte pequeno sob o peixe/salada
+n013,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,80.0,1.44,media,~20 vagens
+n013,nuvem_llm_v2,salada de folhas mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,45.0,0.99,media,~1/3 do prato
+n014,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,180.0,0.54,media,prato ~26 cm; maçã ~8 cm
+n014,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,42.0,9.41,media,~35 amêndoas
+n014,nuvem_llm_v2,uvas vermelhas,USDA: grapes,grapes,USDA,1.0,0.7,vegetal,85.0,0.6,media,~17 uvas
+n014,nuvem_llm_v2,rodelas de linguiça,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,70.0,13.51,media,6 rodelas ~4 cm
+n014,nuvem_llm_v2,espinafre refogado,USDA: spinach (cooked),spinach (cooked),USDA,1.0,3.0,vegetal,20.0,0.6,baixa,pequeno monte ~6 cm
+n050,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,110.0,11.0,media,"prato quadrado ~24 cm; monte ~12x8 cm, ~2 cm"
+b004,nuvem_llm_v2,baião de dois,"Baião de dois, arroz e feijão-de-corda","Baião de dois, arroz e feijão-de-corda",TACO,1.0,6.2,misto,260.0,16.12,media,"prato fundo ~26 cm com talheres; porção ~16 cm de diâmetro, ~2 cm de altura"
+b025,nuvem_llm_v2,carne desfiada,"Carne, bovina, acém, moído, cozido","Carne, bovina, acém, moído, cozido",TACO,1.0,26.7,proteina_animal,100.0,26.7,baixa,"marmita ~750 ml; carne ocupa ~1/3 da área, ~2 cm"
+b025,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,110.0,2.75,baixa,marmita ~750 ml; arroz ~1/3 da área
+b025,nuvem_llm_v2,purê de batata,USDA: mashed potatoes,mashed potatoes,USDA,1.0,1.7,amido,110.0,1.87,baixa,marmita ~750 ml; purê ~1/3 da área
+b044,nuvem_llm_v2,pedaço de frango grelhado,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,45.0,14.4,media,"prato raso ~26 cm; peça ~7×5 cm, ~1,5 cm"
+b056,nuvem_llm_v2,feijoada,Feijoada,Feijoada,TACO,1.0,8.7,misto,300.0,26.1,media,prato fundo ~22 cm cheio até ~2/3 com caldo e carnes
+b067,nuvem_llm_v2,fatia de presunto,"Presunto, sem capa de gordura","Presunto, sem capa de gordura",TACO,1.0,14.3,proteina_animal,30.0,4.29,media,"prato raso ~26 cm; fatia ~14×10 cm, fina (1-2 fatias)"
+b070,nuvem_llm_v2,salame fatiado,USDA: salami,salami,USDA,1.0,22.0,proteina_animal,60.0,13.2,media,"prato raso; ~14 fatias de ~8 cm, finas"
+b080,nuvem_llm_v2,charque desfiado,"Carne, bovina, charque, cozido","Carne, bovina, charque, cozido",TACO,1.0,36.4,proteina_animal,100.0,36.4,media,"prato raso ~26 cm; meia-lua ~12 cm de diâmetro, ~2 cm"
+b103,nuvem_llm_v2,frango ao curry,USDA: chicken curry,chicken,USDA,0.615,31.0,proteina_animal,130.0,40.3,baixa,marmita ~750 ml; ~1/3 da área
+b103,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,100.0,2.5,baixa,marmita ~750 ml; ~1/3 da área
+b103,nuvem_llm_v2,batata em cubos,"Batata, inglesa, cozida","Batata, inglesa, cozida",TACO,1.0,1.2,amido,100.0,1.2,baixa,marmita ~750 ml; ~1/3 da área com cubos ~2 cm
+c018,nuvem_llm_v2,peixe com molho (moqueca),USDA: fish,fish,USDA,1.0,18.4,proteina_animal,170.0,31.28,media,marmita retangular ~19×14 cm; peixe ~2 pedaços + molho na metade esquerda
+c018,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,110.0,2.75,media,metade direita da marmita
+c018,nuvem_llm_v2,lascas de coco e castanha,USDA: coconut chips,chips,USDA,0.761,7.0,amido,15.0,1.05,baixa,lascas por cima do arroz
+c023,nuvem_llm_v2,lasanha/gratinado de carne,USDA: lasagna,lasagna,USDA,1.0,7.2,misto,320.0,23.04,baixa,"marmita retangular ~19×14 cm cheia, ~3 cm"
+d0003,nuvem_llm_v2,pizza/flatbread,USDA: pizza,pizza,USDA,1.0,11.0,misto,70.0,7.7,baixa,prato quadrado ~26 cm; pedaço ~10×8 cm
+d0003,nuvem_llm_v2,frango com molho,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,80.0,24.88,baixa,pedaço ~8×6 cm
+d0003,nuvem_llm_v2,carne bovina,USDA: steak,steak,USDA,1.0,25.0,proteina_animal,75.0,18.75,baixa,"3 fatias ~5×4 cm, ~1,5 cm"
+d0003,nuvem_llm_v2,couve-flor,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,110.0,1.98,media,~1/4 do prato
+d0003,nuvem_llm_v2,couve-de-bruxelas,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,90.0,3.06,media,~8 unidades
+d0003,nuvem_llm_v2,arroz temperado,USDA: white rice,white rice,USDA,1.0,2.7,amido,150.0,4.05,media,"~1/4 do prato, ~2 cm"
+d0005,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,120.0,12.0,baixa,prato redondo ~26 cm; massa central ~10×12 cm
+d0005,nuvem_llm_v2,frango,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,60.0,18.66,baixa,pedaços misturados
+d0005,nuvem_llm_v2,salsa de tomate,USDA: salsa,salsa,USDA,1.0,1.5,gordura_molho,35.0,0.53,baixa,porção ~5 cm
+d0032,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,170.0,38.42,media,bowl ~24 cm; ~40 cubos ~2 cm
+d0032,nuvem_llm_v2,espinafre cru,USDA: spinach,,,0.422,0.0,vegetal,45.0,0.0,media,folhas cobrindo o fundo do bowl
+d0033,nuvem_llm_v2,tofu,USDA: tofu,tofu,USDA,1.0,8.0,leguminosa,60.0,4.8,media,prato quadrado ~26 cm; 5 cubos ~3 cm
+d0033,nuvem_llm_v2,pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,80.0,8.8,media,pedaço ~11×8 cm
+d0064,nuvem_llm_v2,carne assada,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,150.0,39.0,baixa,prato ~24 cm; 3 pedaços ~6 cm
+d0064,nuvem_llm_v2,cenoura,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,50.0,0.45,baixa,3 pedaços
+d0064,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,130.0,1.17,baixa,~8 pedaços
+d0064,nuvem_llm_v2,cebola,USDA: onion,onions,USDA,0.982,1.1,vegetal,15.0,0.16,baixa,pedaço lateral
+d0082,nuvem_llm_v2,lombo de porco,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,110.0,39.27,media,"prato quadrado ~26 cm; fatia ~9×7 cm, ~2 cm"
+d0082,nuvem_llm_v2,milho em espiga,USDA: corn,corn,USDA,1.0,3.4,amido,45.0,1.53,media,"2 rodelas ~5 cm, peso sem sabugo"
+d0082,nuvem_llm_v2,grão integral (farro/arroz),USDA: brown rice,brown rice,USDA,1.0,2.6,amido,50.0,1.3,baixa,monte ~7 cm
+d0082,nuvem_llm_v2,salada folhas e couve-flor,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,45.0,0.99,baixa,"rúcula e couve-flor ~1/3 do prato, solto"
+d0092,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,100.0,1.0,media,prato quadrado ~24 cm; ~10 cubos ~3 cm
+d0092,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,"massa ~12×8 cm, ~2,5 cm"
+d0098,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,80.0,17.92,media,"~65 amêndoas × ~1,2 g"
+d0104,nuvem_llm_v2,rúcula com cenoura,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,prato quadrado ~26 cm; folhas soltas ~12 cm
+d0111,nuvem_llm_v2,granola,USDA: granola,granola,USDA,1.0,10.0,amido,60.0,6.0,baixa,bowl ~14 cm; camada de granola
+d0111,nuvem_llm_v2,frutas (morango e frutas vermelhas),USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,50.0,0.35,baixa,pedaços sob a granola
+d0126,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,150.0,15.0,media,"prato quadrado ~26 cm; ~1/3 do prato, ~2 cm"
+d0126,nuvem_llm_v2,couve-de-bruxelas,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,110.0,3.74,media,~11 unidades
+d0126,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,25.0,9.25,media,3 tiras
+d0126,nuvem_llm_v2,folhas verdes,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,media,"~1/3 do prato, solto"
+d0141,nuvem_llm_v2,espinafre com cenoura,USDA: spinach,,,0.422,0.0,vegetal,45.0,0.0,media,prato quadrado ~26 cm; folhas soltas
+d0141,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,20.0,7.4,media,2 tiras
+d0144,nuvem_llm_v2,grão (farro/trigo),USDA: farro,,,0.145,0.0,outros,110.0,0.0,media,"prato quadrado ~26 cm; monte ~9 cm, ~2,5 cm"
+d0144,nuvem_llm_v2,peixe branco,USDA: cod,cod,USDA,1.0,18.9,proteina_animal,80.0,15.12,baixa,pedaço ~9×6 cm com cebola
+d0144,nuvem_llm_v2,cenoura assada,USDA: carrot,carrot,USDA,1.0,0.9,vegetal,110.0,0.99,media,~12 rodelas de ~4 cm
+d0145,nuvem_llm_v2,ovo frito,USDA: fried eggs,fried eggs,USDA,1.0,14.0,proteina_animal,55.0,7.7,media,prato redondo ~26 cm; 1 ovo ~8 cm
+d0201,nuvem_llm_v2,massa gratinada/lasanha,USDA: lasagna,lasagna,USDA,1.0,7.2,misto,110.0,7.92,media,"prato quadrado ~26 cm; pedaço ~9×9 cm, ~3 cm"
+d0280,nuvem_llm_v2,arroz com carne de porco desfiada,USDA: white rice,white rice,USDA,1.0,2.7,amido,90.0,2.43,baixa,prato quadrado ~26 cm; ~1/3 do prato
+d0280,nuvem_llm_v2,carne de porco desfiada,USDA: pork,pork,USDA,1.0,26.0,proteina_animal,50.0,13.0,baixa,pedaços misturados ao arroz
+d0280,nuvem_llm_v2,salada de folhas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,40.0,0.88,baixa,"~1/3 do prato, solto"
+d0280,nuvem_llm_v2,salada de macarrão,USDA: pasta,pasta,USDA,1.0,5.1,amido,40.0,2.04,baixa,~8 pedaços de macarrão
+d0280,nuvem_llm_v2,maçã,USDA: apple,apple,USDA,1.0,0.3,vegetal,15.0,0.04,baixa,poucos cubos
+d0288,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,90.0,33.3,media,prato quadrado ~24 cm; ~12 tiras
+d0296,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,150.0,3.6,media,prato quadrado ~26 cm; ~1/2 do prato
+d0296,nuvem_llm_v2,couve-de-bruxelas,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,50.0,1.7,media,~5 unidades
+d0296,nuvem_llm_v2,peixe/frango,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,60.0,11.04,baixa,pedaço ~9×4 cm
+d0326,nuvem_llm_v2,linguiça em pedaços,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,150.0,28.95,media,prato descartável ~22 cm; ~14 meias-rodelas
+d0337,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,100.0,2.1,media,prato quadrado ~26 cm; ~14 cubos
+d0337,nuvem_llm_v2,melão cantalupe,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,100.0,0.8,media,~12 cubos ~3 cm
+d0337,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,180.0,18.0,media,"~1/2 do prato, ~2 cm"
+d0340,nuvem_llm_v2,brócolis assado,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,60.0,1.44,media,prato quadrado ~26 cm; porção ~12×6 cm
+d0343,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,130.0,1.3,media,prato quadrado ~24 cm; ~10 pedaços
+d0345,nuvem_llm_v2,couve-flor/batata amassada,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,110.0,1.98,baixa,prato quadrado ~26 cm; monte ~10×8 cm
+d0345,nuvem_llm_v2,cogumelos,USDA: mushroom,mushroom,USDA,1.0,3.1,vegetal,60.0,1.86,media,fatias ~1/4 do prato
+d0345,nuvem_llm_v2,carne bovina,USDA: beef,beef,USDA,1.0,26.0,proteina_animal,70.0,18.2,baixa,3 pedaços ~5 cm
+d0388,nuvem_llm_v2,espinafre com cenoura,USDA: spinach,,,0.422,0.0,vegetal,30.0,0.0,media,prato quadrado ~24 cm; ~8 folhas
+d0393,nuvem_llm_v2,pimentões,USDA: bell peppers,bell peppers,USDA,1.0,2.0,vegetal,150.0,3.0,baixa,tigela inox ~30 cm; tiras vermelhas e verdes
+d0393,nuvem_llm_v2,cebola roxa,USDA: onion,onions,USDA,0.982,1.1,vegetal,80.0,0.88,baixa,tiras misturadas
+n002,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,130.0,29.38,media,tigela inox ~30 cm; ~35 cubos ~2 cm
+n009,nuvem_llm_v2,salada de folhas com tomate/beterraba,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,45.0,0.99,baixa,prato quadrado ~26 cm; porção ~10 cm
+n020,nuvem_llm_v2,claras mexidas,USDA: egg whites,egg whites,USDA,1.0,10.0,proteina_animal,250.0,25.0,media,"prato quadrado ~26 cm; ~2/3 do prato, ~2,5 cm"
+n020,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,120.0,1.2,media,~12 cubos
+n023,nuvem_llm_v2,morango,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,40.0,0.28,media,3 morangos
+n023,nuvem_llm_v2,mirtilo,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,12.0,0.08,media,~10 mirtilos
+n023,nuvem_llm_v2,melão cantalupe,USDA: cantaloupe,cantaloupe,USDA,1.0,0.8,vegetal,90.0,0.72,media,~9 pedaços ~3 cm
+n035,nuvem_llm_v2,peixe branco,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,110.0,20.24,media,"prato quadrado ~26 cm; filé ~12×5 cm, ~2 cm"
+n035,nuvem_llm_v2,arroz integral,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,70.0,1.82,media,porção ~8×5 cm
+n035,nuvem_llm_v2,vagem,USDA: green beans,green beans,USDA,1.0,1.8,leguminosa,80.0,1.44,media,~25 vagens
+b017,nuvem_llm_v2,feijão preto escorrido,"Feijão, preto, cozido","Feijão, preto, cozido",TACO,1.0,4.5,leguminosa,160.0,7.2,media,"prato raso ~26 cm; monte ~12x9 cm, ~2,5 cm de altura; garfo e faca ao lado"
+b026,nuvem_llm_v2,torresmo,"Porco, torresmo","Toucinho, frito",TACO,0.9,27.3,proteina_animal,110.0,30.03,media,"prato raso ~26 cm; pilha ~13x11 cm, ~2 cm de altura"
+b052,nuvem_llm_v2,filé de peixe cozido,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,260.0,47.84,media,"prato raso ~26 cm; 2 postas ~13x8 cm, ~2 cm de espessura"
+b094,nuvem_llm_v2,carne com osso (rabada) ensopada,"Carne, bovina, rabada, cozida","Carne, bovina, contra-filé, sem gordura, grelhado",TACO,0.9,35.9,proteina_animal,120.0,43.08,baixa,prato fundo ~22 cm; 3 pedaços ~5 cm; peso sem osso
+b094,nuvem_llm_v2,maxixe/legumes ensopados,"Abobrinha, italiana, refogada","Abobrinha, italiana, refogada",TACO,1.0,1.1,vegetal,130.0,1.43,baixa,prato fundo ~22 cm; 4 pedaços ~6x3 cm
+b094,nuvem_llm_v2,molho do ensopado,USDA: gravy,gravy,USDA,1.0,2.0,gordura_molho,110.0,2.2,baixa,caldo cobrindo fundo do prato ~1 cm
+c002,nuvem_llm_v2,frango teriyaki com gergelim,"Frango, peito, sem pele, grelhado","Frango, peito, sem pele, grelhado",TACO,1.0,32.0,proteina_animal,140.0,44.8,media,"marmita ~19x14 cm; 2 filés ~15x5 cm, ~2 cm altura"
+c002,nuvem_llm_v2,arroz com ovo cenoura e ervilha,USDA: fried rice,fried rice,USDA,1.0,4.7,misto,180.0,8.46,media,"marmita ~19x14 cm; metade da área, ~4 cm altura"
+c009,nuvem_llm_v2,sobrecoxa de frango assada,"Frango, sobrecoxa, sem pele, assada","Frango, sobrecoxa, sem pele, assada",TACO,1.0,29.2,proteina_animal,140.0,40.88,media,marmita ~19x14 cm; 2 peças ~8x6 cm sobre o centro
+c009,nuvem_llm_v2,farofa,"Mandioca, farofa, temperada","Mandioca, farofa, temperada",TACO,1.0,2.1,amido,45.0,0.94,media,"marmita; faixa lateral ~5x11 cm, ~2 cm"
+c009,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,80.0,2.0,media,"marmita; faixa lateral ~5x11 cm, parcialmente coberta"
+c009,nuvem_llm_v2,feijão,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,35.0,1.68,baixa,poucos grãos visíveis atrás do frango; resto escondido
+c013,nuvem_llm_v2,carne de porco ensopada,"Porco, lombo, assado","Porco, lombo, assado",TACO,1.0,35.7,proteina_animal,120.0,42.84,media,"marmita ~19x14 cm; 1/3 da área, ~3 cm altura"
+c013,nuvem_llm_v2,arroz branco,"Arroz, tipo 1, cozido","Arroz, tipo 1, cozido",TACO,1.0,2.5,amido,90.0,2.25,media,"marmita; faixa central ~6x12 cm, ~3 cm"
+c013,nuvem_llm_v2,feijão,"Feijão, carioca, cozido","Feijão, carioca, cozido",TACO,1.0,4.8,leguminosa,130.0,6.24,media,"marmita; 1/3 da área com caldo, ~3 cm"
+d0037,nuvem_llm_v2,torta/copo de chocolate,USDA: chocolate pudding,puddings,USDA,0.762,3.2,outros,80.0,2.56,baixa,prato quadrado ~25 cm; copinho ~8 cm de diâmetro
+d0050,nuvem_llm_v2,peixe (sardinha/cavala) grelhado,"Sardinha, assada","Sardinha, assada",TACO,1.0,32.2,proteina_animal,110.0,35.42,media,prato quadrado ~25 cm; 4 filés ~9x3 cm
+d0050,nuvem_llm_v2,trigo em grão cozido,USDA: wheat berries,berries,USDA,0.79,0.7,vegetal,30.0,0.21,baixa,grãos espalhados por cima
+d0050,nuvem_llm_v2,tomate,"Tomate, com semente, cru","Tomate, com semente, cru",TACO,1.0,1.1,vegetal,25.0,0.28,baixa,"fatias por baixo do peixe, parcialmente escondidas"
+d0050,nuvem_llm_v2,folhas verdes,USDA: spinach,,,0.422,0.0,vegetal,10.0,0.0,baixa,1-2 folhas
+d0050,nuvem_llm_v2,queijo/cebola por cima,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,8.0,2.0,baixa,lascas pequenas
+d0067,nuvem_llm_v2,cubos de frango grelhado,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,190.0,42.94,media,"tigela oval ~25 cm; ~35 cubos ~2,5 cm"
+d0067,nuvem_llm_v2,folhas verdes mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,35.0,0.77,media,folhas por baixo e nas bordas
+d0067,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,35.0,0.84,baixa,alguns floretes parcialmente cobertos
+d0069,nuvem_llm_v2,frango fatiado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,110.0,34.21,media,"prato ~26 cm; 4 fatias ~10x4 cm, ~1,5 cm"
+d0072,nuvem_llm_v2,ovos mexidos,USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,160.0,16.0,media,"prato ~26 cm; área ~1/3 do prato, ~2 cm"
+d0072,nuvem_llm_v2,linguiça,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,80.0,15.44,media,2 pedaços ~9x3 cm
+d0094,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,120.0,2.88,media,prato quadrado ~25 cm; 7 floretes de tamanhos variados
+d0106,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,55.0,20.35,media,prato quadrado ~23 cm; ~7 tiras sobrepostas
+d0112,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,70.0,15.68,media,"~58 amêndoas ~1,2 g cada"
+d0159,nuvem_llm_v2,pizza de queijo,USDA: pizza,pizza,USDA,1.0,11.0,misto,210.0,23.1,media,prato quadrado ~25 cm; 6 pedaços ~7x6 cm
+d0168,nuvem_llm_v2,pedaço de pizza margherita,USDA: pizza,pizza,USDA,1.0,11.0,misto,60.0,6.6,media,prato ~26 cm; pedaço ~12x7 cm
+d0192,nuvem_llm_v2,batata rosti/hash brown,USDA: hash browns,hash browns,USDA,1.0,2.6,amido,150.0,3.9,baixa,"prato ~26 cm; área ~1/3, ~1,5 cm"
+d0192,nuvem_llm_v2,salsa verde,USDA: salsa,salsa,USDA,1.0,1.5,gordura_molho,35.0,0.53,baixa,cobertura no centro
+d0192,nuvem_llm_v2,pico de gallo,"Tomate, com semente, cru","Tomate, com semente, cru",TACO,1.0,1.1,vegetal,30.0,0.33,baixa,pedaços de tomate e cebola por cima
+d0206,nuvem_llm_v2,brócolis,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,80.0,1.92,media,prato quadrado ~23 cm; 6 floretes
+d0219,nuvem_llm_v2,frango em pedaços,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,100.0,22.6,media,tigela oval ~25 cm; ~20 pedaços pequenos
+d0219,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,70.0,0.7,media,~12 rodelas ~4 cm
+d0219,nuvem_llm_v2,espinafre cru,USDA: spinach,,,0.422,0.0,vegetal,40.0,0.0,media,folhas cobrindo a tigela
+d0242,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,35.0,12.95,media,prato quadrado ~25 cm; 4 tiras
+d0242,nuvem_llm_v2,couve-de-bruxelas assada,USDA: brussels sprouts,brussels sprouts,USDA,1.0,3.4,vegetal,50.0,1.7,media,~10 unidades pequenas
+d0248,nuvem_llm_v2,amêndoas,USDA: almonds,almonds,USDA,1.0,22.4,outros,50.0,11.2,media,prato de papel ~18 cm; ~42 amêndoas
+d0279,nuvem_llm_v2,torrada de pão integral,USDA: toast,toast,USDA,1.0,13.0,amido,35.0,4.55,media,prato quadrado ~23 cm; fatia ~12x11 cm
+d0279,nuvem_llm_v2,geleia,USDA: jam,,,0.171,0.0,outros,20.0,0.0,media,camada fina cobrindo a fatia
+d0298,nuvem_llm_v2,folhas verdes mistas,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,50.0,1.1,media,tigela ~25 cm cheia de folhas soltas
+d0298,nuvem_llm_v2,frango grelhado temperado,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,80.0,18.08,baixa,"3 pedaços ~6x4 cm, ~2 cm"
+d0302,nuvem_llm_v2,frango fatiado,USDA: chicken breast,chicken breast,USDA,1.0,31.1,proteina_animal,110.0,34.21,media,prato ~26 cm; 5 fatias ~9x3 cm
+d0302,nuvem_llm_v2,pepino,USDA: cucumbers,cucumbers,USDA,1.0,1.0,vegetal,80.0,0.8,media,"6 palitos ~9x2,5 cm"
+d0302,nuvem_llm_v2,homus,USDA: hummus,hummus,USDA,1.0,7.9,leguminosa,50.0,3.95,media,"porção ~6x5 cm, ~1,5 cm"
+d0304,nuvem_llm_v2,macarrão espaguete,USDA: pasta,pasta,USDA,1.0,5.1,amido,110.0,5.61,media,prato quadrado ~25 cm; ninho ~12x10 cm
+d0304,nuvem_llm_v2,salada caesar,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,110.0,3.52,baixa,"1/4 do prato, ~4 cm"
+d0304,nuvem_llm_v2,pedaço de pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,70.0,7.7,baixa,pedaço parcial na borda
+d0342,nuvem_llm_v2,brócolis assado,USDA: broccoli,broccoli,USDA,1.0,2.4,vegetal,70.0,1.68,media,prato quadrado ~25 cm; 4 floretes
+d0342,nuvem_llm_v2,pudim de chia,USDA: chia pudding,puddings,USDA,0.79,3.2,outros,60.0,1.92,baixa,2 porções ~5x4 cm
+d0342,nuvem_llm_v2,purê/couve-flor ou ricota,USDA: cauliflower,cauliflower,USDA,1.0,1.8,vegetal,50.0,0.9,baixa,área ~7x5 cm branca
+d0342,nuvem_llm_v2,linguiça em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,50.0,9.65,media,"4 rodelas ~3,5 cm"
+d0342,nuvem_llm_v2,batata-doce assada,USDA: sweet potato,sweet potato,USDA,1.0,1.0,amido,70.0,0.7,media,~6 cubos ~3 cm
+d0342,nuvem_llm_v2,batata assada,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,35.0,0.73,media,2-3 cubos ~3 cm
+d0362,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,18.0,6.66,media,prato quadrado ~25 cm; 2 tiras
+d0362,nuvem_llm_v2,mirtilo,USDA: blueberries,blueberries,USDA,1.0,0.7,vegetal,45.0,0.32,media,~25 mirtilos
+d0362,nuvem_llm_v2,morango,USDA: strawberries,strawberries,USDA,1.0,0.7,vegetal,35.0,0.25,media,3 pedaços
+d0374,nuvem_llm_v2,ovos mexidos (claras),USDA: scrambled eggs,scrambled eggs,USDA,1.0,10.0,proteina_animal,130.0,13.0,media,"prato quadrado ~23 cm; área ~11x9 cm, ~2 cm"
+d0374,nuvem_llm_v2,linguiça calabresa em rodelas,USDA: sausage,sausage,USDA,1.0,19.3,proteina_animal,45.0,8.69,media,5 rodelas ~4 cm
+d0389,nuvem_llm_v2,peixe empanado,USDA: fish,fish,USDA,1.0,18.4,proteina_animal,110.0,20.24,media,prato quadrado ~25 cm; 2 filés ~9x6 cm
+d0389,nuvem_llm_v2,alcachofra,USDA: artichokes,artichokes,USDA,1.0,3.3,vegetal,50.0,1.65,baixa,~5 pedaços de coração
+d0389,nuvem_llm_v2,pizza/flatbread,USDA: pizza,pizza,USDA,1.0,11.0,misto,90.0,9.9,baixa,2 pedaços ~8x6 cm
+d0389,nuvem_llm_v2,batatas assadas e cubos assados,USDA: roasted potatoes,roasted potatoes,USDA,1.0,2.1,amido,80.0,1.68,baixa,4 peças ~4 cm
+d0397,nuvem_llm_v2,bacon,USDA: bacon,bacon,USDA,1.0,37.0,proteina_animal,45.0,16.65,media,prato quadrado ~25 cm; ~6 tiras amontoadas
+n010,nuvem_llm_v2,frango assado (sobrecoxa e coxa),USDA: roast chicken,roast chicken,USDA,1.0,23.5,proteina_animal,140.0,32.9,media,"prato quadrado ~25 cm; 2 peças, peso sem osso"
+n010,nuvem_llm_v2,arroz integral,USDA: brown rice,brown rice,USDA,1.0,2.6,amido,120.0,3.12,media,"faixa ~12x7 cm, ~2 cm"
+n010,nuvem_llm_v2,salada verde mista,USDA: mixed greens,mixed greens,USDA,1.0,2.2,vegetal,60.0,1.32,media,"metade do prato, folhas soltas"
+n010,nuvem_llm_v2,grão-de-bico,USDA: chickpeas,chickpeas,USDA,1.0,9.0,leguminosa,20.0,1.8,media,~8 grãos
+n010,nuvem_llm_v2,queijo feta,USDA: cheese,cheese,USDA,1.0,25.0,laticinio,8.0,2.0,baixa,migalhas
+n012,nuvem_llm_v2,salada caesar,USDA: caesar salad,caesar salad,USDA,1.0,3.2,vegetal,160.0,5.12,media,"prato quadrado ~25 cm; ~40% da área, ~4 cm"
+n012,nuvem_llm_v2,pedaço de pizza,USDA: pizza,pizza,USDA,1.0,11.0,misto,60.0,6.6,media,fatia ~10x6 cm
+n012,nuvem_llm_v2,carne assada (rosbife),USDA: beef,beef,USDA,1.0,26.0,proteina_animal,80.0,20.8,media,"fatias ~9x6 cm, ~2 cm"
+n012,nuvem_llm_v2,abóbora assada,USDA: squash,squash,USDA,1.0,0.9,vegetal,90.0,0.81,media,~7 pedaços
+n046,nuvem_llm_v2,pizza havaiana,USDA: pizza,pizza,USDA,1.0,11.0,misto,230.0,25.3,media,prato ~28 cm; 4 pedaços ~9x8 cm
+n046,nuvem_llm_v2,frango em cubos,USDA: grilled chicken,grilled chicken,USDA,1.0,22.6,proteina_animal,150.0,33.9,media,~35 cubos ~2 cm
+n046,nuvem_llm_v2,abacaxi em cubos,USDA: pineapple,pineapple,USDA,1.0,0.5,vegetal,80.0,0.4,media,"~9 cubos ~2,5 cm"
+n046,nuvem_llm_v2,tomate-cereja,USDA: tomatoes,tomatoes,USDA,1.0,0.7,vegetal,90.0,0.63,media,9 tomates ~10 g

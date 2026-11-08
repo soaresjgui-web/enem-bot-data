@@ -1,0 +1,8 @@
+14	USDA: spinach
+2	USDA: farro
+1	USDA: tangerine
+1	Escondidinho, de frango com purê de mandioca, gratinado
+1	USDA: baked ziti
+1	USDA: rice with squid ink
+1	USDA: buckwheat groats
+1	USDA: jam

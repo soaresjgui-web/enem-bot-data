@@ -1,0 +1,1451 @@
+prato_id,componente,alimento_ref,gramas_estimadas,confianca,pista_escala
+b019,torresmo / tiras de porco fritas,"Porco, torresmo, frito",120,baixa,"prato raso ~26 cm; monte ~13x11 cm, ~2 cm de altura"
+b030,frango desfiado ao molho,"Frango, peito, sem pele, cozido",100,media,"marmita ~19x14 cm; frango ocupa ~1/3, ~2,5 cm altura"
+b030,arroz branco,"Arroz, tipo 1, cozido",110,media,"marmita ~19x14 cm; arroz ~1/3, ~2,5 cm altura"
+b030,creme de milho,"Milho, verde, creme de milho",110,baixa,"marmita ~19x14 cm; creme ~1/3, ~2 cm altura"
+b042,macarrão com linguiça ao molho,"Macarrão, trigo, cozido (USDA 20121)",300,media,"prato raso ~26 cm; monte ~17x14 cm, ~3 cm altura"
+b047,arroz com queijo ralado,"Arroz, tipo 1, cozido",330,media,"prato raso ~26 cm; arroz cobre ~20x14 cm, ~2,5 cm altura"
+b059,2 fatias de carne assada (lombo),"Porco, lombo, assado",85,media,"prato raso ~26 cm; 2 fatias ~8x6 cm, ~1 cm espessura"
+b071,carne seca desfiada,"Carne, bovina, charque, cozido",170,baixa,"prato raso ~26 cm; monte ~14x13 cm, ~2 cm altura"
+b077,baião de dois com carne seca e queijo coalho,"Baião de dois, arroz e feijão-de-corda",450,media,"prato raso ~26 cm; cobre quase toda a área útil, ~3 cm altura"
+b106,fatia de lombo assado,"Porco, lombo, assado",75,media,"prato raso ~26 cm; fatia ~12x7 cm, ~1 cm espessura"
+d0006,frango grelhado em cubos,USDA: grilled chicken,140,media,prato fundo ~22 cm; ~30 cubos de ~2 cm
+d0006,mix de folhas,USDA: mixed greens,40,media,folhas cobrindo base do prato ~20 cm
+d0010,ovos mexidos,USDA: scrambled eggs,110,media,"prato quadrado ~24 cm; monte ~11x9 cm, ~2 cm altura"
+d0015,couve-flor cozida,USDA: cauliflower,120,media,prato quadrado ~22 cm; 7 floretes médios ~15-20 g
+d0026,carne bovina grelhada fatiada,USDA: steak,120,media,"prato descartável ~22 cm; 5 fatias ~5x3 cm, ~1,5 cm"
+d0026,couve-flor,USDA: cauliflower,100,baixa,"prato ~22 cm; ~1/4 do prato, ~3 cm"
+d0026,frango em cubos,USDA: chicken breast,80,baixa,prato ~22 cm; cubos parcialmente sob couve-flor
+d0027,bacon,USDA: bacon,35,media,prato ~26 cm; 3 tiras ~16 cm
+d0027,ovos mexidos,USDA: scrambled eggs,150,media,"prato ~26 cm; monte ~14x10 cm, ~2,5 cm"
+d0027,brócolis,USDA: broccoli,50,media,3-4 floretes
+d0030,arroz integral,USDA: brown rice,60,media,"prato quadrado ~25 cm; ~7x6 cm, ~2 cm"
+d0030,carne de porco/frango assada em pedaços,USDA: pork,90,baixa,~6 pedaços de ~4x2 cm
+d0030,mix de folhas e radicchio,USDA: mixed greens,40,media,folhas soltas ~1/3 do prato
+d0030,aspargos grelhados,USDA: green beans,15,baixa,1-2 talos
+d0089,carne bovina fatiada ao molho,USDA: beef,80,baixa,"prato quadrado ~25 cm; 3 fatias ~6x3 cm, ~1 cm"
+d0089,rúcula,USDA: mixed greens,40,media,metade do prato de folhas soltas
+d0089,acelga/chard refogada,USDA: spinach (cooked),40,baixa,"~8x6 cm, ~1,5 cm"
+d0089,rabanete,USDA: radishes,10,baixa,2 fatias
+d0095,carne de panela,USDA: beef,180,baixa,prato ~22 cm; 3 pedaços grandes ~6x5x3 cm
+d0095,cenoura cozida,USDA: carrot,40,baixa,2-3 pedaços
+d0095,cebola cozida,USDA: onions,10,baixa,1 pedaço
+d0119,batata assada em cubos,USDA: roasted potatoes,110,media,prato ~26 cm; ~8 cubos de ~3 cm
+d0119,hambúrguer/bolo de carne,USDA: ground beef,100,media,"disco ~9 cm, ~1,5 cm"
+d0119,purê de batata gratinado,USDA: mashed potatoes,130,baixa,"~10x8 cm, ~3 cm"
+d0146,azeitonas kalamata,USDA: olives,55,media,14 azeitonas ~4 g
+d0146,bulgur/trigo,USDA: couscous,70,media,"prato quadrado ~25 cm; ~10x6 cm, ~1,5 cm"
+d0146,arroz selvagem com legumes,USDA: brown rice,60,baixa,"~10x8 cm, ~1,5 cm"
+d0146,cenoura cozida,USDA: carrot,50,media,6 rodelas ~3 cm
+d0146,vagem e erva-doce,USDA: green beans,25,baixa,poucas tiras
+d0157,claras mexidas,USDA: egg whites,160,media,"prato quadrado ~24 cm; monte ~15x12 cm, ~2 cm"
+d0174,salada caesar (alface romana com molho),USDA: lettuce,70,media,prato quadrado ~25 cm; ~1/3 do prato
+d0174,frango em fatias,USDA: chicken breast,60,baixa,~6 pedaços pequenos
+d0174,trigo em grão/farro,USDA: brown rice,30,baixa,pequena porção sob frango
+d0174,tiras de carne/seitan,USDA: beef,70,baixa,"5 tiras ~6x1,5 cm, ~1 cm"
+d0174,batata assada,USDA: roasted potatoes,60,baixa,4 cubos ~3 cm
+d0174,couve-flor e brócolis assados,USDA: cauliflower,40,baixa,2-3 floretes
+d0174,lentilha com tomate,USDA: lentils,40,baixa,"~6x4 cm, ~1,5 cm"
+d0184,bacon,USDA: bacon,12,media,prato quadrado ~22 cm; 1 tira ~18 cm
+d0196,coxa de frango assada,USDA: roast chicken,80,media,"prato quadrado ~25 cm; coxinha ~11 cm, sem osso"
+d0196,recheio/linguiça com tomate,USDA: sausage,60,baixa,"~8x6 cm, ~2 cm"
+d0196,batata assada,USDA: roasted potatoes,60,media,3 pedaços ~4 cm
+d0196,cogumelos,USDA: mushroom,50,media,~8 cogumelos pequenos
+d0196,espinafre refogado,USDA: spinach (cooked),60,baixa,"~10x8 cm, ~1,5 cm"
+d0196,brócolis/couve,USDA: broccoli,40,baixa,~8x6 cm
+d0196,tomate cereja,USDA: tomatoes,15,baixa,2-3 unidades
+d0204,milho na espiga (grãos),USDA: corn,70,media,"prato ~22 cm; 2 rodelas ~5 cm diâmetro x 4 cm, sem sabugo"
+d0215,bacon,USDA: bacon,25,media,prato quadrado ~22 cm; 2 tiras ~20 cm
+d0216,amêndoas,USDA: almonds,85,media,"prato descartável ~15 cm; ~70 amêndoas ~1,2 g (camada dupla)"
+d0227,cenoura cozida,USDA: carrot,110,media,prato quadrado ~22 cm; ~16 pedaços ~5x2 cm
+d0230,maçã inteira,USDA: apple,170,media,"prato ~26 cm; maçã ~7,5 cm"
+d0230,amêndoas,USDA: almonds,42,media,"~35 amêndoas ~1,2 g"
+d0230,couve-de-bruxelas,USDA: brussels sprouts,130,media,14 unidades ~9 g
+d0230,cenoura cozida,USDA: carrot,120,media,~18 pedaços
+d0239,pizza de pepperoni,USDA: pizza,170,media,"prato quadrado ~25 cm; ~1,5 fatia grande ~15x10 cm"
+d0246,lascas de parmesão,USDA: cheese,40,baixa,tigela ~26 cm; monte de lascas ~12x10 cm
+d0246,cebola roxa,USDA: onions,40,baixa,várias rodelas finas
+d0246,tomate cereja,USDA: tomatoes,60,baixa,~6 unidades visíveis no fundo
+d0246,frango (parcialmente oculto),USDA: chicken breast,40,baixa,"pedaços sob o queijo, inferido"
+d0246,pimentão e cenoura,USDA: bell peppers,25,baixa,pedaços no fundo
+d0275,rúcula/espinafre,USDA: mixed greens,40,media,prato quadrado ~25 cm; monte ~14x12 cm solto
+d0275,cenoura ralada,USDA: carrot,8,baixa,poucas tiras
+d0275,uva-passa,USDA: raisins,5,baixa,3-4 passas
+d0289,omelete,USDA: omelets,150,media,"prato ~26 cm; omelete ~16x7 cm, ~2,5 cm"
+d0294,salmão assado,USDA: salmon,140,media,"prato quadrado ~25 cm; 2 pedaços ~10x5 cm, ~2 cm"
+d0294,bok choy,USDA: bok choy,70,media,~1/4 do prato
+d0294,peixe/cavala com alcachofra,USDA: fish,60,baixa,~6x5 cm
+d0294,couve-flor assada,USDA: cauliflower,50,baixa,~6 floretes pequenos
+d0294,batata assada,USDA: roasted potatoes,40,baixa,2 pedaços
+d0294,hambúrguer vegetal/bolinho,USDA: veggie burger,40,baixa,"disco ~7 cm, ~1 cm"
+d0294,abóbora assada,USDA: squash,25,baixa,1 pedaço ~5x3 cm
+d0297,salada caesar com croutons,USDA: lettuce,60,baixa,prato descartável ~22 cm; ~10x8 cm
+d0297,berinjela assada,USDA: eggplant,80,baixa,~8 pedaços ~3 cm
+d0297,abobrinha recheada com quinoa,USDA: zucchini,60,baixa,"~8x4 cm, ~2 cm"
+d0316,ovos mexidos,USDA: scrambled eggs,130,media,"prato quadrado ~25 cm; ~12x10 cm, ~2,5 cm"
+d0316,vagem,USDA: green beans,100,media,"~1/3 do prato, ~2 cm"
+d0316,bacon,USDA: bacon,30,media,3 tiras
+d0323,espinafre cru,USDA: spinach,40,media,prato ~26 cm; folhas cobrindo quase tudo
+d0323,frango em pedaços,USDA: chicken breast,70,baixa,parcialmente sob folhas
+d0323,batata/tofu assado,USDA: roasted potatoes,50,baixa,2-3 pedaços parcialmente ocultos
+d0323,cogumelo,USDA: mushroom,15,baixa,1-2 pedaços
+d0336,berinjela assada,USDA: eggplant,120,media,prato quadrado ~25 cm; ~18 cubos ~3 cm
+d0336,purê de couve-flor,USDA: cauliflower,110,baixa,"~12x9 cm, ~2 cm"
+d0356,claras mexidas,USDA: egg whites,180,media,"prato quadrado ~25 cm; metade do prato, ~2,5 cm"
+d0356,batata-doce assada,USDA: sweet potato,100,media,"~10 cubos ~2,5 cm"
+d0356,melão cantalupo,USDA: cantaloupe,60,media,~6 cubos ~2 cm
+d0356,melancia,USDA: watermelon,70,media,~7 cubos
+d0356,morango,USDA: strawberries,40,media,3-4 morangos
+d0356,mirtilo,USDA: blueberries,10,media,7 mirtilos
+d0370,uvas,USDA: grapes,90,media,prato quadrado ~22 cm; ~17 uvas ~5 g
+d0370,melancia,USDA: watermelon,110,media,6 cubos ~3-4 cm
+d0370,batata assada,USDA: roasted potatoes,70,media,6 pedaços pequenos
+d0380,frango empanado,USDA: chicken breast,140,media,prato quadrado ~25 cm; ~8 pedaços
+d0380,frango à parmegiana com pepperoni,USDA: pizza,70,baixa,"~10x6 cm, ~1,5 cm"
+d0380,abóbora assada,USDA: squash,90,media,5 pedaços ~5x3 cm
+d0380,brócolis,USDA: broccoli,80,media,5 floretes
+n031,amêndoas,USDA: almonds,70,media,"prato descartável ~15 cm; ~55 amêndoas ~1,2 g"
+b001,bife grelhado,"Carne, bovina, contra-filé, sem gordura, grelhado",80,media,"prato raso ~27 cm com garfo e faca; bife ~10x6 cm, ~1,5 cm de espessura"
+b037,feijão branco cozido,"USDA: white beans, cooked",320,media,"prato raso ~27 cm; feijão ocupa círculo ~18x16 cm, ~2 cm de altura"
+b048,macarrão com molho e carne,USDA: pasta with meat sauce,230,media,"prato raso ~27 cm; meia-lua ~14x13 cm, ~3 cm de altura"
+b050,lombo de porco em fatias,"Porco, lombo, assado",160,media,"prato raso ~27 cm; 4 fatias ~9x6 cm, ~0,8 cm de espessura"
+b053,feijão branco cozido,"USDA: white beans, cooked",140,media,"prato raso ~27 cm; meia porção ~12x9 cm, ~2 cm de altura"
+b074,pedaços de frango frito,USDA: fried chicken pieces,140,baixa,"prato raso ~27 cm; monte ~14x11 cm, ~2 cm, pedaços soltos"
+b075,camarão cozido,"Camarão, Rio Grande, grande, cozido",200,media,"prato raso ~27 cm; ~25 camarões ~8 g cada, área ~17x14 cm"
+b099,feijão branco cozido,"USDA: white beans, cooked",340,media,"prato raso ~27 cm; círculo ~18x16 cm, ~2,2 cm de altura"
+b109,carne seca desfiada,"Carne, bovina, charque, cozido",110,baixa,"prato raso ~27 cm; meia-lua ~13x8 cm, ~1,5 cm, desfiado solto"
+c003,salmão grelhado,"Salmão, sem pele, fresco, grelhado",130,media,"marmita ~19x14 cm; filé ~18x6 cm, ~2 cm"
+c003,risoto,USDA: risotto,170,baixa,"marmita ~19x14 cm; risoto por baixo do salmão, parcialmente escondido"
+c003,farofa de castanhas e ervas,USDA: mixed nuts,12,baixa,cobertura esparsa sobre o salmão
+c005,carne de panela,"Carne, bovina, acém, sem gordura, cozido",110,media,"marmita ~19x14 cm; carne ocupa ~1/3, ~3 cm"
+c005,arroz branco,"Arroz, tipo 1, cozido",70,media,marmita ~19x14 cm; faixa ~5 cm de largura
+c005,feijão,"Feijão, carioca, cozido",90,media,marmita ~19x14 cm; faixa ~5 cm com caldo
+c005,farofa,"Mandioca, farofa, temperada",40,media,marmita ~19x14 cm; faixa ~4 cm na lateral
+c012,macarrão yakisoba,USDA: noodles,150,baixa,marmita ~19x14 cm; massa entremeada
+c012,frango em cubos,USDA: chicken breast,90,baixa,marmita ~19x14 cm; ~8 pedaços de ~11 g visíveis
+c012,legumes salteados,USDA: mixed vegetables,90,baixa,"marmita ~19x14 cm; brócolis, cenoura, pimentão, cebolinha"
+d0001,batatas assadas,USDA: roasted potatoes,110,baixa,prato quadrado ~23 cm; ~6 pedaços ~3 cm
+d0001,couve-flor assada,USDA: cauliflower,70,baixa,prato quadrado ~23 cm; ~1/5 do prato
+d0001,melão cantalupo,USDA: cantaloupe,110,media,6 cubos ~3x3x4 cm
+d0001,ovos mexidos,USDA: scrambled eggs,90,baixa,"prato quadrado ~23 cm; área ~10x8 cm, ~2 cm"
+d0012,trigo em grão (farro),"USDA: wheat berries, cooked",110,baixa,prato quadrado ~26 cm; monte ~12x10 cm
+d0012,salmão,USDA: salmon,60,baixa,2 pedaços pequenos parcialmente cobertos
+d0012,abobrinha,USDA: zucchini,70,baixa,~8 pedaços de abobrinha verde e amarela
+d0012,rúcula,USDA: arugula,8,baixa,algumas folhas
+d0025,ovos mexidos,USDA: scrambled eggs,110,media,"prato quadrado ~23 cm; área ~11x9 cm, ~2 cm"
+d0025,bacon,USDA: bacon,25,media,3 tiras
+d0025,batata-doce assada,USDA: sweet potato,120,baixa,"~12 cubos ~2,5 cm"
+d0025,melão honeydew,USDA: honeydew melon,130,media,8 cubos ~3 cm
+d0034,arroz branco,USDA: white rice,150,media,"prato quadrado ~26 cm; monte ~12x9 cm, ~3 cm"
+d0034,carne de porco grelhada,USDA: pork,110,baixa,"~8 tiras ~6x2 cm, ~1 cm"
+d0034,pepino,USDA: cucumbers,70,media,~11 fatias/meias-fatias
+d0043,linguiça,USDA: sausage,60,media,3 pedaços ~4 cm
+d0043,batata assada,USDA: roasted potatoes,100,media,5 pedaços ~4 cm
+d0043,melancia,USDA: watermelon,90,media,~6 cubos ~3 cm
+d0060,rúcula,USDA: arugula,40,baixa,"monte ~ metade do prato, folhas soltas"
+d0060,brócolis,USDA: broccoli,100,baixa,~6 floretes
+d0060,berinjela/abóbora assada,USDA: squash,60,baixa,~6 fatias
+d0073,brócolis,USDA: broccoli,110,media,"~7 floretes, ~1/3 do prato"
+d0073,peixe grelhado,USDA: salmon,100,baixa,"2 pedaços ~9x4 cm, ~2 cm"
+d0073,carne bovina,USDA: steak,70,baixa,"2 pedaços ~6x4 cm, ~1,5 cm"
+d0130,maçã,USDA: apple,170,media,maçã média ~8 cm de diâmetro
+d0130,amêndoas,USDA: almonds,22,media,~18 amêndoas
+d0130,uvas,USDA: grapes,55,media,9 uvas
+d0165,ovos mexidos,USDA: scrambled eggs,150,media,"prato quadrado ~26 cm; área ~14x9 cm, ~2 cm"
+d0165,batata rösti (hash brown),USDA: hash browns,80,baixa,"área ~10x9 cm, ~1 cm"
+d0165,folhas mistas,USDA: mixed greens,25,baixa,punhado de folhas
+d0165,framboesas,USDA: raspberries,8,media,2 framboesas
+d0167,pizza de queijo,USDA: pizza,90,media,2 pedaços triangulares ~12x8 cm
+d0170,batata rösti (hash brown),USDA: hash browns,110,baixa,"prato ~25 cm; área ~14x10 cm, ~1,5 cm"
+d0170,salsa de tomate e molho verde,USDA: salsa,40,baixa,cobertura sobre a batata
+d0170,bacon,USDA: bacon,35,media,3 tiras grossas
+d0198,coxa de frango,USDA: roast chicken,70,media,"coxa média ~13 cm, sem osso"
+d0198,arroz integral pilaf,USDA: brown rice,90,baixa,monte ~8x7 cm
+d0198,vagem/aspargos,USDA: green beans,60,baixa,~12 hastes
+d0198,salada caesar,USDA: caesar salad,90,baixa,"~1/3 do prato, folhas com molho"
+d0198,pizza,USDA: pizza,70,media,pedaço ~9x7 cm
+d0212,salmão assado,USDA: salmon,130,media,"3 pedaços ~7x5 cm, ~2 cm"
+d0212,cenoura assada,USDA: carrot,80,baixa,~10 rodelas
+d0212,abacaxi,USDA: pineapple,130,media,"~14 cubos ~2,5 cm"
+d0231,couve-flor cozida,USDA: cauliflower,180,media,"prato quadrado ~26 cm; ~1/2 do prato, ~20 floretes"
+d0231,carne com chimichurri,USDA: steak,55,baixa,"pedaço ~7x5 cm, ~1,5 cm"
+d0244,linguiça em rodelas,USDA: sausage,75,media,prato redondo ~26 cm; ~11 rodelas ~3 cm
+d0244,amêndoas,USDA: almonds,31,media,~26 amêndoas
+d0244,uvas,USDA: grapes,60,media,12 uvas
+d0255,ovos mexidos,USDA: scrambled eggs,130,media,"prato quadrado ~26 cm; área ~12x10 cm, ~2 cm"
+d0255,bacon,USDA: bacon,40,media,4 tiras
+d0255,folhas mistas,USDA: mixed greens,35,baixa,monte ~12x8 cm
+d0267,bagel (metade),USDA: bagel,50,media,metade de bagel ~10 cm
+d0267,cream cheese,USDA: cream cheese,20,media,camada sobre o bagel
+d0267,ovos mexidos,USDA: scrambled eggs,120,media,"área ~13x8 cm, ~2 cm"
+d0267,morangos,USDA: strawberries,90,media,~7 metades de morango grande
+d0318,maçã,USDA: apple,180,media,"maçã média ~8,5 cm"
+d0318,uvas,USDA: grapes,85,media,~15 uvas
+d0318,amêndoas,USDA: almonds,18,media,~15 amêndoas
+d0318,couve-flor,USDA: cauliflower,70,baixa,~6 floretes pequenos/médios
+d0331,claras mexidas,USDA: egg whites,110,baixa,"prato quadrado ~26 cm; área ~11x10 cm, ~2 cm"
+d0331,linguiça,USDA: sausage,90,media,8 pedaços ~3 cm
+d0334,salada caesar (alface com molho),USDA: caesar salad,100,baixa,prato quadrado ~26 cm; ~1/3 do prato
+d0334,quinoa/cuscuz,USDA: quinoa,35,baixa,porção pequena sob a salada
+d0334,parmesão em lascas,USDA: parmesan cheese,5,baixa,1-2 lascas
+d0377,pizza retangular,USDA: pizza,110,media,pedaço ~13x9 cm
+d0377,carne bovina,USDA: beef,70,baixa,"2 pedaços ~6x5 cm, parcialmente fora do quadro"
+d0377,aspargos,USDA: asparagus,10,baixa,2 pedaços
+d0383,abacaxi,USDA: pineapple,110,media,~8 palitos
+d0383,mirtilos,USDA: blueberries,40,media,~25 mirtilos
+d0383,couve-de-bruxelas,USDA: brussels sprouts,60,baixa,~8 unidades
+d0383,morangos,USDA: strawberries,15,media,2 pedaços
+d0383,claras mexidas,USDA: egg whites,90,baixa,área ~10x8 cm
+d0383,batatas assadas,USDA: roasted potatoes,80,baixa,~6 pedaços
+d0391,claras mexidas,USDA: egg whites,220,media,"prato quadrado ~26 cm; ~45% do prato, ~3 cm"
+d0391,batatas assadas,USDA: roasted potatoes,130,media,"~14 cubos ~2,5 cm"
+d0391,melancia,USDA: watermelon,80,media,4 cubos ~3 cm
+d0391,uvas,USDA: grapes,60,media,10 uvas
+d0392,espinafre cru,USDA: spinach (raw),50,baixa,tigela ~24 cm; camada de folhas
+d0392,pepino,USDA: cucumbers,80,media,~12 fatias
+d0392,azeitonas kalamata,USDA: olives,70,media,"~20 azeitonas ~3,5 g"
+d0392,frango em cubos,USDA: chicken breast,80,baixa,~14 cubos pequenos
+d0400,frango em cubos,USDA: chicken breast,120,media,"tigela inox ~28 cm; ~40 cubos ~1,5-2 cm"
+n024,claras cozidas/mexidas,USDA: egg whites,100,baixa,prato quadrado ~26 cm; área ~12x10 cm
+n024,pudim de chia,USDA: chia pudding,90,baixa,"área ~12x8 cm, ~1 cm"
+n024,pêssego em cubos,USDA: peaches,15,baixa,4 cubos pequenos
+n037,amêndoas,USDA: almonds,55,media,~45 amêndoas
+n038,ovos mexidos,USDA: scrambled eggs,100,media,"prato quadrado ~26 cm; área ~12x10 cm, ~1,5 cm"
+n038,bacon,USDA: bacon,10,media,1 tira
+b095,arroz branco,"Arroz, tipo 1, cozido",130,media,"prato raso ~27 cm vs garfo; arroz ~10x14 cm, ~2 cm de altura"
+d0220,frango assado (coxa e sobrecoxa parciais),"Frango, coxa, com pele, assada",75,baixa,prato quadrado ~25 cm; pedaços ~8x5 cm sem osso
+d0220,molho/cobertura com grãos,USDA: couscous,12,baixa,camada fina sobre o frango
+c017,frango (sobrecoxa) grelhado,"Frango, sobrecoxa, sem pele, assada",150,media,"marmita ~750 ml ~19x14 cm; carne cobre ~1/2 da caixa, ~3 cm"
+c017,farofa,"Mandioca, farofa, temperada",60,media,"faixa esquerda ~5x12 cm, ~2,5 cm"
+c017,arroz branco,"Arroz, tipo 1, cozido",90,media,faixa direita ~5x12 cm
+c017,feijão (parcialmente escondido),"Feijão, carioca, cozido",50,baixa,visível só no fundo atrás da carne
+d0351,salada de grão-de-bico com tomate e cebola,USDA: chickpeas,150,media,"prato quadrado ~25 cm; ~1/4 do prato, ~3 cm"
+d0351,espinafre cru,USDA: spinach (raw),45,media,"metade direita do prato, folhas soltas"
+d0351,carne em fatias (frango/porco),USDA: grilled chicken,110,baixa,"4 fatias ~7x3 cm, ~1,5 cm"
+d0351,cobertura de cenoura e brócolis,USDA: broccoli,30,baixa,sobre as fatias
+d0351,rodela de milho na espiga,USDA: corn,35,media,"rodela ~6 cm diâmetro, ~3 cm, peso comestível"
+n030,morangos,USDA: strawberries,40,media,4 pedaços médios num prato ~23 cm
+d0193,cenoura cozida/assada,"Cenoura, cozida",95,media,"prato quadrado ~22 cm; monte ~9x9 cm, ~2 cm"
+b108,bife grelhado,"Carne, bovina, contra-filé, sem gordura, grelhado",140,media,"prato ~27 cm; bife ~13x8 cm, ~1,5 cm"
+n040,arroz temperado,USDA: white rice,130,media,"prato ~25 cm; 2 montes ~8x7 cm, ~2,5 cm"
+n040,frango assado (peito e coxa),"Frango, coxa, com pele, assada",110,baixa,"2 peças ~9x6 cm, sem osso"
+d0181,mix de folhas,USDA: mixed greens,40,media,prato ~25 cm; folhas ocupando ~1/3
+d0137,bacon frito,USDA: bacon,75,media,~8 fatias ~15 cm num prato ~22 cm
+d0057,framboesas e amoras,USDA: berries,55,media,prato ~25 cm; ~12 frutinhas
+d0057,melancia em cubos,USDA: watermelon,120,media,"~12 cubos ~2,5 cm"
+d0057,abacaxi em cubos,USDA: pineapple,110,media,~12 pedaços ~3 cm
+d0057,legumes assados (batata-doce/abóbora),USDA: sweet potato,120,media,"~15 cubos ~2,5 cm"
+d0057,queijo cottage,USDA: cottage cheese,90,media,"monte ~9x6 cm, ~2,5 cm"
+d0038,frango ao curry,USDA: chicken curry,170,media,"prato redondo ~23 cm; ~1/3 do prato, ~3 cm"
+d0038,arroz branco,"Arroz, tipo 1, cozido",140,media,"monte ~10x9 cm, ~3 cm"
+d0114,amêndoas,USDA: almonds,60,media,"~50 unidades x 1,2 g"
+d0322,pizza de muçarela,USDA: pizza,190,media,meia pizza ~25 cm em prato ~22 cm
+d0166,espinafre cru,USDA: spinach (raw),45,media,prato ~25 cm; salada ~12x10 cm
+d0166,cenoura ralada,"Cenoura, crua",12,baixa,fios por cima
+d0166,mirtilos,USDA: blueberries,8,media,~6 unidades
+d0166,sementes de abóbora,USDA: pumpkin seeds,5,baixa,algumas sementes
+d0031,rúcula,USDA: arugula,35,media,prato ~25 cm; ~1/3 do prato
+d0031,arroz vermelho com legumes,USDA: brown rice,170,media,"monte ~11x9 cm, ~2,5 cm"
+n039,clara de ovo cozida,USDA: egg whites,70,media,prato ~25 cm; pedaços ocupando ~10x7 cm
+n039,batata ralada frita (hash brown),USDA: hash browns,45,baixa,monte ~6x6 cm
+n039,frutas vermelhas,USDA: berries,50,media,~8 frutinhas
+n039,batata-doce assada,USDA: sweet potato,90,media,"~9 cubos ~2,5 cm"
+d0257,clara de ovo mexida,USDA: egg whites,200,media,"prato ~25 cm; ~1/2 do prato, ~3 cm"
+d0257,melancia em cubos,USDA: watermelon,90,media,"~10 cubos ~2,5 cm"
+d0257,batata-doce assada,USDA: sweet potato,100,media,"~12 cubos ~2,5 cm"
+d0341,amêndoas,USDA: almonds,42,media,"~35 unidades x 1,2 g"
+d0368,peixe com cobertura,USDA: fish,65,baixa,prato ~17 cm; filé ~7x4 cm
+d0368,arroz/grão com legumes,USDA: white rice,90,baixa,"base ~9x7 cm, ~2 cm"
+d0368,tomate e ervas por cima,"Tomate, com semente, cru",12,baixa,pedaços pequenos
+n032,salada caesar,USDA: caesar salad,90,media,prato ~27 cm; ~1/4 do prato
+n032,pizza de queijo (fatia quadrada),USDA: pizza,120,media,fatia ~14x9 cm
+n032,brócolis,"Brócolis, cozido",60,media,~5 floretes
+n032,frango grelhado,USDA: grilled chicken,120,media,~9 pedaços ~4 cm
+d0240,salmão com queijo e molho,"Salmão, sem pele, fresco, grelhado",110,media,"prato ~25 cm; peça ~10x7 cm, ~2 cm"
+d0240,carne em pedaços,USDA: pork,50,baixa,2 pedaços misturados ao arroz
+d0240,arroz integral,"Arroz, integral, cozido",60,baixa,ao redor da carne
+d0240,espinafre refogado,USDA: spinach (cooked),20,media,pequena porção ~5x5 cm
+d0172,frango em cubos,"Frango, peito, sem pele, grelhado",130,media,tigela inox ~28 cm; ~25 cubos ~2 cm
+d0172,cenoura ralada,"Cenoura, crua",50,media,monte ~10x8 cm
+d0172,tomate cereja,"Tomate, com semente, cru",30,baixa,parcialmente escondido sob o frango
+d0172,pimentão/cebola,USDA: bell peppers,15,baixa,pedaços parcialmente escondidos
+d0133,pizza de pepperoni (pedaço),USDA: pizza,50,media,pedaço ~8x7 cm em prato ~25 cm
+d0315,ovos mexidos,USDA: scrambled eggs,140,media,"prato ~22 cm; ~1/2 do prato, ~2,5 cm"
+d0315,brócolis,"Brócolis, cozido",60,media,~6 floretes
+d0315,batata-doce assada,USDA: sweet potato,70,media,~6 pedaços
+b107,lombo de porco (medalhões),"Porco, lombo, assado",70,media,"prato ~27 cm; 2 medalhões ~5 cm diâm., ~2,5 cm"
+c019,filé de peixe enrolado,"Merluza, filé, assado",180,baixa,marmita ~750 ml ~19x14 cm; 2 rolos ~14x5 cm
+c019,molho de tomate,USDA: tomato sauce,70,baixa,cobre os rolos e o fundo
+d0042,maçã,USDA: apple,140,media,prato ~26 cm; maçã ~7 cm
+d0042,melão cantalupo,USDA: cantaloupe,130,media,~12 pedaços ~4x2 cm
+d0042,tomate uva,"Tomate, com semente, cru",50,media,5 unidades ~10 g
+d0365,salmão grelhado,"Salmão, sem pele, fresco, grelhado",150,media,"prato ~25 cm; 2 pedaços ~8x4 cm, ~2,5 cm"
+d0365,tomate uva,"Tomate, com semente, cru",80,media,8 unidades ~10 g
+d0308,carne ensopada,USDA: pork,110,baixa,prato ~24 cm; pedaços ~1/4 do prato
+d0308,arroz/macarrão com repolho refogado,USDA: fried rice,170,baixa,"monte ~12x10 cm, ~2,5 cm"
+d0285,arroz frito com legumes,USDA: fried rice,160,media,"prato ~25 cm; ~1/3 do prato, ~2,5 cm"
+d0285,ovos mexidos,USDA: scrambled eggs,110,media,~1/4 do prato
+d0285,bacon,USDA: bacon,30,media,3 fatias
+d0285,brócolis/repolho,USDA: broccoli,20,baixa,poucos pedaços
+d0017,pizza margherita (fatia),USDA: pizza,110,media,prato ~23 cm; fatia ~12x10 cm
+b039,tiras de carne de porco fritas,USDA: pork,90,baixa,prato ~27 cm; monte ~10x7 cm
+n005,couve com quinoa,USDA: kale,25,baixa,prato ~25 cm; porção ~10x6 cm
+n005,quinoa,USDA: quinoa,10,baixa,grãos entre as folhas
+n005,cogumelo,USDA: mushroom,10,baixa,2 fatias
+n005,cenoura assada,"Cenoura, cozida",8,media,1 pedaço ~5 cm
+d0036,maçã,USDA: apple,160,media,"prato ~22 cm; maçã ~7,5 cm"
+b105,presunto fatiado,"Presunto, sem capa de gordura",100,media,prato ~27 cm; ~5 fatias ~15x10 cm
+d0330,amêndoas,USDA: almonds,48,media,"~40 unidades x 1,2 g"
+d0329,peito de frango,USDA: chicken breast,70,media,prato ~25 cm; 2 pedaços ~7x4 cm
+d0329,abóbora assada,USDA: squash,55,media,3 pedaços ~4 cm
+d0329,couve-flor,USDA: cauliflower,60,media,2 floretes grandes
+d0329,carne de porco desfiada/assada,USDA: pork,80,baixa,pedaços ~1/5 do prato
+d0329,pizza de pepperoni,USDA: pizza,90,media,pedaço ~10x7 cm
+d0386,pizza de queijo quadrada,USDA: pizza,100,media,prato ~25 cm; 2 quadrados ~7x7 cm
+d0241,pudim de chia,USDA: chia pudding,110,baixa,"tigela ~14 cm; ~1/2 da área, ~3 cm"
+d0241,manga/pêssego em cubos,USDA: mango,60,media,~10 cubos ~2 cm
+n018,fatia de pizza com carne e pimentão,USDA: pizza,75,media,"prato quadrado ~25 cm; fatia ~10x6 cm, ~1,5 cm altura"
+b035,bife grelhado,USDA: steak,180,media,"prato raso ~27 cm com garfo e faca; bife ~13x9 cm, ~2 cm espessura"
+b033,feijão cozido (grão claro),"Feijão, carioca, cozido",200,media,"prato raso ~27 cm; monte ~14x12 cm, ~1,5 cm altura"
+d0357,frango assado,USDA: roast chicken,100,baixa,"prato quadrado ~25 cm; peça ~12x6 cm, ~2,5 cm"
+d0357,lentilha,"Lentilha, cozida",12,baixa,~20 grãos espalhados sobre o frango
+d0357,batata assada,USDA: roasted potatoes,50,media,2 pedaços ~5x4 cm
+d0357,nozes,USDA: walnuts,8,media,2 metades de noz
+d0179,bacon,USDA: bacon,60,media,prato ~24 cm; 3 tiras grossas ~20 cm
+d0066,abacaxi,USDA: pineapple,100,media,prato quadrado ~25 cm; 7 pedaços ~4x2 cm
+d0066,melancia,USDA: watermelon,120,media,"~12 cubos ~2,5 cm + 1 pedaço maior"
+d0066,uva verde,USDA: grapes,50,alta,10 uvas ~5 g
+d0044,tortilla/tostada,USDA: tortilla,30,baixa,prato ~25 cm; tortilla ~13 cm
+d0044,carne de porco desfiada,USDA: pork,75,baixa,"cobertura ~10 cm diâmetro, ~1,5 cm"
+d0044,cebola roxa em conserva e coentro,USDA: onions,10,baixa,algumas tiras
+d0238,espinafre cru,USDA: spinach (raw),50,baixa,tigela ~22 cm; folhas cobrindo base
+d0238,brócolis,USDA: broccoli,60,media,~6 floretes
+d0238,parmesão em lascas,USDA: parmesan cheese,25,media,camada de lascas no centro ~10 cm
+d0238,azeitona preta,USDA: olives,30,baixa,~8 azeitonas parcialmente escondidas
+d0238,maçã/abacate em fatias,USDA: apple,15,baixa,2 fatias pequenas
+d0108,quinoa/cuscuz com ervas,USDA: quinoa,60,baixa,"prato ~25 cm; porção ~8x6 cm, ~2 cm + bolinha à parte"
+d0108,legumes refogados com tomate e queijo,USDA: mixed vegetables,110,baixa,"área ~10x9 cm, ~2 cm altura"
+d0108,queijo ralado,USDA: parmesan cheese,8,baixa,polvilhado por cima
+n049,ovos mexidos,USDA: scrambled eggs,130,media,"prato quadrado ~25 cm; ovos ~12x8 cm, ~2,5 cm"
+n049,couve-de-bruxelas assada,USDA: brussels sprouts,60,media,5 unidades ~12 g
+n049,mix de folhas,USDA: mixed greens,40,media,"área ~1/4 do prato, solta"
+n049,framboesa,USDA: raspberries,8,media,2 framboesas
+d0309,amêndoas,USDA: almonds,45,alta,"~38 amêndoas ~1,2 g"
+d0051,cogumelos salteados,USDA: mushroom,70,media,prato quadrado ~25 cm; 7 cogumelos ~10 g
+d0051,espinafre e couve,USDA: spinach (cooked),60,baixa,"área ~1/3 do prato, folhas soltas"
+d0051,tomate e pimentão,USDA: tomatoes,20,baixa,1 tomate-cereja + pedaços de pimentão
+c011,frango empanado,USDA: chicken breast,140,media,"marmita ~19x14 cm; 2 filés ~15x5 cm, ~1,5 cm"
+c011,arroz branco,"Arroz, tipo 1, cozido",90,media,"faixa ~1/4 da marmita, parcialmente sob o frango"
+c011,creme de milho/polenta cremosa,USDA: creamed corn,110,baixa,"metade direita da marmita sob o frango, ~2 cm"
+d0221,abóbora assada,USDA: squash,130,baixa,"tigela ~14 cm; pedaços ocupando ~2/3, ~3 cm"
+d0221,molho de iogurte,"Iogurte, natural",15,baixa,fio de molho branco
+n021,maçã,USDA: apple,180,alta,maçã inteira ~8 cm diâmetro em prato ~25 cm
+d0154,frango assado (peito/asa),USDA: roast chicken,80,baixa,"prato quadrado ~28 cm; peça ~9x6 cm, sem osso"
+d0154,coxa de frango,"Frango, coxa, com pele, assada",60,media,"1 coxa ~10 cm, sem osso"
+d0154,vagem,USDA: green beans,70,media,feixe ~12x8 cm
+d0154,salada caesar (alface com molho),USDA: lettuce,80,baixa,"~1/4 do prato, folhas soltas com molho"
+d0154,arroz integral/selvagem com cogumelos,USDA: brown rice,130,media,"monte ~11x8 cm, ~2 cm"
+d0154,pizza retangular,USDA: pizza,130,media,2 pedaços ~9x7 cm
+d0339,batata-doce assada,"Batata, doce, cozida",130,media,"prato quadrado ~24 cm; ~14 cubos ~2,5 cm"
+d0152,pão sírio,USDA: bread,60,baixa,prato parcialmente visível ~26 cm; 2 triângulos dobrados
+d0152,frango/recheio sob o pão,USDA: grilled chicken,50,baixa,"parcialmente escondido sob o pão, fora do quadro"
+d0152,pepino,USDA: cucumbers,40,media,4 fatias longas
+d0152,abóbora/pimentão assado,USDA: squash,100,media,~6 cubos ~3 cm
+d0152,cebola assada,USDA: onions,20,baixa,2 pedaços
+d0262,salada de alface com milho pimentão e pepino,USDA: mixed greens,110,baixa,"prato quadrado ~26 cm; ~1/4 do prato, ~3 cm"
+d0262,carne salteada com legumes,USDA: beef,110,baixa,"~1/4 do prato, pedaços finos"
+d0262,arroz branco,USDA: white rice,40,baixa,porções pequenas misturadas à carne
+d0224,batata-doce assada,"Batata, doce, cozida",110,media,"prato quadrado ~22 cm; ~10 cubos ~2,5 cm"
+d0224,ovos mexidos com molho picante,USDA: scrambled eggs,150,media,"área ~12x8 cm, ~2,5 cm"
+d0053,bacon,USDA: bacon,20,media,2 tiras
+d0053,batata rösti (hash brown),USDA: potatoes,80,baixa,"prato quadrado ~26 cm; área ~9x7 cm, ~1,5 cm"
+d0053,ovos mexidos,USDA: scrambled eggs,110,media,"área ~10x8 cm, ~2 cm"
+d0053,abacaxi,USDA: pineapple,90,media,"6 pedaços ~4x2,5 cm"
+b024,bife pequeno,USDA: steak,60,media,"prato raso ~27 cm; bife ~7x5 cm, ~1,5 cm"
+b084,camarão cozido,"Camarão, Rio Grande, grande, cozido",280,media,"prato raso ~27 cm; monte ~20x14 cm, ~2,5 cm"
+d0366,amêndoas,USDA: almonds,40,alta,"~33 amêndoas ~1,2 g"
+b064,carne em molho cremoso (blanquette),USDA: beef,190,media,"prato raso ~27 cm; ensopado ~15x12 cm, ~2,5 cm; inclui molho"
+b064,cenoura,"Cenoura, cozida",40,media,~10 rodelas
+b064,ervilha,USDA: peas,25,media,~30 ervilhas
+b093,frango desfiado com tomate,USDA: chicken breast,120,baixa,"marmita ~19x14 cm (estimada); 1/3 da área, ~3 cm"
+b093,arroz com ervas,"Arroz, tipo 1, cozido",110,baixa,1/3 da marmita
+b093,purê de batata,USDA: mashed potatoes,100,baixa,1/3 da marmita
+b027,carne em molho cremoso,USDA: beef,65,media,prato raso ~27 cm; porção ~8x6 cm
+b027,cenoura,"Cenoura, cozida",15,media,3 rodelas
+b027,ervilha,USDA: peas,10,media,~12 ervilhas
+d0127,linguiça em rodelas,"Lingüiça, porco, grelhada",100,media,prato quadrado ~27 cm; ~10 rodelas ~10 g
+d0127,bacon,USDA: bacon,30,media,~3 tiras
+d0127,ovos mexidos,USDA: scrambled eggs,140,media,"área ~12x9 cm, ~2,5 cm"
+d0127,espinafre com cenoura ralada,USDA: spinach (raw),50,baixa,"~1/5 do prato, folhas soltas"
+d0127,brócolis,USDA: broccoli,90,media,~7 floretes
+d0372,abacaxi,USDA: pineapple,110,media,prato quadrado ~27 cm; ~10 pedaços
+d0372,melancia,USDA: watermelon,110,media,~8 cubos ~3 cm
+d0372,amora,USDA: blackberries,40,media,~8 amoras
+d0372,framboesa,USDA: raspberries,40,media,~12 framboesas
+d0372,ovos mexidos,USDA: scrambled eggs,90,media,"área ~10x8 cm, ~1,5 cm"
+b036,camarão pequeno cozido,USDA: shrimp,220,media,"prato raso ~27 cm; monte ~16x14 cm, ~2 cm"
+c028,risoto/arroz cremoso gratinado com presunto,USDA: risotto,300,baixa,"marmita ~19x14 cm cheia, ~3 cm"
+d0291,bagel (metade),USDA: bagel,55,baixa,prato quadrado ~26 cm; bagel ~10 cm diâmetro
+d0291,cream cheese,USDA: cream cheese,30,media,"camada ~0,5 cm sobre o bagel"
+c032,curry de grão-de-bico com vagem e legumes,USDA: chickpeas,200,baixa,"marmita ~19x14 cm; metade esquerda, ~3 cm; inclui molho"
+c032,arroz branco,"Arroz, tipo 1, cozido",130,media,"metade direita da marmita, ~3 cm"
+d0270,pizza quadrada (2 pedaços),USDA: pizza,150,media,"prato quadrado ~28 cm; ~12x9 cm, ~1,5 cm"
+d0270,enrolado de massa recheado (stromboli),USDA: bread,60,baixa,2 pedaços ~7x4 cm
+d0007,cubos brancos tostados (tofu/nabo),USDA: tofu,90,baixa,prato quadrado ~27 cm; ~9 cubos ~3 cm
+d0007,abobrinha verde e amarela,USDA: zucchini,70,media,~7 fatias longas
+d0007,cuscuz marroquino,USDA: couscous,110,media,"monte ~10x9 cm, ~2 cm"
+d0045,bacon,USDA: bacon,20,media,2 tiras
+d0045,ovos mexidos,USDA: scrambled eggs,110,media,"prato quadrado ~22 cm; área ~10x7 cm, ~2 cm"
+d0045,melão,USDA: cantaloupe,80,media,~7 cubos
+d0045,framboesa,USDA: raspberries,50,media,~12 framboesas
+b055,camarão cozido,USDA: shrimp,130,media,"prato raso ~27 cm; monte ~12x9 cm, ~2 cm"
+d0300,frango grelhado em cubos,USDA: grilled chicken,130,media,"prato quadrado ~27 cm; área ~12x10 cm, ~2 cm"
+d0300,salada caesar (alface com molho e croutons),USDA: lettuce,90,baixa,~1/4 do prato
+d0300,aspargos,USDA: asparagus,70,media,6 talos ~15 cm
+d0228,melão verde,USDA: honeydew melon,120,media,prato quadrado ~27 cm; ~10 cubos ~3 cm
+d0228,rúcula,USDA: arugula,50,baixa,"~1/3 do prato, folhas soltas"
+d0228,arroz vermelho/farro,USDA: brown rice,70,baixa,"monte ~8x6 cm, ~1,5 cm"
+d0228,vagem/aspargo,USDA: green beans,50,media,~8 talos
+d0228,feijão preto,USDA: black beans,10,media,~6 grãos
+d0093,amêndoas,USDA: almonds,55,alta,"prato de papel ~18 cm; ~45 amêndoas ~1,2 g"
+b003,arroz,"Arroz, tipo 1, cozido",150,media,"prato raso ~26 cm; mistura ~12x13 cm, ~2 cm de altura"
+b003,linguiça/presunto em cubos,"Lingüiça, porco, grelhada",40,baixa,cubos pequenos misturados ao arroz
+b003,ovo mexido,"Ovo, de galinha, inteiro, frito",25,baixa,pedaços amarelos misturados; ~1/2 ovo
+b013,macarrão curto/aletria,"Macarrão, trigo, cozido (USDA 20121)",450,media,"prato raso ~26 cm quase todo coberto, ~2,5 cm altura; garfo e faca"
+b016,presunto fatiado,"Presunto, sem capa de gordura",160,media,pilha ~18x13 cm de ~8-10 fatias no prato de 26 cm
+b063,arroz,"Arroz, tipo 1, cozido",190,media,"prato raso 26 cm; monte ~11x14 cm, ~2 cm altura"
+b088,filé de frango grelhado,"Frango, peito, sem pele, grelhado",50,media,"peça ~8x5 cm, ~1 cm espessura vs. prato 26 cm"
+b092,batata cozida,"Batata, inglesa, cozida",200,media,8 pedaços ~25 g cada; prato 26 cm
+c007,feijão preto,"Feijão, preto, cozido",110,media,"marmita ~19x14 cm, feijão ocupa ~1/3"
+c007,arroz branco,"Arroz, tipo 1, cozido",80,media,faixa central ~1/4 da marmita
+c007,abóbora,"Abóbora, cabotian, cozida",70,media,4 cubos ~3 cm
+c007,carne desfiada,"Carne, bovina, acém, moído, cozido",90,media,"~1/4 da marmita, ~3 cm altura"
+c031,purê/polenta cremosa,"Polenta, pré-cozida",130,media,marmita ~19x14 cm; ~1/3 do recipiente
+c031,carne moída,"Carne, bovina, acém, moído, cozido",100,media,"faixa central ~1/3, ~2,5 cm altura"
+c031,brócolis,"Brócolis, cozido",45,media,3-4 floretes
+c031,cenoura,"Cenoura, cozida",40,media,~6 cubos
+c031,vagem,USDA: green beans,15,baixa,3 pedaços
+c033,almôndegas com molho de tomate,USDA: meatballs,140,media,3 almôndegas ~5 cm com molho; marmita ~19x14 cm
+c033,batata-doce/abóbora,"Batata, doce, cozida",90,media,~7 cubos ~3 cm
+c033,vagem,USDA: green beans,25,media,~5 vagens
+c033,arroz integral com lentilha,"Arroz, integral, cozido",80,media,~1/4 da marmita
+d0009,amêndoas,USDA: almonds,60,media,"~50 amêndoas x 1,2 g; prato de papel ~18 cm"
+d0011,rúcula,USDA: mixed greens,50,media,"prato quadrado ~25 cm, folhas cobrem ~1/2"
+d0011,aspargos,USDA: asparagus,45,media,4 aspargos ~15 cm
+d0011,berinjela assada,USDA: eggplant,70,baixa,~10 pedaços ~3 cm
+d0016,claras mexidas,USDA: egg whites,90,media,monte ~9x8 cm; prato quadrado ~25 cm
+d0016,morangos,USDA: strawberries,80,media,~7 morangos
+d0016,abacaxi,USDA: pineapple,50,media,4 palitos
+d0016,melancia,USDA: watermelon,25,baixa,1 pedaço
+d0016,uvas,USDA: grapes,35,media,6 uvas
+d0016,batata-doce assada,"Batata, doce, cozida",50,baixa,~6 cubos
+d0016,batata ralada (hash brown),USDA: hash browns,70,baixa,monte ~8x7 cm
+d0063,amêndoas,USDA: almonds,48,alta,"~40 amêndoas x 1,2 g"
+d0070,bolinhos/linguiça em pedaços,USDA: sausage,80,baixa,5 pedaços ~3-4 cm; prato quadrado ~22 cm
+d0070,uvas vermelhas,USDA: grapes,85,media,~17 uvas x 5 g
+d0070,batata em cubo,"Batata, inglesa, cozida",25,baixa,1 cubo ~4 cm
+d0085,fatia de pão integral,"Pão, trigo, forma, integral",45,baixa,"fatia ~11x9 cm, prato redondo ~25 cm"
+d0090,couve-flor,USDA: cauliflower,90,media,~10 floretes; prato ~26 cm
+d0090,morangos,USDA: strawberries,100,media,~9 metades grandes
+d0090,mirtilos,USDA: blueberries,10,media,~8 mirtilos
+d0090,tangerina inteira,USDA: orange,110,media,fruta ~7 cm diâmetro (peso sem casca)
+d0090,pera,USDA: pear,170,media,pera ~11x8 cm
+d0096,claras mexidas,USDA: egg whites,90,media,monte ~10x8 cm; prato ~25 cm
+d0096,arroz frito com milho,USDA: fried rice,90,baixa,"monte ~8x9 cm, ~2 cm"
+d0096,fatia de presunto/carne,USDA: ham,50,baixa,tira ~15x4 cm
+d0096,melão,USDA: honeydew melon,100,media,~7 cubos ~3 cm
+d0123,couve-de-bruxelas assada,USDA: brussels sprouts,60,media,5 metades ~4 cm; prato ~25 cm
+d0131,ovos mexidos,USDA: scrambled eggs,100,baixa,só parte do prato visível
+d0131,morangos,USDA: strawberries,40,baixa,parcialmente visíveis
+d0131,molho/salsa,USDA: salsa,20,baixa,porção sobre os ovos
+d0134,salada caesar (alface romana com molho e parmesão),USDA: caesar salad,110,baixa,cobre ~1/3 do prato ~25 cm
+d0134,arroz com carne,USDA: white rice,80,baixa,monte ~8x7 cm parcialmente sob a salada
+d0142,frango em cubos,USDA: grilled chicken,70,media,"~30 cubos de ~1,5 cm; prato ~25 cm"
+d0151,salada caesar com croutons,USDA: caesar salad,70,media,monte ~10x8 cm
+d0151,tomate-cereja,USDA: tomatoes,50,media,4 tomates-uva ~12 g
+d0151,azeitona,USDA: olives,4,media,1 azeitona
+d0155,ovos mexidos,USDA: scrambled eggs,200,media,"cobre ~2/3 do prato quadrado ~22 cm, ~2,5 cm altura"
+d0155,queijo cheddar ralado,USDA: cheese,20,media,fios por cima
+d0160,pizza de queijo,USDA: pizza,200,media,pizza individual ~18 cm em 4 pedaços
+d0161,arroz amarelo,USDA: white rice,90,media,monte ~8x7 cm
+d0161,salada caesar,USDA: caesar salad,100,baixa,~1/3 do prato ~26 cm
+d0161,pizza,USDA: pizza,100,media,2 fatias finas ~12x6 cm
+d0161,folhas mistas,USDA: mixed greens,35,media,~1/4 do prato
+d0163,ovos mexidos,USDA: scrambled eggs,180,media,cobre ~2/3 do prato ~22 cm
+d0163,linguiça em rodelas,USDA: sausage,100,media,~10 rodelas ~4 cm
+d0163,molho de pimenta verde,USDA: gravy,20,baixa,pequena porção
+d0177,quesadilla,USDA: quesadilla,120,media,2 metades ~14 cm
+d0177,frango/atum desfiado,USDA: chicken breast,100,baixa,"monte ~10x8 cm, ~2 cm"
+d0177,frango em cubos,USDA: grilled chicken,25,baixa,~5 cubos sob a quesadilla
+d0177,pimentões,USDA: bell peppers,70,media,~15 tiras
+d0177,cenoura ralada,USDA: carrot,5,baixa,fios
+d0194,ovos mexidos,USDA: scrambled eggs,160,media,"~1/3 do prato ~25 cm, ~3 cm altura"
+d0194,brócolis assado,USDA: broccoli,80,media,~5 floretes
+d0194,fatias de presunto/carne,USDA: ham,70,baixa,2 tiras ~18x4 cm
+d0211,batata-doce assada,"Batata, doce, cozida",110,media,~20 cubos ~2 cm
+d0211,uvas,USDA: grapes,45,media,9 uvas
+d0211,clara de ovo cozida,USDA: egg whites,50,baixa,pedaços brancos
+d0211,ovo mexido/gema,USDA: scrambled eggs,60,baixa,monte ~7x6 cm
+d0229,pepino em palitos,USDA: cucumbers,120,baixa,~8 palitos; só parte do prato visível
+d0229,peito de peru/presunto,USDA: turkey,40,baixa,parcialmente visível na borda
+d0247,pão sírio/flatbread,USDA: bread,140,baixa,2 pães ~12 cm; prato ~25 cm
+d0247,carne de porco desfiada,USDA: pork,80,baixa,recheio sobre os pães
+d0247,cebola roxa e coentro,USDA: onions,15,baixa,guarnição
+d0247,abóbora assada,USDA: squash,130,media,~10 pedaços ~3-4 cm
+d0259,cubos assados (rabanada/batata),USDA: french toast,120,baixa,~12 cubos ~3 cm
+d0259,abacaxi,USDA: pineapple,50,media,4 pedaços
+d0259,melão cantalupe,USDA: cantaloupe,70,media,4 pedaços
+d0259,morangos,USDA: strawberries,70,media,~6 morangos
+d0259,mirtilos,USDA: blueberries,15,media,~10
+d0259,melancia,USDA: watermelon,80,media,4 pedaços
+d0283,fatias de lombo/peru assado,USDA: pork,100,media,"2 fatias ~12x7 cm, ~1 cm"
+d0283,omelete com espinafre e molho,USDA: omelets,60,baixa,pedaço ~9x7 cm
+d0292,amêndoas,USDA: almonds,85,media,"~70 amêndoas x 1,2 g"
+d0317,frango em cubos,USDA: grilled chicken,150,media,~45 cubos ~2 cm; tigela ~25 cm
+d0317,espinafre cru,USDA: spinach,50,media,folhas na base
+d0317,azeitonas kalamata,USDA: olives,30,media,~10 azeitonas
+d0317,pepino,USDA: cucumbers,25,baixa,rodelas parcialmente escondidas
+d0328,bacon,USDA: bacon,90,baixa,~6 tiras grossas; prato ~25 cm
+d0328,ovos mexidos,USDA: scrambled eggs,70,media,monte ~8x7 cm
+d0328,espinafre refogado,USDA: spinach (cooked),70,media,monte ~9x7 cm
+d0350,amêndoas,USDA: almonds,36,alta,"~30 amêndoas x 1,2 g"
+d0379,vagem,USDA: green beans,90,media,~25 vagens; prato ~25 cm
+d0379,folhas mistas,USDA: mixed greens,60,media,~1/2 do prato
+n028,ovos mexidos,USDA: scrambled eggs,150,media,~1/3 do prato ~25 cm
+n028,batata assada,USDA: roasted potatoes,90,media,5 pedaços ~4 cm
+n028,brócolis assado,USDA: broccoli,60,media,~5 floretes
+n028,morangos,USDA: strawberries,50,media,4 morangos
+n028,abacaxi,USDA: pineapple,70,media,~6 pedaços
+n028,mirtilos,USDA: blueberries,15,media,~10
+n029,pizza havaiana,USDA: pizza,220,media,4 pedaços ~10x8 cm
+n029,frango em cubos,USDA: grilled chicken,130,media,~35 cubos ~2 cm
+n029,tomate-cereja,USDA: tomatoes,90,media,8 tomates ~11 g
+b002,peito de frango cozido,"Frango, peito, sem pele, cozido",85,media,"prato raso ~27 cm com garfo e faca; peça ~10x6 cm, ~2,5 cm altura"
+b008,macarrão com carne moída ao molho,USDA: pasta with meat sauce,110,media,"prato raso ~27 cm; porção ~9x10 cm, ~2,5 cm altura"
+b009,lombo de porco fatiado,"Porco, lombo, assado",190,media,prato raso ~27 cm; 5 fatias ~6 cm diâm x 2 cm
+b045,pedaço de frango grelhado,"Frango, peito, sem pele, grelhado",40,media,"prato raso ~27 cm; pedaço ~7x4 cm, ~1,5 cm altura"
+b062,feijoada,Feijoada,380,media,prato fundo ~22 cm cheio quase até a borda
+b069,feijão branco/manteiga cozido,USDA: white beans cooked,240,media,"prato raso ~27 cm; monte ~13x11 cm, ~3 cm altura"
+b087,macarrão ao molho com legumes,USDA: pasta with tomato sauce,280,media,"prato raso ~27 cm; ocupa ~1/2 da área útil, ~3 cm altura"
+b089,batata frita,"Batata, inglesa, frita",190,media,"prato raso ~27 cm; ocupa ~2/3 da área útil, camada ~2-3 cm"
+b096,feijoada,Feijoada,160,media,prato fundo ~22 cm; porção ~10 cm diâm no fundo
+c020,feijão,"Feijão, carioca, cozido",130,media,"marmita ~19x14 cm; feijão ocupa ~1/3, cheio"
+c020,arroz branco,"Arroz, tipo 1, cozido",50,baixa,marmita; arroz parcialmente escondido sob brócolis
+c020,brócolis,"Brócolis, cozido",50,media,2 floretes grandes
+c020,frango desfiado,"Frango, peito, sem pele, cozido",100,media,"marmita; frango ocupa ~1/3, ~3 cm altura"
+c029,arroz integral com grãos,"Arroz, integral, cozido",90,media,marmita ~19x14 cm; ocupa ~1/4
+c029,abóbora/batata-doce assada,"Batata, doce, cozida",70,media,~6 cubos ~3 cm
+c029,brócolis,"Brócolis, cozido",60,media,~5 floretes
+c029,almôndegas ao molho de tomate,"Carne, bovina, acém, moído, cozido",110,media,3 almôndegas ~5 cm com molho
+c030,filé de frango grelhado,"Frango, peito, sem pele, grelhado",130,media,"marmita ~19x14 cm; 2 filés ~12x6 cm, ~1,5 cm"
+c030,purê de batata,USDA: mashed potatoes,100,media,"ocupa ~1/4 da marmita, parte sob o frango"
+c030,arroz,"Arroz, tipo 1, cozido",75,baixa,"faixa lateral da marmita, parte sob o frango"
+c030,brócolis,"Brócolis, cozido",20,media,pedaços pequenos misturados ao arroz
+d0075,grão (farro) refogado com carne,USDA: farro cooked,110,baixa,prato quadrado ~26 cm; grão ocupa ~1/5
+d0075,carne em tiras,USDA: beef,60,baixa,"pedaços de carne misturados no grão, parte inferior"
+d0075,couve-de-bruxelas assada,USDA: brussels sprouts,80,media,~10 unidades pequenas
+d0075,salada caesar,USDA: caesar salad,100,baixa,"ocupa ~1/4 do prato, folhas soltas"
+d0076,lombo de porco empanado fatiado,"Porco, lombo, assado",130,media,"prato quadrado ~26 cm; 4 fatias ~7x4 cm, ~1,5 cm"
+d0076,espinafre cru,USDA: spinach raw,45,media,monte de folhas ~1/3 do prato
+d0076,milho na espiga (rodela),USDA: corn,35,media,"rodela ~6 cm diâm, ~3 cm altura; peso sem sabugo"
+d0076,legumes com cenoura ralada,"Cenoura, cozida",35,baixa,pequeno monte ~6x4 cm
+d0076,ameixa/azeitona,USDA: prunes,10,baixa,1 unidade
+d0077,kimchi,USDA: kimchi,50,media,prato quadrado ~26 cm; monte ~8x6 cm
+d0077,azeitonas kalamata,USDA: olives,35,media,~12 azeitonas ~3 g cada
+d0077,tofu/queijo em cubos,USDA: tofu,70,media,"~20 cubos ~1,5 cm"
+d0079,batata assada,USDA: roasted potatoes,180,media,prato quadrado ~24 cm; ~14 pedaços ~3-4 cm
+d0079,tangerina,USDA: tangerine,80,media,"1 tangerina ~6 cm diâm, sem casca"
+d0080,bife/rosbife,USDA: steak,110,media,"prato quadrado ~26 cm; 3 fatias ~7x5 cm, 2 cm"
+d0080,frango assado,USDA: roast chicken,90,baixa,pedaços ~1/6 do prato
+d0080,cogumelos salteados,USDA: mushroom,80,media,~12 champignons
+d0080,brócolis,"Brócolis, cozido",150,media,"~8 floretes grandes, ~1/3 do prato"
+d0110,pizza (pedaço),USDA: pizza,60,media,prato quadrado ~28 cm; pedaço ~10x7 cm
+d0117,uvas,USDA: grapes,65,media,13 uvas ~5 g cada
+d0120,frango empanado,USDA: breaded chicken,150,media,"prato quadrado ~26 cm; ~6 pedaços, ~1/4 do prato"
+d0120,pizza (pedaço),USDA: pizza,80,media,fatia ~10x8 cm sob outros itens
+d0120,arroz com legumes,USDA: white rice,50,baixa,monte pequeno ~7x5 cm
+d0120,abóbora assada,USDA: squash,80,media,4 pedaços ~5 cm
+d0120,brócolis,"Brócolis, cozido",90,media,~5 floretes
+d0120,folhas verdes,USDA: mixed greens,10,baixa,folhas esparsas
+d0121,carne suína/bovina fatiada,"Porco, lombo, assado",130,media,"tigela oval ~24 cm; 4 fatias grossas ~7x5 cm, 2 cm"
+d0121,mix de folhas,USDA: mixed greens,60,media,folhas cobrindo a tigela
+d0128,carne com repolho e grãos,USDA: pork,80,baixa,prato quadrado ~26 cm; pedaços de carne ~1/6 do prato
+d0128,salada de repolho/grãos,USDA: coleslaw,35,baixa,misturado à carne
+d0128,couve-de-bruxelas assada,USDA: brussels sprouts,80,media,~12 metades
+d0143,peixe assado,USDA: fish,75,media,embalagem isopor ~23 cm; filé ~9x5 cm
+d0143,peixe/bolinho recheado,USDA: stuffed fish,90,baixa,pedaço ~10x7 cm
+d0143,milho na espiga,USDA: corn,70,media,2 rodelas ~6 cm; sem sabugo
+d0169,abóbora assada,USDA: squash,70,media,prato quadrado ~26 cm; ~6 cubos
+d0169,brócolis,"Brócolis, cozido",70,media,~4 floretes
+d0169,peixe/frango empanado,USDA: breaded chicken,70,baixa,pedaço ~10x5 cm
+d0169,carne em pedaços,USDA: beef,70,baixa,~5 pedaços com arroz
+d0169,arroz,USDA: white rice,40,baixa,espalhado entre a carne
+d0169,abobrinha,USDA: zucchini,40,baixa,rodelas
+d0169,pêssego/maçã,USDA: peach,50,baixa,~5 fatias
+d0169,folhas verdes,USDA: mixed greens,20,baixa,folhas sob os itens
+d0171,morangos,USDA: strawberries,95,media,6 morangos grandes ~16 g
+d0171,mirtilos,USDA: blueberries,10,media,7 unidades
+d0210,couve-flor,USDA: cauliflower,100,media,prato redondo ~23 cm; ~1/3 do prato
+d0210,batata assada,USDA: roasted potatoes,120,media,~8 pedaços ~3 cm
+d0210,hambúrguer/bife empanado,USDA: ground beef,120,baixa,"2 discos ~9 cm, 1,5 cm"
+d0214,carne de porco assada,"Porco, pernil, assado",170,media,"prato quadrado ~28 cm; 2 fatias ~10x7 cm, 2,5 cm"
+d0214,acelga/folhas refogadas com beterraba,USDA: swiss chard cooked,50,media,monte ~8x6 cm
+d0226,ovos mexidos,USDA: scrambled eggs,160,media,"prato quadrado ~24 cm; ~1/3 do prato, 3 cm"
+d0226,batata-doce assada,USDA: sweet potato,130,media,~10 cubos ~3 cm
+d0226,bacon,USDA: bacon,45,media,4-5 fatias grossas
+d0268,claras mexidas,USDA: egg whites,200,media,"prato quadrado ~26 cm; ~1/3 do prato, 3-4 cm"
+d0268,batata-doce assada,USDA: sweet potato,110,media,"~12 cubos ~2,5 cm"
+d0273,carne desfiada ao molho com omelete,USDA: pulled pork,90,baixa,"prato quadrado ~28 cm; porção ~10x8 cm, fina"
+d0274,peixe/frango ao curry com arroz,USDA: chicken curry,150,baixa,prato quadrado ~24 cm; porção ~12x9 cm
+d0284,ovos mexidos,USDA: scrambled eggs,130,media,prato quadrado ~24 cm; ~1/3 do prato
+d0284,bacon,USDA: bacon,20,media,2 fatias
+d0286,muffin inglês (metade),USDA: english muffin,30,media,metade ~10 cm diâm
+d0286,cream cheese,USDA: cream cheese,20,media,camada sobre o muffin
+d0286,morangos,USDA: strawberries,80,media,6 morangos
+d0286,mirtilos,USDA: blueberries,12,media,~9 unidades
+d0286,batata-doce assada,USDA: sweet potato,100,media,~12 cubos
+d0286,bacon,USDA: bacon,18,media,3 fatias
+d0307,arroz frito com tofu,USDA: fried rice,130,media,"prato quadrado ~28 cm; faixa ~16x6 cm, 2 cm"
+d0307,tofu em cubos,USDA: tofu,45,media,"~6 cubos ~2,5 cm"
+d0335,frango ao molho de tomate,USDA: chicken stew,300,media,"prato quadrado ~24 cm; cobre ~3/4, 3 cm"
+d0346,ervilha-torta,USDA: snow peas,70,media,prato redondo ~26 cm; ~12 vagens
+d0346,salmão/peixe com cenoura ralada,USDA: salmon,90,baixa,pedaço ~8x6 cm sob a cenoura
+d0346,salada de cenoura/repolho,USDA: carrot,35,baixa,cobertura sobre o peixe
+d0346,farro/trigo em grão,USDA: farro cooked,90,media,"~1/5 do prato, 2 cm"
+d0346,flatbread/pizza,USDA: pizza,70,baixa,pedaço ~10x7 cm
+d0373,lombo/carne fatiada,USDA: pork,140,media,prato quadrado ~28 cm; ~7 fatias ~7x3 cm
+d0373,pizza de pepperoni,USDA: pizza,110,media,2 pedaços ~11x7 cm
+d0373,brownie,USDA: brownie,35,media,"pedaço ~6x4 cm, 2,5 cm"
+d0381,abóbora assada,USDA: squash,60,media,prato quadrado ~28 cm; 4 cubos ~4 cm
+d0381,salada de couve kale com parmesão,USDA: kale salad,80,media,"~1/4 do prato, solto"
+n017,amêndoas,USDA: almonds,45,alta,"~38 amêndoas ~1,2 g cada em prato de papel ~18 cm"
+n022,claras cozidas/mexidas,USDA: egg whites,110,media,prato quadrado ~26 cm; ~1/4 do prato
+n022,pudim de chia,USDA: chia pudding,80,baixa,base sob os mirtilos ~12x10 cm
+n022,mirtilos,USDA: blueberries,60,media,~35 unidades
+b032,peito de frango grelhado,"Frango, peito, sem pele, grelhado",95,media,"prato raso ~27 cm entre garfo e faca; peça ~13x7 cm, ~1,5 cm de altura"
+b038,arroz integral com castanhas e frutas secas,USDA: brown rice,150,baixa,"prato raso ~27 cm; ocupa ~1/5 do prato, camada ~1,5 cm"
+b043,salame fatiado,USDA: salami,130,media,prato raso ~27 cm; ~25 fatias finas de ~7 cm sobrepostas
+b051,filé de peixe branco cozido,USDA: cod,210,media,"prato raso ~27 cm; filé ~17x11 cm, ~2 cm de altura"
+b058,presunto fatiado,"Presunto, sem capa de gordura",60,media,prato raso ~27 cm; 2-3 fatias ~15x10 cm empilhadas
+b060,brócolis cozido,"Brócolis, cozido",150,media,"prato raso ~27 cm; buquês ocupam ~1/3 do prato, ~5 cm de altura"
+b078,tiras de carne de porco fritas com cenoura/pimentão,USDA: pork,220,baixa,"prato raso ~27 cm; tiras ocupam ~1/2 da área útil, ~2 cm de altura"
+b081,lentilha cozida,"Lentilha, cozida",250,media,"prato raso ~27 cm; ocupa ~16x12 cm, ~2 cm de altura"
+b086,mandioca cozida,"Mandioca, cozida",200,media,prato raso ~27 cm; 4 pedaços ~7x4x4 cm
+b098,batata cozida em cubos,"Batata, inglesa, cozida",200,media,prato raso ~27 cm; ~20 cubos de ~3 cm
+c004,arroz integral,"Arroz, integral, cozido",110,media,"marmita de papel ~18x12 cm; arroz ocupa ~1/3, ~3 cm de altura"
+c004,frango em cubos grelhado,"Frango, peito, sem pele, grelhado",130,media,~14 cubos de ~3 cm no centro da marmita
+c004,creme de milho/polenta cremosa,USDA: creamed corn,120,baixa,"ocupa ~1/3 da marmita, ~2,5 cm de altura"
+c015,escondidinho gratinado (purê com recheio por baixo),"Escondidinho, de frango com purê de mandioca, gratinado",350,baixa,"marmita de papel ~18x13 cm, ~4 cm de altura; recheio escondido sob o purê"
+d0008,linguiça defumada em rodelas,USDA: sausage,130,media,prato ~26 cm; ~16 rodelas de ~3 cm
+d0008,batata assada,USDA: roasted potatoes,160,media,~10 pedaços de ~3-4 cm
+d0008,uva,USDA: grapes,110,media,~22 uvas de ~5 g
+d0018,pizza de queijo com espinafre,USDA: pizza,180,baixa,prato ~26 cm; 2 fatias retangulares ~14x9 cm
+d0023,abóbora assada,USDA: squash,180,baixa,prato ~26 cm; ~8 pedaços de ~4-6 cm
+d0041,bacon,USDA: bacon,40,media,prato ~26 cm; 3 tiras grossas ~15 cm
+d0041,brócolis cozido,USDA: broccoli,80,media,4-5 buquês médios
+d0054,bacon,USDA: bacon,35,media,prato quadrado ~25 cm; 4 tiras ~18 cm
+d0058,frango em cubos,USDA: chicken breast,160,media,prato quadrado ~25 cm; ~45 cubos pequenos de ~2 cm
+d0061,morango fatiado,USDA: strawberries,130,media,tigela ~11 cm cheia
+d0062,azeitona preta,USDA: olives,70,media,"tigela de inox ~28 cm; ~20 azeitonas de ~3,5 g"
+d0088,folhas verdes mistas,USDA: mixed greens,40,baixa,prato quadrado ~25 cm; folhas ~1/4 do prato
+d0088,macarrão parafuso/cotovelo,USDA: pasta,45,baixa,~10 peças de macarrão misturadas
+d0088,maçã/cenoura/aipo picados,USDA: apples,25,baixa,pedaços pequenos na salada
+d0097,ovos mexidos com molho,USDA: scrambled eggs,95,media,"prato quadrado ~25 cm; ~9x8 cm, ~2 cm"
+d0097,batata assada,USDA: roasted potatoes,130,media,~10 cubos de ~3-4 cm
+d0097,espinafre cru,USDA: spinach,25,baixa,folhas soltas ~1/6 do prato
+d0097,folhas mistas com frutas vermelhas,USDA: mixed greens,40,baixa,folhas e amoras ~1/6 do prato
+d0097,abacaxi,USDA: pineapple,60,media,4-5 pedaços de ~3 cm
+d0097,morango,USDA: strawberries,25,media,2-3 morangos
+d0097,linguiça,USDA: sausage,30,baixa,1-2 pedaços de ~4 cm
+d0099,claras mexidas,USDA: egg whites,160,media,"prato quadrado ~25 cm; ~14x11 cm, ~2,5 cm"
+d0099,bacon,USDA: bacon,30,media,3 tiras
+d0115,pizza de queijo,USDA: pizza,150,media,prato quadrado ~25 cm; 3 pedaços ~9x7 cm
+d0135,torrada com abacate e rúcula,USDA: bread,60,baixa,prato ~26 cm; fatia de pão ~15x9 cm
+d0135,abacate amassado,USDA: avocado,50,baixa,camada fina sobre a torrada
+d0135,disco crocante com repolho roxo,USDA: hash browns,40,baixa,disco ~7 cm de diâmetro
+d0139,batata assada,USDA: roasted potatoes,50,media,prato quadrado ~25 cm; 3 pedaços ~4 cm
+d0139,bacon,USDA: bacon,20,media,2 tiras
+d0140,ovos mexidos/omelete,USDA: scrambled eggs,130,media,"prato ~26 cm; área ~18x9 cm, fina"
+d0162,ovos mexidos com queijo,USDA: scrambled eggs,150,media,"prato de papel ~18 cm; ovos ocupam ~13 cm, ~2,5 cm altura"
+d0245,cenoura cozida,USDA: carrot,60,baixa,prato ~26 cm; ~6 pedaços
+d0245,repolho roxo assado,USDA: red cabbage,80,baixa,2 gomos ~12 cm
+d0245,frango em pedaços com brócolis,USDA: chicken thighs,90,baixa,~8 pedaços pequenos
+d0245,vagem/brócolis,USDA: green beans,20,baixa,poucos pedaços
+d0254,carne bovina ensopada,USDA: beef,120,baixa,prato ~26 cm; ~5 pedaços de ~4 cm
+d0254,massa assada com queijo e molho,USDA: baked ziti,160,baixa,"~1/3 do prato, ~3 cm"
+d0254,pizza de queijo,USDA: pizza,120,media,2 fatias ~10x7 cm
+d0276,peixe branco assado,USDA: fish,80,media,prato quadrado ~25 cm; filé ~10x4 cm
+d0276,arroz integral,USDA: brown rice,40,baixa,porção pequena sob o peixe
+d0276,vagem,USDA: green beans,80,media,~25 vagens
+d0276,folhas verdes mistas,USDA: mixed greens,35,baixa,~1/4 do prato
+d0276,carne bovina/porco fatiada,USDA: beef,110,baixa,~4 pedaços ~5 cm
+d0276,tomate cereja,USDA: tomatoes,20,media,2 tomates
+d0281,amêndoas,USDA: almonds,90,media,"prato quadrado ~20 cm; ~75 amêndoas de ~1,2 g"
+d0293,pedaço de bolo/pão,USDA: cake,30,baixa,prato ~26 cm; pedaço ~6x5 cm
+d0311,melão honeydew,USDA: honeydew melon,100,media,prato quadrado ~25 cm; ~10 cubos ~3 cm
+d0311,salada de rúcula com feijão preto,USDA: arugula,45,baixa,monte ~1/3 do prato
+d0320,salada de espinafre com tomate e cenoura,USDA: spinach,55,baixa,prato quadrado ~25 cm; ~1/3 do prato
+d0320,bacon,USDA: bacon,30,media,3 tiras
+d0338,claras mexidas,USDA: egg whites,170,media,"prato quadrado ~25 cm; ~1/3 do prato, ~3 cm"
+d0338,ovos mexidos/purê amarelo,USDA: scrambled eggs,70,baixa,monte ~8 cm
+d0338,batata assada,USDA: roasted potatoes,90,media,~15 cubos ~2 cm
+d0384,milho na espiga (pedaço),USDA: corn,40,media,"prato quadrado ~25 cm; rodela de espiga ~6 cm de diâmetro, ~4 cm altura"
+n026,melão honeydew,USDA: honeydew melon,35,media,prato quadrado ~25 cm; 3 pedaços ~3 cm
+n042,claras mexidas,USDA: egg whites,200,media,"prato quadrado ~25 cm; ~2/3 do prato, ~3 cm"
+n042,melão cantaloupe,USDA: cantaloupe,110,media,~10 pedaços ~3-4 cm
+n048,cenoura cozida,USDA: carrot,25,baixa,"prato quadrado; 3 rodelas, parcialmente fora da foto"
+n048,pizza/pão com queijo,USDA: pizza,40,baixa,pedaço parcialmente fora da foto ~9x5 cm
+b005,salame fatiado,USDA: salami,50,media,prato raso ~26 cm com garfo/faca; ~10 fatias finas ~6 cm
+b011,camarão cozido,"Camarão, Rio Grande, grande, cozido",100,media,prato raso ~26 cm; ~12 camarões médios ocupando ~1/6 do prato
+b014,lombo de porco assado em pedaços,"Porco, lombo, assado",320,media,prato raso ~26 cm; ~13 pedaços ~4x4x3 cm ocupando ~1/2 da área útil
+b040,arroz com feijão misturado e batata,"Baião de dois, arroz e feijão-de-corda",210,media,"prato raso ~26 cm; meia-lua ~16x9 cm, altura ~1,5 cm"
+b046,carne seca desfiada,"Carne, bovina, charque, cozido",230,media,"prato raso ~26 cm; cobre área útil ~20x13 cm, altura ~1,5 cm, solta"
+b065,feijão preto,"Feijão, preto, cozido",210,media,"prato raso ~26 cm; meia-lua ~16x10 cm, altura ~1,5 cm"
+b072,linguiça calabresa com cebola,"Lingüiça, porco, grelhada",80,baixa,marmita ~750 ml assumida; ~1/3 da área com ~8 rodelas
+b072,cebola refogada,"USDA: onions, cooked",15,baixa,tiras por cima da linguiça
+b072,arroz branco,"Arroz, tipo 1, cozido",110,baixa,faixa central da marmita ~1/3
+b072,feijão carioca,"Feijão, carioca, cozido",120,baixa,faixa inferior ~1/3 da marmita
+b100,carne seca desfiada,"Carne, bovina, charque, cozido",50,media,prato raso ~26 cm; montinho ~7x8 cm
+b101,camarão cozido,"Camarão, Rio Grande, grande, cozido",380,media,"prato raso ~26 cm; cobre área útil ~20x14 cm, altura ~2 cm"
+b102,batata frita palito,"Batata, inglesa, frita",130,media,prato raso ~26 cm; monte ~13x12 cm
+c001,hambúrguer bovino grelhado,USDA: ground beef,130,media,"marmita retangular ~19x14 cm; disco ~11 cm, ~1,5 cm altura"
+c001,legumes assados (batata-doce/vagem/milho/beterraba),USDA: roasted vegetables,100,baixa,terço esquerdo da marmita
+c001,arroz integral,"Arroz, integral, cozido",70,baixa,"terço direito, misturado com brócolis"
+c001,brócolis,"Brócolis, cozido",40,baixa,floretes no terço direito
+c021,frango ao molho cremoso,Estrogonofe de frango,160,media,"marmita ~19x14 cm; ~40% da área, ~3 cm altura"
+c021,arroz integral/selvagem,"Arroz, integral, cozido",80,media,faixa central ~5 cm
+c021,brócolis,"Brócolis, cozido",80,media,~5 floretes grandes
+c022,camarão ao molho,USDA: shrimp curry,160,media,marmita ~19x14 cm; metade esquerda com ~7 camarões no molho
+c022,arroz branco com salsa,"Arroz, tipo 1, cozido",120,media,"metade direita, ~3 cm altura"
+d0022,carne bovina cozida desfiada com molho,USDA: pot roast beef,110,baixa,prato ~27 cm; pedaços sobre o purê
+d0022,purê de batata,USDA: mashed potatoes,140,baixa,"por baixo da carne, ~1/4 do prato"
+d0022,brocolini,"Brócolis, cozido",60,media,2-3 talos longos ~20 cm
+d0052,arroz branco,"Arroz, tipo 1, cozido",130,media,prato quadrado ~26 cm; dois montes ~10x8 cm
+d0052,brócolis,"Brócolis, cozido",90,media,~5 floretes
+d0055,batata assada em cubos,USDA: roasted potatoes,110,media,"prato quadrado ~26 cm; ~15 cubos ~2,5 cm"
+d0055,clara de ovo mexida,USDA: egg whites,200,media,"metade direita do prato, ~2 cm altura"
+d0081,arroz vermelho/integral com legumes,"Arroz, integral, cozido",120,media,prato quadrado ~26 cm; ~1/4 do prato
+d0081,tofu em cubos,USDA: tofu,70,media,~8 cubos ~2 cm
+d0081,salada de rúcula e rabanete,USDA: mixed greens,25,media,folhas soltas e 2 fatias de rabanete
+d0102,waffle,USDA: waffles,130,media,prato quadrado ~26 cm; ~3 pedaços de waffle
+d0102,tofu mexido com brócolis,USDA: tofu,70,baixa,monte ~10x6 cm sobre o waffle
+d0153,pizza de pepperoni,USDA: pizza,180,media,prato ~25 cm; 2 fatias quadradas ~10x10 cm
+d0176,ovos mexidos,USDA: scrambled eggs,150,media,prato quadrado ~26 cm; monte ~10x14 cm
+d0176,linguiça em rodelas,USDA: sausage,110,media,~22 rodelas ~3 cm
+d0182,clara de ovo mexida,USDA: egg whites,180,media,prato quadrado ~26 cm; ~1/2 do prato
+d0182,melão cantaloupe,USDA: cantaloupe,110,media,~7 cubos ~3 cm
+d0182,abacaxi,USDA: pineapple,70,media,~5 cubos ~3 cm
+d0209,ovos mexidos,USDA: scrambled eggs,100,baixa,prato ~26 cm; parcialmente coberto pelo molho
+d0209,salsa/pesto com tomate,USDA: salsa,40,baixa,cobertura sobre ovos
+d0209,batata assada,USDA: roasted potatoes,120,media,~10 pedaços
+d0209,ketchup,USDA: ketchup,15,media,fios sobre batatas
+d0234,lombo de porco assado fatiado,"Porco, lombo, assado",140,media,"prato quadrado ~26 cm; 2 fatias ~11x6x1,2 cm"
+d0234,arroz branco,"Arroz, tipo 1, cozido",130,media,monte ~10x9 cm
+d0234,frango com molho e pesto,USDA: chicken breast,50,baixa,pedaço fino ~7x8 cm
+d0251,maçã,USDA: apple,180,media,maçã inteira ~8 cm em prato ~26 cm
+d0253,clara de ovo mexida,USDA: egg whites,230,media,"prato quadrado ~26 cm; ~1/2 do prato, ~2 cm altura"
+d0265,fatias de peito de peru/presunto,USDA: turkey,60,baixa,prato parcialmente fora da foto; algumas fatias dobradas
+d0271,clara de ovo mexida,USDA: egg whites,170,media,prato quadrado ~26 cm; ~1/3 do prato
+d0272,amêndoas,USDA: almonds,60,media,"~48 amêndoas ~1,2 g cada"
+d0295,pizza,USDA: pizza,90,baixa,prato quadrado ~26 cm; 1 fatia
+d0295,frango com queijo e molho,USDA: chicken breast,90,baixa,pedaço ~8x7 cm
+d0295,bife,USDA: steak,120,media,3 fatias ~7x4x2 cm
+d0295,arroz amarelo temperado,USDA: white rice,160,media,"~1/3 do prato, ~2 cm altura"
+d0310,abacaxi,USDA: pineapple,80,media,~8 cubos ~3 cm
+d0310,acelga/bok choy,"USDA: bok choy, cooked",50,media,3 talos
+d0310,couve-de-bruxelas,USDA: brussels sprouts,60,media,~5 unidades
+d0310,berinjela/abobrinha à parmegiana,USDA: eggplant parmesan,100,baixa,retângulo ~8x6 cm
+d0310,tofu com legumes,USDA: tofu,60,baixa,~6 cubos ~2 cm com legumes
+d0310,peixe empanado com ervas,USDA: fish,90,baixa,filé ~10x4 cm
+d0312,granola com frutas,USDA: granola,50,baixa,tigela pequena ~14 cm
+d0312,uvas,USDA: grapes,15,baixa,3 uvas
+d0312,banana/figo em pedaços,USDA: banana,30,baixa,poucos pedaços
+d0324,morango,USDA: strawberries,60,media,4 morangos cortados
+d0324,melão cantaloupe,USDA: cantaloupe,60,media,4 cubos ~3 cm
+d0324,mirtilo,USDA: blueberries,10,media,~7 mirtilos
+d0327,frango grelhado em cubos,USDA: grilled chicken,110,media,tigela ~25 cm; ~10 cubos
+d0327,queijo parmesão em lascas,USDA: parmesan cheese,30,media,~15 lascas
+d0327,abacate,USDA: avocado,50,media,2 fatias
+d0327,folhas verdes,USDA: mixed greens,60,baixa,base da tigela
+d0327,brócolis,USDA: broccoli,40,baixa,~4 floretes
+d0367,peixe branco assado com ervas,USDA: fish,200,media,"prato quadrado ~27 cm; 3 filés ~10x6x1,5 cm"
+d0367,berinjela assada,"USDA: eggplant, cooked",80,media,~10 cubos
+d0367,cenoura,"Cenoura, cozida",50,media,~5 rodelas grandes
+d0367,tofu em cubos,USDA: tofu,70,media,"~7 cubos ~2,5 cm"
+d0367,carne bovina em pedaços com espinafre,USDA: beef,45,baixa,poucos pedaços sobre espinafre
+d0367,espinafre refogado,USDA: spinach (cooked),20,baixa,sob a carne
+d0371,pão de fermentação natural,USDA: bread,60,media,"1 fatia ~13x10 cm, ~1,5 cm"
+d0390,salada caesar (alface romana com molho),USDA: lettuce,70,baixa,prato quadrado ~24 cm; folhas com molho
+d0390,molho caesar,USDA: salad dressing,15,baixa,brilho sobre folhas
+d0390,crouton,USDA: croutons,8,baixa,1 crouton ~3 cm
+n019,rúcula,USDA: arugula,40,media,prato quadrado ~26 cm; ~1/3 do prato
+n019,amêndoa laminada,USDA: almonds,5,baixa,poucos pedaços
+n025,arroz vermelho com rúcula e legumes,"Arroz, integral, cozido",100,media,prato quadrado ~26 cm; monte ~10x9 cm
+n025,cenoura,"Cenoura, cozida",20,media,2 tiras
+n025,milho na espiga,USDA: corn,70,media,2 rodelas (~6 cm e ~4 cm); peso comestível
+n025,frango empanado,USDA: chicken breast,50,baixa,pedaço ~7x5 cm
+n041,cenoura assada,"Cenoura, cozida",120,media,prato ~27 cm; ~14 rodelas grandes
+n041,couve-flor,USDA: cauliflower,70,media,~4 floretes
+n041,amêndoas,USDA: almonds,60,media,~50 amêndoas
+n041,maçã,USDA: apple,160,media,"maçã ~7,5 cm"
+n047,arroz temperado,"Arroz, tipo 1, cozido",140,media,prato quadrado ~26 cm; 2 montes
+n047,frango (sobrecoxa e coxa) cozido,"Frango, sobrecoxa, sem pele, assada",120,baixa,2 pedaços com osso; peso sem osso
+n047,milho na espiga,USDA: corn,50,media,2 rodelas ~5 cm; peso comestível
+d0059,tofu em cubos,USDA: tofu,110,baixa,tigela ~25 cm; ~30 cubos de ~2 cm
+d0059,azeitonas pretas,USDA: olives,60,media,"~18 azeitonas kalamata ~3,5 g"
+d0059,espinafre cru,USDA: spinach (raw),40,baixa,base de folhas cobrindo tigela de ~25 cm
+d0059,pepino,USDA: cucumbers,60,media,5 fatias longas ~8 cm
+b021,presunto fatiado,"Presunto, sem capa de gordura",60,media,pilha de ~3 fatias ~13x9 cm em prato raso ~26 cm
+b018,batata cozida em molho,"Batata, inglesa, cozida",130,baixa,2 pedaços ~7x4 cm em prato fundo ~22 cm
+b018,carne bovina ensopada,USDA: beef,80,baixa,2 pedaços escuros ~6x4 cm
+b018,molho do ensopado,USDA: gravy,70,baixa,camada rasa no fundo do prato fundo
+d0235,couve-flor,USDA: cauliflower,120,media,prato quadrado ~25 cm; ~8 floretes ocupando ~1/4
+b029,presunto fatiado,"Presunto, sem capa de gordura",80,media,pilha de ~4 fatias ~15x10 cm em prato raso ~26 cm
+c024,batata assada em cubos,USDA: roasted potatoes,150,media,"marmita ~750 ml 19x14 cm; batata ocupa ~1/3, ~4 cm altura"
+c024,arroz branco,"Arroz, tipo 1, cozido",90,media,faixa central ~1/4 da marmita
+c024,estrogonofe de frango,Estrogonofe de frango,160,media,~1/3 da marmita com molho
+d0056,ovos mexidos,USDA: scrambled eggs,100,media,prato ~26 cm; área ~10x8 cm
+d0056,batata assada,USDA: roasted potatoes,70,media,4 pedaços ~4 cm
+d0261,bolinho de siri/peixe,USDA: crab cake,100,baixa,"disco ~10x8 cm, ~2 cm, prato quadrado ~27 cm"
+d0261,abóbora amarela,USDA: squash,60,baixa,3 pedaços ~5 cm
+d0261,batata-doce assada,USDA: sweet potato,80,media,6 cubos ~3 cm
+d0261,salada caesar,USDA: caesar salad,80,baixa,monte ~12x8 cm
+d0078,brócolis,USDA: broccoli,100,media,prato quadrado ~27 cm; ~6 floretes ocupando ~1/4
+d0078,ovos mexidos,USDA: scrambled eggs,150,media,"área ~14x12 cm, ~2 cm"
+d0332,pizza de queijo,USDA: pizza,230,baixa,2 fatias grandes ~18 cm em prato ~25 cm
+d0332,pão de alho com queijo,USDA: garlic bread,90,baixa,fatia ~16x8 cm
+d0233,uvas,USDA: grapes,100,media,~20 uvas ~5 g; prato quadrado ~24 cm
+d0233,morangos,USDA: strawberries,80,media,~6 morangos
+d0233,melancia,USDA: watermelon,100,media,5 cubos ~4 cm
+d0233,almôndegas pequenas,USDA: meatballs,80,baixa,6 bolinhas ~3 cm
+d0233,queijo grelhado em cubo,USDA: halloumi cheese,20,baixa,1 cubo ~4x3 cm
+d0396,salada caesar,USDA: caesar salad,110,baixa,monte ~15x12 cm em prato quadrado ~25 cm
+b097,camarão cozido,"Camarão, Rio Grande, grande, cozido",100,media,~18 camarões ~5-6 g em prato raso ~27 cm
+d0183,azeitonas kalamata,USDA: olives,25,media,6 azeitonas ~4 g; prato quadrado ~25 cm
+d0333,amêndoas,USDA: almonds,65,media,"~55 amêndoas ~1,2 g"
+d0213,lombo de porco fatiado,"Porco, lombo, assado",110,baixa,~6 fatias ~5 cm em prato quadrado ~27 cm
+d0213,salada de espinafre,USDA: spinach (raw),50,baixa,monte de folhas ~1/4 do prato
+d0213,tira empanada (frango),USDA: breaded chicken,40,baixa,parcialmente escondida sob a salada
+b090,carne seca desfiada,"Carne, bovina, charque, cozido",170,baixa,"disco ~19 cm, ~1,5 cm altura, solto; prato raso ~27 cm"
+d0105,linguiça em pedaços,"Lingüiça, porco, grelhada",85,media,7 pedaços ~3 cm; prato quadrado ~27 cm
+d0263,carne bovina grelhada fatiada,USDA: steak,110,baixa,~4 fatias ~8x4 cm em tigela ~24 cm
+d0263,brócolis,USDA: broccoli,70,media,~7 floretes pequenos
+d0263,folhas mistas,USDA: mixed greens,50,baixa,base de folhas da tigela
+d0299,carne assada (pot roast),USDA: beef,120,baixa,3-4 pedaços ~5 cm; prato ~26 cm
+d0299,batata assada,USDA: potatoes,60,baixa,2 pedaços ~5 cm
+d0299,cenoura cozida,"Cenoura, cozida",40,media,2 pedaços ~6 cm
+d0175,ovos mexidos,USDA: scrambled eggs,130,media,área ~15x8 cm; prato quadrado ~27 cm
+d0175,bacon,USDA: bacon,35,media,4 tiras ~15 cm
+d0175,linguiça em pedaços,USDA: sausage,80,baixa,~6 pedaços ~3 cm
+d0180,pera,USDA: pear,160,media,pera inteira ~8 cm; prato quadrado ~25 cm
+d0180,morangos,USDA: strawberries,80,media,~7 metades/morangos
+d0049,brócolis,USDA: broccoli,50,media,2 floretes ~7 cm
+d0049,ovos mexidos,USDA: scrambled eggs,90,media,área ~10x7 cm; prato quadrado ~27 cm
+d0049,bacon,USDA: bacon,18,media,2 tiras
+d0071,bagel,USDA: bagel,95,baixa,metade visível ~10 cm + outra metade sob os ovos
+d0071,cream cheese,USDA: cream cheese,25,media,camada fina sobre meia rodela
+d0071,ovos mexidos,USDA: scrambled eggs,110,media,área ~12x8 cm; prato quadrado ~25 cm
+d0020,arroz branco,"Arroz, tipo 1, cozido",100,baixa,tigela ~15 cm; maior parte escondida sob a carne
+d0020,carne bovina desfiada,USDA: beef,90,baixa,cobertura ~10x8 cm na tigela
+d0020,molho de ervas (chimichurri),USDA: salsa verde,10,baixa,cobertura verde fina
+c008,filé de peixe com ervas,"Merluza, filé, assado",130,media,filé ~16x8 cm na marmita ~19x14 cm
+c008,cuscuz marroquino com legumes,USDA: couscous,160,baixa,"base da marmita, ~3 cm, em parte sob o peixe"
+c008,amêndoas laminadas,USDA: almonds,8,media,~25 lâminas
+d0047,iogurte,"Iogurte, natural",120,baixa,tigela ~12 cm
+d0047,aveia/granola,USDA: oatmeal,20,baixa,cobertura central
+d0047,morangos,USDA: strawberries,35,media,3 pedaços
+d0195,pepino,USDA: cucumbers,70,media,5 tiras ~10 cm; prato parcialmente fora da foto
+d0195,abóbora assada com cebola,USDA: squash,90,baixa,~7 cubos ~3 cm
+d0195,peito de peru fatiado,USDA: turkey,40,baixa,parcialmente fora da foto
+d0147,linguiça em pedaços,"Lingüiça, porco, grelhada",140,media,8 pedaços ~4-6 cm em prato de papel ~18 cm
+n007,filé de peixe assado com páprica,USDA: fish,220,baixa,"2 filés ~9x7 cm, ~2 cm; prato quadrado ~24 cm"
+n007,folhas mistas,USDA: mixed greens,60,baixa,base de folhas sob os filés
+d0002,batata assada,USDA: roasted potatoes,120,media,~12 pedaços ~3 cm; prato quadrado ~27 cm
+d0002,salada de couve,USDA: kale salad,90,baixa,faixa ~16x7 cm
+c006,feijão,"Feijão, carioca, cozido",120,media,~1/3 da marmita 19x14 cm
+c006,carne moída,"Carne, bovina, acém, moído, cozido",110,media,~1/3 central da marmita
+c006,cenoura cozida,"Cenoura, cozida",25,media,~8 cubos na carne
+c006,arroz integral,"Arroz, integral, cozido",90,media,~1/3 da marmita
+d0178,grão de trigo/farro,USDA: farro,100,baixa,monte ~14x10 cm; prato quadrado ~27 cm
+d0178,carne de porco em pedaços,USDA: pork,70,baixa,~6 pedaços ~3 cm
+n034,pizza/flatbread de queijo,USDA: pizza,110,baixa,retângulo ~12x8 cm; prato quadrado ~27 cm
+n034,arroz amarelo,"Arroz, tipo 1, cozido",130,media,"área ~12x9 cm, ~2 cm"
+n034,vagem,USDA: green beans,80,media,monte ~15x8 cm
+n034,espinafre,USDA: spinach (raw),30,baixa,folhas ao lado
+n033,lombo de porco fatiado,"Porco, lombo, assado",100,media,4 fatias ~8x5 cm; prato quadrado ~27 cm
+n033,melão,USDA: honeydew melon,130,media,~12 cubos ~3 cm
+b079,lombo de porco assado,"Porco, lombo, assado",80,media,2 fatias ~10x6 cm em prato raso ~27 cm
+d0369,bacon grosso caramelizado,USDA: bacon,55,baixa,2 tiras ~17x3 cm em prato ~26 cm
+d0208,peito de frango em cubos,"Frango, peito, sem pele, grelhado",120,media,~20 cubos ~2 cm; prato quadrado ~27 cm
+d0208,atum/frango desfiado com cenoura,USDA: tuna,110,baixa,área ~12x9 cm
+d0208,pimentões,USDA: bell peppers,80,media,~12 tiras
+b061,bife grelhado,"Carne, bovina, filé mingnon, sem gordura, grelhado",130,media,"~11x7 cm, ~2 cm, em prato raso ~27 cm"
+n027,frango desfiado,USDA: chicken breast,80,baixa,monte ~12x8 cm; prato quadrado ~27 cm
+n027,folhas e ervas,USDA: mixed greens,15,baixa,folhas misturadas
+b006,filé de frango grelhado,"Frango, peito, sem pele, grelhado",85,media,"prato raso ~27 cm; filé ~11×6 cm, ~1,5 cm alto"
+b007,salame fatiado,USDA: salami,80,media,"prato ~27 cm; ~16 fatias de ~8 cm, finas (~5 g cada)"
+b012,bife grelhado,"Carne, bovina, contra-filé, sem gordura, grelhado",160,media,"prato ~27 cm; bife ~13×8 cm, ~2 cm alto"
+b015,macarrão fino/talharim,USDA: noodles,180,baixa,"prato ~27 cm; monte ~17 cm diâm., ~1,5 cm alto, solto"
+b049,lombo de porco em medalhões,"Porco, lombo, assado",270,media,"prato ~27 cm; 8 medalhões ~6 cm diâm. × 2,5 cm (~34 g cada)"
+b082,lombo de porco em medalhões,"Porco, lombo, assado",200,media,"prato raso ~27 cm; 6 medalhões ~6 cm diâm. × 2,5 cm (~34 g cada)"
+b091,lombo de porco assado fatiado,"Porco, lombo, assado",170,media,"prato ~27 cm; 4 fatias ~10×7 cm, ~1,2 cm"
+b068,feijão preto com caldo,"Feijão, preto, cozido",160,baixa,marmita ~750 ml; feijão ocupa ~1/3 do recipiente
+b068,linguiça em rodelas,"Lingüiça, porco, grelhada",40,baixa,~5 rodelas sobre o feijão
+b068,arroz branco,"Arroz, tipo 1, cozido",110,baixa,faixa central ~1/3 da marmita
+b068,couve refogada,"Couve, manteiga, refogada",70,baixa,faixa inferior ~1/3 da marmita
+c016,brócolis,"Brócolis, cozido",60,media,marmita retangular ~19×14 cm; ~1/4 do espaço
+c016,arroz branco,"Arroz, tipo 1, cozido",60,media,faixa estreita ~1/6 da marmita
+c016,carne moída,"Carne, bovina, acém, moído, cozido",120,media,"~1/3 da marmita, ~3 cm alto"
+c016,feijão carioca com caldo,"Feijão, carioca, cozido",110,media,~1/4 da marmita com caldo
+d0024,abacate,USDA: avocado,45,media,prato quadrado ~26 cm; 2 fatias ~9 cm
+d0024,acelga refogada,USDA: spinach (cooked),60,baixa,"monte ~9×8 cm, baixo"
+d0029,pizza de queijo,USDA: pizza,65,media,prato quadrado ~26 cm; pedaço ~9×7 cm
+d0029,abobrinha/abóbora assada,USDA: zucchini,80,baixa,~6 pedaços à esquerda
+d0029,couve-de-bruxelas,USDA: brussels sprouts,50,media,5 unidades ~3 cm
+d0029,frango assado,USDA: roast chicken,40,baixa,pedaço ~7×4 cm
+d0029,salada de couve com abóbora,USDA: mixed greens,60,baixa,"~1/6 do prato, alto direito"
+d0029,salada caesar,USDA: lettuce,100,baixa,~1/4 do prato com molho
+d0029,batata assada,USDA: roasted potatoes,15,baixa,1 pedaço pequeno
+d0048,grão-de-bico,USDA: chickpeas,60,media,~40 grãos; prato quadrado ~26 cm
+d0048,espinafre/rúcula,USDA: spinach (cooked),50,baixa,faixa de folhas ~1/4 do prato
+d0048,pera fatiada,USDA: pear,15,baixa,1 fatia fina
+d0048,mirtilo,USDA: blueberries,6,media,4 unidades
+d0083,claras mexidas,USDA: egg whites,180,media,"prato quadrado ~26 cm; ~1/2 do prato, ~3 cm alto"
+d0083,batata assada em cubos,USDA: roasted potatoes,100,media,"~14 cubos ~2,5 cm"
+d0107,claras mexidas,USDA: egg whites,170,media,"prato quadrado ~26 cm; monte ~14×16 cm, ~2,5 cm alto"
+d0113,ovos mexidos,USDA: scrambled eggs,90,media,prato ~22 cm; ~1/4 do prato
+d0113,bacon,USDA: bacon,25,media,~3 tiras
+d0113,brócolis,USDA: broccoli,80,media,"~1/4 do prato, floretes"
+d0122,salada de atum,USDA: tuna,130,media,"prato quadrado ~26 cm; monte ~11×12 cm, ~2,5 cm alto"
+d0124,claras mexidas,USDA: egg whites,180,media,"prato ~26 cm; ~1/2 do prato, ~3 cm alto"
+d0124,batata-doce assada,USDA: sweet potato,150,media,~15 pedaços ~3 cm
+d0132,frango empanado,USDA: chicken breast,45,baixa,prato ~26 cm; peça ~6×5 cm
+d0132,cogumelos refogados,USDA: mushroom,20,baixa,pequena porção sob o frango
+d0132,vagem/aspargo,USDA: green beans,10,baixa,2 pedaços
+d0138,brócolis,USDA: broccoli,70,media,prato ~26 cm; ~1/5 do prato
+d0138,rúcula,USDA: mixed greens,40,media,"~1/3 do prato, folhas leves"
+d0138,lentilha,USDA: lentils,50,media,monte ~7×6 cm
+d0190,carne de porco desfiada,USDA: pork,100,baixa,prato ~23 cm; monte ~9×7 cm
+d0190,carne com cenoura cozida,"Cenoura, cozida",35,baixa,pedaços de cenoura à direita
+d0190,carne ensopada (pedaços à direita),USDA: pork,35,baixa,pedaços pequenos com cenoura
+d0190,pepino,USDA: cucumbers,30,media,2 fatias longas ~10 cm
+d0191,batata assada,USDA: roasted potatoes,110,media,prato ~24 cm; ~14 pedaços ~3 cm
+d0197,bacon,USDA: bacon,20,media,2 tiras inteiras
+d0197,ovos mexidos,USDA: scrambled eggs,150,media,"prato ~24 cm; ~1/2 do prato, ~2,5 cm alto"
+d0207,bacon,USDA: bacon,30,media,3 tiras
+d0207,ovos mexidos,USDA: scrambled eggs,80,baixa,prato ~26 cm; ~1/5 do prato
+d0207,batata hash brown,USDA: hash browns,120,baixa,~1/3 do prato
+d0207,salsa de tomate,USDA: salsa,25,baixa,porção sobre os ovos
+d0217,linguiça em pedaços,USDA: sausage,110,media,prato descartável ~18 cm; 8 pedaços ~4 cm
+d0237,tofu,USDA: tofu,40,media,prato ~26 cm; 4 cubos ~3 cm
+d0237,lentilha/trigo,USDA: lentils,25,baixa,~25 grãos espalhados
+d0237,salada de repolho e cenoura,"Repolho, branco, cru",20,baixa,poucas tiras
+d0243,ovos mexidos,USDA: scrambled eggs,180,media,"prato ~22 cm; ~2/3 do prato, ~2,5 cm alto"
+d0243,molho verde/salsa,USDA: salsa,40,baixa,porções sobre os ovos
+d0258,ovos mexidos,USDA: scrambled eggs,140,media,"prato ~23 cm; monte ~10×15 cm, ~2 cm alto"
+d0269,couve-de-bruxelas assada,USDA: brussels sprouts,90,media,prato ~26 cm; ~13 unidades/metades
+d0305,couve-de-bruxelas,USDA: brussels sprouts,80,media,prato ~26 cm; ~8 unidades
+d0305,batata hash brown,USDA: hash browns,100,media,~1/4 do prato
+d0305,ovos mexidos,USDA: scrambled eggs,130,media,~1/4 do prato
+d0305,bacon,USDA: bacon,30,media,3 tiras
+d0321,peixe assado,USDA: fish,90,baixa,prato ~26 cm; 2 pedaços ~8×5 cm
+d0321,carne bovina,USDA: steak,110,baixa,"~1/6 do prato, ~2 cm alto"
+d0321,cuscuz/quinoa,USDA: couscous,60,baixa,monte ~8×7 cm
+d0321,batatas pequenas,USDA: roasted potatoes,40,baixa,2-3 pedaços sob o cuscuz
+d0321,vagem,USDA: green beans,40,media,~8 vagens
+d0321,tomate-cereja,USDA: tomatoes,50,media,4 unidades
+d0321,abacate,USDA: avocado,70,media,2 fatias grandes
+d0321,abobrinha assada,USDA: zucchini,40,baixa,1 pedaço
+d0321,beterraba/cogumelos,USDA: mushroom,35,baixa,porção escura ao lado da vagem
+d0344,amêndoas,USDA: almonds,35,media,prato ~26 cm; ~30 unidades
+d0344,uvas,USDA: grapes,100,media,~20 uvas
+d0344,melão cantalupo,USDA: cantaloupe,70,media,6 cubos ~3 cm
+d0344,linguiça em rodelas,USDA: sausage,90,media,"~14 rodelas ~3,5 cm"
+d0354,claras mexidas,USDA: egg whites,130,media,prato ~26 cm; ~1/3 do prato
+d0354,bacon,USDA: bacon,45,media,~5 tiras sobrepostas
+d0354,batata assada,USDA: roasted potatoes,80,media,~9 pedaços
+d0355,vagem,USDA: green beans,80,media,prato ~26 cm; ~1/4 do prato
+d0355,couve/acelga refogada,USDA: spinach (cooked),90,baixa,~1/3 do prato
+d0355,quinoa,USDA: quinoa,110,media,"faixa ~12×6 cm, ~2 cm alto"
+d0355,carne grelhada,USDA: steak,60,baixa,2 fatias ~8×4 cm
+d0358,claras mexidas,USDA: egg whites,170,media,prato ~26 cm; ~1/2 do prato
+d0358,melancia,USDA: watermelon,70,media,"~8 cubos ~2,5 cm"
+d0363,chili com carne,USDA: chili con carne,230,baixa,tigela ~15 cm cheia
+d0363,creme azedo,USDA: sour cream,15,baixa,1 colherada
+d0363,queijo cheddar ralado,USDA: cheese,10,baixa,fios por cima
+d0385,couve-flor,USDA: cauliflower,180,media,"prato ~26 cm; ~1/2 do prato, floretes"
+d0399,frango em cubos,USDA: grilled chicken,180,media,tigela oval ~25 cm; ~35 cubos ~2 cm
+d0399,brócolis,USDA: broccoli,70,media,~7 floretes
+d0399,folhas verdes,USDA: mixed greens,50,media,base de folhas da tigela
+n001,frango empanado recheado,USDA: chicken breast,120,baixa,"prato ~26 cm; peça ~10×7 cm, ~3 cm alto"
+n001,salada de couve com quinoa,USDA: mixed greens,35,baixa,monte ~9×5 cm
+n001,cenoura assada,"Cenoura, cozida",10,baixa,1 pedaço
+n008,espinafre,USDA: mixed greens,50,media,tigela ~25 cm; base de folhas
+n008,brócolis,USDA: broccoli,60,media,~6 floretes
+n008,cenoura ralada,USDA: carrot,30,media,2 montinhos
+n008,frango em cubos,USDA: chicken breast,60,baixa,~10 cubos brancos
+n008,queijo feta esfarelado,USDA: cheese,30,baixa,esfarelado no centro
+n011,espinafre,USDA: spinach (cooked),30,media,prato ~26 cm; monte ~9×7 cm
+n011,mirtilo,USDA: blueberries,6,media,4 unidades
+b028,arroz com feijão e legumes,USDA: rice and beans with vegetables,70,media,"prato grande ~28 cm vs garfo 19 cm; faixa ~5x9 cm, ~2 cm alt"
+b031,camarão cozido,"Camarão, Rio Grande, grande, cozido",160,media,"prato ~28 cm; monte ~11x9 cm, ~2,5 cm alt"
+b054,filé de peixe assado,USDA: fish,120,media,"peça ~13x8 cm, ~1,5 cm esp vs garfo"
+b085,macarrão com presunto e pimentão,USDA: macaroni with ham and vegetables,340,media,"ocupa ~70% do prato ~28 cm, ~3 cm alt"
+c014,macarrão parafuso com molho de tomate,"Macarrão, trigo, cozido (USDA 20121)",180,media,"marmita ~19x14 cm; massa ocupa ~60%, ~3 cm"
+c014,almôndegas ao molho,USDA: meatballs,120,media,3 almôndegas ~5 cm diâm ~40 g cada
+c026,arroz cremoso com molho,"Arroz, tipo 1, cozido",170,media,"marmita ~19x14 cm, base ~3 cm sob camarões"
+c026,camarão,"Camarão, Rio Grande, grande, cozido",100,media,~9 camarões ~11 g cada
+c026,ervilha,USDA: green peas,10,media,~6 ervilhas
+c027,camarão ao molho rosé,"Camarão, Rio Grande, grande, cozido",110,media,terço esquerdo da marmita ~19x14 cm
+c027,arroz branco,"Arroz, tipo 1, cozido",100,media,"terço central da marmita, ~3 cm"
+c027,batata assada em cubos,USDA: roasted potatoes,110,baixa,"terço direito, cubos ~2,5 cm"
+c034,sobrecoxa de frango assada,"Frango, sobrecoxa, sem pele, assada",140,media,"3 pedaços ~7x5 cm sobre o purê, marmita ~19x14 cm"
+c034,purê de batata,USDA: mashed potatoes,80,baixa,"parte escondida sob o frango, lado esquerdo"
+c034,batata-doce/abóbora assada em cubos,"Batata, doce, cozida",90,media,"~8 cubos ~2,5 cm"
+c034,ervilha,USDA: green peas,25,media,~18 ervilhas
+d0019,tofu em cubos,USDA: tofu,180,media,"bacia inox ~26 cm; cubos ~2 cm, área ~12x15 cm"
+d0019,queijo ralado em lascas,USDA: cheese,30,baixa,lascas no lado direito
+d0019,molho de amendoim,USDA: salad dressing,30,media,poça ~6x7 cm
+d0019,cebola roxa,USDA: onions,15,baixa,tiras visíveis nas bordas
+d0019,cenoura e pimentão,USDA: carrot,20,baixa,"tiras sob o tofu, parcialmente escondidas"
+d0028,mix de folhas,USDA: mixed greens,50,media,"tigela oval ~22 cm, folhas cobrindo metade"
+d0028,brócolis,USDA: broccoli,90,media,~6 floretes médios
+d0028,parmesão em lascas,USDA: cheese,15,media,~6 lascas finas
+d0039,ovos mexidos,USDA: scrambled eggs,180,media,"prato quadrado ~24 cm; monte ~14x12 cm, ~2,5 cm"
+d0039,cheddar ralado,USDA: cheese,15,media,fios por cima ~6x8 cm
+d0039,salsa/molho de tomate,USDA: salsa,20,baixa,faixas vermelhas sob o queijo
+d0065,lasanha,USDA: lasagna,180,baixa,"prato ~26 cm; pedaço ~13x10 cm, ~2,5 cm alt"
+d0068,peixe com espinafre e tomate,USDA: fish,150,baixa,prato ~26 cm; peça ~16x8 cm sob cobertura
+d0068,cobertura de espinafre e tomate,USDA: spinach (cooked),70,baixa,camada sobre o peixe
+d0084,abacaxi em pedaços,USDA: pineapple,120,media,"prato quadrado ~24 cm; 13 pedaços ~4x2x1,5 cm"
+d0116,peixe empanado com ervas,USDA: fish,60,baixa,marmita isopor ~22 cm; pedaço ~8x5 cm
+d0116,brócolis,USDA: broccoli,110,media,~5 floretes grandes
+d0116,minipimentão e pimentão vermelho,USDA: bell peppers,35,media,1 minipimentão ~8 cm + tira vermelha
+d0116,abobrinha,USDA: zucchini,10,media,1 rodela
+d0118,tofu em cubos com molho,USDA: tofu,130,media,bacia inox ~26 cm; ~30 cubos ~2 cm
+d0118,mix de folhas,USDA: mixed greens,60,baixa,"cobre metade da bacia, volume solto"
+d0118,cenoura ralada,USDA: carrot,30,media,monte ~8x6 cm
+d0118,repolho roxo e cebola,USDA: red cabbage,25,baixa,tiras na parte inferior
+d0118,molho cremoso,USDA: salad dressing,15,baixa,cobertura rosada sobre o tofu
+d0136,frango glaceado,USDA: chicken thighs,100,media,prato quadrado ~24 cm; peça ~9x7 cm
+d0136,arroz amarelo,USDA: white rice,70,media,"monte ~7x5 cm, ~2 cm"
+d0136,abóbora assada,USDA: squash,40,media,1 fatia ~5x4 cm
+d0136,salada caesar,USDA: lettuce,70,baixa,folhas ~10x8 cm com molho
+d0136,salada de pepino/acelga,USDA: cucumbers,35,baixa,porção ~6x5 cm
+d0156,melão,USDA: honeydew melon,70,media,4 pedaços ~4x3 cm
+d0156,alface,USDA: lettuce,40,media,folhas ~12x10 cm
+d0156,morango,USDA: strawberries,40,media,3 metades de morango médio
+d0156,mirtilo,USDA: blueberries,20,media,~12 mirtilos
+d0158,dumplings/guioza,USDA: dumplings,100,baixa,tigela ~14 cm; ~3 unidades
+d0158,rabanete,USDA: radish,10,media,3 rodelas finas
+d0158,amendoim picado,USDA: peanuts,8,baixa,pedacinhos por cima
+d0186,mix de folhas,USDA: mixed greens,50,media,prato quadrado ~24 cm; metade superior
+d0186,brócolis,USDA: broccoli,120,media,~6 floretes médios/grandes
+d0186,tomate-cereja,USDA: tomatoes,10,alta,1 unidade
+d0199,bagel (metade),USDA: bagel,50,media,prato ~24 cm; meia bagel ~9 cm
+d0199,cream cheese,USDA: cream cheese,25,media,camada sobre a bagel
+d0199,batata-doce assada,"Batata, doce, cozida",50,media,~8 cubos ~2 cm
+d0199,bacon,USDA: bacon,10,alta,1 fatia
+d0199,framboesa,USDA: raspberries,25,media,5 unidades
+d0199,amora,USDA: blackberries,25,media,5 unidades
+d0200,claras mexidas,USDA: egg whites,120,media,"prato quadrado ~24 cm; monte ~12x9 cm, ~2,5 cm"
+d0222,ovos mexidos com queijo,USDA: scrambled eggs,130,media,prato ~24 cm; área ~12x8 cm
+d0222,morango,USDA: strawberries,50,media,3 morangos médios
+d0222,brócolis,USDA: broccoli,70,media,2 floretes grandes
+d0222,linguiça/salsicha em rodelas,USDA: sausage,70,media,~9 rodelas grossas ~3 cm
+d0223,claras mexidas,USDA: egg whites,80,media,prato quadrado ~24 cm; área ~8x7 cm
+d0223,morango,USDA: strawberries,60,media,~8 metades
+d0223,framboesa,USDA: raspberries,25,media,~5 unidades
+d0223,mirtilo,USDA: blueberries,10,media,~6 unidades
+d0223,melancia,USDA: watermelon,40,baixa,~5 cubos pequenos
+d0223,abacaxi,USDA: pineapple,110,media,~12 pedaços
+d0223,salsicha em rodelas,USDA: sausage,35,media,4 rodelas ~3 cm
+d0250,espinafre cru,USDA: spinach,40,media,prato ~26 cm; folhas cobrindo ~1/3
+d0250,cenoura assada,USDA: carrot,100,media,"~10 pedaços ~5x1,5 cm"
+d0250,pera,USDA: pear,170,media,1 pera média ~8 cm
+d0252,frango/peru desfiado,USDA: turkey,35,baixa,prato ~26 cm; porção ~6x5 cm
+d0260,cogumelos salteados,USDA: mushroom,100,media,prato ~24 cm; área ~11x8 cm
+d0260,carne bovina,USDA: beef,110,media,"~4 pedaços ~4x3 cm, ~2 cm"
+d0260,pesto,USDA: pesto,10,baixa,pequena porção verde
+d0301,espinafre,USDA: spinach,40,media,prato ~24 cm; folhas ocupando ~1/3
+d0301,cenoura ralada,USDA: carrot,10,media,fios por cima
+d0303,carne bovina ao molho,USDA: beef,90,baixa,prato ~26 cm; peça ~7x7 cm
+d0303,macarrão/gratinado de queijo,USDA: macaroni and cheese,110,baixa,"porção ~10x8 cm, ~2,5 cm"
+d0348,peito de frango em cubos,USDA: chicken breast,130,media,bacia inox ~26 cm; ~40 cubos ~2 cm
+d0349,ovos mexidos com queijo,USDA: scrambled eggs,150,media,"prato quadrado ~24 cm; área ~13x10 cm, ~2 cm"
+d0375,mix de folhas,USDA: mixed greens,40,media,prato ~26 cm; área ~10x8 cm
+d0375,tomate-cereja,USDA: tomatoes,10,alta,1 unidade
+d0375,abobrinha e abóbora amarela,USDA: zucchini,90,media,~8 meias-luas
+d0375,pizza/flatbread,USDA: pizza,80,media,fatia ~11x7 cm
+d0375,coxa de frango,USDA: roast chicken,60,media,"1 coxa pequena, sem osso"
+d0375,cenoura cozida,USDA: carrot,70,media,~7 rodelas ~4 cm
+d0376,peixe empanado,USDA: fish,110,media,prato ~26 cm; 2 filés ~9x6 cm
+d0376,folhas de acelga/mix,USDA: mixed greens,40,baixa,área ~12x8 cm
+d0376,cebola em conserva,USDA: onions,15,media,anéis rosados
+d0376,tomate-cereja,USDA: tomatoes,10,alta,1 unidade
+d0376,alcachofra,USDA: artichokes,30,baixa,~3 pedaços
+d0376,batata assada,USDA: roasted potatoes,70,media,3 batatas pequenas
+d0376,nabo/batata assado,USDA: roasted potatoes,30,baixa,2 pedaços brancos
+d0376,pizza/flatbread,USDA: pizza,90,media,3 pedaços ~6x5 cm
+d0387,frango desfiado ao molho,USDA: chicken breast,130,media,prato ~24 cm; área ~12x8 cm
+d0387,couve-de-bruxelas assada,USDA: brussels sprouts,80,media,~6 metades
+d0394,salmão,"Salmão, sem pele, fresco, grelhado",140,media,prato ~24 cm; 2 postas ~8x5 cm + lascas
+d0394,arroz integral com espinafre e pimentão,"Arroz, integral, cozido",160,media,"área ~11x9 cm, ~2,5 cm"
+n004,peixe (cavala) assado,USDA: fish,80,baixa,prato ~24 cm; filé ~10x5 cm
+n004,bolo de carne/peixe,USDA: meatloaf,80,baixa,"fatia ~7x5 cm, ~2 cm"
+n004,farro/cevada,USDA: barley,25,baixa,grãos espalhados
+n004,espinafre,USDA: spinach,15,media,poucas folhas
+n015,salada caesar,USDA: lettuce,120,media,prato ~24 cm; área ~14x10 cm com molho
+n015,brócolis,USDA: broccoli,80,media,2 floretes + florete no arroz
+n015,arroz selvagem/vermelho,USDA: brown rice,40,baixa,área ~6x5 cm
+n015,legumes e tofu,USDA: bell peppers,30,baixa,"tomate, pimentão, 1 cubo de tofu"
+n016,salada caesar com croutons,USDA: lettuce,110,media,prato ~26 cm; área ~13x10 cm
+n016,pizza de queijo,USDA: pizza,110,media,fatia ~15x10 cm
+n016,brócolis,USDA: broccoli,60,media,~5 floretes
+n016,frango grelhado em tiras,USDA: grilled chicken,70,media,3 tiras ~6x3 cm
+n043,frango em pedaços,USDA: chicken breast,70,media,prato descartável ~18 cm; área ~8x8 cm
+n045,muffin inglês/bagel (metade),USDA: bread,35,media,prato ~24 cm; metade ~9 cm
+n045,cream cheese,USDA: cream cheese,20,media,camada sobre o pão
+n045,claras mexidas,USDA: egg whites,60,media,área ~9x6 cm
+n045,batata-doce assada,"Batata, doce, cozida",60,media,~12 cubos ~2 cm
+b010,carne cozida em molho,"Carne, bovina, acém, cozido",170,baixa,"prato fundo ~22 cm; carne ocupa ~1/3 da área útil, ~3 cm alto, com molho"
+b010,batata cozida,"Batata, inglesa, cozida",170,media,prato fundo ~22 cm; ~8 pedaços de batata ~5x3 cm
+b020,feijoada,Feijoada,320,media,"prato fundo ~22 cm cheio até ~2/3 da área, ~3 cm de profundidade"
+b022,feijoada,Feijoada,330,media,"prato fundo ~22 cm; área útil quase toda coberta, ~3 cm"
+b057,camarão pequeno cozido,"Camarão, Rio Grande, grande, cozido",200,media,"prato raso ~26 cm; monte ~14x12 cm, ~2,5 cm alto"
+b073,arroz negro (com tinta de lula),USDA: rice with squid ink,260,baixa,"prato raso ~26 cm; mancha ~15x13 cm, ~2 cm alto"
+b076,carne moída com legumes,"Carne, bovina, acém, moído, cozido",110,baixa,"marmita ~19x14 cm; 1/3 da área, ~2,5 cm"
+b076,arroz branco,"Arroz, tipo 1, cozido",100,baixa,marmita ~19x14 cm; faixa central ~1/3
+b076,feijão,"Feijão, carioca, cozido",110,baixa,marmita ~19x14 cm; 1/3 da área
+b083,salame fatiado,USDA: salami,70,media,prato raso ~26 cm; ~15 fatias finas de ~8 cm
+b104,macarrão miúdo (pastina) com queijo,"Macarrão, trigo, cozido (USDA 20121)",230,media,"prato raso ~26 cm; monte ~16x14 cm, ~2,5 cm alto"
+b110,carne assada fatiada (lombo),"Porco, lombo, assado",130,media,"prato raso ~26 cm; 3 rodelas ~6 cm diâmetro, ~2,5 cm espessura"
+c025,feijão branco/carioca,"Feijão, carioca, cozido",110,media,marmita ~19x14 cm; feijão ocupa ~1/3
+c025,arroz branco,"Arroz, tipo 1, cozido",75,media,marmita; faixa central estreita de arroz
+c025,carne de panela com abóbora,"Carne, bovina, acém, cozido",130,media,"marmita; ~1/3 da área, ~3 cm, cubos de carne e abóbora"
+d0004,abacaxi em cubos,USDA: pineapple,110,media,prato quadrado ~25 cm; ~9 cubos ~3 cm
+d0004,abobrinha verde e amarela,USDA: zucchini,130,media,prato ~25 cm; ~10 fatias grossas
+d0004,couve-de-bruxelas assada,USDA: brussels sprouts,70,media,prato ~25 cm; ~7 metades
+d0004,pizza de queijo,USDA: pizza,100,media,pedaço retangular ~10x8 cm
+d0014,pizza de queijo,USDA: pizza,140,media,3 tiras ~8x5 cm em prato ~25 cm
+d0014,salada de espinafre/folhas,USDA: spinach,40,baixa,monte de folhas ~1/4 do prato
+d0014,pepino,USDA: cucumbers,40,baixa,~8 rodelas/pedaços
+d0014,azeitona preta,USDA: olives,25,baixa,~6 azeitonas kalamata
+d0014,tomate,USDA: tomatoes,15,baixa,poucos pedaços
+d0021,tomate-cereja,USDA: tomatoes,55,media,7 tomates-cereja ~8 g cada
+d0021,azeitona preta,USDA: olives,35,media,8 azeitonas kalamata ~4 g cada
+d0035,clara de ovo mexida,USDA: egg whites,220,media,"prato quadrado ~23 cm; monte ~16x13 cm, ~2,5 cm"
+d0040,pizza de queijo,USDA: pizza,110,media,prato de papel ~23 cm; pedaço ~10x9 cm
+d0046,pizza,USDA: pizza,190,media,prato ~25 cm; 2 pedaços sobrepostos ~15x8 cm
+d0046,salada com molho cremoso,USDA: salad,90,baixa,monte ~12x8 cm
+d0074,linguiça/chouriço fatiado,USDA: sausage,90,media,prato ~25 cm; ~12 rodelas
+d0074,uvas,USDA: grapes,150,media,~30 uvas ~5 g
+d0074,amêndoas,USDA: almonds,50,media,"~40 amêndoas ~1,2 g"
+d0091,peixe empanado,USDA: fish,130,media,prato ~25 cm; 2 filés ~10x6 cm
+d0091,pizza,USDA: pizza,120,media,2 pedaços ~9x7 cm
+d0091,batata assada pequena,USDA: roasted potatoes,50,media,2 batatas bolinha
+d0100,espinafre refogado,USDA: spinach (cooked),80,baixa,prato ~25 cm; monte ~1/3 do prato
+d0100,brócolis,USDA: broccoli,90,media,3 floretes grandes
+d0101,bolo de carne,USDA: meatloaf,90,baixa,"prato ~25 cm; pedaço ~8x6 cm, ~3 cm"
+d0101,purê/couve-flor com ervas,USDA: mashed potatoes,110,baixa,monte ~10x8 cm
+d0101,brócolis rabe,USDA: broccoli,90,baixa,~1/3 do prato
+d0109,pizza de queijo,USDA: pizza,100,media,prato ~25 cm; fatia ~12x9 cm
+d0125,pizza de pepperoni,USDA: pizza,140,media,2 pedaços ~11x6 cm
+d0125,pão (triângulos),USDA: bread,70,media,2 triângulos de pão ~11 cm
+d0149,iogurte,USDA: greek yogurt,80,baixa,tigela ~12 cm
+d0149,granola,USDA: granola,35,baixa,cobertura na tigela
+d0149,pera/maçã em cubos,USDA: pear,25,baixa,poucos cubos
+d0164,bacon,USDA: bacon,20,media,2 tiras em prato ~23 cm
+d0187,clara de ovo mexida,USDA: egg whites,200,media,"prato ~25 cm; ~1/2 do prato, ~2 cm"
+d0187,batata-doce assada,USDA: sweet potato,80,media,"~9 cubos ~2,5 cm"
+d0187,melão,USDA: melon,90,media,5 pedaços
+d0202,vagem,USDA: green beans,90,media,prato ~25 cm; ~35 vagens
+d0205,torrada com rúcula e queijo,USDA: toast,90,baixa,fatia ~14x8 cm em prato ~25 cm
+d0205,carne desfiada com repolho,USDA: pork,110,baixa,monte ~12x9 cm
+d0225,linguiça grelhada em pedaços,"Lingüiça, porco, grelhada",150,media,prato papel ~18 cm; ~11 pedaços ~3 cm
+d0232,abobrinha assada,USDA: zucchini,90,media,6 pedaços ~5 cm em prato ~25 cm
+d0236,frango em cubos,USDA: grilled chicken,150,media,"tigela ~25 cm; ~22 cubos ~2,5 cm"
+d0236,folhas verdes,USDA: mixed greens,50,baixa,base da tigela
+d0236,abacate,USDA: avocado,50,baixa,~4 fatias
+d0256,clara de ovo mexida,USDA: egg whites,200,media,prato ~25 cm; monte ~16x14 cm
+d0264,brócolis rabe,USDA: broccoli,100,baixa,prato ~25 cm; ~1/2 do prato
+d0264,hambúrguer/patty sob o brócolis,USDA: chicken,70,baixa,parcialmente escondido; ~9 cm de diâmetro
+d0266,peito de frango em cubos,USDA: chicken breast,150,media,prato ~25 cm; ~40 cubos pequenos
+d0266,tomate-cereja,USDA: tomatoes,70,media,7 tomates-cereja ~10 g
+d0277,bacon,USDA: bacon,25,media,3 tiras em prato ~23 cm
+d0314,espinafre cru,USDA: spinach,50,baixa,tigela ~26 cm; base de folhas
+d0314,frango em cubos,USDA: chicken breast,80,baixa,~20 pedaços pequenos
+d0314,brócolis,USDA: broccoli,80,media,~8 floretes
+d0325,filé de peixe grelhado,USDA: fish,90,media,prato ~25 cm; 2 pedaços ~8x5 cm
+d0352,couve refogada,"Couve, manteiga, refogada",90,baixa,prato ~25 cm; ~1/3 do prato
+d0352,arroz,"Arroz, tipo 1, cozido",100,baixa,~1/4 do prato sob o frango
+d0352,frango,USDA: chicken,50,baixa,pedaços sobre o arroz
+d0352,omelete/fritada,USDA: omelets,100,baixa,~1/4 do prato
+d0352,abóbora amarela,USDA: squash,30,baixa,poucos pedaços
+d0361,pão sírio,USDA: pita bread,60,baixa,~3 triângulos; prato ~25 cm parcialmente fora
+d0361,homus,USDA: hummus,60,baixa,monte ~8 cm
+d0361,abóbora assada,USDA: squash,120,baixa,~8 cubos ~4 cm
+d0361,pepino,USDA: cucumbers,40,baixa,~4 palitos
+d0361,frios (peito de peru),USDA: turkey,30,baixa,fatias parcialmente visíveis no topo
+n036,amêndoas,USDA: almonds,36,media,"~30 amêndoas ~1,2 g em prato ~23 cm"
+n044,salada caesar,USDA: salad,70,baixa,prato ~25 cm; monte ~12x8 cm
+n044,salada de rúcula com mirtilos,USDA: mixed greens,60,baixa,monte ~12x9 cm
+b023,peito de frango grelhado,USDA: chicken breast,160,media,"prato raso ~27 cm entre garfo e faca; peito ~14x8 cm, ~2,5 cm de altura"
+b034,filé de peixe branco cozido,USDA: cod,210,media,"prato raso ~27 cm; filé ~15x10 cm, ~2,5 cm de altura"
+b041,fatias de salame,USDA: salami,35,media,prato ~27 cm; ~6 fatias finas de ~8 cm empilhadas
+b066,camarão cozido descascado,USDA: shrimp,260,media,"prato ~27 cm; camarões cobrem ~60% da área útil, camada ~2 cm"
+c010,tiras de frango grelhado,USDA: grilled chicken,160,media,"embalagem de papel tipo 750 ml (~19x14 cm); frango ocupa ~1/3, ~10 tiras"
+c010,salada de quinoa com repolho roxo e cenoura,USDA: quinoa,80,baixa,"embalagem ~19x14 cm; faixa central ~1/4 da área, ~3 cm altura"
+c010,brócolis cozido,"Brócolis, cozido",90,media,embalagem ~19x14 cm; ~5 floretes grandes
+c010,abóbora/batata-doce em cubos,"Batata, doce, cozida",60,baixa,"~7 cubos de ~2,5 cm"
+d0013,maçã inteira,USDA: apple,180,media,prato ~26 cm; maçã ~8 cm diâmetro
+d0013,pedaço de milho na espiga,"Milho, verde, cozido",40,baixa,rodela de espiga ~6 cm de diâmetro; só grãos comestíveis
+d0013,uvas vermelhas,USDA: grapes,125,media,prato ~26 cm; ~25 uvas de ~5 g
+d0013,couve-flor crua,USDA: cauliflower,110,media,"~8 floretes médios, ~1/4 do prato"
+d0086,pedaço de carne escura,USDA: beef,25,baixa,"guardanapo ~20x33 cm; pedaço ~5x6 cm, fino"
+d0087,hambúrgueres/bolinhos de carne,USDA: ground beef,150,baixa,"prato ~26 cm; 3 discos ~7 cm, ~1,5 cm altura"
+d0087,legumes assados (batata e abóbora),USDA: roasted potatoes,100,baixa,cubos ~2-3 cm sobre e ao lado da carne
+d0087,abobrinha assada,USDA: zucchini,20,baixa,1 pedaço ~6 cm
+d0103,amêndoas,USDA: almonds,50,media,"prato quadrado ~24 cm; ~40 amêndoas de ~1,2 g"
+d0103,uvas vermelhas,USDA: grapes,90,media,~18 uvas de ~5 g
+d0103,brócolis cozido,"Brócolis, cozido",45,media,~4 floretes
+d0129,azeitonas kalamata,USDA: olives,22,media,prato quadrado ~24 cm; 6 azeitonas ~4 g (sem caroço)
+d0129,pedaços de frango desfiado,USDA: chicken breast,60,baixa,"~6 pedaços pequenos, área ~8x6 cm"
+d0148,queijo cottage,USDA: cottage cheese,150,media,"tigela ~16 cm; cottage ocupa ~10 cm de diâmetro, ~3 cm altura"
+d0150,melão honeydew em cubos,USDA: honeydew melon,120,media,prato quadrado ~24 cm; ~14 cubos de ~2 cm
+d0150,abacaxi em pedaços,USDA: pineapple,90,media,~8 bastões ~4x2 cm
+d0150,couve-flor cozida picada,USDA: cauliflower,60,baixa,monte ~7x6 cm
+d0173,couve-de-bruxelas assada,USDA: brussels sprouts,110,media,prato ~26 cm; ~13 unidades de ~8 g
+d0173,melão honeydew em cubos,USDA: honeydew melon,160,media,~10 cubos de ~3 cm
+d0173,brócolis cozido,"Brócolis, cozido",120,media,"~1/3 do prato, ~7 floretes"
+d0185,pizza (2 pedaços),USDA: pizza,130,baixa,prato quadrado ~24 cm; 2 fatias ~10x6 cm
+d0185,aspargos,USDA: asparagus,25,media,2 talos ~13 cm
+d0185,cogumelos salteados,USDA: mushroom,60,media,~7 cogumelos médios
+d0188,azeitonas kalamata,USDA: olives,70,media,prato quadrado ~26 cm; ~18 azeitonas
+d0188,carne grelhada,USDA: steak,50,baixa,"pedaço ~8x6 cm, ~1 cm"
+d0188,filé de frango/peixe branco,USDA: chicken breast,50,baixa,pedaço ~9x5 cm fino
+d0189,rodelas de linguiça de frango,USDA: sausage,40,media,"prato quadrado ~24 cm; 5 rodelas ~3,5 cm"
+d0189,framboesas,USDA: raspberries,60,media,~14 framboesas de ~4 g
+d0203,couve-flor,USDA: cauliflower,80,media,prato ~26 cm; ~8 floretes pequenos
+d0203,brócolis,"Brócolis, cozido",80,media,~6 floretes
+d0203,morangos,USDA: strawberries,60,media,4 metades/morangos grandes
+d0203,cenoura assada,"Cenoura, cozida",100,media,~12 pedaços ~4 cm
+d0218,claras mexidas,USDA: egg whites,180,media,"prato quadrado ~24 cm; ocupa ~2/3, ~2 cm altura"
+d0249,suco (laranja/toranja) no copo,USDA: orange juice,250,baixa,"copo ~9 cm de diâmetro visto de cima, cheio"
+d0278,pepino em palitos,USDA: cucumbers,100,media,prato ~26 cm; 6 palitos ~11 cm
+d0282,crepe/tortilha recheada,USDA: tortilla,70,baixa,prato ~26 cm; crepe dobrado ~12x8 cm
+d0282,ovos mexidos,USDA: scrambled eggs,130,media,"~1/4 do prato, ~2 cm altura"
+d0282,batata salteada com pimentão,USDA: roasted potatoes,110,baixa,"~1/5 do prato, cubos ~2 cm"
+d0287,pizza (1 pedaço quadrado),USDA: pizza,90,media,prato quadrado ~24 cm; pedaço ~10x8 cm
+d0290,amêndoas,USDA: almonds,65,media,prato ~26 cm; ~55 amêndoas
+d0290,tomate uva,USDA: tomatoes,80,media,8 tomates de ~10 g
+d0290,melão cantaloupe em palitos,USDA: cantaloupe,90,media,6 palitos ~5x2 cm
+d0306,melão cantaloupe em cubos,USDA: cantaloupe,150,media,prato ~26 cm; ~11 cubos de ~3 cm
+d0306,batata-doce assada,"Batata, doce, cozida",100,media,"~10 cubos ~2,5 cm"
+d0306,bacon,USDA: bacon,25,media,3 fatias
+d0313,fritada/omelete assada,USDA: omelets,180,baixa,"prato ~26 cm; quadrado ~10x10 cm, ~3 cm altura"
+d0319,batata-doce assada,"Batata, doce, cozida",90,media,prato quadrado ~24 cm; 9 cubos ~3 cm
+d0347,pizza (3 pedaços),USDA: pizza,170,baixa,prato quadrado ~26 cm; ~3 pedaços totalizando ~1/3 do prato
+d0353,trigo-sarraceno/grão cozido,USDA: buckwheat groats,100,baixa,"prato quadrado ~26 cm; monte ~10x8 cm, ~2 cm"
+d0353,frango empanado,USDA: chicken breast,70,baixa,2 tiras ~10x3 cm
+d0353,pimentão vermelho assado,USDA: bell peppers,20,media,~5 tiras
+d0353,abacaxi em cubos,USDA: pineapple,110,media,"~12 pedaços de ~2,5 cm"
+d0359,melão honeydew em cubos,USDA: honeydew melon,110,media,prato quadrado ~26 cm; ~11 cubos
+d0359,salada de rúcula,USDA: mixed greens,45,baixa,"~1/3 do prato, folhas soltas"
+d0359,feijão preto,"Feijão, preto, cozido",15,baixa,~12 grãos espalhados
+d0359,vagem,USDA: green beans,70,media,~20 vagens finas
+d0360,linguiça defumada em pedaços,USDA: sausage,100,media,prato quadrado ~24 cm; 6 pedaços ~3 cm
+d0364,salada caesar,USDA: mixed greens,110,baixa,prato quadrado ~28 cm; ~1/3 do prato
+d0364,brócolis,"Brócolis, cozido",50,media,2 floretes
+d0364,frango ao molho de tomate,USDA: chicken breast,140,baixa,"~1/4 do prato, ~3 cm altura com molho"
+d0364,arroz integral/selvagem,USDA: brown rice,50,baixa,monte parcialmente coberto ~8x6 cm
+d0364,legumes salteados (brócolis/tomate/tofu),USDA: broccoli,40,baixa,sobre o arroz
+d0378,claras mexidas,USDA: egg whites,150,media,"prato quadrado ~26 cm; ~1/3 do prato, ~2 cm"
+d0378,ovos mexidos,USDA: scrambled eggs,60,media,monte ~8x7 cm
+d0378,batata-doce assada,"Batata, doce, cozida",80,media,~10 cubos
+d0382,atum/frango desfiado com cenoura,USDA: tuna,95,baixa,"prato quadrado ~26 cm; monte ~10x8 cm, ~2 cm"
+d0395,claras cozidas/queijo fresco em pedaços,USDA: egg whites,200,baixa,"prato quadrado ~26 cm; ocupa ~1/2, ~3 cm altura"
+d0398,amêndoas,USDA: almonds,72,media,prato quadrado ~22 cm; ~60 amêndoas
+n003,filé de salmão/truta,USDA: salmon,110,baixa,prato quadrado ~26 cm; ~3 pedaços totalizando ~12x8 cm
+n003,espinafre,USDA: spinach (cooked),20,baixa,poucas folhas
+n003,grãos de trigo,USDA: wheat berries,15,baixa,~30 grãos espalhados
+n006,frango/atum desfiado,USDA: tuna,150,baixa,tigela inox ~24 cm; monte central ~14 cm
+n006,cenoura ralada,"Cenoura, crua",20,baixa,fios espalhados
+n006,tomate cereja,USDA: tomatoes,30,media,3 tomates
+n006,pedaços escuros de carne grelhada,USDA: beef,60,baixa,"2 pedaços ~7x5 cm, parcialmente escondidos"
+n013,filé de peixe branco,USDA: fish,90,baixa,prato quadrado ~26 cm; filé ~11x6 cm
+n013,arroz integral,USDA: brown rice,40,baixa,monte pequeno sob o peixe/salada
+n013,vagem,USDA: green beans,80,media,~20 vagens
+n013,salada de folhas mistas,USDA: mixed greens,45,media,~1/3 do prato
+n014,maçã,USDA: apple,180,media,prato ~26 cm; maçã ~8 cm
+n014,amêndoas,USDA: almonds,42,media,~35 amêndoas
+n014,uvas vermelhas,USDA: grapes,85,media,~17 uvas
+n014,rodelas de linguiça,USDA: sausage,70,media,6 rodelas ~4 cm
+n014,espinafre refogado,USDA: spinach (cooked),20,baixa,pequeno monte ~6 cm
+n050,ovos mexidos,USDA: scrambled eggs,110,media,"prato quadrado ~24 cm; monte ~12x8 cm, ~2 cm"
+b004,baião de dois,"Baião de dois, arroz e feijão-de-corda",260,media,"prato fundo ~26 cm com talheres; porção ~16 cm de diâmetro, ~2 cm de altura"
+b025,carne desfiada,"Carne, bovina, acém, moído, cozido",100,baixa,"marmita ~750 ml; carne ocupa ~1/3 da área, ~2 cm"
+b025,arroz branco,"Arroz, tipo 1, cozido",110,baixa,marmita ~750 ml; arroz ~1/3 da área
+b025,purê de batata,USDA: mashed potatoes,110,baixa,marmita ~750 ml; purê ~1/3 da área
+b044,pedaço de frango grelhado,"Frango, peito, sem pele, grelhado",45,media,"prato raso ~26 cm; peça ~7×5 cm, ~1,5 cm"
+b056,feijoada,Feijoada,300,media,prato fundo ~22 cm cheio até ~2/3 com caldo e carnes
+b067,fatia de presunto,"Presunto, sem capa de gordura",30,media,"prato raso ~26 cm; fatia ~14×10 cm, fina (1-2 fatias)"
+b070,salame fatiado,USDA: salami,60,media,"prato raso; ~14 fatias de ~8 cm, finas"
+b080,charque desfiado,"Carne, bovina, charque, cozido",100,media,"prato raso ~26 cm; meia-lua ~12 cm de diâmetro, ~2 cm"
+b103,frango ao curry,USDA: chicken curry,130,baixa,marmita ~750 ml; ~1/3 da área
+b103,arroz branco,"Arroz, tipo 1, cozido",100,baixa,marmita ~750 ml; ~1/3 da área
+b103,batata em cubos,"Batata, inglesa, cozida",100,baixa,marmita ~750 ml; ~1/3 da área com cubos ~2 cm
+c018,peixe com molho (moqueca),USDA: fish,170,media,marmita retangular ~19×14 cm; peixe ~2 pedaços + molho na metade esquerda
+c018,arroz branco,"Arroz, tipo 1, cozido",110,media,metade direita da marmita
+c018,lascas de coco e castanha,USDA: coconut chips,15,baixa,lascas por cima do arroz
+c023,lasanha/gratinado de carne,USDA: lasagna,320,baixa,"marmita retangular ~19×14 cm cheia, ~3 cm"
+d0003,pizza/flatbread,USDA: pizza,70,baixa,prato quadrado ~26 cm; pedaço ~10×8 cm
+d0003,frango com molho,USDA: chicken breast,80,baixa,pedaço ~8×6 cm
+d0003,carne bovina,USDA: steak,75,baixa,"3 fatias ~5×4 cm, ~1,5 cm"
+d0003,couve-flor,USDA: cauliflower,110,media,~1/4 do prato
+d0003,couve-de-bruxelas,USDA: brussels sprouts,90,media,~8 unidades
+d0003,arroz temperado,USDA: white rice,150,media,"~1/4 do prato, ~2 cm"
+d0005,ovos mexidos,USDA: scrambled eggs,120,baixa,prato redondo ~26 cm; massa central ~10×12 cm
+d0005,frango,USDA: chicken breast,60,baixa,pedaços misturados
+d0005,salsa de tomate,USDA: salsa,35,baixa,porção ~5 cm
+d0032,frango em cubos,USDA: grilled chicken,170,media,bowl ~24 cm; ~40 cubos ~2 cm
+d0032,espinafre cru,USDA: spinach,45,media,folhas cobrindo o fundo do bowl
+d0033,tofu,USDA: tofu,60,media,prato quadrado ~26 cm; 5 cubos ~3 cm
+d0033,pizza,USDA: pizza,80,media,pedaço ~11×8 cm
+d0064,carne assada,USDA: beef,150,baixa,prato ~24 cm; 3 pedaços ~6 cm
+d0064,cenoura,USDA: carrot,50,baixa,3 pedaços
+d0064,abóbora assada,USDA: squash,130,baixa,~8 pedaços
+d0064,cebola,USDA: onion,15,baixa,pedaço lateral
+d0082,lombo de porco,"Porco, lombo, assado",110,media,"prato quadrado ~26 cm; fatia ~9×7 cm, ~2 cm"
+d0082,milho em espiga,USDA: corn,45,media,"2 rodelas ~5 cm, peso sem sabugo"
+d0082,grão integral (farro/arroz),USDA: brown rice,50,baixa,monte ~7 cm
+d0082,salada folhas e couve-flor,USDA: mixed greens,45,baixa,"rúcula e couve-flor ~1/3 do prato, solto"
+d0092,batata-doce assada,USDA: sweet potato,100,media,prato quadrado ~24 cm; ~10 cubos ~3 cm
+d0092,ovos mexidos,USDA: scrambled eggs,130,media,"massa ~12×8 cm, ~2,5 cm"
+d0098,amêndoas,USDA: almonds,80,media,"~65 amêndoas × ~1,2 g"
+d0104,rúcula com cenoura,USDA: mixed greens,40,media,prato quadrado ~26 cm; folhas soltas ~12 cm
+d0111,granola,USDA: granola,60,baixa,bowl ~14 cm; camada de granola
+d0111,frutas (morango e frutas vermelhas),USDA: strawberries,50,baixa,pedaços sob a granola
+d0126,claras mexidas,USDA: egg whites,150,media,"prato quadrado ~26 cm; ~1/3 do prato, ~2 cm"
+d0126,couve-de-bruxelas,USDA: brussels sprouts,110,media,~11 unidades
+d0126,bacon,USDA: bacon,25,media,3 tiras
+d0126,folhas verdes,USDA: mixed greens,40,media,"~1/3 do prato, solto"
+d0141,espinafre com cenoura,USDA: spinach,45,media,prato quadrado ~26 cm; folhas soltas
+d0141,bacon,USDA: bacon,20,media,2 tiras
+d0144,grão (farro/trigo),USDA: farro,110,media,"prato quadrado ~26 cm; monte ~9 cm, ~2,5 cm"
+d0144,peixe branco,USDA: cod,80,baixa,pedaço ~9×6 cm com cebola
+d0144,cenoura assada,USDA: carrot,110,media,~12 rodelas de ~4 cm
+d0145,ovo frito,USDA: fried eggs,55,media,prato redondo ~26 cm; 1 ovo ~8 cm
+d0201,massa gratinada/lasanha,USDA: lasagna,110,media,"prato quadrado ~26 cm; pedaço ~9×9 cm, ~3 cm"
+d0280,arroz com carne de porco desfiada,USDA: white rice,90,baixa,prato quadrado ~26 cm; ~1/3 do prato
+d0280,carne de porco desfiada,USDA: pork,50,baixa,pedaços misturados ao arroz
+d0280,salada de folhas,USDA: mixed greens,40,baixa,"~1/3 do prato, solto"
+d0280,salada de macarrão,USDA: pasta,40,baixa,~8 pedaços de macarrão
+d0280,maçã,USDA: apple,15,baixa,poucos cubos
+d0288,bacon,USDA: bacon,90,media,prato quadrado ~24 cm; ~12 tiras
+d0296,brócolis,USDA: broccoli,150,media,prato quadrado ~26 cm; ~1/2 do prato
+d0296,couve-de-bruxelas,USDA: brussels sprouts,50,media,~5 unidades
+d0296,peixe/frango,USDA: fish,60,baixa,pedaço ~9×4 cm
+d0326,linguiça em pedaços,USDA: sausage,150,media,prato descartável ~22 cm; ~14 meias-rodelas
+d0337,batata assada,USDA: roasted potatoes,100,media,prato quadrado ~26 cm; ~14 cubos
+d0337,melão cantalupe,USDA: cantaloupe,100,media,~12 cubos ~3 cm
+d0337,claras mexidas,USDA: egg whites,180,media,"~1/2 do prato, ~2 cm"
+d0340,brócolis assado,USDA: broccoli,60,media,prato quadrado ~26 cm; porção ~12×6 cm
+d0343,batata-doce assada,USDA: sweet potato,130,media,prato quadrado ~24 cm; ~10 pedaços
+d0345,couve-flor/batata amassada,USDA: cauliflower,110,baixa,prato quadrado ~26 cm; monte ~10×8 cm
+d0345,cogumelos,USDA: mushroom,60,media,fatias ~1/4 do prato
+d0345,carne bovina,USDA: beef,70,baixa,3 pedaços ~5 cm
+d0388,espinafre com cenoura,USDA: spinach,30,media,prato quadrado ~24 cm; ~8 folhas
+d0393,pimentões,USDA: bell peppers,150,baixa,tigela inox ~30 cm; tiras vermelhas e verdes
+d0393,cebola roxa,USDA: onion,80,baixa,tiras misturadas
+n002,frango em cubos,USDA: grilled chicken,130,media,tigela inox ~30 cm; ~35 cubos ~2 cm
+n009,salada de folhas com tomate/beterraba,USDA: mixed greens,45,baixa,prato quadrado ~26 cm; porção ~10 cm
+n020,claras mexidas,USDA: egg whites,250,media,"prato quadrado ~26 cm; ~2/3 do prato, ~2,5 cm"
+n020,batata-doce assada,USDA: sweet potato,120,media,~12 cubos
+n023,morango,USDA: strawberries,40,media,3 morangos
+n023,mirtilo,USDA: blueberries,12,media,~10 mirtilos
+n023,melão cantalupe,USDA: cantaloupe,90,media,~9 pedaços ~3 cm
+n035,peixe branco,USDA: fish,110,media,"prato quadrado ~26 cm; filé ~12×5 cm, ~2 cm"
+n035,arroz integral,USDA: brown rice,70,media,porção ~8×5 cm
+n035,vagem,USDA: green beans,80,media,~25 vagens
+b017,feijão preto escorrido,"Feijão, preto, cozido",160,media,"prato raso ~26 cm; monte ~12x9 cm, ~2,5 cm de altura; garfo e faca ao lado"
+b026,torresmo,"Porco, torresmo",110,media,"prato raso ~26 cm; pilha ~13x11 cm, ~2 cm de altura"
+b052,filé de peixe cozido,USDA: fish,260,media,"prato raso ~26 cm; 2 postas ~13x8 cm, ~2 cm de espessura"
+b094,carne com osso (rabada) ensopada,"Carne, bovina, rabada, cozida",120,baixa,prato fundo ~22 cm; 3 pedaços ~5 cm; peso sem osso
+b094,maxixe/legumes ensopados,"Abobrinha, italiana, refogada",130,baixa,prato fundo ~22 cm; 4 pedaços ~6x3 cm
+b094,molho do ensopado,USDA: gravy,110,baixa,caldo cobrindo fundo do prato ~1 cm
+c002,frango teriyaki com gergelim,"Frango, peito, sem pele, grelhado",140,media,"marmita ~19x14 cm; 2 filés ~15x5 cm, ~2 cm altura"
+c002,arroz com ovo cenoura e ervilha,USDA: fried rice,180,media,"marmita ~19x14 cm; metade da área, ~4 cm altura"
+c009,sobrecoxa de frango assada,"Frango, sobrecoxa, sem pele, assada",140,media,marmita ~19x14 cm; 2 peças ~8x6 cm sobre o centro
+c009,farofa,"Mandioca, farofa, temperada",45,media,"marmita; faixa lateral ~5x11 cm, ~2 cm"
+c009,arroz branco,"Arroz, tipo 1, cozido",80,media,"marmita; faixa lateral ~5x11 cm, parcialmente coberta"
+c009,feijão,"Feijão, carioca, cozido",35,baixa,poucos grãos visíveis atrás do frango; resto escondido
+c013,carne de porco ensopada,"Porco, lombo, assado",120,media,"marmita ~19x14 cm; 1/3 da área, ~3 cm altura"
+c013,arroz branco,"Arroz, tipo 1, cozido",90,media,"marmita; faixa central ~6x12 cm, ~3 cm"
+c013,feijão,"Feijão, carioca, cozido",130,media,"marmita; 1/3 da área com caldo, ~3 cm"
+d0037,torta/copo de chocolate,USDA: chocolate pudding,80,baixa,prato quadrado ~25 cm; copinho ~8 cm de diâmetro
+d0050,peixe (sardinha/cavala) grelhado,"Sardinha, assada",110,media,prato quadrado ~25 cm; 4 filés ~9x3 cm
+d0050,trigo em grão cozido,USDA: wheat berries,30,baixa,grãos espalhados por cima
+d0050,tomate,"Tomate, com semente, cru",25,baixa,"fatias por baixo do peixe, parcialmente escondidas"
+d0050,folhas verdes,USDA: spinach,10,baixa,1-2 folhas
+d0050,queijo/cebola por cima,USDA: cheese,8,baixa,lascas pequenas
+d0067,cubos de frango grelhado,USDA: grilled chicken,190,media,"tigela oval ~25 cm; ~35 cubos ~2,5 cm"
+d0067,folhas verdes mistas,USDA: mixed greens,35,media,folhas por baixo e nas bordas
+d0067,brócolis,USDA: broccoli,35,baixa,alguns floretes parcialmente cobertos
+d0069,frango fatiado,USDA: chicken breast,110,media,"prato ~26 cm; 4 fatias ~10x4 cm, ~1,5 cm"
+d0072,ovos mexidos,USDA: scrambled eggs,160,media,"prato ~26 cm; área ~1/3 do prato, ~2 cm"
+d0072,linguiça,USDA: sausage,80,media,2 pedaços ~9x3 cm
+d0094,brócolis,USDA: broccoli,120,media,prato quadrado ~25 cm; 7 floretes de tamanhos variados
+d0106,bacon,USDA: bacon,55,media,prato quadrado ~23 cm; ~7 tiras sobrepostas
+d0112,amêndoas,USDA: almonds,70,media,"~58 amêndoas ~1,2 g cada"
+d0159,pizza de queijo,USDA: pizza,210,media,prato quadrado ~25 cm; 6 pedaços ~7x6 cm
+d0168,pedaço de pizza margherita,USDA: pizza,60,media,prato ~26 cm; pedaço ~12x7 cm
+d0192,batata rosti/hash brown,USDA: hash browns,150,baixa,"prato ~26 cm; área ~1/3, ~1,5 cm"
+d0192,salsa verde,USDA: salsa,35,baixa,cobertura no centro
+d0192,pico de gallo,"Tomate, com semente, cru",30,baixa,pedaços de tomate e cebola por cima
+d0206,brócolis,USDA: broccoli,80,media,prato quadrado ~23 cm; 6 floretes
+d0219,frango em pedaços,USDA: grilled chicken,100,media,tigela oval ~25 cm; ~20 pedaços pequenos
+d0219,pepino,USDA: cucumbers,70,media,~12 rodelas ~4 cm
+d0219,espinafre cru,USDA: spinach,40,media,folhas cobrindo a tigela
+d0242,bacon,USDA: bacon,35,media,prato quadrado ~25 cm; 4 tiras
+d0242,couve-de-bruxelas assada,USDA: brussels sprouts,50,media,~10 unidades pequenas
+d0248,amêndoas,USDA: almonds,50,media,prato de papel ~18 cm; ~42 amêndoas
+d0279,torrada de pão integral,USDA: toast,35,media,prato quadrado ~23 cm; fatia ~12x11 cm
+d0279,geleia,USDA: jam,20,media,camada fina cobrindo a fatia
+d0298,folhas verdes mistas,USDA: mixed greens,50,media,tigela ~25 cm cheia de folhas soltas
+d0298,frango grelhado temperado,USDA: grilled chicken,80,baixa,"3 pedaços ~6x4 cm, ~2 cm"
+d0302,frango fatiado,USDA: chicken breast,110,media,prato ~26 cm; 5 fatias ~9x3 cm
+d0302,pepino,USDA: cucumbers,80,media,"6 palitos ~9x2,5 cm"
+d0302,homus,USDA: hummus,50,media,"porção ~6x5 cm, ~1,5 cm"
+d0304,macarrão espaguete,USDA: pasta,110,media,prato quadrado ~25 cm; ninho ~12x10 cm
+d0304,salada caesar,USDA: caesar salad,110,baixa,"1/4 do prato, ~4 cm"
+d0304,pedaço de pizza,USDA: pizza,70,baixa,pedaço parcial na borda
+d0342,brócolis assado,USDA: broccoli,70,media,prato quadrado ~25 cm; 4 floretes
+d0342,pudim de chia,USDA: chia pudding,60,baixa,2 porções ~5x4 cm
+d0342,purê/couve-flor ou ricota,USDA: cauliflower,50,baixa,área ~7x5 cm branca
+d0342,linguiça em rodelas,USDA: sausage,50,media,"4 rodelas ~3,5 cm"
+d0342,batata-doce assada,USDA: sweet potato,70,media,~6 cubos ~3 cm
+d0342,batata assada,USDA: roasted potatoes,35,media,2-3 cubos ~3 cm
+d0362,bacon,USDA: bacon,18,media,prato quadrado ~25 cm; 2 tiras
+d0362,mirtilo,USDA: blueberries,45,media,~25 mirtilos
+d0362,morango,USDA: strawberries,35,media,3 pedaços
+d0374,ovos mexidos (claras),USDA: scrambled eggs,130,media,"prato quadrado ~23 cm; área ~11x9 cm, ~2 cm"
+d0374,linguiça calabresa em rodelas,USDA: sausage,45,media,5 rodelas ~4 cm
+d0389,peixe empanado,USDA: fish,110,media,prato quadrado ~25 cm; 2 filés ~9x6 cm
+d0389,alcachofra,USDA: artichokes,50,baixa,~5 pedaços de coração
+d0389,pizza/flatbread,USDA: pizza,90,baixa,2 pedaços ~8x6 cm
+d0389,batatas assadas e cubos assados,USDA: roasted potatoes,80,baixa,4 peças ~4 cm
+d0397,bacon,USDA: bacon,45,media,prato quadrado ~25 cm; ~6 tiras amontoadas
+n010,frango assado (sobrecoxa e coxa),USDA: roast chicken,140,media,"prato quadrado ~25 cm; 2 peças, peso sem osso"
+n010,arroz integral,USDA: brown rice,120,media,"faixa ~12x7 cm, ~2 cm"
+n010,salada verde mista,USDA: mixed greens,60,media,"metade do prato, folhas soltas"
+n010,grão-de-bico,USDA: chickpeas,20,media,~8 grãos
+n010,queijo feta,USDA: cheese,8,baixa,migalhas
+n012,salada caesar,USDA: caesar salad,160,media,"prato quadrado ~25 cm; ~40% da área, ~4 cm"
+n012,pedaço de pizza,USDA: pizza,60,media,fatia ~10x6 cm
+n012,carne assada (rosbife),USDA: beef,80,media,"fatias ~9x6 cm, ~2 cm"
+n012,abóbora assada,USDA: squash,90,media,~7 pedaços
+n046,pizza havaiana,USDA: pizza,230,media,prato ~28 cm; 4 pedaços ~9x8 cm
+n046,frango em cubos,USDA: grilled chicken,150,media,~35 cubos ~2 cm
+n046,abacaxi em cubos,USDA: pineapple,80,media,"~9 cubos ~2,5 cm"
+n046,tomate-cereja,USDA: tomatoes,90,media,9 tomates ~10 g
