@@ -2,8 +2,8 @@
 """Extrai embeddings congelados das fotos zenitais (treino + avaliação + itens brasileiros).
 
 Uso: python3 extrai_features.py <dir_treino> <backbone> [<backbone> ...]
-  backbones: dinov2_s, dinov2_b, dinov2_s448, clip_b16
-Grava <dir_treino>/feat/<backbone>.npz com ids (dish_id ou prato_id) e X (CLS ‖ média dos patches).
+  backbones: siglip_b16, siglip2_b16, vits16_in21k, vits16_in21k_384, effb0
+Grava <dir_treino>/feat/<backbone>.npz com ids (dish_id ou prato_id) e X (token agregado ‖ média dos patches).
 A imagem inteira é redimensionada (sem recorte) para preservar a escala: no Nutrition5k a
 câmera está a altura fixa, então área em pixels ~ área real.
 """
@@ -13,7 +13,6 @@ from PIL import Image
 
 SCR = "/tmp/claude-0/-home-user-enem-bot-data/59d3cb2b-a793-5c18-8c23-e9dab2604443/scratchpad"
 MEAN_IMNET, STD_IMNET = (0.485, 0.456, 0.406), (0.229, 0.224, 0.225)
-MEAN_CLIP, STD_CLIP = (0.4815, 0.4578, 0.4082), (0.2686, 0.2613, 0.2758)
 
 
 def lista_imagens(td):
@@ -33,20 +32,34 @@ def carrega(path, hw, mean, std):
     return (x - torch.tensor(mean)[:, None, None]) / torch.tensor(std)[:, None, None]
 
 
+PESOS = os.path.join(SCR, "treino", "pesos")
+# huggingface.co responde, mas o CDN dos pesos (cdn-lfs/xet) está bloqueado no proxy desta sessão:
+# DINOv2 e CLIP (OpenAI/LAION) ficaram inacessíveis. Usamos pesos públicos no GCS do Google
+# (SigLIP/SigLIP 2 — modelos imagem-texto tipo CLIP; ViT-S/16 AugReg ImageNet-21k) e no GitHub (EfficientNet-B0).
+NPZ = {
+    "siglip_b16": ("vit_base_patch16_siglip_224", "webli_en_b16_224_63724782.npz", (224, 224)),
+    "siglip2_b16": ("vit_base_patch16_siglip_224", "siglip2_b16_224.npz", (224, 224)),
+    "vits16_in21k": ("vit_small_patch16_224", "S_16-i21k-300ep-lr_0.001-aug_medium2-wd_0.03-do_0.0-sd_0.0.npz", (224, 288)),
+    "vits16_in21k_384": ("vit_small_patch16_224", "S_16-i21k-300ep-lr_0.001-aug_medium2-wd_0.03-do_0.0-sd_0.0.npz", (384, 512)),
+}
+
+
 def modelo(nome):
-    if nome.startswith("dinov2"):
-        arch = "vit_base_patch14_dinov2.lvd142m" if nome == "dinov2_b" else "vit_small_patch14_dinov2.lvd142m"
-        hw = (448, 588) if nome.endswith("448") else (224, 294)
-        m = timm.create_model(arch, pretrained=True, num_classes=0, dynamic_img_size=True).eval()
+    if nome in NPZ:
+        from timm.models.vision_transformer import _load_weights
+        arch, arq, hw = NPZ[nome]
+        m = timm.create_model(arch, pretrained=False, num_classes=0, dynamic_img_size=True).eval()
+        _load_weights(m, os.path.join(PESOS, arq))
         def f(x):
             t = m.forward_features(x)
-            return torch.cat([t[:, 0], t[:, m.num_prefix_tokens:].mean(1)], 1)
-        return f, hw, MEAN_IMNET, STD_IMNET
-    if nome == "clip_b16":
-        import open_clip
-        m, _, _ = open_clip.create_model_and_transforms("ViT-B-16", pretrained="laion2b_s34b_b88k")
-        m = m.eval()
-        return (lambda x: m.encode_image(x)), (224, 224), MEAN_CLIP, STD_CLIP
+            pool = m.forward_head(t, pre_logits=True)
+            return torch.cat([pool, t[:, m.num_prefix_tokens:].mean(1)], 1)
+        return f, hw, (0.5, 0.5, 0.5), (0.5, 0.5, 0.5)
+    if nome == "effb0":
+        m = timm.create_model("efficientnet_b0", pretrained=False, num_classes=0).eval()
+        m.load_state_dict({k: v for k, v in torch.load(os.path.join(PESOS, "efficientnet_b0_ra-3dd342df.pth")).items()
+                           if not k.startswith("classifier")})
+        return m, (360, 480), MEAN_IMNET, STD_IMNET
     raise ValueError(nome)
 
 
