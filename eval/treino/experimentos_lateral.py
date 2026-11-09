@@ -179,7 +179,8 @@ def avalia(D, m, m_massa=None):
         out[s + " lateral/quadro"] = resumo(Y[jq, 1], a[0], a[1], a[2], Y[jq, 0])
         out[s + " lateral/prato"] = resumo(Y[tem, 1], b[0], b[1], b[2], Y[tem, 0])
         out[s + " zenital (mesmos pratos)"] = resumo(Y[tem, 1], pd[tem], pm[tem], massa[tem], Y[tem, 0])
-        prev[s + " lateral/prato"] = dict(massa=b[2], idx=tem)
+        prev[s + " lateral/prato"] = dict(massa=b[2], idx=tem, direto=b[0])
+        prev[s + " lateral/quadro"] = dict(massa=a[2], idx=jq, direto=a[0])
     br_real = np.concatenate([prev[s]["real"] for s in BR])
     for k in ("direto", "m×d"):
         est = np.concatenate([prev[s]["direto" if k == "direto" else "massa"] * (1 if k == "direto" else prev[s]["dens"]) for s in BR])
@@ -225,6 +226,12 @@ def hibrido(D, prev, llm):
         out.setdefault("massa √(lateral·LLM) × dens LLM", {})[s] = metricas(h["real"][j][v], est[v])
         est = h["llm"][j]; v = ~np.isnan(est)
         out.setdefault("LLM sozinho (pratos com vídeo)", {})[s] = metricas(h["real"][j][v], est[v])
+        # um único quadro lateral por vez (o caso do celular: uma foto só)
+        Q = prev[s + " lateral/quadro"]; j = Q["idx"]
+        est = Q["massa"] * h["dl"][j]; v = ~np.isnan(est)
+        out.setdefault("massa lateral (1 quadro) × dens LLM", {})[s] = metricas(h["real"][j][v], est[v])
+        est = np.sqrt(Q["massa"] * h["ml"][j]) * h["dl"][j]; v = ~np.isnan(est)
+        out.setdefault("massa √(lateral 1 quadro·LLM) × dens LLM", {})[s] = metricas(h["real"][j][v], est[v])
     return out
 
 
@@ -246,6 +253,44 @@ def massa_ecustfd(D, X, Y, dish):
     return M()
 
 
+def acertos(D, prev, llm):
+    """Vetores de acerto por item (para bootstrap pareado entre configurações)."""
+    o = {}
+    o["teste zenital direto"] = ok(prev["teste"]["real"], prev["teste"]["direto"])
+    Q = prev["teste lateral/quadro"]
+    o["teste lateral 1 quadro direto"] = ok(prev["teste"]["real"][Q["idx"]], Q["direto"])
+    o["_grupo teste lateral 1 quadro"] = Q["idx"]
+    br_r = np.concatenate([prev[s]["real"] for s in BR]); br_d = np.concatenate([prev[s]["direto"] for s in BR])
+    o["brasileiros direto"] = ok(br_r, br_d)
+    for s, nome in (("teste", "teste C √(modelo·LLM) zenital"), ("liv_up", "Liv Up C √(modelo·LLM)"), ("ufpr", "UFPR C √(modelo·LLM)")):
+        pids = D.aval[s][1]
+        mg = np.array([llm[p][0] for p in pids]); pl = np.array([llm[p][1] for p in pids])
+        o[nome] = ok(prev[s]["real"], np.sqrt(prev[s]["massa"] * mg) * pl / np.maximum(mg, 1))
+    pids = D.aval["teste"][1]
+    mg = np.array([llm[p][0] for p in pids]); pl = np.array([llm[p][1] for p in pids])
+    o["teste C √(lateral 1 quadro·LLM)"] = ok(prev["teste"]["real"][Q["idx"]], np.sqrt(Q["massa"] * mg[Q["idx"]]) * pl[Q["idx"]] / np.maximum(mg[Q["idx"]], 1))
+    o["_grupo teste C √(lateral 1 quadro·LLM)"] = Q["idx"]
+    return o
+
+
+def bootstrap(a, b, n=4000, seed=0):
+    """Diferença b−a (pontos) com IC 95% por bootstrap pareado, reamostrando PRATOS (grupo)."""
+    out = {}
+    rng = np.random.default_rng(seed)
+    for k in a:
+        if k.startswith("_"):
+            continue
+        g = a.get("_grupo " + k, np.arange(len(a[k])))
+        ug = np.unique(g); pos = {u: np.where(g == u)[0] for u in ug}
+        d = []
+        for _ in range(n):
+            ix = np.concatenate([pos[u] for u in rng.choice(ug, len(ug))])
+            d.append(100 * (b[k][ix].mean() - a[k][ix].mean()))
+        out[k] = [100 * a[k].mean(), 100 * b[k].mean(), 100 * (b[k].mean() - a[k].mean()), *np.percentile(d, [2.5, 97.5])]
+        print(f"  {k:40s} {out[k][0]:5.1f}% → {out[k][1]:5.1f}%  Δ {out[k][2]:+5.1f} (IC95% {out[k][3]:+.1f} a {out[k][4]:+.1f})")
+    return out
+
+
 def linha(nome, r, h=None):
     t = r["teste"]; v1 = r["n5k_v1"]
     tl = r["teste lateral/prato"]; tq = r["teste lateral/quadro"]
@@ -259,7 +304,8 @@ def linha(nome, r, h=None):
         s += "\n      C: " + " | ".join(f"{k}: teste {v['teste']['crit']:.1f}% v1 {v['n5k_v1']['crit']:.0f}% BR {v['brasileiros']['crit']:.1f}% (UFPR {v['ufpr']['crit']:.0f}, LivUp {v['liv_up']['crit']:.0f})"
                                 for k, v in h.items() if "brasileiros" in v and k != "LLM sozinho")
         s += "\n      C lateral (pratos com vídeo): " + " | ".join(f"{k}: teste {h[k]['teste']['crit']:.1f}% v1 {h[k]['n5k_v1']['crit']:.0f}%"
-                                for k in ("massa lateral × dens LLM", "massa √(lateral·LLM) × dens LLM", "LLM sozinho (pratos com vídeo)"))
+                                for k in ("massa lateral × dens LLM", "massa √(lateral·LLM) × dens LLM", "LLM sozinho (pratos com vídeo)",
+                  "massa lateral (1 quadro) × dens LLM", "massa √(lateral 1 quadro·LLM) × dens LLM"))
     print(s, flush=True)
 
 
@@ -274,7 +320,11 @@ def main(bb="siglip2_b16"):
         assert not (set(po) | set(ps)) & D.ev
     res = {"bb": bb, "n": {k: [len(po), len(ps), sum(len(D.lat.get(d, [])) for d in ps)] for k, (po, ps) in cfgs.items()}}
     print("\n# Seleção por CV agrupada no treino (MSE em log; menor é melhor)")
-    res["cv"] = cv_selecao(D, cfgs)
+    if os.environ.get("SEM_CV"):  # reaproveita a CV já gravada (mesma semente/folds)
+        with open(os.path.join(TD, "resultados", f"lateral_{bb}.json")) as f:
+            res["cv"] = json.load(f)["cv"]
+    else:
+        res["cv"] = cv_selecao(D, cfgs)
     escolha = min(res["cv"], key=lambda k: np.mean([res["cv"][k]["zenital"][1], res["cv"][k]["lateral"][1]]))
     res["escolha_cv"] = escolha
     print("escolhida pela CV (média log proteína zenital+lateral):", escolha)
@@ -287,6 +337,8 @@ def main(bb="siglip2_b16"):
         m = ajusta(D, X, Y, dish)
         r, prev = avalia(D, m)
         h = hibrido(D, prev, llm)
+        if nome.startswith("1 ") or nome == escolha:
+            res.setdefault("_acertos", {})[nome] = acertos(D, prev, llm)
         res["aval"][nome], res["hibrido"][nome] = r, h
         linha(nome, r, h)
         if nome in ("1' zenital (regra universal)", escolha, "2d zenital + lateral, + pratos test/sem split fora da avaliação"):
@@ -296,6 +348,9 @@ def main(bb="siglip2_b16"):
             k2 = nome + " + ECUSTFD (só massa)"
             res["aval"][k2], res["hibrido"][k2] = r2, h2
             linha(k2, r2, h2)
+    print(f"\n# Bootstrap pareado: '1 zenital (regra original)' → '{escolha}'")
+    ac = res.pop("_acertos")
+    res["bootstrap"] = bootstrap(ac["1 zenital (regra original, 1.506)"], ac[escolha])
     res["llm"] = {s: res["hibrido"][escolha]["LLM sozinho"][s] for s in ["teste", "n5k_v1", "calib", "brasileiros"] + BR}
     print("LLM sozinho:", {s: round(v["crit"], 1) for s, v in res["llm"].items()})
     res["seg"] = time.time() - t0
