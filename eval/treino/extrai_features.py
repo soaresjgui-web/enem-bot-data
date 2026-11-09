@@ -64,7 +64,7 @@ def modelo(nome):
 
 
 def main(td, nomes):
-    torch.set_num_threads(4)
+    torch.set_num_threads(int(os.environ.get("NTHREADS", "1")))  # nesta máquina compartilhada, 1 thread por processo foi o mais rápido
     itens = lista_imagens(td)
     os.makedirs(os.path.join(td, "feat"), exist_ok=True)
     for nome in nomes:
@@ -78,7 +78,7 @@ def main(td, nomes):
                     print(nome, i, f"{time.time() - t0:.0f}s", flush=True)
         X = np.concatenate(feats)
         np.savez(os.path.join(td, "feat", f"{nome}.npz"), ids=np.array([i for i, _ in itens]), X=X)
-        print(nome, X.shape, f"{(time.time() - t0) / len(itens) * 1000:.0f} ms/img (lote 32, 4 threads)")
+        print(nome, X.shape, f"{(time.time() - t0) / len(itens) * 1000:.0f} ms/img (lote 32)")
 
 
 if __name__ == "__main__":

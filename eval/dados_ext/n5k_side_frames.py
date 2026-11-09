@@ -40,10 +40,10 @@ def decode(data, out_jpg, last=False):
         vf = "scale=960:540"
         if last:
             # decodifica tudo e mantém só o último quadro completo
-            cmd = ["ffmpeg", "-v", "error", "-y", "-f", "h264", "-i", p, "-vf", vf,
+            cmd = ["ffmpeg", "-v", "error", "-y", "-threads", "1", "-f", "h264", "-i", p, "-vf", vf,
                    "-q:v", "3", "-update", "1", out_jpg]
         else:
-            cmd = ["ffmpeg", "-v", "error", "-y", "-f", "h264", "-i", p, "-vf", vf,
+            cmd = ["ffmpeg", "-v", "error", "-y", "-threads", "1", "-f", "h264", "-i", p, "-vf", vf,
                    "-frames:v", "1", "-q:v", "3", out_jpg]
         subprocess.run(cmd, capture_output=True, timeout=120)
         return os.path.exists(out_jpg) and os.path.getsize(out_jpg) > 5000
@@ -73,17 +73,19 @@ def process(dish, cam, size, outdir):
     if not os.path.exists(j):
         ok = False
         start = int(size * 0.70)
-        while start > 1000 and not ok:
-            data = fetch(url, start, size - 1)
-            nbytes += len(data)
-            pos = rfind_sps(data)
-            # IDR precisa de ~300 KB depois do SPS; se o último SPS está muito no fim, usa o anterior
-            while pos >= 0 and len(data) - pos < 200_000:
-                pos = rfind_sps(data, pos)
-            if pos > 0 or (pos == 0 and start > 0):
-                ok = decode(data[pos:pos + 700_000], j)
-                break
-            start = int(start - size * 0.25)
+        data = fetch(url, start, size - 1)
+        nbytes += len(data)
+        pos = rfind_sps(data)
+        # IDR precisa de ~300 KB depois do SPS; se o último SPS está muito no fim, usa o anterior
+        while pos >= 0 and len(data) - pos < 200_000:
+            pos = rfind_sps(data, pos)
+        if pos >= 0:
+            ok = decode(data[pos:pos + 700_000], j)
+        else:
+            # vídeos curtos (~33 quadros) só têm o keyframe inicial: baixa o resto e decodifica o último quadro
+            head = fetch(url, 0, start - 1)
+            nbytes += len(head)
+            ok = decode(head + data, j, last=True)
         res.append((dish, cam, "fim", ok))
     else:
         res.append((dish, cam, "fim", True))
