@@ -79,7 +79,7 @@
 </head>
 <body>
 <h1>Nutrelle · registro por foto</h1>
-<p class="sub">Fluxo validado no teste de precisão: a foto identifica, a usuária confirma a porção da proteína com 1 toque, a tabela calcula.</p>
+<p class="sub">Fluxo proposto: a foto identifica, o modelo estima a porção e sugere a proteína; a usuária só corrige se quiser.</p>
 
 <div class="row">
   <!-- 1. CAMERA -->
@@ -105,31 +105,28 @@
 
   <!-- 2. CONFIRMAR -->
   <div class="col">
-    <div class="step">2 · Confirmar a proteína</div>
+    <div class="step">2 · Proteína sugerida</div>
     <div class="phone">
       <div class="status"><span>12:41</span><span>●●● 5G ▮</span></div>
       <div class="hdr">
         <div class="thumb"><svg width="52" height="52" viewBox="0 0 250 250" id="plateThumb"></svg></div>
-        <div><h2>Almoço</h2><p>Toque no tamanho mais parecido com o seu</p></div>
+        <div><h2>Almoço</h2><p>Estimado pela foto em 0,6 s</p></div>
       </div>
-      <div class="card hero">
-        <span class="pill">Proteína principal</span>
-        <div class="item-top"><h3>Frango</h3><div class="prot">32 g <small>proteína</small></div></div>
-        <div class="q">Peito, ≈ 110 g · ajuste pelo tamanho</div>
-        <div class="sizes" id="sizes"></div>
-        <div class="lbl">Como foi preparado?</div>
-        <div class="chips">
-          <span class="chip on">Grelhado</span><span class="chip">Assado</span><span class="chip">Ao molho</span><span class="chip">Desfiado</span><span class="chip">Empanado</span>
-        </div>
+      <div class="card hero" style="text-align:center;padding:18px 14px">
+        <div style="font-size:12.5px;font-weight:600;color:var(--muted)">Proteína neste prato</div>
+        <div style="font-size:46px;font-weight:800;color:var(--rose);letter-spacing:-.02em;line-height:1.1;margin-top:4px">39 g</div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:2px">faixa provável 33–45 g</div>
+        <div style="margin-top:10px"><span class="pill" style="background:var(--sage-soft);color:var(--sage)">Confiança alta</span></div>
       </div>
       <div class="card" style="padding:4px 14px">
-        <div class="mini"><div>Arroz branco<br><span>≈ 140 g</span></div><div style="text-align:right">3 g<br><span class="edit">ajustar</span></div></div>
-        <div class="mini"><div>Feijão carioca<br><span>≈ 1 concha (90 g)</span></div><div style="text-align:right">4 g<br><span class="edit">ajustar</span></div></div>
-        <div class="mini"><div style="color:var(--rose);font-weight:600">+ Adicionar item</div><div></div></div>
+        <div class="mini"><div><b>Frango grelhado</b><br><span>≈ 110 g</span></div><div style="text-align:right;font-weight:700;color:var(--rose)">32 g</div></div>
+        <div class="mini"><div>Arroz branco<br><span>≈ 140 g</span></div><div style="text-align:right">3 g</div></div>
+        <div class="mini"><div>Feijão carioca<br><span>≈ 1 concha (90 g)</span></div><div style="text-align:right">4 g</div></div>
       </div>
+      <div style="text-align:center;font-size:13px;color:var(--muted);margin-top:4px">Não parece certo? <span style="color:var(--rose);font-weight:700">Ajustar</span></div>
       <div class="btn">Salvar · 39 g de proteína</div>
     </div>
-    <p class="note"><b>O passo que leva a precisão de ~55% para ~71–76%.</b> A carne vem primeiro, com 6 tamanhos de referência ao redor do que a IA estimou. O preparo muda a tabela (grelhado ≠ ao molho). Os acompanhamentos ficam compactos e editáveis.</p>
+    <p class="note"><b>Sem tarefa para a usuária.</b> O número já vem pronto, com a faixa provável e o nível de confiança. Ajustar é opcional (toque em um item). Quando a confiança é baixa, o app pede uma segunda foto de lado em vez de pedir o tamanho.</p>
   </div>
 
   <!-- 3. HOJE -->
@@ -176,7 +173,7 @@ function plate(svg, chicken){
 plate(document.getElementById('plateBig'),1);
 plate(document.getElementById('plateThumb'),1);
 const sizes=[['PP',.45,'55 g'],['P',.65,'80 g'],['M',.85,'110 g'],['G',1.0,'150 g'],['GG',1.2,'200 g'],['XG',1.45,'275 g']];
-document.getElementById('sizes').innerHTML=sizes.map(([l,s,g],i)=>`<div class="size ${i==2?'on':''}"><div class="p"><svg width="34" height="34" viewBox="-60 -60 120 120"><g transform="scale(${s})"><path d="M-38,-26 C-10,-44 30,-36 40,-12 C48,10 30,34 0,36 C-30,38 -50,16 -46,-6 Z" fill="#D9A46A"/><path d="M-30,-14 L32,-22 M-34,2 L36,-4 M-28,18 L30,14" stroke="#B9834B" stroke-width="5" stroke-linecap="round"/></g></svg></div>${l}<br>${g}</div>`).join('');
+const sz=document.getElementById('sizes'); if(sz) sz.innerHTML=sizes.map(([l,s,g],i)=>`<div class="size ${i==2?'on':''}"><div class="p"><svg width="34" height="34" viewBox="-60 -60 120 120"><g transform="scale(${s})"><path d="M-38,-26 C-10,-44 30,-36 40,-12 C48,10 30,34 0,36 C-30,38 -50,16 -46,-6 Z" fill="#D9A46A"/><path d="M-30,-14 L32,-22 M-34,2 L36,-4 M-28,18 L30,14" stroke="#B9834B" stroke-width="5" stroke-linecap="round"/></g></svg></div>${l}<br>${g}</div>`).join('');
 </script>
 </body>
 </html>
