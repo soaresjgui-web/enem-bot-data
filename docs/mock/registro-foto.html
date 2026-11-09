@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Nutrelle — mock do registro por foto</title>
+<style>
+  :root{
+    --cream:#FBF6F1; --paper:#FFFFFF; --ink:#2E1F27; --muted:#7D6B73; --line:#EDE3DC;
+    --rose:#C8553D; --rose-soft:#F6DED7; --sage:#5E8B6A; --sage-soft:#E3EEE5; --plum:#6B3E5A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;background:#EFE7E1;color:var(--ink);padding:40px 48px 48px}
+  h1{font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:15px;margin:6px 0 32px}
+  .row{display:flex;gap:40px;align-items:flex-start}
+  .col{width:330px}
+  .step{font-size:13px;font-weight:700;color:var(--rose);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+  .phone{width:330px;height:690px;border-radius:44px;background:var(--cream);border:10px solid #1D1418;overflow:hidden;position:relative;box-shadow:0 18px 40px rgba(46,31,39,.18)}
+  .status{height:34px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:12px;font-weight:600}
+  .note{margin-top:14px;font-size:13.5px;line-height:1.5;color:#4A3A42}
+  .note b{color:var(--ink)}
+  /* camera */
+  .cam{background:#16100F;color:#fff;height:100%}
+  .cam .status{color:#fff}
+  .cam-top{display:flex;justify-content:space-between;padding:6px 20px;font-size:14px;font-weight:600}
+  .viewfinder{margin:14px 16px;height:400px;border-radius:24px;background:radial-gradient(circle at 50% 45%,#5b4a3f,#2a201b 75%);position:relative;display:flex;align-items:center;justify-content:center}
+  .corner{position:absolute;width:34px;height:34px;border:3px solid #fff;opacity:.9}
+  .c1{top:28px;left:28px;border-right:none;border-bottom:none;border-radius:10px 0 0 0}
+  .c2{top:28px;right:28px;border-left:none;border-bottom:none;border-radius:0 10px 0 0}
+  .c3{bottom:28px;left:28px;border-right:none;border-top:none;border-radius:0 0 0 10px}
+  .c4{bottom:28px;right:28px;border-left:none;border-top:none;border-radius:0 0 10px 0}
+  .tag{position:absolute;background:rgba(255,255,255,.92);color:var(--ink);font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:999px}
+  .chip-dark{margin:0 16px;background:rgba(255,255,255,.1);border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.45}
+  .chip-dark b{color:#FFD9CF}
+  .shutter{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);width:72px;height:72px;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center}
+  .shutter div{width:56px;height:56px;border-radius:50%;background:#fff}
+  .cam-side{position:absolute;bottom:52px;font-size:12px;color:#d8cfcb}
+  /* list */
+  .hdr{padding:4px 20px 10px;display:flex;align-items:center;gap:12px}
+  .hdr .thumb{width:52px;height:52px;border-radius:14px;background:#3a2c25;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hdr h2{font-size:18px;font-weight:700}
+  .hdr p{font-size:12.5px;color:var(--muted)}
+  .card{margin:0 14px 10px;background:var(--paper);border-radius:20px;padding:14px;border:1px solid var(--line)}
+  .card.hero{border:2px solid var(--rose);box-shadow:0 6px 18px rgba(200,85,61,.12)}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--rose);background:var(--rose-soft);padding:3px 8px;border-radius:999px}
+  .item-top{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px}
+  .item-top h3{font-size:16.5px;font-weight:700}
+  .prot{font-size:20px;font-weight:800;color:var(--rose)}
+  .prot small{font-size:11px;font-weight:600;color:var(--muted)}
+  .q{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .sizes{display:flex;justify-content:space-between;margin-top:12px}
+  .size{width:44px;text-align:center;font-size:10.5px;font-weight:600;color:var(--muted)}
+  .size .p{width:44px;height:44px;border-radius:12px;background:#F7F1EC;display:flex;align-items:center;justify-content:center;margin-bottom:4px;border:2px solid transparent}
+  .size.on .p{border-color:var(--rose);background:#fff}
+  .size.on{color:var(--rose)}
+  .lbl{font-size:11.5px;font-weight:600;color:var(--muted);margin:12px 0 6px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:#F4EEE9;color:#5A4A52}
+  .chip.on{background:var(--ink);color:#fff}
+  .mini{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid var(--line);font-size:13.5px}
+  .mini:first-child{border-top:none}
+  .mini span{color:var(--muted);font-size:12.5px}
+  .mini .edit{color:var(--rose);font-weight:600;font-size:12px}
+  .btn{position:absolute;left:14px;right:14px;bottom:26px;background:var(--rose);color:#fff;border-radius:18px;padding:16px;text-align:center;font-weight:700;font-size:15.5px}
+  /* hoje */
+  .ring-wrap{display:flex;flex-direction:column;align-items:center;margin:4px 0 8px}
+  .ring-label{position:absolute;text-align:center}
+  .big{font-size:34px;font-weight:800;letter-spacing:-.02em}
+  .toast{margin:0 14px 10px;background:var(--sage-soft);color:#2F5A3B;border-radius:16px;padding:12px 14px;font-size:13.5px;font-weight:600}
+  .sug{display:flex;gap:10px;align-items:center}
+  .sug .ico{width:36px;height:36px;border-radius:10px;background:#FFF4E8;display:flex;align-items:center;justify-content:center;font-weight:800;color:#C27A2C;font-size:14px}
+  .meal{display:flex;justify-content:space-between;font-size:13.5px;padding:8px 0;border-top:1px solid var(--line)}
+  .meal:first-of-type{border-top:none}
+  .meal b{font-weight:700}
+  .tabbar{position:absolute;bottom:0;left:0;right:0;height:70px;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;font-size:11px;color:var(--muted);font-weight:600}
+  .tabbar .cam-btn{width:52px;height:52px;border-radius:50%;background:var(--rose);margin-top:-26px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:300;box-shadow:0 6px 16px rgba(200,85,61,.35)}
+  .tabbar .on{color:var(--ink)}
+</style>
+</head>
+<body>
+<h1>Nutrelle · registro por foto</h1>
+<p class="sub">Fluxo validado no teste de precisão: a foto identifica, a usuária confirma a porção da proteína com 1 toque, a tabela calcula.</p>
+
+<div class="row">
+  <!-- 1. CAMERA -->
+  <div class="col">
+    <div class="step">1 · Foto</div>
+    <div class="phone"><div class="cam">
+      <div class="status"><span>12:41</span><span>●●● 5G ▮</span></div>
+      <div class="cam-top"><span>✕</span><span>Almoço</span><span>⚡</span></div>
+      <div class="viewfinder">
+        <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
+        <svg width="250" height="250" viewBox="0 0 250 250" id="plateBig"></svg>
+        <div class="tag" style="top:118px;left:52px">arroz</div>
+        <div class="tag" style="top:226px;left:70px">feijão</div>
+        <div class="tag" style="top:150px;right:46px">frango</div>
+      </div>
+      <div class="chip-dark">Encontrei <b>3 alimentos</b>. A IA roda no seu celular, sem internet.</div>
+      <div class="cam-side" style="left:34px">Galeria</div>
+      <div class="shutter"><div></div></div>
+      <div class="cam-side" style="right:26px;text-align:center;bottom:46px">Código<br>de barras</div>
+    </div></div>
+    <p class="note"><b>Câmera com detecção ao vivo.</b> Os rótulos aparecem enquanto ela enquadra. Também aceita foto da galeria e código de barras.</p>
+  </div>
+
+  <!-- 2. CONFIRMAR -->
+  <div class="col">
+    <div class="step">2 · Confirmar a proteína</div>
+    <div class="phone">
+      <div class="status"><span>12:41</span><span>●●● 5G ▮</span></div>
+      <div class="hdr">
+        <div class="thumb"><svg width="52" height="52" viewBox="0 0 250 250" id="plateThumb"></svg></div>
+        <div><h2>Almoço</h2><p>Toque no tamanho mais parecido com o seu</p></div>
+      </div>
+      <div class="card hero">
+        <span class="pill">Proteína principal</span>
+        <div class="item-top"><h3>Frango</h3><div class="prot">32 g <small>proteína</small></div></div>
+        <div class="q">Peito, ≈ 110 g · ajuste pelo tamanho</div>
+        <div class="sizes" id="sizes"></div>
+        <div class="lbl">Como foi preparado?</div>
+        <div class="chips">
+          <span class="chip on">Grelhado</span><span class="chip">Assado</span><span class="chip">Ao molho</span><span class="chip">Desfiado</span><span class="chip">Empanado</span>
+        </div>
+      </div>
+      <div class="card" style="padding:4px 14px">
+        <div class="mini"><div>Arroz branco<br><span>≈ 140 g</span></div><div style="text-align:right">3 g<br><span class="edit">ajustar</span></div></div>
+        <div class="mini"><div>Feijão carioca<br><span>≈ 1 concha (90 g)</span></div><div style="text-align:right">4 g<br><span class="edit">ajustar</span></div></div>
+        <div class="mini"><div style="color:var(--rose);font-weight:600">+ Adicionar item</div><div></div></div>
+      </div>
+      <div class="btn">Salvar · 39 g de proteína</div>
+    </div>
+    <p class="note"><b>O passo que leva a precisão de ~55% para ~71–76%.</b> A carne vem primeiro, com 6 tamanhos de referência ao redor do que a IA estimou. O preparo muda a tabela (grelhado ≠ ao molho). Os acompanhamentos ficam compactos e editáveis.</p>
+  </div>
+
+  <!-- 3. HOJE -->
+  <div class="col">
+    <div class="step">3 · Quanto falta hoje</div>
+    <div class="phone">
+      <div class="status"><span>12:42</span><span>●●● 5G ▮</span></div>
+      <div class="hdr" style="justify-content:space-between"><div><h2>Hoje</h2><p>Meta: 110 g · 1,4 g/kg</p></div><span class="pill" style="background:#EFE3EC;color:var(--plum)">Caneta: quinta</span></div>
+      <div class="ring-wrap" style="position:relative">
+        <svg width="190" height="190" viewBox="0 0 190 190">
+          <circle cx="95" cy="95" r="78" fill="none" stroke="#F1E6DF" stroke-width="16"/>
+          <circle cx="95" cy="95" r="78" fill="none" stroke="#C8553D" stroke-width="16" stroke-linecap="round"
+            stroke-dasharray="490.1" stroke-dashoffset="171.5" transform="rotate(-90 95 95)"/>
+        </svg>
+        <div class="ring-label" style="top:58px"><div class="big">72 g</div><div style="font-size:12.5px;color:var(--muted);font-weight:600">faltam 38 g</div></div>
+      </div>
+      <div class="toast">+39 g no almoço. Melhor refeição da semana!</div>
+      <div class="card">
+        <div class="lbl" style="margin-top:0">Para fechar a meta</div>
+        <div class="sug"><div class="ico">20g</div><div style="font-size:13.5px"><b>Lanche:</b> 1 iogurte natural + 2 ovos cozidos<br><span style="color:var(--muted);font-size:12px">Pouco apetite? Troque por 1 shake de whey (24 g)</span></div></div>
+      </div>
+      <div class="card" style="padding:8px 14px">
+        <div class="meal"><span>Café · tapioca com queijo e ovo</span><b>21 g</b></div>
+        <div class="meal"><span>Lanche · iogurte grego</span><b>12 g</b></div>
+        <div class="meal"><span>Almoço · frango, arroz, feijão</span><b style="color:var(--rose)">39 g</b></div>
+      </div>
+      <div class="tabbar"><span class="on">Hoje</span><span>Diário</span><div class="cam-btn">+</div><span>Evolução</span><span>Perfil</span></div>
+    </div>
+    <p class="note"><b>O número vira ação.</b> O app mostra quanto falta e sugere comida de verdade para fechar. Em dia de pouco apetite (modo caneta), sugere opções pequenas e densas.</p>
+  </div>
+</div>
+
+<script>
+function plate(svg, chicken){
+  const s=chicken||1;
+  svg.innerHTML=`
+  <defs><radialGradient id="pg" cx="50%" cy="45%"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#E9E4DF"/></radialGradient></defs>
+  <circle cx="125" cy="125" r="118" fill="url(#pg)"/><circle cx="125" cy="125" r="92" fill="none" stroke="#DDD6CF" stroke-width="2"/>
+  <ellipse cx="88" cy="98" rx="52" ry="40" fill="#F8F5EC"/><g fill="#EFE9DA">${Array.from({length:40},(_,i)=>`<ellipse cx="${50+((i*37)%78)}" cy="${68+((i*23)%58)}" rx="4" ry="2" transform="rotate(${i*29} ${50+((i*37)%78)} ${68+((i*23)%58)})"/>`).join('')}</g>
+  <ellipse cx="98" cy="170" rx="46" ry="30" fill="#6B3F2A"/><g fill="#4E2C1D">${Array.from({length:18},(_,i)=>`<ellipse cx="${62+((i*31)%72)}" cy="${152+((i*17)%36)}" rx="5" ry="3.5"/>`).join('')}</g>
+  <g transform="translate(165 128) scale(${s})"><path d="M-38,-26 C-10,-44 30,-36 40,-12 C48,10 30,34 0,36 C-30,38 -50,16 -46,-6 Z" fill="#D9A46A"/><path d="M-30,-14 L32,-22 M-34,2 L36,-4 M-28,18 L30,14" stroke="#B9834B" stroke-width="5" stroke-linecap="round"/></g>
+  <g fill="#7BA05B"><circle cx="160" cy="62" r="9"/><circle cx="174" cy="70" r="7"/><circle cx="150" cy="72" r="6"/></g>`;
+}
+plate(document.getElementById('plateBig'),1);
+plate(document.getElementById('plateThumb'),1);
+const sizes=[['PP',.45,'55 g'],['P',.65,'80 g'],['M',.85,'110 g'],['G',1.0,'150 g'],['GG',1.2,'200 g'],['XG',1.45,'275 g']];
+document.getElementById('sizes').innerHTML=sizes.map(([l,s,g],i)=>`<div class="size ${i==2?'on':''}"><div class="p"><svg width="34" height="34" viewBox="-60 -60 120 120"><g transform="scale(${s})"><path d="M-38,-26 C-10,-44 30,-36 40,-12 C48,10 30,34 0,36 C-30,38 -50,16 -46,-6 Z" fill="#D9A46A"/><path d="M-30,-14 L32,-22 M-34,2 L36,-4 M-28,18 L30,14" stroke="#B9834B" stroke-width="5" stroke-linecap="round"/></g></svg></div>${l}<br>${g}</div>`).join('');
+</script>
+</body>
+</html>
