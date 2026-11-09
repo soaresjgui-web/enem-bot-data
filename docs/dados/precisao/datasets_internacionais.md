@@ -13,7 +13,7 @@ As imagens e os manifestos ficam **só no scratchpad** (`scratchpad/dados_ext/<n
 
 | Dataset | Foto real? | Rótulo medido? | Imagens / pratos | Campos do rótulo | Licença | Uso comercial? | Status | Hosts necessários |
 |---|---|---|---|---|---|---|---|---|
-| **Nutrition5k side_angles** (Google, CVPR 2021) | Sim. Vídeos de 4 câmeras laterais (Raspberry Pi) com o prato girando | Sim. Pesagem incremental por ingrediente, com nutrientes da USDA | **NN_IMG quadros / NN_DISH pratos** (8 por prato) | massa total, kcal, proteína, gordura, carboidrato, gramas por ingrediente | CC BY 4.0 | **Sim**, com atribuição | **Baixado** (quadros extraídos) | `storage.googleapis.com` (liberado) |
+| **Nutrition5k side_angles** (Google, CVPR 2021) | Sim. Vídeos de 4 câmeras laterais (Raspberry Pi) com o prato girando | Sim. Pesagem incremental por ingrediente, com nutrientes da USDA | **36.970 quadros / 4.793 pratos** (8 por prato quando há 4 câmeras; 4.271 pratos) | massa total, kcal, proteína, gordura, carboidrato, gramas por ingrediente | CC BY 4.0 | **Sim**, com atribuição | **Baixado** (quadros extraídos) | `storage.googleapis.com` (liberado) |
 | **ECUSTFD** (Liang & Li, 2017) | Sim. Fotos de celular, vista superior e lateral, com moeda de 25 mm como escala | Sim. Peso em balança e volume por deslocamento de água, por objeto | 2.978 imagens (2.968 no manifesto) / 271 porções / 19 tipos | massa (g), volume (ml), caixas VOC; **sem proteína** | **Não declarada.** O README diz "free public dataset" e pede citação | **Incerto**: pedir permissão aos autores antes de usar no produto | **Baixado** (`github.com`) | `github.com` (liberado) |
 | Food Portion Benchmark (ISSAI, 2025) | Sim. RealSense D455 e celulares, em laboratório | Sim. Peso em gramas por item (balança) | 14.083 imagens, 138 classes (Ásia Central) | caixa YOLO + peso por item; sem proteína | **CC BY-NC 4.0** | **Não** (só P&D interno) | **Bloqueado**: os rótulos (.txt) baixam, as imagens não | `us.aws.cdn.hf.co` (CDN Xet do HF; também `cas-server.xethub.hf.co` e `cdn-lfs-us-1.hf.co`) |
 | NutritionVerse-Real (U. Waterloo, 2024) | Sim, segundo o artigo (celular, vários ângulos) | Sim, segundo o artigo (ingredientes pesados) | 889 imagens / 251 pratos | massa e nutrientes por ingrediente | não verificada (página do Kaggle) | a verificar | **Bloqueado** | `www.kaggle.com` |
@@ -28,19 +28,19 @@ As imagens e os manifestos ficam **só no scratchpad** (`scratchpad/dados_ext/<n
 | Comida brasileira / latino-americana | MyFood (UFPR), "Brazilian food images" (Mendeley): fotos reais | **Não**: sem peso | — | — | — | — | **Rejeitado** (sem massa). Nenhum dataset latino com peso foi encontrado | — |
 | SNAPMe, MM-Food-100K, CalorieBench, espelhos do Nutrition5k no HF | ver `coleta.md` | autorrelato ou estimado por LLM | — | — | — | — | **Rejeitados** (já registrados em `coleta.md`) | — |
 
-**Total utilizável para treino comercial:** NN_IMG quadros do Nutrition5k side (massa **e** proteína). Disso, NN_TRAIN_IMG imagens/NN_TRAIN_DISH pratos estão fora do holdout de avaliação. Há ainda 2.968 imagens do ECUSTFD, só com massa e com a licença a confirmar.
+**Total utilizável para treino comercial:** 36.970 quadros do Nutrition5k side, todos com massa **e** proteína. Desses, 33.840 imagens (4.385 pratos) estão fora do holdout de avaliação: 28.258 no split oficial `train`, 4.510 em `test` e 1.072 sem split. Há ainda 2.968 imagens do ECUSTFD, só com massa e com a licença a confirmar.
 
 ## Nutrition5k side_angles: detalhes
 
-- Bucket: `gs://nutrition5k_dataset/nutrition5k_dataset/imagery/side_angles/dish_*/camera_{A,B,C,D}.h264`. São 4.792 pratos e 18.486 vídeos, **178,5 GiB** no total. Cada vídeo é H.264 cru, 1920x1080, ~141 quadros, com keyframe a cada 60 quadros, e mostra o prato girando numa base.
+- Bucket: `gs://nutrition5k_dataset/nutrition5k_dataset/imagery/side_angles/dish_*/camera_{A,B,C,D}.h264`. São 4.793 pratos e 18.485 vídeos, **178,5 GiB** no total. Cada vídeo é H.264 cru, 1920x1080, ~141 quadros, com keyframe a cada 60 quadros, e mostra o prato girando numa base.
 - Não baixamos os vídeos inteiros. `eval/dados_ext/n5k_side_frames.py` usa **HTTP Range** (`curl -r`) no endpoint público e, por câmera, extrai:
   - `ini`: o último quadro decodificável dos primeiros 600 KB (≈ quadro 8);
   - `fim`: o keyframe (IDR) mais próximo do fim (≈ quadro 120, com o prato já girado). O script acha o SPS (NAL tipo 7, byte `0x27`, e não `0x67`) nos últimos 30% do arquivo.
 
-  São 8 imagens por prato (4 câmeras × 2 momentos), em 960x540 JPEG. Foram ~6,7 MB baixados por vídeo, contra ~10 MB do vídeo inteiro, e NN_GB GB de disco.
+  São até 8 imagens por prato (4 câmeras × 2 momentos), em 960x540 JPEG; 353 pratos têm só 3 câmeras e 167 só 2. Os JPEGs foram todos verificados com PIL. Foram 2,0 GB de disco (~65 GB trafegados, contra 178,5 GiB dos vídeos).
 - Rótulos: `dish_metadata_cafe{1,2}.csv`. No café 2 os totais vêm **zerados** no CSV. Reconstruí proteína e kcal pela soma dos ingredientes e completei os nomes vazios com o `ingredients_metadata.csv`, como no v2. Essas linhas levam a nota `totais_reconstruidos_pelos_ingredientes`. Pratos com ingrediente `deprecated`, `plate only` ou sem nome levam a nota `ingrediente_deprecated_ou_sem_nome`, para filtrar se for o caso.
-- Split: o oficial `rgb_{train,test}_ids.txt`, que cobre 4.606 dos 4.792 pratos com vídeo. O resto fica com split vazio.
-- **eval_holdout=1** para os 450 `dish_id` que aparecem em `gabarito_pratos*.csv`, `gabarito*.csv`, `n5k_v2_amostra.csv` e `coleta_n5k*.py`. São os nossos pratos de avaliação v1 e v2: **nunca treinar com eles**. Total no manifesto: NN_HOLD_IMG imagens / NN_HOLD_DISH pratos.
+- Split: o oficial `rgb_{train,test}_ids.txt`, que cobre 4.606 dos 4.793 pratos com vídeo. O resto fica com split vazio.
+- **eval_holdout=1** para os 450 `dish_id` que aparecem em `gabarito_pratos*.csv`, `gabarito*.csv`, `n5k_v2_amostra.csv` e `coleta_n5k*.py`. São os nossos pratos de avaliação v1 e v2: **nunca treinar com eles**. Total no manifesto: 3.130 imagens / 408 pratos (42 dos 450 pratos de avaliação não têm vídeo lateral).
 - **Atenção ao vazamento:** os quadros laterais são dos mesmos pratos das imagens overhead que o outro agente usa. Qualquer split treino/val precisa ser **por `dish_id`**, igual nas duas fontes.
 - QA visual: um mosaico de 24 quadros sorteados mostrou o prato visível e nítido em todos. Em alguns o prato aparece cortado na borda.
 
