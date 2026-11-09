@@ -25,7 +25,7 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 
 ## 3. Funcionalidades da v1
 
-1. **Proteína por foto, afinada para comida brasileira** (núcleo do produto) — PF, marmita, cuscuz, tapioca, açaí, feijoada; base TACO/TBCA embarcada; porção estimada com referência (prato/mão), faixa de incerteza e correção em 1 toque; favoritos ("meu café de sempre"); código de barras.
+1. **Proteína por foto, afinada para comida brasileira** (núcleo do produto) — PF, marmita, cuscuz, tapioca, açaí, feijoada; base TACO/TBCA embarcada; o app já abre com a proteína sugerida (modelo híbrido: identificação do alimento + modelo treinado de peso), com faixa provável e confiança; pede uma segunda foto de lado quando a confiança é baixa; ajuste de porção opcional em 1 toque; favoritos ("meu café de sempre"); código de barras.
 2. **"Quanto falta hoje"** — sugestões com comida de verdade para fechar a meta ("faltam 30 g: 2 ovos + 1 iogurte natural").
 3. **Modo caneta ligado à proteína** — dia da aplicação, apetite, náusea; em dias de pouco apetite, sugere opções pequenas e densas em proteína. Sem recomendação de dose.
 4. **Check-in feminino** — sintomas do dia; respostas com fontes às dúvidas em alta (amamentação, anticoncepcional). Base para o modo 40+.
@@ -33,7 +33,7 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 
 **Plano do dia:** tela inicial com meta de proteína, quanto falta e check-in rápido.
 
-**Papel da IA on-device:** custo marginal zero por foto → **fotos ilimitadas** em todos os planos; resposta < 1 s; funciona offline. Fallback em nuvem só se a precisão on-device não atingir a meta (ver `prototipo-precisao.md`).
+**Papel da IA on-device:** objetivo de custo marginal zero por foto → **fotos ilimitadas** em todos os planos; resposta < 1 s; funciona offline. **Estado em 09/11/2026:** o modelo de peso roda no aparelho (EfficientNet-B0 em Core ML: 7,7 MB, ~60 ms), mas a identificação do alimento foi medida só com LLM em nuvem; a identificação on-device (Foundation Models + Vision) **ainda não foi testada**. Se ela não igualar a nuvem, a v1 usa nuvem para identificar e isso muda o custo por foto.
 
 **Fora da v1:** treino guiado por câmera (removido), contador de calorias como foco, nota de "forma perfeita", comunidade, chat com IA.
 
@@ -64,6 +64,26 @@ Brasil: mensal ajustado de R$ 29,90 para **R$ 39,90** para reforçar a âncora d
 
 iOS nativo: Swift 6, SwiftUI, SwiftData, Foundation Models + Vision (on-device), HealthKit, StoreKit 2 + RevenueCat, WidgetKit. Requer Mac com Xcode e conta Apple Developer.
 
-## 7. Próximo passo e maior risco
+## 7. Precisão medida, maior risco e próximo passo
 
-O produto depende de a foto acertar a proteína em comida brasileira **visivelmente melhor** que Cal AI e os apps de caneta. Antes de construir o resto: **protótipo de precisão com ~100 pratos brasileiros reais** — protocolo e critérios em [`prototipo-precisao.md`](prototipo-precisao.md).
+Critério: proteína dentro de ±20% ou ±5 g; meta ≥ 70%. Conjunto de teste fora do treino (280 pratos); detalhes em [`dados/precisao/resultado_v2.md`](dados/precisao/resultado_v2.md) e [`dados/precisao/resultado_modelo_treinado.md`](dados/precisao/resultado_modelo_treinado.md).
+
+| Abordagem | Acerto |
+|---|---|
+| LLM em nuvem sozinho | 55% |
+| Modelo treinado só com a imagem | 48–52% |
+| **Híbrido** (LLM identifica, modelo treinado estima o peso) | **59–60%** |
+| Híbrido com a média de 4 ângulos | ~63% |
+| Híbrido na comida brasileira (144 itens) | 46–49% |
+| Com ajuste de porção pela usuária (**simulado**, 15–30% de erro de escolha) | 71–76% |
+
+- **O gargalo é o peso da porção** (erro ~20%), não a identificação: com o peso real, a densidade do LLM já daria 71%.
+- **Mais dados do mesmo tipo não resolvem:** a curva de aprendizado estabiliza a partir de ~400 pratos da Nutrition5k.
+- **Fotos laterais no treino** removem o viés de ângulo (comida brasileira só com imagem: 22% → 36%) e ficam no conjunto de treino.
+- **Não existe base pública latino-americana com peso medido** ([`dados/precisao/datasets_internacionais.md`](dados/precisao/datasets_internacionais.md)); os dados brasileiros terão de ser coletados.
+
+**Decisão para a v1:** sugestão automática pelo híbrido + segunda foto de lado em confiança baixa + ajuste de porção opcional. A meta de 70% **sem** ajuste ainda não foi atingida, e os 71–76% com ajuste são simulação, não teste com usuárias.
+
+**Maiores riscos:** (1) peso da porção em comida brasileira; (2) identificação on-device não testada.
+
+**Próximo passo:** piloto de 50 pratos brasileiros no iPhone (fotos de cima e de lado, profundidade do aparelho, peso por componente em balança) e teste da identificação on-device; depois, coleta de 400–800 pratos brasileiros pesados. Protocolo original em [`prototipo-precisao.md`](prototipo-precisao.md).
