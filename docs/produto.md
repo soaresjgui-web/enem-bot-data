@@ -25,7 +25,7 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 
 ## 3. Funcionalidades da v1
 
-1. **Proteína por foto, afinada para comida brasileira** (núcleo do produto) — PF, marmita, cuscuz, tapioca, açaí, feijoada; base TACO/TBCA embarcada; o app já abre com a proteína sugerida (modelo híbrido: identificação do alimento + modelo treinado de peso), com faixa provável e confiança; pede uma segunda foto de lado quando a confiança é baixa; ajuste de porção opcional em 1 toque; favoritos ("meu café de sempre"); código de barras.
+1. **Proteína por foto, afinada para comida brasileira** (núcleo do produto) — PF, marmita, cuscuz, tapioca, açaí, feijoada; base TACO/TBCA embarcada; o app já abre com a proteína sugerida (modelo híbrido: identificação do alimento + modelo treinado de peso), com faixa provável e confiança; **sempre uma única foto, tirada de cima**, com círculo-guia e aviso de nível para padronizar a escala; ajuste de porção opcional em 1 toque; favoritos ("meu café de sempre"); código de barras.
 2. **"Quanto falta hoje"** — sugestões com comida de verdade para fechar a meta ("faltam 30 g: 2 ovos + 1 iogurte natural").
 3. **Modo caneta ligado à proteína** — dia da aplicação, apetite, náusea; em dias de pouco apetite, sugere opções pequenas e densas em proteína. Sem recomendação de dose.
 4. **Check-in feminino** — sintomas do dia; respostas com fontes às dúvidas em alta (amamentação, anticoncepcional). Base para o modo 40+.
@@ -82,8 +82,8 @@ Critério: proteína dentro de ±20% ou ±5 g; meta ≥ 70%. Conjunto de teste f
 - **Fotos laterais no treino** removem o viés de ângulo (comida brasileira só com imagem: 22% → 36%) e ficam no conjunto de treino.
 - **Não existe base pública latino-americana com peso medido** ([`dados/precisao/datasets_internacionais.md`](dados/precisao/datasets_internacionais.md)); os dados brasileiros terão de ser coletados.
 
-**Decisão para a v1:** sugestão automática pelo híbrido + segunda foto de lado em confiança baixa + ajuste de porção opcional. A meta de 70% **sem** ajuste ainda não foi atingida, e os 71–76% com ajuste são simulação, não teste com usuárias.
+**Decisão para a v1:** **uma única foto de cima** (decisão da fundadora, 09/11/2026), com círculo-guia e aviso de nível; sugestão automática pelo híbrido; em confiança baixa, faixa mais larga e destaque para conferir as porções; ajuste de porção opcional. Sem segunda foto. A meta de 70% **sem** ajuste ainda não foi atingida, e os 71–76% com ajuste são simulação, não teste com usuárias.
 
 **Maiores riscos:** (1) peso da porção em comida brasileira; (2) identificação on-device não testada.
 
-**Próximo passo:** piloto de 50 pratos brasileiros no iPhone (fotos de cima e de lado, profundidade do aparelho, peso por componente em balança) e teste da identificação on-device; depois, coleta de 400–800 pratos brasileiros pesados. Protocolo original em [`prototipo-precisao.md`](prototipo-precisao.md).
+**Próximo passo:** piloto de 50 pratos brasileiros no iPhone (uma foto de cima com o círculo-guia, profundidade do aparelho como sinal de treino, peso por componente em balança) e teste da identificação on-device; depois, coleta de 400–800 pratos brasileiros pesados. Protocolo original em [`prototipo-precisao.md`](prototipo-precisao.md).

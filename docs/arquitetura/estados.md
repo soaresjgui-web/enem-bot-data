@@ -9,10 +9,9 @@ enum MealCaptureState: Codable, Equatable {
     case idle
     case requestingCameraPermission
     case cameraDenied                                   // UX: explicar + botão "Abrir Ajustes" + opção galeria/busca manual
-    case framing(liveLabels: [DetectedLabel])           // câmera aberta, rótulos ao vivo
+    case framing(liveLabels: [DetectedLabel], alignment: FramingAlignment) // câmera aberta, rótulos ao vivo, guia de enquadramento
     case analyzing(photo: PhotoRef)                     // modelo on-device rodando
-    case suggested(Estimate)                            // proteína pronta, faixa + confiança
-    case needsSecondPhoto(first: PhotoRef, reason: LowConfidenceReason) // confiança baixa: pede foto de lado
+    case suggested(Estimate)                            // proteína pronta, faixa + confiança (.high/.medium/.low)
     case editing(Estimate, focusedItem: ItemID?)        // ajuste opcional
     case saving(Estimate)
     case saved(MealID)
@@ -21,15 +20,26 @@ enum MealCaptureState: Codable, Equatable {
 
 enum MealCaptureEvent: Codable {
     case openCamera, permissionGranted, permissionDenied
-    case labelsUpdated([DetectedLabel])
+    case labelsUpdated([DetectedLabel]), alignmentChanged(FramingAlignment)
     case shutterTapped(PhotoRef), galleryPicked(PhotoRef), barcodeScanned(String)
-    case estimateReady(Estimate), estimateLowConfidence(LowConfidenceReason), estimateFailed(MealCaptureError)
-    case secondPhotoTaken(PhotoRef), skipSecondPhoto
+    case estimateReady(Estimate), estimateFailed(MealCaptureError)
+    case retakeTapped
     case adjustTapped(ItemID?), itemChanged(ItemID, grams: Double, preparation: Preparation?), doneEditing
     case saveTapped, saveSucceeded(MealID), saveFailed(MealCaptureError)
     case retry, cancel
 }
+
+enum FramingAlignment: Codable, Equatable {
+    case searching                       // nenhum prato encontrado
+    case tilted(degrees: Double)         // celular inclinado (CoreMotion): "Segure reto, acima do prato"
+    case tooFar, tooClose                // prato fora do círculo-guia
+    case aligned                         // de cima, prato no círculo
+}
+
+enum CaptureQuality: Codable, Equatable { case aligned, misaligned(FramingAlignment), unverified } // unverified = galeria
 ```
+
+**Premissa de produto (09/11/2026): sempre uma única foto, tirada de cima.** Não existe estado de "segunda foto". O círculo-guia e o aviso de nível padronizam ângulo e escala, que é o que o modelo de peso precisa. O disparo nunca fica bloqueado: `shutterTapped` fora de `aligned` (ou `galleryPicked`) segue para `analyzing` com `CaptureQuality` registrada na `PhotoRef`, e a `Estimate` sai com confiança rebaixada. Confiança baixa não é um estado separado: é `suggested(Estimate)` com `confidence == .low`, e a UI mostra a faixa mais larga, o destaque "Confira as porções" e a opção "Tirar outra foto".
 
 | De | Evento | Para |
 |---|---|---|
@@ -38,9 +48,8 @@ enum MealCaptureEvent: Codable {
 | framing | shutterTapped / galleryPicked | analyzing |
 | framing | barcodeScanned | analyzing (lookup de produto) |
 | analyzing | estimateReady | suggested |
-| analyzing | estimateLowConfidence | needsSecondPhoto |
-| needsSecondPhoto | secondPhotoTaken | analyzing |
-| needsSecondPhoto | skipSecondPhoto | suggested (com confiança baixa visível) |
+| framing | alignmentChanged / labelsUpdated | framing (dados atualizados) |
+| suggested | retakeTapped | framing |
 | suggested | adjustTapped | editing |
 | editing | doneEditing | suggested (estimativa recalculada) |
 | suggested / editing | saveTapped | saving |
@@ -49,7 +58,7 @@ enum MealCaptureEvent: Codable {
 | failed | retry | estado de `recoverFrom` |
 | qualquer (exceto saving) | cancel | idle |
 
-`Estimate` = itens (alimento, preparo, gramas, proteína), total, faixa provável, confiança, versão do modelo — tudo `Codable` para log e reprodução (AX).
+`Estimate` = itens (alimento, preparo, gramas, proteína), total, faixa provável, confiança, qualidade da captura, versão do modelo — tudo `Codable` para log e reprodução (AX).
 
 ## 2. Próximas máquinas a modelar
 
