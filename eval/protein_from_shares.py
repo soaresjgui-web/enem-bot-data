@@ -11,7 +11,8 @@ ref/taco.csv), calcula a densidade do prato
     dens_i = (1 − w) × dens(alimento_ref) + w × dens(alimento_alt),  w = 0 / 0,25 / 0,40 para certeza alta / media / baixa
 
 e, se receber uma massa por prato (--massa), devolve proteína = massa × densidade.
-Com mais de uma rodada (coluna `rodada`), a densidade do prato é a média geométrica das rodadas.
+Com mais de uma rodada (coluna `rodada`), a densidade do prato é a média geométrica das rodadas e a fonte
+principal é a mais votada (empate: a da primeira rodada).
 
 Uso:
   python3 protein_from_shares.py estimativas_v3_partes.csv saida_pratos.csv \
@@ -139,7 +140,7 @@ def densidades(linhas, casador, pesos_alt, sistema=""):
             dens_r.append(d); partes_fonte.append(pf); soma_r.append(soma); ncomp.append(len(ls))
             f = [(l.get("fonte_principal") or "").strip().lower() for l in ls if (l.get("fonte_principal") or "").strip()]
             if f:
-                fontes.append(max(set(f), key=f.count))
+                fontes.append(max(f, key=f.count))      # empate: a primeira que aparece (determinístico)
                 if fontes[-1] not in FONTES:
                     obs.append(f"fonte_principal fora da lista: {fontes[-1]}")
             if rd == sorted(rs)[0]:
@@ -148,7 +149,7 @@ def densidades(linhas, casador, pesos_alt, sistema=""):
             continue
         # média geométrica das rodadas (com piso para pratos sem proteína)
         dg = math.exp(sum(math.log(x + 0.01) for x in dens_r) / len(dens_r)) - 0.01
-        pratos[pid] = dict(dens=max(dg, 0.0), fonte=max(set(fontes), key=fontes.count) if fontes else "",
+        pratos[pid] = dict(dens=max(dg, 0.0), fonte=max(fontes, key=fontes.count) if fontes else "",   # empate entre rodadas: a da primeira
                            parte_fontes=100 * sum(partes_fonte) / len(partes_fonte), n_comp=sum(ncomp) / len(ncomp), n_rod=len(dens_r),
                            soma=sum(soma_r) / len(soma_r), itens="; ".join(itens), obs="; ".join(dict.fromkeys(obs)),
                            dens_rodadas=dens_r)

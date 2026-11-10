@@ -181,6 +181,9 @@ def llm_v3(prato_ids, arq=V3_PARTES, pesos_alt=(0.0, 0.25, 0.40)):
     from protein_from_shares import Casador, densidades, TACO_PADRAO, N5K_PADRAO
     with open(arq, newline="", encoding="utf-8") as f:
         linhas = list(csv.DictReader(f))
+    rod = os.environ.get("DENS_V3_RODADA", "")           # "1", "2"...: só essa rodada; vazio: todas (média das rodadas)
+    if rod:
+        linhas = [l for l in linhas if ((l.get("rodada") or "1").strip() or "1") == rod]
     pratos, comps, _ = densidades(linhas, Casador(TACO_PADRAO, N5K_PADRAO, 0.5), list(pesos_alt))
     ix = {p: i for i, p in enumerate(prato_ids)}
     n = len(prato_ids)

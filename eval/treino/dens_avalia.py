@@ -2,7 +2,8 @@
 """Seção 9, passos 2 e 4: escolha da densidade por CV no treino, pipeline só de imagem, híbridos com o
 LLM (pesos e forma só no calib), avaliação única no teste e bootstrap pareado contra a seção 8.
 
-Uso: python3 dens_avalia.py [--so-cv | --ensaio]
+Uso: [DENS_V3_RODADA=1|2] python3 dens_avalia.py [--so-cv | --ensaio]
+  DENS_V3_RODADA  usa só essa rodada do LLM v3 (padrão: média de todas as rodadas do arquivo); grava avalia_v3_r<N>.json
   --so-cv   para antes de ler o gabarito do teste (usado enquanto as configurações eram montadas)
   --ensaio  roda a parte de relato no n5k_v1 (50 pratos) em vez do teste, só para conferir que o código roda
 Lê o banco da seção 8 (zen_banco), o banco de densidade (resultados/dens/banco, de dens_experimentos.py),
@@ -34,6 +35,7 @@ from dens_comum import Ingr, FONTES, BANCO_D, faixas, grava_json, llm_v2_fontes,
 import zen_avalia as ZA
 
 SPL = ["calib", "teste", "n5k_v1"]
+TAG = ("r" + os.environ["DENS_V3_RODADA"]) if os.environ.get("DENS_V3_RODADA") else "media"   # que rodadas do LLM v3 entram
 SEL8_IMG, SEL8_ROTA = "média: ajuste fino + siglip2-512", "geo"
 SEL8_MASSA = "média: ajuste fino + mlp + ridge o8 com laterais + siglip2-512 (sem TIPS)"
 SEL8_HIB = "massa^a × dens (LLM^b·modelo^(1−b))"
@@ -352,6 +354,7 @@ def main():
     sel_h = max(H, key=lambda n: (H[n]["calib_loo"], -H[n]["n"]))
     sel_h_v2 = max((n for n in H if not n.startswith("[v3]")), key=lambda n: (H[n]["calib_loo"], -H[n]["n"]))
     res["escolha"].update(hibrido=sel_h, hibrido_sem_v3=sel_h_v2)
+    print(f"\n(LLM v3: {'rodada ' + TAG[1:] if TAG != 'media' else 'média de todas as rodadas do arquivo'})")
     print(f"\n# 3. Híbridos no calib (deixa-fora). Seção 8 escolhida: {crit(real['calib'], loo8[SEL8_HIB]):.1f}%")
     for nome in H:
         print(f"   {H[nome]['calib_loo']:5.1f}%  pesos={H[nome].get('pesos')}  {nome}" + ("   <- escolhida (R5)" if nome == sel_h else ""))
@@ -365,7 +368,7 @@ def main():
                         por_faixa_dens_s9={k: crit(cc[f], (mreal["calib"] * Dsel["calib"])[f]) for k, f in faixas(cc).items()})
     print("   calib, só imagem: seção 8", round(res["calib"]["img_s8"], 1), "| agora", round(res["calib"]["img_s9"], 1))
     res["hibridos_calib"] = {n: dict(calib_loo=H[n]["calib_loo"], n_pesos=H[n]["n"], pesos=H[n].get("pesos")) for n in H}
-    grava_json("avalia_so_cv.json" if so_cv or "--ensaio" in sys.argv else "avalia.json", res)
+    grava_json("avalia_so_cv.json" if so_cv or "--ensaio" in sys.argv else f"avalia{'' if TAG == 'media' else '_v3_' + TAG}.json", res)
     if so_cv:
         print("\n(--so-cv: parou antes do teste)")
         return
@@ -500,7 +503,15 @@ def main():
         print("   calib, massa real × densidade por faixa: v3", {k: round(v) for k, v in v3["dens_massa_real_calib"]["v3"].items()}, "| v2", {k: round(v) for k, v in v3["dens_massa_real_calib"]["v2"].items()},
               f"| >15 g: v3 {v3['dens_massa_real_calib']['v3_acima15']:.1f}% v2 {v3['dens_massa_real_calib']['v2_acima15']:.1f}%")
         res["v3_relato"] = v3
-    grava_json("avalia_ensaio.json" if te != "teste" else "avalia.json", res)
+        # estimativas por prato desta execução, para comparar rodadas (dens_rodadas.py)
+        if te == "teste":
+            np.savez(os.path.join(os.path.dirname(BANCO_D), f"v3_pratos_{TAG}.npz"),
+                     **{f"{s}|hib_v3": H[sel_h]["est"][s] for s in SPL}, **{f"{s}|hib_sem_v3": H[sel_h_v2]["est"][s] for s in SPL},
+                     **{f"{s}|hib_s8": est8[SEL8_HIB][s] for s in SPL}, **{f"{s}|dens_v3": V3[s]["dens"] for s in SPL},
+                     **{f"{s}|fonte_v3": V3[s]["fonte"] for s in SPL}, **{f"{s}|massa_modelo": m8[s] for s in SPL},
+                     **{f"{s}|loo_v3": H[sel_h]["loo"] for s in ("calib",)}, forma=np.array(sel_h), pesos=np.array(str(H[sel_h].get("pesos"))))
+    sufixo = "" if TAG == "media" else f"_v3_{TAG}"
+    grava_json("avalia_ensaio.json" if te != "teste" else f"avalia{sufixo}.json", res)
 
 
 if __name__ == "__main__":
