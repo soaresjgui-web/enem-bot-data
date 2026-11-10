@@ -282,7 +282,7 @@ def main():
 
     # 2b. opção prática on-device: um único backbone (o ajuste fino parcial), mesmo que a CV prefira um conjunto
     res["um_backbone"] = {}
-    um = [n for n in completos if "512" not in n and "tips" not in n]          # só o SigLIP 2 B/16 a 224 px
+    um = [n for n in completos if "512" not in n and "tips" not in n and "gpu" not in n]   # só o SigLIP 2 B/16 a 224 px (cabeças da CPU)
     melhor_um = max(um, key=lambda n: max(tab[n]["cv"][r] for r in ROTAS))
     res["escolha"]["um_backbone"] = melhor_um
     print(f"   melhor com um único backbone pela CV: '{melhor_um}'")
@@ -392,7 +392,12 @@ def main():
     # ---------------- 5. Itens brasileiros (secundários: quase nenhum é zenital)
     print("\n# 5. Itens brasileiros (só Seara é foto de cima)")
     br = {}
-    for s in BR:
+    # as configurações treinadas em GPU (eval/treino/kaggle) não têm previsão para os itens brasileiros
+    br_ok = all(s in B[sel_img] and s in B[sel_massa] and s in est[sel_h] for s in BR)
+    if not br_ok:
+        print("  (a configuração escolhida não tem previsões para os itens brasileiros: seção não avaliada)")
+        br["indisponivel"] = "a configuração escolhida não tem previsões para os itens brasileiros"
+    for s in BR if br_ok else []:
         Pi = rotas(B[sel_img][s]); l = L[s]
         br[s] = dict(n=len(real[s]), imagem=crit(real[s], Pi[sel_rota]), mape_massa=mape(massa_real[s], np.exp(B[sel_massa][s][:, I_M])),
                      vies_massa=float(np.mean(np.exp(B[sel_massa][s][:, I_M]) - massa_real[s])),
@@ -403,10 +408,11 @@ def main():
         print(f"  {s:7s} n={br[s]['n']:3d} | só imagem {br[s]['imagem']:5.1f}% (2d: {br[s]['base2d_direto']:.1f}%) | MAPE massa {br[s]['mape_massa']:.0f}% (2d: {br[s]['base2d_mape']:.0f}%) viés {br[s]['vies_massa']:+.0f} g"
               f" | LLM {br[s]['llm']:.1f}% | híbrido escolhido {br[s]['hibrido']:.1f}% | √ {br[s]['hib_raiz']:.1f}% (2d m×dLLM: {br[s]['base2d_hib']:.1f}%)")
     tot = lambda f: crit(np.concatenate([real[s] for s in BR]), np.concatenate([f(s) for s in BR]))
-    br["todos"] = dict(imagem=tot(lambda s: rotas(B[sel_img][s])[sel_rota]), llm=tot(lambda s: L[s]["prot"]), hibrido=tot(lambda s: est[sel_h][s]),
-                       hib_raiz=tot(lambda s: est["massa √(modelo·LLM) × dens LLM"][s]), base2d_direto=tot(lambda s: b2[f"{s}|direto"]),
-                       base2d_hib=tot(lambda s: b2[f"{s}|massa"] * L[s]["dens"]))
-    print("  todos (144):", {k: round(v, 1) for k, v in br["todos"].items()})
+    if br_ok:
+        br["todos"] = dict(imagem=tot(lambda s: rotas(B[sel_img][s])[sel_rota]), llm=tot(lambda s: L[s]["prot"]), hibrido=tot(lambda s: est[sel_h][s]),
+                           hib_raiz=tot(lambda s: est["massa √(modelo·LLM) × dens LLM"][s]), base2d_direto=tot(lambda s: b2[f"{s}|direto"]),
+                           base2d_hib=tot(lambda s: b2[f"{s}|massa"] * L[s]["dens"]))
+        print("  todos (144):", {k: round(v, 1) for k, v in br["todos"].items()})
     res["brasil"] = br
 
     # ---------------- 6. Robustez de escala
