@@ -60,7 +60,25 @@ enum CaptureQuality: Codable, Equatable { case aligned, misaligned(FramingAlignm
 
 `Estimate` = itens (alimento, preparo, gramas, proteína), total, faixa provável, confiança, qualidade da captura, versão do modelo — tudo `Codable` para log e reprodução (AX).
 
-## 2. Próximas máquinas a modelar
+## 2. Treino em GPU por partes (`eval/treino/kaggle/treino_gpu.py`)
+
+Ferramenta de treino, fora do app. Cada parte (configuração × `fold0`…`fold4`/`final`, ou `tudo` no ridge) tem um estado explícito, mudado só pela função pura `transicao(estado, evento)`, testada por `python3 treino_gpu.py --autoteste` e registrada em `eventos.jsonl` e `manifesto.json`.
+
+| De | Evento | Para |
+|---|---|---|
+| pendente | `retomou` (arquivo já existe) | feita |
+| pendente | `iniciou` | rodando |
+| pendente | `sem_orcamento` | sem_orcamento |
+| pendente | `reduziu_lote` (outra parte estourou a memória) | pendente, com lote menor |
+| pendente | `cancelou` (outra parte falhou ou ficou sem orçamento) | cancelada |
+| rodando | `concluiu` | feita |
+| rodando | `estourou_memoria` | pendente com lote ÷ 2 (até ÷ 4); depois, falhou |
+| rodando | `falhou` | pendente (1ª vez); falhou (2ª vez) |
+| rodando | `sem_orcamento` (a projeção de tempo não cabe) | sem_orcamento |
+
+A configuração é `completa` quando todas as partes estão `feita`; só então saem as previsões. Uma falha derruba só a configuração dela. Detalhes em `eval/treino/kaggle/LEIA-ME.md`.
+
+## 3. Próximas máquinas a modelar
 
 - **Onboarding e meta de proteína** (`OnboardingMachine`): perfil → objetivo → modo caneta (opcional) → meta calculada → paywall.
 - **Assinatura** (`EntitlementMachine`): unknown → trial(ativo, dias) → active → gracePeriod → billingRetry → expired → restored. Fonte da verdade: StoreKit 2/RevenueCat; UI nunca lê flags soltas.
