@@ -15,13 +15,15 @@ from finetune import cache_imagens, prep, MEAN, STD
 from zen_comum import Dados, ridge_cv, proteinas, crit, mape, I_M
 
 
-def main(receita="original", epocas=8):
+def main(receita="original", epocas=8, n_max=0):
     torch.set_num_threads(int(os.environ.get("NTHREADS", "4")))
     torch.manual_seed(0); rng = np.random.default_rng(0)
     D = Dados()
     idx, A = cache_imagens()
     tem = np.array([d in idx for d in D.ids])
     tr = np.where(tem & (D.fold != 0))[0]; va = np.where(tem & (D.fold == 0))[0]
+    if n_max:   # teste rápido do script
+        tr, va = tr[:n_max], va[:n_max]
     cols = [0, 1, 2, 3]  # log massa, log1p proteína, log1p kcal, log densidade (como no original)
     T = D.T[:, cols].astype(np.float32)
     mu, sd = T[tr].mean(0), T[tr].std(0)
@@ -76,9 +78,10 @@ def main(receita="original", epocas=8):
             opt.zero_grad(); loss.backward(); opt.step(); sched.step(); ls.append(loss.item())
         h = dict(epoca=ep + 1, perda_treino=float(np.mean(ls)), seg=time.time() - t0, **valida())
         hist.append(h); print(h, flush=True)
-    with open(os.path.join(TD, "resultados", f"zen_diag_effb0_{receita}.json"), "w") as f:
+    with open(os.path.join(TD, "resultados", f"zen_diag_effb0_{receita}{'_teste' if n_max else ''}.json"), "w") as f:
         json.dump(hist, f, indent=1)
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "original", int(sys.argv[2]) if len(sys.argv) > 2 else 8)
+    main(sys.argv[1] if len(sys.argv) > 1 else "original", int(sys.argv[2]) if len(sys.argv) > 2 else 8,
+         int(sys.argv[3]) if len(sys.argv) > 3 else 0)

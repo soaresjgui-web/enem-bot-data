@@ -7,6 +7,7 @@ Uso: OMP_NUM_THREADS=4 python3 zen_experimentos.py <etapa> [...]
   mlp <backbone>              cabeça MLP multitarefa (com e sem alvos auxiliares de profundidade)
   escala                      robustez de escala (zoom, escala aleatória, recorte pelo prato)
   lateral                     quadros laterais do Nutrition5k como sinal extra só de treino
+  escala_d4                   8 orientações + escala aleatória no treino (entra no banco e na tabela de zoom)
 Cada configuração grava <TD>/resultados/zen_banco/<nome>.npz com as previsões em log:
   oof [n_treino, alvos] (fora-do-fold, GroupKFold por cadeia) e uma matriz por split de avaliação.
 Nada aqui olha o gabarito do teste: a seleção e as tabelas ficam em zen_avalia.py.
@@ -65,15 +66,11 @@ def etapa_ridge(D, bbs):
             roda_ridge(D, f"ridge {bb} {suf}", [F], otr, ote, bl)
 
 
-def etapa_lateral(D, bb="siglip2_b16"):
-    """Sinal só de treino: soma ao treino zenital (8 orientações) os quadros laterais do Nutrition5k
-    (features da seção 7, 1 orientação) dos pratos permitidos pela mesma regra de cadeia. Valida só no zenital."""
-    import csv
-    from zen_comum import Ridge, alvos
+def dados_laterais(D, bb="siglip2_b16"):
+    """Quadros laterais do Nutrition5k permitidos pela regra de cadeia: (X, alvos em log, fold de cada quadro)."""
+    from zen_comum import alvos
     from zen_dados import ler_meta_completo
     from comum import grupos_sessao
-    t0 = time.time()
-    F = Feat(bb); bl = ("agregado", "media")
     z = np.load(os.path.join(TD, "feat", f"{bb}_lateral.npz"))
     meta = ler_meta_completo()
     todos = sorted(meta); cadeia = dict(zip(todos, grupos_sessao(todos, 120)))
@@ -92,8 +89,14 @@ def etapa_lateral(D, bb="siglip2_b16"):
         Y = {c: np.array([m[c]]) for c in ("massa", "proteina", "kcal", "gordura", "carbo")}
         Y["mg"] = np.array([[m["mg"][g] for g in m["mg"]]]); Y["pg"] = np.array([[m["pg"][g] for g in m["pg"]]])
         Xl.append(Xlat[i]); Tl.append(alvos(Y)[0]); fl.append(fold_cadeia.get(cadeia[d], cadeia[d] % 5))
-    Xl, Tl, fl = np.array(Xl, np.float32), np.array(Tl), np.array(fl)
-    print(f"quadros laterais permitidos: {len(Xl)}")
+    return np.array(Xl, np.float32), np.array(Tl), np.array(fl)
+
+
+def ridge_lateral(D, F, Xl, Tl, fl):
+    """Ridge com 8 orientações zenitais + quadros laterais como amostras; CV só no zenital.
+    Devolve (previsões fora-do-fold, alfas, MSE de CV, modelo final)."""
+    from zen_comum import Ridge
+    bl = ("agregado", "media")
     Xz = F.pega(D.ids, O8, bl); n, o, Dm = Xz.shape
     r = Ridge()
     P = np.zeros((len(r.ALFAS), n, D.T.shape[1]))
@@ -104,8 +107,20 @@ def etapa_lateral(D, bb="siglip2_b16"):
     mse = ((P - D.T) ** 2).mean(1); best = mse.argmin(0)
     oof = np.stack([P[best[j], :, j] for j in range(D.T.shape[1])], 1)
     m = Ridge().fit(np.r_[Xz.reshape(-1, Dm), Xl], np.r_[np.repeat(D.T, o, 0), Tl], r.ALFAS[best])
+    return oof, r.ALFAS[best], mse.min(0), m
+
+
+def etapa_lateral(D, bb="siglip2_b16"):
+    """Sinal só de treino: soma ao treino zenital (8 orientações) os quadros laterais do Nutrition5k
+    (features da seção 7, 1 orientação) dos pratos permitidos pela mesma regra de cadeia. Valida só no zenital."""
+    t0 = time.time()
+    F = Feat(bb); bl = ("agregado", "media")
+    Xl, Tl, fl = dados_laterais(D, bb)
+    print(f"quadros laterais permitidos: {len(Xl)}")
+    oof, alfa, mse, m = ridge_lateral(D, F, Xl, Tl, fl)
+    Dm = Xl.shape[1]
     prev = {s: m.predict(F.pega(D.aval[s]["chave"], O8, bl).reshape(-1, Dm)).reshape(len(D.aval[s]["chave"]), 8, -1).mean(1) for s in SPLITS}
-    grava(f"ridge {bb} o8 + quadros laterais no treino", oof, prev, dict(alfa=r.ALFAS[best], cv_mse=mse.min(0)))
+    grava(f"ridge {bb} o8 + quadros laterais no treino", oof, prev, dict(alfa=alfa, cv_mse=mse))
     resumo_cv(D, f"ridge {bb} o8 + quadros laterais no treino", oof, t0)
 
 
@@ -113,7 +128,7 @@ N5K_AVAL = ("calib", "teste", "n5k_v1")
 
 
 # ---------------------------------------------------------------- MLP multitarefa
-def treina_mlp(Xtr, Ttr, Xva_list, aux=None, oculto=512, wd=1e-2, epocas=60, drop=0.3, seed=0, peso_aux=0.3):
+def treina_mlp(Xtr, Ttr, Xva_list, aux=None, oculto=512, wd=1e-2, epocas=60, drop=0.3, seed=0, peso_aux=0.3, devolve_modelo=False):
     """MLP de 1 camada oculta sobre features padronizadas; alvos principais (log) + auxiliares (padronizados).
     Xtr[n, o, D]: cada orientação é uma amostra. Devolve previsões (média nas orientações) para cada X em Xva_list."""
     import torch
@@ -148,6 +163,8 @@ def treina_mlp(Xtr, Ttr, Xva_list, aux=None, oculto=512, wd=1e-2, epocas=60, dro
             z = torch.from_numpy(((Xv - mu) / sd).reshape(-1, Dm).astype(np.float32))
             p = net(z).numpy()[:, :Ttr.shape[1]].reshape(Xv.shape[0], Xv.shape[1], -1).mean(1)
             outs.append(p * ts + tm)
+    if devolve_modelo:
+        return outs, dict(net=net, mu=mu, sd=sd, tm=tm, ts=ts)
     return outs
 
 

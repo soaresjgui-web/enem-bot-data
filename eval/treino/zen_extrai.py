@@ -6,7 +6,8 @@ Uso: python3 zen_extrai.py <dir_treino> <backbone> [--orient 8] [--tokens 9] [--
                            [--conj treino,aval,br] [--saida nome]
   backbones: siglip2_b16 (224×224, imagem inteira achatada, como nas seções 2 e 7),
              siglip2_b16_512 (384×512, proporção original), siglip_b16, vits16_in21k,
-             tips_b14 / tips_s14 (336×448; TIPS do Google DeepMind, pesos em gs://tips_data).
+             tips_b14 / tips_s14 (336×448; TIPS do Google DeepMind, pesos em gs://tips_data; carregador
+             pronto, mas a extração não foi rodada na seção 8 por falta de tempo).
   --orient N   nº de orientações D4 (ordem: original, 180°, espelho H, espelho V, 90°, 270°,
                transposta, antitransposta). As 4 primeiras preservam o formato do quadro.
   --tokens K   grava também os tokens na saída do bloco K (float16) das 4 primeiras orientações.

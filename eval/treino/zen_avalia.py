@@ -27,16 +27,26 @@ ROTAS = ["direto", "mxd", "grupos", "gmd", "geo"]
 # conjuntos (média em log das previsões); só entram os membros que existirem no banco
 CONJUNTOS = {
     "média: siglip2 o8 + siglip2-512": ["ridge siglip2_b16 o8", "ridge siglip2_b16_512 o2"],
-    "média: siglip2 o8 + tips": ["ridge siglip2_b16 o8", "ridge tips_b14 o2"],
-    "média: siglip2 o8 + siglip2-512 + tips": ["ridge siglip2_b16 o8", "ridge siglip2_b16_512 o2", "ridge tips_b14 o2"],
+    "média: siglip2 o8 + tips": ["ridge siglip2_b16 o8", "ridge tips_b14 o1"],
+    "média: siglip2 o8 + siglip2-512 + tips": ["ridge siglip2_b16 o8", "ridge siglip2_b16_512 o2", "ridge tips_b14 o1"],
     "média: siglip2 o8 + mlp": ["ridge siglip2_b16 o8", "mlp siglip2_b16 o8"],
+    "média: ajuste fino + mlp": ["ft cv", "mlp siglip2_b16 o8"],
+    "média: ajuste fino + mlp + ridge o8 com laterais": ["ft cv", "mlp siglip2_b16 o8", "ridge siglip2_b16 o8 + quadros laterais no treino"],
+    "média: ajuste fino + mlp + ridge o8 com laterais + siglip2-512 + tips": ["ft cv", "mlp siglip2_b16 o8", "ridge siglip2_b16 o8 + quadros laterais no treino",
+                                                                              "ridge siglip2_b16_512 o2", "ridge tips_b14 o1"],
     "média: ajuste fino + ridge siglip2 o8": ["ft cv", "ridge siglip2_b16 o8"],
     "média: ajuste fino + ridge o8 com laterais": ["ft cv", "ridge siglip2_b16 o8 + quadros laterais no treino"],
     "média: ajuste fino + siglip2-512": ["ft cv", "ridge siglip2_b16_512 o2"],
-    "média: ajuste fino + siglip2-512 + tips": ["ft cv", "ridge siglip2_b16_512 o2", "ridge tips_b14 o2"],
-    "média: ajuste fino + ridge o8 + siglip2-512 + tips": ["ft cv", "ridge siglip2_b16 o8", "ridge siglip2_b16_512 o2", "ridge tips_b14 o2"],
+    # os conjuntos abaixo foram declarados com um terceiro backbone (TIPS B/14), que não chegou a ser extraído
+    # por falta de tempo; as versões "sem TIPS" são os mesmos conjuntos sem esse membro
+    "média: ajuste fino + ridge o8 + siglip2-512 (sem TIPS)": ["ft cv", "ridge siglip2_b16 o8", "ridge siglip2_b16_512 o2"],
+    "média: ajuste fino + ridge o8 com laterais + siglip2-512 (sem TIPS)": ["ft cv", "ridge siglip2_b16 o8 + quadros laterais no treino", "ridge siglip2_b16_512 o2"],
+    "média: ajuste fino + mlp + ridge o8 com laterais + siglip2-512 (sem TIPS)": ["ft cv", "mlp siglip2_b16 o8", "ridge siglip2_b16 o8 + quadros laterais no treino",
+                                                                                  "ridge siglip2_b16_512 o2"],
+    "média: ajuste fino + siglip2-512 + tips": ["ft cv", "ridge siglip2_b16_512 o2", "ridge tips_b14 o1"],
+    "média: ajuste fino + ridge o8 + siglip2-512 + tips": ["ft cv", "ridge siglip2_b16 o8", "ridge siglip2_b16_512 o2", "ridge tips_b14 o1"],
     "média: ajuste fino + ridge o8 com laterais + siglip2-512 + tips": ["ft cv", "ridge siglip2_b16 o8 + quadros laterais no treino",
-                                                                        "ridge siglip2_b16_512 o2", "ridge tips_b14 o2"],
+                                                                        "ridge siglip2_b16_512 o2", "ridge tips_b14 o1"],
 }
 
 
@@ -270,6 +280,28 @@ def main():
     print("   por faixa de proteína:", {k: round(v, 1) for k, v in res["imagem"]["por_faixa"].items()}, "| n5k_v1:", round(res["imagem"]["n5k_v1"], 1),
           f"| oráculos: massa real × dens do modelo {res['imagem']['oraculo_massa_real_x_dens_modelo']:.1f}%, massa do modelo × dens real {res['imagem']['oraculo_massa_modelo_x_dens_real']:.1f}%")
 
+    # 2b. opção prática on-device: um único backbone (o ajuste fino parcial), mesmo que a CV prefira um conjunto
+    res["um_backbone"] = {}
+    um = [n for n in completos if "512" not in n and "tips" not in n]          # só o SigLIP 2 B/16 a 224 px
+    melhor_um = max(um, key=lambda n: max(tab[n]["cv"][r] for r in ROTAS))
+    res["escolha"]["um_backbone"] = melhor_um
+    print(f"   melhor com um único backbone pela CV: '{melhor_um}'")
+    for nome in dict.fromkeys([melhor_um, "ft cv", "mlp siglip2_b16 o8", "ridge siglip2_b16 o8"]):
+        if nome not in tab:
+            continue
+        rota = max(ROTAS, key=lambda r: tab[nome]["cv"][r])
+        P1 = rotas(B[nome][te]); a1 = ok(real[te], P1[rota])
+        res["um_backbone"][nome] = dict(rota=rota, cv=tab[nome]["cv"][rota], teste=100 * a1.mean(), ic=ic_simples(a1), mae=float(np.abs(P1[rota] - real[te]).mean()),
+                                        vies=float((P1[rota] - real[te]).mean()), vs_2d_direto=bootstrap(base_dir, a1), vs_llm=bootstrap(llm_ok, a1),
+                                        vs_2d_hibrido=bootstrap(base_hib, a1), mape_massa=mape(massa_real[te], P1["massa"]),
+                                        por_faixa={f: crit(real[te][fx], P1[rota][fx]) for f, fx in faixas(real[te]).items()},
+                                        n5k_v1=crit(real["n5k_v1"], rotas(B[nome]["n5k_v1"])[rota]),
+                                        oraculo_massa_real_x_dens_modelo=crit(real[te], massa_real[te] * P1["dens"]))
+        u = res["um_backbone"][nome]
+        print(f"   um backbone — {nome} (rota {rota}, CV {u['cv']:.1f}%): teste {u['teste']:.1f}% (IC95% {u['ic'][0]:.1f} a {u['ic'][1]:.1f}) MAE {u['mae']:.1f} viés {u['vies']:+.1f}"
+              f" | vs 2d direto {u['vs_2d_direto'][0]:+.1f} ({u['vs_2d_direto'][1]:+.1f} a {u['vs_2d_direto'][2]:+.1f}) | vs LLM {u['vs_llm'][0]:+.1f} ({u['vs_llm'][1]:+.1f} a {u['vs_llm'][2]:+.1f})"
+              f" | vs 2d híbrido {u['vs_2d_hibrido'][0]:+.1f} ({u['vs_2d_hibrido'][1]:+.1f} a {u['vs_2d_hibrido'][2]:+.1f}) | v1 {u['n5k_v1']:.0f}% | faixas {({k: round(v) for k, v in u['por_faixa'].items()})}")
+
     # ---------------- 3. Híbridos com o modelo de massa escolhido (densidade/direto do modelo só de imagem escolhido)
     print(f"\n# 3. Híbridos (massa: '{sel_massa}'; densidade/proteína direta do modelo: '{sel_img}'); pesos e escolha da forma só no calib")
     Pm = {}
@@ -300,7 +332,7 @@ def main():
     # ---------------- 4. Confiança
     print("\n# 4. Confiança: P(acerto) calibrada e curva acurácia × cobertura")
     # (a) só imagem: ajustada nas previsões fora-do-fold do TREINO; limiar para 70% escolhido no calib
-    membros = [n for n in ("ridge siglip2_b16 o8", "ridge siglip2_b16_512 o2", "ridge tips_b14 o2", "mlp siglip2_b16 o8", "ft cv") if n in B]
+    membros = [n for n in ("ridge siglip2_b16 o8", "ridge siglip2_b16_512 o2", "ridge tips_b14 o1", "mlp siglip2_b16 o8", "ft cv") if n in B]
 
     def x_img(chave):
         T = B[sel_img][chave]; P = rotas(T)
@@ -321,6 +353,11 @@ def main():
                                    acuracia_aceitos=float(100 * a[ac].mean()) if ac.any() else None,
                                    acuracia_recusados=float(100 * a[~ac].mean()) if (~ac).any() else None,
                                    calibracao=calibracao(p, a), cobertura_oraculo_70=cobertura_max(p, a))
+    res["confianca_imagem"]["quem_e_aceito"] = dict(proteina_real_media_aceitos=float(real[te][ac].mean()), proteina_real_media_recusados=float(real[te][~ac].mean()),
+                                                    fracao_aceitos_ate_15g=float(100 * (real[te][ac] <= 15).mean()), acuracia_aceitos_acima_15g=float(100 * a[ac & (real[te] > 15)].mean()),
+                                                    n_aceitos_acima_15g=int((ac & (real[te] > 15)).sum()))
+    res["confianca_imagem"]["regra_sem_rotulo"] = regra_sem_rotulo(p, a)
+    print("  só imagem — regra sem rótulo (média prevista >= 70%):", res["confianca_imagem"]["regra_sem_rotulo"], "| cobertura máxima a 70% (descritivo):", res["confianca_imagem"]["cobertura_oraculo_70"])
     print("  só imagem — curva (cobertura: acurácia):", {k: round(v, 1) for k, v in res["confianca_imagem"]["curva"].items()})
     print(f"  só imagem — limiar do calib {lim:.2f}: cobre {100 * ac.mean():.0f}% do teste com acurácia {100 * a[ac].mean() if ac.any() else float('nan'):.1f}%"
           f" (recusados: {100 * a[~ac].mean() if (~ac).any() else float('nan'):.1f}%) | calibração: {res['confianca_imagem']['calibracao']}")
@@ -343,6 +380,11 @@ def main():
                                     acuracia_aceitos=float(100 * a[ac].mean()) if ac.any() else None,
                                     acuracia_recusados=float(100 * a[~ac].mean()) if (~ac).any() else None,
                                     calibracao=calibracao(p, a), cobertura_oraculo_70=cobertura_max(p, a))
+    res["confianca_hibrido"]["quem_e_aceito"] = dict(proteina_real_media_aceitos=float(real[te][ac].mean()), proteina_real_media_recusados=float(real[te][~ac].mean()),
+                                                     fracao_aceitos_ate_15g=float(100 * (real[te][ac] <= 15).mean()), acuracia_aceitos_acima_15g=float(100 * a[ac & (real[te] > 15)].mean()),
+                                                     n_aceitos_acima_15g=int((ac & (real[te] > 15)).sum()))
+    res["confianca_hibrido"]["regra_sem_rotulo"] = regra_sem_rotulo(p, a)
+    print("  híbrido — regra sem rótulo (média prevista >= 70%):", res["confianca_hibrido"]["regra_sem_rotulo"], "| cobertura máxima a 70% (descritivo):", res["confianca_hibrido"]["cobertura_oraculo_70"])
     print("  híbrido — curva (cobertura: acurácia):", {k: round(v, 1) for k, v in res["confianca_hibrido"]["curva"].items()})
     print(f"  híbrido — limiar do calib {lim_h:.2f}: cobre {100 * ac.mean():.0f}% do teste com acurácia {100 * a[ac].mean() if ac.any() else float('nan'):.1f}%"
           f" (recusados: {100 * a[~ac].mean() if (~ac).any() else float('nan'):.1f}%) | calibração: {res['confianca_hibrido']['calibracao']}")
@@ -383,6 +425,15 @@ def calibracao(p, a, n=4):
     for q in np.array_split(o, n):
         out.append(f"{100 * p[q].mean():.0f}→{100 * a[q].mean():.0f}")
     return " | ".join(out)
+
+
+def regra_sem_rotulo(p, a, alvo=0.70):
+    """Aceita os pratos mais confiantes enquanto a MÉDIA da P(acerto) prevista entre os aceitos for >= alvo.
+    Não usa nenhum rótulo do conjunto avaliado; depende só de a probabilidade estar calibrada."""
+    o = np.argsort(-p); med = np.cumsum(p[o]) / np.arange(1, len(o) + 1)
+    k = int((med >= alvo).sum())
+    return dict(cobertura=float(100 * k / len(o)), acuracia=float(100 * a[o][:k].mean()) if k else None,
+                acuracia_recusados=float(100 * a[o][k:].mean()) if k < len(o) else None)
 
 
 def cobertura_max(p, a, alvo=0.70):

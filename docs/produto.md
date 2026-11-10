@@ -33,7 +33,7 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 
 **Plano do dia:** tela inicial com meta de proteína, quanto falta e check-in rápido.
 
-**Papel da IA on-device:** objetivo de custo marginal zero por foto → **fotos ilimitadas** em todos os planos; resposta < 1 s; funciona offline. **Estado em 09/11/2026:** o modelo de peso roda no aparelho (EfficientNet-B0 em Core ML: 7,7 MB, ~60 ms), mas a identificação do alimento foi medida só com LLM em nuvem; a identificação on-device (Foundation Models + Vision) **ainda não foi testada**. Se ela não igualar a nuvem, a v1 usa nuvem para identificar e isso muda o custo por foto.
+**Papel da IA on-device:** objetivo de custo marginal zero por foto → **fotos ilimitadas** em todos os planos; resposta < 1 s; funciona offline. **Estado em 09/11/2026:** **Estado em 10/11/2026:** um modelo só de imagem (SigLIP 2 B/16, convertido para Core ML: 231 MB em FP16, 116 MB em 8 bits) chega a 61% sem nenhum LLM, empatado com o LLM em nuvem (55%) dentro da margem de erro. O híbrido com LLM em nuvem chega a ~63%. Latência no iPhone e identificação com Foundation Models **ainda não foram medidas**.
 
 **Fora da v1:** treino guiado por câmera (removido), contador de calorias como foco, nota de "forma perfeita", comunidade, chat com IA.
 
@@ -71,19 +71,22 @@ Critério: proteína dentro de ±20% ou ±5 g; meta ≥ 70%. Conjunto de teste f
 | Abordagem | Acerto |
 |---|---|
 | LLM em nuvem sozinho | 55% |
-| Modelo treinado só com a imagem | 48–52% |
-| **Híbrido** (LLM identifica, modelo treinado estima o peso) | **59–60%** |
-| Híbrido com a média de 4 ângulos | ~63% |
+| Modelo treinado só com a imagem, 1ª versão | 48–52% |
+| **Modelo só com a imagem, versão "uma foto de cima"** (roda no aparelho, sem LLM) | **61%** (IC 55–67) |
+| **Híbrido** (modelo estima o peso, LLM a densidade), versão "uma foto de cima" | **63%** (formas quase empatadas: 62–66%) |
 | Híbrido na comida brasileira (144 itens) | 46–49% |
 | Com ajuste de porção pela usuária (**simulado**, 15–30% de erro de escolha) | 71–76% |
 
-- **O gargalo é o peso da porção** (erro ~20%), não a identificação: com o peso real, a densidade do LLM já daria 71%.
+- **O gargalo mudou do peso para a identificação.** O erro de peso caiu de 22% para 17%. Com o peso do modelo e a densidade de proteína real, o acerto seria 81%; com o peso real e a densidade do LLM, 71%.
+- **Pratos com muita proteína seguem fracos:** acima de 15 g de proteína o acerto fica em 34–55%, e são justamente os que mais importam para a meta diária.
+- **Sugestão automática com confiança:** só com a imagem, cerca de metade dos pratos pode ser aceita com ~69% de acerto; os aceitos são, na maioria, pratos de pouca proteína.
+- **Escala:** sem padronizar a distância, um zoom de ±30% derruba o híbrido de 60% para 46–54%; treinar com escala aleatória ou recortar pelo prato elimina a perda. Daí o círculo-guia na câmera.
 - **Mais dados do mesmo tipo não resolvem:** a curva de aprendizado estabiliza a partir de ~400 pratos da Nutrition5k.
 - **Fotos laterais no treino** removem o viés de ângulo (comida brasileira só com imagem: 22% → 36%) e ficam no conjunto de treino.
 - **Não existe base pública latino-americana com peso medido** ([`dados/precisao/datasets_internacionais.md`](dados/precisao/datasets_internacionais.md)); os dados brasileiros terão de ser coletados.
 
 **Decisão para a v1:** **uma única foto de cima** (decisão da fundadora, 09/11/2026), com círculo-guia e aviso de nível; sugestão automática pelo híbrido; em confiança baixa, faixa mais larga e destaque para conferir as porções; ajuste de porção opcional. Sem segunda foto. A meta de 70% **sem** ajuste ainda não foi atingida, e os 71–76% com ajuste são simulação, não teste com usuárias.
 
-**Maiores riscos:** (1) peso da porção em comida brasileira; (2) identificação on-device não testada.
+**Maiores riscos:** (1) nenhuma foto brasileira tirada de cima no conjunto de teste (UFPR e Liv Up são em ângulo), então o desempenho no Brasil sob a nova premissa é desconhecido; (2) densidade de proteína em pratos ricos em proteína; (3) identificação on-device (Foundation Models) não testada; (4) o modelo exportado tem 116–231 MB e a latência no iPhone não foi medida.
 
 **Próximo passo:** piloto de 50 pratos brasileiros no iPhone (uma foto de cima com o círculo-guia, profundidade do aparelho como sinal de treino, peso por componente em balança) e teste da identificação on-device; depois, coleta de 400–800 pratos brasileiros pesados. Protocolo original em [`prototipo-precisao.md`](prototipo-precisao.md).

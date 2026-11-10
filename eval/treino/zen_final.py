@@ -2,93 +2,136 @@
 """Seção 8 — ponto de entrada único: treina o modelo final escolhido (uma foto de cima -> massa,
 proteína, kcal, macros e massa por grupo) e exporta para Core ML.
 
-Uso: OMP_NUM_THREADS=4 python3 zen_final.py [--cabeca ft|ridge] [--blocos agregado,media] [--sem-coreml]
-Pré-requisitos (ver "Reproduzir" em docs/dados/precisao/resultado_modelo_treinado.md):
-  zen_dados.py -> zen_extrai.py siglip2_b16 --orient 8 --tokens 9 [-> zen_finetune.py final]
-Passos:
-  1. cabeça final: 'ridge' = ridge multialvo sobre as features congeladas do SigLIP 2 B/16 com as
-     8 orientações D4 como amostras (alfas pela CV agrupada); 'ft' = topo ajustado por zen_finetune.py final;
-  2. monta o modelo completo imagem -> 22 saídas em log (uma orientação por chamada; o app faz a média
-     das orientações) e confere com as previsões do banco em pratos do teste;
-  3. mede tamanho e latência em CPU; 4. exporta Core ML (mlprogram FP16 e pesos em 8 bits).
-Grava <TD>/pesos/zen_final.pt, zen_final*.mlpackage e <TD>/resultados/zen_final.json (fora do repositório).
+Uso: OMP_NUM_THREADS=4 python3 zen_final.py [--membros ft,mlp,rl] [--sem-coreml]
+O modelo escolhido pela CV entre os que usam um único backbone (SigLIP 2 B/16, 224 px) é a média de
+três cabeças sobre o MESMO backbone:
+  ft   topo ajustado (3 últimos blocos + agregação MAP) + camada linear   -> zen_finetune.py final
+  mlp  MLP multitarefa sobre as features congeladas [agregado ‖ média]
+  rl   ridge sobre as features congeladas, treinado com 8 orientações + quadros laterais
+  (r8  ridge sobre as features congeladas, 8 orientações; opcional)
+Os 9 primeiros blocos são compartilhados; o custo extra das três cabeças é um segundo topo de 3 blocos.
 
-Saídas (ordem): log(massa g), log1p(proteína g), log1p(kcal), log(densidade+0,01), log1p(gordura g),
-log1p(carboidrato g), log1p(massa por grupo ×8), log1p(proteína por grupo ×8); grupos = eval/grupos_alimentos.GRUPOS.
-Entrada: foto zenital inteira redimensionada (sem recorte) para 224×224, RGB, (x/255 − 0,5)/0,5.
+O que este script faz, na ordem (cada passo é pulado se a saída já existe em <TD>):
+  1. zen_dados.py -> lista de treino estrita e alvos;  2. zen_extrai.py siglip2_b16 --orient 8 --tokens 9;
+  3. zen_finetune.py final (se 'ft' está nos membros);  4. treina as cabeças mlp/ridge;
+  5. monta o modelo completo imagem -> saídas em log e confere com o banco de previsões em pratos do teste;
+  6. mede tamanho e latência em CPU;  7. exporta Core ML (mlprogram FP16 e pesos em 8 bits).
+Grava <TD>/pesos/zen_final.pt, zen_final_*.mlpackage e <TD>/resultados/zen_final.json (fora do repositório).
+
+Saída do modelo: tensor [1, membros, 22] em log, uma orientação por chamada. Como foi avaliado: média das
+4 orientações que preservam o quadro para 'ft' e das 8 orientações D4 para as cabeças congeladas; depois,
+média entre os membros. Ordem das 22 saídas: log(massa g), log1p(proteína g), log1p(kcal), log(densidade+0,01),
+log1p(gordura g), log1p(carboidrato g), log1p(massa por grupo ×8), log1p(proteína por grupo ×8);
+grupos = eval/grupos_alimentos.GRUPOS. Entrada: foto zenital inteira redimensionada (sem recorte) para
+224×224, RGB, (x/255 − 0,5)/0,5.
 """
-import json, os, sys, time, warnings
+import copy, json, os, subprocess, sys, time, warnings
 import numpy as np, torch
 from PIL import Image
 from zen_comum import TD, Dados, Feat, ridge_cv, ridge_final, N_ALVOS, GRUPOS
 from zen_extrai import orienta
 
 PESOS = os.path.join(TD, "pesos")
+AQUI = os.path.dirname(os.path.abspath(__file__))
+BL = ("agregado", "media")
+N_OR = {"ft": 4, "mlp": 8, "rl": 8, "r8": 8}
+BANCO = {"ft": "ft cv", "mlp": "mlp siglip2_b16 o8", "rl": "ridge siglip2_b16 o8 + quadros laterais no treino", "r8": "ridge siglip2_b16 o8"}
+
+
+def garante(saida, *cmd):
+    if not os.path.exists(saida):
+        print("rodando:", " ".join(cmd), flush=True)
+        subprocess.run([sys.executable, os.path.join(AQUI, cmd[0]), *cmd[1:]], check=True)
+
+
+def linear(W, b):
+    """Camada linear a partir de W [entradas, saídas] e b [saídas] (numpy)."""
+    lin = torch.nn.Linear(W.shape[0], W.shape[1])
+    with torch.no_grad():
+        lin.weight.copy_(torch.from_numpy(W.T.astype(np.float32))); lin.bias.copy_(torch.from_numpy(b.astype(np.float32)))
+    return lin
+
+
+def de_ridge(r):
+    return linear(r.W / r.sd[:, None], r.mt - (r.mu / r.sd) @ r.W)
 
 
 class ModeloZenital(torch.nn.Module):
-    """SigLIP 2 B/16 + cabeça linear sobre os blocos de features escolhidos."""
+    """SigLIP 2 B/16: 9 blocos compartilhados -> topo congelado (cabeças mlp/ridge) e topo ajustado (cabeça ft)."""
 
-    def __init__(self, vit, blocos, n_saidas=N_ALVOS):
+    def __init__(self, vit, topo_ft, cabecas_cong, cabeca_ft):
         super().__init__()
-        self.vit, self.blocos = vit, tuple(blocos)
-        d = 768 * (len([b for b in blocos if b != "grade"]) + (4 if "grade" in blocos else 0))
-        self.lin = torch.nn.Linear(d, n_saidas)
+        self.vit, self.topo_ft, self.cabeca_ft = vit, topo_ft, cabeca_ft
+        self.cabecas_cong = torch.nn.ModuleList(cabecas_cong)
 
     def forward(self, x):
-        t = self.vit.forward_features(x)
-        f = []
-        if "agregado" in self.blocos:
-            f.append(self.vit.forward_head(t, pre_logits=True))
-        if "media" in self.blocos:
-            f.append(t.mean(1))
-        if "gem" in self.blocos:
-            f.append(t.clamp(min=0).pow(3).mean(1).pow(1 / 3))
-        if "grade" in self.blocos:
-            g = t.reshape(t.shape[0], 14, 14, t.shape[-1])
-            f += [g[:, :7, :7].mean((1, 2)), g[:, :7, 7:].mean((1, 2)), g[:, 7:, :7].mean((1, 2)), g[:, 7:, 7:].mean((1, 2))]
-        return self.lin(torch.cat(f, 1))
+        v = self.vit
+        t = v.norm_pre(v.patch_drop(v._pos_embed(v.patch_embed(x))))
+        for b in v.blocks[:9]:
+            t = b(t)
+        saidas = []
+        if self.cabeca_ft is not None:
+            tb = self.topo_ft["norm"](self.topo_ft["blocks"](t))
+            fb = torch.cat([self.topo_ft["fc_norm"](self.topo_ft["attn_pool"](tb)), tb.mean(1)], 1)
+            saidas.append(self.cabeca_ft(fb))
+        if len(self.cabecas_cong):
+            ta = t
+            for b in v.blocks[9:]:
+                ta = b(ta)
+            ta = v.norm(ta)
+            fa = torch.cat([v.forward_head(ta, pre_logits=True), ta.mean(1)], 1)
+            saidas += [c(fa) for c in self.cabecas_cong]
+        return torch.stack(saidas, 1)
 
 
-def vit_base():
+def constroi(membros, D):
     import timm
     from timm.models.vision_transformer import _load_weights
-    m = timm.create_model("vit_base_patch16_siglip_224", pretrained=False, num_classes=0, dynamic_img_size=False)
-    _load_weights(m, os.path.join(PESOS, "siglip2_b16_224.npz"))
-    return m
-
-
-def constroi(cabeca, blocos, D):
-    vit = vit_base()
-    mod = ModeloZenital(vit, blocos)
-    if cabeca == "ridge":
-        F = Feat("siglip2_b16")
-        X = F.pega(D.ids, tuple(range(8)), blocos)
-        _, alfa, _ = ridge_cv(X, D.T, D.fold)
-        _, r = ridge_final(X, D.T, alfa)
-        with torch.no_grad():
-            mod.lin.weight.copy_(torch.from_numpy((r.W / r.sd[:, None]).T.astype(np.float32)))
-            mod.lin.bias.copy_(torch.from_numpy((r.mt - (r.mu / r.sd) @ r.W).astype(np.float32)))
-        n_or = 8
-    else:
-        ck = torch.load(os.path.join(PESOS, "zen_ft.pt"), weights_only=False)
-        e = ck["estado"]
-        for i in range(3):
-            vit.blocks[9 + i].load_state_dict({k[len(f"blocks.{i}."):]: v for k, v in e.items() if k.startswith(f"blocks.{i}.")})
-        vit.norm.load_state_dict({k[5:]: v for k, v in e.items() if k.startswith("norm.")})
-        vit.attn_pool.load_state_dict({k[10:]: v for k, v in e.items() if k.startswith("attn_pool.")})
-        vit.fc_norm.load_state_dict({k[8:]: v for k, v in e.items() if k.startswith("fc_norm.")})
-        ts, tm = torch.from_numpy(ck["ts"].astype(np.float32)), torch.from_numpy(ck["tm"].astype(np.float32))
-        with torch.no_grad():   # desfaz a padronização dos alvos dentro da camada linear
-            mod.lin.weight.copy_(e["head.weight"][:N_ALVOS] * ts[:, None])
-            mod.lin.bias.copy_(e["head.bias"][:N_ALVOS] * ts + tm)
-        n_or = 4
-    return mod.eval(), n_or
+    vit = timm.create_model("vit_base_patch16_siglip_224", pretrained=False, num_classes=0, dynamic_img_size=False)
+    _load_weights(vit, os.path.join(PESOS, "siglip2_b16_224.npz"))
+    topo_ft, cab_ft, cong = None, None, []
+    for m in membros:   # a ordem das saídas é: ft primeiro, depois as cabeças congeladas na ordem pedida
+        if m == "ft":
+            ck = torch.load(os.path.join(PESOS, "zen_ft.pt"), weights_only=False)
+            e = ck["estado"]
+            pega = lambda pre: {k[len(pre):]: v for k, v in e.items() if k.startswith(pre)}
+            blocks = copy.deepcopy(vit.blocks[9:]); blocks.load_state_dict({k: v for k, v in pega("blocks.").items()})
+            norm = copy.deepcopy(vit.norm); norm.load_state_dict(pega("norm."))
+            ap = copy.deepcopy(vit.attn_pool); ap.load_state_dict(pega("attn_pool."))
+            fn = copy.deepcopy(vit.fc_norm); fn.load_state_dict(pega("fc_norm."))
+            topo_ft = torch.nn.ModuleDict(dict(blocks=blocks, norm=norm, attn_pool=ap, fc_norm=fn))
+            ts, tm = ck["ts"], ck["tm"]   # desfaz a padronização dos alvos dentro da camada linear
+            cab_ft = linear((e["head.weight"][:N_ALVOS].numpy() * ts[:, None]).T, e["head.bias"][:N_ALVOS].numpy() * ts + tm)
+        elif m == "r8":
+            X = Feat("siglip2_b16").pega(D.ids, tuple(range(8)), BL)
+            _, alfa, _ = ridge_cv(X, D.T, D.fold)
+            cong.append(de_ridge(ridge_final(X, D.T, alfa)[1]))
+        elif m == "rl":
+            from zen_experimentos import dados_laterais, ridge_lateral
+            cong.append(de_ridge(ridge_lateral(D, Feat("siglip2_b16"), *dados_laterais(D))[3]))
+        elif m == "mlp":
+            from zen_experimentos import treina_mlp
+            X = Feat("siglip2_b16").pega(D.ids, tuple(range(8)), BL)
+            _, k = treina_mlp(X, D.T, [], devolve_modelo=True)
+            l1, l2 = k["net"][1], k["net"][4]   # Dropout, Linear, GELU, Dropout, Linear
+            W1 = l1.weight.detach().numpy().T / k["sd"][:, None]; b1 = l1.bias.detach().numpy() - (k["mu"] / k["sd"]) @ l1.weight.detach().numpy().T
+            W2 = l2.weight.detach().numpy()[:N_ALVOS].T * k["ts"]; b2 = l2.bias.detach().numpy()[:N_ALVOS] * k["ts"] + k["tm"]
+            cong.append(torch.nn.Sequential(linear(W1, b1), torch.nn.GELU(), linear(W2, b2)))
+    return ModeloZenital(vit, topo_ft, cong, cab_ft).eval()
 
 
 def imagem(path):
     im = Image.open(path).convert("RGB").resize((224, 224), Image.BICUBIC)
     return (torch.from_numpy(np.asarray(im, dtype=np.float32) / 255.0).permute(2, 0, 1) - 0.5) / 0.5
+
+
+def preve(mod, membros, x):
+    """Como na avaliação: média das orientações de cada membro (4 para ft, 8 para os demais) e média entre membros."""
+    ordem = [m for m in membros if m == "ft"] + [m for m in membros if m != "ft"]
+    with torch.inference_mode():
+        o = torch.stack([mod(orienta(x, k)) for k in range(8)])       # [8, B, membros, 22]
+    por_membro = [o[:N_OR[m], :, i].mean(0) for i, m in enumerate(ordem)]
+    return torch.stack(por_membro).mean(0).numpy(), {m: p.numpy() for m, p in zip(ordem, por_membro)}
 
 
 def latencia(mod, threads, n=10):
@@ -109,32 +152,33 @@ def tamanho(p):
 
 def main():
     arg = lambda k, d: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else d
-    cabeca = arg("--cabeca", "ft")
-    blocos = arg("--blocos", "agregado,media").split(",")
+    membros = arg("--membros", "ft,mlp,rl").split(",")
+    garante(os.path.join(TD, "meta", "zen_treino.csv"), "zen_dados.py", TD)
+    garante(os.path.join(TD, "feat", "zen_siglip2_b16_tokL9.npy"), "zen_extrai.py", TD, "siglip2_b16", "--orient", "8", "--tokens", "9")
+    if "ft" in membros:
+        garante(os.path.join(PESOS, "zen_ft.pt"), "zen_finetune.py", "final")
     D = Dados()
     t0 = time.time()
-    mod, n_or = constroi(cabeca, blocos, D)
-    res = dict(cabeca=cabeca, blocos=blocos, orientacoes=n_or, parametros_M=sum(p.numel() for p in mod.parameters()) / 1e6,
+    mod = constroi(membros, D)
+    res = dict(membros=membros, parametros_M=sum(p.numel() for p in mod.parameters()) / 1e6,
                saidas=["log_massa", "log1p_proteina", "log1p_kcal", "log_densidade", "log1p_gordura", "log1p_carbo"]
                + [f"log1p_massa_{g}" for g in GRUPOS] + [f"log1p_proteina_{g}" for g in GRUPOS])
     torch.save(mod.state_dict(), os.path.join(PESOS, "zen_final.pt"))
-    # confere com o banco (previsões do experimento) em 8 pratos do teste
-    nome_banco = {"ridge": "ridge siglip2_b16 o8" + ("+gem" if "gem" in blocos else "") + ("+grade" if "grade" in blocos else ""),
-                  "ft": "ft cv"}[cabeca]
-    pb = os.path.join(TD, "resultados", "zen_banco", nome_banco + ".npz")
+    # confere com o banco (previsões dos experimentos) em 16 pratos do teste
     te = D.aval["teste"]
-    with torch.inference_mode():
-        x = torch.stack([imagem(os.path.join(TD, "img", d, "rgb.png")) for d in te["chave"][:8]])
-        out = torch.stack([mod(orienta(x, k)) for k in range(n_or)]).mean(0).numpy()
-    if os.path.exists(pb):
-        ref = np.load(pb)["teste"][:8]
-        res["dif_max_vs_banco_log"] = float(np.abs(out - ref).max())
-        print(f"conferência com o banco ({nome_banco}): diferença máxima em log = {res['dif_max_vs_banco_log']:.4f}")
-    print("exemplo (prato do teste):", {"massa_g": round(float(np.exp(out[0, 0])), 1), "proteina_g": round(float(np.expm1(out[0, 1])), 1),
-                                         "real": (float(te["massa"][0]), float(te["proteina"][0]))})
+    x = torch.stack([imagem(os.path.join(TD, "img", d, "rgb.png")) for d in te["chave"][:16]])
+    out, por_membro = preve(mod, membros, x)
+    res["dif_max_vs_banco_log"] = {}
+    for m, p in por_membro.items():
+        pb = os.path.join(TD, "resultados", "zen_banco", BANCO[m] + ".npz")
+        if os.path.exists(pb):
+            res["dif_max_vs_banco_log"][m] = float(np.abs(p - np.load(pb)["teste"][:16]).max())
+    print("conferência com o banco, diferença máxima em log por membro:", {k: round(v, 4) for k, v in res["dif_max_vs_banco_log"].items()})
+    print("exemplo (1º prato do teste):", {"massa_g": round(float(np.exp(out[0, 0])), 1), "proteina_g": round(float(np.expm1(out[0, 1])), 1),
+                                            "real": (float(te["massa"][0]), float(te["proteina"][0]))})
     res["lat_ms_1thread"] = latencia(mod, 1); res["lat_ms_4threads"] = latencia(mod, 4)
     res["fp32_MB"] = os.path.getsize(os.path.join(PESOS, "zen_final.pt")) / 2 ** 20
-    print(f"{res['parametros_M']:.1f} M parâmetros | latência CPU x86 por orientação: {res['lat_ms_1thread']:.0f} ms (1 thread), {res['lat_ms_4threads']:.0f} ms (4 threads)")
+    print(f"{res['parametros_M']:.1f} M parâmetros | latência em CPU x86 por orientação: {res['lat_ms_1thread']:.0f} ms (1 thread), {res['lat_ms_4threads']:.0f} ms (4 threads)")
     if "--sem-coreml" not in sys.argv:
         warnings.filterwarnings("ignore")
         import coremltools as ct
