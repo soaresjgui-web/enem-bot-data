@@ -169,7 +169,7 @@ def llm_v2_fontes(prato_ids):
     return MF, PF
 
 
-V3_PARTES = os.path.join(PREC, "estimativas_v3_partes.csv")
+V3_PARTES = os.environ.get("DENS_V3") or os.path.join(PREC, "estimativas_v3_partes.csv")   # DENS_V3: outro arquivo (ensaio)
 
 
 def llm_v3(prato_ids, arq=V3_PARTES, pesos_alt=(0.0, 0.25, 0.40)):

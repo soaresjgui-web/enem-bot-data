@@ -2,7 +2,7 @@
 
 > Este é o texto que o estimador recebe junto com a pasta de imagens (`cego2/loteNN/`). Ele não recebe gabarito, nem a origem das fotos, nem a divisão calib/teste. O estimador **não estima gramas nem proteína**: ele identifica os alimentos e diz que **parte da massa** do prato cada um representa. A proteína sai de `eval/protein_from_shares.py`, que junta essas partes com as tabelas (Nutrition5k/USDA e TACO) e com uma massa total vinda de outro lugar (o modelo treinado).
 >
-> Por que mudou em relação à v2: na análise do `calib` (seção 9 de `docs/dados/precisao/resultado_modelo_treinado.md`), o erro de densidade do LLM não veio da tabela nem do valor por 100 g de cada alimento. Veio de **qual é a fonte de proteína** (78% de acerto) e de **quanto da massa do prato ela ocupa**. Esta instrução pede só essas duas coisas.
+> Por que mudou em relação à v2: na análise do `calib` (seção 9 de `docs/dados/precisao/resultado_modelo_treinado.md`), o erro de densidade do LLM não veio da tabela nem do valor por 100 g de cada alimento. Veio de **qual é a fonte de proteína** (77% de acerto no `calib`) e de **quanto da massa do prato ela ocupa**. Esta instrução pede só essas duas coisas.
 >
 > Para quem roda (não mostrar ao estimador): ver "Para o orquestrador" no fim do arquivo.
 

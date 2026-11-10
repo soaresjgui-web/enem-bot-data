@@ -3,10 +3,12 @@
 
 Uso: OMP_NUM_THREADS=2 python3 dens_experimentos.py <etapa> [backbone ...]
   ridge   ridge com peso por faixa; ridge de fração de massa por fonte; ridge de contribuição por ingrediente
-  knn     recuperação: k vizinhos mais próximos no embedding (densidade e fração por fonte dos vizinhos)
+  knn     recuperação: k vizinhos mais próximos no embedding (densidade e fração por fonte dos vizinhos);
+          'a|b' concatena os embeddings de dois backbones
   soft    cabeças softmax (linear e MLP) de fração de massa por fonte / por ingrediente / por classe fina, multitarefa,
           com e sem perda direta de densidade, com e sem peso por faixa
-Backbones: siglip2_b16 (224 px, 8 orientações), siglip2_b16_512 (384×512, 2 orientações), 'ambos' (concatena, 2 orientações);
+Backbones: siglip2_b16 (224 px, 8 orientações), siglip2_b16_512 (384×512, 2 orientações), tips_b14 (336×448, 1 orientação),
+  'ambos' (siglip2_b16 + siglip2_b16_512 concatenados, 2 orientações);
   o sufixo '+esp' soma os blocos espaciais (GeM e grade 2×2 dos tokens) ao agregado e à média.
 
 Cada configuração grava <TD>/resultados/dens/banco/<nome>.npz com
@@ -69,8 +71,9 @@ class Dad:
         self.bb = bb
         bl = BL + ("gem", "grade") if bb.endswith("+esp") else BL
         base = bb[:-4] if bb.endswith("+esp") else bb
-        if base == "ambos":
-            fs = [Feat("siglip2_b16"), Feat("siglip2_b16_512")]; self.o = (0, 1)
+        if base == "ambos" or "|" in base:
+            fs = [Feat(b) for b in (["siglip2_b16", "siglip2_b16_512"] if base == "ambos" else base.split("|"))]
+            self.o = tuple(range(min(2, min(f.X.shape[1] for f in fs))))
             self.pega = lambda ch: np.concatenate([f.pega(ch, self.o, bl) for f in fs], -1)
         else:
             f = Feat(base); self.o = tuple(range(f.X.shape[1]))
@@ -159,13 +162,20 @@ def etapa_ridge(bb):
 
 # ---------------------------------------------------------------- k vizinhos
 def etapa_knn(bb):
-    A = Dad(bb); D = A.D
+    """bb pode ser 'a|b': concatena os embeddings (centrados e normalizados) de dois backbones."""
+    partes = bb.split("|")
+    As = [Dad(p) for p in partes]
+    A = As[0]; D = A.D
     d = 768
-    emb = lambda X: (lambda m: m / np.linalg.norm(m, axis=1, keepdims=True))(X[:, :, :d].mean(1).astype(np.float64))   # embedding agregado, média das orientações
-    E = emb(A.X); Es = {s: emb(A.Xs[s]) for s in SPLITS}
-    mu = E.mean(0)
-    cen = lambda e: (lambda m: m / np.linalg.norm(m, axis=1, keepdims=True))(e - mu)
-    E = cen(E); Es = {s: cen(e) for s, e in Es.items()}
+    nrm = lambda m: m / np.linalg.norm(m, axis=1, keepdims=True)
+
+    def emb(pega):      # embedding agregado (média das orientações), centrado no treino e normalizado, por backbone
+        E = []
+        for a in As:
+            e = nrm(a.X[:, :, :d].mean(1).astype(np.float64)); mu = e.mean(0)
+            E.append(nrm(nrm(pega(a)[:, :, :d].mean(1).astype(np.float64)) - mu))
+        return nrm(np.concatenate(E, 1))
+    E = emb(lambda a: a.X); Es = {s: emb(lambda a, s=s: a.Xs[s]) for s in SPLITS}
     ld = np.log(A.rd + EPS_D)
 
     def prev(Et, ytr, Fftr, Ev, k, tau):
@@ -175,8 +185,8 @@ def etapa_knn(bb):
         return (w * ytr[ix]).sum(1), (w[:, :, None] * Fftr[ix]).sum(1)
 
     melhor = None
-    for k in (5, 10, 20, 40):
-        for tau in (0.02, 0.05, 0.1):
+    for k in (5, 10, 20, 40, 80):
+        for tau in (0.02, 0.05, 0.1, 0.2):
             t0 = time.time()
             o = np.zeros(len(ld)); of = np.zeros_like(A.Ff)
             for f in range(5):
@@ -276,8 +286,6 @@ CFG_SOFT = {
     "soft-mlp fonte-l2 +perda-dens peso-faixa": ("fonte", dict(perda_frac="l2", l_d=1.0, peso=1.0)),
     "soft-mlp fonte +perda-dens peso-faixa": ("fonte", dict(l_d=1.0, peso=1.0)),
     "soft-mlp fonte peso-faixa": ("fonte", dict(peso=1.0)),
-    "soft-mlp fonte peso-faixa semente1": ("fonte", dict(peso=1.0, seed=1)),
-    "soft-mlp fonte peso-faixa semente2": ("fonte", dict(peso=1.0, seed=2)),
     "soft-mlp fonte-l2 peso-faixa": ("fonte", dict(perda_frac="l2", peso=1.0)),
     "soft-mlp fonte-l2d": ("fonte", dict(perda_frac="l2d")),
     "soft-mlp fonte-l1": ("fonte", dict(perda_frac="l1")),

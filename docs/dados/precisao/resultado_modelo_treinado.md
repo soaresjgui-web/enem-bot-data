@@ -1,7 +1,7 @@
 # Modelo treinado: proteína só pela foto, sem informar porção (09/11/2026)
 
 **Pergunta:** um modelo **treinado** (e não um LLM em nuvem) consegue sugerir a proteína só pela foto e atingir a meta de **≥ 70% dos pratos dentro de ±20% ou ±5 g**?
-**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia.
+**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. A meta de 70% continua não atingida. No LLM, o erro está na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede só isso e ainda não foi rodada.
 
 Scripts em `eval/treino/`. Dados, features, pesos e o `.mlpackage` ficam só no scratchpad (`…/scratchpad/treino/`), fora do repositório.
 
@@ -405,6 +405,413 @@ Olhei as 144 fotos: **UFPR (103) e Liv Up (34) não são fotos de cima** (prato 
    - **Dados brasileiros de cima, com celular:** sem eles não há como saber se os 61–66% do Nutrition5k valem no app. Pelo que 8.7 e 8.8 mostram, a escala e o recipiente são o risco principal.
 4. **Recomendação que se mantém:** o número final vem do seletor de porção (71–76% no v2). O modelo desta seção serve para (a) dar o valor inicial do seletor com erro de massa menor, (b) sugerir sozinho a metade dos pratos em que a confiança é alta, sabendo que essa metade é, na maior parte, de pratos com pouca proteína, e (c) ser a base de um pipeline sem nuvem, já no nível do LLM no Nutrition5k.
 
+## 9. Densidade de proteína e pratos ricos em proteína (10/11/2026)
+
+**Pergunta:** a seção 8 terminou com o gargalo na **densidade** (gramas de proteína por grama de comida, isto é, saber que alimento é) e com os pratos acima de 15 g de proteína em 34–55%. Dá para melhorar a densidade, sobretudo nesses pratos, com a mesma premissa de uma foto de cima?
+**Resposta curta: a densidade melhorou de forma mensurável; o resultado final subiu pouco; os pratos com mais de 25 g praticamente não melhoraram; a meta de 70% continua não atingida.** Números do `teste` (280 pratos), com tudo escolhido por validação cruzada no treino e pesos do híbrido só no `calib`.
+
+| Medida no `teste` | Seção 8 (escolhido) | Seção 9 (escolhido) | Diferença (IC 95%, bootstrap pareado) |
+|---|---|---|---|
+| **Densidade isolada:** massa real × densidade do modelo | 67,5% | **76,1%** | **+8,6 (+2,9 a +14,3)** |
+| Só imagem, sem LLM | 61,1% | **64,6%** (IC 59,3 a 70,0) | +3,6 (−1,8 a +8,9): não distinguível |
+| Híbrido: massa do modelo × densidade (LLM v2 e modelo) | 62,9% | **67,1%** (IC 61,4 a 72,5) | **+4,3 (+0,4 a +8,6)** |
+| Pratos com mais de 15 g: só imagem / híbrido | 47,0% / 48,8% | 47,6% / 53,0% | |
+| LLM sozinho (referência) | 55,0% (39,9% acima de 15 g) | | |
+| **Meta** | **70%** | | |
+
+- **A densidade do modelo treinado passou de 67,5% para 76,1%** quando medida com a massa real, e ficou acima da do LLM v2 na estimativa pontual (71,4%; diferença de +4,6, IC −1,4 a +10,4, não segura). O ganho veio de três coisas: prever **quanto da massa do prato é cada fonte de proteína** em vez da densidade direta, **recuperar pratos parecidos** do treino, e um terceiro backbone (TIPS) para essa recuperação.
+- **O ganho não chegou inteiro ao resultado final.** Só imagem: 61,1% → 64,6%, dentro do ruído. Híbrido: 62,9% → 67,1%, com o intervalo encostado em zero. É a primeira vez que o híbrido escolhido se separa do anterior, mas por pouco, e formas não escolhidas vão de 65% a 70%.
+- **Os pratos com mais de 25 g não melhoraram de forma que se distinga do ruído** (só imagem: 43% → 38% e 50% → 46%; híbrido: 38% → 45% e 46% → 45%; são 56 pratos por faixa). O que melhorou foram os pratos de 5 a 25 g. Nos pratos grandes, o erro que sobra já é **tanto de massa quanto de densidade**, e os dois puxam para baixo (9.5).
+- **Falta o lado do LLM.** A análise mostra que o LLM erra a parte da massa e a fonte, não a tabela. A instrução v3 (`eval/prompt_v3.md`) pede só isso; as estimativas ainda não foram feitas (9.7).
+
+### 9.1 Dados, higiene e regras de escolha
+
+- **Nada mudou nos dados:** o mesmo treino zenital estrito da seção 8 (1.684 pratos em 511 cadeias, interseção com os 450 pratos de avaliação = 0), os mesmos 5 folds por cadeia, o mesmo critério de CV ponderado para as cinco faixas de proteína terem o mesmo peso, e a mesma entrada na inferência: **uma foto RGB de cima**.
+- **Sinal novo de treino:** a lista de ingredientes de cada prato de **treino** (nome e gramas, do `dish_metadata` do Nutrition5k). Dela saem a fração de massa por ingrediente e por **fonte de proteína** (10 grupos, `dens_comum.py`). Os ingredientes dos pratos do `teste` e do `n5k_v1` nunca são lidos: a função que os carrega recusa esses ids. Os do `calib` são lidos só na análise de erro (9.2).
+- **Modelo de massa:** o da seção 8, sem tocar (conjunto de 4 membros, RMSE de log-massa 0,2329). Esta seção só troca a densidade.
+- **Regras, fixadas antes de olhar o teste** (estão no cabeçalho de `dens_avalia.py`, como R2 a R5; a R1 é o modelo de massa, que não muda):
+  1. **densidade:** maior critério do produto na CV do treino, ponderado por faixa, calculado com a **massa real × densidade prevista**, para isolar a densidade. Concorrem todas as cabeças de densidade da seção 8, todas as desta seção, as médias declaradas e uma seleção gulosa de conjunto avaliada com ajuste cruzado;
+  2. **desencolhimento** (esticar a densidade em torno da média): só é adotado se melhorar a CV com ajuste cruzado em mais de 0,5 ponto;
+  3. **só imagem:** maior critério ponderado na CV entre todas as configurações e rotas da seção 8, a massa da seção 8 × cada densidade candidata, e a média geométrica disso com a rota direta da seção 8;
+  4. **híbrido:** pesos só no `calib`; forma escolhida pelo critério no `calib` com validação deixa-fora em 12 blocos; em empate, a forma com menos pesos. As formas com a densidade do LLM v3 foram declaradas no script **antes** de as estimativas existirem.
+- **Teste:** uma execução de `dens_avalia.py`, com todas as configurações. Enquanto as configurações eram montadas, o script rodou com `--so-cv`, que para antes de ler o gabarito do teste. Todas as configurações aparecem em 9.4 e 9.6, inclusive as que perderam.
+- **Referências para os intervalos:** os dois pipelines escolhidos na seção 8, refeitos prato a prato pelo mesmo script (que confere que dão 61,1% e 62,9%). Bootstrap pareado, 4.000 sorteios.
+
+### 9.2 Análise de erro: onde a densidade falha
+
+Tudo aqui vem das previsões **fora-do-fold do treino** (1.684 pratos, CV por cadeia) e do `calib` (120). O `teste` não foi lido (`dens_analise.py`; o código recusa os ingredientes de qualquer prato do `teste`). "Fonte principal" é o grupo que dá pelo menos metade da proteína do prato, pelos ingredientes do Nutrition5k.
+
+**a) Em prato com muita proteína, o erro é mais de densidade do que de massa; acima de 40 g é dos dois.** Modelo da seção 8 no treino, fora-do-fold:
+
+| Faixa de proteína real | n | Acerto (massa × densidade previstas) | Com a massa real (só a densidade erra) | Com a densidade real (só a massa erra) | Viés mediano da massa | Viés mediano da densidade |
+|---|---|---|---|---|---|---|
+| 0–5 g | 643 | 97,0% | 97,8% | 100% | 0% | +7% |
+| 5–15 g | 360 | 81,4% | 83,3% | 95,8% | 0% | −10% |
+| 15–25 g | 220 | 53,6% | 56,4% | 83,2% | −2% | −5% |
+| 25–40 g | 282 | 42,6% | 45,4% | 77,3% | −4% | −6% |
+| > 40 g | 179 | 32,4% | 45,8% | 73,2% | −10% | −13% |
+
+Corrigir só a densidade levaria os pratos de 15 a 40 g a 77–83%; corrigir só a massa quase não muda nada (45–56%). Acima de 40 g os dois erros pesam: a massa é subestimada em 10% e a densidade em 13%, e os dois vieses se somam.
+
+**b) Regressão à média.** A densidade prevista varia menos que a real: a inclinação de log(prevista) contra log(real) é 0,84 em todos os pratos e **0,68 nos pratos com mais de 15 g** (correlação de 0,64). No quinto de pratos mais densos (12,6 a 37 g/100 g) a previsão fica 20% abaixo da real; no quinto menos denso, 22% acima. A massa tem o mesmo efeito, mais fraco (inclinação 0,89). No `calib`, a inclinação do modelo é 0,80 e a do LLM é 0,96: **o LLM quase não encolhe**, porque dá nome ao alimento e lê a tabela.
+
+**c) Por fonte de proteína (pratos com mais de 15 g, treino fora-do-fold).**
+
+| Fonte principal | n | Acerto | Com a massa real | Com a densidade real | Viés da densidade |
+|---|---|---|---|---|---|
+| Frango e peru | 197 | 34,5% | 43,7% | 69,5% | **−18%** |
+| Bovina | 81 | 39,5% | 54,3% | 79,0% | −8% |
+| Suína e embutidos | 93 | 54,8% | 46,2% | 82,8% | −9% |
+| Peixe e frutos do mar | 118 | 40,7% | 54,2% | 82,2% | −3% |
+| Ovo | 77 | 50,6% | 61,0% | 81,8% | −6% |
+| Prato pronto (pizza etc.) | 21 | 66,7% | 57,1% | 76,2% | +12% |
+| Sem fonte dominante | 78 | 46,2% | 41,0% | 85,9% | +8% |
+
+O frango é a fonte mais frequente e a pior. Há duas causas. A primeira é a regressão à média: na tabela do Nutrition5k, `chicken` tem 31 g/100 g, o valor mais alto entre as fontes comuns. A segunda é da própria tabela: `chicken` (31), `chicken breast` (31), `chicken thighs` (24) e `grilled chicken` (23) têm densidades que diferem em até 37%, e a foto não diz qual nome o restaurante registrou. O mesmo vale para `fish` (18) e `salmon` (24), e para `pork` (26), `bacon` (37) e `sausage` (19). Parte do erro em frango é **ruído de rótulo** que nenhum modelo de imagem tira.
+
+**d) O erro cresce quando a proteína é minoria no prato, e quando é quase tudo.** Nos pratos com mais de 15 g em que as fontes de proteína são menos de 25% da massa (63 pratos), o acerto com a massa real é de 32% e a densidade sai 17% **acima**; quando são 75% ou mais (135 pratos), 43%, com a densidade 11% **abaixo**. É a regressão à média vista pelo lado da composição: o modelo puxa todo prato para "metade proteína, metade acompanhamento". O número de ingredientes não explica o erro (1–2 ingredientes: 45%; 11 ou mais: 49%), então "ingrediente escondido em prato complexo" não é a causa principal.
+
+**e) O que bastaria saber.** Se o modelo soubesse só a **fração da massa de cada uma de 10 fontes** (frango e peru, bovina, suína e embutidos, peixe, ovo, leguminosa e soja, laticínio, prato pronto, castanhas, resto) e usasse a densidade média de cada fonte no treino, a massa real × essa densidade daria **92,6%** na CV ponderada (87,7% a 95,0% nas faixas acima de 15 g), e 76,6% com a massa do modelo. Ou seja: **não é preciso reconhecer o ingrediente exato; é preciso acertar quanto do prato é cada fonte.** Foi isso que orientou o passo 2.
+
+**f) LLM v2 no `calib`: erra a parte da massa e a fonte, não a tabela.** Todas as linhas usam a **massa real**, para isolar a densidade.
+
+| Densidade usada (calib, massa real) | Acerto | Pratos com > 15 g |
+|---|---|---|
+| Do LLM, como está | 76,7% | 64% |
+| Do LLM, trocando todas as densidades pela tabela do Nutrition5k | 76,7% | 64% |
+| Frações do LLM × densidade **real** de cada fonte no prato | 75,8% | 68% |
+| Frações **reais** × densidade do LLM para cada fonte | **90,0%** | **89%** |
+| Frações reais × densidade média da fonte no treino | 86,7% | 88% |
+| Frações do LLM × densidade média da fonte no treino | 67,5% | 58% |
+| Do modelo só de imagem da seção 8 | 69,2% | 58% |
+
+- **A tabela não é o problema.** No `calib`, 93% da massa estimada pelo LLM já usa nomes genéricos que casam com a tabela do Nutrition5k; só 7% usa a TACO. Trocar a tabela não muda o resultado. A hipótese "grelhado da TACO contra a tabela do Nutrition5k" não se confirma: o LLM já usava os nomes em inglês nos pratos do Nutrition5k. O que existe é o problema do item (c): em 19 componentes de frango, o LLM escreveu `chicken breast` (31) 6 vezes, `grilled chicken` (23) 5 vezes, `chicken` (31) 5 vezes e `roast chicken` (24) 2 vezes, e o gabarito quase sempre é `chicken` (31). Usar a média do treino para a família do frango (28,2 g/100 g) leva o LLM de 76,7% para 78,3% no `calib`: dois pratos.
+- **Dar ao LLM a densidade real de cada fonte não melhora nada (75,8%). Dar a ele as frações reais leva a 90%.** O erro do LLM está em **quanto da massa é a fonte de proteína** e em **qual é a fonte**.
+- **O LLM acerta a fonte principal em 77% dos 86 pratos do `calib` que têm fonte dominante.** Quando acerta, 74% ficam dentro da tolerância (com a massa real); quando erra, 55%. As confusões: frango visto como porco, bovina, peixe ou laticínio (5 de 17); porco visto como bovina ou frango (4 de 24); ovo não visto (3 de 19). O modelo de imagem do passo 2 acerta a fonte principal em 78–79% na CV do treino: **na identificação da fonte, modelo treinado e LLM estão no mesmo nível.**
+- Em média, a fração de massa das fontes de proteína que o LLM dá não tem viés (63% contra 65% reais nos pratos com mais de 15 g; correlação de 0,87). O erro é de dispersão, prato a prato.
+
+**Resposta à pergunta "densidade, massa ou os dois?":** nos pratos de 15 a 40 g, densidade (com a massa real o acerto fica em 45–56%, com a densidade real em 77–83%). Acima de 40 g, os dois. E "densidade" quer dizer, na prática, **fração da massa que é fonte de proteína**, mais a identidade da fonte; o valor de tabela por 100 g importa pouco.
+
+### 9.3 Lado da imagem: o que foi testado e o que cada coisa deu
+
+Todas as cabeças usam features congeladas: as da seção 8 (SigLIP 2 B/16 a 224 px com 8 orientações; a 384×512 com 2 orientações) e, no item 9, as do TIPS B/14. "Critério de densidade" = critério do produto na CV, ponderado por faixa, com a massa real × a densidade prevista; entre parênteses, só os pratos com mais de 15 g. Ponto de partida: a densidade do pipeline escolhido na seção 8 dá **65,7% (49,2%)**; a melhor cabeça isolada da seção 8 (MLP multitarefa a 224 px) dá 68,2% (53,4%).
+
+| # | Ideia | O que foi feito | Critério de densidade na CV | Veredito |
+|---|---|---|---|---|
+| 1 | Peso por faixa de proteína no treino | Ridge de log-densidade com peso por amostra para as 5 faixas pesarem igual (e meio caminho) | 384×512: 64,1 → 64,8 → 65,2% (46,7 → 48,9%); 224 px: 61,0 → 61,7% | Ajuda pouco sozinho (+1) |
+| 2 | Recuperação (k vizinhos) | Média da log-densidade dos 80 pratos de treino mais parecidos no embedding do SigLIP 2 (cosseno, peso exponencial) | 67,5% (53,9%) a 384×512; 68,0% (54,9%) a 224 px | **Ajuda:** sem treinar nada, empata com o melhor MLP da seção 8, e erra de outro jeito |
+| 3 | Fração de massa por **fonte de proteína** (10 grupos) × densidade média da fonte | Ridge linear nas frações | 62,3% (**55,3%**) | Pior no total, **melhor acima de 15 g** (ridge de log-densidade: 46,7%) |
+| 3b | | MLP com softmax e entropia cruzada | 64,2% (48,3%) | A perda errada: não ajuda |
+| 3c | | MLP com softmax e **erro quadrático nas frações** | **70,9% (59,9%)**; três sementes: 70,6 a 70,9% | **Ajuda muito** |
+| 3d | | 3c + perda direta em log da densidade composta + peso por faixa | **72,2% (61,4%)**; outras sementes: 71,8% e 72,2% | **A melhor cabeça isolada** |
+| 3e | | 3c com erro absoluto; com erro quadrático ponderado pela densidade da classe | 66,9% (53,8%); 72,0% (61,4%) | Absoluto piora; ponderado empata com 3d |
+| 4 | Classificador de **ingredientes** (165 classes) → Σ fração × densidade do ingrediente | MLP softmax, entropia cruzada; + perda direta; com erro quadrático | 59,8% (41,0%); 62,7% (45,0%); 69,8% (58,3%) | Pior que as 10 fontes: classes demais para 1.684 pratos |
+| 4b | Classes "finas" (32: os ingredientes que mais dão proteína, um a um, + o resto por fonte) | Como 3d | 71,3% (58,9%) | Não ganha das 10 fontes. Separar `chicken` de `chicken thighs` pela foto não funcionou |
+| 4c | Contribuição de proteína por ingrediente | Ridge linear | 33–35% | Muito pior |
+| 5 | Mais entrada | 224 + 384×512 concatenados; blocos espaciais (GeM e grade 2×2) | 72,2% (60,3%); 69,0% (55,7%) | Não ajuda. A 224 px a fonte principal sai certa em 74% dos pratos; a 384×512, em 78–80% |
+| 6 | Cabeça maior | 1.024 unidades, dropout 0,5 | 68,8% (58,4%) | Piora |
+| 7 | Médias (em log) de cabeças diferentes | 22 médias declaradas: frações (3d) com vizinhos, com classes finas, com o MLP da seção 8, com outras sementes, com o TIPS | de 71,4% a **75,4% (63,7%)** | **Ajuda** (+3 sobre a melhor isolada) |
+| 7b | Seleção gulosa de conjunto | Escolhida em 4 folds, aplicada no 5º | 74,3% (62,9%) | Não ganha das médias simples: parte do que a escolha entre médias rende é ruído |
+| 8 | Desencolhimento | Esticar em log, em torno da média, a densidade escolhida e a proteína final (fator b), com ajuste cruzado | 75,4 → 75,5% (b = 1,05); proteína final 66,3 → 65,4% (b = 1,10) | Não adotado (regra: mais de 0,5 ponto) |
+| 9 | Terceiro backbone: TIPS B/14 (tipo DINOv2), 336×448, 1 orientação | Vizinhos no embedding do TIPS; cabeça 3d sobre TIPS; 3d sobre TIPS + SigLIP 2 concatenados | vizinhos **72,4% (60,7%)**; 3d 70,3% (56,9%); concatenados 72,2% (59,7%) | **Ajuda na recuperação:** os vizinhos no TIPS, sem treino, empatam com a melhor cabeça treinada. A cabeça treinada sobre TIPS não ganha da do SigLIP 2 |
+
+O que os números mostram:
+
+1. **Prever "quanto do prato é cada fonte" funciona melhor do que prever a densidade direto**, desde que a perda seja o erro quadrático das frações. A mesma cabeça com entropia cruzada perde 7 pontos. A densidade sai de uma conta transparente (fração × densidade média da fonte), e isso também dá ao app o que mostrar: "frango ≈ 45% do prato".
+2. **O ganho está nos pratos com mais de 15 g** (49% → 61–62% com a massa real). Nos pratos com pouca proteína a rota por frações é pior que a regressão (a tolerância de ±5 g esconde isso), e por isso a média com as cabeças de log-densidade ganha das frações sozinhas.
+3. **Resolução conta para identificar.** A 384×512 a fonte principal sai certa em 78–80% dos pratos; a 224 px, em 74%.
+4. **Ingrediente exato não ajuda.** O Nutrition5k tem 199 ingredientes no treino e poucos pratos por ingrediente; as 10 fontes bastam (o oráculo de 9.2 dá 92,6%) e são aprendidas melhor.
+5. **O TIPS, que a seção 8 não chegou a extrair, rende na recuperação** (72,4% contra 67,5% do SigLIP 2 na mesma resolução). A extração levou 38 min de CPU com uma orientação. Ele entrou só na densidade; o modelo de massa continua o da seção 8.
+
+### 9.4 Todas as densidades avaliadas
+
+**Escolha pela CV (regra 1):** a média, em log, de cinco estimativas de densidade: três cabeças de fração por fonte (item 3d de 9.3) sobre SigLIP 2 a 384×512, sobre TIPS e sobre os dois concatenados; os vizinhos no embedding do TIPS; e o MLP multitarefa a 224 px da seção 8. Critério de densidade na CV: **75,4% (63,7% acima de 15 g)**, contra 65,7% (49,2%) do escolhido na seção 8.
+
+- **Desencolhimento não adotado.** Esticar a log-densidade escolhida (b = 1,05) dá 75,4% → 75,5% com ajuste cruzado; esticar a proteína final do pipeline só de imagem (b = 1,10) dá 66,3% → 65,4%. Nenhum passa da regra de 0,5 ponto. A regressão à média continua lá (inclinação de 0,60 acima de 15 g, contra 0,68 antes; a correlação subiu de 0,64 para 0,72): a média de cinco estimativas encolhe mais, mas acerta mais a ordem. Esticar não conserta, porque o erro é de informação, não de escala.
+- **Por fonte, na CV (pratos com mais de 15 g, massa real × densidade):**
+
+| Fonte principal | n | Seção 8 | Seção 9 | Viés da densidade (antes → depois) |
+|---|---|---|---|---|
+| Frango e peru | 197 | 43,7% | 54,8% | −18% → −15% |
+| Bovina | 81 | 54,3% | 60,5% | −8% → −5% |
+| Suína e embutidos | 93 | 46,2% | 64,5% | −9% → −10% |
+| Peixe e frutos do mar | 118 | 54,2% | 68,6% | −3% → −1% |
+| Ovo | 77 | 61,0% | 88,3% | −6% → +1% |
+| Prato pronto (pizza etc.) | 21 | 57,1% | 42,9% | +12% → +24% |
+
+O frango melhora menos e continua 15% abaixo: é a fonte em que a tabela do Nutrition5k tem mais nomes para a mesma aparência (9.2 c). Os pratos prontos pioraram (são 21). Por faixa de proteína, na CV: 15–25 g 56,4% → 65,9%; 25–40 g 45,4% → 63,8%; > 40 g 45,8% → 61,5%.
+
+**Resumo das principais** (a tabela completa, com as 151 densidades, vem logo abaixo). "Massa s8" é o modelo de massa da seção 8; a coluna "geo" é a média geométrica com a rota direta da seção 8.
+
+| Densidade | CV: critério de densidade (todos / > 15 g) | Teste: massa real × dens. (todos / > 15 g) | Teste: massa s8 × dens. | Teste: geo |
+|---|---|---|---|---|
+| Seção 8, escolhida (ajuste fino + 384×512) | 65,7 / 49,2% | 67,5 / 55,4% | 60,0% | 61,1% |
+| Seção 8, MLP multitarefa 224 px | 68,2 / 53,4% | 68,9 / 56,0% | 63,9% | 65,0% |
+| Ridge de log-densidade 384×512, peso por faixa | 65,2 / 48,9% | 66,8 / 55,4% | 62,1% | 63,9% |
+| Vizinhos, SigLIP 2 384×512 | 67,5 / 53,9% | 67,9 / 56,0% | 58,9% | 65,0% |
+| Vizinhos, TIPS | 72,4 / 60,7% | 72,9 / 63,7% | 59,6% | 62,5% |
+| Fração por fonte, ridge linear, 384×512 | 62,3 / 55,3% | 62,1 / 57,1% | 55,0% | 64,6% |
+| Fração por fonte, MLP com entropia cruzada, 384×512 | 64,2 / 48,3% | 70,4 / 60,1% | 63,2% | 65,7% |
+| Fração por fonte, MLP com erro quadrático (3c), 384×512 | 70,9 / 59,9% | 73,2 / 63,7% | 61,1% | 65,4% |
+| 3c + perda de densidade + peso por faixa (3d), 384×512 | 72,2 / 61,4% | 73,6 / 63,7% | 62,5% | 65,4% |
+| 3d sobre TIPS | 70,3 / 56,9% | 71,4 / 63,7% | 59,6% | 67,1% |
+| Ingredientes (165 classes), erro quadrático | 69,8 / 58,3% | 72,1 / 66,1% | 62,5% | 67,1% |
+| Classes finas (32), como 3d | 71,3 / 58,9% | 73,6 / 63,1% | 63,2% | 66,4% |
+| Seleção gulosa de conjunto | 74,3 / 62,9% | 76,8 / 67,9% | 66,1% | 63,2% |
+| **Média escolhida pela CV [densidade]** | **75,4 / 63,7%** | **76,1 / 66,7%** | **64,6%** | 64,6% |
+
+Como ler: a coluna "massa real × dens." mede a densidade sozinha, e nela as cabeças de fração por fonte com erro quadrático ficam entre 69,6% e 75,0% no teste, e as médias declaradas, entre 71,8% e 77,5%, contra 67,5% da seção 8. Esse ganho é consistente. A coluna "massa s8 × dens." é o pipeline completo, e nela as mesmas cabeças vão de 59% a 64% e as médias, de 62% a 67%: com 280 pratos, duas densidades quase iguais na CV diferem em vários pontos no produto final. Por isso a regra 3 não escolhe entre densidades pelo produto.
+
+<details>
+<summary>Tabela completa: as 151 densidades, em ordem do critério de CV (CV e teste)</summary>
+
+Legenda dos nomes: `s8:` = cabeça de densidade de uma configuração da seção 8; `soft-mlp fonte` / `ingrediente` / `fina` = MLP com softmax sobre as 10 fontes / 165 ingredientes / 32 classes finas; `-l2`, `-l1`, `-l2d` = perda nas frações (erro quadrático, absoluto, quadrático ponderado pela densidade da classe; sem sufixo = entropia cruzada); `+perda-dens` = perda direta em log da densidade composta; `peso-faixa` = peso por faixa de proteína; `[frações]` = densidade pela rota Σ fração × densidade da classe; `[log-dens]` = a cabeça de log-densidade do mesmo modelo; `knn` = vizinhos; `ambos` = 224 px + 384×512 concatenados; `+esp` = com blocos espaciais; `tips_b14+siglip2_b16_512` = os dois concatenados. A diferença é de "massa s8 × dens." contra o só imagem da seção 8 (61,1%).
+
+| Densidade | CV: RMSE log-dens. (todos / > 15 g) | CV: critério de densidade (todos / > 15 g) | Teste: massa real × dens. (todos / > 15 g) | Teste: massa s8 × dens. | Δ vs só imagem s8 (IC 95%) | Teste: geo com a direta s8 |
+|---|---|---|---|---|---|---|
+| ridge contribuição por ingrediente siglip2_b16_512 | 0,875 / 0,422 | 33,3 / 28,9% | 35,4 / 32,7% | 35,7% | −25,4 (−33,2 a −17,5) | 52,5% |
+| ridge contribuição por ingrediente tips_b14 | 0,866 / 0,429 | 34,4 / 31,0% | 35,7 / 31,0% | 38,2% | −22,9 (−30,7 a −14,6) | 55,0% |
+| ridge contribuição por ingrediente siglip2_b16 | 0,864 / 0,408 | 35,0 / 31,8% | 36,8 / 32,7% | 33,6% | −27,5 (−35,4 a −20,0) | 53,6% |
+| soft-linear fonte siglip2_b16_512 [frações] | 0,874 / 0,472 | 37,1 / 27,4% | 46,8 / 41,7% | 40,7% | −20,4 (−27,9 a −13,2) | 56,4% |
+| soft-linear ingrediente siglip2_b16_512 [frações] | 0,451 / 0,544 | 56,6 / 36,2% | 61,8 / 48,2% | 53,9% | −7,1 (−13,6 a −1,1) | 60,0% |
+| s8: ridge siglip2_b16 o4 | 0,389 / 0,379 | 58,1 / 38,8% | 57,5 / 43,5% | 53,2% | −7,9 (−13,2 a −2,9) | 58,9% |
+| s8: ridge siglip2_b16 o1 | 0,402 / 0,381 | 59,7 / 41,5% | 55,0 / 39,3% | 51,4% | −9,6 (−15,0 a −3,9) | 56,4% |
+| s8: ridge siglip2_b16 o2 | 0,396 / 0,377 | 59,8 / 41,6% | 55,7 / 40,5% | 52,5% | −8,6 (−13,6 a −3,6) | 58,6% |
+| soft-mlp ingrediente siglip2_b16_512 [frações] | 0,383 / 0,447 | 59,8 / 41,0% | 66,1 / 52,4% | 60,0% | −1,1 (−7,1 a +5,0) | 62,9% |
+| s8: ridge siglip2_b16 o8 + escala aleatória no treino | 0,374 / 0,361 | 60,7 / 42,9% | 58,2 / 45,2% | 57,1% | −3,9 (−8,9 a +1,4) | 59,6% |
+| s8: ridge siglip2_b16 o8 | 0,377 / 0,365 | 61,0 / 43,4% | 59,3 / 44,0% | 55,7% | −5,4 (−10,4 a −0,4) | 58,9% |
+| ridge logdens siglip2_b16 | 0,377 / 0,365 | 61,0 / 43,4% | 59,3 / 44,0% | 55,7% | −5,4 (−10,4 a −0,4) | 58,9% |
+| s8: ridge siglip2_b16 o1-tta8 | 0,394 / 0,375 | 61,2 / 43,7% | 57,5 / 42,3% | 55,7% | −5,4 (−10,4 a +0,0) | 60,4% |
+| soft-linear fonte siglip2_b16_512 [log-dens] | 0,379 / 0,366 | 61,3 / 42,5% | 62,5 / 48,8% | 56,8% | −4,3 (−8,9 a +0,0) | 60,4% |
+| soft-linear ingrediente siglip2_b16_512 [log-dens] | 0,379 / 0,366 | 61,3 / 42,5% | 62,5 / 48,8% | 56,8% | −4,3 (−8,9 a +0,0) | 60,4% |
+| ridge logdens peso-faixa0.5 siglip2_b16 | 0,377 / 0,354 | 61,4 / 44,2% | 62,9 / 50,6% | 56,4% | −4,6 (−9,6 a +0,7) | 59,3% |
+| ridge logdens peso-faixa1.0 siglip2_b16 | 0,381 / 0,341 | 61,7 / 44,4% | 64,3 / 52,4% | 56,4% | −4,6 (−9,6 a +0,7) | 62,1% |
+| s8: ridge siglip2_b16 o8 + quadros laterais no treino | 0,377 / 0,362 | 61,8 / 44,2% | 58,9 / 44,6% | 54,3% | −6,8 (−11,8 a −1,4) | 60,4% |
+| s8: ridge siglip2_b16 o8+gem | 0,376 / 0,362 | 62,0 / 44,7% | 63,2 / 53,0% | 57,9% | −3,2 (−8,2 a +2,1) | 60,0% |
+| soft-mlp fonte siglip2_b16 [frações] | 0,435 / 0,433 | 62,0 / 44,8% | 67,5 / 57,7% | 58,9% | −2,1 (−8,2 a +4,3) | 65,4% |
+| ridge fração por fonte siglip2_b16_512 | 0,609 / 0,275 | 62,3 / 55,3% | 62,1 / 57,1% | 55,0% | −6,1 (−11,8 a −0,4) | 64,6% |
+| s8: ridge siglip2_b16_512 o1 | 0,377 / 0,346 | 62,4 / 44,6% | 60,7 / 45,2% | 59,3% | −1,8 (−6,1 a +2,5) | 63,2% |
+| ridge fração por fonte siglip2_b16 | 0,611 / 0,277 | 62,6 / 56,3% | 64,6 / 58,9% | 55,0% | −6,1 (−12,1 a +0,4) | 64,6% |
+| soft-mlp ingrediente +perda-dens siglip2_b16_512 [frações] | 0,352 / 0,393 | 62,7 / 45,0% | 70,7 / 58,9% | 61,1% | +0,0 (−5,7 a +5,7) | 63,2% |
+| s8: média: ajuste fino + ridge siglip2 o8 | 0,357 / 0,355 | 62,9 / 45,5% | 65,4 / 52,4% | 58,2% | −2,9 (−7,5 a +1,8) | 59,6% |
+| s8: ridge siglip2_b16_512 o2+gem+grade | 0,375 / 0,355 | 62,9 / 45,5% | 61,1 / 46,4% | 56,8% | −4,3 (−8,9 a +0,4) | 61,1% |
+| soft-mlp ingrediente só-frações +perda-dens siglip2_b16_512 [frações] | 0,352 / 0,390 | 63,1 / 46,0% | 71,4 / 59,5% | 64,3% | +3,2 (−2,9 a +9,3) | 64,6% |
+| soft-mlp ingrediente +perda-dens peso-faixa siglip2_b16 [frações] | 0,379 / 0,426 | 63,1 / 46,1% | 73,9 / 64,3% | 64,6% | +3,6 (−2,9 a +9,6) | 65,0% |
+| s8: ridge siglip2_b16 o8+gem+grade | 0,376 / 0,362 | 63,2 / 46,2% | 60,7 / 48,8% | 58,2% | −2,9 (−7,5 a +2,1) | 60,7% |
+| ridge fração por fonte tips_b14 | 0,594 / 0,273 | 63,2 / 55,4% | 64,6 / 56,5% | 56,4% | −4,6 (−11,1 a +1,8) | 63,2% |
+| soft-mlp ingrediente +perda-dens peso-faixa siglip2_b16_512 [frações] | 0,352 / 0,384 | 63,2 / 46,3% | 72,1 / 60,7% | 64,6% | +3,6 (−2,5 a +9,3) | 64,6% |
+| soft-mlp ingrediente +perda-dens peso-faixa0.5 siglip2_b16_512 [frações] | 0,351 / 0,388 | 63,3 / 46,4% | 71,4 / 59,5% | 63,6% | +2,5 (−3,2 a +8,2) | 64,6% |
+| s8: média: siglip2 o8 + siglip2-512 | 0,353 / 0,335 | 63,3 / 45,8% | 63,9 / 50,6% | 58,2% | −2,9 (−6,4 a +0,7) | 61,4% |
+| s8: ft cv | 0,354 / 0,360 | 63,8 / 46,6% | 63,6 / 48,8% | 56,4% | −4,6 (−9,3 a +0,0) | 58,6% |
+| s8: ridge siglip2_b16_512 o2 | 0,365 / 0,342 | 64,1 / 46,7% | 63,6 / 50,0% | 59,6% | −1,4 (−5,7 a +2,9) | 64,6% |
+| ridge logdens siglip2_b16_512 | 0,365 / 0,342 | 64,1 / 46,7% | 63,6 / 50,0% | 59,6% | −1,4 (−5,7 a +2,9) | 64,6% |
+| soft-mlp fonte siglip2_b16_512 [frações] | 0,409 / 0,383 | 64,2 / 48,3% | 70,4 / 60,1% | 63,2% | +2,1 (−3,6 a +7,9) | 65,7% |
+| soft-mlp ingrediente +perda-dens oculto1024 drop0.5 siglip2_b16_512 [frações] | 0,337 / 0,349 | 64,5 / 47,9% | 73,2 / 63,7% | 65,7% | +4,6 (−1,1 a +10,4) | 65,0% |
+| s8: média: ajuste fino + ridge o8 com laterais | 0,353 / 0,348 | 64,7 / 48,3% | 64,3 / 51,8% | 57,9% | −3,2 (−7,5 a +1,1) | 60,7% |
+| ridge logdens peso-faixa0.5 siglip2_b16_512 | 0,365 / 0,330 | 64,8 / 47,8% | 65,4 / 53,0% | 60,4% | −0,7 (−5,0 a +3,6) | 63,9% |
+| soft-mlp fonte peso-faixa siglip2_b16_512 [frações] | 0,405 / 0,370 | 64,8 / 48,6% | 72,1 / 61,3% | 65,0% | +3,9 (−2,1 a +9,6) | 65,0% |
+| s8: média: ajuste fino + ridge o8 + siglip2-512 (sem TIPS) | 0,344 / 0,335 | 65,0 / 48,2% | 66,4 / 54,2% | 58,9% | −2,1 (−6,1 a +1,8) | 61,8% |
+| ridge logdens peso-faixa1.0 siglip2_b16_512 | 0,370 / 0,320 | 65,2 / 48,9% | 66,8 / 55,4% | 62,1% | +1,1 (−3,2 a +5,0) | 63,9% |
+| s8: média: ajuste fino + ridge o8 com laterais + siglip2-512 (sem TIPS) | 0,343 / 0,331 | 65,4 / 49,2% | 65,7 / 53,0% | 61,1% | +0,0 (−3,6 a +3,6) | 61,4% |
+| s8: média: siglip2 o8 + mlp | 0,344 / 0,332 | 65,7 / 49,3% | 65,0 / 52,4% | 60,0% | −1,1 (−6,1 a +3,6) | 63,2% |
+| s8: média: ajuste fino + siglip2-512 | 0,339 / 0,330 | 65,7 / 49,2% | 67,5 / 55,4% | 60,0% | −1,1 (−3,9 a +1,8) | 61,1% |
+| soft-mlp fonte +perda-dens siglip2_b16 [frações] | 0,402 / 0,385 | 65,8 / 49,4% | 68,9 / 56,0% | 62,1% | +1,1 (−5,4 a +7,5) | 66,4% |
+| ridge logdens tips_b14 | 0,356 / 0,352 | 65,9 / 50,2% | 65,0 / 51,2% | 63,2% | +2,1 (−3,2 a +7,1) | 64,6% |
+| s8: mlp+aux-profundidade siglip2_b16 o8 | 0,345 / 0,339 | 66,8 / 51,1% | 67,5 / 54,2% | 61,8% | +0,7 (−5,0 a +6,1) | 63,6% |
+| ridge logdens peso-faixa0.5 tips_b14 | 0,357 / 0,343 | 66,9 / 51,7% | 65,4 / 53,6% | 62,9% | +1,8 (−3,2 a +6,8) | 64,3% |
+| soft-mlp fonte-l1 siglip2_b16_512 [frações] | 0,398 / 0,328 | 66,9 / 53,8% | 74,3 / 64,9% | 62,5% | +1,4 (−4,3 a +7,1) | 64,6% |
+| knn fração por fonte siglip2_b16 | 0,451 / 0,304 | 67,0 / 56,8% | 67,5 / 60,7% | 57,1% | −3,9 (−10,0 a +2,1) | 63,2% |
+| s8: média: ajuste fino + mlp + ridge o8 com laterais | 0,338 / 0,331 | 67,0 / 51,3% | 65,7 / 53,6% | 61,1% | +0,0 (−4,3 a +4,3) | 62,1% |
+| soft-mlp fonte-l2 oculto1024 drop0.5 siglip2_b16_512 [log-dens] | 0,351 / 0,318 | 67,1 / 51,2% | 72,1 / 61,3% | 64,6% | +3,6 (−2,1 a +8,6) | 62,9% |
+| soft-mlp fonte-l2 siglip2_b16_512+esp [log-dens] | 0,352 / 0,312 | 67,1 / 51,5% | 70,7 / 58,9% | 65,0% | +3,9 (−1,4 a +9,3) | 63,6% |
+| s8: média: ajuste fino + mlp + ridge o8 com laterais + siglip2-512 (sem TIPS) | 0,334 / 0,322 | 67,1 / 51,2% | 67,1 / 55,4% | 60,7% | −0,4 (−3,9 a +3,2) | 62,5% |
+| soft-mlp ingrediente-l2 siglip2_b16_512 [log-dens] | 0,342 / 0,315 | 67,1 / 51,2% | 70,4 / 58,9% | 62,5% | +1,4 (−3,9 a +6,4) | 62,9% |
+| ridge logdens peso-faixa1.0 tips_b14 | 0,362 / 0,335 | 67,1 / 51,9% | 66,4 / 54,8% | 62,1% | +1,1 (−3,9 a +6,1) | 63,2% |
+| soft-mlp fonte-l2 siglip2_b16_512 [log-dens] | 0,339 / 0,303 | 67,3 / 51,7% | 70,4 / 57,7% | 63,6% | +2,5 (−2,9 a +7,9) | 63,6% |
+| knn fração por fonte siglip2_b16_512 | 0,433 / 0,293 | 67,4 / 56,4% | 69,3 / 60,7% | 57,1% | −3,9 (−10,0 a +2,1) | 62,9% |
+| soft-mlp ingrediente +perda-dens siglip2_b16_512 [log-dens] | 0,339 / 0,312 | 67,5 / 51,6% | 70,0 / 57,7% | 64,6% | +3,6 (−1,1 a +8,2) | 63,9% |
+| knn densidade siglip2_b16_512 | 0,343 / 0,338 | 67,5 / 53,9% | 67,9 / 56,0% | 58,9% | −2,1 (−8,2 a +3,9) | 65,0% |
+| s8: média: ajuste fino + mlp | 0,332 / 0,330 | 67,5 / 51,8% | 68,2 / 56,0% | 62,1% | +1,1 (−3,6 a +5,7) | 61,8% |
+| soft-mlp fonte siglip2_b16 [log-dens] | 0,338 / 0,322 | 67,6 / 52,0% | 69,6 / 56,5% | 62,1% | +1,1 (−4,6 a +6,4) | 64,3% |
+| soft-mlp fonte-l2 tips_b14 [log-dens] | 0,346 / 0,330 | 67,7 / 51,9% | 68,2 / 54,8% | 61,4% | +0,4 (−5,4 a +6,1) | 65,4% |
+| soft-mlp ingrediente +perda-dens oculto1024 drop0.5 siglip2_b16_512 [log-dens] | 0,343 / 0,308 | 67,7 / 52,1% | 67,9 / 54,8% | 62,1% | +1,1 (−3,9 a +5,7) | 63,9% |
+| soft-mlp fonte +perda-dens siglip2_b16 [log-dens] | 0,340 / 0,322 | 67,9 / 52,3% | 68,2 / 54,2% | 60,0% | −1,1 (−6,8 a +4,3) | 63,2% |
+| soft-mlp fonte-l2d siglip2_b16_512 [log-dens] | 0,339 / 0,306 | 67,9 / 52,3% | 70,4 / 58,9% | 62,5% | +1,4 (−3,9 a +6,4) | 62,5% |
+| soft-mlp ingrediente siglip2_b16_512 [log-dens] | 0,338 / 0,316 | 68,0 / 52,4% | 70,7 / 58,9% | 65,4% | +4,3 (−0,4 a +8,9) | 64,6% |
+| knn densidade siglip2_b16 | 0,363 / 0,357 | 68,0 / 54,9% | 72,1 / 60,7% | 61,8% | +0,7 (−5,4 a +6,8) | 62,5% |
+| soft-mlp fonte-l2 semente2 siglip2_b16_512 [log-dens] | 0,341 / 0,309 | 68,1 / 52,7% | 71,8 / 60,1% | 61,1% | +0,0 (−5,0 a +5,0) | 62,5% |
+| s8: mlp siglip2_b16 o8 | 0,336 / 0,328 | 68,2 / 53,4% | 68,9 / 56,0% | 63,9% | +2,9 (−2,5 a +7,9) | 65,0% |
+| s8: mlp wd0.1 siglip2_b16 o8 | 0,336 / 0,328 | 68,3 / 53,5% | 69,3 / 56,5% | 64,3% | +3,2 (−2,1 a +8,2) | 64,6% |
+| soft-mlp fonte-l2 tips_b14 [frações] | 0,386 / 0,305 | 68,3 / 53,8% | 70,4 / 61,9% | 59,3% | −1,8 (−7,9 a +4,6) | 66,8% |
+| soft-mlp fonte +perda-dens siglip2_b16_512 [log-dens] | 0,332 / 0,305 | 68,4 / 52,8% | 72,9 / 62,5% | 65,0% | +3,9 (−1,4 a +9,3) | 63,6% |
+| soft-mlp fonte +perda-dens peso-faixa siglip2_b16_512 [frações] | 0,380 / 0,326 | 68,5 / 54,0% | 71,8 / 61,9% | 64,3% | +3,2 (−2,9 a +8,9) | 65,0% |
+| soft-mlp fonte-l2 ambos [log-dens] | 0,339 / 0,313 | 68,5 / 53,9% | 69,3 / 58,3% | 62,5% | +1,4 (−3,6 a +6,1) | 64,3% |
+| s8: mlp oculto1024 drop0.5 siglip2_b16 o8 | 0,333 / 0,327 | 68,7 / 53,7% | 70,0 / 57,1% | 63,2% | +2,1 (−3,2 a +7,5) | 63,2% |
+| soft-mlp fonte-l2 semente1 siglip2_b16_512 [log-dens] | 0,339 / 0,304 | 68,8 / 54,2% | 73,9 / 62,5% | 63,9% | +2,9 (−2,1 a +7,9) | 64,6% |
+| soft-mlp fonte-l2 oculto1024 drop0.5 siglip2_b16_512 [frações] | 0,409 / 0,282 | 68,8 / 58,4% | 69,6 / 63,1% | 60,4% | −0,7 (−6,4 a +5,0) | 65,4% |
+| soft-mlp fonte siglip2_b16_512 [log-dens] | 0,329 / 0,303 | 68,8 / 53,2% | 73,6 / 62,5% | 65,4% | +4,3 (−0,4 a +8,9) | 64,3% |
+| soft-mlp ingrediente +perda-dens peso-faixa0.5 siglip2_b16_512 [log-dens] | 0,341 / 0,298 | 68,8 / 54,1% | 71,1 / 58,9% | 66,4% | +5,4 (+0,4 a +10,0) | 62,5% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa tips_b14 [log-dens] | 0,357 / 0,310 | 68,8 / 54,8% | 71,1 / 61,3% | 61,1% | +0,0 (−5,7 a +5,7) | 65,4% |
+| soft-mlp fonte-l1 siglip2_b16_512 [log-dens] | 0,343 / 0,299 | 68,9 / 54,6% | 70,4 / 59,5% | 65,4% | +4,3 (−1,1 a +9,3) | 64,6% |
+| soft-mlp fonte +perda-dens siglip2_b16_512 [frações] | 0,380 / 0,332 | 69,0 / 54,9% | 71,8 / 61,9% | 64,3% | +3,2 (−2,5 a +8,9) | 65,4% |
+| soft-mlp fonte-l2 siglip2_b16_512+esp [frações] | 0,391 / 0,305 | 69,0 / 55,7% | 72,5 / 66,7% | 62,5% | +1,4 (−4,6 a +7,5) | 66,4% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente1 tips_b14 [log-dens] | 0,357 / 0,305 | 69,1 / 55,1% | 70,7 / 58,9% | 62,1% | +1,1 (−5,0 a +6,8) | 66,1% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente2 siglip2_b16_512 [log-dens] | 0,353 / 0,295 | 69,1 / 54,7% | 72,5 / 63,7% | 61,8% | +0,7 (−4,3 a +5,4) | 63,2% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa tips_b14+siglip2_b16_512 [log-dens] | 0,349 / 0,298 | 69,2 / 55,1% | 72,5 / 61,9% | 64,3% | +3,2 (−2,5 a +8,9) | 65,4% |
+| soft-mlp fina-l2 siglip2_b16_512 [log-dens] | 0,341 / 0,309 | 69,2 / 54,7% | 72,1 / 60,1% | 63,2% | +2,1 (−2,9 a +7,1) | 63,9% |
+| soft-mlp ingrediente +perda-dens peso-faixa siglip2_b16 [log-dens] | 0,360 / 0,306 | 69,2 / 55,9% | 70,0 / 58,3% | 63,2% | +2,1 (−2,9 a +7,1) | 62,9% |
+| soft-mlp fonte-l2 tips_b14+siglip2_b16_512 [log-dens] | 0,337 / 0,313 | 69,4 / 54,3% | 68,6 / 54,8% | 61,4% | +0,4 (−5,0 a +5,7) | 63,9% |
+| soft-mlp fonte +perda-dens peso-faixa siglip2_b16_512 [log-dens] | 0,342 / 0,289 | 69,5 / 55,2% | 72,1 / 61,3% | 66,4% | +5,4 (+0,4 a +10,4) | 63,6% |
+| knn fração por fonte tips_b14+siglip2_b16_512 | 0,413 / 0,271 | 69,5 / 59,2% | 71,1 / 63,7% | 58,6% | −2,5 (−8,6 a +3,6) | 63,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa siglip2_b16 [log-dens] | 0,361 / 0,297 | 69,5 / 56,2% | 67,9 / 54,8% | 61,8% | +0,7 (−4,6 a +6,1) | 63,6% |
+| soft-mlp fina-l2 +perda-dens peso-faixa siglip2_b16_512 [log-dens] | 0,351 / 0,283 | 69,6 / 55,8% | 70,4 / 58,9% | 64,3% | +3,2 (−2,1 a +8,2) | 63,9% |
+| soft-mlp fina-l2 siglip2_b16_512 [frações] | 0,381 / 0,304 | 69,7 / 57,5% | 72,1 / 63,1% | 62,9% | +1,8 (−3,9 a +7,5) | 65,0% |
+| soft-mlp ingrediente-l2 siglip2_b16_512 [frações] | 0,339 / 0,284 | 69,8 / 58,3% | 72,1 / 66,1% | 62,5% | +1,4 (−4,3 a +7,5) | 67,1% |
+| soft-mlp ingrediente +perda-dens peso-faixa siglip2_b16_512 [log-dens] | 0,347 / 0,287 | 69,8 / 55,9% | 70,0 / 60,1% | 63,6% | +2,5 (−2,5 a +7,1) | 63,2% |
+| soft-mlp fonte peso-faixa siglip2_b16_512 [log-dens] | 0,336 / 0,285 | 70,0 / 55,7% | 72,9 / 63,1% | 68,9% | +7,9 (+2,9 a +12,9) | 65,4% |
+| soft-mlp fonte-l2 ambos [frações] | 0,391 / 0,294 | 70,1 / 58,1% | 74,3 / 66,1% | 63,6% | +2,5 (−3,2 a +8,6) | 64,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa siglip2_b16 [frações] | 0,394 / 0,312 | 70,2 / 57,5% | 70,7 / 61,9% | 61,1% | +0,0 (−6,1 a +6,1) | 65,4% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente1 siglip2_b16_512 [log-dens] | 0,352 / 0,287 | 70,2 / 56,8% | 72,5 / 61,3% | 64,6% | +3,6 (−1,4 a +8,6) | 64,6% |
+| soft-mlp fonte-l2 tips_b14+siglip2_b16_512 [frações] | 0,377 / 0,292 | 70,3 / 57,4% | 71,4 / 61,3% | 61,1% | +0,0 (−6,4 a +6,4) | 66,1% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa tips_b14 [frações] | 0,379 / 0,298 | 70,3 / 56,9% | 71,4 / 63,7% | 59,6% | −1,4 (−7,5 a +4,6) | 67,1% |
+| soft-mlp fonte-l2 peso-faixa siglip2_b16_512 [log-dens] | 0,350 / 0,283 | 70,4 / 56,5% | 72,1 / 63,1% | 65,7% | +4,6 (−0,4 a +9,6) | 63,9% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa siglip2_b16_512 [log-dens] | 0,350 / 0,284 | 70,4 / 56,8% | 70,7 / 61,3% | 66,1% | +5,0 (+0,0 a +10,0) | 63,9% |
+| soft-mlp fonte-l2 +perda-dens2 peso-faixa siglip2_b16_512 [log-dens] | 0,350 / 0,283 | 70,5 / 57,1% | 70,7 / 61,3% | 65,4% | +4,3 (−0,7 a +9,6) | 64,6% |
+| soft-mlp fonte-l2 só-frações siglip2_b16_512 [frações] | 0,389 / 0,288 | 70,5 / 58,7% | 73,9 / 64,3% | 61,4% | +0,4 (−5,4 a +6,1) | 65,0% |
+| soft-mlp fonte-l2 semente1 siglip2_b16_512 [frações] | 0,392 / 0,284 | 70,6 / 59,5% | 73,9 / 64,3% | 62,9% | +1,8 (−3,9 a +7,5) | 66,1% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa 100 épocas siglip2_b16_512 [log-dens] | 0,346 / 0,282 | 70,8 / 57,2% | 70,7 / 60,1% | 63,9% | +2,9 (−2,1 a +7,9) | 63,6% |
+| soft-mlp fonte-l2 semente2 siglip2_b16_512 [frações] | 0,391 / 0,283 | 70,9 / 59,8% | 74,6 / 65,5% | 62,1% | +1,1 (−5,0 a +7,1) | 65,4% |
+| soft-mlp fonte-l2 siglip2_b16_512 [frações] | 0,389 / 0,281 | 70,9 / 59,9% | 73,2 / 63,7% | 61,1% | +0,0 (−5,7 a +5,7) | 65,4% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente1 tips_b14 [frações] | 0,382 / 0,298 | 71,0 / 58,0% | 71,1 / 63,1% | 60,7% | −0,4 (−6,4 a +5,7) | 66,1% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa ambos [log-dens] | 0,346 / 0,293 | 71,0 / 57,8% | 71,4 / 61,9% | 63,9% | +2,9 (−2,1 a +7,9) | 63,9% |
+| knn fração por fonte tips_b14 | 0,405 / 0,270 | 71,1 / 61,2% | 71,8 / 63,1% | 59,6% | −1,4 (−7,9 a +5,0) | 63,9% |
+| soft-mlp fina-l2 +perda-dens peso-faixa siglip2_b16_512 [frações] | 0,366 / 0,294 | 71,3 / 58,9% | 73,6 / 63,1% | 63,2% | +2,1 (−3,6 a +7,9) | 66,4% |
+| média: frações-l2 512, 3 sementes | 0,389 / 0,279 | 71,4 / 60,8% | 74,6 / 64,9% | 63,6% | +2,5 (−3,2 a +7,9) | 65,4% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa 100 épocas siglip2_b16_512 [frações] | 0,378 / 0,285 | 71,4 / 59,8% | 75,0 / 64,9% | 61,8% | +0,7 (−5,4 a +6,4) | 63,6% |
+| soft-mlp fonte-l2 peso-faixa siglip2_b16_512 [frações] | 0,396 / 0,282 | 71,7 / 61,0% | 72,9 / 64,3% | 62,9% | +1,8 (−3,9 a +7,5) | 65,7% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente1 siglip2_b16_512 [frações] | 0,378 / 0,276 | 71,8 / 60,4% | 73,9 / 63,1% | 62,1% | +1,1 (−4,3 a +6,4) | 66,1% |
+| soft-mlp fonte-l2 +perda-dens2 peso-faixa siglip2_b16_512 [frações] | 0,376 / 0,278 | 72,0 / 60,9% | 74,3 / 63,7% | 63,2% | +2,1 (−3,6 a +7,9) | 65,4% |
+| soft-mlp fonte-l2d siglip2_b16_512 [frações] | 0,390 / 0,277 | 72,0 / 61,4% | 73,2 / 64,9% | 60,4% | −0,7 (−6,4 a +5,0) | 65,4% |
+| média: frações-l2 512 + ajuste fino (s8) | 0,320 / 0,285 | 72,1 / 58,9% | 71,8 / 61,3% | 64,6% | +3,6 (−1,1 a +8,2) | 62,5% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa ambos [frações] | 0,379 / 0,283 | 72,2 / 60,3% | 74,6 / 66,7% | 62,1% | +1,1 (−4,6 a +6,8) | 65,7% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa siglip2_b16_512 [frações] | 0,380 / 0,278 | 72,2 / 61,4% | 73,6 / 63,7% | 62,5% | +1,4 (−4,3 a +7,1) | 65,4% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente2 siglip2_b16_512 [frações] | 0,379 / 0,277 | 72,2 / 61,3% | 74,6 / 66,1% | 60,7% | −0,4 (−6,1 a +5,4) | 65,4% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa tips_b14+siglip2_b16_512 [frações] | 0,372 / 0,284 | 72,2 / 59,7% | 73,6 / 64,9% | 61,4% | +0,4 (−5,4 a +6,1) | 65,4% |
+| knn densidade tips_b14+siglip2_b16_512 | 0,322 / 0,311 | 72,3 / 60,7% | 72,5 / 61,3% | 61,4% | +0,4 (−5,4 a +6,4) | 64,3% |
+| knn densidade tips_b14 | 0,319 / 0,309 | 72,4 / 60,7% | 72,9 / 63,7% | 59,6% | −1,4 (−7,5 a +4,6) | 62,5% |
+| média: frações-l2 512, 3 sementes (+perda-dens peso-faixa) | 0,377 / 0,274 | 72,6 / 61,9% | 74,3 / 64,9% | 63,9% | +2,9 (−2,9 a +8,6) | 66,1% |
+| média: frações-l2 512 + knn 512 | 0,325 / 0,287 | 72,6 / 61,0% | 74,3 / 64,3% | 62,9% | +1,8 (−3,6 a +7,1) | 65,0% |
+| média: frações-l2 512 + classes finas-l2 512 | 0,366 / 0,277 | 72,8 / 61,5% | 77,1 / 69,0% | 63,6% | +2,5 (−3,2 a +8,2) | 64,6% |
+| média: frações-l2 512 + s8 escolhido (ajuste fino + 512) | 0,323 / 0,277 | 72,9 / 60,4% | 72,1 / 61,3% | 63,6% | +2,5 (−1,8 a +6,8) | 63,2% |
+| média: frações-l2 512 + 224 + ambos | 0,376 / 0,279 | 72,9 / 61,7% | 76,8 / 68,5% | 63,6% | +2,5 (−3,2 a +8,2) | 64,3% |
+| média: frações-l2 512 + frações-l2 224 | 0,377 / 0,282 | 73,0 / 61,9% | 74,3 / 66,1% | 65,4% | +4,3 (−1,4 a +10,0) | 64,6% |
+| média: frações-l2 512 + sua cabeça log-dens | 0,338 / 0,266 | 73,0 / 61,0% | 75,0 / 64,3% | 66,8% | +5,7 (+0,7 a +10,7) | 63,9% |
+| média: frações-l2 512 + ambos | 0,376 / 0,276 | 73,1 / 62,0% | 75,0 / 66,7% | 62,5% | +1,4 (−3,9 a +6,8) | 65,0% |
+| média: frações-l2 512 + knn 512 + mlp 224 (s8) | 0,312 / 0,285 | 73,3 / 61,1% | 73,2 / 61,9% | 62,9% | +1,8 (−3,6 a +7,1) | 65,7% |
+| média: frações-l2 512, 3 sementes + knn 512 + mlp 224 (s8) | 0,326 / 0,271 | 73,5 / 62,1% | 74,6 / 63,7% | 62,5% | +1,4 (−3,9 a +6,8) | 65,7% |
+| média: frações-l2 512 + frações-l2 TIPS + knn 512 | 0,329 / 0,276 | 73,8 / 62,0% | 73,9 / 63,7% | 63,2% | +2,1 (−3,2 a +7,5) | 65,7% |
+| média: frações-l2 512 + classes finas-l2 512 + knn 512 + mlp 224 (s8) | 0,316 / 0,279 | 73,9 / 61,8% | 74,3 / 63,7% | 63,2% | +2,1 (−2,9 a +7,1) | 64,6% |
+| média: frações-l2 (512, 224, ambos) + knn 512 + ridge fração por fonte 512 | 0,373 / 0,266 | 74,0 / 63,1% | 74,6 / 66,1% | 65,0% | +3,9 (−1,4 a +9,3) | 64,6% |
+| média: frações-l2 512 + classes finas-l2 512 + knn TIPS + mlp 224 (s8) | 0,308 / 0,270 | 74,2 / 62,0% | 73,9 / 63,1% | 65,4% | +4,3 (−1,1 a +9,6) | 64,3% |
+| seleção gulosa de conjunto | 0,317 / 0,266 | 74,3 / 62,9% | 76,8 / 67,9% | 66,1% | +5,0 (+0,0 a +9,6) | 63,2% |
+| média: frações-l2 512 + knn TIPS + mlp 224 (s8) | 0,301 / 0,273 | 74,4 / 62,7% | 74,6 / 64,3% | 64,3% | +3,2 (−2,1 a +8,9) | 65,0% |
+| média: frações-l2 512 + frações-l2 TIPS | 0,369 / 0,272 | 74,5 / 63,4% | 74,6 / 67,9% | 62,5% | +1,4 (−4,3 a +7,1) | 65,0% |
+| média: frações-l2 512 + frações-l2 TIPS + knn 512 + knn TIPS + mlp 224 (s8) | 0,304 / 0,275 | 74,7 / 63,2% | 75,4 / 65,5% | 62,9% | +1,8 (−3,6 a +7,1) | 65,4% |
+| média: frações-l2 512 + knn TIPS | 0,310 / 0,271 | 74,7 / 63,5% | 76,8 / 68,5% | 64,3% | +3,2 (−2,1 a +8,6) | 63,9% |
+| média: frações-l2 512 + frações-l2 TIPS + knn TIPS | 0,322 / 0,269 | 74,8 / 63,3% | 77,5 / 70,8% | 63,2% | +2,1 (−3,6 a +7,9) | 64,3% |
+| média: frações-l2 (512, TIPS, TIPS+512) + knn TIPS + mlp 224 (s8) **[densidade]** | 0,316 / 0,268 | 75,4 / 63,7% | 76,1 / 66,7% | 64,6% | +3,6 (−1,8 a +8,9) | 64,6% |
+
+</details>
+
+### 9.5 Pipeline só de imagem
+
+- **Escolhido pela regra 3 (CV 66,3%, contra 62,2% do escolhido na seção 8):** massa da seção 8 × densidade escolhida. **Teste: 64,6%** (IC 59,3 a 70,0), MAE 6,3 g, viés −3,4 g. No `n5k_v1` (50 pratos): 58% (seção 8: 62%). No `calib`: 60,0% → 66,7%.
+- **Contra as referências:** +3,6 sobre o só imagem da seção 8 (IC −1,8 a +8,9, não distinguível), +9,6 sobre o LLM (IC +2,5 a +16,4), +1,8 sobre o híbrido da seção 8 (IC −3,2 a +6,8).
+- **Por faixa de proteína real no teste** (56 pratos por faixa; um prato = 1,8 ponto):
+
+| Faixa | LLM v2 | Só imagem s8 | **Só imagem s9** | Híbrido s8 | **Híbrido s9** | Massa real × dens. s8 | Massa real × dens. s9 | Massa real × dens. LLM v2 | Massa s8 × dens. real |
+|---|---|---|---|---|---|---|---|---|---|
+| 0–5 g | 84% | 91% | 93% | 89% | 89% | 93% | 93% | 89% | 100% |
+| 5–15 g | 71% | 73% | **88%** | 79% | **88%** | 79% | 88% | 88% | 93% |
+| 15–25 g | 57% | 48% | **59%** | 62% | **70%** | 64% | 73% | 68% | 77% |
+| 25–40 g | 36% | 43% | 38% | 38% | 45% | 55% | 62% | 55% | 62% |
+| > 40 g | 27% | 50% | 46% | 46% | 45% | 46% | 64% | 57% | 75% |
+| **Todos** | 55,0% | 61,1% | **64,6%** | 62,9% | **67,1%** | 67,5% | 76,1% | 71,4% | 81,4% |
+| **> 15 g** | 39,9% | 47,0% | 47,6% | 48,8% | 53,0% | 55,4% | 66,7% | 60,1% | 71,4% |
+
+1. **A densidade melhorou em todas as faixas acima de 5 g** quando a massa é a real (colunas 7 e 8): 79 → 88, 64 → 73, 55 → 62 e 46 → 64. Acima de 40 g o ganho é de 10 pratos em 56.
+2. **No pipeline completo o ganho aparece de 5 a 25 g e some acima de 25 g.** Entre 25 e 40 g, o modelo de massa sozinho já limita o acerto a 62% mesmo com a densidade real, e a densidade nova sozinha também dá 62%. Os dois erros têm o mesmo sinal: no teste, a massa sai 12% abaixo na faixa de 25–40 g e 8% abaixo acima de 40 g, e a densidade, 9% e 7% abaixo. Multiplicados, viram −20% e −15%, no limite da tolerância ou fora dela. É regressão à média nos dois fatores.
+3. **A CV prometia mais nas faixas altas do que o teste entregou** (CV: 25–40 g 43% → 53%; > 40 g 35% → 39%; teste: 43% → 38% e 50% → 46%). Com 56 pratos por faixa, 5 pontos são 3 pratos, e a seção 8 já tinha a faixa > 40 g bem acima da própria CV (50% contra 35%).
+4. **Esta configuração não é para o aparelho:** usa três passagens de ViT-B (SigLIP 2 a 224 e a 384×512, TIPS a 336×448) e uma busca nos 1.684 embeddings do treino. Com a densidade de um backbone só (a cabeça 3d a 384×512, com a mesma massa da seção 8), o teste dá 62,5% pela rota massa × densidade e 65,4% na média geométrica com a rota direta; pela CV ela vale 72,2% de critério de densidade, 3 pontos abaixo da escolhida. O modelo exportado em 8.9 não muda.
+
+### 9.6 Híbrido com o LLM v2
+
+Massa: a da seção 8. Densidade do modelo: a escolhida em 9.4. Do LLM v2 entram a densidade e a massa por prato, e as frações e densidades por fonte (`estimativas_v2_comp_casados.csv`). Pesos só no `calib`; forma escolhida pelo `calib` deixa-fora. As 7 primeiras linhas são as formas da seção 8, refeitas; as demais usam a densidade nova.
+
+| Forma | Pesos | Calib (deixa-fora) | Teste | MAE / viés | Δ vs híbrido s8 (IC 95%) | Δ vs LLM (IC 95%) | > 15 g | n5k v1 |
+|---|---|---|---|---|---|---|---|---|
+| Dens. s8 · massa modelo × dens LLM | 0 | 63,3% | 63,9% | 6,6 g / −2,6 g | +1,1 (−3,6 a +5,7) | +8,9 (+2,5 a +15,4) | 49,4% | 54% |
+| Dens. s8 · massa √(modelo·LLM) × dens LLM | 0 | 62,5% | 61,8% | 7,2 g / −3,4 g | −1,1 (−6,8 a +4,3) | +6,8 (+2,9 a +11,1) | 47,6% | 60% |
+| Dens. s8 · massa modelo^a·LLM^(1−a) × dens LLM | 1 | 61,7% | 63,2% | 6,6 g / −2,8 g | +0,4 (−4,3 a +5,0) | +8,2 (+2,1 a +14,3) | 47,0% | 54% |
+| Dens. s8 · massa^a × dens (LLM^b·modelo^(1−b)) [escolhida na seção 8] | 2 | 65,0% | 62,9% | 6,3 g / −3,3 g | +0,0 (+0,0 a +0,0) | +7,9 (+1,8 a +14,3) | 48,8% | 60% |
+| Dens. s8 · blend log-linear (5 pesos) | 5 | 65,0% | 65,4% | 5,9 g / −1,2 g | +2,5 (−2,1 a +7,1) | +10,4 (+3,6 a +17,1) | 56,0% | 66% |
+| Dens. s8 · blend log-linear + proteína direta e do LLM (7 pesos) | 7 | 64,2% | 65,4% | 5,9 g / −1,0 g | +2,5 (−2,1 a +7,1) | +10,4 (+3,6 a +17,1) | 56,0% | 70% |
+| Dens. s8 · média geométrica: proteína direta do modelo e do LLM | 0 | 63,3% | 61,1% | 6,9 g / −3,8 g | −1,8 (−6,1 a +2,1) | +6,1 (+0,4 a +11,4) | 44,6% | 64% |
+| Dens. s9 · massa modelo × dens LLM | 0 | 63,3% | 63,9% | 6,6 g / −2,6 g | +1,1 (−3,6 a +5,7) | +8,9 (+2,5 a +15,4) | 49,4% | 54% |
+| Dens. s9 · massa √(modelo·LLM) × dens LLM | 0 | 62,5% | 61,8% | 7,2 g / −3,4 g | −1,1 (−6,8 a +4,3) | +6,8 (+2,9 a +11,1) | 47,6% | 60% |
+| Dens. s9 · massa modelo^a·LLM^(1−a) × dens LLM | 1 | 61,7% | 63,2% | 6,6 g / −2,8 g | +0,4 (−4,3 a +5,0) | +8,2 (+2,1 a +14,3) | 47,0% | 54% |
+| Dens. s9 · massa^a × dens (LLM^b·modelo^(1−b)) | 2 | 68,3% | 67,1% | 5,9 g / −3,3 g | +4,3 (+0,4 a +8,6) | +12,1 (+5,7 a +18,6) | 53,0% | 66% |
+| Dens. s9 · blend log-linear (5 pesos) | 5 | 67,5% | 66,4% | 5,6 g / −1,8 g | +3,6 (−1,1 a +8,2) | +11,4 (+5,0 a +18,2) | 56,0% | 72% |
+| Dens. s9 · blend log-linear + proteína direta e do LLM (7 pesos) | 7 | 68,3% | 69,6% | 5,6 g / −1,5 g | +6,8 (+2,1 a +11,4) | +14,6 (+8,2 a +21,1) | 59,5% | 72% |
+| Dens. s9 · média geométrica: proteína direta do modelo e do LLM | 0 | 60,8% | 60,0% | 6,9 g / −4,0 g | −2,9 (−7,9 a +2,1) | +5,0 (+0,0 a +10,0) | 44,0% | 62% |
+| Dens. s9 · massa modelo × dens (LLM^b · modelo^(1−b)) **[escolhida]** | 1 | 70,0% | 67,1% | 5,9 g / −3,3 g | +4,3 (+0,4 a +8,6) | +12,1 (+5,7 a +18,6) | 53,0% | 66% |
+| Dens. s9 · massa modelo × Σ fonte (fração LLM^w ⊕ modelo) × dens por fonte do LLM | 1 | 62,5% | 65,4% | 6,0 g / −2,7 g | +2,5 (−2,1 a +7,1) | +10,4 (+3,9 a +16,8) | 50,6% | 62% |
+| Dens. s9 · massa^a × dens (LLM com frango pela média do treino ^b · modelo^(1−b)) | 2 | 68,3% | 66,8% | 5,9 g / −3,2 g | +3,9 (+0,0 a +7,9) | +11,8 (+5,0 a +18,6) | 52,4% | 64% |
+| Dens. s9 · massa modelo × dens (LLM com frango pela média do treino ^b · modelo^(1−b)) | 1 | 69,2% | 66,8% | 5,9 g / −3,2 g | +3,9 (+0,0 a +7,9) | +11,8 (+5,0 a +18,6) | 52,4% | 64% |
+| Dens. s9 · massa modelo × dens do modelo (sem LLM) | 0 | 66,7% | 64,6% | 6,3 g / −3,4 g | +1,8 (−3,2 a +6,8) | +9,6 (+2,5 a +16,4) | 47,6% | 58% |
+| Dens. s9 · massa modelo × dens (LLM^b · frações do modelo com a fonte do LLM como prior^(1−b)) | 2 | 67,5% | 67,9% | 6,0 g / −3,1 g | +5,0 (+0,7 a +9,3) | +12,9 (+6,4 a +19,3) | 52,4% | 64% |
+
+1. **Forma escolhida: massa do modelo × densidade^(0,4 do LLM · 0,6 do modelo). Teste: 67,1%** (IC 61,4 a 72,5), MAE 5,9 g, viés −3,3 g; +4,3 sobre o híbrido da seção 8 (IC +0,4 a +8,6), +12,1 sobre o LLM (IC +5,7 a +18,6), +6,1 sobre o só imagem da seção 8 (IC +1,1 a +11,4). No `calib` deixa-fora: 70,0% (seção 8: 65,0%). No `n5k_v1`: 66% (seção 8: 60%).
+2. **O peso do LLM na densidade caiu para 0,4.** Com a densidade nova, o modelo treinado contribui mais do que o LLM. Misturar a massa do LLM não ajuda (a forma de dois pesos escolhe peso 1 para a massa do modelo e dá o mesmo resultado).
+3. **As formas que misturam a densidade do LLM com a densidade nova ficam entre 65% e 70% no teste**, contra 63% a 65% das mesmas formas com a densidade da seção 8. A mistura log-linear de 7 pesos dá 69,6% (IC 64,3 a 75,0); não foi a escolhida (68,3% no `calib`, com 7 pesos ajustados em 120 pratos). O valor honesto é "67%, com formas equivalentes entre 65% e 70%".
+4. **Combinar por fonte não funcionou com o LLM v2.** Misturar as frações de massa por fonte do LLM com as do modelo e usar a densidade por fonte do LLM dá 62,5% no `calib` (65,4% no teste). Usar a fonte principal do LLM como prior sobre as frações do modelo não muda as frações (o `calib` escolhe fator 1). A correção da família do frango pela média do treino dá 69,2% no `calib` e 66,8% no teste: efeito nulo.
+5. **Acima de 15 g: 48,8% → 53,0%.** O ganho está na faixa de 15–25 g (62% → 70%) e na de 25–40 g (38% → 45%); acima de 40 g não muda (46% → 45%).
+
+### 9.7 Lado do LLM: instrução v3 (identificação e partes da massa)
+
+A análise de 9.2 (f) diz o que pedir ao LLM: **não gramas, e sim o que é cada componente e que parte da massa ele ocupa**. A massa total vem do modelo treinado, que erra 17% contra 30% do LLM.
+
+- **`eval/prompt_v3.md`:** instrução cega nova. Para cada componente visível: o alimento de referência mais próximo, de uma **lista fechada** (os nomes da tabela do Nutrition5k, agrupados por tipo, e os nomes da TACO para comida brasileira), uma **segunda hipótese** quando houver dúvida (ex.: frango ou porco), a certeza, o preparo e a **parte da massa total em %** (as partes somam 100). Por prato, a declaração da **principal fonte de proteína** (10 grupos, os mesmos de 9.2). A instrução ensina a passar de área para massa (área × altura × compactação: folhas soltas pesam um décimo de carne com a mesma área), dá pistas visuais para as confusões medidas no `calib` (frango × porco × peixe, clara de ovo × tofu × queijo) e pede a conferência com unidades conhecidas (um ovo, uma tira de bacon). Nada nela veio do `teste`: as lições são do `calib` e do treino, e as listas são tabelas de referência, não rótulos de pratos.
+- **`eval/protein_from_shares.py`:** transforma a saída em densidade do prato, Σ parte × proteína por grama do alimento de referência. Com certeza `media` ou `baixa`, mistura 25% ou 40% da densidade da segunda hipótese. Com mais de uma rodada de estimativa, usa a média geométrica das rodadas. Com `--massa`, multiplica pela massa e devolve a proteína. Conferido com as estimativas v2 convertidas de gramas para partes: reproduz a proteína da v2 nos 594 pratos (diferença máxima de 0,1 g).
+- **Formas de híbrido com a v3, já declaradas em `dens_avalia.py`** (entram sozinhas quando `docs/dados/precisao/estimativas_v3_partes.csv` existir, com pesos no `calib` e a mesma regra de escolha): massa do modelo × densidade v3; massa do modelo × mistura da densidade v3 com a do modelo; a mesma com a massa misturada com a do LLM v2; mistura das três densidades (v2, v3, modelo); frações por fonte do v3 misturadas com as do modelo; densidade v3 com a família do frango pela média do treino; e a fonte principal declarada no v3 como prior sobre as frações do modelo.
+
+> **[A PREENCHER — resultados do LLM v3]**
+> As estimativas cegas com a instrução v3 ainda não foram feitas. Quando o arquivo `docs/dados/precisao/estimativas_v3_partes.csv` existir, rodar `python3 eval/treino/dens_avalia.py` e completar aqui:
+> 1. densidade v3 com a massa real, no `calib` e no `teste`, ao lado da v2 (76,7% no `calib`; 71,4% no `teste`);
+> 2. acerto da fonte principal declarada (v2, derivada dos componentes: 77% no `calib`);
+> 3. tabela das formas `[v3]`: `calib` deixa-fora, `teste`, IC contra o híbrido da seção 8 (62,9%) e contra o híbrido escolhido em 9.6, e por faixa de proteína;
+> 4. se foram feitas duas rodadas: ganho da média das duas sobre uma só.
+
+### 9.8 Conclusão e o que falta
+
+1. **Onde estamos.** Só imagem: 64,6% (IC 59,3 a 70,0). Híbrido escolhido: 67,1% (IC 61,4 a 72,5), com formas equivalentes entre 65% e 70%. **A meta de 70% não foi atingida.** A maior configuração avaliada foi 69,6%, não escolhida.
+2. **O que ficou demonstrado e o que não ficou.**
+   - Demonstrado: a densidade do modelo treinado melhorou (+8,6 pontos com a massa real, IC +2,9 a +14,3). No teste ela deixou de perder para a do LLM v2 (76,1% contra 71,4%); no `calib` ainda fica um pouco abaixo (74,2% contra 76,7%). As duas estão no mesmo nível.
+   - No limite: o híbrido ganhou +4,3 pontos sobre o da seção 8, com o intervalo começando em +0,4.
+   - Não demonstrado: ganho no pipeline só de imagem (+3,6, IC −1,8 a +8,9).
+3. **Pratos ricos em proteína, que eram o alvo: melhora parcial.** De 15 a 25 g, sim (só imagem 48% → 59%; híbrido 62% → 70%). Acima de 25 g, nada que se distinga do ruído: só imagem 43% → 38% e 50% → 46%; híbrido 38% → 45% e 46% → 45%. Acima de 15 g como um todo: só imagem 47,0% → 47,6%; híbrido 48,8% → 53,0%.
+4. **Por que o ganho de densidade não virou ganho nos pratos grandes.**
+   - **A massa passou a pesar tanto quanto a densidade.** Acima de 25 g, o modelo de massa sozinho limita o acerto a 62–75% mesmo com a densidade real, e erra para menos (−8% a −12%), o mesmo sinal do erro de densidade (−7% a −9%).
+   - **A identidade da fonte tem teto com este material.** Modelo e LLM acertam a fonte principal em 77–80% dos pratos. Para o frango, a tabela do Nutrition5k tem densidades de 23 a 31 g/100 g para alimentos que a foto não separa.
+   - **Esticar as previsões não resolve** (testado na densidade e na proteína final, com ajuste cruzado).
+5. **O que falta, em ordem de ganho esperado.**
+   - **Rodar a instrução v3 do LLM** (9.7). No `calib`, com as frações reais e as densidades que o LLM já dá, a densidade iria de 76,7% para 90%. É o maior espaço que sobra, e é o que a v3 ataca. O ganho real só se sabe medindo.
+   - **Corrigir a massa dos pratos grandes.** O viés de −8% a −12% acima de 25 g é do modelo de massa da seção 8, que esta seção não tocou. O peso por faixa, que ajudou a densidade, não foi testado na massa.
+   - **Ajuste fino em GPU com a perda de frações por fonte na resolução maior.** A cabeça que funcionou aqui foi treinada sobre features congeladas; a seção 8 mostrou que o ajuste fino melhora a densidade. Não cabe em CPU.
+   - **Dados brasileiros de cima, com celular:** continua valendo o que 8.10 diz. Tudo aqui é Nutrition5k.
+6. **Para o produto.** A saída "fração da massa por fonte de proteína" é mais do que um passo interno: é uma pergunta que a usuária consegue responder ("frango é mais ou menos metade do prato?"). O seletor de porção continua sendo o que leva o número final acima de 70%, e a fração por fonte dá a ele um valor inicial melhor nos pratos de 5 a 25 g.
+7. **Registro de método.** (a) Antes de qualquer leitura do teste, a regra 3 foi restringida à densidade escolhida (a primeira versão deixava concorrer a massa × cada uma das densidades, e a escolha trocava de vencedor a cada configuração nova), o TIPS foi extraído e a grade dos vizinhos foi ampliada; `dens_avalia.py --so-cv` e um ensaio no `n5k_v1` foram usados nessa fase. (b) O script completo rodou quatro vezes no teste: a primeira é a avaliação; a segunda e a terceira só acrescentaram relatos (a decomposição por faixa de 9.5 e o intervalo da densidade isolada); a quarta regravou o resumo depois de um ensaio do caminho do LLM v3 feito só no `calib`, com as estimativas v2 convertidas para o formato v3. As escolhas e as tabelas são as mesmas nas quatro (a saída da quarta é idêntica à da terceira). (c) Os números de teste das 150 densidades não escolhidas são relato, não seleção.
+
 ## Reproduzir
 
 ```
@@ -445,3 +852,22 @@ python3 zen_avalia.py                                            # seleção por
 python3 zen_final.py                                             # ponto de entrada único: treina o modelo final e exporta Core ML
 ```
 `zen_final.py` chama sozinho `zen_dados.py`, `zen_extrai.py` e `zen_finetune.py final` se as saídas ainda não existirem. Tempo total de CPU nesta máquina (4 núcleos): cerca de 3 h.
+
+Seção 9 (densidade de proteína). Usa as features e o banco de previsões da seção 8; o TIPS (`tips_b14.npz`, de `gs://tips_data`) é extraído aqui.
+```
+cd eval/treino; export OMP_NUM_THREADS=2
+python3 dens_analise.py                                           # análise de erro: só treino fora-do-fold e calib
+python3 zen_extrai.py $TD tips_b14 --orient 1 --conj treino,aval  # ~40 min
+python3 dens_experimentos.py ridge siglip2_b16_512 siglip2_b16 tips_b14
+python3 dens_experimentos.py knn tips_b14 siglip2_b16_512 siglip2_b16 "tips_b14|siglip2_b16_512"
+python3 dens_experimentos.py soft siglip2_b16_512                 # todas as cabeças softmax (~1 min cada, 2 threads)
+F="soft-mlp fonte-l2 +perda-dens peso-faixa"
+DENS_CFG="$F;soft-mlp fonte-l2" python3 dens_experimentos.py soft ambos "tips_b14|siglip2_b16_512"
+DENS_CFG="$F;soft-mlp fonte-l2;$F semente1" python3 dens_experimentos.py soft tips_b14
+DENS_CFG="$F;soft-mlp fonte;soft-mlp fonte +perda-dens;soft-mlp ingrediente +perda-dens peso-faixa" python3 dens_experimentos.py soft siglip2_b16
+DENS_CFG="soft-mlp fonte-l2" python3 dens_experimentos.py soft siglip2_b16_512+esp
+python3 dens_avalia.py --so-cv   # escolhas por CV e calib, sem ler o teste
+python3 dens_avalia.py           # avaliação no teste; com estimativas_v3_partes.csv, inclui as formas com o LLM v3
+python3 ../protein_from_shares.py ../../docs/dados/precisao/estimativas_v3_partes.csv ../../docs/dados/precisao/estimativas_v3_pratos.csv
+```
+As previsões ficam em `$TD/resultados/dens/banco/` e os resumos em `$TD/resultados/dens/{analise,avalia}.json`. Tempo de CPU: cerca de 1 h 15 min, dos quais 40 min são a extração do TIPS.

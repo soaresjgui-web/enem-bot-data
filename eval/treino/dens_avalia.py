@@ -62,6 +62,13 @@ MEDIAS = {
     "média: frações-l2 512 + frações-l2 TIPS + knn 512": [f"{FL2} siglip2_b16_512 [frações]", f"{FL2} tips_b14 [frações]", "knn densidade siglip2_b16_512"],
     "média: frações-l2 512 + frações-l2 TIPS + knn 512 + knn TIPS + mlp 224 (s8)": [f"{FL2} siglip2_b16_512 [frações]", f"{FL2} tips_b14 [frações]", "knn densidade siglip2_b16_512",
                                                                                    "knn densidade tips_b14", "s8: mlp siglip2_b16 o8"],
+    "média: frações-l2 512 + knn TIPS": [f"{FL2} siglip2_b16_512 [frações]", "knn densidade tips_b14"],
+    "média: frações-l2 512 + knn TIPS + mlp 224 (s8)": [f"{FL2} siglip2_b16_512 [frações]", "knn densidade tips_b14", "s8: mlp siglip2_b16 o8"],
+    "média: frações-l2 512 + classes finas-l2 512 + knn TIPS + mlp 224 (s8)": [f"{FL2} siglip2_b16_512 [frações]", "soft-mlp fina-l2 +perda-dens peso-faixa siglip2_b16_512 [frações]",
+                                                                               "knn densidade tips_b14", "s8: mlp siglip2_b16 o8"],
+    "média: frações-l2 512 + frações-l2 TIPS + knn TIPS": [f"{FL2} siglip2_b16_512 [frações]", f"{FL2} tips_b14 [frações]", "knn densidade tips_b14"],
+    "média: frações-l2 (512, TIPS, TIPS|512) + knn TIPS + mlp 224 (s8)": [f"{FL2} siglip2_b16_512 [frações]", f"{FL2} tips_b14 [frações]", f"{FL2} tips_b14|siglip2_b16_512 [frações]",
+                                                                          "knn densidade tips_b14", "s8: mlp siglip2_b16 o8"],
     "média: frações-l2 512 + s8 escolhido (ajuste fino + 512)": [f"{FL2} siglip2_b16_512 [frações]", f"s8: {SEL8_IMG}"],
     "média: frações-l2 512 + ajuste fino (s8)": [f"{FL2} siglip2_b16_512 [frações]", "s8: ft cv"],
 }
@@ -314,6 +321,8 @@ def main():
     V3 = {s: llm_v3(D.aval[s]["prato"]) for s in SPL}
     tem_v3 = V3["calib"] is not None and V3["calib"]["tem"].all() and V3["teste"]["tem"].all()
     res["v3_disponivel"] = bool(tem_v3)
+    if V3["calib"] is not None and not tem_v3:
+        print(f"AVISO: estimativas v3 incompletas (faltam {(~V3['calib']['tem']).sum()} pratos do calib e {(~V3['teste']['tem']).sum()} do teste); as formas [v3] não entram")
     if tem_v3:
         for s in SPL:       # pratos sem estimativa v3 (só no n5k_v1, se não foi estimado) caem na densidade v2
             V3[s]["dens"] = np.where(V3[s]["tem"], V3[s]["dens"], dl[s])
@@ -355,7 +364,7 @@ def main():
                         por_faixa_dens_s9={k: crit(cc[f], (mreal["calib"] * Dsel["calib"])[f]) for k, f in faixas(cc).items()})
     print("   calib, só imagem: seção 8", round(res["calib"]["img_s8"], 1), "| agora", round(res["calib"]["img_s9"], 1))
     res["hibridos_calib"] = {n: dict(calib_loo=H[n]["calib_loo"], n_pesos=H[n]["n"], pesos=H[n].get("pesos")) for n in H}
-    grava_json("avalia.json", res)
+    grava_json("avalia_so_cv.json" if so_cv or "--ensaio" in sys.argv else "avalia.json", res)
     if so_cv:
         print("\n(--so-cv: parou antes do teste)")
         return
@@ -396,6 +405,24 @@ def main():
     print("   por faixa (s8 -> agora):", {k: f"{res['teste_ref']['por_faixa_img_s8'][k]:.0f} -> {r['por_faixa'][k]:.0f}" for k in fx}, f"| >15 g: {crit(rt[rt > 15], IMG[ref_i][te][rt > 15]):.1f} -> {r['acima15']:.1f}")
     print(f"   oráculos: massa real × dens escolhida {r['oraculo_massa_real_x_dens']:.1f}% (s8: {res['teste_ref']['oraculo_massa_real_x_dens_s8']:.1f}%; LLM: {res['teste_ref']['oraculo_massa_real_x_dens_llm']:.1f}%)"
           f" | massa do modelo × dens real {res['teste_ref']['oraculo_massa_modelo_x_dens_real']:.1f}%")
+    # decomposição por faixa (só relato): onde está o erro que sobra
+    dec = {"massa real × dens s8": mt * R8[te]["dens"], "massa real × dens escolhida": mt * Dsel[te], "massa real × dens LLM v2": mt * dl[te],
+           "massa s8 × dens real": m8[te] * rt / mt, "massa s8 × dens escolhida": m8[te] * Dsel[te]}
+    res["teste_decomposicao"] = {k: dict(todos=crit(rt, v), acima15=crit(rt[rt > 15], v[rt > 15]), **pf(v)) for k, v in dec.items()}
+    res["teste_decomposicao"]["vies_massa_por_faixa"] = {k: float(100 * (np.exp(np.median(np.log(m8[te][f] / mt[f]))) - 1)) for k, f in fx.items()}
+    res["teste_decomposicao"]["vies_dens_por_faixa"] = {k: float(100 * (np.exp(np.median(lg(Dsel[te][f]) - lg((rt / mt)[f]))) - 1)) for k, f in fx.items()}
+    res["teste_decomposicao"]["dens_escolhida_vs_s8"] = bootstrap(ok(rt, dec["massa real × dens s8"]), ok(rt, dec["massa real × dens escolhida"]))
+    res["teste_decomposicao"]["dens_escolhida_vs_llm"] = bootstrap(ok(rt, dec["massa real × dens LLM v2"]), ok(rt, dec["massa real × dens escolhida"]))
+    print("   com a massa real, densidade escolhida vs s8: %+.1f (%+.1f a %+.1f) | vs LLM v2: %+.1f (%+.1f a %+.1f)"
+          % (*res["teste_decomposicao"]["dens_escolhida_vs_s8"], *res["teste_decomposicao"]["dens_escolhida_vs_llm"]))
+    print("   decomposição por faixa (0-5 / 5-15 / 15-25 / 25-40 / >40 | todos | >15 g):")
+    for k, v in res["teste_decomposicao"].items():
+        if not isinstance(v, dict):
+            continue
+        if "todos" in v:
+            print(f"      {k:30s} " + " / ".join(f"{v[f]:3.0f}" for f in fx) + f" | {v['todos']:.1f}% | {v['acima15']:.1f}%")
+        else:
+            print(f"      {k:30s} " + " / ".join(f"{v[f]:+3.0f}%" for f in fx))
     print("\n## 4c. Híbridos no teste (Δ contra o híbrido escolhido da seção 8, 62,9%)")
     res["hib_teste"] = {}
     todos = [(f"[s8] {n}", est8[n], loo8[n]) for n in n_pesos] + [(n, H[n]["est"], H[n]["loo"]) for n in H]
