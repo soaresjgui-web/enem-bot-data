@@ -25,6 +25,7 @@ Regras, declaradas antes de olhar o teste (as da seção 8, mais as de densidade
       empate -> a forma com menos pesos. As formas com a densidade do LLM v3 já estão declaradas em formas_v3()
       e só entram quando o arquivo de estimativas existir.
   Todas as configurações são avaliadas no teste e todas aparecem nas tabelas; nenhuma escolha usa o teste.
+  O bloco "4d" (LLM v3) é só relato, acrescentado depois de as estimativas v3 chegarem: não muda nenhuma escolha.
 """
 import glob, os, sys
 import numpy as np
@@ -437,6 +438,68 @@ def main():
           f"| >15 g: {crit(rt[rt > 15], est8[SEL8_HIB][te][rt > 15]):.1f} -> {r['acima15']:.1f}")
     res["teste_ref"]["acima15"] = dict(img_s8=crit(rt[rt > 15], IMG[ref_i][te][rt > 15]), hib_s8=crit(rt[rt > 15], est8[SEL8_HIB][te][rt > 15]),
                                        llm=crit(rt[rt > 15], L[te]["prot"][rt > 15]))
+    # ------------------------------------------------------------ 4d. LLM v3: só relato (nenhuma escolha depende disto)
+    if tem_v3:
+        print("\n## 4d. LLM v3 (identificação + partes da massa): relato")
+        d3t = V3[te]["dens"]
+        f3 = lambda v: f"{v[0]:+.1f} ({v[1]:+.1f} a {v[2]:+.1f})"
+        v3 = dict(dens_massa_real=dict(todos=crit(rt, mt * d3t), acima15=crit(rt[rt > 15], (mt * d3t)[rt > 15]), **pf(mt * d3t)),
+                  dens_vs_v2=bootstrap(ok(rt, mt * dl[te]), ok(rt, mt * d3t)), dens_vs_modelo_s9=bootstrap(ok(rt, mt * Dsel[te]), ok(rt, mt * d3t)),
+                  dens_vs_modelo_s8=bootstrap(ok(rt, mt * R8[te]["dens"]), ok(rt, mt * d3t)),
+                  massa_modelo_x_dens_v3=pf(m8[te] * d3t), vies_dens_v3_por_faixa={k: float(100 * (np.exp(np.median(lg(d3t[f]) - lg((rt / mt)[f]))) - 1)) for k, f in fx.items()},
+                  vies_dens_v2_por_faixa={k: float(100 * (np.exp(np.median(lg(dl[te][f]) - lg((rt / mt)[f]))) - 1)) for k, f in fx.items()})
+        print(f"   {te}, massa real × densidade: v3 {v3['dens_massa_real']['todos']:.1f}% (>15 g {v3['dens_massa_real']['acima15']:.1f}%) | v2 {crit(rt, mt * dl[te]):.1f}% | modelo s9 {crit(rt, mt * Dsel[te]):.1f}%"
+              f" | v3 vs v2: {f3(v3['dens_vs_v2'])} | v3 vs modelo s9: {f3(v3['dens_vs_modelo_s9'])} | v3 vs modelo s8: {f3(v3['dens_vs_modelo_s8'])}")
+        print("   por faixa, massa real × dens v3:", {k: round(v3["dens_massa_real"][k]) for k in fx}, "| massa do modelo × dens v3:", {k: round(v) for k, v in v3["massa_modelo_x_dens_v3"].items()})
+        print("   viés mediano da densidade por faixa: v3", {k: f"{v:+.0f}%" for k, v in v3["vies_dens_v3_por_faixa"].items()}, "| v2", {k: f"{v:+.0f}%" for k, v in v3["vies_dens_v2_por_faixa"].items()})
+        # híbrido escolhido com v3 contra o híbrido escolhido sem v3 (seção 9.6), o só imagem e o LLM
+        a_v3, a_h9, a_i9 = ok(rt, H[sel_h]["est"][te]), ok(rt, H[sel_h_v2]["est"][te]), ok(rt, IMG[sel_i][te])
+        v3["hibrido"] = dict(nome=sel_h, pesos=H[sel_h].get("pesos"), teste=100 * a_v3.mean(), vs_hibrido_sem_v3=bootstrap(a_h9, a_v3), vs_so_imagem_s9=bootstrap(a_i9, a_v3),
+                             vs_llm_v2=bootstrap(a_llm, a_v3), por_faixa=pf(H[sel_h]["est"][te]), por_faixa_sem_v3=pf(H[sel_h_v2]["est"][te]),
+                             acima15_ic=ic_simples(a_v3[rt > 15]), acima25=crit(rt[rt > 25], H[sel_h]["est"][te][rt > 25]),
+                             acima25_sem_v3=crit(rt[rt > 25], H[sel_h_v2]["est"][te][rt > 25]),
+                             vs_hibrido_sem_v3_acima15=bootstrap(a_h9[rt > 15], a_v3[rt > 15]))
+        h = v3["hibrido"]
+        print(f"   híbrido escolhido ('{sel_h}', pesos {h['pesos']}): {h['teste']:.1f}% | vs híbrido sem v3 ('{sel_h_v2}'): {f3(h['vs_hibrido_sem_v3'])} | vs só imagem s9: {f3(h['vs_so_imagem_s9'])}"
+              f" | vs LLM v2: {f3(h['vs_llm_v2'])}")
+        print("   por faixa (sem v3 -> com v3):", {k: f"{h['por_faixa_sem_v3'][k]:.0f} -> {h['por_faixa'][k]:.0f}" for k in fx},
+              f"| >15 g: IC {h['acima15_ic'][0]:.1f} a {h['acima15_ic'][1]:.1f}; Δ {f3(h['vs_hibrido_sem_v3_acima15'])} | >25 g: {h['acima25_sem_v3']:.1f} -> {h['acima25']:.1f}")
+        v3["formas_vs_hibrido_sem_v3"] = {n: bootstrap(a_h9, ok(rt, H[n]["est"][te])) for n in H if n.startswith("[v3]")}
+        for n, v in v3["formas_vs_hibrido_sem_v3"].items():
+            print(f"      {n[:100]:100s} vs híbrido sem v3: {v[0]:+5.1f} ({v[1]:+.1f} a {v[2]:+.1f})")
+        # calib (único conjunto de avaliação cujos ingredientes podem ser lidos): fonte principal e fração das fontes
+        Ic = Ingr(D.aval["calib"]["chave"], vocab=I.vocab)
+        nf = len(FONTES) - 1
+        tem_f = Ic.principal < nf
+        c3 = V3["calib"]["FF"] * V3["calib"]["DFc"]            # contribuição de proteína por fonte (g/g)
+        f3_comp = np.where(c3[:, :-1].max(1) >= 0.5 * np.maximum(c3.sum(1), 1e-9), c3[:, :-1].argmax(1), nf)
+        f_mod = zf["calib_ff"][:, :-1].argmax(1)
+        ac = lambda f: float(100 * (f[tem_f] == Ic.principal[tem_f]).mean())
+        v3["fonte_principal_calib"] = dict(n=int(tem_f.sum()), v2_derivada=ac(V2["calib"]["fonte"]), v3_declarada=ac(V3["calib"]["fonte"]), v3_derivada=ac(f3_comp),
+                                           modelo_fracoes=ac(f_mod), v3_ou_modelo=float(100 * ((V3["calib"]["fonte"] == Ic.principal) | (f_mod == Ic.principal))[tem_f].mean()),
+                                           v3_e_modelo_concordam=float(100 * (V3["calib"]["fonte"] == f_mod)[tem_f].mean()),
+                                           falso_positivo_v3=float(100 * (V3["calib"]["fonte"][~tem_f] < nf).mean()), n_sem_fonte=int((~tem_f).sum()))
+        conf = {}
+        for a_, b_ in zip(Ic.principal[tem_f], V3["calib"]["fonte"][tem_f]):
+            conf.setdefault(FONTES[a_], {}).setdefault(FONTES[b_], 0); conf[FONTES[a_]][FONTES[b_]] += 1
+        v3["fonte_principal_calib"]["confusao_v3"] = conf
+        print("   calib, fonte principal certa nos pratos com fonte dominante real:", {k: (round(v, 1) if not isinstance(v, dict) else v) for k, v in v3["fonte_principal_calib"].items()})
+        okc = ok(cc, mreal["calib"] * V3["calib"]["dens"]); certo = (V3["calib"]["fonte"] == Ic.principal)[tem_f]
+        v3["fonte_principal_calib"].update(crit_acerta=float(100 * okc[tem_f][certo].mean()), crit_erra=float(100 * okc[tem_f][~certo].mean()) if (~certo).any() else None)
+        a15 = cc > 15
+        fr_r = Ic.frac_fonte[:, :-1].sum(1); fr3 = V3["calib"]["FF"][:, :-1].sum(1); fr2 = V2["calib"]["FF"][:, :-1].sum(1)
+        v3["fracao_fontes_calib_acima15"] = dict(real=float(fr_r[a15].mean()), v3=float(fr3[a15].mean()), v2=float(fr2[a15].mean()), r_v3=float(np.corrcoef(fr_r[a15], fr3[a15])[0, 1]),
+                                                 r_v2=float(np.corrcoef(fr_r[a15], fr2[a15])[0, 1]), erro_abs_mediano_v3=float(np.median(np.abs(fr3 - fr_r)[a15])),
+                                                 erro_abs_mediano_v2=float(np.median(np.abs(fr2 - fr_r)[a15])))
+        print("   calib, fração da massa que é fonte de proteína (> 15 g):", {k: round(v, 3) for k, v in v3["fracao_fontes_calib_acima15"].items()},
+              f"| massa real × dens v3: {v3['fonte_principal_calib']['crit_acerta']:.0f}% quando acerta a fonte, {v3['fonte_principal_calib']['crit_erra']:.0f}% quando erra")
+        fxc = faixas(cc)
+        v3["dens_massa_real_calib"] = dict(v3={k: crit(cc[f], (mreal["calib"] * V3["calib"]["dens"])[f]) for k, f in fxc.items()}, v2={k: crit(cc[f], (mreal["calib"] * dl["calib"])[f]) for k, f in fxc.items()},
+                                           v3_acima15=crit(cc[a15], (mreal["calib"] * V3["calib"]["dens"])[a15]), v2_acima15=crit(cc[a15], (mreal["calib"] * dl["calib"])[a15]),
+                                           v3_todos=crit(cc, mreal["calib"] * V3["calib"]["dens"]), v2_todos=crit(cc, mreal["calib"] * dl["calib"]))
+        print("   calib, massa real × densidade por faixa: v3", {k: round(v) for k, v in v3["dens_massa_real_calib"]["v3"].items()}, "| v2", {k: round(v) for k, v in v3["dens_massa_real_calib"]["v2"].items()},
+              f"| >15 g: v3 {v3['dens_massa_real_calib']['v3_acima15']:.1f}% v2 {v3['dens_massa_real_calib']['v2_acima15']:.1f}%")
+        res["v3_relato"] = v3
     grava_json("avalia_ensaio.json" if te != "teste" else "avalia.json", res)
 
 

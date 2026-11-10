@@ -1,7 +1,7 @@
 # Modelo treinado: proteína só pela foto, sem informar porção (09/11/2026)
 
 **Pergunta:** um modelo **treinado** (e não um LLM em nuvem) consegue sugerir a proteína só pela foto e atingir a meta de **≥ 70% dos pratos dentro de ±20% ou ±5 g**?
-**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. A meta de 70% continua não atingida. No LLM, o erro está na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede só isso e ainda não foi rodada.
+**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. No LLM, o erro estava na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede identificação e partes da massa em vez de gramas. **Com as estimativas v3 (uma rodada cega), o híbrido chega a 70,4% no teste** (IC 65,0 a 75,7; +7,5 sobre o híbrido da seção 8, IC +3,2 a +11,8; +3,2 sobre o híbrido com v2, IC 0,0 a +6,4). **É a primeira estimativa pontual na meta de 70%, e não é a meta demonstrada:** o intervalo começa em 65%, é uma rodada só em 280 pratos do Nutrition5k, o `n5k_v1` (50 pratos) dá 62%, o pipeline depende de um LLM em nuvem, e os pratos com mais de 25 g continuam em 41% a 54%, agora limitados pelo erro de massa.
 
 Scripts em `eval/treino/`. Dados, features, pesos e o `.mlpackage` ficam só no scratchpad (`…/scratchpad/treino/`), fora do repositório.
 
@@ -408,21 +408,25 @@ Olhei as 144 fotos: **UFPR (103) e Liv Up (34) não são fotos de cima** (prato 
 ## 9. Densidade de proteína e pratos ricos em proteína (10/11/2026)
 
 **Pergunta:** a seção 8 terminou com o gargalo na **densidade** (gramas de proteína por grama de comida, isto é, saber que alimento é) e com os pratos acima de 15 g de proteína em 34–55%. Dá para melhorar a densidade, sobretudo nesses pratos, com a mesma premissa de uma foto de cima?
-**Resposta curta: a densidade melhorou de forma mensurável; o resultado final subiu pouco; os pratos com mais de 25 g praticamente não melhoraram; a meta de 70% continua não atingida.** Números do `teste` (280 pratos), com tudo escolhido por validação cruzada no treino e pesos do híbrido só no `calib`.
+**Resposta curta: a densidade melhorou de forma mensurável, no modelo treinado e no LLM. Com a instrução nova do LLM (v3), o híbrido chega a 70,4% no teste: a estimativa pontual alcança a meta de 70% pela primeira vez, mas o intervalo vai de 65 a 76 e é uma única rodada cega. Sem LLM, o ganho é pequeno. Os pratos com mais de 25 g continuam fracos (41% a 54%).** Números do `teste` (280 pratos), com tudo escolhido por validação cruzada no treino e pesos do híbrido só no `calib`.
 
 | Medida no `teste` | Seção 8 (escolhido) | Seção 9 (escolhido) | Diferença (IC 95%, bootstrap pareado) |
 |---|---|---|---|
 | **Densidade isolada:** massa real × densidade do modelo | 67,5% | **76,1%** | **+8,6 (+2,9 a +14,3)** |
 | Só imagem, sem LLM | 61,1% | **64,6%** (IC 59,3 a 70,0) | +3,6 (−1,8 a +8,9): não distinguível |
 | Híbrido: massa do modelo × densidade (LLM v2 e modelo) | 62,9% | **67,1%** (IC 61,4 a 72,5) | **+4,3 (+0,4 a +8,6)** |
-| Pratos com mais de 15 g: só imagem / híbrido | 47,0% / 48,8% | 47,6% / 53,0% | |
+| **Híbrido com o LLM v3** (uma rodada cega; 9.7) | 62,9% | **70,4%** (IC 65,0 a 75,7) | **+7,5 (+3,2 a +11,8)**; contra o híbrido com v2: +3,2 (0,0 a +6,4) |
+| Densidade do LLM isolada: massa real × densidade (v2 → v3) | 71,4% | **80,7%** | **+9,3 (+4,6 a +13,9)** |
+| Pratos com mais de 15 g: só imagem / híbrido v2 / híbrido v3 | 47,0% / 48,8% / — | 47,6% / 53,0% / 55,4% | |
+| Pratos com mais de 25 g: híbrido v2 / híbrido v3 | 42,0% / — | 44,6% / 47,3% | |
 | LLM sozinho (referência) | 55,0% (39,9% acima de 15 g) | | |
 | **Meta** | **70%** | | |
 
 - **A densidade do modelo treinado passou de 67,5% para 76,1%** quando medida com a massa real, e ficou acima da do LLM v2 na estimativa pontual (71,4%; diferença de +4,6, IC −1,4 a +10,4, não segura). O ganho veio de três coisas: prever **quanto da massa do prato é cada fonte de proteína** em vez da densidade direta, **recuperar pratos parecidos** do treino, e um terceiro backbone (TIPS) para essa recuperação.
 - **O ganho não chegou inteiro ao resultado final.** Só imagem: 61,1% → 64,6%, dentro do ruído. Híbrido: 62,9% → 67,1%, com o intervalo encostado em zero. É a primeira vez que o híbrido escolhido se separa do anterior, mas por pouco, e formas não escolhidas vão de 65% a 70%.
 - **Os pratos com mais de 25 g não melhoraram de forma que se distinga do ruído** (só imagem: 43% → 38% e 50% → 46%; híbrido: 38% → 45% e 46% → 45%; são 56 pratos por faixa). O que melhorou foram os pratos de 5 a 25 g. Nos pratos grandes, o erro que sobra já é **tanto de massa quanto de densidade**, e os dois puxam para baixo (9.5).
-- **Falta o lado do LLM.** A análise mostra que o LLM erra a parte da massa e a fonte, não a tabela. A instrução v3 (`eval/prompt_v3.md`) pede só isso; as estimativas ainda não foram feitas (9.7).
+- **Lado do LLM: a instrução v3 leva o híbrido a 70,4%** (IC 65,0 a 75,7), +7,5 sobre o híbrido da seção 8 (IC +3,2 a +11,8). A análise mostrava que o LLM errava a parte da massa e a fonte, não a tabela; a v3 (`eval/prompt_v3.md`) pede identificação e partes da massa em vez de gramas. A densidade do LLM subiu de 71,4% para 80,7% com a massa real. **Ressalvas:** uma rodada cega só; contra o híbrido com v2 o ganho é de +3,2 com limite inferior zero; no `n5k_v1` (50 pratos) dá 62%; no `calib`, a fonte certa e a parte das fontes não mudaram, então o mecanismo do ganho não está isolado; e o pipeline precisa de um LLM em nuvem (9.7 e 9.8).
+- **Acima de 25 g o limite agora é a massa.** Com a massa real, a densidade v3 daria 77% e 68% nas duas faixas de cima; com a massa do modelo, 45% e 50%.
 
 ### 9.1 Dados, higiene e regras de escolha
 
@@ -783,34 +787,97 @@ A análise de 9.2 (f) diz o que pedir ao LLM: **não gramas, e sim o que é cada
 
 - **`eval/prompt_v3.md`:** instrução cega nova. Para cada componente visível: o alimento de referência mais próximo, de uma **lista fechada** (os nomes da tabela do Nutrition5k, agrupados por tipo, e os nomes da TACO para comida brasileira), uma **segunda hipótese** quando houver dúvida (ex.: frango ou porco), a certeza, o preparo e a **parte da massa total em %** (as partes somam 100). Por prato, a declaração da **principal fonte de proteína** (10 grupos, os mesmos de 9.2). A instrução ensina a passar de área para massa (área × altura × compactação: folhas soltas pesam um décimo de carne com a mesma área), dá pistas visuais para as confusões medidas no `calib` (frango × porco × peixe, clara de ovo × tofu × queijo) e pede a conferência com unidades conhecidas (um ovo, uma tira de bacon). Nada nela veio do `teste`: as lições são do `calib` e do treino, e as listas são tabelas de referência, não rótulos de pratos.
 - **`eval/protein_from_shares.py`:** transforma a saída em densidade do prato, Σ parte × proteína por grama do alimento de referência. Com certeza `media` ou `baixa`, mistura 25% ou 40% da densidade da segunda hipótese. Com mais de uma rodada de estimativa, usa a média geométrica das rodadas. Com `--massa`, multiplica pela massa e devolve a proteína. Conferido com as estimativas v2 convertidas de gramas para partes: reproduz a proteína da v2 nos 594 pratos (diferença máxima de 0,1 g).
-- **Formas de híbrido com a v3, já declaradas em `dens_avalia.py`** (entram sozinhas quando `docs/dados/precisao/estimativas_v3_partes.csv` existir, com pesos no `calib` e a mesma regra de escolha): massa do modelo × densidade v3; massa do modelo × mistura da densidade v3 com a do modelo; a mesma com a massa misturada com a do LLM v2; mistura das três densidades (v2, v3, modelo); frações por fonte do v3 misturadas com as do modelo; densidade v3 com a família do frango pela média do treino; e a fonte principal declarada no v3 como prior sobre as frações do modelo.
+- **Formas de híbrido com a v3, declaradas em `dens_avalia.py` antes de as estimativas existirem** (entram sozinhas quando `docs/dados/precisao/estimativas_v3_partes.csv` existe, com pesos no `calib` e a mesma regra de escolha): massa do modelo × densidade v3; massa do modelo × mistura da densidade v3 com a do modelo; a mesma com a massa misturada com a do LLM v2; mistura das três densidades (v2, v3, modelo); frações por fonte do v3 misturadas com as do modelo; densidade v3 com a família do frango pela média do treino; e a fonte principal declarada no v3 como prior sobre as frações do modelo.
 
-> **[A PREENCHER — resultados do LLM v3]**
-> As estimativas cegas com a instrução v3 ainda não foram feitas. Quando o arquivo `docs/dados/precisao/estimativas_v3_partes.csv` existir, rodar `python3 eval/treino/dens_avalia.py` e completar aqui:
-> 1. densidade v3 com a massa real, no `calib` e no `teste`, ao lado da v2 (76,7% no `calib`; 71,4% no `teste`);
-> 2. acerto da fonte principal declarada (v2, derivada dos componentes: 77% no `calib`);
-> 3. tabela das formas `[v3]`: `calib` deixa-fora, `teste`, IC contra o híbrido da seção 8 (62,9%) e contra o híbrido escolhido em 9.6, e por faixa de proteína;
-> 4. se foram feitas duas rodadas: ganho da média das duas sobre uma só.
+**Resultados do LLM v3 (10/11/2026).** Uma rodada cega, 15 estimadores, as 450 fotos do Nutrition5k (400 `d*` = `calib` + `teste`, e as 50 do `n5k_v1`); os itens brasileiros não foram estimados. Todas as partes somam 100 e todos os nomes casaram com as tabelas. Nos 400 pratos `d*` são 1.258 componentes, 3,15 por prato (na v2, 2,67). Metade dos componentes veio com certeza `alta` (627); 484 com `media` e 147 com `baixa`; 625 trazem segunda hipótese. Um estimador (lote 03) gerou recortes ampliados de 4 das suas próprias imagens para ver detalhes; nada além das imagens foi lido. As formas de híbrido e a regra de escolha são as declaradas antes de as estimativas existirem; `dens_avalia.py` rodou sem mudança.
+
+**a) Densidade do LLM, isolada (massa real × densidade).**
+
+| | `calib` (120) | `teste` (280) | `teste`, > 15 g |
+|---|---|---|---|
+| LLM v2 (gramas por componente) | 76,7% | 71,4% | 60,1% |
+| **LLM v3 (identificação + partes)** | **80,8%** | **80,7%** | **72,0%** |
+| Modelo treinado (9.4) | 74,2% | 76,1% | 66,7% |
+| v3 contra v2, no teste (IC 95% pareado) | | **+9,3 (+4,6 a +13,9)** | |
+| v3 contra o modelo treinado, no teste | | +4,6 (−0,7 a +10,0) | |
+
+- **A densidade do v3 é melhor que a do v2**, e o intervalo sustenta isso no teste. Contra a densidade do modelo treinado a diferença não é segura.
+- No `calib`, por faixa (v2 → v3): 0–5 g 100 → 92%; 5–15 g 92 → 83%; 15–25 g 71 → 79%; 25–40 g 71 → 71%; > 40 g 50 → 79%. O ganho no `calib` está nos pratos com muita proteína e há perda nos de pouca. No teste o v3 ganha em todas as faixas (tabela em c).
+
+**b) O que a instrução queria melhorar não mudou de forma mensurável no `calib`.** (Só o `calib` tem ingredientes que podem ser lidos; 86 pratos com fonte dominante.)
+
+| No `calib` | LLM v2 | LLM v3 | Modelo treinado (cabeça de frações) |
+|---|---|---|---|
+| Fonte principal certa | 76,7% (derivada dos componentes) | **77,9%** (declarada); 75,6% (derivada dos componentes) | 79,1% |
+| Fração da massa que é fonte de proteína, pratos > 15 g: correlação com a real | 0,87 | 0,88 | |
+| Idem: erro absoluto mediano | 6,9 pontos | 6,7 pontos | |
+| Idem: média (real: 65,2%) | 62,7% | 63,0% | |
+
+- **A identificação da fonte ficou igual** (77,9% contra 76,7%: um prato). As confusões são as mesmas da v2: frango certo em 10 de 17 (visto como peixe 3 vezes, e como ovo, bovina, laticínio e porco uma vez cada), porco em 17 de 24, bovina em 3 de 6 (as outras 3 como porco). Ovo (19 de 19), prato pronto (7 de 7) e castanhas (9 de 9) saem sempre certos. Quando o v3 acerta a fonte, 82% dos pratos ficam dentro da tolerância com a massa real; quando erra, 63%.
+- **A parte da massa das fontes de proteína também ficou igual** (correlação 0,88 contra 0,87).
+- **Então o ganho de densidade do v3 não veio pelo caminho que a instrução mirava**, ou veio por uma soma de efeitos pequenos que estas duas medidas não captam. Candidatos, **não isolados aqui**: a lista fechada de nomes (o v2 escrevia nomes livres), a segunda hipótese misturada na densidade (metade dos componentes tem uma), e mais componentes por prato (3,15 contra 2,67), o que inclui queijo, castanhas e molhos em pequena quantidade. Qual deles pesa não foi medido.
+- **LLM e modelo erram a fonte em pratos diferentes:** concordam em 71% dos pratos, e pelo menos um dos dois acerta em 92%. A forma que tentava usar isso (a fonte declarada como prior sobre as frações do modelo) não funcionou: o `calib` escolhe fator 1, que não muda nada.
+
+**c) Híbridos com a densidade v3.** Mesma massa (seção 8), mesma regra (pesos e forma no `calib`). As diferenças são contra o híbrido escolhido na seção 8 (62,9%) e contra o híbrido escolhido em 9.6, sem v3 (67,1%).
+
+| Forma | Pesos ajustados | Calib (deixa-fora) | Teste | MAE / viés | Δ vs híbrido s8 (IC 95%) | Δ vs híbrido de 9.6 (IC 95%) | > 15 g | n5k v1 |
+|---|---|---|---|---|---|---|---|---|
+| Massa do modelo × densidade v3 | nenhum | 66,7% | 70,0% (IC 64,6 a 75,4) | 6,0 g / −2,3 g | +7,1 (+2,1 a +12,1) | +2,9 (−1,4 a +7,1) | 55,4% | 60% |
+| Massa do modelo × densidade (v3^b · modelo^(1−b)) | b = 0,5 | 70,8% | 70,4% (IC 65,0 a 75,4) | 5,8 g / −3,0 g | +7,5 (+3,2 a +11,8) | +3,2 (+0,7 a +6,1) | 56,0% | 64% |
+| Massa^a (modelo, LLM v2) × densidade (v3^b · modelo^(1−b)) | a = 1; b = 0,5 | 70,0% | 70,4% (IC 65,0 a 75,4) | 5,8 g / −3,0 g | +7,5 (+3,2 a +11,8) | +3,2 (+0,7 a +6,1) | 56,0% | 64% |
+| Massa do modelo × densidade (v2 · v3 · modelo) | 0,3 / 0,3 / 0,4 | 69,2% | 69,6% (IC 64,3 a 75,0) | 5,8 g / −3,1 g | +6,8 (+2,8 a +10,7) | +2,5 (0,0 a +5,0) | 56,0% | 66% |
+| Massa do modelo × Σ fonte (frações v3 ⊕ modelo) × densidade por fonte do v3 | 0,6 para o v3 | 67,5% | 70,4% (IC 65,0 a 75,7) | 5,8 g / −2,5 g | +7,5 (+2,5 a +12,5) | +3,2 (0,0 a +6,4) | 56,0% | 62% |
+| Massa do modelo × densidade (v3 com frango pela média do treino ^b · modelo^(1−b)) | b = 0,5 | 70,0% | 70,0% (IC 64,6 a 75,0) | 5,8 g / −2,9 g | +7,1 (+2,5 a +11,4) | +2,9 (0,0 a +5,7) | 56,0% | 66% |
+| **Massa do modelo × densidade (v3^b · frações do modelo com a fonte declarada no v3 como prior^(1−b)) [escolhida]** | fator do prior = 1; b = 0,6 | **72,5%** | **70,4%** (IC 65,0 a 75,7) | 5,8 g / −2,8 g | **+7,5 (+3,2 a +11,8)** | +3,2 (0,0 a +6,4) | 55,4% | 62% |
+| Massa do modelo × frações do modelo com a fonte declarada no v3 como prior (sem a densidade do LLM) | fator = 1 | 64,2% | 61,4% (IC 55,7 a 67,1) | 6,4 g / −3,0 g | −1,4 (−6,8 a +3,9) | −5,7 (−10,0 a −1,4) | 45,2% | 64% |
+
+Por faixa de proteína real no teste (56 pratos por faixa):
+
+| Faixa | LLM v2 sozinho | Híbrido s8 | Híbrido de 9.6 (sem v3) | **Híbrido com v3 (escolhido)** | Massa real × dens. v2 | Massa real × dens. v3 | Massa real × dens. do modelo | Massa do modelo × dens. v3 | Massa do modelo × dens. real |
+|---|---|---|---|---|---|---|---|---|---|
+| 0–5 g | 84% | 89% | 89% | **93%** | 89% | 95% | 93% | 95% | 100% |
+| 5–15 g | 71% | 79% | 88% | **93%** | 88% | 93% | 88% | 89% | 93% |
+| 15–25 g | 57% | 62% | 70% | **71%** | 68% | 71% | 73% | 71% | 77% |
+| 25–40 g | 36% | 38% | 45% | **41%** | 55% | 77% | 62% | 45% | 62% |
+| > 40 g | 27% | 46% | 45% | **54%** | 57% | 68% | 64% | 50% | 75% |
+| **Todos** | 55,0% | 62,9% | 67,1% | **70,4%** | 71,4% | 80,7% | 76,1% | 70,0% | 81,4% |
+| **> 15 g** | 39,9% | 48,8% | 53,0% | **55,4%** | 60,1% | 72,0% | 66,7% | 55,4% | 71,4% |
+
+1. **Forma escolhida pelo `calib`: 70,4% no teste** (IC 65,0 a 75,7), MAE 5,8 g, viés −2,8 g. É +7,5 sobre o híbrido da seção 8 (IC +3,2 a +11,8), +15,4 sobre o LLM v2 sozinho (IC +8,9 a +22,1), +5,7 sobre o só imagem de 9.5 (IC +1,4 a +10,0) e +3,2 sobre o híbrido de 9.6 (IC 0,0 a +6,4: o limite inferior é zero).
+2. **O nome da forma escolhida diz mais do que ela faz.** O `calib` ajustou o fator do prior em 1, ou seja, a fonte declarada pelo v3 **não entra**. O que sobra é: densidade = (densidade v3)^0,6 × (frações por fonte de uma cabeça do modelo × densidade média da fonte)^0,4. Ela difere da segunda linha só por usar uma cabeça de frações em vez da média de 9.4, e ganhou dela no `calib` por 2 pratos em 120.
+3. **O resultado não depende da forma:** as sete formas que usam a densidade v3 dão de 69,6% a 70,4% no teste, e a mais simples, sem nenhum peso ajustado (massa do modelo × densidade v3), dá 70,0%. No `calib` elas vão de 66,7% a 72,5%.
+4. **No `n5k_v1` (50 pratos) o ganho não aparece:** 62% na forma escolhida, contra 66% do híbrido de 9.6 e 60% do da seção 8; as formas com v3 vão de 60% a 66%. Com 50 pratos o intervalo é de ±14 pontos, então isso não contradiz o teste, mas também não o confirma.
+5. **Acima de 15 g: 55,4%** (IC 47,6 a 62,5), contra 53,0% do híbrido de 9.6 (+2,4, IC −2,4 a +7,1) e 48,8% do da seção 8. **Acima de 25 g: 47,3%** (9.6: 44,6%). Por faixa, 25–40 g fica em 41% e > 40 g em 54%. O ganho do v3 no resultado final está nos pratos de 0 a 15 g (89 → 93% e 88 → 93%) e, dentro do ruído, acima de 40 g.
+6. **Acima de 25 g, o que limita agora é a massa, não a densidade.** Com a massa real, a densidade v3 daria 77% (25–40 g) e 68% (> 40 g). Com a massa do modelo, 45% e 50%. O modelo de massa sozinho, com a densidade real, dá 62% e 75%, e subestima a massa em 12% e 8% nessas faixas.
+7. **Uma rodada só.** O item 4 do plano (média de duas rodadas independentes) não pôde ser medido.
 
 ### 9.8 Conclusão e o que falta
 
-1. **Onde estamos.** Só imagem: 64,6% (IC 59,3 a 70,0). Híbrido escolhido: 67,1% (IC 61,4 a 72,5), com formas equivalentes entre 65% e 70%. **A meta de 70% não foi atingida.** A maior configuração avaliada foi 69,6%, não escolhida.
-2. **O que ficou demonstrado e o que não ficou.**
-   - Demonstrado: a densidade do modelo treinado melhorou (+8,6 pontos com a massa real, IC +2,9 a +14,3). No teste ela deixou de perder para a do LLM v2 (76,1% contra 71,4%); no `calib` ainda fica um pouco abaixo (74,2% contra 76,7%). As duas estão no mesmo nível.
-   - No limite: o híbrido ganhou +4,3 pontos sobre o da seção 8, com o intervalo começando em +0,4.
-   - Não demonstrado: ganho no pipeline só de imagem (+3,6, IC −1,8 a +8,9).
-3. **Pratos ricos em proteína, que eram o alvo: melhora parcial.** De 15 a 25 g, sim (só imagem 48% → 59%; híbrido 62% → 70%). Acima de 25 g, nada que se distinga do ruído: só imagem 43% → 38% e 50% → 46%; híbrido 38% → 45% e 46% → 45%. Acima de 15 g como um todo: só imagem 47,0% → 47,6%; híbrido 48,8% → 53,0%.
-4. **Por que o ganho de densidade não virou ganho nos pratos grandes.**
-   - **A massa passou a pesar tanto quanto a densidade.** Acima de 25 g, o modelo de massa sozinho limita o acerto a 62–75% mesmo com a densidade real, e erra para menos (−8% a −12%), o mesmo sinal do erro de densidade (−7% a −9%).
-   - **A identidade da fonte tem teto com este material.** Modelo e LLM acertam a fonte principal em 77–80% dos pratos. Para o frango, a tabela do Nutrition5k tem densidades de 23 a 31 g/100 g para alimentos que a foto não separa.
-   - **Esticar as previsões não resolve** (testado na densidade e na proteína final, com ajuste cruzado).
-5. **O que falta, em ordem de ganho esperado.**
-   - **Rodar a instrução v3 do LLM** (9.7). No `calib`, com as frações reais e as densidades que o LLM já dá, a densidade iria de 76,7% para 90%. É o maior espaço que sobra, e é o que a v3 ataca. O ganho real só se sabe medindo.
-   - **Corrigir a massa dos pratos grandes.** O viés de −8% a −12% acima de 25 g é do modelo de massa da seção 8, que esta seção não tocou. O peso por faixa, que ajudou a densidade, não foi testado na massa.
-   - **Ajuste fino em GPU com a perda de frações por fonte na resolução maior.** A cabeça que funcionou aqui foi treinada sobre features congeladas; a seção 8 mostrou que o ajuste fino melhora a densidade. Não cabe em CPU.
-   - **Dados brasileiros de cima, com celular:** continua valendo o que 8.10 diz. Tudo aqui é Nutrition5k.
-6. **Para o produto.** A saída "fração da massa por fonte de proteína" é mais do que um passo interno: é uma pergunta que a usuária consegue responder ("frango é mais ou menos metade do prato?"). O seletor de porção continua sendo o que leva o número final acima de 70%, e a fração por fonte dá a ele um valor inicial melhor nos pratos de 5 a 25 g.
-7. **Registro de método.** (a) Antes de qualquer leitura do teste, a regra 3 foi restringida à densidade escolhida (a primeira versão deixava concorrer a massa × cada uma das densidades, e a escolha trocava de vencedor a cada configuração nova), o TIPS foi extraído e a grade dos vizinhos foi ampliada; `dens_avalia.py --so-cv` e um ensaio no `n5k_v1` foram usados nessa fase. (b) O script completo rodou quatro vezes no teste: a primeira é a avaliação; a segunda e a terceira só acrescentaram relatos (a decomposição por faixa de 9.5 e o intervalo da densidade isolada); a quarta regravou o resumo depois de um ensaio do caminho do LLM v3 feito só no `calib`, com as estimativas v2 convertidas para o formato v3. As escolhas e as tabelas são as mesmas nas quatro (a saída da quarta é idêntica à da terceira). (c) Os números de teste das 150 densidades não escolhidas são relato, não seleção.
+1. **Onde estamos, no `teste` (280 pratos do Nutrition5k).**
+   - Só imagem: 64,6% (IC 59,3 a 70,0).
+   - Híbrido com o LLM v2: 67,1% (IC 61,4 a 72,5).
+   - **Híbrido com o LLM v3: 70,4% (IC 65,0 a 75,7).** É a primeira vez neste estudo que a estimativa pontual de um pipeline escolhido sem olhar o teste chega à meta de 70%.
+2. **O que os dados sustentam.**
+   - O híbrido com v3 é melhor que o híbrido da seção 8 (+7,5, IC +3,2 a +11,8), que o só imagem (+5,7, IC +1,4 a +10,0) e que o LLM sozinho (+15,4, IC +8,9 a +22,1).
+   - O resultado não depende da forma de combinar: sete formas dão de 69,6% a 70,4%, e a que não ajusta nenhum peso dá 70,0%.
+   - A densidade do LLM v3, isolada, é melhor que a do v2 (+9,3 com a massa real, IC +4,6 a +13,9), e a do modelo treinado é melhor que a da seção 8 (+8,6, IC +2,9 a +14,3).
+3. **O que os dados não sustentam.**
+   - **Que a meta de 70% foi atingida.** O intervalo vai de 65,0% a 75,7%: o valor verdadeiro pode estar 5 pontos abaixo da meta. Contra o híbrido sem v3 (67,1%) o ganho é de +3,2 com limite inferior zero.
+   - **Que o resultado se repete.** Foi uma única rodada cega. No `n5k_v1` (50 pratos) a mesma forma dá 62%, abaixo dos 66% do híbrido sem v3; com 50 pratos isso não refuta nem confirma.
+   - **Que os pratos ricos em proteína estão resolvidos.** Acima de 15 g: 55,4% (IC 47,6 a 62,5). Acima de 25 g: 47,3%. Nas faixas de 25–40 g e > 40 g: 41% e 54%. Os 70% do total vêm de 93% nos pratos com até 15 g e 71% nos de 15 a 25 g.
+   - **Que a instrução v3 funciona pelo motivo para o qual foi escrita.** No `calib`, a fonte principal certa (78% contra 77%) e a parte da massa das fontes (correlação 0,88 contra 0,87) não mudaram. A densidade melhorou, mas o mecanismo não foi isolado (9.7 b).
+   - **Qualquer coisa fora do Nutrition5k.** São 280 pratos de um refeitório, com câmera a altura fixa, e a lista de nomes da instrução é a tabela do próprio Nutrition5k. Nenhum prato brasileiro foi estimado com a v3. O problema de escala de 8.7 e 8.8 continua.
+4. **O que este pipeline exige.** Um LLM de visão em nuvem para a densidade, mais três passagens de ViT-B e uma busca nos embeddings do treino para a massa e a densidade do modelo. Não roda no aparelho. O pipeline sem nuvem é o só imagem: 64,6%, ou 61,1% com o modelo de um backbone exportado em 8.9.
+5. **Pratos ricos em proteína, que eram o alvo: melhora parcial.** De 15 a 25 g, sim (híbrido: 62% na seção 8 → 70% em 9.6 → 71% com v3). Acima de 25 g, nada que se distinga do ruído: 38% → 45% → 41% e 46% → 45% → 54%.
+6. **Por que os pratos grandes continuam fracos: agora é a massa.** Com a massa real, a densidade v3 daria 77% e 68% nas duas faixas acima de 25 g; com a massa do modelo, dá 45% e 50%. O modelo de massa subestima esses pratos em 8% a 12%, e mesmo com a densidade real ficaria em 62% e 75%. Esticar as previsões não resolve (testado com ajuste cruzado em 9.4).
+7. **O que falta, em ordem de ganho esperado.**
+   - **Corrigir a massa dos pratos grandes.** É o que limita acima de 25 g, e esta seção não tocou no modelo de massa. O peso por faixa, que ajudou a densidade, não foi testado na massa.
+   - **Uma segunda rodada cega da v3.** Serve para duas coisas: ver se os 70% se repetem, e medir a média de duas rodadas, que `protein_from_shares.py` já calcula.
+   - **Entender de onde vem o ganho da v3** (lista fechada, segunda hipótese ou mais componentes), antes de depender dela.
+   - **Ajuste fino em GPU com a perda de frações por fonte na resolução maior.** A cabeça que funcionou aqui foi treinada sobre features congeladas. Não cabe em CPU.
+   - **Dados brasileiros de cima, com celular:** continua valendo o que 8.10 diz.
+8. **Para o produto.** A recomendação de 8.10 não muda: o seletor de porção continua necessário, sobretudo nos pratos com mais de 25 g, em que nenhum pipeline passa de 54%. O que muda é o ponto de partida do seletor: com a v3 e o modelo de massa, 93% dos pratos com até 15 g e 71% dos de 15 a 25 g já saem dentro da tolerância no Nutrition5k. A saída "fração da massa por fonte de proteína" é uma pergunta que a usuária consegue responder ("frango é mais ou menos metade do prato?").
+9. **Registro de método.** (a) Antes de qualquer leitura do teste, a regra 3 foi restringida à densidade escolhida (a primeira versão deixava concorrer a massa × cada uma das densidades, e a escolha trocava de vencedor a cada configuração nova), o TIPS foi extraído e a grade dos vizinhos foi ampliada; `dens_avalia.py --so-cv` e um ensaio no `n5k_v1` foram usados nessa fase. (b) O script completo rodou quatro vezes no teste: a primeira é a avaliação; a segunda e a terceira só acrescentaram relatos (a decomposição por faixa de 9.5 e o intervalo da densidade isolada); a quarta regravou o resumo depois de um ensaio do caminho do LLM v3 feito só no `calib`, com as estimativas v2 convertidas para o formato v3. As escolhas e as tabelas são as mesmas nas quatro (a saída da quarta é idêntica à da terceira). (c) Os números de teste das 150 densidades não escolhidas são relato, não seleção. (d) LLM v3: as estimativas chegaram depois de a instrução, o script de conversão, as formas de híbrido e a regra de escolha estarem fixados. `dens_avalia.py` rodou uma vez, sem mudança, e escolheu a forma pelo `calib`. Depois acrescentei ao script um bloco só de relato ("4d": densidade v3 com a massa real, intervalos contra o híbrido de 9.6, tabela por faixa e, no `calib`, a fonte principal e a parte das fontes) e rodei mais uma vez; a saída até o bloco novo é idêntica à da execução anterior. No total, o teste foi lido em seis execuções, todas com as mesmas escolhas. (e) Um estimador da v3 (lote 03) ampliou recortes de 4 das suas próprias imagens; nenhum outro arquivo foi lido.
 
 ## Reproduzir
 

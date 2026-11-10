@@ -72,21 +72,24 @@ Critério: proteína dentro de ±20% ou ±5 g; meta ≥ 70%. Conjunto de teste f
 |---|---|
 | LLM em nuvem sozinho | 55% |
 | Modelo treinado só com a imagem, 1ª versão | 48–52% |
-| **Modelo só com a imagem, versão "uma foto de cima"** (roda no aparelho, sem LLM) | **61%** (IC 55–67) |
-| **Híbrido** (modelo estima o peso, LLM a densidade), versão "uma foto de cima" | **63%** (formas quase empatadas: 62–66%) |
-| Híbrido na comida brasileira (144 itens) | 46–49% |
+| Modelo só com a imagem, um modelo exportável para o aparelho | 61% (IC 55–67) |
+| Modelo só com a imagem, três modelos + busca de pratos parecidos (servidor, sem LLM) | 64,6% (IC 59–70) |
+| Híbrido com o roteiro antigo do LLM (v2) | 67,1% (IC 61–73) |
+| **Híbrido com o roteiro novo do LLM (v3: identifica e dá a parte da massa de cada alimento)** | **70,4%** (IC 65–76) |
+| Híbrido na comida brasileira (144 itens, fotos em ângulo, versão anterior) | 46–49% |
 | Com ajuste de porção pela usuária (**simulado**, 15–30% de erro de escolha) | 71–76% |
 
-- **O gargalo mudou do peso para a identificação.** O erro de peso caiu de 22% para 17%. Com o peso do modelo e a densidade de proteína real, o acerto seria 81%; com o peso real e a densidade do LLM, 71%.
-- **Pratos com muita proteína seguem fracos:** acima de 15 g de proteína o acerto fica em 34–55%, e são justamente os que mais importam para a meta diária.
+- **A estimativa pontual chegou a 70% pela primeira vez, mas a meta não está demonstrada:** o intervalo começa em 65%, é uma única rodada cega em 280 pratos de um refeitório americano, e no conjunto secundário (50 pratos) o acerto foi 62%.
+- **Depende de LLM em nuvem** para identificar. Sem nuvem: 64,6% em servidor, 61% no modelo exportável para o aparelho.
+- **Pratos com muita proteína seguem fracos:** 71% na faixa de 15–25 g, 41% em 25–40 g e 54% acima de 40 g. Acima de 25 g, o limite voltou a ser o peso, que o modelo subestima em 8–12%.
 - **Sugestão automática com confiança:** só com a imagem, cerca de metade dos pratos pode ser aceita com ~69% de acerto; os aceitos são, na maioria, pratos de pouca proteína.
 - **Escala:** sem padronizar a distância, um zoom de ±30% derruba o híbrido de 60% para 46–54%; treinar com escala aleatória ou recortar pelo prato elimina a perda. Daí o círculo-guia na câmera.
 - **Mais dados do mesmo tipo não resolvem:** a curva de aprendizado estabiliza a partir de ~400 pratos da Nutrition5k.
 - **Fotos laterais no treino** removem o viés de ângulo (comida brasileira só com imagem: 22% → 36%) e ficam no conjunto de treino.
 - **Não existe base pública latino-americana com peso medido** ([`dados/precisao/datasets_internacionais.md`](dados/precisao/datasets_internacionais.md)); os dados brasileiros terão de ser coletados.
 
-**Decisão para a v1:** **uma única foto de cima** (decisão da fundadora, 09/11/2026), com círculo-guia e aviso de nível; sugestão automática pelo híbrido; em confiança baixa, faixa mais larga e destaque para conferir as porções; ajuste de porção opcional. Sem segunda foto. A meta de 70% **sem** ajuste ainda não foi atingida, e os 71–76% com ajuste são simulação, não teste com usuárias.
+**Decisão para a v1:** **uma única foto de cima** (decisão da fundadora, 09/11/2026), com círculo-guia e aviso de nível; sugestão automática pelo híbrido (modelo treinado para o peso + LLM em nuvem com o roteiro v3 para a identificação); em confiança baixa, faixa mais larga e destaque para conferir as porções; ajuste de porção opcional. Sem segunda foto. Sem ajuste, a estimativa pontual é 70,4% (IC 65–76), ainda sem confirmação; os 71–76% com ajuste da versão anterior são simulação, não teste com usuárias. O ajuste de porção continua necessário, principalmente acima de 25 g de proteína.
 
-**Maiores riscos:** (1) nenhuma foto brasileira tirada de cima no conjunto de teste (UFPR e Liv Up são em ângulo), então o desempenho no Brasil sob a nova premissa é desconhecido; (2) densidade de proteína em pratos ricos em proteína; (3) identificação on-device (Foundation Models) não testada; (4) o modelo exportado tem 116–231 MB e a latência no iPhone não foi medida.
+**Maiores riscos:** (1) nenhuma foto brasileira tirada de cima no conjunto de teste (UFPR e Liv Up são em ângulo), então o desempenho no Brasil sob a nova premissa é desconhecido; (2) peso e densidade em pratos com mais de 25 g de proteína; custo e latência do LLM em nuvem por foto, contra a promessa de fotos ilimitadas; (3) identificação on-device (Foundation Models) não testada; (4) o modelo exportado tem 116–231 MB e a latência no iPhone não foi medida.
 
-**Próximo passo:** piloto de 50 pratos brasileiros no iPhone (uma foto de cima com o círculo-guia, profundidade do aparelho como sinal de treino, peso por componente em balança) e teste da identificação on-device; depois, coleta de 400–800 pratos brasileiros pesados. Protocolo original em [`prototipo-precisao.md`](prototipo-precisao.md).
+**Próximos passos de modelo:** segunda rodada cega do roteiro v3 para confirmar os 70%; treino em GPU (pacote pronto em `eval/treino/kaggle/`, ainda não rodado) para corrigir o peso dos pratos grandes. **Próximo passo de dados:** piloto de 50 pratos brasileiros no iPhone (uma foto de cima com o círculo-guia, profundidade do aparelho como sinal de treino, peso por componente em balança) e teste da identificação on-device; depois, coleta de 400–800 pratos brasileiros pesados. Protocolo original em [`prototipo-precisao.md`](prototipo-precisao.md).
