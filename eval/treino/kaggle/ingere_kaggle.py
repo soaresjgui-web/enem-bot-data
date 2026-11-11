@@ -12,7 +12,11 @@ Saída da execução 3 (seção 12.3; treino_v2, só teste2) — nada aqui lê g
   2. Paridade das features dos cinco backbones com a execução 2: cada `gpu3 ridge` traz as previsões no teste2 de uma
      réplica do ridge da execução 2 (lista e folds antigos, features desta execução); elas têm de repetir as do
      `gpu ridge` correspondente (--referencia = pasta da saída da execução 2; padrão: <TD>/resultados/zen_banco_r2).
-  3. Sem --so-confere: copia cada configuração completa para <TD>/resultados/zen_banco_r3/<nome>.npz (todas as chaves).
+  3. Base externa (12.5), se a execução usou: a lista externa do manifesto é a desta pasta (hash), as amostras
+     externas não têm id do Nutrition5k, cada configuração `+<base>` foi treinada com essa lista; mostra a decisão de
+     adoção gravada pelo kernel (decisao_<base>.json), quais versões concorrem em 12.3 (as adotadas) e o relato
+     secundário de massa no teste_ext (relato_externo.json; não escolhe nada).
+  4. Sem --so-confere: copia cada configuração completa para <TD>/resultados/zen_banco_r3/<nome>.npz (todas as chaves).
      A regra de 12.3 (rota, orientações, C1, C2) é aplicada pelo agente de avaliação a partir desses arquivos.
 
 Saída SEM teste2 (execução 1, seção 10):
@@ -220,12 +224,27 @@ def rodada3(a, M, raiz):
           f"torch {M.get('torch')}, timm {M.get('timm')}, smoke={M['smoke']}, externos={M.get('externo')}")
     cfgs = {c["nome"]: c for c in G.todas_as_configs()}
     parcial = bool(M["smoke"])
+    # base externa (12.5): a lista usada no Kaggle é a desta pasta? (no --smoke a lista é um recorte: só se mostra)
+    ME = M.get("externo") or {}
+    base, Lx = ME.get("nome"), None
+    if base:
+        arq_x = os.path.join(AQUI, "listas", G.EXTERNOS[base]["lista"])
+        Lx = G.Dados(os.path.join(AQUI, "listas"), rodada="3", externo=arq_x, externo_pesos=G.EXTERNOS[base]["pesos"]).ext
+        if not parcial and ME.get("lista") != Lx["hash"]:
+            raise SystemExit(f"a lista externa do Kaggle ({ME.get('lista')}) não é a desta pasta ({Lx['hash']})")
+        n5k = set(L.ids) | set(L.conj["teste2"]) | set(L.antigo)
+        assert not [i for i in Lx["ids"] if i.split(":")[-1] in n5k or i.split(":")[-1].startswith("dish_")], "prato do Nutrition5k na lista externa"
+        print(f"base externa {base}: {ME.get('situacao')} | lista {ME.get('lista')}{'' if parcial else ' (igual à desta pasta)'}, {ME.get('resumo')}, "
+              f"teste_ext por {ME.get('regra_teste_ext')}, pesos {ME.get('pesos')}, teto {ME.get('teto')}")
+    elif ME.get("situacao"):
+        print(f"base externa: {ME['situacao']}")
+    sem_suf = lambda nome: next((nome[:-len(f" +{x}")] for x in G.EXTERNOS if nome.endswith(f" +{x}")), nome)
     if parcial and not (a.ensaio or a.so_confere):
         raise SystemExit("Saída de --smoke: use --so-confere ou --ensaio DIR.")
     entradas, problemas = {}, []
     for arq in sorted(glob.glob(os.path.join(raiz, "pred__*.npz"))):
         z = dict(np.load(arq, allow_pickle=False))
-        nome = str(z["nome"]); c = cfgs.get(nome.replace(" +ext", ""), {})
+        nome = str(z["nome"]); c = cfgs.get(sem_suf(nome), {})
         try:
             assert str(z["listas_hash"]) == L.hash and str(z["listas2_hash"]) == L.hash2, "hash das listas"
             assert list(z["ids_treino"]) == L.ids and np.array_equal(z["fold"], L.fold), "ordem do treino ou folds"
@@ -254,6 +273,11 @@ def rodada3(a, M, raiz):
                         assert falta[k][L.fold == k].all() and not falta[k][(L.fold != k) & usa[0]].any(), f"{ch}: NaN fora do lugar no fold {k}"
             if c.get("tipo") == "professor":
                 assert np.allclose(z["alvos_oof"][usa[0]], z["oof"][usa[0]][:, [G.I_M, G.I_D, G.I_P]]), "alvos_oof do professor"
+            if sem_suf(nome) != nome:       # treinada com a base externa: com a lista do manifesto
+                assert base and "ext_lista" in z and str(z["ext_lista"]) == ME.get("lista"), "treinada com outra lista externa"
+            if "ext" in z:                  # previsões nas fotos externas (relato): só ids externos, formato certo
+                assert all(str(i).startswith("ext:") for i in z["ext_ids"]) and z["ext"].shape == (len(z["ext_ids"]), N), "previsões externas"
+                assert parcial or Lx is None or [str(i) for i in z["ext_ids"]] == Lx["ids"], "ids externos diferentes dos da lista desta pasta"
             assert M["configs"].get(nome, {}).get("estado") == "completa", f"estado no manifesto: {M['configs'].get(nome, {}).get('estado')}"
         except AssertionError as e:
             problemas.append(f"{nome}: {e}")
@@ -272,7 +296,37 @@ def rodada3(a, M, raiz):
               + (f"dif. máx. {sc['max_dif_log']:.4f} em log" + (f", {sc['max_dif_fracao']:.4f} nas frações" if 'max_dif_fracao' in sc else "") if sc else ic.get("servico", {}).get("estado", "")))
     for p in problemas:
         print("  RECUSADA:", p)
-    faltam = [x for x in (G.RODADAS["3"] if not M["smoke"] else []) if x not in entradas]
+    # decisão sobre a base externa (tomada no kernel, pela regra de 12.5) e versões que concorrem em 12.3
+    dec, concorrem = M.get("decisao_externo"), {}
+    esperadas = list(G.RODADAS["3"])
+    if base:
+        adotado = bool((dec or {}).get("adotado"))
+        fila = G.com_externo(G.configs_da_rodada("3", parcial), base)
+        esperadas = [c["nome"] for c in fila if c["tipo"] not in ("externo", "decisao") and c.get("se_adotado", adotado) == adotado
+                     and (adotado or not c.get("externo") or (dec or {}).get("motivo") is None)]
+        for c in fila:
+            if c["tipo"] in ("professor", "unico", "ft") and not c.get("externo"):
+                tem_versao = any(q.get("plano") == c["nome"] for q in fila)
+                concorrem[c["nome"]] = c["nome"] + (f" +{base}" if adotado and tem_versao else "")
+        print(f"\ndecisão sobre a base externa {base} (regra de 12.5, aplicada no kernel às previsões fora-do-fold dos dois professores): "
+              + ("SEM DECISÃO GRAVADA" if dec is None else ("ADOTADA" if adotado else "NÃO adotada") + " | " + (dec.get("motivo") or
+                 f"critério de CV {dec['criterio_sem']:.2f} -> {dec['criterio_com']:.2f} ({dec['dif_criterio']:+.2f}); acima de 25 g "
+                 f"{dec['acima_25g_sem']:.2f} -> {dec['acima_25g_com']:.2f} ({dec['dif_acima_25g']:+.2f}); n = {dec['n']}")))
+        if dec and not dec.get("motivo") and not parcial and dec["sem"] in entradas and dec["com"] in entradas:      # a decisão refeita aqui tem de ser a mesma
+            r = G.regra_adocao(L, entradas[dec["sem"]]["oof"], entradas[dec["com"]]["oof"])
+            assert r["adotado"] == dec["adotado"] and abs(r["dif_criterio"] - dec["dif_criterio"]) < 1e-6, "a decisão gravada não se repete a partir das previsões"
+            print("  refeita aqui a partir das previsões dos dois professores: igual")
+        print("  concorrem em 12.3:", "; ".join(f"{k.replace('gpu3 ', '')} -> {'versão +' + base if v != k else 'versão sem a base'}" for k, v in concorrem.items()))
+        arq_rel = os.path.join(raiz, "relato_externo.json")
+        if os.path.exists(arq_rel):
+            rel = json.load(open(arq_rel))
+            print(f"\nrelato secundário, FORA do domínio (12.5): erro de massa no teste_ext do {base}, {rel['n_teste_ext']} pratos "
+                  f"({rel.get('n_teste_ext_acima_600g')} acima de 600 g). Não escolhe nada, não é o critério do produto, não é leitura do teste2.")
+            for nome, r in rel["modelos"].items():
+                print(f"  {nome[:52]:52s} " + " | ".join(f"{k}: MAPE {v['total'].get('mape')}% viés {v['total'].get('vies_mediano_pct')}% "
+                                                         f"(>600 g: {v['acima_600g'].get('mape')}% / {v['acima_600g'].get('vies_mediano_pct')}%)"
+                                                         for k, v in r.items() if isinstance(v, dict)))
+    faltam = [x for x in (esperadas if not M["smoke"] else []) if x not in entradas]
     if faltam:
         print("  não vieram (orçamento, falha ou dependência):", faltam)
     # paridade das features com a execução 2, pela réplica do ridge antigo
@@ -314,7 +368,8 @@ def rodada3(a, M, raiz):
     for nome, z in entradas.items():
         np.savez(os.path.join(dest, nome + ".npz"), **z)
     json.dump(dict(pasta=os.path.abspath(a.pasta), manifesto={k: M.get(k) for k in ("formato", "rodada", "inicio", "duracao_min", "gpus", "torch", "timm", "listas_hash", "listas2_hash", "externo", "tamanho_saida")},
-                   ingeridas=sorted(entradas), recusadas=problemas, faltam=faltam, avisos=avisos, cv_treino={x: M["configs"][x].get("cv_treino") for x in entradas}),
+                   ingeridas=sorted(entradas), recusadas=problemas, faltam=faltam, avisos=avisos, decisao_externo=dec, concorrem_em_12_3=concorrem,
+                   cv_treino={x: M["configs"][x].get("cv_treino") for x in entradas}),
               open(os.path.join(res, "ingestao_kaggle_r3.json"), "w"), indent=1, ensure_ascii=False)
     print(f"\n{len(entradas)} configurações gravadas em {dest} (todas as chaves de pred__*.npz). Nenhum gabarito de avaliação foi lido e nada foi escolhido aqui.")
 

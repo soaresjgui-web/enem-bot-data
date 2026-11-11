@@ -5,12 +5,14 @@ Premissa do produto: a inferência usa UMA foto RGB tirada de cima. Critério: p
 
 Uso (Kaggle/Colab, pelo notebook nutrelle_treino_gpu.ipynb, ou direto):
   python3 treino_gpu.py                       execução 3 (padrão): as 13 configurações da seção 12.3, até o orçamento
+  python3 treino_gpu.py --externo flavoria    execução 3 com a base externa da seção 12.5 (é como o notebook chama)
   python3 treino_gpu.py --rodada 2            as 11 configurações da execução 2 (seção 11); --rodada 1: as 15 da seção 10
   python3 treino_gpu.py --lista               mostra as configurações da rodada e sai
   python3 treino_gpu.py --so "ft siglip2"     só as configurações cujo nome contém o texto
   python3 treino_gpu.py --smoke               teste rápido em CPU (backbone minúsculo, poucas dezenas de pratos)
   python3 treino_gpu.py --checa-modelos       monta cada backbone sem pesos e passa uma imagem (sem rede)
-  python3 treino_gpu.py --autoteste           testes da máquina de estados, do escalonador e dos alvos aninhados
+  python3 treino_gpu.py --autoteste           testes da máquina de estados, do escalonador, da regra de adoção da base
+                                              externa e dos alvos aninhados
 
 Execução 3 (seção 12.3; um modelo só, sem LLM):
   - treino = listas/treino_v2.csv (2.281 pratos, folds novos por cadeia, frações da massa por fonte de proteína);
@@ -24,6 +26,18 @@ Execução 3 (seção 12.3; um modelo só, sem LLM):
   - toda previsão sai com 1, 4 e 8 orientações (sufixos _o1, _o4 e nenhum), fora-do-fold e no teste2.
   - escalonador: dependências entre configurações, ordem estrita de prioridade nos alunos e simulação do orçamento:
     a configuração que não cabe inteira no tempo que resta não começa (fica 'sem_orcamento').
+
+Base externa (seção 12.5 e seu adendo; --externo flavoria): FlavoriaFoodWeight1700, Zenodo 5850856, CC BY 4.0.
+  - rótulos em listas/externo_flavoria.csv (uma linha por foto); as fotos vêm do .tar do Zenodo (2,58 GB), baixado numa
+    linha à parte desde o início, com retomada, md5 conferido e prazo de 45 min. Se a lista não passar nas conferências
+    ou o download falhar, a execução segue como em 12.3, e o manifesto diz por quê.
+  - entram só a massa total (peso 1), a massa por grupo e as frações por fonte (peso 0,5), só no treino (fold −1), com a
+    soma dos pesos igual à metade da do Nutrition5k e o viés de log-massa por domínio retirado; a foto quadrada vai para
+    o centro de um quadro 4:3. Fotos com oclusão ficam fora; 20% dos pratos (split_ext = teste_ext) nunca treinam.
+  - as configurações 1 a 10 rodam também na versão '+flavoria'; 'decisao flavoria' aplica a regra de adoção às previsões
+    fora-do-fold dos dois professores (regra_adocao, função pura) e grava decisao_flavoria.json; U4 e U3 rodam uma vez,
+    na versão indicada; U0 é sempre só com o treino_v2. relato_externo.json traz o erro de massa no teste_ext (por
+    prato, só o quadro preferido), com e sem a base: não escolhe nada.
 
 O que o script faz, em qualquer rodada:
   1. Baixa do bucket público do Nutrition5k as fotos zenitais dos pratos das listas, em paralelo, com novas tentativas
@@ -228,7 +242,7 @@ def configs_da_rodada(rodada, smoke=False):
     return [c for c in CONFIGS if c["nome"] in RODADAS[rodada]]     # a ordem de CONFIGS (prioridade) é mantida
 
 
-EST_EXT = {"ridge": {"siglip2_so400m16_384x512": 18, "siglip2_l16_384x512": 13, "dinov2_l14_336x448": 12, "siglip2_b16_384x512": 6, "dinov2_b14_336x448": 6},
+EST_EXT = {"ridge": {"siglip2_so400m16_384x512": 17, "siglip2_l16_384x512": 11, "dinov2_l14_336x448": 11, "siglip2_b16_384x512": 5, "dinov2_b14_336x448": 5},
            "fracoes": 5, "professor": 1, "unico": 3, "ft": 1 + FRACAO_EXT_EPOCA}     # min de GPU das versões com a base externa (ft: fator sobre a versão sem)
 
 
@@ -311,10 +325,12 @@ def relato_externo(D, preds):
     def bloco(lm):
         return dict(total=med(lm, te), acima_600g=med(lm, te & (real > 600)))
 
-    out = {}
+    out, outra_lista = {}, []
     for nome, z in preds.items():
         if "ext" not in z:
             continue
+        if "ext_ids" in z and [str(x) for x in z["ext_ids"]] != list(D.ext["ids"]):      # previsões de uma retomada com outra lista externa
+            outra_lista.append(nome); continue
         r = {}
         com_base = " +" in nome
         sem = z["ext_sem"][:, I_M] if "ext_sem" in z else (None if com_base else z["ext"][:, I_M])
@@ -326,7 +342,9 @@ def relato_externo(D, preds):
             r["com_a_base"] = bloco(z["ext"][:, I_M])
         out[nome] = r
     return dict(nota="relato fora do domínio (12.5): erro de massa por foto no teste_ext da base externa; não escolhe nada e não é leitura do teste2",
-                n_teste_ext=int(te.sum()), n_treino_ext=int((~te).sum()), regra_teste_ext=D.ext["regra_teste_ext"], modelos=out)
+                metrica="por prato: só o quadro preferido e sem oclusão de cada prato do teste_ext (adendo de 12.5); MAPE e viés mediano da massa total, em %",
+                n_teste_ext=int(te.sum()), n_teste_ext_acima_600g=int((te & (real > 600)).sum()), n_treino_ext=int((~te).sum()),
+                regra_teste_ext=D.ext["regra_teste_ext"], modelos=out, fora_por_serem_de_outra_lista_externa=outra_lista)
 
 
 # ------------------------------------------------------------------ máquina de estados de cada parte (config × fold)
@@ -645,7 +663,11 @@ def teste_externo():
     Dx = SimpleNamespace(ext=dict(massa=massa, treina=tre, regra_teste_ext="x"))
     P = lambda fator: np.c_[np.log(massa * fator), np.zeros((6, 5))]
     com = P(1.1); com[1] = np.nan
-    r = relato_externo(Dx, {"a +b": dict(ext=com, ext_sem=P(0.5)), "c": dict(ext=P(2.0)), "d": dict(oof=P(1))})["modelos"]
+    Dx.ext["ids"] = list("abcdef")
+    rel = relato_externo(Dx, {"a +b": dict(ext=com, ext_sem=P(0.5)), "c": dict(ext=P(2.0), ext_ids=np.array(list("abcdef"))), "d": dict(oof=P(1)),
+                              "e": dict(ext=P(1.0)[:5], ext_ids=np.array(list("abcde")))})
+    r = rel["modelos"]
+    assert rel["fora_por_serem_de_outra_lista_externa"] == ["e"] and rel["n_teste_ext_acima_600g"] == 2
     assert set(r) == {"a +b", "c"} and r["a +b"]["constante"] == 2.0 and r["c"]["constante"] == 0.5
     assert r["a +b"]["sem_a_base_cru"]["total"] == dict(n=3, mape=50.0, vies_mediano_pct=-50.0) and r["a +b"]["sem_a_base_corrigido"]["total"]["mape"] == 0.0
     assert r["a +b"]["com_a_base"]["total"] == dict(n=3, mape=10.0, vies_mediano_pct=10.0) and r["a +b"]["com_a_base"]["acima_600g"]["n"] == 2
@@ -674,29 +696,53 @@ def teste_aninhado():
         T = np.c_[np.log(massa), np.log1p(prot), np.log1p(4 * prot), np.log(prot / massa + EPS_D), r.normal(size=n), r.normal(size=n)]
         return massa, prot, FF, T
 
-    def alvos(massa, prot, FF, T):
+    # amostras externas de treino (12.5): só massa e frações têm rótulo; entram em todo treino, com o viés de domínio retirado
+    ne = 20
+    Xe = (rng.normal(size=(ne, o, Dm)) + 0.5).astype(np.float32)
+    Te = np.full((ne, 6), np.nan); Te[:, I_M] = 5.6 + 0.5 * Xe[:, 0, 0] + 0.1 * rng.normal(size=ne)
+    FFe = np.abs(Xe[:, 0, 1:1 + K]) + 0.05; FFe /= FFe.sum(1, keepdims=True)
+    pa = np.zeros(6, np.float32); pa[I_M] = 1.0
+    ed = dict(X=Xe, T=Te, FF=FFe, peso_alvo=pa, peso_ff=0.5, cols_massa=[I_M])
+    todos_f = frozenset(range(5))
+
+    def alvos(massa, prot, FF, T, ext=None):
         an_r = ridge_aninhado(X, T, fold)                                             # [5, n, alvos]
-        an_f = fracoes_aninhado(X, T, FF, massa, prot, fold, cfg, dev)                # [5, n]
+        P = ridge_cv_or(X, T, fold)[0].mean(1)
+        if ext is not None:     # como no ridge '+base': só a massa é refeita com as amostras externas
+            R = RidgeSubExt(X, T[:, [I_M]], fold, Xe, Te[:, [I_M]], lambda n_i: TETO_EXTERNO * n_i / ne)
+            an_r[:, :, [I_M]] = ridge_aninhado_de(R)
+            alfa = R.alfa_cv(todos_f)
+            for k in range(5):
+                P[fold == k, I_M] = R.prev_x(todos_f - {k}, X[fold == k], alfa).numpy()[:, 0]
+        an_f = fracoes_aninhado(X, T, FF, massa, prot, fold, cfg, dev, ext=ext)       # [5, n]
         an = np.stack([np.stack(combina_professor([an_r[k][:, I_M]], [lg_dens(an_f[k]), an_r[k][:, I_D]]), 1) for k in range(5)])
-        P = ridge_cv_or(X, T, fold)[0].mean(1); _, F, dens = cabeca_folds(X, T, FF, massa, prot, fold, cfg, dev)
+        _, F, dens = cabeca_folds(X, T, FF, massa, prot, fold, cfg, dev, ext=ext)
         oof = np.stack(combina_professor([P[:, I_M]], [lg_dens(np.array([F[i].mean(0) @ dens[fold[i]] for i in range(n)])), P[:, I_D]]), 1)
         return oof, an
 
     base = rotulos(1); outro = rotulos(2)
-    oof0, an0 = alvos(*base)
-    for k in range(5):
-        assert np.isnan(an0[k][fold == k]).all() and not np.isnan(an0[k][fold != k]).any()
-    for k in (0, 3):
-        troca = [np.where((fold == k).reshape((-1,) + (1,) * (b.ndim - 1)), o2, b) for b, o2 in zip(base, outro)]    # só os rótulos do fold k mudam
-        oof1, an1 = alvos(*troca)
-        fora = fold != k
-        assert np.abs(alvos_do_aluno(oof1, an1, k)[fora] - alvos_do_aluno(oof0, an0, k)[fora]).max() < 1e-5, "alvo do aluno depende do fold de validação"
-        assert max(np.abs(an1[j][fold != j] - an0[j][fold != j])[~np.isnan(an0[j][fold != j])].max() for j in range(5) if j != k) > 1e-3   # os outros alunos mudam
-        assert np.abs(oof1 - oof0).max() > 1e-3                                       # e os alvos comuns (modelo final) também
-        # o aluno sem o fold k (cabeça destilada, U1): mesmas previsões para o fold k com ou sem os rótulos verdadeiros de k
-        p0 = cabeca_folds(X, base[3], base[2], base[0], base[1], fold, cfg, dev, an0)[0][fold == k]
-        p1 = cabeca_folds(X, troca[3], troca[2], troca[0], troca[1], fold, cfg, dev, an1)[0][fold == k]
-        assert np.abs(p1 - p0).max() < 1e-4, "a previsão fora-do-fold do aluno depende dos rótulos do fold de validação"
+    for ext in (None, ed):      # sem e com a base externa no treino do professor e do aluno
+        oof0, an0 = alvos(*base, ext=ext)
+        if ext is None:
+            sem_ext = an0
+        else:                   # a base externa mexe de fato nos alvos (o caminho está ligado)…
+            assert np.nanmax(np.abs(an0 - sem_ext)) > 1e-3
+        for k in range(5):
+            assert np.isnan(an0[k][fold == k]).all() and not np.isnan(an0[k][fold != k]).any()
+        for k in ((0, 3) if ext is None else (2,)):
+            troca = [np.where((fold == k).reshape((-1,) + (1,) * (b.ndim - 1)), o2, b) for b, o2 in zip(base, outro)]    # só os rótulos do fold k mudam
+            oof1, an1 = alvos(*troca, ext=ext)
+            fora = fold != k
+            assert np.abs(alvos_do_aluno(oof1, an1, k)[fora] - alvos_do_aluno(oof0, an0, k)[fora]).max() < 1e-5, "alvo do aluno depende do fold de validação"
+            assert max(np.abs(an1[j][fold != j] - an0[j][fold != j])[~np.isnan(an0[j][fold != j])].max() for j in range(5) if j != k) > 1e-3   # os outros alunos mudam
+            assert np.abs(oof1 - oof0).max() > 1e-3                                   # e os alvos comuns (modelo final) também
+            # o aluno sem o fold k (cabeça destilada, U1): mesmas previsões para o fold k com ou sem os rótulos verdadeiros de k
+            p0 = cabeca_folds(X, base[3], base[2], base[0], base[1], fold, cfg, dev, an0, ext=ext)[0][fold == k]
+            p1 = cabeca_folds(X, troca[3], troca[2], troca[0], troca[1], fold, cfg, dev, an1, ext=ext)[0][fold == k]
+            assert np.abs(p1 - p0).max() < 1e-4, "a previsão fora-do-fold do aluno depende dos rótulos do fold de validação"
+    # …e com peso zero ela some: o ridge com amostras externas de peso 0 é o ridge comum (mesmas previsões aninhadas)
+    R0 = RidgeSubExt(X, base[3][:, [I_M]], fold, Xe, Te[:, [I_M]], 0.0)
+    assert np.nanmax(np.abs(ridge_aninhado_de(R0)[:, :, 0] - ridge_aninhado(X, base[3], fold)[:, :, I_M])) < 1e-5
     # NNLS da densidade por fonte e peso por faixa
     d = dens_por_fonte(base[2], base[0], base[0] * (base[2] @ np.array([0.28, 0.2, 0.1, 0.02])))
     assert np.abs(d - np.array([0.28, 0.2, 0.1, 0.02])).max() < 1e-6
@@ -784,10 +830,13 @@ class Dados:
 
 def le_externo(arq, raiz, D, smoke=0, pesos=None):
     """Gancho de 12.4/12.5: lista externa no esquema de treino_v2.csv mais `dominio`, `grupo`, `vista` e a foto de cada
-    amostra (coluna `arquivo` ou `imagem`: nome do arquivo). Alvo ausente = campo vazio: vira NaN e a perda daquele alvo
+    amostra (coluna `arquivo` ou `imagem`: nome do arquivo, com ou sem o caminho dentro do .tar). Uma linha por FOTO; os
+    quadros do mesmo prato têm o mesmo `grupo`. Alvo ausente = campo vazio: vira NaN e a perda daquele alvo
     é mascarada; alvo com peso 0 em `pesos` também é mascarado. As amostras só treinam (fold −1): nunca entram em
     validação. Parte segurada (`teste_ext`, 20% dos grupos; nunca treina nem entra em escolha): a coluna `split` da
-    lista, se existir; senão os grupos dos últimos dias (coluna `data`), até somar 20%; senão sha1(grupo) mod 5 == 0.
+    lista (`split_ext`), se existir; senão os grupos dos últimos dias (coluna `data`), até somar 20%; senão sha1(grupo)
+    mod 5 == 0. Adendo de 12.5: fotos com `oclusao` = 1 ficam fora de tudo; na parte segurada fica só o quadro com
+    `quadro_preferido` = 1 de cada prato (métrica por prato). Colunas de proteína fraca (`proteina_fraca_*`) não são lidas.
     raiz = pasta das fotos (None: as fotos vêm do arquivo da base, baixado em prepara_externo)."""
     import re
     with open(arq, newline="") as f:
@@ -797,11 +846,22 @@ def le_externo(arq, raiz, D, smoke=0, pesos=None):
     falta = [c for c in ("dominio", "grupo", "vista") if c not in rows[0]] + ([] if c_id else ["id"]) + ([] if c_img else ["arquivo"])
     assert not falta, f"lista externa sem as colunas {falta}"
     c_split = next((c for c in ("split_ext", "split", "conjunto") if c in rows[0]), None)
+    seg_de = lambda r: bool(c_split) and "teste" in r[c_split].lower()
     if smoke:       # teste rápido: poucas amostras (treino e parte segurada), só as que têm foto na pasta dada
         rows = [r for r in rows if raiz is None or acha_foto(raiz, r[c_img])]
-        seg = [r for r in rows if c_split and "teste" in r[c_split].lower()]
-        rows = [r for r in rows if r not in seg][:smoke * 2] + seg[:smoke]
+        usa = lambda r: r.get("oclusao") != "1" and (not seg_de(r) or r.get("quadro_preferido", "1") == "1")
+        rows = ([r for r in rows if not seg_de(r) and usa(r)][:smoke * 2] + [r for r in rows if seg_de(r) and usa(r)][:smoke]
+                + [r for r in rows if not usa(r)][:2])
     assert rows, "lista externa vazia"
+    conteudo = "\n".join(",".join(str(r.get(c, "")) for c in rows[0]) for r in rows)      # o hash é o da lista inteira, antes dos filtros
+    # adendo de 12.5: foto com oclusao = 1 não entra no treino nem na métrica; na parte segurada, a métrica é por prato
+    # (só o quadro com quadro_preferido = 1). As linhas que não servem a nenhum dos dois saem aqui (nem features têm).
+    n_lista = len(rows)
+    n_ocl = sum(r.get("oclusao") == "1" for r in rows)
+    rows = [r for r in rows if r.get("oclusao") != "1"]
+    n_npref = sum(seg_de(r) and r.get("quadro_preferido", "1") != "1" for r in rows) if c_split else 0
+    rows = [r for r in rows if not (seg_de(r) and r.get("quadro_preferido", "1") != "1")] if c_split else rows
+    assert rows, "lista externa vazia depois dos filtros"
     num = lambda r, c: float(r[c]) if r.get(c) not in (None, "") else np.nan
     col = lambda c: np.array([num(r, c) for r in rows])
     m, p = col("massa"), col("proteina")
@@ -839,6 +899,7 @@ def le_externo(arq, raiz, D, smoke=0, pesos=None):
     c_data = next((c for c in ("data", "dia", "date") if c in rows[0]), None)
     if c_split:
         fora, regra = {g for g, r in zip(grupo, rows) if "teste" in r[c_split].lower()}, f"coluna {c_split}"
+        assert not fora & {g for g, r in zip(grupo, rows) if "teste" not in r[c_split].lower()}, "grupo da lista externa dos dois lados (treino e teste_ext)"
     elif c_data:
         dia = {}
         for g, r in zip(grupo, rows):
@@ -857,11 +918,15 @@ def le_externo(arq, raiz, D, smoke=0, pesos=None):
     assert not (set(np.array(grupo)[treina]) & set(np.array(grupo)[~treina])), "grupo da lista externa dos dois lados (treino e teste_ext)"
     nomes_img = [os.path.basename(r[c_img]) for r in rows]
     assert len(set(nomes_img)) == len(nomes_img), "lista externa com fotos de mesmo nome"
-    conteudo = "\n".join(",".join(str(r.get(c, "")) for c in rows[0]) for r in rows)
+    if not c_split and "quadro_preferido" in rows[0]:      # divisão feita aqui: a métrica continua por prato
+        treina_ou_pref = np.array([t or r["quadro_preferido"] == "1" for t, r in zip(treina, rows)])
+        assert treina_ou_pref.all(), "lista externa sem coluna de divisão e com mais de um quadro por prato na parte segurada"
     return dict(ids=ids, imagens=[r[c_img] for r in rows], raiz=raiz, T=T, FF=FF, massa=m, dominios=doms, dom=np.array([doms.index(r["dominio"]) for r in rows]),
                 grupo=grupo, vista=[r["vista"] for r in rows], treina=treina, regra_teste_ext=regra, peso_alvo=pa, peso_ff=peso_ff,
                 hash=hashlib.sha256(conteudo.encode()).hexdigest()[:16],
-                resumo=dict(n=len(rows), grupos=len(set(grupo)), treino=int(treina.sum()), teste_ext=int((~treina).sum()), grupos_teste_ext=len(fora),
+                resumo=dict(n_lista=n_lista, fora_por_oclusao=n_ocl, fora_por_nao_ser_o_quadro_preferido_do_teste_ext=n_npref,
+                            n=len(rows), grupos=len(set(grupo)), treino=int(treina.sum()), grupos_treino=len(set(np.array(grupo)[treina])),
+                            teste_ext=int((~treina).sum()), grupos_teste_ext=len(set(np.array(grupo)[~treina])),
                             com_massa=int(np.isfinite(T[:, I_M]).sum()), com_fracoes=int(np.isfinite(FF).all(1).sum()), massa_mediana_g=float(np.nanmedian(m))))
 
 
@@ -1143,7 +1208,7 @@ def treina_cabeca(X, T, FF, w, dc, cfg, dev, alvos_prof=None, semente=0, ext=Non
     Pnn = None if alvos_prof is None else rep((alvos_prof - tm[q]) / ts[q])
     if ext is not None:      # linhas externas depois das do Nutrition5k; máscaras = presença do alvo × peso do alvo
         me = len(ext["X"])
-        Me = rep(np.isfinite(ext["T"]) * ext["peso_alvo"])
+        Me = rep(np.isfinite(ext["T"]) * ext["peso_alvo"] * (ts > 1e-3))     # alvo sem variação no Nutrition5k (só no --smoke): fora
         Mfe = rep(np.isfinite(ext["FF"]).all(1) * ext["peso_ff"])
         Xn = np.r_[Xn, ((ext["X"] - mu) / sd).reshape(-1, Dm).astype(np.float32)]
         Yn_ = np.r_[Yn_, rep(np.nan_to_num((ext["T"] - tm) / ts))]
@@ -1884,8 +1949,8 @@ def treina(cfg, D, C, tr, va, dev, prazo, div_lote=1, canais=3, professor=None, 
         n5k = len(D.ids)
         q = [I_M, I_D, I_P]
         tem_np = np.isfinite(T_tudo).astype(np.float32)                                               # máscara por alvo…
-        if ext:
-            tem_np[n5k:] *= ext["peso_alvo"]                                                          # …× peso do alvo nas externas
+        if ext:     # …× peso do alvo nas externas (alvo sem variação no Nutrition5k deste treino, só no --smoke: fora)
+            tem_np[n5k:] *= ext["peso_alvo"] * (ts > 1e-3)
         tem = torch.from_numpy(tem_np).to(dev)
         w_am = np.ones(len(T_tudo), np.float32)
         if cfg.get("peso_faixa"):
@@ -2627,6 +2692,9 @@ def retoma(a):
         for padrao in ("parte__*.npz", "pesos__*.pt", "cabeca__*.npz", "servir__*.json", "servico__*.json", "decisao_*.json"):
             for arq in glob.glob(os.path.join(pasta, padrao)):
                 dest = os.path.join(a.saida, os.path.basename(arq))
+                mesma_ext = bool(a.externo) and (man.get("externo") or {}).get("lista") == a._hash_ext
+                if not mesma_ext and any(slug(f" +{x}") in os.path.basename(arq) for x in EXTERNOS):
+                    continue        # treinado com a base externa de outra lista (ou esta execução não usa a base)
                 if padrao.startswith("decisao") and (json.load(open(arq)).get("motivo") or man.get("externo") is None or not a.externo
                                                      or man["externo"].get("lista") != a._hash_ext):
                     continue        # só vale de novo a decisão tomada pela regra, com a mesma lista externa
@@ -2815,7 +2883,9 @@ def orquestra(a, cfgs):
             f"pesos por alvo {EXTERNOS[a.externo]['pesos']}; só treina nas configurações '+{a.externo}'")
     info = dict(formato=FORMATO, rodada=a.rodada, smoke=bool(a.smoke), listas_hash=D.hash, listas2_hash=D.hash2,
                 externo=dict(nome=a.externo, lista=D.ext["hash"], resumo=D.ext["resumo"], regra_teste_ext=D.ext["regra_teste_ext"],
-                             pesos=EXTERNOS[a.externo]["pesos"], teto=TETO_EXTERNO, origem=EXTERNOS[a.externo]["origem"]) if D.ext else None,
+                             pesos=EXTERNOS[a.externo]["pesos"], teto=TETO_EXTERNO, fracao_por_epoca_no_ajuste_fino=FRACAO_EXT_EPOCA,
+                             origem=EXTERNOS[a.externo]["origem"], situacao="aguardando as fotos") if D.ext
+                else (dict(situacao=a.externo_fora) if getattr(a, "externo_fora", None) else None),
                 n_treino=int(D.usa_tr.sum()), conjuntos={s: int(D.usa_av[s].sum()) for s in D.conj}, inicio=time.strftime("%Y-%m-%d %H:%M:%S"),
                 orcamento_h=a.orcamento_h, gpus=gpus, torch=torch.__version__, timm=v_timm, python=sys.version.split()[0], guarda_pesos=a.guarda_pesos,
                 disco_livre_gb_inicio=dict(saida=livre(a.saida), cache=livre(a.cache)), argv=sys.argv[1:], configs={}, melhor_modelo=None)
@@ -2886,7 +2956,7 @@ def orquestra(a, cfgs):
                 if parte_pronta(a, c, p, D):
                     evento(c, p, tipo="retomou", seg=None if c["tipo"] in ("externo", "decisao") else float(np.load(arq_parte(a.saida, c, p))["seg"]))
                 elif os.path.exists(arq_parte(a.saida, c, p)):
-                    diz(f"retomada: {c['nome']} | {p} existe, mas sem teste2 ou sem os arquivos de servir: será refeita")
+                    diz(f"retomada: {c['nome']} | {p} existe, mas sem teste2, sem os arquivos de servir ou de outra lista externa: será refeita")
         manifesto()
         for c in cfgs:
             if estado_config(estado[slug(c["nome"])]) == "completa":
@@ -2901,6 +2971,33 @@ def orquestra(a, cfgs):
                             evento(c, q, tipo="cancelou", motivo=f"dependência fora desta execução e sem arquivo: {d}")
         manifesto()
     pendentes = [c for c in cfgs if estado_config(estado[slug(c["nome"])]) != "completa"]
+    a.externo_ate = t_ini + 45 * 60              # a base externa tem 45 min para chegar; depois disso a execução segue sem ela
+
+    def linha_externa(c):
+        """Baixa e prepara a base externa numa linha à parte (rede e CPU), desde o começo: as GPUs seguem com o
+        Nutrition5k enquanto isso. Se falhar, só as configurações com a base são canceladas, e o manifesto diz por quê."""
+        while estado[slug(c["nome"])]["tudo"]["estado"] == Estado.PENDENTE.value:
+            with trava:
+                evento(c, "tudo", tipo="iniciou", dispositivo="cpu"); manifesto()
+            t0 = time.time()
+            try:
+                prepara_externo(a, D)
+                with trava:
+                    evento(c, "tudo", tipo="concluiu", seg=time.time() - t0)
+                    info["externo"]["situacao"] = "fotos prontas"; manifesto()
+            except BaseException as ex:      # qualquer falha aqui só tira a base externa da execução
+                diz(f"base externa {a.externo}: {type(ex).__name__}: {ex}")
+                with trava:
+                    evento(c, "tudo", tipo="falhou", erro=f"{type(ex).__name__}: {ex}")
+                    if estado[slug(c["nome"])]["tudo"]["estado"] == Estado.FALHOU.value:
+                        info["externo"]["situacao"] = f"FORA desta execução: as fotos não ficaram prontas ({type(ex).__name__}: {ex})"
+                        diz(f"ATENÇÃO: a base externa {a.externo} fica de FORA desta execução; segue como em 12.3")
+                    manifesto()
+
+    if D.ext and any(c["tipo"] == "externo" and estado_config(estado[slug(c["nome"])]) == "completa" for c in cfgs):
+        info["externo"]["situacao"] = "fotos prontas"
+    ts_ext = [threading.Thread(target=linha_externa, args=(c,), daemon=True) for c in cfgs if c["tipo"] == "externo"] if pendentes else []
+    [t.start() for t in ts_ext]
     if pendentes or not a.sem_servico:
         Cache(a.cache, D).prepara(profundidade=any(c["tipo"] == "destila-rgbd" for c in pendentes))
 
@@ -2949,7 +3046,6 @@ def orquestra(a, cfgs):
 
     rodando = {}        # processo -> (configuração, início) da parte em execução
     reserva = 0 if a.sem_servico else 330        # tempo guardado para a fase de serviço dos candidatos a modelo único
-    a.externo_ate = t_ini + 45 * 60              # a base externa tem 45 min para chegar; depois disso a execução segue sem ela
 
     seg = lambda c: seg_parte(c, cfgs, estado)
 
@@ -3012,31 +3108,14 @@ def orquestra(a, cfgs):
                     cancela(c, f"a parte {p} falhou")
                 manifesto()
 
-    def linha_externa(c):
-        """Baixa e prepara a base externa numa linha à parte (rede e CPU): as GPUs seguem com o Nutrition5k enquanto isso.
-        Se falhar, só as configurações '+ext' são canceladas."""
-        while estado[slug(c["nome"])]["tudo"]["estado"] == Estado.PENDENTE.value:
-            with trava:
-                evento(c, "tudo", tipo="iniciou", dispositivo="cpu"); manifesto()
-            t0 = time.time()
-            try:
-                prepara_externo(a, D)
-                with trava:
-                    evento(c, "tudo", tipo="concluiu", seg=time.time() - t0); manifesto()
-            except Exception as ex:
-                diz(f"base externa: {type(ex).__name__}: {ex}")
-                with trava:
-                    evento(c, "tudo", tipo="falhou", erro=f"{type(ex).__name__}: {ex}"); manifesto()
-
     if pendentes:
         ts = [threading.Thread(target=trabalhador, args=(i, d)) for i, d in enumerate(disp)]
-        ts += [threading.Thread(target=linha_externa, args=(c,)) for c in cfgs if c["tipo"] == "externo"]
-        [t.start() for t in ts]; [t.join() for t in ts]
+        [t.start() for t in ts]; [t.join() for t in ts + ts_ext]
 
     # ---- fase de serviço: depois de todo o treino, um modelo por vez numa só GPU, com a CPU livre (latências limpas)
     def serve(c):
         s = slug(c["nome"])
-        if os.path.exists(arq_de(a.saida, c, "servico")):
+        if os.path.exists(arq_de(a.saida, c, "servico")) and estado_config(estado[s]) == "completa":
             return evento(c, "servico", tipo="retomou")
         if c.get("servico") is False:
             return evento(c, "servico", tipo="cancelou", motivo="sem modelo próprio a medir (mesmo backbone de um ridge, ou composição)")
@@ -3064,8 +3143,8 @@ def orquestra(a, cfgs):
             # na rodada 3, primeiro os candidatos a modelo único (a regra de 12.3 usa o tempo deles); depois os congelados
             for c in sorted(cfgs, key=lambda c: 0 if c.get("v3") and c["tipo"] in ("unico", "ft") else 1):
                 serve(c); manifesto()
-            feito = lambda nome: os.path.exists(arq_de(a.saida, dict(nome=nome), "servico"))
-            troca = lambda nome: next((c["nome"] for c in cfgs if c.get("plano") == nome and feito(c["nome"]) and not feito(nome)), nome)   # a versão que rodou
+            adot = bool((info.get("decisao_externo") or {}).get("adotado"))      # nos totais entra a versão adotada de cada candidato
+            troca = lambda nome: next((c["nome"] for c in cfgs if adot and c.get("plano") == nome and c["tipo"] in ("unico", "ft")), nome)
             sv = monta_servico(a, cfgs, {"smoke_todos": [c["nome"] for c in cfgs if est_serv[slug(c["nome"])]["servico"]["estado"] == Estado.FEITA.value]} if a.smoke
                                else ({k: [troca(x) for x in v] for k, v in PIPELINES3.items()} if a.rodada == "3" else PIPELINES))
             for k, v in sv["pipelines"].items():
@@ -3077,11 +3156,14 @@ def orquestra(a, cfgs):
                 arq = os.path.join(a.saida, f"pred__{slug(c['nome'])}.npz")
                 if os.path.exists(arq) and (c["tipo"] in ("professor", "unico", "ft")):
                     preds[c["nome"]] = np.load(arq, allow_pickle=False)
-            rel = relato_externo(D, preds)
-            grava_json(os.path.join(a.saida, "relato_externo.json"), rel)
-            for nome, r in rel["modelos"].items():
-                diz(f"relato externo (teste_ext, {rel['n_teste_ext']} fotos; não escolhe nada) {nome}: " + " | ".join(
-                    f"{k}: MAPE de massa {v['total'].get('mape')}%, viés mediano {v['total'].get('vies_mediano_pct')}%" for k, v in r.items() if isinstance(v, dict)))
+            try:        # relato secundário: nada aqui pode derrubar o fechamento da execução
+                rel = relato_externo(D, preds)
+                grava_json(os.path.join(a.saida, "relato_externo.json"), rel)
+                for nome, r in rel["modelos"].items():
+                    diz(f"relato externo (teste_ext, {rel['n_teste_ext']} pratos; não escolhe nada) {nome}: " + " | ".join(
+                        f"{k}: MAPE de massa {v['total'].get('mape')}%, viés mediano {v['total'].get('vies_mediano_pct')}%" for k, v in r.items() if isinstance(v, dict)))
+            except Exception as ex:
+                diz(f"relato externo: não foi possível montar ({type(ex).__name__}: {ex})")
         info["disco_livre_gb_fim"] = dict(saida=livre(a.saida), cache=livre(a.cache))
         manifesto()
         tam = grava_tamanhos(a)
@@ -3145,6 +3227,7 @@ def main():
             Dados(a.listas, a.smoke, a.rodada, a.externo_lista, a.externo_imagens, a.externo_pesos)
         except (OSError, AssertionError, KeyError, ValueError) as e:
             assert not a.job, f"lista externa inválida num processo filho: {e}"
+            a.externo_fora = f"FORA desta execução: a lista de {a.externo} não está pronta ou não passou nas conferências ({type(e).__name__}: {e})"
             print(f"ATENÇÃO: a base externa {a.externo} fica de FORA desta execução ({type(e).__name__}: {e}); segue como em 12.3", flush=True)
             a.externo = None
     if not a.externo:
