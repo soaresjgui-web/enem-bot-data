@@ -1,7 +1,7 @@
 # Modelo treinado: proteína só pela foto, sem informar porção (09/11/2026)
 
 **Pergunta:** um modelo **treinado** (e não um LLM em nuvem) consegue sugerir a proteína só pela foto e atingir a meta de **≥ 70% dos pratos dentro de ±20% ou ±5 g**?
-**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. No LLM, o erro estava na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede identificação e partes da massa em vez de gramas. **Com as estimativas v3, o híbrido fica em cerca de 70% no teste: 71,4% com a média de duas rodadas cegas independentes** (IC 66,4 a 76,4; +8,6 sobre o híbrido da seção 8, IC +3,9 a +13,2; +4,3 sobre o híbrido com v2, IC +1,4 a +7,5), 70,4% na primeira rodada sozinha e 68,6% na segunda, feita como réplica. **É a primeira estimativa pontual na meta de 70%, e não é a meta demonstrada:** o intervalo começa em 66%, a réplica sozinha ficou abaixo de 70%, são 280 pratos do Nutrition5k, o `n5k_v1` (50 pratos) dá 62%, o pipeline depende de um LLM em nuvem, e os pratos com mais de 25 g continuam em 45% e 55%, agora limitados pelo erro de massa. As duas rodadas erram nos mesmos pratos, então repetir a estimativa não melhora o resultado. **Atualização (seção 10, treino em GPU):** 15 configurações treinadas no Kaggle (2 × T4, 5,7 h) dão um modelo de massa melhor: a média de cinco backbones congelados de alta resolução baixa o erro de massa de 16,9% para 15,3% e reduz o viés nos pratos com mais de 25 g de −12% e −8% para −6% e −2%. Com ele, o **só imagem sobe de 64,6% para 69,6%** (IC 64 a 75; ganho de +5,0, IC +0,4 a +9,6), e os pratos com mais de 25 g saem de 42% para 54%. O **híbrido com o LLM v3 fica em 72,9%** (IC 67,5 a 78,2), +1,4 sobre os 71,4% de antes, sem diferença segura. Todas as formas com a densidade v3 dão de 70% a 75% no teste nas três leituras do LLM, mas **a meta de 70% continua não demonstrada**: o limite inferior do intervalo é 67,5%, e a forma de híbrido que o `calib` prefere entre todas dá 68,2%. Um modelo único que caiba no aparelho dá 62,9%, sem ganho seguro sobre os 61,1% da seção 8; o ganho está em juntar backbones grandes, no servidor. **Atualização (seção 11, conjunto de teste novo):** um segundo conjunto, o `teste2` (829 pratos do Nutrition5k nunca vistos por nenhum modelo, em 190 cadeias), foi lido **uma vez**, com o pipeline congelado e a regra escrita antes. **Híbrido com o LLM v3: 70,8%** (ponderado para as cinco faixas de proteína terem o mesmo peso; IC por cadeia de 66,3 a 75,2). **Só imagem: 69,7%** (IC 65,2 a 74,2). Os dois conjuntos juntos (1.109 pratos): 71,5% (IC 67,9 a 75,2). **Veredito pela regra: 70% não demonstrado e não refutado.** O nível de cerca de 70% se repetiu; o limite inferior do intervalo, não. No `teste2` o LLM não acrescentou nada distinguível ao só imagem (+1,1, IC −2,1 a +4,3), os pratos com mais de 25 g ficaram em 52%, e o modelo único de aparelho, em 64,5%. O `teste2` não é independente do `teste` (722 dos 829 pratos são o mesmo prato do `teste` em outro momento da montagem), e tudo continua sendo Nutrition5k. Servir o pipeline só de imagem custa cerca de 1,7 a 2,0 s por foto numa GPU T4, com 3,6 GB de pesos.
+**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. No LLM, o erro estava na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede identificação e partes da massa em vez de gramas. **Com as estimativas v3, o híbrido fica em cerca de 70% no teste: 71,4% com a média de duas rodadas cegas independentes** (IC 66,4 a 76,4; +8,6 sobre o híbrido da seção 8, IC +3,9 a +13,2; +4,3 sobre o híbrido com v2, IC +1,4 a +7,5), 70,4% na primeira rodada sozinha e 68,6% na segunda, feita como réplica. **É a primeira estimativa pontual na meta de 70%, e não é a meta demonstrada:** o intervalo começa em 66%, a réplica sozinha ficou abaixo de 70%, são 280 pratos do Nutrition5k, o `n5k_v1` (50 pratos) dá 62%, o pipeline depende de um LLM em nuvem, e os pratos com mais de 25 g continuam em 45% e 55%, agora limitados pelo erro de massa. As duas rodadas erram nos mesmos pratos, então repetir a estimativa não melhora o resultado. **Atualização (seção 10, treino em GPU):** 15 configurações treinadas no Kaggle (2 × T4, 5,7 h) dão um modelo de massa melhor: a média de cinco backbones congelados de alta resolução baixa o erro de massa de 16,9% para 15,3% e reduz o viés nos pratos com mais de 25 g de −12% e −8% para −6% e −2%. Com ele, o **só imagem sobe de 64,6% para 69,6%** (IC 64 a 75; ganho de +5,0, IC +0,4 a +9,6), e os pratos com mais de 25 g saem de 42% para 54%. O **híbrido com o LLM v3 fica em 72,9%** (IC 67,5 a 78,2), +1,4 sobre os 71,4% de antes, sem diferença segura. Todas as formas com a densidade v3 dão de 70% a 75% no teste nas três leituras do LLM, mas **a meta de 70% continua não demonstrada**: o limite inferior do intervalo é 67,5%, e a forma de híbrido que o `calib` prefere entre todas dá 68,2%. Um modelo único que caiba no aparelho dá 62,9%, sem ganho seguro sobre os 61,1% da seção 8; o ganho está em juntar backbones grandes, no servidor. **Atualização (seção 11, conjunto de teste novo):** um segundo conjunto, o `teste2` (829 pratos do Nutrition5k nunca vistos por nenhum modelo, em 190 cadeias), foi lido **uma vez**, com o pipeline congelado e a regra escrita antes. **Híbrido com o LLM v3: 70,8%** (ponderado para as cinco faixas de proteína terem o mesmo peso; IC por cadeia de 66,3 a 75,2). **Só imagem: 69,7%** (IC 65,2 a 74,2). Os dois conjuntos juntos (1.109 pratos): 71,5% (IC 67,9 a 75,2). **Veredito pela regra: 70% não demonstrado e não refutado.** O nível de cerca de 70% se repetiu; o limite inferior do intervalo, não. No `teste2` o LLM não acrescentou nada distinguível ao só imagem (+1,1, IC −2,1 a +4,3), os pratos com mais de 25 g ficaram em 52%, e o modelo único de aparelho, em 64,5%. O `teste2` não é independente do `teste` (722 dos 829 pratos são o mesmo prato do `teste` em outro momento da montagem), e tudo continua sendo Nutrition5k. Servir o pipeline só de imagem custa cerca de 1,7 a 2,0 s por foto numa GPU T4, com 3,6 GB de pesos. **Seção 12 (desenho e pré-registro, sem resultados):** com a decisão de usar só imagem e reduzir as nove redes a um modelo (no máximo dois), o treino do Nutrition5k cresce de 1.684 para 2.281 pratos sem tocar no teste2, a próxima execução em GPU está especificada, e o teste2 pode ser lido mais duas vezes no máximo, uma por candidato congelado. A expectativa registrada é que um modelo só fique de 1 a 3 pontos abaixo das nove redes e que a meta não seja demonstrada só com o Nutrition5k.
 
 Scripts em `eval/treino/`. Dados, features, pesos e o `.mlpackage` ficam só no scratchpad (`…/scratchpad/treino/`), fora do repositório.
 
@@ -1518,6 +1518,129 @@ Medidas de `servico.json` e `tamanhos.json` (pasta de saída do Kaggle, fora do 
 - **Não medido:** nada no iPhone (nem conversão para Core ML, nem latência, nem memória); as três cabeças de frações de CPU (MLPs pequenas sobre features já calculadas, custo presumido desprezível, não cronometrado); o backbone a 224 px em CPU; a chamada ao LLM de visão (latência e preço por foto); decodificação da imagem e transferência; vazão com várias fotos ao mesmo tempo; custo em dinheiro por foto.
 
 
+## 12. Um modelo só e mais dados de treino (11/11/2026)
+
+**Direção nova (registrada em `docs/produto.md`, seção 7):** 70% é o **mínimo**, não o teto; a v1 é **só de imagem** (sem LLM em nuvem: no teste2 ele não mostrou ganho seguro); o conjunto de nove redes tem de virar **um modelo, no máximo dois**, a partir de uma foto de cima; e é preciso **mais dados de treino**. Esta seção é desenho e pré-registro. **Nada aqui leu o teste2**, e nenhum modelo novo foi treinado ainda.
+
+### 12.1 Protocolo de avaliação daqui para a frente
+
+1. **Teste de registro: o teste2** (829 pratos, 190 cadeias), com a medida de 11.3: critério do produto ponderado para as cinco faixas de proteína terem o mesmo peso, intervalo de 95% por bootstrap de cadeias. Ele foi lido **uma vez** (11.5). Referências nessa medida:
+
+| Pipeline (seção 11) | teste2, ponderado (IC por cadeia) | > 25 g |
+|---|---|---|
+| Só imagem, nove redes | 69,7% (65,2 a 74,2) | 52,9% |
+| Modelo único `gpu ft siglip2_b16_224 r2` | 64,5% (60,1 a 68,8) | 44,7% |
+| (Híbrido com LLM v3, fora da v1) | 70,8% (66,3 a 75,2) | 51,9% |
+
+2. **Regra de sucesso:** meta demonstrada só se o **limite inferior do intervalo de 95% for 70% ou mais** nessa medida. Com 190 cadeias o intervalo tem cerca de ±4,5 pontos: **a estimativa precisa estar perto de 74,5%**. É 5 pontos acima do melhor pipeline de hoje e 10 acima do melhor modelo único.
+3. **Como se escolhe sem tocar no teste2:** validação cruzada agrupada por cadeia (5 folds) no treino, com o critério ponderado por faixa, como nas seções 8 a 10. Toda escolha (modelo, rota, número de orientações, uso de dados externos) sai da CV. O `calib` deixa de existir como conjunto separado (12.2).
+4. **Leituras do teste2 permitidas a partir de agora: no máximo duas, uma por candidato final congelado.**
+   - **C1, o modelo único** que a regra de 12.3 escolher pela CV. É o candidato principal.
+   - **C2, um pipeline de dois modelos,** só se ajudar com clareza na CV: critério de CV pelo menos **2,0 pontos** acima do C1 **e** limite inferior de 95% (por cadeia, nas previsões fora-do-fold) da diferença pareada acima de zero.
+   - As duas leituras, se houver duas, saem **na mesma execução**. Com dois candidatos lidos, o intervalo de 97,5% (correção para duas leituras) é relatado ao lado do de 95%; "passou com folga" só se o limite inferior de 97,5% também for 70% ou mais.
+   - O professor (12.3) e os candidatos que perderem na CV **não** são pontuados no teste2.
+5. **O que não pode entrar em nenhuma escolha:**
+   - as fotos do teste2, nem sem rótulo (nada de destilação ou pseudo-rótulo nelas);
+   - os resultados por prato do teste2 da seção 11 (o arquivo existe no scratchpad; não é aberto para desenhar nada);
+   - os pratos da avaliação antiga que ficam fora do treino (204 do `teste` e 41 do `n5k_v1` em cadeia do teste2): são irmãos de pratos do teste2, então escolher por eles seria escolher pelo teste2. Não são pontuados antes da leitura final.
+6. **O `teste` antigo (280) está aposentado como número de manchete.** 65 dos seus pratos entram no treino (12.2); os outros são irmãos do teste2. Os números das seções 2 a 10 ficam como história.
+7. **Antes de cada leitura:** conferências sem gabarito, como em 11.4 (previsões completas e na ordem de `aval2_ids.csv`; modelo remontado dos arquivos de servir reproduz as previsões gravadas).
+
+### 12.2 Mais treino do Nutrition5k: treino_v2
+
+Com o LLM fora, o `calib` não ajusta mais nada e pode treinar. A regra (`eval/treino/treino_v2_monta.py`): entra todo prato com foto zenital que passa no filtro do treino, **não é do teste2 e não está na cadeia (< 120 s) de nenhum prato do teste2**.
+
+| Origem | Pratos |
+|---|---|
+| Treino antigo (seções 8 a 11) | 1.684 |
+| Pratos que estavam fora só por estar em cadeia do `calib` | 405 |
+| `calib` (2 dos 120 não passam no filtro do treino) | 118 |
+| `teste` antigo, só os de cadeias que não tocam o teste2 | 65 |
+| `n5k_v1`, idem | 9 |
+| **treino_v2** | **2.281 pratos, 646 cadeias** (antes: 1.684 e 511) |
+
+| Faixa de proteína | 0–5 g | 5–15 g | 15–25 g | 25–40 g | > 40 g | > 25 g | > 15 g |
+|---|---|---|---|---|---|---|---|
+| Treino antigo | 643 | 360 | 220 | 282 | 179 | 461 | 681 |
+| **treino_v2** | 846 | 450 | 310 | 391 | 284 | **675** | **985** |
+| Aumento | +32% | +25% | +41% | +39% | +59% | **+46%** | +45% |
+
+- **Conferência com o grafo de cadeias** (o script confere com `assert`): 0 pratos do teste2 no treino_v2; 0 cadeias em comum; cada cadeia num fold só; os alvos dos 1.684 pratos antigos são idênticos aos de `listas/treino.csv`.
+- **O que continua fora de tudo:** os 829 do teste2; 204 pratos do `teste` antigo e 41 do `n5k_v1` que estão em cadeia do teste2 (confirmado: 166 das 230 cadeias do `teste` antigo tocam o teste2); 11 do `teste` e 2 do `calib` que não passam no filtro do treino.
+- **`eval/treino/kaggle/listas/treino_v2.csv`:** mesmo esquema de `treino.csv` (cadeia, fold por cadeia, alvos, massa e proteína por grupo), com 10 colunas a mais no fim, `ff_<fonte>`: a fração da massa do prato em cada fonte de proteína (alvo das cabeças de frações de 12.3). Os folds são novos (GroupKFold de 5 sobre as 646 cadeias; 456 ou 457 pratos por fold, 125 a 154 com mais de 25 g). `n5k_treino_v2_origem.csv` guarda a origem de cada prato.
+- **Quanto esperar disso:** o ganho de dados é de 35% no total e de 46% acima de 25 g, do mesmo refeitório. A curva da seção 3 já estava quase plana, então conto com 1 a 2 pontos, concentrados nos pratos grandes. Não resolve sozinho.
+
+### 12.3 Especificação da terceira execução em GPU
+
+Orçamento: cerca de 3,5 h de relógio em 2 × T4 (a cota semanal está no fim). Tempos de referência da segunda execução: os cinco backbones congelados, 75 min de GPU; ajuste fino do SigLIP 2 B/16 a 224 px (`r2`), 45 min; a 384×512 (`r1`), 112 min. Com 35% a mais de treino, os ajustes finos passam para cerca de 61 e 151 min. **Só entram no treino os pratos de `treino_v2.csv`. As fotos do teste2 só servem para gerar previsões no fim.**
+
+**O que as seções 8 a 11 ensinaram e o desenho usa:**
+
+- Massa: backbones grandes **congelados** com ridge ganham de todo ajuste fino (0,219 a 0,228 contra 0,245 a 0,266 de RMSE em log); a média de cinco chega a 0,205. O ajuste fino ajuda a proteína, não a massa.
+- Densidade: prever a **fração da massa por fonte de proteína** com erro quadrático ganha de prever a densidade direto (+6 pontos com a massa real); classes mais finas e ingredientes não ajudam.
+- Resolução ajuda a identificar (fonte certa em 78–80% a 384×512 contra 74% a 224 px). Profundidade e destilação RGB-D não ajudam (três tentativas). Esticar previsões não ajuda. Peso por faixa ajuda um pouco a densidade e nunca foi testado na massa.
+- Um modelo único fica 5 pontos abaixo do conjunto (64,5% contra 69,7% no teste2). O conjunto ganha por juntar backbones, não por uma receita.
+
+**Configurações, em ordem de prioridade** (se o orçamento acabar, as últimas ficam de fora e a regra vale para as que terminarem):
+
+| # | Nome | O que é | Custo de GPU (estimativa) |
+|---|---|---|---|
+| 1–5 | `gpu3 ridge <backbone> o8`, para `siglip2_so400m16_384x512`, `siglip2_l16_384x512`, `dinov2_l14_336x448`, `siglip2_b16_384x512`, `dinov2_b14_336x448` | Como na segunda execução, treinados no treino_v2. As features (8 orientações) ficam em cache para as cabeças abaixo | 80 min (dividir entre as duas GPUs) |
+| 6–8 | `gpu3 fracoes so400m`, `gpu3 fracoes l16`, `gpu3 fracoes b16_384x512` | Cabeça de frações por fonte sobre as features congeladas de cada backbone (nunca testada nos backbones grandes) | 2 min |
+| 9 | `gpu3 professor` | **Professor:** massa = média em log das 5 massas ridge; densidade = média em log (piso 0,01) das 3 cabeças de frações e da cabeça de densidade do ridge So400m; proteína = massa × densidade. Só modelos sobre features congeladas, para permitir alvos aninhados | 3 min |
+| 10 | `gpu3 unico so400m mlp destilado` (**U1**) | **Um backbone congelado** (So400m/16 a 384×512) + cabeça MLP com rótulos e destilação. Modelo único de servidor | 2 min |
+| 11 | `gpu3 ft siglip2_b16_224 r2 destilado` (**U4**) | Ajuste fino completo, receita `r2`, com cabeça de frações, peso por faixa e destilação. Modelo único do tamanho do aparelho | 61 min |
+| 12 | `gpu3 ft siglip2_b16_384x512 r1 destilado` (**U3**) | Idem a 384×512, receita `r1` (12 épocas) | 151 min |
+| 13 | `gpu3 ft siglip2_b16_224 r2` (**U0**) | A receita `r2` sem mudança, só com o treino_v2. Mede quanto vem dos dados e quanto do resto | 61 min |
+
+Ordem sugerida: GPU A extrai So400m e B/16; GPU B extrai L/16 e os dois DINOv2 (~40 min); cabeças e professor (~5 min); depois GPU A roda U3 e GPU B roda U4 e U0. Total: cerca de 3,3 h de relógio, mais as medidas de serviço.
+
+**Detalhes que precisam ser iguais ao que está escrito:**
+
+- **Cabeça de frações (6–8 e dentro de U1, U3, U4):** como `soft-mlp fonte-l2 +perda-dens peso-faixa` de `dens_experimentos.py`. Nas features congeladas: MLP de uma camada oculta (512, GELU, dropout 0,3) sobre features padronizadas, cada orientação como amostra; saídas = as 22 em log (padronizadas) + 10 logits; AdamW (lr 1e-3, decaimento 1e-2), 60 épocas, lote 256, OneCycle. Perdas: Huber nas 22 saídas; **10 × erro quadrático entre o softmax e as frações `ff_*`**; Huber em log da densidade composta Σ fração × densidade média da fonte. Peso por amostra = as cinco faixas de proteína com o mesmo peso. A densidade média de cada fonte sai do treino do fold (mínimos quadrados não negativos de proteína ≈ Σ `ff` × massa × densidade da fonte; no treino antigo: frango e peru 28,2; bovina 25,7; suína 26,2; peixe 21,2; ovo 10,1; leguminosa 8,4; laticínio 12,9; prato pronto 10,7; castanhas 21,4; resto 1,9 g/100 g). Nos ajustes finos (U3, U4), a mesma cabeça de 22 + 10 saídas no lugar da de 22, com as mesmas três perdas.
+- **Destilação (U1, U3, U4):** soma à perda de rótulos um Huber entre a saída do aluno e a do professor em três quantidades (log da massa, log da densidade com piso 0,01, log1p da proteína), com peso 0,5. **Alvos aninhados:** ao treinar o aluno sem o fold k, o alvo do professor para um prato do fold j vem de um professor treinado sem os folds j e k. Para o modelo final (treino inteiro), usam-se as previsões fora-do-fold comuns do professor. Isso é barato porque o professor só tem ridge e MLP sobre features em cache. Sem o aninhamento, a CV do aluno enxergaria os rótulos do fold de validação através do professor.
+- **Peso por faixa (U1, U3, U4):** cinco faixas com o mesmo peso em todas as perdas, inclusive a de massa. É a medida voltada aos pratos com mais de 25 g, junto com a cabeça de frações e os 46% a mais de pratos grandes. U0 fica sem peso, sem frações e sem destilação, de propósito.
+- **Aumento de dados nos ajustes finos:** orientações e escala aleatória (0,7 a 1,3), como nas receitas `r1` e `r2`. Nada de fotos do teste2, nem sem rótulo.
+- **Orientações na previsão:** cada configuração grava as previsões com **1** (a original), **4** (as que preservam o quadro) e **8** orientações, fora-do-fold e no teste2, para a regra abaixo decidir o custo.
+
+**O que cada configuração grava:** `pred__<nome>.npz` com `oof` [2.281 × 22] e `teste2` [829 × 22] na ordem de `listas/treino_v2.csv` e `listas/aval2_ids.csv`, mais `oof_ff` e `teste2_ff` [× 10] quando há cabeça de frações, e as variantes `_o1` e `_o4`; os ids, os folds e o hash das listas; registro por época; pesos em meia precisão e os arquivos de servir (como na segunda execução), com a conferência do modelo remontado; medidas de serviço (T4 e CPU, 1, 4 e 8 orientações). O professor grava também os alvos aninhados. **Não** gerar previsões para os 450 pratos da avaliação antiga.
+
+**Regra que escolhe O modelo (C1), aplicada aqui, na CPU, só com as previsões fora-do-fold:**
+
+1. Para cada candidato único (U0, U1, U3, U4): a **rota** de proteína de maior critério de CV ponderado, com 8 orientações, entre: direta; massa × densidade da regressão; massa × densidade das frações; massa × média em log das duas densidades; média geométrica da direta com a anterior.
+2. **Orientações:** o menor número entre 1, 4 e 8 cujo critério de CV fique a até 1,0 ponto do de 8.
+3. **C1 = o candidato de maior critério de CV.** Se outro ficar a menos de 1,0 ponto do melhor, vale o **mais barato de servir** entre eles (tempo por foto na T4 com as orientações escolhidas).
+4. **C2:** entre os três pares declarados (U1 + U3, U1 + U4, U3 + U4; média em log das estimativas de proteína de cada um na sua rota), o de maior critério de CV; só é lido no teste2 se passar no critério de 12.1 (2,0 pontos e diferença pareada acima de zero).
+5. O professor não concorre: são cinco redes. Ele entra na tabela de CV como referência do que um conjunto dá no treino_v2.
+
+**O que eu espero, com a incerteza que tenho:**
+
+| | CV no treino_v2 (critério ponderado) | teste2 (ponderado) |
+|---|---|---|
+| Referência de hoje, CV no treino antigo: `r2` 65,7%; nove redes 70,5% | | 64,5%; 69,7% |
+| U0 (`r2` com mais dados) | 66 a 68% | 65 a 67% |
+| U4 (224 px, destilado) | 67 a 69,5% | 66 a 68,5% |
+| U3 (384×512, destilado) | 67 a 70% | 66 a 69% |
+| U1 (So400m congelado + MLP) | 67 a 70% | 66 a 69% |
+| Melhor par | +1 a +1,5 sobre o melhor único | 67 a 70% |
+| Professor (cinco redes congeladas) | 70 a 73% | não é lido |
+
+- **Não espero que um modelo só chegue ao nível das nove redes.** O mais provável é ficar de 1 a 3 pontos abaixo de 69,7% no teste2. Dou cerca de uma chance em quatro de empatar ou passar.
+- **Não espero que nada treinado só com o Nutrition5k demonstre a meta no teste2.** Para o limite inferior chegar a 70%, a estimativa teria de estar perto de 74,5%. Dou menos de 5% de chance a isso nesta execução, com um ou com dois modelos.
+- **Onde posso estar errado para melhor:** as cabeças de frações nunca foram treinadas sobre os backbones grandes, e o peso por faixa nunca foi usado na massa. Se os dois renderem como renderam na densidade da seção 9, o U1 pode surpreender.
+- **O que seria preciso para um modelo só chegar lá:** (a) mais pratos pesados com mais de 25 g, de outra origem, que é o que 12.4 prepara; (b) um backbone grande com ajuste fino a 384×512 (So400m: cerca de 8 h de GPU, fora deste orçamento), se o U1 mostrar que o backbone é o que importa; (c) fotos sem rótulo, que não sejam do teste2, para a destilação. E, para a **demonstração**, o intervalo: mesmo um modelo de 73% de verdade falharia na regra metade das vezes com 190 cadeias. Um conjunto de teste maior e independente (a coleta brasileira) é parte da resposta, não só um modelo melhor.
+
+### 12.4 Gancho para dados externos
+
+A pesquisa de bases externas está em curso (`docs/dados/precisao/fontes_treino.md`). Uma base nova entra assim, sem mudar o protocolo de 12.1:
+
+1. **Lista própria**, no mesmo esquema de `treino_v2.csv`, com três colunas a mais: `dominio` (`n5k_zenital` para o que existe hoje; um nome por base externa), `grupo` (a unidade que não pode ser separada entre folds: prato, sessão ou usuária) e `vista` (`zenital` ou outra). **Alvo ausente fica vazio**, e a perda daquele alvo é mascarada para a amostra (uma base só com proteína e calorias, sem massa, treina proteína e densidade, não massa).
+2. **Dados externos só treinam.** Entram em todos os folds de treino (fold −1) e **nunca** nos folds de validação que escolhem o modelo: o critério de CV continua calculado só nos pratos do treino_v2. A exceção é uma base zenital, com escala comparável e massa e proteína pesadas: ela pode ter CV própria, relatada à parte, e só passa a contar na escolha se isso for declarado antes de rodar.
+3. **Peso por domínio:** a soma dos pesos das amostras externas fica em no máximo metade da do Nutrition5k, para a base maior não mandar no modelo.
+4. **Escala:** se a distância da câmera for outra, a base entra com a escala aleatória ligada e com um viés de log-massa por domínio na cabeça (aprendido no treino; na previsão vale o do `n5k_zenital`). Sem isso, a massa aprende a distância da base, que é o problema de 8.7.
+5. **Higiene:** qualquer base derivada do Nutrition5k passa pela regra de cadeia contra o teste2 antes de entrar; bases com fotos repetidas do mesmo prato são agrupadas por `grupo`.
+6. **Adoção pela CV:** cada base é uma ablação pré-declarada (com e sem), e só fica se o critério de CV no treino_v2 subir pelo menos 1,0 ponto. As leituras do teste2 continuam sendo no máximo duas.
+
 ## Reproduzir
 
 ```
@@ -1604,3 +1727,10 @@ python3 teste2_avalia.py <pasta_kaggle_2> --confere       # conferências sem ga
 python3 teste2_avalia.py <pasta_kaggle_2>                 # leitura única do teste2
 ```
 A segunda execução no Kaggle (`eval/treino/kaggle/`, com `listas/aval2_ids.csv`) grava também `servico.json` e `tamanhos.json`, de onde saem os números de 11.6. A rodada cega v3 do teste2 está em `docs/dados/precisao/estimativas_v3_teste2_partes.csv`; o resultado da leitura única, em `$TD/resultados/dens/teste2/avalia_teste2.json`.
+
+Seção 12 (um modelo só e mais dados).
+```
+cd eval/treino
+python3 treino_v2_monta.py $TD       # treino_v2 (2.281 pratos), folds por cadeia, conferência de cadeias contra o teste2
+```
+A terceira execução em GPU (12.3) usa `eval/treino/kaggle/listas/treino_v2.csv` e `aval2_ids.csv`; a escolha do modelo pela CV e a leitura do teste2 (no máximo duas) rodam aqui depois, pela regra de 12.1 e 12.3.
