@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Seção 8 em GPU (Kaggle/Colab): os experimentos que não couberam em CPU, de ponta a ponta e sem interação.
+"""Treino em GPU (Kaggle/Colab) da seção 8 e nova execução para o teste2 (seção 11), de ponta a ponta e sem interação.
 
 Premissa do produto: a inferência usa UMA foto RGB tirada de cima. Critério: proteína dentro de ±20% ou ±5 g.
 
 Uso (Kaggle/Colab, pelo notebook nutrelle_treino_gpu.ipynb, ou direto):
-  python3 treino_gpu.py                       roda todas as configurações, em ordem de prioridade, até o orçamento
-  python3 treino_gpu.py --lista               mostra as configurações declaradas e sai
+  python3 treino_gpu.py                       execução 2 (padrão): as 11 configurações de RODADAS["2"], até o orçamento
+  python3 treino_gpu.py --rodada 1            as 15 configurações da execução 1 (seção 10)
+  python3 treino_gpu.py --lista               mostra as configurações da rodada e sai
   python3 treino_gpu.py --so "ft siglip2"     só as configurações cujo nome contém o texto
   python3 treino_gpu.py --smoke               teste rápido em CPU (backbone minúsculo, poucas dezenas de pratos)
   python3 treino_gpu.py --checa-modelos       monta cada backbone sem pesos e passa uma imagem (sem rede)
@@ -13,29 +14,39 @@ Uso (Kaggle/Colab, pelo notebook nutrelle_treino_gpu.ipynb, ou direto):
 
 O que faz:
   1. Baixa do bucket público do Nutrition5k as fotos zenitais (e a profundidade, só se a destilação for rodar)
-     dos pratos de listas/treino.csv e listas/aval_ids.csv, em paralelo, com novas tentativas e retomada.
-  2. Para cada configuração declarada em CONFIGS (ordem = prioridade): previsões fora-do-fold no treino
-     (os MESMOS 5 folds por cadeia da CPU, coluna `fold` de listas/treino.csv) + previsões nos 450 pratos de
-     avaliação por um modelo treinado em todo o treino, com média de 8 orientações (grupo diedral).
-  3. Grava na pasta de saída, sem subpastas: pred__<config>.npz/.csv (mesmo esquema do banco de previsões
-     zen_banco), log__<config>.json (curvas de perda, tempos), parte__*.npz (retomada), pesos__<melhor>.pt,
-     manifesto.json (estado de cada parte), eventos.jsonl e treino_gpu.log.
+     dos pratos de listas/treino.csv, listas/aval_ids.csv e, se existir, listas/aval2_ids.csv (teste2), em paralelo,
+     com novas tentativas e retomada.
+  2. Para cada configuração (ordem de CONFIGS = prioridade): previsões fora-do-fold no treino (os MESMOS 5 folds por
+     cadeia da CPU, coluna `fold` de listas/treino.csv) + previsões nos 450 pratos de avaliação e nos pratos do teste2
+     por um modelo treinado em todo o treino, com média de 8 orientações (grupo diedral).
+  3. Grava o que é preciso para servir: pesos__<config>.pt (ajuste fino, meia precisão), cabeca__<config>.npz (ridge
+     sobre backbone congelado; o backbone público não é regravado: ficam a URL, o tamanho e o sha256) e
+     servir__<config>.json (pré-processamento, orientações, saídas).
+  4. Fase de serviço, depois de todo o treino e com a máquina livre: remonta cada modelo só com esses arquivos, confere
+     que ele reproduz as previsões gravadas e mede latência (uma T4 em fp16, lotes de 1 e de 8, 1 e 8 orientações;
+     CPU com o número de threads registrado). Resultado em servico.json, com os totais dos pipelines de PIPELINES.
+  5. Tudo na pasta de saída, sem subpastas: pred__<config>.npz/.csv (esquema do banco zen_banco + teste2),
+     log__<config>.json, parte__*.npz (retomada), manifesto.json, eventos.jsonl, tamanhos.json e treino_gpu.log.
 
-Higiene (igual à da CPU, ver docs/dados/precisao/resultado_modelo_treinado.md, 8.1):
-  - treino = os 1.684 pratos de listas/treino.csv (regra estrita de cadeia); os 450 pratos de avaliação nunca
-    entram no treino, nem como imagem sem rótulo (o script confere a interseção);
-  - este script NÃO lê o gabarito de calib/teste/n5k_v1: só grava previsões; a nota sai em ingere_kaggle.py;
-  - sem parada antecipada: épocas fixas por receita; a validação por época só é registrada.
+Higiene (igual à da CPU, ver docs/dados/precisao/resultado_modelo_treinado.md, 8.1 e 11.1):
+  - treino = os 1.684 pratos de listas/treino.csv (regra estrita de cadeia); os 450 pratos de avaliação e os do
+    teste2 nunca entram no treino, nem como imagem sem rótulo (o script confere as interseções);
+  - este script NÃO lê nenhum gabarito de avaliação (calib/teste/n5k_v1/teste2): só grava previsões;
+  - sem parada antecipada: épocas fixas por receita; a validação por época só é registrada;
+  - a execução 2 não muda nada no treino: mesmas receitas, sementes, folds, ordem dos lotes e lotes de extração
+    das features do treino + 450 (os pratos do teste2 são extraídos em lotes à parte, depois).
 
-Retomada: cada parte (fold0..fold4, final) vira um arquivo parte__*.npz ao terminar. Ao iniciar, o script
-copia partes de --retoma (ou de /kaggle/input/**, se houver um manifesto.json deste formato) e pula o que já existe.
+Retomada: cada parte (fold0..fold4, final; tudo no ridge) vira um arquivo parte__*.npz ao terminar. Ao iniciar, o
+script copia partes de --retoma (ou de /kaggle/input/**, se houver um manifesto.json deste formato) e pula o que já
+existe e está completo para esta execução (uma parte final/tudo sem teste2 ou sem os arquivos de servir é refeita).
 """
 import argparse, csv, glob, hashlib, json, math, os, shutil, subprocess, sys, tempfile, threading, time, traceback, zlib
 from concurrent.futures import ThreadPoolExecutor
 from enum import Enum
 import numpy as np
 
-FORMATO = "nutrelle-treino-gpu/1"
+FORMATO = "nutrelle-treino-gpu/2"          # /2 = /1 + teste2, arquivos de servir e servico.json
+FORMATOS_ACEITOS = ("nutrelle-treino-gpu/1", FORMATO)
 AQUI = os.path.dirname(os.path.abspath(__file__))
 BUCKET = "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead"
 SPLITS = ["calib", "teste", "n5k_v1"]
@@ -84,24 +95,38 @@ def _ft(bb, receita, est_min, tipo="ft", sufixo="", **kw):
 
 
 _ALTA = dict(bs=16, acum=2, ckpt_grad=True)     # 768 tokens: lote menor + checkpoint de gradiente (16 GB)
-# Ordem = prioridade. est_min = estimativa (NÃO medida) de minutos numa única T4 para a configuração inteira.
+# Ordem = prioridade. est_min = minutos de GPU MEDIDOS na execução 1 (10/11/2026, 2 × Tesla T4) para a configuração
+# inteira (2.134 pratos; com o teste2 a extração das features cresce ~39%). Só informa; não entra no treino.
 CONFIGS = [
-    _ridge("siglip2_b16_224", 3),                                   # paridade com a CPU: "ridge siglip2_b16 o8" (RMSE 0,2551)
-    _ridge("siglip2_b16_384x512", 7),                               # 8 orientações na resolução maior (não rodado na CPU)
-    _ridge("dinov2_b14_336x448", 7),                                # backbone alternativo, congelado
-    _ft("siglip2_b16_224", "r1", 35),                               # ajuste fino completo a 224
-    _ft("siglip2_b16_384x512", "r1", 110, epocas=12, **_ALTA),      # ajuste fino completo na resolução maior
-    _ft("dinov2_b14_336x448", "r1", 110, epocas=12, **_ALTA),       # backbone alternativo, ajuste fino completo
-    _ft("siglip2_b16_224", "r2", 50),
-    _ft("siglip2_b16_224", "r3", 22),
-    _ridge("dinov2_l14_336x448", 16),
-    _ridge("siglip2_l16_384x512", 16),
-    _ridge("siglip2_so400m16_384x512", 25),
-    _ft("siglip2_b16_384x512", "r2", 140, epocas=16, **_ALTA),
-    _ft("siglip2_b16_224", "r1", 35, sufixo=" sem-escala", escala=None),   # ablação: só orientações, sem escala aleatória
-    _ft("dinov2_l14_224x308", "r1", 125, epocas=10, lld=0.85, bs=16, acum=2, ckpt_grad=True),
-    _ft("siglip2_b16_224", "r1", 75, tipo="destila-rgbd"),          # professor RGB-D -> aluno RGB (opcional, por último)
+    _ridge("siglip2_b16_224", 2),                                   # paridade com a CPU: "ridge siglip2_b16 o8" (RMSE 0,2551)
+    _ridge("siglip2_b16_384x512", 5),                               # 8 orientações na resolução maior (não rodado na CPU)
+    _ridge("dinov2_b14_336x448", 4),                                # backbone alternativo, congelado
+    _ft("siglip2_b16_224", "r1", 26),                               # ajuste fino completo a 224
+    _ft("siglip2_b16_384x512", "r1", 101, epocas=12, **_ALTA),      # ajuste fino completo na resolução maior
+    _ft("dinov2_b14_336x448", "r1", 99, epocas=12, **_ALTA),        # backbone alternativo, ajuste fino completo
+    _ft("siglip2_b16_224", "r2", 41),
+    _ft("siglip2_b16_224", "r3", 15),
+    _ridge("dinov2_l14_336x448", 11),
+    _ridge("siglip2_l16_384x512", 13),
+    _ridge("siglip2_so400m16_384x512", 18),
+    _ft("siglip2_b16_384x512", "r2", 133, epocas=16, **_ALTA),
+    _ft("siglip2_b16_224", "r1", 25, sufixo=" sem-escala", escala=None),   # ablação: só orientações, sem escala aleatória
+    _ft("dinov2_l14_224x308", "r1", 122, epocas=10, lld=0.85, bs=16, acum=2, ckpt_grad=True),
+    _ft("siglip2_b16_224", "r1", 59, tipo="destila-rgbd"),          # professor RGB-D -> aluno RGB (opcional, por último)
 ]
+_MASSA5 = ["gpu ridge siglip2_b16_384x512 o8", "gpu ridge dinov2_b14_336x448 o8", "gpu ridge dinov2_l14_336x448 o8",
+           "gpu ridge siglip2_l16_384x512 o8", "gpu ridge siglip2_so400m16_384x512 o8"]
+_FT4 = ["gpu ft siglip2_b16_224 r1", "gpu ft siglip2_b16_384x512 r1", "gpu ft dinov2_b14_336x448 r1", "gpu ft dinov2_l14_224x308 r1"]
+# Execução 2 (seção 11): só o que o pipeline congelado usa + o candidato a rodar no aparelho + a configuração de paridade.
+RODADAS = {"1": [c["nome"] for c in CONFIGS],
+           "2": ["gpu ridge siglip2_b16_224 o8"] + _MASSA5 + _FT4 + ["gpu ft siglip2_b16_224 r2"]}
+# Pipelines congelados da seção 11.2, para os totais de servico.json (o custo de cada modelo aparece uma vez).
+PIPELINES = {"massa_5_backbones": list(_MASSA5), "imagem_9_modelos": _MASSA5 + _FT4}
+NOTA_PIPELINES = ("imagem_9_modelos: a densidade do pipeline congelado usa ainda três cabeças de frações treinadas na CPU "
+                  "(soft-mlp) sobre features congeladas do SigLIP 2 B/16 a 384×512 (2 orientações) e, numa delas ('ambos'), "
+                  "também a 224 px. O custo do backbone a 384×512 já está contado em 'gpu ridge siglip2_b16_384x512 o8' se as "
+                  "features forem compartilhadas; o do backbone a 224 px é o de 'gpu ridge siglip2_b16_224 o8' (fora dos totais). "
+                  "As cabeças em si são MLPs pequenas: custo desprezível, não medido aqui.")
 CONFIGS_SMOKE = [
     dict(nome="smoke ridge vit_tiny_224 o8", tipo="ridge", bb="vit_tiny_224", bs=8, est_min=1),
     _ft("vit_tiny_224", "r1", 1, epocas=1, bs=8),
@@ -118,6 +143,12 @@ def slug(nome):
 
 def partes_de(cfg):
     return ["tudo"] if cfg["tipo"] == "ridge" else list(PARTES_FT)
+
+
+def configs_da_rodada(rodada, smoke=False):
+    if smoke:
+        return list(CONFIGS_SMOKE)
+    return [c for c in CONFIGS if c["nome"] in RODADAS[rodada]]     # a ordem de CONFIGS (prioridade) é mantida
 
 
 # ------------------------------------------------------------------ máquina de estados de cada parte (config × fold)
@@ -218,12 +249,17 @@ def autoteste():
     assert f("feita", "pendente") == "em_andamento" and f("rodando", "pendente") == "em_andamento"
     assert json.loads(json.dumps(m)) == m                                                     # serializável
     assert len({slug(c["nome"]) for c in CONFIGS}) == len(CONFIGS) and all(c["bb"] in BACKBONES for c in CONFIGS + CONFIGS_SMOKE)
+    nomes = {c["nome"] for c in CONFIGS}
+    assert all(set(v) <= nomes and len(set(v)) == len(v) for v in list(RODADAS.values()) + list(PIPELINES.values()))
+    assert len(RODADAS["2"]) == 11 and all(set(v) <= set(RODADAS["2"]) for v in PIPELINES.values())
+    assert [c["nome"] for c in configs_da_rodada("2")][0] == "gpu ridge siglip2_b16_224 o8"      # a paridade roda primeiro
     print("autoteste: ok")
 
 
 # ------------------------------------------------------------------ dados (listas do repositório; sem gabarito de avaliação)
 class Dados:
-    """Treino zenital estrito (ids, folds por cadeia, alvos em log) + ids de avaliação (sem rótulo)."""
+    """Treino zenital estrito (ids, folds por cadeia, alvos em log) + ids de avaliação (sem rótulo):
+    aval = calib/teste/n5k_v1 (aval_ids.csv); conj = aval + os conjuntos de aval2_ids.csv (teste2), se o arquivo existir."""
 
     def __init__(self, pasta, smoke=0):
         arq_tr, arq_av = os.path.join(pasta, "treino.csv"), os.path.join(pasta, "aval_ids.csv")
@@ -252,16 +288,35 @@ class Dados:
         assert len(set(self.ids)) == len(self.ids) and len(set(ev)) == len(ev), "ids repetidos nas listas"
         assert not set(self.ids) & set(ev), "prato de avaliação na lista de treino"
         self.hash = hashlib.sha256(open(arq_tr, "rb").read() + open(arq_av, "rb").read()).hexdigest()[:16]
+        # conjuntos novos, só para previsão (teste2): não mudam o hash das listas de treino/avaliação da execução 1
+        self.conj, self.hash2 = dict(self.aval), None
+        arq_av2 = os.path.join(pasta, "aval2_ids.csv")
+        if os.path.exists(arq_av2):
+            with open(arq_av2) as f:
+                av2 = list(csv.DictReader(f))
+            for s in dict.fromkeys(r["split"] for r in av2):
+                assert s not in self.conj and s != "oof", f"conjunto repetido: {s}"
+                self.conj[s] = [r["dish_id"] for r in av2 if r["split"] == s]
+            ev2 = [r["dish_id"] for r in av2]
+            assert len(set(ev2)) == len(ev2), "ids repetidos em aval2_ids.csv"
+            assert not set(ev2) & set(self.ids), "prato do teste2 na lista de treino"
+            assert not set(ev2) & set(ev), "prato do teste2 já está na avaliação antiga"
+            # hash do CONTEÚDO (o arquivo do repositório tem fim de linha CRLF e o notebook o regrava com LF)
+            self.hash2 = hashlib.sha256("\n".join(f"{r['prato_id']},{r['split']},{r['dish_id']}" for r in av2).encode()).hexdigest()[:16]
+        self.extras = [s for s in self.conj if s not in SPLITS]
         # --smoke: poucos pratos por fold e por conjunto; o resto fica NaN nas saídas
         self.usa_tr = np.ones(len(self.ids), bool)
-        self.usa_av = {s: np.ones(len(self.aval[s]), bool) for s in SPLITS}
+        self.usa_av = {s: np.ones(len(v), bool) for s, v in self.conj.items()}
         if smoke:
             self.usa_tr[:] = False
             for k in range(5):
                 self.usa_tr[np.where(self.fold == k)[0][:smoke]] = True
-            for s in SPLITS:
+            for s in self.conj:
                 self.usa_av[s][:] = False; self.usa_av[s][:4] = True
-        self.todos = [d for d, u in zip(self.ids, self.usa_tr) if u] + [d for s in SPLITS for d, u in zip(self.aval[s], self.usa_av[s]) if u]
+        usados = lambda nomes: [d for s in nomes for d, u in zip(self.conj[s], self.usa_av[s]) if u]
+        base = [d for d, u in zip(self.ids, self.usa_tr) if u] + usados(SPLITS)
+        self.n_base = len(base)                     # treino + 450: mesma ordem (e mesmos lotes de extração) da execução 1
+        self.todos = base + usados(self.extras)
         self.chave = hashlib.sha256("\n".join(self.todos).encode()).hexdigest()[:10]
 
 
@@ -610,6 +665,7 @@ def cria_rede(bb, n_saidas, pretrained=True, drop_path=0.0, ckpt_grad=False, can
                         self.m = timm.create_model(arq_timm, pretrained=True, pretrained_cfg_overlay=dict(file=arq, custom_load=arq.endswith(".npz")), **kw)
                     else:
                         self.m = timm.create_model(b["timm"], pretrained=True, **kw)
+                    _anota_origem(bb, fonte)
                     break
                 except Exception as e:
                     erros.append(f"{fonte}: {type(e).__name__}: {str(e)[:300]}")
@@ -645,6 +701,57 @@ def cria_rede(bb, n_saidas, pretrained=True, drop_path=0.0, ckpt_grad=False, can
             return self.head(f), f
 
     return Rede()
+
+
+def _anota_origem(bb, fonte):
+    """Registra de qual origem os pesos públicos do backbone foram de fato carregados (para servir__*.json)."""
+    try:
+        os.makedirs(PASTA_PESOS, exist_ok=True)
+        with open(os.path.join(PASTA_PESOS, f"origem__{bb}.txt"), "w") as f:
+            f.write(fonte)
+    except OSError:
+        pass
+
+
+def sha256_arquivo(arq):
+    h = hashlib.sha256()
+    with open(arq, "rb") as f:
+        for bloco in iter(lambda: f.read(1 << 24), b""):
+            h.update(bloco)
+    return h.hexdigest()
+
+
+def descreve_backbone(bb):
+    """Checkpoint público do backbone: origem usada, URL ou repositório, arquivo, tamanho e sha256. É o que permite
+    servir sem regravar o backbone. Chamar antes de apagar o arquivo do cache."""
+    b = BACKBONES[bb]
+    try:
+        fonte = open(os.path.join(PASTA_PESOS, f"origem__{bb}.txt")).read().strip()
+    except OSError:
+        fonte = b["fontes"][0]
+    o = dict(chave=bb, timm=b["timm"], fonte=fonte, url=b.get("url"), hf_id=None, arquivo=None, bytes=None, sha256=None)
+    arq = None
+    try:
+        import timm
+        o["timm_versao"] = timm.__version__
+        o["hf_id"] = timm.models.get_pretrained_cfg(b["timm"]).hf_hub_id
+    except Exception:
+        pass
+    if fonte == "url":
+        arq = os.path.join(PASTA_PESOS, os.path.basename(b["url"]))
+    elif o["hf_id"]:
+        try:
+            from huggingface_hub import try_to_load_from_cache
+            for nome in ("model.safetensors", "open_clip_model.safetensors", "pytorch_model.bin", "open_clip_pytorch_model.bin"):
+                cam = try_to_load_from_cache(o["hf_id"], nome)
+                if isinstance(cam, str) and os.path.exists(cam):
+                    arq = cam
+                    break
+        except Exception:
+            pass
+    if arq and os.path.exists(arq):
+        o.update(arquivo=os.path.basename(arq), bytes=os.path.getsize(arq), sha256=sha256_arquivo(arq))
+    return o
 
 
 def grupos_lr(rede, lr, lld, wd):
@@ -691,14 +798,15 @@ def _extrai_feats(arq, bb, D, C, dev, bs, prazo):
     hw = BACKBONES[bb]["hw"]
     X = np.zeros((len(D.todos), 8, rede.dim), np.float16)
     with torch.inference_mode():
-        for i in range(0, len(D.todos), bs):
-            if time.time() > prazo:
-                raise SemOrcamento()
-            x = monta_lote(C, list(range(i, min(i + bs, len(D.todos)))), dev, hw)
-            for k in range(8):
-                with autocast(dev):
-                    f = rede.feats(orienta(x, k))
-                X[i:i + len(x), k] = f.float().cpu().numpy()
+        for ini, fim in ((0, D.n_base), (D.n_base, len(D.todos))):   # treino + 450 nos mesmos lotes da execução 1; teste2 depois
+            for i in range(ini, fim, bs):
+                if time.time() > prazo:
+                    raise SemOrcamento()
+                x = monta_lote(C, list(range(i, min(i + bs, fim))), dev, hw)
+                for k in range(8):
+                    with autocast(dev):
+                        f = rede.feats(orienta(x, k))
+                    X[i:i + len(x), k] = f.float().cpu().numpy()
     tmp = f"{arq}.{os.getpid()}.npy"
     np.save(tmp, X); os.replace(tmp, arq)
     print(f"features congeladas {bb}: {X.shape} em {time.time() - t0:.0f}s ({len(D.todos) * 8 / (time.time() - t0):.0f} img/s)", flush=True)
@@ -827,6 +935,66 @@ def arq_parte(saida, cfg, parte):
     return os.path.join(saida, f"parte__{slug(cfg['nome'])}__{parte}.npz")
 
 
+def arq_de(saida, cfg, tipo):
+    """Arquivos por configuração: pesos (.pt), cabeca (.npz), servir (.json), servico (.json)."""
+    return os.path.join(saida, f"{tipo}__{slug(cfg['nome'])}." + dict(pesos="pt", cabeca="npz", servir="json", servico="json")[tipo])
+
+
+def nomes_saidas(D):
+    return ["log_massa", "log1p_proteina", "log1p_kcal", "log_densidade", "log1p_gordura", "log1p_carbo"] \
+        + [f"log1p_m_{g}" for g in D.grupos] + [f"log1p_p_{g}" for g in D.grupos]
+
+
+def parte_pronta(a, cfg, parte, D):
+    """A parte está em disco COM tudo o que esta execução precisa? Folds: só o arquivo. final/tudo: previsões de todos
+    os conjuntos das listas (inclusive teste2) e os arquivos de servir. Parte de execução antiga sem isso é refeita."""
+    arq = arq_parte(a.saida, cfg, parte)
+    if not os.path.exists(arq):
+        return False
+    if parte in ("tudo", "final"):
+        with np.load(arq, allow_pickle=False) as z:
+            if any(sp not in z.files for sp in D.conj):
+                return False
+        if not os.path.exists(arq_de(a.saida, cfg, "servir")):
+            return False
+        if parte == "tudo" and not os.path.exists(arq_de(a.saida, cfg, "cabeca")):
+            return False
+        if parte == "final" and a.guarda_pesos == "todos" and not os.path.exists(arq_de(a.saida, cfg, "pesos")):
+            return False
+    return True
+
+
+def grava_servir(a, cfg, D, dim, cabeca):
+    """servir__<config>.json: o que é preciso para reproduzir a previsão fora deste script (pré-processamento, backbone
+    público com URL e sha256, orientações, cabeça, leitura das 22 saídas)."""
+    b = BACKBONES[cfg["bb"]]
+    try:        # nada aqui pode derrubar uma parte já treinada: o que falhar fica registrado no próprio arquivo
+        import timm
+        pc = timm.models.get_pretrained_cfg(b["timm"])
+        media, desvio = list(pc.mean), list(pc.std)
+        bk = descreve_backbone(cfg["bb"])
+    except Exception as e:
+        media = desvio = None
+        bk = dict(chave=cfg["bb"], timm=b["timm"], url=b.get("url"), hf_id=None, fonte=None, arquivo=None, bytes=None, sha256=None, erro=f"{type(e).__name__}: {e}")
+    spec = dict(
+        formato=FORMATO, nome=cfg["nome"], tipo=cfg["tipo"], listas_hash=D.hash, n_treino=int(D.usa_tr.sum()),
+        backbone=dict(bk, basta_o_checkpoint_publico=cfg["tipo"] == "ridge"),
+        entrada=dict(foto="RGB zenital inteira, sem recorte (640×480 no Nutrition5k)", hw=list(b["hw"]),
+                     redimensiona="bicúbico com antialias, da foto inteira direto para (H, W) = hw "
+                                  "(torch.nn.functional.interpolate, align_corners=False); com hw quadrado a proporção é achatada",
+                     escala="uint8 / 255, limitado a [0, 1] depois de redimensionar", media=media, desvio=desvio),
+        orientacoes=dict(n=8, ordem=["original", "180°", "espelho horizontal", "espelho vertical", "90°", "270°", "transposta", "antitransposta"],
+                         regra="média das 22 saídas (em log) nas 8 orientações; com hw não quadrado, as 4 últimas entram em retrato (W × H)"),
+        features="[saída agregada do backbone (timm forward_head com pre_logits=True) ‖ média dos tokens de patch depois da norma final]",
+        dim_features=int(dim), precisao="backbone em fp16 (torch.autocast) na GPU, como nas previsões gravadas",
+        cabeca=cabeca,
+        saidas=dict(nomes=nomes_saidas(D),
+                    leitura="massa_g = exp(s[0]); proteína direta_g = expm1(s[1]); kcal = expm1(s[2]); densidade (g de proteína por g) = "
+                            "exp(s[3]) − 0.01; gordura_g = expm1(s[4]); carboidrato_g = expm1(s[5]); massa e proteína por grupo: expm1"),
+        cfg=cfg)
+    grava_json(arq_de(a.saida, cfg, "servir"), spec)
+
+
 def roda_parte(a, cfg, parte, cfgs=()):
     global PASTA_PESOS
     import torch
@@ -848,16 +1016,24 @@ def roda_parte(a, cfg, parte, cfgs=()):
         Xtr = X[[C.pos[D.ids[i]] for i in tr_tudo]]
         oof = nan(len(D.ids))
         oof[tr_tudo], alfa, mse = ridge_cv(Xtr, D.T[tr_tudo], D.fold[tr_tudo])
-        pred, _ = ridge_final(Xtr, D.T[tr_tudo], alfa)
+        pred, m = ridge_final(Xtr, D.T[tr_tudo], alfa)
         saida.update(oof=oof, alfa=alfa, cv_mse=mse)
-        for s in SPLITS:
-            p = nan(len(D.aval[s])); u = np.where(D.usa_av[s])[0]
-            p[u] = pred(X[[C.pos[D.aval[s][i]] for i in u]])
+        for s in D.conj:
+            p = nan(len(D.conj[s])); u = np.where(D.usa_av[s])[0]
+            p[u] = pred(X[[C.pos[D.conj[s][i]] for i in u]])
             saida[s] = p
         hist = []
-        url = BACKBONES[cfg["bb"]].get("url")       # checkpoint grande que nenhuma outra configuração usa: libera o disco
+        # para servir: a cabeça do ridge (o backbone é o checkpoint público, descrito em servir__*.json)
+        arq_c = arq_de(a.saida, cfg, "cabeca")
+        np.savez(arq_c + ".tmp.npz", mu=m.mu, sd=m.sd, W=m.W, mt=m.mt, alfa=alfa, nome=cfg["nome"], listas_hash=D.hash)
+        os.replace(arq_c + ".tmp.npz", arq_c)
+        grava_servir(a, cfg, D, X.shape[-1], dict(
+            tipo="ridge sobre o backbone congelado", arquivo=os.path.basename(arq_c), bytes=os.path.getsize(arq_c),
+            formula="s = ((f − mu) / sd) @ W + mt, com as features f em float32 (cabeça fora do autocast); arrays mu, sd, W, mt no arquivo"))
+        url = BACKBONES[cfg["bb"]].get("url")       # checkpoint grande que nenhuma outra configuração usa: libera o disco se ele estiver curto
         arq = os.path.join(PASTA_PESOS, os.path.basename(url or "-"))
-        if url and os.path.exists(arq) and sum(BACKBONES[c["bb"]].get("url") == url for c in cfgs) == 1:
+        if url and os.path.exists(arq) and sum(BACKBONES[c["bb"]].get("url") == url for c in cfgs) == 1 \
+                and shutil.disk_usage(PASTA_PESOS).free < 15 * 2 ** 30:
             os.remove(arq)
     else:
         k = None if parte == "final" else int(parte[4:])
@@ -874,16 +1050,21 @@ def roda_parte(a, cfg, parte, cfgs=()):
             oof = nan(len(D.ids)); oof[va] = preve([D.ids[i] for i in va])
             saida["oof"] = oof
         else:
-            for s in SPLITS:
-                p = nan(len(D.aval[s])); u = np.where(D.usa_av[s])[0]
-                p[u] = preve([D.aval[s][i] for i in u])
+            for s in D.conj:
+                p = nan(len(D.conj[s])); u = np.where(D.usa_av[s])[0]
+                p[u] = preve([D.conj[s][i] for i in u])
                 saida[s] = p
-            if a.guarda_pesos != "nenhum":   # pesos da média móvel em meia precisão (ficam fora do git)
-                arq = os.path.join(a.saida, f"pesos__{slug(cfg['nome'])}.pt")
-                torch.save(dict(formato=FORMATO, cfg=cfg, timm=BACKBONES[cfg["bb"]], tm=tm, ts=ts, grupos=D.grupos,
+            if a.guarda_pesos != "nenhum":   # pesos da média móvel em meia precisão (ficam fora do git); só tensores e tipos simples
+                arq = arq_de(a.saida, cfg, "pesos")
+                torch.save(dict(formato=FORMATO, nome=cfg["nome"], cfg=cfg, timm=BACKBONES[cfg["bb"]], tm=[float(v) for v in tm], ts=[float(v) for v in ts],
+                                grupos=list(D.grupos), listas_hash=D.hash,
                                 estado={n: (v.half() if v.is_floating_point() else v).cpu() for n, v in rede.state_dict().items()}), arq + ".tmp")
                 os.replace(arq + ".tmp", arq)
-    for k in ["oof"] + SPLITS:      # só previsões finitas viram arquivo (NaN é reservado a pratos fora da parte)
+                grava_servir(a, cfg, D, rede.dim, dict(
+                    tipo="linear, treinada junto com o backbone", arquivo=os.path.basename(arq), bytes=os.path.getsize(arq),
+                    formula="s = head(f) * ts + tm; o arquivo traz 'estado' (rede inteira com a média móvel dos pesos, meia precisão), 'tm' e 'ts'",
+                    carregar="torch.load(arquivo, weights_only=True); cria_rede(bb, 22, pretrained=False).load_state_dict(estado em float32)"))
+    for k in ["oof"] + list(D.conj):      # só previsões finitas viram arquivo (NaN é reservado a pratos fora da parte)
         if k in saida and not np.isfinite(saida[k][~np.isnan(saida[k][:, 0])]).all():
             raise RuntimeError(f"previsões não finitas em '{k}'")
     saida.update(hist=json.dumps(hist), seg=time.time() - t0)
@@ -892,6 +1073,126 @@ def roda_parte(a, cfg, parte, cfgs=()):
     dest = arq_parte(a.saida, cfg, parte)
     np.savez(dest + ".tmp.npz", **saida); os.replace(dest + ".tmp.npz", dest)
     print(f"{rot} pronto em {(time.time() - t0) / 60:.1f} min", flush=True)
+
+
+# ------------------------------------------------------------------ fase de serviço (processo filho, um modelo por vez)
+def mede_servico(a, cfg):
+    """Remonta o modelo SÓ com os arquivos de servir, confere que ele reproduz as previsões gravadas e mede o custo:
+    parâmetros, tamanho dos pesos e latência por imagem (GPU em fp16, lotes de 1 e de 8, 1 e 8 orientações; CPU em
+    float32 com o número de threads registrado). O tempo inclui redimensionar e normalizar, a partir de uint8 480×640
+    já no dispositivo; não inclui decodificar o PNG nem a cópia para a GPU. Grava servico__<config>.json."""
+    global PASTA_PESOS
+    import torch
+    F = torch.nn.functional
+    t0 = time.time()
+    PASTA_PESOS = os.path.join(a.cache, "pesos")
+    os.environ.setdefault("HF_HOME", os.path.join(a.cache, "hf"))
+    n_thr = max(1, int(os.environ.get("OMP_NUM_THREADS", "2")))
+    torch.set_num_threads(n_thr)
+    dev = torch.device(a.dispositivo)
+    D = Dados(a.listas, a.smoke)
+    C = Cache(a.cache, D).abre()
+    prazo = a.prazo or float("inf")
+    hw = BACKBONES[cfg["bb"]]["hw"]
+    quad, ridge = hw[0] == hw[1], cfg["tipo"] == "ridge"
+    spec = json.load(open(arq_de(a.saida, cfg, "servir")))
+    if ridge:      # backbone público + cabeça do ridge como camada linear
+        rede = cria_rede(cfg["bb"], D.N)
+        z = np.load(arq_de(a.saida, cfg, "cabeca"), allow_pickle=False)
+        with torch.no_grad():
+            rede.head.weight.copy_(torch.from_numpy((z["W"] / z["sd"][:, None]).T.astype(np.float32)))
+            rede.head.bias.copy_(torch.from_numpy((z["mt"] - (z["mu"] / z["sd"]) @ z["W"]).astype(np.float32)))
+        tm, ts = np.zeros(D.N, np.float32), np.ones(D.N, np.float32)
+        arquivos = [dict(arquivo=spec["backbone"]["arquivo"], bytes=spec["backbone"]["bytes"], publico=True, url=spec["backbone"]["url"],
+                         hf_id=spec["backbone"]["hf_id"], fonte=spec["backbone"]["fonte"], sha256=spec["backbone"]["sha256"]),
+                    dict(arquivo=os.path.basename(arq_de(a.saida, cfg, "cabeca")), bytes=os.path.getsize(arq_de(a.saida, cfg, "cabeca")), publico=False)]
+    else:          # só o arquivo de pesos gravado (sem baixar nada)
+        ck = torch.load(arq_de(a.saida, cfg, "pesos"), map_location="cpu", weights_only=True)
+        rede = cria_rede(cfg["bb"], D.N, pretrained=False)
+        rede.load_state_dict({n: (v.float() if v.is_floating_point() else v) for n, v in ck["estado"].items()})
+        tm, ts = np.array(ck["tm"], np.float32), np.array(ck["ts"], np.float32)
+        arquivos = [dict(arquivo=os.path.basename(arq_de(a.saida, cfg, "pesos")), bytes=os.path.getsize(arq_de(a.saida, cfg, "pesos")), publico=False)]
+    rede.eval()
+    n_par, n_cab = sum(p.numel() for p in rede.parameters()), sum(p.numel() for p in rede.head.parameters())
+
+    def infere(d, xu8, n_or, agrupado=False):
+        """uint8 [B, 480, 640, 3] no dispositivo -> 22 saídas em log por imagem (média das orientações).
+        agrupado: as 8 orientações em um lote só (entrada quadrada) ou em dois de 4 (paisagem e retrato)."""
+        x = F.interpolate(xu8.permute(0, 3, 1, 2).float().div(255), size=hw, mode="bicubic", antialias=True, align_corners=False).clamp_(0, 1)
+        grupos = [[k] for k in range(n_or)] if not agrupado else ([list(range(8))] if quad else [[0, 1, 2, 3], [4, 5, 6, 7]])
+        soma = 0
+        for g in grupos:
+            xb = torch.cat([orienta(x, k) for k in g])
+            with autocast(d):
+                f = rede.feats(xb)
+                o = None if ridge else rede.head(f)
+            if ridge:      # cabeça do ridge em float32, fora do autocast (como as previsões gravadas)
+                o = rede.head(f.float())
+            soma = soma + o.float().reshape(len(g), len(x), -1).sum(0)
+        return soma / n_or * torch.from_numpy(ts).to(d) + torch.from_numpy(tm).to(d)
+
+    def cronometra(d, xu8, n_or, agrupado, reps, aquece):
+        sinc = torch.cuda.synchronize if d.type == "cuda" else (lambda: None)
+        with torch.inference_mode():
+            for _ in range(aquece):
+                infere(d, xu8, n_or, agrupado)
+            if d.type == "cuda":
+                torch.cuda.reset_peak_memory_stats()
+            tempos = []
+            for _ in range(reps):
+                sinc(); t = time.perf_counter(); infere(d, xu8, n_or, agrupado); sinc()
+                tempos.append(time.perf_counter() - t)
+        r = dict(lote=len(xu8), orientacoes=n_or, oito_em_lote=bool(agrupado), repeticoes=reps,
+                 ms_por_imagem=round(1000 * float(np.median(tempos)) / len(xu8), 2), ms_por_imagem_min=round(1000 * min(tempos) / len(xu8), 2),
+                 ms_por_imagem_max=round(1000 * max(tempos) / len(xu8), 2))
+        if d.type == "cuda":
+            r["mem_pico_mb"] = round(torch.cuda.max_memory_allocated() / 2 ** 20)
+        return r
+
+    u8 = lambda ids, d: torch.from_numpy(np.ascontiguousarray(C.rgb[[C.pos[i] for i in ids]])).to(d)
+    rede.to(dev)
+    # 1. o modelo remontado reproduz as previsões gravadas? (até 8 pratos do calib, 8 orientações; não usa gabarito)
+    parte = np.load(arq_parte(a.saida, cfg, "tudo" if ridge else "final"), allow_pickle=False)
+    u = np.where(D.usa_av["calib"])[0][:8]
+    with torch.inference_mode():
+        p = infere(dev, u8([D.conj["calib"][i] for i in u], dev), 8).cpu().numpy()
+    dif = np.abs(p - parte["calib"][u])
+    res = dict(formato=FORMATO, nome=cfg["nome"], tipo=cfg["tipo"], backbone=cfg["bb"], timm=BACKBONES[cfg["bb"]]["timm"], hw=list(hw),
+               parametros=dict(total=int(n_par), backbone=int(n_par - n_cab), cabeca=int(n_cab)), mb_fp16_em_memoria=round(n_par * 2 / 1e6, 1),
+               arquivos=arquivos, bytes_pesos=int(sum(x["bytes"] or 0 for x in arquivos)), bytes_gravados_na_saida=int(sum(x["bytes"] or 0 for x in arquivos if not x["publico"])),
+               conferencia=dict(pratos=int(len(u)), max_dif_log=float(dif.max()), max_dif_log_massa=float(dif[:, I_M].max()), max_dif_log1p_proteina=float(dif[:, I_P].max()),
+                                dispositivo=dev.type, nota="diferença máxima, em log, entre o modelo remontado com os arquivos de servir e as previsões gravadas"),
+               inclui="redimensionar (bicúbico) + normalizar + rede + cabeça, a partir de uint8 480×640 já no dispositivo; não inclui decodificar o PNG nem a cópia para a GPU",
+               gpu=None, cpu=None)
+    print(f"[{cfg['nome']} | servico] {n_par / 1e6:.1f} M parâmetros; remontado × gravado: diferença máxima {dif.max():.4f} em log", flush=True)
+    ids8 = D.todos[:8]
+    # 2. GPU (uma só, fp16)
+    if dev.type == "cuda":
+        x8 = u8(ids8, dev)
+        med = {}
+        for nome, (lote, n_or, agr, reps, aq) in dict(lote1_o1=(1, 1, False, 30, 5), lote1_o8=(1, 8, False, 10, 2), lote1_o8_em_lote=(1, 8, True, 10, 2),
+                                                       lote8_o1=(8, 1, False, 10, 2), lote8_o8=(8, 8, False, 5, 1)).items():
+            if time.time() + 60 > prazo:
+                raise SemOrcamento()
+            med[nome] = cronometra(dev, x8[:lote], n_or, agr, reps, aq)
+        res["gpu"] = dict(nome=torch.cuda.get_device_name(0), precisao="fp16 (torch.autocast)", medidas=med)
+        print(f"[{cfg['nome']} | servico] GPU ms por imagem: " + ", ".join(f"{k} {v['ms_por_imagem']}" for k, v in med.items()), flush=True)
+    # 3. CPU (float32), poucas imagens
+    rede.float().cpu()
+    cpu = torch.device("cpu")
+    x8 = u8(ids8, cpu)
+    try:
+        modelo_cpu = next(l.split(":", 1)[1].strip() for l in open("/proc/cpuinfo") if l.startswith("model name"))
+    except Exception:
+        modelo_cpu = None
+    med = dict(lote1_o1=cronometra(cpu, x8[:1], 1, False, 2 if a.smoke else 3, 1))
+    rapido = med["lote1_o1"]["ms_por_imagem"] < 500
+    if time.time() + 10 * med["lote1_o1"]["ms_por_imagem"] / 1000 + 30 < prazo:
+        med["lote1_o8"] = cronometra(cpu, x8[1:2], 8, False, 3 if rapido and not a.smoke else 1, 0)
+    res["cpu"] = dict(threads=n_thr, nucleos=os.cpu_count(), modelo=modelo_cpu, precisao="float32", medidas=med)
+    print(f"[{cfg['nome']} | servico] CPU ({n_thr} threads) ms por imagem: " + ", ".join(f"{k} {v['ms_por_imagem']}" for k, v in med.items()), flush=True)
+    res["seg"] = round(time.time() - t0, 1)
+    grava_json(arq_de(a.saida, cfg, "servico"), res)
 
 
 def principal_parte(a, cfgs):
@@ -903,12 +1204,15 @@ def principal_parte(a, cfgs):
     if simula == "erro" and parte == "fold1":
         sys.exit(1)
     try:
-        roda_parte(a, cfg, parte, cfgs)
+        if parte == "servico":
+            mede_servico(a, cfg)
+        else:
+            roda_parte(a, cfg, parte, cfgs)
     except SemOrcamento:
         sys.exit(SAI_SEM_ORCAMENTO)
     except Exception as e:
         traceback.print_exc()
-        sys.exit(SAI_MEMORIA if "out of memory" in str(e).lower() else 1)
+        sys.exit(SAI_MEMORIA if "out of memory" in str(e).lower() and parte != "servico" else 1)
 
 
 # ------------------------------------------------------------------ orquestrador
@@ -949,7 +1253,8 @@ def garante_timm(cfgs):
 
 
 def retoma(a):
-    """Copia partes prontas de execuções anteriores (mesmas listas) para a pasta de saída."""
+    """Copia partes prontas de execuções anteriores (mesmas listas) para a pasta de saída. Partes de fold da execução 1
+    são aceitas como estão; partes final/tudo sem teste2 ou sem os arquivos de servir são refeitas (ver parte_pronta)."""
     fontes = list(a.retoma)
     if os.path.isdir("/kaggle/input"):
         fontes += [os.path.dirname(m) for m in glob.glob("/kaggle/input/**/manifesto.json", recursive=True)]
@@ -959,19 +1264,20 @@ def retoma(a):
             man = json.load(open(os.path.join(pasta, "manifesto.json")))
         except Exception:
             continue
-        if man.get("formato") != FORMATO or man.get("listas_hash") != a._hash or bool(man.get("smoke")) != bool(a.smoke):
+        if man.get("formato") not in FORMATOS_ACEITOS or man.get("listas_hash") != a._hash or bool(man.get("smoke")) != bool(a.smoke):
             diz(f"retomada: {pasta} ignorada (outro formato, outras listas ou smoke)")
             continue
-        for arq in glob.glob(os.path.join(pasta, "parte__*.npz")) + glob.glob(os.path.join(pasta, "pesos__*.pt")):
-            dest = os.path.join(a.saida, os.path.basename(arq))
-            if not os.path.exists(dest):
-                shutil.copy(arq, dest); n += 1
+        for padrao in ("parte__*.npz", "pesos__*.pt", "cabeca__*.npz", "servir__*.json", "servico__*.json"):
+            for arq in glob.glob(os.path.join(pasta, padrao)):
+                dest = os.path.join(a.saida, os.path.basename(arq))
+                if not os.path.exists(dest):
+                    shutil.copy(arq, dest); n += 1
     if n:
         diz(f"retomada: {n} arquivos copiados de {fontes}")
 
 
 def junta(a, cfg, D):
-    """Reúne as partes de uma configuração completa: pred__*.npz (esquema do banco), pred__*.csv e log__*.json."""
+    """Reúne as partes de uma configuração completa: pred__*.npz (esquema do banco + teste2), pred__*.csv e log__*.json."""
     s = slug(cfg["nome"])
     partes = {p: dict(np.load(arq_parte(a.saida, cfg, p), allow_pickle=False)) for p in partes_de(cfg)}
     if cfg["tipo"] == "ridge":
@@ -983,15 +1289,15 @@ def junta(a, cfg, D):
             oof[m] = partes[f"fold{k}"]["oof"][m]
         av = partes["final"]
     assert not np.isnan(oof[D.usa_tr]).any(), "previsão fora-do-fold faltando"
-    pred = dict(oof=oof, **{sp: av[sp] for sp in SPLITS})
-    np.savez(os.path.join(a.saida, f"pred__{s}.tmp.npz"), nome=cfg["nome"], listas_hash=D.hash, fold=D.fold,
-             ids_treino=np.array(D.ids), **{f"ids_{sp}": np.array(D.aval[sp]) for sp in SPLITS}, **pred)
+    for sp in D.conj:
+        assert av[sp].shape == (len(D.conj[sp]), D.N) and not np.isnan(av[sp][D.usa_av[sp]]).any(), f"previsão de {sp} faltando"
+    pred = dict(oof=oof, **{sp: av[sp] for sp in D.conj})
+    np.savez(os.path.join(a.saida, f"pred__{s}.tmp.npz"), nome=cfg["nome"], listas_hash=D.hash, listas2_hash=D.hash2 or "", fold=D.fold,
+             ids_treino=np.array(D.ids), **{f"ids_{sp}": np.array(D.conj[sp]) for sp in D.conj}, **pred)
     os.replace(os.path.join(a.saida, f"pred__{s}.tmp.npz"), os.path.join(a.saida, f"pred__{s}.npz"))
-    cols = ["log_massa", "log1p_proteina", "log1p_kcal", "log_densidade", "log1p_gordura", "log1p_carbo"] \
-        + [f"log1p_m_{g}" for g in D.grupos] + [f"log1p_p_{g}" for g in D.grupos]
     with open(os.path.join(a.saida, f"pred__{s}.csv"), "w", newline="") as f:
-        wr = csv.writer(f); wr.writerow(["conjunto", "dish_id", "fold"] + cols)
-        for conj, ids, M, folds in [("treino_oof", D.ids, oof, D.fold)] + [(sp, D.aval[sp], av[sp], None) for sp in SPLITS]:
+        wr = csv.writer(f); wr.writerow(["conjunto", "dish_id", "fold"] + nomes_saidas(D))
+        for conj, ids, M, folds in [("treino_oof", D.ids, oof, D.fold)] + [(sp, D.conj[sp], av[sp], None) for sp in D.conj]:
             for i, d in enumerate(ids):
                 if not np.isnan(M[i, 0]):
                     wr.writerow([conj, d, "" if folds is None else int(folds[i])] + [f"{v:.5f}" for v in M[i]])
@@ -1002,6 +1308,55 @@ def junta(a, cfg, D):
                     partes={p: dict(seg=float(v["seg"]), dispositivo=str(v["dispositivo"]), mem_gb=float(v["mem_gb"]) if "mem_gb" in v else None,
                                     hist=json.loads(str(v["hist"]))) for p, v in partes.items()}, **(extra if extra["hist_professor"] else {})))
     return cv
+
+
+def monta_servico(a, cfgs, pipelines):
+    """servico.json: uma entrada por modelo medido + totais de cada pipeline (soma das latências por imagem, um modelo
+    depois do outro numa só GPU; soma de parâmetros e de bytes de pesos; maior pico de memória de GPU)."""
+    modelos = {}
+    for c in cfgs:
+        if os.path.exists(arq_de(a.saida, c, "servico")):
+            modelos[c["nome"]] = json.load(open(arq_de(a.saida, c, "servico")))
+
+    def total(nomes):
+        tem, falta = [n for n in nomes if n in modelos], [n for n in nomes if n not in modelos]
+        soma = lambda disp: {k: round(sum(modelos[n][disp]["medidas"][k]["ms_por_imagem"] for n in tem), 1)
+                             for k in (modelos[tem[0]][disp] or {}).get("medidas", {})
+                             if all(modelos[n][disp] and k in modelos[n][disp]["medidas"] for n in tem)} if tem else {}
+        picos = [v["mem_pico_mb"] for n in tem if modelos[n]["gpu"] for v in modelos[n]["gpu"]["medidas"].values()]
+        return dict(modelos=list(nomes), completo=not falta, faltam=falta,
+                    parametros=int(sum(modelos[n]["parametros"]["total"] for n in tem)),
+                    bytes_pesos=int(sum(modelos[n]["bytes_pesos"] for n in tem)),
+                    bytes_gravados_na_saida=int(sum(modelos[n]["bytes_gravados_na_saida"] for n in tem)),
+                    mb_fp16_em_memoria=round(sum(modelos[n]["mb_fp16_em_memoria"] for n in tem), 1),
+                    gpu_ms_por_imagem=soma("gpu"), gpu_mem_pico_mb_maior_modelo=max(picos) if picos else None, cpu_ms_por_imagem=soma("cpu"))
+
+    um = next(iter(modelos.values()), {})
+    obj = dict(formato=FORMATO, gerado=time.strftime("%Y-%m-%d %H:%M:%S"),
+               condicoes=dict(gpu=(um.get("gpu") or {}).get("nome"), gpu_precisao="fp16 (torch.autocast)", cpu=um.get("cpu"),
+                              inclui=um.get("inclui"), medido="um modelo por vez, com a máquina sem outro treino em andamento",
+                              chaves="loteB_oK = lote de B imagens, K orientações em sequência; lote1_o8_em_lote = as 8 orientações de uma imagem "
+                                     "num lote só (entrada quadrada) ou em dois de 4 (paisagem e retrato); ms_por_imagem = mediana do tempo do lote ÷ B"),
+               pipelines={k: total(v) for k, v in pipelines.items()}, nota_pipelines=NOTA_PIPELINES, modelos=modelos)
+    for v in obj["condicoes"]["cpu"] and [obj["condicoes"]["cpu"]] or []:
+        v.pop("medidas", None)
+    grava_json(os.path.join(a.saida, "servico.json"), obj)
+    return obj
+
+
+def grava_tamanhos(a):
+    """tamanhos.json: bytes de cada arquivo da pasta de saída, por tipo e no total (limite do Kaggle: ~20 GB)."""
+    arqs = {n: os.path.getsize(os.path.join(a.saida, n)) for n in sorted(os.listdir(a.saida))
+            if os.path.isfile(os.path.join(a.saida, n)) and n != "tamanhos.json" and ".tmp" not in n}
+    tipo = lambda n: n.split("__")[0] if "__" in n else "outros"
+    por_tipo = {}
+    for n, b in arqs.items():
+        por_tipo[tipo(n)] = por_tipo.get(tipo(n), 0) + b
+    obj = dict(total_bytes=int(sum(arqs.values())), total_gb=round(sum(arqs.values()) / 2 ** 30, 3), n_arquivos=len(arqs), limite_kaggle_gb=20,
+               maior_arquivo=max(arqs.items(), key=lambda x: x[1]) if arqs else None,
+               por_tipo_mb={k: round(v / 2 ** 20, 1) for k, v in sorted(por_tipo.items())}, arquivos=arqs)
+    grava_json(os.path.join(a.saida, "tamanhos.json"), obj)
+    return obj
 
 
 def orquestra(a, cfgs):
@@ -1018,8 +1373,10 @@ def orquestra(a, cfgs):
     prazo = t_ini + a.orcamento_h * 3600 - 300          # 5 min de reserva para fechar os arquivos
     D = Dados(a.listas, a.smoke)
     a._hash = D.hash
-    diz(f"{FORMATO} | treino {int(D.usa_tr.sum())} pratos, avaliação {sum(int(u.sum()) for u in D.usa_av.values())} | listas {D.hash}"
-        f" | orçamento {a.orcamento_h} h | saída {a.saida} | cache {a.cache}")
+    livre = lambda pasta: round(shutil.disk_usage(pasta).free / 2 ** 30, 1)
+    diz(f"{FORMATO} | rodada {'smoke' if a.smoke else a.rodada}: {len(cfgs)} configurações | treino {int(D.usa_tr.sum())} pratos, avaliação "
+        + ", ".join(f"{s} {int(D.usa_av[s].sum())}" for s in D.conj) + f" | listas {D.hash}, teste2 {D.hash2} | orçamento {a.orcamento_h} h"
+        f" | saída {a.saida} ({livre(a.saida)} GB livres) | cache {a.cache} ({livre(a.cache)} GB livres) | pesos: {a.guarda_pesos}")
     garante_timm(cfgs)
     import torch
     n_gpu = torch.cuda.device_count()
@@ -1029,31 +1386,40 @@ def orquestra(a, cfgs):
     except Exception:
         gpus = []
     gpus = gpus if len(gpus) == n_gpu else [f"cuda:{i}" for i in range(n_gpu)]
-    diz(f"torch {torch.__version__} | dispositivos: {gpus or 'CPU'} -> {len(disp)} processo(s) em paralelo")
+    try:
+        import timm
+        v_timm = timm.__version__
+    except Exception:
+        v_timm = None
+    diz(f"torch {torch.__version__}, timm {v_timm} | dispositivos: {gpus or 'CPU'} -> {len(disp)} processo(s) em paralelo")
     if not n_gpu and not (a.smoke or a.cpu):
         raise SystemExit("Sem GPU. No Kaggle: Settings > Accelerator > GPU T4 x2. (Para testar em CPU: --smoke.)")
     retoma(a)
     estado = {slug(c["nome"]): {p: parte_inicial() for p in partes_de(c)} for c in cfgs}
+    est_serv = {slug(c["nome"]): {"servico": parte_inicial()} for c in cfgs}      # fase de serviço: mesma máquina de estados
     trava = threading.Lock()
-    info = dict(formato=FORMATO, smoke=bool(a.smoke), listas_hash=D.hash, n_treino=int(D.usa_tr.sum()), inicio=time.strftime("%Y-%m-%d %H:%M:%S"),
-                orcamento_h=a.orcamento_h, gpus=gpus, torch=torch.__version__, argv=sys.argv[1:], configs={}, melhor_modelo=None)
+    info = dict(formato=FORMATO, rodada="smoke" if a.smoke else a.rodada, smoke=bool(a.smoke), listas_hash=D.hash, listas2_hash=D.hash2,
+                n_treino=int(D.usa_tr.sum()), conjuntos={s: int(D.usa_av[s].sum()) for s in D.conj}, inicio=time.strftime("%Y-%m-%d %H:%M:%S"),
+                orcamento_h=a.orcamento_h, gpus=gpus, torch=torch.__version__, timm=v_timm, python=sys.version.split()[0], guarda_pesos=a.guarda_pesos,
+                disco_livre_gb_inicio=dict(saida=livre(a.saida), cache=livre(a.cache)), argv=sys.argv[1:], configs={}, melhor_modelo=None)
 
     def evento(cfg, parte, **ev):     # único lugar em que o estado muda (sempre com a trava)
         s = slug(cfg["nome"])
-        estado[s][parte] = transicao(estado[s][parte], ev)
+        mapa = est_serv if parte == "servico" else estado
+        mapa[s][parte] = transicao(mapa[s][parte], ev)
         with open(os.path.join(a.saida, "eventos.jsonl"), "a") as f:
-            f.write(json.dumps(dict(t=round(time.time(), 1), config=cfg["nome"], parte=parte, **ev, estado=estado[s][parte]["estado"]), ensure_ascii=False) + "\n")
+            f.write(json.dumps(dict(t=round(time.time(), 1), config=cfg["nome"], parte=parte, **ev, estado=mapa[s][parte]["estado"]), ensure_ascii=False) + "\n")
 
     def manifesto():
         for c in cfgs:
             s = slug(c["nome"])
             info["configs"].setdefault(c["nome"], dict(slug=s, tipo=c["tipo"], bb=c["bb"], cv_treino=None, min=None))
-            info["configs"][c["nome"]].update(estado=estado_config(estado[s]), partes=estado[s])
+            info["configs"][c["nome"]].update(estado=estado_config(estado[s]), partes=estado[s], servico=est_serv[s]["servico"])
         info["duracao_min"] = round((time.time() - t_ini) / 60, 1)
         grava_json(os.path.join(a.saida, "manifesto.json"), info)
 
     def fecha_config(c):
-        """Configuração completa: junta as partes, calcula a CV no treino e mantém só os pesos do melhor modelo."""
+        """Configuração completa: junta as partes, calcula a CV no treino e, com --guarda-pesos melhor, mantém só os pesos do melhor modelo."""
         s = slug(c["nome"])
         cv = junta(a, c, D)
         ic = info["configs"][c["nome"]]
@@ -1061,7 +1427,7 @@ def orquestra(a, cfgs):
         diz(f"== {c['nome']}: CV no treino (n={cv['n']}) RMSE log-massa {cv['rmse_logm']:.4f} | MAPE massa {cv['mape_massa']:.1f}% | "
             f"critério ponderado direto {cv['crit_direto']:.1f}% m×d {cv['crit_mxd']:.1f}% geo {cv['crit_geo']:.1f}% | {ic['min']} min de GPU")
         nota = lambda n: max(info["configs"][n]["cv_treino"][r] for r in ("crit_direto", "crit_mxd", "crit_geo"))
-        com_pesos = [x["nome"] for x in cfgs if info["configs"][x["nome"]]["cv_treino"] and os.path.exists(os.path.join(a.saida, f"pesos__{slug(x['nome'])}.pt"))]
+        com_pesos = [x["nome"] for x in cfgs if info["configs"][x["nome"]]["cv_treino"] and os.path.exists(arq_de(a.saida, x, "pesos"))]
         if com_pesos:
             melhor = max(com_pesos, key=nota)
             info["melhor_modelo"] = dict(nome=melhor, arquivo=f"pesos__{slug(melhor)}.pt", criterio_cv=nota(melhor),
@@ -1071,18 +1437,38 @@ def orquestra(a, cfgs):
                     if n != melhor:
                         os.remove(os.path.join(a.saida, f"pesos__{slug(n)}.pt"))
 
+    def lanca(c, p, dev, div_lote, threads):
+        """Roda uma parte num processo filho e devolve (código de saída, últimas linhas, segundos)."""
+        env = dict(os.environ, PYTHONUNBUFFERED="1", OMP_NUM_THREADS=str(threads))
+        cmd = [sys.executable, "-u", os.path.abspath(__file__), "--job", f"{slug(c['nome'])}:{p}", "--prazo", str(prazo), "--div-lote", str(div_lote),
+               "--saida", a.saida, "--cache", a.cache, "--listas", a.listas, "--guarda-pesos", a.guarda_pesos]
+        if a.smoke:
+            cmd += ["--smoke", str(a.smoke)]
+        if dev.startswith("cuda"):
+            env["CUDA_VISIBLE_DEVICES"] = dev.split(":")[1]; cmd += ["--dispositivo", "cuda:0"]
+        else:
+            cmd += ["--dispositivo", "cpu"]
+        t0 = time.time()
+        pr = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, env=env)
+        cauda = []
+        for linha in pr.stdout:
+            diz(f"[{dev}] {linha.rstrip()}"); cauda = (cauda + [linha.rstrip()])[-8:]
+        return pr.wait(), cauda, time.time() - t0
+
     with trava:
-        for c in cfgs:                      # partes já em disco (retomada) -> FEITA
+        for c in cfgs:                      # partes já em disco e completas para esta execução (retomada) -> FEITA
             for p in partes_de(c):
-                if os.path.exists(arq_parte(a.saida, c, p)):
+                if parte_pronta(a, c, p, D):
                     evento(c, p, tipo="retomou", seg=float(np.load(arq_parte(a.saida, c, p))["seg"]))
+                elif os.path.exists(arq_parte(a.saida, c, p)):
+                    diz(f"retomada: {c['nome']} | {p} existe, mas sem teste2 ou sem os arquivos de servir: será refeita")
         manifesto()
         for c in cfgs:
             if estado_config(estado[slug(c["nome"])]) == "completa":
                 fecha_config(c)
         manifesto()
     pendentes = [c for c in cfgs if estado_config(estado[slug(c["nome"])]) != "completa"]
-    if pendentes:
+    if pendentes or not a.sem_servico:
         Cache(a.cache, D).prepara(profundidade=any(c["tipo"] == "destila-rgbd" for c in pendentes))
 
     def proxima(dev):
@@ -1117,24 +1503,10 @@ def orquestra(a, cfgs):
             c, p = job
             e = estado[slug(c["nome"])][p]
             diz(f"[{dev}] começa {c['nome']} | {p} (tentativa {e['tentativa']}, lote ÷ {e['div_lote']}); restam {(prazo - time.time()) / 60:.0f} min")
-            env = dict(os.environ, PYTHONUNBUFFERED="1", OMP_NUM_THREADS=str(max(1, (os.cpu_count() or 2) // len(disp)) if not a.smoke else 1))
-            cmd = [sys.executable, "-u", os.path.abspath(__file__), "--job", f"{slug(c['nome'])}:{p}", "--prazo", str(prazo), "--div-lote", str(e["div_lote"]),
-                   "--saida", a.saida, "--cache", a.cache, "--listas", a.listas, "--guarda-pesos", a.guarda_pesos]
-            if a.smoke:
-                cmd += ["--smoke", str(a.smoke)]
-            if dev.startswith("cuda"):
-                env["CUDA_VISIBLE_DEVICES"] = dev.split(":")[1]; cmd += ["--dispositivo", "cuda:0"]
-            else:
-                cmd += ["--dispositivo", "cpu"]
-            t0 = time.time()
-            pr = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, env=env)
-            cauda = []
-            for linha in pr.stdout:
-                diz(f"[{dev}] {linha.rstrip()}"); cauda = (cauda + [linha.rstrip()])[-8:]
-            rc = pr.wait()
+            rc, cauda, seg = lanca(c, p, dev, e["div_lote"], max(1, (os.cpu_count() or 2) // len(disp)) if not a.smoke else 1)
             with trava:
-                if rc == SAI_OK and os.path.exists(arq_parte(a.saida, c, p)):
-                    evento(c, p, tipo="concluiu", seg=time.time() - t0)
+                if rc == SAI_OK and parte_pronta(a, c, p, D):
+                    evento(c, p, tipo="concluiu", seg=seg)
                     if estado_config(estado[slug(c["nome"])]) == "completa":
                         try:
                             fecha_config(c)
@@ -1157,11 +1529,45 @@ def orquestra(a, cfgs):
     if pendentes:
         ts = [threading.Thread(target=trabalhador, args=(i, d)) for i, d in enumerate(disp)]
         [t.start() for t in ts]; [t.join() for t in ts]
+
+    # ---- fase de serviço: depois de todo o treino, um modelo por vez numa só GPU, com a CPU livre (latências limpas)
+    def serve(c):
+        s = slug(c["nome"])
+        if os.path.exists(arq_de(a.saida, c, "servico")):
+            return evento(c, "servico", tipo="retomou")
+        if estado_config(estado[s]) != "completa" or not os.path.exists(arq_de(a.saida, c, "servir")) \
+                or not os.path.exists(arq_de(a.saida, c, "cabeca" if c["tipo"] == "ridge" else "pesos")):
+            return evento(c, "servico", tipo="cancelou", motivo="configuração incompleta ou sem arquivos de servir")
+        while est_serv[s]["servico"]["estado"] == Estado.PENDENTE.value:
+            if time.time() + 300 > prazo:
+                return evento(c, "servico", tipo="sem_orcamento")
+            evento(c, "servico", tipo="iniciou", dispositivo=disp[0])
+            diz(f"[{disp[0]}] serviço: {c['nome']}; restam {(prazo - time.time()) / 60:.0f} min")
+            rc, cauda, seg = lanca(c, "servico", disp[0], 1, (os.cpu_count() or 2) if not a.smoke else 1)
+            if rc == SAI_OK and os.path.exists(arq_de(a.saida, c, "servico")):
+                evento(c, "servico", tipo="concluiu", seg=seg)
+            elif rc == SAI_SEM_ORCAMENTO:
+                evento(c, "servico", tipo="sem_orcamento")
+            else:
+                evento(c, "servico", tipo="falhou", erro=f"código {rc}: " + " | ".join(cauda[-3:]))
+
     with trava:
+        if not a.sem_servico:
+            for c in cfgs:
+                serve(c); manifesto()
+            sv = monta_servico(a, cfgs, {"smoke_todos": [c["nome"] for c in cfgs]} if a.smoke else PIPELINES)
+            for k, v in sv["pipelines"].items():
+                diz(f"serviço, {k}: {'completo' if v['completo'] else 'FALTAM ' + str(v['faltam'])} | {v['parametros'] / 1e6:.0f} M parâmetros | "
+                    f"pesos {v['bytes_pesos'] / 2 ** 30:.2f} GB | GPU ms/imagem {v['gpu_ms_por_imagem']} | CPU ms/imagem {v['cpu_ms_por_imagem']}")
+        info["disco_livre_gb_fim"] = dict(saida=livre(a.saida), cache=livre(a.cache))
+        manifesto()
+        tam = grava_tamanhos(a)
+        info["tamanho_saida"] = {k: tam[k] for k in ("total_gb", "n_arquivos", "por_tipo_mb", "maior_arquivo")}
         manifesto()
     diz("\n" + "\n".join(f"  {ic['estado']:14s} {n:44s} " + (f"RMSE {ic['cv_treino']['rmse_logm']:.4f} crit {ic['cv_treino']['crit_direto']:.1f}/{ic['cv_treino']['crit_mxd']:.1f}/{ic['cv_treino']['crit_geo']:.1f}% {ic['min']} min"
-                                                                  if ic["cv_treino"] else "") for n, ic in info["configs"].items()))
-    diz(f"melhor modelo único (pesos gravados): {info['melhor_modelo']}")
+                                                                  if ic["cv_treino"] else "") + f" | serviço: {ic['servico']['estado']}" for n, ic in info["configs"].items()))
+    diz(f"melhor modelo único pela CV: {info['melhor_modelo']}")
+    diz(f"saída: {tam['total_gb']} GB em {tam['n_arquivos']} arquivos {tam['por_tipo_mb']} (MB por tipo)")
     diz(f"fim: {info['duracao_min']} min. Baixe a pasta de saída e rode eval/treino/kaggle/ingere_kaggle.py <pasta>.")
 
 
@@ -1187,7 +1593,10 @@ def main():
     ap.add_argument("--orcamento-h", type=float, default=11.0, help="horas de relógio desde o início; o que não couber fica 'sem_orcamento'")
     ap.add_argument("--so", action="append", default=[], help="só configurações cujo nome contém o texto (pode repetir)")
     ap.add_argument("--retoma", action="append", default=[], help="pasta com a saída de uma execução anterior (pode repetir)")
-    ap.add_argument("--guarda-pesos", choices=["melhor", "todos", "nenhum"], default="melhor")
+    ap.add_argument("--rodada", choices=sorted(RODADAS), default="2", help="quais configurações: 1 = as 15 da seção 10; 2 = as 11 da nova execução (seção 11)")
+    ap.add_argument("--guarda-pesos", choices=["melhor", "todos", "nenhum"], default="todos",
+                    help="pesos finais dos ajustes finos: todos (padrão; é o que serve), só o melhor pela CV, ou nenhum")
+    ap.add_argument("--sem-servico", action="store_true", help="não mede latência nem grava servico.json")
     ap.add_argument("--smoke", type=int, nargs="?", const=8, default=0, help="teste rápido: N pratos por fold (padrão 8), backbone minúsculo, CPU")
     ap.add_argument("--workers", type=int, default=1, help="processos em paralelo quando não há GPU (--smoke/--cpu)")
     ap.add_argument("--cpu", action="store_true", help="ignora a GPU")
@@ -1195,20 +1604,21 @@ def main():
     ap.add_argument("--job"); ap.add_argument("--dispositivo", default="cpu"); ap.add_argument("--prazo", type=float); ap.add_argument("--div-lote", type=int, default=1)
     a = ap.parse_args()
     a.saida, a.cache, a.listas = (os.path.abspath(p) for p in (a.saida, a.cache, a.listas))
-    cfgs = CONFIGS_SMOKE if a.smoke else CONFIGS
-    if a.so:
-        cfgs = [c for c in cfgs if any(t in c["nome"] for t in a.so)]
     if a.autoteste:
         return autoteste()
     if a.checa_modelos:
         return checa_modelos()
+    if a.job:       # processo filho: procura a configuração entre todas as declaradas
+        return principal_parte(a, CONFIGS_SMOKE if a.smoke else CONFIGS)
+    cfgs = configs_da_rodada(a.rodada, a.smoke)
+    if a.so:
+        cfgs = [c for c in cfgs if any(t in c["nome"] for t in a.so)]
     if a.lista:
         for c in cfgs:
-            print(f"{c['nome']:46s} {c['tipo']:13s} {BACKBONES[c['bb']]['timm']:44s} {BACKBONES[c['bb']]['hw']} ~{c['est_min']} min numa T4 "
+            print(f"{c['nome']:46s} {c['tipo']:13s} {BACKBONES[c['bb']]['timm']:44s} {BACKBONES[c['bb']]['hw']} {c['est_min']:4d} min de GPU na execução 1 "
                   + (f"| lr {c['lr']:g} lld {c['lld']} épocas {c['epocas']} lote {c['bs']}×{c['acum']} escala {c['escala']}" if c["tipo"] != "ridge" else ""))
-        return print(f"total estimado: ~{sum(c['est_min'] for c in cfgs) / 60:.1f} h numa T4 (metade do relógio com T4 ×2)")
-    if a.job:
-        return principal_parte(a, cfgs)
+        return print(f"rodada {a.rodada}: {len(cfgs)} configurações, {sum(c['est_min'] for c in cfgs) / 60:.1f} h de GPU medidas na execução 1 "
+                     "(2 × T4: perto de metade disso em relógio); a execução 2 soma o teste2 (+39% na extração de features) e a fase de serviço")
     orquestra(a, cfgs)
 
 

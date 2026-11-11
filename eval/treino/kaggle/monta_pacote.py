@@ -14,13 +14,15 @@ Listas (só ids e metadados públicos do Nutrition5k, CC BY 4.0; nenhuma imagem)
   treino.csv    os 1.684 pratos do treino zenital estrito, com cadeia, fold (GroupKFold por cadeia, o mesmo da CPU)
                 e os alvos (massa, macros, massa e proteína por grupo de alimento)
   aval_ids.csv  prato_id, split, dish_id dos 450 pratos de avaliação, SEM gabarito
+  aval2_ids.csv prato_id, split, dish_id dos 829 pratos do teste2 (seção 11), SEM gabarito; é gravado por
+                eval/treino/teste2_monta.py, não por este script, que só o embute e confere
 """
 import csv, hashlib, json, os, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LISTAS = os.path.join(AQUI, "listas")
 NOTEBOOK = os.path.join(AQUI, "nutrelle_treino_gpu.ipynb")
-EMBUTIDOS = ["treino_gpu.py", "listas/treino.csv", "listas/aval_ids.csv"]
+EMBUTIDOS = ["treino_gpu.py", "listas/treino.csv", "listas/aval_ids.csv", "listas/aval2_ids.csv"]
 DESTINO = "/tmp/nutrelle_codigo"     # fora da pasta de saída do Kaggle
 
 
@@ -66,17 +68,19 @@ def notebook():
     md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
     code = lambda t: dict(cell_type="code", metadata={}, execution_count=None, outputs=[], source=t)
     cells = [
-        md("# Nutrelle — treino em GPU (seção 8: uma única foto de cima)\n\n"
+        md("# Nutrelle — treino em GPU (seções 8, 10 e 11: uma única foto de cima)\n\n"
            "Notebook gerado por `eval/treino/kaggle/monta_pacote.py`; **não edite à mão** (edite `treino_gpu.py` e gere de novo). "
-           "Roda sem interação: baixa as fotos zenitais do Nutrition5k do bucket público, treina as configurações declaradas "
-           "em `treino_gpu.py` até o orçamento de tempo e grava previsões, registros e os pesos do melhor modelo na pasta de saída.\n\n"
+           "Roda sem interação: baixa as fotos zenitais do Nutrition5k do bucket público, treina as configurações da rodada "
+           "(padrão: execução 2, as 11 configurações do pipeline congelado da seção 11) até o orçamento de tempo e grava previsões "
+           "(treino fora-do-fold, 450 pratos de avaliação e teste2, sem ler gabarito), registros, os arquivos para servir cada modelo "
+           "e `servico.json` (latências) na pasta de saída.\n\n"
            "Kaggle: *Settings → Accelerator → GPU T4 x2* e *Internet → On*. Colab: *Ambiente de execução → GPU*. "
            "Instruções completas em `eval/treino/kaggle/LEIA-ME.md`."),
         code("# Parâmetros (os padrões servem para o Kaggle)\n"
              "import json, os\n"
              "ORCAMENTO_H = 11.0   # horas de relógio; o que não couber fica marcado como 'sem_orcamento' e pode ser retomado\n"
              "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_saida'   # no Colab, aponte para o Drive para retomar\n"
-             "EXTRA = []           # ex.: ['--so', 'ridge'] para rodar só parte; ['--retoma', '/content/drive/MyDrive/nutrelle_saida']\n"
+             "EXTRA = []           # ex.: ['--rodada', '1'] (as 15 da seção 10); ['--so', 'ridge'] para rodar só parte; ['--retoma', '/content/drive/MyDrive/nutrelle_saida']\n"
              "# as variáveis de ambiente NUTRELLE_SAIDA e NUTRELLE_EXTRA (lista em JSON) substituem os valores acima sem editar o notebook\n"
              "SAIDA = os.environ.get('NUTRELLE_SAIDA') or SAIDA\n"
              "EXTRA = json.loads(os.environ.get('NUTRELLE_EXTRA') or 'null') or EXTRA\n"
@@ -98,7 +102,9 @@ def notebook():
         "    m = json.load(open(m))\n"
         "    for nome, c in m['configs'].items():\n"
         "        print(f\"{c['estado']:14s} {nome:46s} {c['cv_treino'] or ''}\")\n"
+        "        print(' ' * 15 + 'serviço:', c.get('servico', {}).get('estado'))\n"
         "    print('melhor modelo:', m['melhor_modelo'])\n"
+        "    print('tamanho da saída:', m.get('tamanho_saida'))\n"
         "print(sorted(os.listdir(SAIDA)))"))
     for i, c in enumerate(cells):
         c["id"] = f"celula-{i}"
@@ -120,6 +126,11 @@ def confere():
         assert len(cel) == 1 and cel[0]["source"][len(cab):] == open(os.path.join(AQUI, n)).read(), n
     meta = json.load(open(os.path.join(AQUI, "kernel-metadata.json")))
     assert meta["code_file"] == os.path.basename(NOTEBOOK) and meta["enable_gpu"] and meta["enable_internet"]
+    # o teste2 não pode cruzar com o treino nem com os 450 (a mesma conferência que treino_gpu.Dados faz ao rodar)
+    ids = lambda arq: [r["dish_id"] for r in csv.DictReader(open(os.path.join(LISTAS, arq)))]
+    tr, av, av2 = ids("treino.csv"), ids("aval_ids.csv"), ids("aval2_ids.csv")
+    assert len(set(av2)) == len(av2) and not set(av2) & (set(tr) | set(av)), "aval2_ids.csv cruza com o treino ou com a avaliação antiga"
+    print(f"listas: treino {len(tr)}, avaliação {len(av)}, teste2 {len(av2)}; interseções vazias")
     if meta["id"].startswith("USUARIO_KAGGLE/"):
         print("atenção: troque USUARIO_KAGGLE em kernel-metadata.json pelo seu usuário do Kaggle antes do push")
     print("confere: notebook e kernel-metadata.json em dia")

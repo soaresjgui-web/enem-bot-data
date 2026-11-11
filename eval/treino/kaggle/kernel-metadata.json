@@ -9,6 +9,7 @@
   "enable_tpu": false,
   "enable_internet": true,
   "machine_shape": "NvidiaTeslaT4",
+  "docker_image_pinning_type": "original",
   "dataset_sources": [],
   "competition_sources": [],
   "kernel_sources": [],
