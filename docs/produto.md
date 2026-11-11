@@ -33,7 +33,7 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 
 **Plano do dia:** tela inicial com meta de proteína, quanto falta e check-in rápido.
 
-**Papel da IA on-device:** objetivo de custo marginal zero por foto → **fotos ilimitadas** em todos os planos; resposta < 1 s; funciona offline. **Estado em 09/11/2026:** **Estado em 10/11/2026:** um modelo só de imagem (SigLIP 2 B/16, convertido para Core ML: 231 MB em FP16, 116 MB em 8 bits) chega a 61% sem nenhum LLM, empatado com o LLM em nuvem (55%) dentro da margem de erro. O híbrido com LLM em nuvem chega a ~63%. Latência no iPhone e identificação com Foundation Models **ainda não foram medidas**.
+**Papel da IA on-device:** objetivo de custo marginal zero por foto → **fotos ilimitadas** em todos os planos; resposta < 1 s; funciona offline. **Estado em 09/11/2026:** **Estado em 11/11/2026:** um modelo único exportável para o aparelho (SigLIP 2 B/16; a versão anterior foi convertida para Core ML com 231 MB em FP16 e 116 MB em 8 bits) chega a 61–63% sem nenhum LLM. Em servidor, dez redes de imagem chegam a 69,6% sem LLM e a 72,9% com uma chamada de LLM em nuvem. A diferença entre aparelho e servidor é de 7 a 10 pontos, e a promessa de custo zero por foto só vale para a versão do aparelho. Latência no iPhone e identificação com Foundation Models **ainda não foram medidas**.
 
 **Fora da v1:** treino guiado por câmera (removido), contador de calorias como foco, nota de "forma perfeita", comunidade, chat com IA.
 
@@ -72,24 +72,26 @@ Critério: proteína dentro de ±20% ou ±5 g; meta ≥ 70%. Conjunto de teste f
 |---|---|
 | LLM em nuvem sozinho | 55% |
 | Modelo treinado só com a imagem, 1ª versão | 48–52% |
-| Modelo só com a imagem, um modelo exportável para o aparelho | 61% (IC 55–67) |
-| Modelo só com a imagem, três modelos + busca de pratos parecidos (servidor, sem LLM) | 64,6% (IC 59–70) |
-| Híbrido com o roteiro antigo do LLM (v2) | 67,1% (IC 61–73) |
-| **Híbrido com o roteiro novo do LLM (v3: identifica e dá a parte da massa de cada alimento), média de duas rodadas cegas** | **71,4%** (IC 66–76); rodada 1 sozinha 70,4%, rodada 2 sozinha 68,6% |
+| Modelo só com a imagem, um modelo exportável para o aparelho | 61–63% (IC 55–69) |
+| Modelo só com a imagem, 10 redes em servidor, sem LLM (após o treino em GPU) | **69,6%** (IC 64–75) |
+| **Híbrido: modelos de imagem em servidor + LLM em nuvem com o roteiro v3, média de duas rodadas cegas (após o treino em GPU)** | **72,9%** (IC 67,5–78); rodadas sozinhas 72,9% e 74,3% |
+| O mesmo híbrido antes do treino em GPU | 71,4% (IC 66–76) |
 | Híbrido na comida brasileira (144 itens, fotos em ângulo, versão anterior) | 46–49% |
 | Com ajuste de porção pela usuária (**simulado**, 15–30% de erro de escolha) | 71–76% |
 
-- **O híbrido está em torno de 70%, mas a meta não está demonstrada:** as duas rodadas cegas independentes deram 70,4% e 68,6% (média 71,4%), e o limite inferior do intervalo fica abaixo de 70% nas três leituras. O ganho sobre o roteiro antigo é real (+4,3; IC +1,4 a +7,5). As duas rodadas erram nos mesmos pratos, então repetir rodadas não melhora. É um refeitório americano só (280 pratos); no conjunto secundário (50 pratos) o acerto foi 62%.
-- **Depende de LLM em nuvem** para identificar. Sem nuvem: 64,6% em servidor, 61% no modelo exportável para o aparelho.
-- **Pratos com muita proteína seguem fracos:** 73% na faixa de 15–25 g, 45% em 25–40 g e 55% acima de 40 g. Acima de 25 g, o limite voltou a ser o peso, que o modelo subestima em 8–12%.
+- **O híbrido passou de 70% na estimativa (72,9%), mas a meta não está demonstrada:** o limite inferior do intervalo é 67,5%. Com 280 pratos o intervalo é de cerca de ±5 pontos; para demonstrar a meta, a estimativa teria de ficar perto de 75% ou o conjunto de teste ser maior. O conjunto de teste já foi lido muitas vezes; novas mudanças pedem um conjunto novo.
+- **O treino em GPU melhorou o peso:** erro de 16,9% para 15,3%, e a subestimação nos pratos de 25–40 g caiu de −12% para −6%. O modelo só de imagem subiu de 64,6% para 69,6% (ganho fora da margem de erro) e quase alcança o híbrido.
+- **Depende de servidor:** o melhor resultado usa dez redes de imagem e, no híbrido, uma chamada de LLM em nuvem. O melhor modelo único para o aparelho fica em 61–63%.
+- **Pratos com muita proteína melhoraram, mas seguem abaixo:** no híbrido, 71% na faixa de 15–25 g, 54% em 25–40 g e 59% acima de 40 g.
+- **Só Nutrition5k:** um refeitório americano, câmera a altura fixa. No conjunto secundário (50 pratos) o híbrido fez 70%. Nenhum prato brasileiro foi avaliado com esses modelos.
 - **Sugestão automática com confiança:** só com a imagem, cerca de metade dos pratos pode ser aceita com ~69% de acerto; os aceitos são, na maioria, pratos de pouca proteína.
 - **Escala:** sem padronizar a distância, um zoom de ±30% derruba o híbrido de 60% para 46–54%; treinar com escala aleatória ou recortar pelo prato elimina a perda. Daí o círculo-guia na câmera.
 - **Mais dados do mesmo tipo não resolvem:** a curva de aprendizado estabiliza a partir de ~400 pratos da Nutrition5k.
 - **Fotos laterais no treino** removem o viés de ângulo (comida brasileira só com imagem: 22% → 36%) e ficam no conjunto de treino.
 - **Não existe base pública latino-americana com peso medido** ([`dados/precisao/datasets_internacionais.md`](dados/precisao/datasets_internacionais.md)); os dados brasileiros terão de ser coletados.
 
-**Decisão para a v1:** **uma única foto de cima** (decisão da fundadora, 09/11/2026), com círculo-guia e aviso de nível; sugestão automática pelo híbrido (modelo treinado para o peso + LLM em nuvem com o roteiro v3 para a identificação); em confiança baixa, faixa mais larga e destaque para conferir as porções; ajuste de porção opcional. Sem segunda foto. Sem ajuste, o híbrido fica em torno de 70% (71,4% na média de duas rodadas; IC 66–76), sem a meta demonstrada; os 71–76% com ajuste da versão anterior são simulação, não teste com usuárias. O ajuste de porção continua necessário, principalmente acima de 25 g de proteína.
+**Decisão para a v1:** **uma única foto de cima** (decisão da fundadora, 09/11/2026), com círculo-guia e aviso de nível; sugestão automática pelo híbrido (modelo treinado para o peso + LLM em nuvem com o roteiro v3 para a identificação); em confiança baixa, faixa mais larga e destaque para conferir as porções; ajuste de porção opcional. Sem segunda foto. Sem ajuste, o híbrido fica em 72,9% (IC 67,5–78), sem a meta demonstrada; os 71–76% com ajuste da versão anterior são simulação, não teste com usuárias. O ajuste de porção continua necessário, principalmente acima de 25 g de proteína.
 
 **Maiores riscos:** (1) nenhuma foto brasileira tirada de cima no conjunto de teste (UFPR e Liv Up são em ângulo), então o desempenho no Brasil sob a nova premissa é desconhecido; (2) peso e densidade em pratos com mais de 25 g de proteína; custo e latência do LLM em nuvem por foto, contra a promessa de fotos ilimitadas; (3) identificação on-device (Foundation Models) não testada; (4) o modelo exportado tem 116–231 MB e a latência no iPhone não foi medida.
 
-**Próximos passos de modelo:** treino em GPU (pacote em `eval/treino/kaggle/`, primeira execução no Kaggle iniciada em 10/11/2026) para corrigir o peso dos pratos grandes. **Próximo passo de dados:** piloto de 50 pratos brasileiros no iPhone (uma foto de cima com o círculo-guia, profundidade do aparelho como sinal de treino, peso por componente em balança) e teste da identificação on-device; depois, coleta de 400–800 pratos brasileiros pesados. Protocolo original em [`prototipo-precisao.md`](prototipo-precisao.md).
+**Próximos passos de modelo:** conjunto de teste novo e maior para confirmar os 70%; salvar os pesos de todos os modelos do treino em GPU (`eval/treino/kaggle/`, rodado em 10/11/2026) e medir tamanho, latência e custo de servir para corrigir o peso dos pratos grandes. **Próximo passo de dados:** piloto de 50 pratos brasileiros no iPhone (uma foto de cima com o círculo-guia, profundidade do aparelho como sinal de treino, peso por componente em balança) e teste da identificação on-device; depois, coleta de 400–800 pratos brasileiros pesados. Protocolo original em [`prototipo-precisao.md`](prototipo-precisao.md).

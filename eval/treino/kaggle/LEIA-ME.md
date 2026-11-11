@@ -2,7 +2,7 @@
 
 Roda, sem interação, os experimentos que a seção 8 de `docs/dados/precisao/resultado_modelo_treinado.md` deixou "sem rodar por falta de tempo de CPU": ajuste fino completo do SigLIP 2 B/16 a 224 px e a 384×512, 8 orientações na resolução maior, backbones DINOv2 e SigLIP 2 maiores e, por último, destilação de um professor RGB-D. A inferência continua usando **uma** foto RGB zenital. O critério é o do produto: proteína dentro de ±20% ou ±5 g.
 
-**Estado (10/11/2026): nada disto rodou em GPU ainda.** O caminho inteiro foi testado só em CPU, com um backbone minúsculo e 52 pratos. Os tempos abaixo são estimativas.
+**Estado (11/11/2026): rodou uma vez no Kaggle (2× T4, 15 configurações completas em ~5,7 h; a paridade com a CPU conferiu: RMSE 0,2550 contra 0,2551).** Resultados na seção 10 de `docs/dados/precisao/resultado_modelo_treinado.md`. Os tempos por configuração medidos estão em `treino_gpu.log` da saída; os da tabela abaixo eram estimativas feitas antes da execução. Para baixar a saída é preciso acesso a `www.kaggleusercontent.com`.
 
 ## Arquivos
 

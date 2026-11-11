@@ -1,7 +1,7 @@
 # Modelo treinado: proteína só pela foto, sem informar porção (09/11/2026)
 
 **Pergunta:** um modelo **treinado** (e não um LLM em nuvem) consegue sugerir a proteína só pela foto e atingir a meta de **≥ 70% dos pratos dentro de ±20% ou ±5 g**?
-**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. No LLM, o erro estava na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede identificação e partes da massa em vez de gramas. **Com as estimativas v3, o híbrido fica em cerca de 70% no teste: 71,4% com a média de duas rodadas cegas independentes** (IC 66,4 a 76,4; +8,6 sobre o híbrido da seção 8, IC +3,9 a +13,2; +4,3 sobre o híbrido com v2, IC +1,4 a +7,5), 70,4% na primeira rodada sozinha e 68,6% na segunda, feita como réplica. **É a primeira estimativa pontual na meta de 70%, e não é a meta demonstrada:** o intervalo começa em 66%, a réplica sozinha ficou abaixo de 70%, são 280 pratos do Nutrition5k, o `n5k_v1` (50 pratos) dá 62%, o pipeline depende de um LLM em nuvem, e os pratos com mais de 25 g continuam em 45% e 55%, agora limitados pelo erro de massa. As duas rodadas erram nos mesmos pratos, então repetir a estimativa não melhora o resultado.
+**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. No LLM, o erro estava na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede identificação e partes da massa em vez de gramas. **Com as estimativas v3, o híbrido fica em cerca de 70% no teste: 71,4% com a média de duas rodadas cegas independentes** (IC 66,4 a 76,4; +8,6 sobre o híbrido da seção 8, IC +3,9 a +13,2; +4,3 sobre o híbrido com v2, IC +1,4 a +7,5), 70,4% na primeira rodada sozinha e 68,6% na segunda, feita como réplica. **É a primeira estimativa pontual na meta de 70%, e não é a meta demonstrada:** o intervalo começa em 66%, a réplica sozinha ficou abaixo de 70%, são 280 pratos do Nutrition5k, o `n5k_v1` (50 pratos) dá 62%, o pipeline depende de um LLM em nuvem, e os pratos com mais de 25 g continuam em 45% e 55%, agora limitados pelo erro de massa. As duas rodadas erram nos mesmos pratos, então repetir a estimativa não melhora o resultado. **Atualização (seção 10, treino em GPU):** 15 configurações treinadas no Kaggle (2 × T4, 5,7 h) dão um modelo de massa melhor: a média de cinco backbones congelados de alta resolução baixa o erro de massa de 16,9% para 15,3% e reduz o viés nos pratos com mais de 25 g de −12% e −8% para −6% e −2%. Com ele, o **só imagem sobe de 64,6% para 69,6%** (IC 64 a 75; ganho de +5,0, IC +0,4 a +9,6), e os pratos com mais de 25 g saem de 42% para 54%. O **híbrido com o LLM v3 fica em 72,9%** (IC 67,5 a 78,2), +1,4 sobre os 71,4% de antes, sem diferença segura. Todas as formas com a densidade v3 dão de 70% a 75% no teste nas três leituras do LLM, mas **a meta de 70% continua não demonstrada**: o limite inferior do intervalo é 67,5%, e a forma de híbrido que o `calib` prefere entre todas dá 68,2%. Um modelo único que caiba no aparelho dá 62,9%, sem ganho seguro sobre os 61,1% da seção 8; o ganho está em juntar backbones grandes, no servidor.
 
 Scripts em `eval/treino/`. Dados, features, pesos e o `.mlpackage` ficam só no scratchpad (`…/scratchpad/treino/`), fora do repositório.
 
@@ -926,6 +926,447 @@ O que as duas rodadas mostram:
 8. **Para o produto.** A recomendação de 8.10 não muda: o seletor de porção continua necessário, sobretudo nos pratos com mais de 25 g, em que nenhum pipeline passa de 55%. O que muda é o ponto de partida do seletor: com a v3 e o modelo de massa, mais de 90% dos pratos com até 15 g e 73% dos de 15 a 25 g já saem dentro da tolerância no Nutrition5k. A saída "fração da massa por fonte de proteína" é uma pergunta que a usuária consegue responder ("frango é mais ou menos metade do prato?").
 9. **Registro de método.** (a) Antes de qualquer leitura do teste, a regra 3 foi restringida à densidade escolhida (a primeira versão deixava concorrer a massa × cada uma das densidades, e a escolha trocava de vencedor a cada configuração nova), o TIPS foi extraído e a grade dos vizinhos foi ampliada; `dens_avalia.py --so-cv` e um ensaio no `n5k_v1` foram usados nessa fase. (b) O script completo rodou quatro vezes no teste: a primeira é a avaliação; a segunda e a terceira só acrescentaram relatos (a decomposição por faixa de 9.5 e o intervalo da densidade isolada); a quarta regravou o resumo depois de um ensaio do caminho do LLM v3 feito só no `calib`, com as estimativas v2 convertidas para o formato v3. As escolhas e as tabelas são as mesmas nas quatro (a saída da quarta é idêntica à da terceira). (c) Os números de teste das 150 densidades não escolhidas são relato, não seleção. (d) LLM v3: as estimativas chegaram depois de a instrução, o script de conversão, as formas de híbrido e a regra de escolha estarem fixados. `dens_avalia.py` rodou uma vez, sem mudança, e escolheu a forma pelo `calib`. Depois acrescentei ao script um bloco só de relato ("4d": densidade v3 com a massa real, intervalos contra o híbrido de 9.6, tabela por faixa e, no `calib`, a fonte principal e a parte das fontes) e rodei mais uma vez; a saída até o bloco novo é idêntica à da execução anterior. No total, o teste foi lido em seis execuções, todas com as mesmas escolhas. (e) Um estimador da v3 (lote 03, rodada 1) ampliou recortes de 4 das suas próprias imagens; nenhum outro arquivo foi lido. (f) Segunda rodada da v3: a regra de leitura (número principal = média das duas rodadas; rodada 2 sozinha = réplica; como julgar) foi escrita em 9.7 (d) antes de qualquer execução no teste. As mudanças de código foram só de mecânica (filtro de rodada, gravação das estimativas por prato, `dens_rodadas.py`, desempate determinístico da fonte entre rodadas). `dens_avalia.py` rodou mais três vezes no teste: rodada 1 (saída idêntica à já relatada), rodada 2 e média; antes, só no `calib` (`--so-cv`), para a rodada 2 e para a média. `dens_rodadas.py` lê as estimativas gravadas e o gabarito para comparar as rodadas. No total, nove execuções de `dens_avalia.py` leram o teste, e nenhuma escolha dependeu dele. `estimativas_v3_pratos.csv` e `estimativas_v3_comp_casados.csv` foram regerados com as duas rodadas (densidade por prato = média geométrica).
 
+## 10. Treino em GPU (Kaggle) (11/11/2026)
+
+**Pergunta:** os experimentos que a seção 8 deixou sem rodar por falta de CPU (ajuste fino completo, 8 orientações na resolução maior, backbones maiores e do tipo DINOv2, destilação de um professor RGB-D) melhoram o modelo de massa e o resultado final? A seção 9 terminou com o erro de massa como o limite dos pratos com mais de 25 g.
+**Resposta curta: melhoram a massa e o pipeline só de imagem; o híbrido com o LLM v3 sobe pouco; a meta de 70% continua não demonstrada.** Números do `teste` (280 pratos), com a regra de 10.2.
+
+| Medida no `teste` | Seção 9 (escolhido) | Seção 10 (escolhido) | Diferença (IC 95%, bootstrap pareado) |
+|---|---|---|---|
+| Massa: MAPE / massa × densidade real | 16,9% / 81,4% | **15,3% / 87,5%** | +6,1 (+2,5 a +9,6) |
+| Viés mediano da massa, 25–40 g / > 40 g | −12% / −8% | **−6% / −2%** | |
+| Só imagem, sem LLM (conjunto de servidor) | 64,6% | **69,6%** (IC 64,3 a 75,0) | **+5,0 (+0,4 a +9,6)** |
+| **Híbrido com o LLM v3, média das rodadas (número principal)** | 71,4% | **72,9%** (IC 67,5 a 78,2) | +1,4 (−2,1 a +5,4): não distinguível |
+| Idem, rodada 1 / rodada 2 sozinhas | 70,4% / 68,6% | 72,9% (IC 67,5 a 78,2) / 74,3% (IC 68,9 a 79,3) | +2,5 (−1,1 a +6,1) / +5,7 (+1,8 a +9,6) |
+| Forma de híbrido que o `calib` escolhe entre todas (usa só o LLM v2) | 67,1% (híbrido com v2) | 68,2% (IC 62,9 a 73,6) | +1,1 (−3,9 a +5,7) |
+| Pratos com mais de 25 g: só imagem / híbrido v3 | 42,0% / 50,0% | **53,6% / 56,2%** | |
+| Modelo único do tamanho de um ViT-B (para o aparelho) | 61,1% (seção 8.9) | 62,9% (IC 57,5 a 68,6) | +1,8 (−3,9 a +7,5): não distinguível |
+| **Meta** | **70%** | limite inferior do IC: 67,5% | **não demonstrada** |
+
+
+### 10.1 O que rodou
+
+`eval/treino/kaggle/` (pacote descrito em `LEIA-ME.md`): 15 configurações declaradas em `treino_gpu.py`, todas completas em 2 × Tesla T4, 5,7 h de relógio. Cada uma entrega previsões fora-do-fold no treino (os mesmos 1.684 pratos e os mesmos 5 folds por cadeia) e previsões nos 450 pratos de avaliação, com as mesmas 22 saídas em log do banco da seção 8. O Kaggle recebeu só ids e alvos do treino; os 450 ids de avaliação foram sem gabarito. Os itens brasileiros não foram ao Kaggle.
+
+**Conferência de paridade (só CV):** `gpu ridge siglip2_b16_224 o8` dá RMSE de log-massa 0,2550 e critério 56,6 / 54,1 / 55,3% na CV; a mesma configuração na CPU dava 0,2551 e 56,6 / 54,2 / 54,9%. O ambiente da GPU reproduz o da CPU.
+
+### 10.2 Regra de leitura, escrita antes de ler qualquer número de teste dos modelos novos
+
+Até este ponto só foram lidos números de **CV no treino** dos modelos de GPU (o `manifesto.json` do Kaggle não contém gabarito de avaliação). A leitura do teste fica fixada assim:
+
+1. **Massa:** a regra 1 da seção 8, sem mudança: menor RMSE de log-massa na CV, entre **todas** as configurações completas e conjuntos declarados, antigos e novos. Os conjuntos novos são só os 13 de `conjuntos_gpu.json`, escritos antes de qualquer resultado de GPU.
+2. **Densidade:** a regra 1 da seção 9 (maior critério de CV com a massa real × densidade prevista). As configurações de GPU têm cabeça de densidade (as mesmas 22 saídas) e entram como candidatas, com os conjuntos de GPU. **Não há cabeça de frações por fonte nem recuperação sobre os backbones novos:** o Kaggle entregou previsões, não features. As 22 médias de 9.3 ficam como estão; a seleção gulosa é o mesmo procedimento sobre a lista maior. Desencolhimento: mesma regra (mais de 0,5 ponto com ajuste cruzado).
+3. **Só imagem:** a regra 3 da seção 9: maior critério de CV entre (a) todas as configurações e rotas do banco, antigas e novas, (b) massa escolhida × densidade escolhida e (c) a média geométrica de (b) com a rota direta. A "rota direta" de (c) passa a ser a da configuração que a regra 2 da seção 8 escolhe no banco ampliado (na seção 9 era a da configuração escolhida na seção 8).
+4. **Híbrido:** as mesmas formas de 9.6 e 9.7, com a massa e a densidade escolhidas acima; pesos e forma no `calib` com validação deixa-fora; empate para a forma com menos pesos. **Número principal: o híbrido com a média das duas rodadas do LLM v3.** Também saem as rodadas 1 e 2 sozinhas e o melhor híbrido só com o LLM v2.
+5. **Comparações:** bootstrap pareado contra os pipelines escolhidos até a seção 9: só imagem 64,6%, híbrido com v2 67,1%, híbrido com v3 (média das rodadas) 71,4%. As previsões por prato desses três foram gravadas **antes** de os modelos de GPU entrarem no banco, e o script confere que elas dão esses números.
+6. **"70% demonstrado"** quer dizer: limite inferior do IC de 95% do número principal em 70% ou mais. Abaixo disso, a meta continua não demonstrada, qualquer que seja a estimativa pontual.
+7. **Modelo único para o aparelho:** entre as configurações de um backbone só, a de maior critério de CV (rotas direta, massa × densidade ou média geométrica). Relato separado para os backbones do tamanho do ViT-B (o que 8.9 mostrou caber) e para qualquer tamanho. O teste só relata.
+8. **Nada novo:** nenhuma forma de híbrido nova, nenhum conjunto além dos já declarados, nenhuma mudança na instrução do LLM. Toda configuração avaliada aparece nas tabelas.
+9. As execuções a mais no teste são contadas em 10.7.
+
+**Esclarecimento acrescentado depois da escolha no `calib` e antes de qualquer leitura do teste pelo pipeline novo.** Com os modelos de GPU, a escolha no `calib` (sem teste) saiu assim: massa = média dos cinco backbones congelados de alta resolução; densidade = seleção gulosa de conjunto; só imagem = massa × essa densidade; e, entre **todas** as formas de híbrido, o `calib` prefere uma forma que usa só o LLM v2 (mistura log-linear de 5 pesos, 73,3% deixa-fora) às formas com o v3 (a melhor, 70,8%). A regra 4 dizia duas coisas que até a seção 9 coincidiam: "forma escolhida no `calib`" e "número principal = híbrido com a média das duas rodadas do v3". Como agora divergem, fica fixado, antes de ler o teste:
+
+- **Número principal (letra da regra 4):** a melhor forma **com o v3** (média das rodadas) pelo `calib`; empate para a de menos pesos.
+- **Ao lado, sempre:** a forma que o `calib` escolhe entre todas (com v2 ou v3), que é a regra 4 da seção 9 aplicada sem restrição.
+- **"70% demonstrado" só vale se as duas tiverem o limite inferior do IC em 70% ou mais.** Se só uma tiver, não está demonstrado.
+
+
+### 10.3 Ingestão e modelo de massa
+
+`ingere_kaggle.py` conferiu listas, folds e ordem dos pratos, copiou as 15 configurações para o banco, somou os 13 conjuntos declarados e rodou `zen_avalia.py` sem mudança. A CV recalculada aqui é igual à registrada no Kaggle nas 15 configurações. O ensaio (`--ensaio`) e a execução para valer deram a mesma saída.
+
+**Todas as configurações e conjuntos de GPU** (ordem do pior para o melhor RMSE de log-massa na CV; a coluna de CV decide, a de teste só relata):
+
+| Configuração | CV: RMSE log-massa | CV: critério (direto / m×d / geo) | Teste (direto / m×d / geo) | Teste: MAPE massa | Teste: massa × dens. LLM v2 |
+|---|---|---|---|---|---|
+| gpu destila-rgbd siglip2_b16_224 r1 | 0,2708 | 61,0 / 62,0 / 61,7% | 61,1 / 60,0 / 60,0% | 18,8% | 60,7% |
+| gpu ft siglip2_b16_224 r3 | 0,2664 | 61,2 / 61,5 / 61,8% | 58,2 / 58,2 / 56,8% | 18,6% | 58,9% |
+| média gpu: ft 224 r1 + destila-rgbd 224 r1 | 0,2637 | 61,6 / 61,9 / 62,1% | 61,4 / 57,9 / 60,0% | 17,9% | 61,1% |
+| gpu ft siglip2_b16_224 r1 | 0,2608 | 60,9 / 60,6 / 60,8% | 60,7 / 58,2 / 60,0% | 17,2% | 63,9% |
+| gpu ridge siglip2_b16_224 o8 | 0,2550 | 56,6 / 54,1 / 55,3% | 55,0 / 58,6 / 56,4% | 18,6% | 62,9% |
+| gpu ft dinov2_b14_336x448 r1 | 0,2539 | 61,0 / 61,9 / 62,0% | 64,3 / 65,7 / 65,4% | 18,5% | 61,4% |
+| média gpu: ft 224 r1 + r2 + r3 | 0,2539 | 62,3 / 63,1 / 63,1% | 60,7 / 60,4 / 61,4% | 17,2% | 62,5% |
+| gpu ft siglip2_b16_384x512 r1 | 0,2498 | 64,7 / 63,6 / 64,6% | 66,4 / 63,6 / 64,3% | 18,5% | 61,8% |
+| média gpu: ft 224 r1 + ft 384x512 r1 | 0,2490 | 64,6 / 63,3 / 63,9% | 64,6 / 63,6 / 62,9% | 17,2% | 62,1% |
+| gpu ft siglip2_b16_224 r2 **[único ViT-B]** | 0,2474 | 65,0 / 64,7 / 65,7% | 63,2 / 61,1 / 62,9% | 16,9% | 63,9% |
+| gpu ft siglip2_b16_224 r1 sem-escala | 0,2467 | 61,4 / 62,5 / 62,2% | 63,2 / 60,0 / 63,2% | 17,8% | 66,8% |
+| gpu ft siglip2_b16_384x512 r2 | 0,2464 | 65,2 / 64,2 / 64,8% | 62,9 / 60,4 / 61,4% | 17,3% | 59,6% |
+| média gpu: ft 384x512 r1 + r2 | 0,2463 | 65,3 / 64,6 / 64,6% | 63,2 / 61,1 / 61,8% | 17,6% | 59,6% |
+| gpu ft dinov2_l14_224x308 r1 | 0,2452 | 62,8 / 62,6 / 63,0% | 63,2 / 63,9 / 63,6% | 18,5% | 58,9% |
+| gpu ridge siglip2_b16_384x512 o8 | 0,2426 | 61,5 / 59,8 / 61,1% | 60,4 / 59,6 / 60,4% | 17,4% | 66,4% |
+| média gpu: ft 224 r1 + ft 384x512 r1 + ft dinov2_b14 r1 | 0,2418 | 63,9 / 64,3 / 63,8% | 65,0 / 63,6 / 64,3% | 16,8% | 62,5% |
+| média gpu: ft 384x512 r1 + ft dinov2_b14 r1 | 0,2409 | 64,7 / 65,3 / 65,2% | 65,4 / 63,9 / 66,1% | 17,2% | 62,5% |
+| média gpu: ft 224 r1 + ft 384x512 r1 + ft dinov2_b14 r1 + ft dinov2_l14 r1 | 0,2367 | 64,3 / 66,0 / 64,5% | 64,6 / 63,9 / 63,6% | 16,7% | 61,1% |
+| gpu ridge dinov2_b14_336x448 o8 | 0,2349 | 61,2 / 60,1 / 61,2% | 58,9 / 58,9 / 59,6% | 18,1% | 65,0% |
+| média gpu+cpu: só imagem da seção 8 + ft 224 r1 + ft 384x512 r1 | 0,2336 | 64,4 / 64,1 / 64,3% | 66,1 / 63,2 / 63,9% | 16,2% | 65,0% |
+| média gpu+cpu: conjunto de massa da seção 8 + ft 384x512 r1 | 0,2305 | 63,9 / 63,1 / 63,0% | 63,9 / 63,6 / 64,6% | 16,6% | 63,6% |
+| gpu ridge dinov2_l14_336x448 o8 | 0,2283 | 62,9 / 61,9 / 62,6% | 60,7 / 61,8 / 62,5% | 18,0% | 64,6% |
+| média gpu+cpu: conjunto de massa da seção 8 + ft 384x512 r1 + ft dinov2_b14 r1 | 0,2271 | 63,9 / 64,4 / 64,2% | 66,1 / 65,4 / 65,7% | 16,3% | 63,2% |
+| gpu ridge siglip2_l16_384x512 o8 | 0,2265 | 65,1 / 64,4 / 65,2% | 61,8 / 62,1 / 61,4% | 17,3% | 65,4% |
+| média gpu: ridge 384x512 o8 + ridge dinov2_b14 o8 | 0,2220 | 63,1 / 62,7 / 63,2% | 61,8 / 61,8 / 61,4% | 16,5% | 67,9% |
+| gpu ridge siglip2_so400m16_384x512 o8 **[único]** | 0,2190 | 65,4 / 64,9 / 65,9% | 61,1 / 62,9 / 62,1% | 15,9% | 67,9% |
+| média gpu: ft 384x512 r1 + ft dinov2_b14 r1 + ridge so400m o8 + ridge dinov2_l14 o8 **[rota direta]** | 0,2120 | 66,9 / 67,0 / 67,6% | 67,9 / 67,9 / 68,2% | 15,4% | 65,7% |
+| média gpu: ridge congelados de alta resolução (5 backbones) **[massa]** | 0,2051 | 66,7 / 66,7 / 67,1% | 65,7 / 68,6 / 66,1% | 15,3% | 67,9% |
+
+- **Massa escolhida pela regra 1: a média dos cinco backbones congelados de alta resolução** (SigLIP 2 B/16, L/16 e So400m/16 a 384×512; DINOv2 B/14 e L/14 a 336×448; ridge, 8 orientações). RMSE de log-massa na CV: **0,2051**, contra 0,2329 do conjunto da seção 8.
+- **O ajuste fino completo não foi o que mais ajudou a massa.** Os backbones maiores congelados com ridge (0,219 a 0,228) ganham de todos os ajustes finos (0,245 a 0,266). O ajuste fino ajuda o critério de proteína no mesmo backbone B/16 (a 224 px, 65% contra 57% do ridge; a 384×512, 65% contra 62%), não a massa.
+- **Destilação do professor RGB-D: não ajudou** (0,2708; pior que o ajuste fino simples com a mesma receita, 0,2608). É a terceira vez que a profundidade do Nutrition5k não rende (seções 2-B e 8).
+- **Escala aleatória no treino custa na CV** (0,2608 com, 0,2467 sem, na receita r1), como se espera num conjunto em que a câmera está sempre à mesma altura. O teste desta seção também é à altura fixa; a robustez de 8.7 não foi medida de novo.
+
+**Massa no teste, por faixa de proteína** (MAPE e, entre parênteses, viés mediano):
+
+| | 0–5 g | 5–15 g | 15–25 g | 25–40 g | > 40 g | Todos (MAPE) | Massa × densidade real |
+|---|---|---|---|---|---|---|---|
+| Seção 8, CV no treino | 19,7% (0%) | 16,7% (0%) | 14,3% (−2%) | 13,0% (−4%) | 14,7% (−10%) | 16,7% | |
+| Seção 10, CV no treino | 17,3% (+1%) | 14,4% (+1%) | 12,5% (0%) | 10,6% (−1%) | 13,0% (−5%) | 14,5% | |
+| Seção 8, teste | 19,1% (+3%) | 17,3% (+5%) | 15,0% (−7%) | 18,5% (**−12%**) | 14,4% (**−8%**) | 16,9% | 81,4% |
+| **Seção 10, teste** | 18,7% (+5%) | 15,9% (+7%) | 13,3% (−6%) | 15,3% (**−6%**) | 13,5% (**−2%**) | **15,3%** | **87,5%** |
+
+**O viés acima de 25 g caiu pela metade ou mais:** de −12% para −6% entre 25 e 40 g, e de −8% para −2% acima de 40 g. Com a densidade real, a massa nova daria 87,5% no teste, contra 81,4% da antiga (+6,1, IC +2,5 a +9,6); por faixa, 100 / 96 / 89 / 71 / 80%, contra 100 / 93 / 77 / 62 / 75%. A faixa de 25 a 40 g continua a mais fraca (71%).
+
+### 10.4 Densidade
+
+**Escolhida pela regra 2: a seleção gulosa de conjunto**, com critério de densidade de 76,2% (65,0% acima de 15 g) na CV com ajuste cruzado, contra 75,4% (63,7%) da média escolhida na seção 9. Os membros escolhidos com todos os folds são cinco: a cabeça de densidade da média de quatro ajustes finos de GPU (SigLIP 2 B/16 a 224 e a 384×512, DINOv2 B/14 e L/14), a do ridge sobre o So400m, e três cabeças de frações da seção 9 (ingredientes com erro quadrático, fontes com erro ponderado, fontes sobre 224 + 384×512). O TIPS deixou de entrar. Desencolhimento não adotado (76,2% → 74,9%).
+
+- **No teste, a densidade não mudou:** 75,4% com a massa real (65,5% acima de 15 g), contra 76,1% (66,7%) da escolhida na seção 9. As cabeças de densidade dos modelos de GPU chegam a 73,8% na CV e 70,7% no teste (a melhor, uma média de quatro ajustes finos); as cabeças de frações da seção 9, em média, davam 75,4% e 76,1%.
+- **O ganho desta seção vem da massa, não da densidade.**
+
+<details>
+<summary>Tabela completa: as 179 densidades (151 da seção 9 e 28 cabeças de densidade de GPU), em ordem do critério de CV</summary>
+
+Mesma legenda de 9.4; `s8:` marca a cabeça de densidade de uma configuração do banco de massa e proteína (seções 8 e 10). "Massa escolhida" é a de 10.3; a diferença é contra o só imagem da seção 9 (64,6%).
+
+| Densidade | CV: critério de densidade (todos / > 15 g) | Teste: massa real × dens. (todos / > 15 g) | Teste: massa escolhida × dens. | Δ vs só imagem da seção 9 (IC 95%) | Teste: geo com a rota direta |
+|---|---|---|---|---|---|
+| ridge contribuição por ingrediente siglip2_b16_512 | 33,3 / 28,9% | 35,4 / 32,7% | 32,1% | −32,5 (−40,7 a −24,6) | 56,8% |
+| ridge contribuição por ingrediente tips_b14 | 34,4 / 31,0% | 35,7 / 31,0% | 35,4% | −29,3 (−37,5 a −21,1) | 58,6% |
+| ridge contribuição por ingrediente siglip2_b16 | 35,0 / 31,8% | 36,8 / 32,7% | 30,7% | −33,9 (−41,8 a −26,4) | 58,2% |
+| soft-linear fonte siglip2_b16_512 [frações] | 37,1 / 27,4% | 46,8 / 41,7% | 40,7% | −23,9 (−31,4 a −16,8) | 61,4% |
+| soft-linear ingrediente siglip2_b16_512 [frações] | 56,6 / 36,2% | 61,8 / 48,2% | 56,1% | −8,6 (−14,3 a −2,9) | 65,4% |
+| s8: ridge siglip2_b16 o4 | 58,1 / 38,8% | 57,5 / 43,5% | 55,0% | −9,6 (−15,7 a −3,6) | 63,6% |
+| s8: ridge siglip2_b16 o1 | 59,7 / 41,5% | 55,0 / 39,3% | 51,4% | −13,2 (−19,6 a −7,1) | 60,7% |
+| s8: ridge siglip2_b16 o2 | 59,8 / 41,6% | 55,7 / 40,5% | 52,9% | −11,8 (−17,9 a −5,7) | 62,5% |
+| soft-mlp ingrediente siglip2_b16_512 [frações] | 59,8 / 41,0% | 66,1 / 52,4% | 62,5% | −2,1 (−7,5 a +3,2) | 66,4% |
+| s8: ridge siglip2_b16 o8 + escala aleatória no treino | 60,7 / 42,9% | 58,2 / 45,2% | 58,2% | −6,4 (−12,5 a +0,0) | 64,6% |
+| s8: gpu ridge siglip2_b16_224 o8 | 60,8 / 42,9% | 58,6 / 44,0% | 59,6% | −5,0 (−10,7 a +1,1) | 65,7% |
+| s8: ridge siglip2_b16 o8 | 61,0 / 43,4% | 59,3 / 44,0% | 59,6% | −5,0 (−11,1 a +1,1) | 65,4% |
+| ridge logdens siglip2_b16 | 61,0 / 43,4% | 59,3 / 44,0% | 59,6% | −5,0 (−11,1 a +1,1) | 65,4% |
+| s8: ridge siglip2_b16 o1-tta8 | 61,2 / 43,7% | 57,5 / 42,3% | 52,9% | −11,8 (−17,9 a −6,1) | 61,8% |
+| soft-linear fonte siglip2_b16_512 [log-dens] | 61,3 / 42,5% | 62,5 / 48,8% | 58,6% | −6,1 (−12,1 a −0,4) | 65,4% |
+| soft-linear ingrediente siglip2_b16_512 [log-dens] | 61,3 / 42,5% | 62,5 / 48,8% | 58,6% | −6,1 (−12,1 a −0,4) | 65,4% |
+| ridge logdens peso-faixa0.5 siglip2_b16 | 61,4 / 44,2% | 62,9 / 50,6% | 61,1% | −3,6 (−9,3 a +2,5) | 65,0% |
+| ridge logdens peso-faixa1.0 siglip2_b16 | 61,7 / 44,4% | 64,3 / 52,4% | 61,1% | −3,6 (−9,3 a +2,5) | 66,1% |
+| s8: ridge siglip2_b16 o8 + quadros laterais no treino | 61,8 / 44,2% | 58,9 / 44,6% | 55,7% | −8,9 (−14,7 a −3,2) | 62,9% |
+| s8: ridge siglip2_b16 o8+gem | 62,0 / 44,7% | 63,2 / 53,0% | 59,3% | −5,4 (−11,4 a +0,7) | 66,1% |
+| soft-mlp fonte siglip2_b16 [frações] | 62,0 / 44,8% | 67,5 / 57,7% | 61,4% | −3,2 (−8,2 a +1,8) | 69,3% |
+| ridge fração por fonte siglip2_b16_512 | 62,3 / 55,3% | 62,1 / 57,1% | 57,5% | −7,1 (−13,6 a −0,7) | 67,5% |
+| s8: ridge siglip2_b16_512 o1 | 62,4 / 44,6% | 60,7 / 45,2% | 58,9% | −5,7 (−11,4 a +0,0) | 63,2% |
+| ridge fração por fonte siglip2_b16 | 62,6 / 56,3% | 64,6 / 58,9% | 57,5% | −7,1 (−13,2 a −1,1) | 65,7% |
+| soft-mlp ingrediente +perda-dens siglip2_b16_512 [frações] | 62,7 / 45,0% | 70,7 / 58,9% | 65,0% | +0,4 (−5,0 a +5,7) | 68,9% |
+| s8: média: ajuste fino + ridge siglip2 o8 | 62,9 / 45,5% | 65,4 / 52,4% | 60,4% | −4,3 (−10,0 a +1,4) | 66,4% |
+| s8: ridge siglip2_b16_512 o2+gem+grade | 62,9 / 45,5% | 61,1 / 46,4% | 57,1% | −7,5 (−13,2 a −1,8) | 65,0% |
+| soft-mlp ingrediente só-frações +perda-dens siglip2_b16_512 [frações] | 63,1 / 46,0% | 71,4 / 59,5% | 66,8% | +2,1 (−3,6 a +7,9) | 69,6% |
+| soft-mlp ingrediente +perda-dens peso-faixa siglip2_b16 [frações] | 63,1 / 46,1% | 73,9 / 64,3% | 66,4% | +1,8 (−3,6 a +6,8) | 70,4% |
+| s8: ridge siglip2_b16 o8+gem+grade | 63,2 / 46,2% | 60,7 / 48,8% | 58,6% | −6,1 (−12,1 a +0,0) | 65,0% |
+| ridge fração por fonte tips_b14 | 63,2 / 55,4% | 64,6 / 56,5% | 57,1% | −7,5 (−13,6 a −1,4) | 67,1% |
+| soft-mlp ingrediente +perda-dens peso-faixa siglip2_b16_512 [frações] | 63,2 / 46,3% | 72,1 / 60,7% | 64,6% | +0,0 (−5,7 a +5,4) | 69,6% |
+| soft-mlp ingrediente +perda-dens peso-faixa0.5 siglip2_b16_512 [frações] | 63,3 / 46,4% | 71,4 / 59,5% | 64,6% | +0,0 (−5,4 a +5,7) | 68,2% |
+| s8: média: siglip2 o8 + siglip2-512 | 63,3 / 45,8% | 63,9 / 50,6% | 58,9% | −5,7 (−11,4 a +0,0) | 66,8% |
+| s8: ft cv | 63,8 / 46,6% | 63,6 / 48,8% | 61,8% | −2,9 (−8,9 a +3,2) | 66,4% |
+| s8: ridge siglip2_b16_512 o2 | 64,1 / 46,7% | 63,6 / 50,0% | 61,1% | −3,6 (−9,3 a +2,1) | 65,7% |
+| ridge logdens siglip2_b16_512 | 64,1 / 46,7% | 63,6 / 50,0% | 61,1% | −3,6 (−9,3 a +2,1) | 65,7% |
+| soft-mlp fonte siglip2_b16_512 [frações] | 64,2 / 48,3% | 70,4 / 60,1% | 62,5% | −2,1 (−7,1 a +2,9) | 67,5% |
+| soft-mlp ingrediente +perda-dens oculto1024 drop0.5 siglip2_b16_512 [frações] | 64,5 / 47,9% | 73,2 / 63,7% | 65,7% | +1,1 (−4,6 a +6,4) | 70,0% |
+| s8: média: ajuste fino + ridge o8 com laterais | 64,7 / 48,3% | 64,3 / 51,8% | 62,1% | −2,5 (−7,9 a +3,2) | 64,6% |
+| s8: gpu ridge dinov2_b14_336x448 o8 | 64,8 / 47,1% | 65,7 / 54,2% | 62,9% | −1,8 (−7,9 a +3,9) | 66,4% |
+| ridge logdens peso-faixa0.5 siglip2_b16_512 | 64,8 / 47,8% | 65,4 / 53,0% | 61,4% | −3,2 (−8,9 a +2,5) | 66,1% |
+| soft-mlp fonte peso-faixa siglip2_b16_512 [frações] | 64,8 / 48,6% | 72,1 / 61,3% | 62,9% | −1,8 (−6,8 a +3,2) | 68,2% |
+| s8: média: ajuste fino + ridge o8 + siglip2-512 (sem TIPS) | 65,0 / 48,2% | 66,4 / 54,2% | 60,7% | −3,9 (−9,6 a +1,8) | 67,1% |
+| s8: gpu ridge siglip2_b16_384x512 o8 | 65,1 / 48,2% | 62,5 / 48,8% | 57,1% | −7,5 (−13,6 a −1,8) | 64,3% |
+| ridge logdens peso-faixa1.0 siglip2_b16_512 | 65,2 / 48,9% | 66,8 / 55,4% | 61,4% | −3,2 (−8,9 a +2,5) | 66,4% |
+| s8: média: ajuste fino + ridge o8 com laterais + siglip2-512 (sem TIPS) | 65,4 / 49,2% | 65,7 / 53,0% | 62,5% | −2,1 (−7,5 a +3,2) | 65,7% |
+| s8: média: siglip2 o8 + mlp | 65,7 / 49,3% | 65,0 / 52,4% | 64,6% | +0,0 (−5,4 a +5,4) | 66,4% |
+| s8: média: ajuste fino + siglip2-512 | 65,7 / 49,2% | 67,5 / 55,4% | 62,5% | −2,1 (−8,2 a +3,9) | 67,1% |
+| soft-mlp fonte +perda-dens siglip2_b16 [frações] | 65,8 / 49,4% | 68,9 / 56,0% | 65,4% | +0,7 (−3,9 a +5,4) | 68,2% |
+| ridge logdens tips_b14 | 65,9 / 50,2% | 65,0 / 51,2% | 62,1% | −2,5 (−7,9 a +2,9) | 65,7% |
+| s8: gpu ridge dinov2_l14_336x448 o8 | 66,4 / 50,1% | 68,6 / 54,2% | 63,6% | −1,1 (−6,8 a +4,6) | 66,1% |
+| s8: mlp+aux-profundidade siglip2_b16 o8 | 66,8 / 51,1% | 67,5 / 54,2% | 64,6% | +0,0 (−5,4 a +5,4) | 66,4% |
+| ridge logdens peso-faixa0.5 tips_b14 | 66,9 / 51,7% | 65,4 / 53,6% | 61,8% | −2,9 (−8,6 a +2,9) | 66,4% |
+| soft-mlp fonte-l1 siglip2_b16_512 [frações] | 66,9 / 53,8% | 74,3 / 64,9% | 63,6% | −1,1 (−5,7 a +3,6) | 69,6% |
+| knn fração por fonte siglip2_b16 | 67,0 / 56,8% | 67,5 / 60,7% | 59,6% | −5,0 (−10,4 a +0,4) | 68,9% |
+| s8: média: ajuste fino + mlp + ridge o8 com laterais | 67,0 / 51,3% | 65,7 / 53,6% | 62,9% | −1,8 (−6,8 a +3,6) | 65,4% |
+| soft-mlp fonte-l2 oculto1024 drop0.5 siglip2_b16_512 [log-dens] | 67,1 / 51,2% | 72,1 / 61,3% | 63,6% | −1,1 (−6,4 a +3,9) | 69,6% |
+| soft-mlp fonte-l2 siglip2_b16_512+esp [log-dens] | 67,1 / 51,5% | 70,7 / 58,9% | 66,8% | +2,1 (−2,9 a +7,5) | 69,6% |
+| s8: média: ajuste fino + mlp + ridge o8 com laterais + siglip2-512 (sem TIPS) | 67,1 / 51,2% | 67,1 / 55,4% | 63,6% | −1,1 (−6,4 a +4,3) | 66,1% |
+| soft-mlp ingrediente-l2 siglip2_b16_512 [log-dens] | 67,1 / 51,2% | 70,4 / 58,9% | 64,6% | +0,0 (−5,4 a +5,4) | 67,1% |
+| ridge logdens peso-faixa1.0 tips_b14 | 67,1 / 51,9% | 66,4 / 54,8% | 62,9% | −1,8 (−7,9 a +3,9) | 66,4% |
+| soft-mlp fonte-l2 siglip2_b16_512 [log-dens] | 67,3 / 51,7% | 70,4 / 57,7% | 64,6% | +0,0 (−5,0 a +5,0) | 68,6% |
+| knn fração por fonte siglip2_b16_512 | 67,4 / 56,4% | 69,3 / 60,7% | 58,9% | −5,7 (−11,1 a −0,4) | 66,4% |
+| s8: gpu ft siglip2_b16_224 r3 | 67,4 / 52,2% | 67,1 / 52,4% | 67,9% | +3,2 (−2,5 a +8,9) | 69,3% |
+| soft-mlp ingrediente +perda-dens siglip2_b16_512 [log-dens] | 67,5 / 51,6% | 70,0 / 57,7% | 63,9% | −0,7 (−5,7 a +4,3) | 67,1% |
+| knn densidade siglip2_b16_512 | 67,5 / 53,9% | 67,9 / 56,0% | 60,7% | −3,9 (−8,9 a +1,1) | 67,9% |
+| s8: média: ajuste fino + mlp | 67,5 / 51,8% | 68,2 / 56,0% | 63,9% | −0,7 (−6,1 a +4,6) | 67,5% |
+| soft-mlp fonte siglip2_b16 [log-dens] | 67,6 / 52,0% | 69,6 / 56,5% | 65,0% | +0,4 (−4,6 a +5,4) | 67,5% |
+| soft-mlp fonte-l2 tips_b14 [log-dens] | 67,7 / 51,9% | 68,2 / 54,8% | 64,6% | +0,0 (−5,7 a +5,4) | 66,4% |
+| soft-mlp ingrediente +perda-dens oculto1024 drop0.5 siglip2_b16_512 [log-dens] | 67,7 / 52,1% | 67,9 / 54,8% | 60,0% | −4,6 (−9,6 a +0,4) | 67,5% |
+| soft-mlp fonte +perda-dens siglip2_b16 [log-dens] | 67,9 / 52,3% | 68,2 / 54,2% | 64,6% | +0,0 (−5,0 a +5,0) | 67,9% |
+| soft-mlp fonte-l2d siglip2_b16_512 [log-dens] | 67,9 / 52,3% | 70,4 / 58,9% | 64,3% | −0,4 (−5,4 a +4,6) | 68,9% |
+| s8: média gpu: ridge 384x512 o8 + ridge dinov2_b14 o8 | 68,0 / 51,7% | 68,9 / 58,3% | 62,1% | −2,5 (−7,9 a +2,9) | 67,9% |
+| soft-mlp ingrediente siglip2_b16_512 [log-dens] | 68,0 / 52,4% | 70,7 / 58,9% | 65,4% | +0,7 (−4,6 a +5,7) | 67,1% |
+| knn densidade siglip2_b16 | 68,0 / 54,9% | 72,1 / 60,7% | 63,9% | −0,7 (−5,7 a +4,3) | 67,9% |
+| soft-mlp fonte-l2 semente2 siglip2_b16_512 [log-dens] | 68,1 / 52,7% | 71,8 / 60,1% | 64,6% | +0,0 (−5,4 a +5,4) | 68,9% |
+| s8: mlp siglip2_b16 o8 | 68,2 / 53,4% | 68,9 / 56,0% | 62,9% | −1,8 (−6,8 a +3,2) | 68,6% |
+| s8: mlp wd0.1 siglip2_b16 o8 | 68,3 / 53,5% | 69,3 / 56,5% | 62,9% | −1,8 (−6,8 a +3,2) | 68,6% |
+| soft-mlp fonte-l2 tips_b14 [frações] | 68,3 / 53,8% | 70,4 / 61,9% | 64,3% | −0,4 (−5,4 a +4,3) | 68,6% |
+| soft-mlp fonte +perda-dens siglip2_b16_512 [log-dens] | 68,4 / 52,8% | 72,9 / 62,5% | 63,6% | −1,1 (−6,1 a +3,9) | 67,9% |
+| soft-mlp fonte +perda-dens peso-faixa siglip2_b16_512 [frações] | 68,5 / 54,0% | 71,8 / 61,9% | 64,3% | −0,4 (−5,0 a +3,9) | 69,6% |
+| soft-mlp fonte-l2 ambos [log-dens] | 68,5 / 53,9% | 69,3 / 58,3% | 66,1% | +1,4 (−3,6 a +6,8) | 69,3% |
+| s8: mlp oculto1024 drop0.5 siglip2_b16 o8 | 68,7 / 53,7% | 70,0 / 57,1% | 64,3% | −0,4 (−5,4 a +5,0) | 66,8% |
+| s8: gpu ft dinov2_l14_224x308 r1 | 68,8 / 53,4% | 70,7 / 58,9% | 67,1% | +2,5 (−3,2 a +8,2) | 67,9% |
+| s8: gpu ridge siglip2_l16_384x512 o8 | 68,8 / 53,2% | 67,1 / 53,6% | 62,1% | −2,5 (−8,9 a +3,6) | 66,1% |
+| soft-mlp fonte-l2 semente1 siglip2_b16_512 [log-dens] | 68,8 / 54,2% | 73,9 / 62,5% | 64,3% | −0,4 (−5,7 a +4,6) | 70,4% |
+| soft-mlp fonte-l2 oculto1024 drop0.5 siglip2_b16_512 [frações] | 68,8 / 58,4% | 69,6 / 63,1% | 61,1% | −3,6 (−9,6 a +2,5) | 69,6% |
+| soft-mlp fonte siglip2_b16_512 [log-dens] | 68,8 / 53,2% | 73,6 / 62,5% | 65,4% | +0,7 (−3,9 a +5,4) | 68,6% |
+| soft-mlp ingrediente +perda-dens peso-faixa0.5 siglip2_b16_512 [log-dens] | 68,8 / 54,1% | 71,1 / 58,9% | 66,4% | +1,8 (−2,9 a +6,8) | 66,4% |
+| s8: gpu ft siglip2_b16_224 r1 sem-escala | 68,8 / 53,9% | 66,1 / 51,8% | 64,6% | +0,0 (−6,1 a +5,7) | 68,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa tips_b14 [log-dens] | 68,8 / 54,8% | 71,1 / 61,3% | 65,4% | +0,7 (−5,0 a +6,1) | 67,9% |
+| soft-mlp fonte-l1 siglip2_b16_512 [log-dens] | 68,9 / 54,6% | 70,4 / 59,5% | 67,1% | +2,5 (−2,5 a +7,5) | 67,9% |
+| s8: gpu ft dinov2_b14_336x448 r1 | 69,0 / 54,3% | 67,1 / 54,2% | 65,4% | +0,7 (−5,4 a +6,8) | 68,6% |
+| soft-mlp fonte +perda-dens siglip2_b16_512 [frações] | 69,0 / 54,9% | 71,8 / 61,9% | 64,6% | +0,0 (−4,6 a +4,6) | 68,9% |
+| soft-mlp fonte-l2 siglip2_b16_512+esp [frações] | 69,0 / 55,7% | 72,5 / 66,7% | 62,9% | −1,8 (−6,8 a +2,9) | 68,9% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente1 tips_b14 [log-dens] | 69,1 / 55,1% | 70,7 / 58,9% | 65,0% | +0,4 (−5,0 a +5,7) | 66,4% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente2 siglip2_b16_512 [log-dens] | 69,1 / 54,7% | 72,5 / 63,7% | 65,0% | +0,4 (−5,0 a +5,4) | 66,8% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa tips_b14+siglip2_b16_512 [log-dens] | 69,2 / 55,1% | 72,5 / 61,9% | 66,4% | +1,8 (−3,6 a +7,1) | 68,2% |
+| s8: média gpu+cpu: conjunto de massa da seção 8 + ft 384x512 r1 | 69,2 / 53,9% | 70,4 / 60,7% | 63,9% | −0,7 (−6,1 a +4,6) | 67,5% |
+| soft-mlp fina-l2 siglip2_b16_512 [log-dens] | 69,2 / 54,7% | 72,1 / 60,1% | 63,9% | −0,7 (−6,1 a +4,6) | 67,9% |
+| soft-mlp ingrediente +perda-dens peso-faixa siglip2_b16 [log-dens] | 69,2 / 55,9% | 70,0 / 58,3% | 65,0% | +0,4 (−4,6 a +5,7) | 68,9% |
+| s8: gpu ft siglip2_b16_224 r1 | 69,3 / 54,6% | 68,9 / 56,5% | 64,6% | +0,0 (−5,4 a +5,7) | 68,2% |
+| soft-mlp fonte-l2 tips_b14+siglip2_b16_512 [log-dens] | 69,4 / 54,3% | 68,6 / 54,8% | 64,3% | −0,4 (−5,7 a +5,0) | 66,8% |
+| soft-mlp fonte +perda-dens peso-faixa siglip2_b16_512 [log-dens] | 69,5 / 55,2% | 72,1 / 61,3% | 63,2% | −1,4 (−6,4 a +3,2) | 68,2% |
+| knn fração por fonte tips_b14+siglip2_b16_512 | 69,5 / 59,2% | 71,1 / 63,7% | 62,9% | −1,8 (−6,8 a +3,6) | 68,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa siglip2_b16 [log-dens] | 69,5 / 56,2% | 67,9 / 54,8% | 61,8% | −2,9 (−7,5 a +2,1) | 68,9% |
+| soft-mlp fina-l2 +perda-dens peso-faixa siglip2_b16_512 [log-dens] | 69,6 / 55,8% | 70,4 / 58,9% | 62,5% | −2,1 (−7,1 a +2,9) | 67,5% |
+| s8: média gpu+cpu: só imagem da seção 8 + ft 224 r1 + ft 384x512 r1 | 69,7 / 54,5% | 71,8 / 61,9% | 67,1% | +2,5 (−2,9 a +7,9) | 68,2% |
+| soft-mlp fina-l2 siglip2_b16_512 [frações] | 69,7 / 57,5% | 72,1 / 63,1% | 63,9% | −0,7 (−5,7 a +4,3) | 68,9% |
+| soft-mlp ingrediente-l2 siglip2_b16_512 [frações] | 69,8 / 58,3% | 72,1 / 66,1% | 65,4% | +0,7 (−5,0 a +6,4) | 70,0% |
+| soft-mlp ingrediente +perda-dens peso-faixa siglip2_b16_512 [log-dens] | 69,8 / 55,9% | 70,0 / 60,1% | 66,1% | +1,4 (−3,6 a +6,4) | 67,5% |
+| soft-mlp fonte peso-faixa siglip2_b16_512 [log-dens] | 70,0 / 55,7% | 72,9 / 63,1% | 66,1% | +1,4 (−3,6 a +6,8) | 68,2% |
+| soft-mlp fonte-l2 ambos [frações] | 70,1 / 58,1% | 74,3 / 66,1% | 64,3% | −0,4 (−5,0 a +4,3) | 68,2% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa siglip2_b16 [frações] | 70,2 / 57,5% | 70,7 / 61,9% | 66,4% | +1,8 (−2,5 a +6,1) | 66,8% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente1 siglip2_b16_512 [log-dens] | 70,2 / 56,8% | 72,5 / 61,3% | 66,1% | +1,4 (−3,9 a +6,8) | 69,3% |
+| soft-mlp fonte-l2 tips_b14+siglip2_b16_512 [frações] | 70,3 / 57,4% | 71,4 / 61,3% | 63,6% | −1,1 (−6,1 a +3,9) | 68,2% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa tips_b14 [frações] | 70,3 / 56,9% | 71,4 / 63,7% | 66,1% | +1,4 (−3,6 a +6,4) | 67,5% |
+| s8: gpu destila-rgbd siglip2_b16_224 r1 | 70,4 / 56,7% | 67,5 / 53,0% | 63,2% | −1,4 (−7,1 a +4,3) | 66,8% |
+| soft-mlp fonte-l2 peso-faixa siglip2_b16_512 [log-dens] | 70,4 / 56,5% | 72,1 / 63,1% | 66,1% | +1,4 (−3,6 a +6,4) | 69,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa siglip2_b16_512 [log-dens] | 70,4 / 56,8% | 70,7 / 61,3% | 65,4% | +0,7 (−4,6 a +5,7) | 69,6% |
+| soft-mlp fonte-l2 +perda-dens2 peso-faixa siglip2_b16_512 [log-dens] | 70,5 / 57,1% | 70,7 / 61,3% | 63,6% | −1,1 (−6,4 a +3,9) | 69,6% |
+| soft-mlp fonte-l2 só-frações siglip2_b16_512 [frações] | 70,5 / 58,7% | 73,9 / 64,3% | 63,2% | −1,4 (−6,1 a +3,2) | 68,9% |
+| soft-mlp fonte-l2 semente1 siglip2_b16_512 [frações] | 70,6 / 59,5% | 73,9 / 64,3% | 64,6% | +0,0 (−4,6 a +5,0) | 68,9% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa 100 épocas siglip2_b16_512 [log-dens] | 70,8 / 57,2% | 70,7 / 60,1% | 64,6% | +0,0 (−5,0 a +5,4) | 68,2% |
+| s8: média gpu: ft 224 r1 + destila-rgbd 224 r1 | 70,8 / 57,2% | 70,0 / 57,7% | 62,1% | −2,5 (−8,2 a +3,2) | 68,9% |
+| soft-mlp fonte-l2 semente2 siglip2_b16_512 [frações] | 70,9 / 59,8% | 74,6 / 65,5% | 63,9% | −0,7 (−5,4 a +3,9) | 68,9% |
+| soft-mlp fonte-l2 siglip2_b16_512 [frações] | 70,9 / 59,9% | 73,2 / 63,7% | 63,9% | −0,7 (−5,4 a +4,3) | 67,9% |
+| s8: média gpu+cpu: conjunto de massa da seção 8 + ft 384x512 r1 + ft dinov2_b14 r1 | 70,9 / 56,5% | 70,0 / 60,1% | 64,6% | +0,0 (−5,0 a +5,0) | 68,9% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente1 tips_b14 [frações] | 71,0 / 58,0% | 71,1 / 63,1% | 65,4% | +0,7 (−3,9 a +5,4) | 68,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa ambos [log-dens] | 71,0 / 57,8% | 71,4 / 61,9% | 67,9% | +3,2 (−1,8 a +8,2) | 69,3% |
+| s8: gpu ridge siglip2_so400m16_384x512 o8 | 71,0 / 56,2% | 68,9 / 54,8% | 65,4% | +0,7 (−4,6 a +6,1) | 69,6% |
+| knn fração por fonte tips_b14 | 71,1 / 61,2% | 71,8 / 63,1% | 65,0% | +0,4 (−4,6 a +5,4) | 68,9% |
+| s8: gpu ft siglip2_b16_384x512 r1 | 71,3 / 57,2% | 69,6 / 60,1% | 66,1% | +1,4 (−4,3 a +7,1) | 67,5% |
+| soft-mlp fina-l2 +perda-dens peso-faixa siglip2_b16_512 [frações] | 71,3 / 58,9% | 73,6 / 63,1% | 65,7% | +1,1 (−3,9 a +5,7) | 69,6% |
+| média: frações-l2 512, 3 sementes | 71,4 / 60,8% | 74,6 / 64,9% | 64,3% | −0,4 (−5,0 a +4,3) | 68,9% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa 100 épocas siglip2_b16_512 [frações] | 71,4 / 59,8% | 75,0 / 64,9% | 65,0% | +0,4 (−4,3 a +5,0) | 67,5% |
+| soft-mlp fonte-l2 peso-faixa siglip2_b16_512 [frações] | 71,7 / 61,0% | 72,9 / 64,3% | 63,2% | −1,4 (−6,4 a +3,6) | 68,6% |
+| s8: média gpu: ft 224 r1 + ft 384x512 r1 | 71,8 / 58,1% | 70,0 / 59,5% | 65,4% | +0,7 (−5,0 a +6,8) | 68,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente1 siglip2_b16_512 [frações] | 71,8 / 60,4% | 73,9 / 63,1% | 63,6% | −1,1 (−5,7 a +3,6) | 69,3% |
+| s8: média gpu: ft 224 r1 + r2 + r3 | 71,9 / 58,2% | 71,4 / 59,5% | 64,6% | +0,0 (−5,4 a +5,7) | 70,0% |
+| s8: média gpu: ridge congelados de alta resolução (5 backbones) | 71,9 / 57,2% | 71,8 / 60,1% | 68,6% | +3,9 (−1,4 a +9,3) | 68,6% |
+| soft-mlp fonte-l2 +perda-dens2 peso-faixa siglip2_b16_512 [frações] | 72,0 / 60,9% | 74,3 / 63,7% | 64,3% | −0,4 (−5,4 a +4,6) | 68,2% |
+| soft-mlp fonte-l2d siglip2_b16_512 [frações] | 72,0 / 61,4% | 73,2 / 64,9% | 63,6% | −1,1 (−6,1 a +3,9) | 68,2% |
+| média: frações-l2 512 + ajuste fino (s8) | 72,1 / 58,9% | 71,8 / 61,3% | 64,3% | −0,4 (−5,4 a +4,3) | 68,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa ambos [frações] | 72,2 / 60,3% | 74,6 / 66,7% | 66,8% | +2,1 (−2,5 a +6,4) | 68,6% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa siglip2_b16_512 [frações] | 72,2 / 61,4% | 73,6 / 63,7% | 64,6% | +0,0 (−4,6 a +4,7) | 68,2% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa semente2 siglip2_b16_512 [frações] | 72,2 / 61,3% | 74,6 / 66,1% | 63,9% | −0,7 (−5,4 a +3,9) | 69,3% |
+| soft-mlp fonte-l2 +perda-dens peso-faixa tips_b14+siglip2_b16_512 [frações] | 72,2 / 59,7% | 73,6 / 64,9% | 64,6% | +0,0 (−4,6 a +4,3) | 68,9% |
+| knn densidade tips_b14+siglip2_b16_512 | 72,3 / 60,7% | 72,5 / 61,3% | 66,4% | +1,8 (−2,9 a +6,4) | 68,6% |
+| knn densidade tips_b14 | 72,4 / 60,7% | 72,9 / 63,7% | 67,5% | +2,9 (−1,8 a +7,5) | 71,1% |
+| s8: gpu ft siglip2_b16_384x512 r2 | 72,6 / 58,9% | 73,9 / 64,3% | 67,9% | +3,2 (−2,1 a +8,6) | 70,0% |
+| média: frações-l2 512, 3 sementes (+perda-dens peso-faixa) | 72,6 / 61,9% | 74,3 / 64,9% | 64,6% | +0,0 (−4,6 a +4,6) | 68,9% |
+| média: frações-l2 512 + knn 512 | 72,6 / 61,0% | 74,3 / 64,3% | 65,4% | +0,7 (−3,2 a +5,0) | 69,3% |
+| média: frações-l2 512 + classes finas-l2 512 | 72,8 / 61,5% | 77,1 / 69,0% | 65,4% | +0,7 (−3,6 a +5,4) | 68,9% |
+| média: frações-l2 512 + s8 escolhido (ajuste fino + 512) | 72,9 / 60,4% | 72,1 / 61,3% | 66,4% | +1,8 (−2,5 a +6,4) | 67,5% |
+| média: frações-l2 512 + 224 + ambos | 72,9 / 61,7% | 76,8 / 68,5% | 66,8% | +2,1 (−2,1 a +6,4) | 68,9% |
+| s8: média gpu: ft 224 r1 + ft 384x512 r1 + ft dinov2_b14 r1 | 72,9 / 59,5% | 71,4 / 60,1% | 66,4% | +1,8 (−3,9 a +7,5) | 69,3% |
+| s8: média gpu: ft 384x512 r1 + ft dinov2_b14 r1 | 72,9 / 59,6% | 69,6 / 58,3% | 67,1% | +2,5 (−2,9 a +8,2) | 69,3% |
+| s8: gpu ft siglip2_b16_224 r2 | 73,0 / 59,5% | 70,0 / 58,3% | 66,1% | +1,4 (−3,6 a +6,4) | 67,9% |
+| média: frações-l2 512 + frações-l2 224 | 73,0 / 61,9% | 74,3 / 66,1% | 66,8% | +2,1 (−1,8 a +6,4) | 69,3% |
+| média: frações-l2 512 + sua cabeça log-dens | 73,0 / 61,0% | 75,0 / 64,3% | 66,4% | +1,8 (−2,9 a +6,4) | 68,6% |
+| média: frações-l2 512 + ambos | 73,1 / 62,0% | 75,0 / 66,7% | 66,4% | +1,8 (−2,5 a +6,1) | 68,9% |
+| s8: média gpu: ft 384x512 r1 + ft dinov2_b14 r1 + ridge so400m o8 + ridge dinov2_l14 o8 | 73,1 / 59,5% | 73,2 / 60,7% | 70,4% | +5,7 (+0,7 a +11,1) | 69,3% |
+| média: frações-l2 512 + knn 512 + mlp 224 (s8) | 73,3 / 61,1% | 73,2 / 61,9% | 66,4% | +1,8 (−2,1 a +6,1) | 67,9% |
+| s8: média gpu: ft 384x512 r1 + r2 | 73,4 / 60,0% | 72,9 / 63,7% | 67,1% | +2,5 (−2,9 a +8,2) | 67,9% |
+| média: frações-l2 512, 3 sementes + knn 512 + mlp 224 (s8) | 73,5 / 62,1% | 74,6 / 63,7% | 66,8% | +2,1 (−1,8 a +6,4) | 69,6% |
+| média: frações-l2 512 + frações-l2 TIPS + knn 512 | 73,8 / 62,0% | 73,9 / 63,7% | 64,6% | +0,0 (−4,3 a +4,3) | 69,3% |
+| s8: média gpu: ft 224 r1 + ft 384x512 r1 + ft dinov2_b14 r1 + ft dinov2_l14 r1 | 73,8 / 61,1% | 70,7 / 59,5% | 67,1% | +2,5 (−3,2 a +7,9) | 68,2% |
+| média: frações-l2 512 + classes finas-l2 512 + knn 512 + mlp 224 (s8) | 73,9 / 61,8% | 74,3 / 63,7% | 67,5% | +2,9 (−1,1 a +7,1) | 69,6% |
+| média: frações-l2 (512, 224, ambos) + knn 512 + ridge fração por fonte 512 | 74,0 / 63,1% | 74,6 / 66,1% | 65,7% | +1,1 (−2,9 a +5,4) | 69,3% |
+| média: frações-l2 512 + classes finas-l2 512 + knn TIPS + mlp 224 (s8) | 74,2 / 62,0% | 73,9 / 63,1% | 68,2% | +3,6 (−0,4 a +7,5) | 69,3% |
+| média: frações-l2 512 + knn TIPS + mlp 224 (s8) | 74,4 / 62,7% | 74,6 / 64,3% | 69,3% | +4,6 (+1,1 a +8,6) | 69,6% |
+| média: frações-l2 512 + frações-l2 TIPS | 74,5 / 63,4% | 74,6 / 67,9% | 64,6% | +0,0 (−4,3 a +4,3) | 68,6% |
+| média: frações-l2 512 + frações-l2 TIPS + knn 512 + knn TIPS + mlp 224 (s8) | 74,7 / 63,2% | 75,4 / 65,5% | 67,9% | +3,2 (−0,4 a +7,1) | 68,6% |
+| média: frações-l2 512 + knn TIPS | 74,7 / 63,5% | 76,8 / 68,5% | 68,6% | +3,9 (+0,0 a +7,9) | 70,7% |
+| média: frações-l2 512 + frações-l2 TIPS + knn TIPS | 74,8 / 63,3% | 77,5 / 70,8% | 67,9% | +3,2 (−0,7 a +7,5) | 69,6% |
+| média: frações-l2 (512, TIPS, TIPS+512) + knn TIPS + mlp 224 (s8) | 75,4 / 63,7% | 76,1 / 66,7% | 68,6% | +3,9 (+0,0 a +8,2) | 69,3% |
+| seleção gulosa de conjunto **[densidade]** | 76,2 / 65,0% | 75,4 / 65,5% | 69,6% | +5,0 (+0,4 a +9,6) | 71,4% |
+
+</details>
+
+### 10.5 Só imagem e modelo único
+
+**Escolhido pela regra 3 (CV 70,5%, contra 66,3% na seção 9 e 62,2% na seção 8): massa de 10.3 × densidade de 10.4. Teste: 69,6%** (IC 64,3 a 75,0), MAE 5,6 g, viés −2,0 g. No `calib`: 71,7% (seção 9: 66,7%). No `n5k_v1`: 64% (seção 9: 58%).
+
+- **Contra os pipelines anteriores:** +5,0 sobre o só imagem da seção 9 (IC +0,4 a +9,6), +8,6 sobre o da seção 8 (IC +3,6 a +13,6), +14,6 sobre o LLM v2 sozinho (IC +7,5 a +21,8), +2,5 sobre o híbrido com v2 da seção 9 (IC −2,5 a +7,5).
+- **Os pratos com mais de 25 g melhoraram pela primeira vez:** 42,0% → 53,6% (25–40 g: 38% → 48%; > 40 g: 46% → 59%). Acima de 15 g: 47,6% → 57,7%.
+- A regra da seção 8 aplicada ao banco ampliado (`zen_avalia.py`, sem as cabeças de frações) escolhe a média de quatro modelos de GPU pela rota geométrica: CV 67,6%, teste 68,2% (IC 62,5 a 73,6).
+
+**Modelo único (um backbone), para o aparelho** (regra 7; a tabela completa, com os 32 modelos únicos, está abaixo):
+
+| Modelo único | CV: critério | Teste | Teste: MAPE massa | Δ vs modelo exportado em 8.9 (61,1%) | n5k v1 |
+|---|---|---|---|---|---|
+| **Tamanho ViT-B, escolhido pela CV:** SigLIP 2 B/16 a 224 px, ajuste fino completo `r2` (lr 6e-5, 25 épocas, orientações e escala aleatórias), rota geo | 65,7% | **62,9%** (IC 57,5 a 68,6) | 16,9% | +1,8 (−3,9 a +7,5) | 64% |
+| Qualquer tamanho, escolhido pela CV: SigLIP 2 So400m/16 a 384×512 congelado + ridge, rota geo | 65,9% | 62,1% (IC 56,4 a 67,9) | 15,9% | +1,1 (−5,0 a +7,1) | 62% |
+| Não escolhido, maior no teste: SigLIP 2 B/16 a 384×512, ajuste fino `r1`, rota direta | 64,7% | 66,4% (IC 60,7 a 71,8) | 18,5% | +5,4 (0,0 a +11,1) | 64% |
+| Referência: modelo exportado em 8.9 (três cabeças sobre o SigLIP 2 B/16 a 224 px) | 61,5% | 61,1% (IC 55,4 a 66,8) | 17,5% | | 58% |
+
+- **O melhor modelo único para o aparelho, pela CV, é o `gpu ft siglip2_b16_224 r2`.** No teste ele dá 62,9%, que não se distingue dos 61,1% do modelo de 8.9. O que ele tem a mais é ser um ViT-B inteiro com uma cabeça só (o de 8.9 tem dois topos de 3 blocos), ter erro de massa um pouco menor (16,9% contra 17,5%) e ter sido treinado com escala aleatória, que 8.7 apontou como condição para ir ao celular. Os pesos estão em `pesos__gpu_ft_siglip2_b16_224_r2.pt` (fora do repositório). A conversão para Core ML e a latência no iPhone **não foram feitas**, e a robustez de escala desse modelo **não foi medida**.
+- **Um único modelo continua 7 pontos abaixo do conjunto** (62,9% contra 69,6%). O ganho desta seção está em juntar backbones grandes, o que não cabe no aparelho.
+
+<details>
+<summary>Tabela completa: os 32 modelos de um backbone (CPU e GPU), em ordem do critério de CV</summary>
+
+| Modelo único | Tamanho | Rota (CV) | CV: critério | Teste | MAE / viés | Teste: MAPE massa | Δ vs modelo exportado em 8.9 (61,1%) | > 15 g | n5k v1 |
+|---|---|---|---|---|---|---|---|---|---|
+| ridge siglip2_b16 o1 | ViT-B | direta | 54,6% | 50,0% (IC 44,3 a 55,7) | 8,7 g / −4,1 g | 21,1% | −11,1 (−16,4 a −5,7) | 30,4% | 44% |
+| ridge siglip2_b16 o8 + escala aleatória no treino | ViT-B | direta | 55,9% | 56,4% (IC 50,4 a 62,1) | 7,8 g / −2,4 g | 18,5% | −4,6 (−9,3 a +0,4) | 39,3% | 52% |
+| ridge siglip2_b16 o1-tta8 | ViT-B | direta | 56,0% | 55,0% (IC 49,3 a 60,7) | 8,2 g / −3,9 g | 20,0% | −6,1 (−11,1 a −0,7) | 38,7% | 54% |
+| ridge siglip2_b16 o4 | ViT-B | direta | 56,6% | 51,8% (IC 46,1 a 57,5) | 8,3 g / −3,6 g | 20,1% | −9,3 (−14,3 a −4,3) | 34,5% | 48% |
+| gpu ridge siglip2_b16_224 o8 | ViT-B | direta | 56,6% | 55,0% (IC 49,3 a 60,7) | 7,7 g / −2,9 g | 18,6% | −6,1 (−10,7 a −1,4) | 38,1% | 56% |
+| ridge siglip2_b16 o8 | ViT-B | direta | 56,6% | 55,4% (IC 49,6 a 61,1) | 7,7 g / −2,8 g | 18,6% | −5,7 (−10,4 a −1,1) | 38,7% | 56% |
+| ridge siglip2_b16 o8+gem | ViT-B | direta | 56,9% | 56,4% (IC 50,7 a 62,1) | 7,8 g / −3,1 g | 19,1% | −4,6 (−9,3 a +0,0) | 40,5% | 50% |
+| ridge siglip2_b16 o2 | ViT-B | direta | 57,0% | 51,4% (IC 45,7 a 57,1) | 8,4 g / −3,5 g | 20,4% | −9,6 (−14,6 a −4,6) | 34,5% | 52% |
+| ridge siglip2_b16 o8 + quadros laterais no treino | ViT-B | direta | 57,3% | 51,8% (IC 45,7 a 57,9) | 8,3 g / −3,6 g | 19,0% | −9,3 (−13,6 a −5,0) | 32,7% | 48% |
+| ridge siglip2_b16 o8+gem+grade | ViT-B | direta | 57,3% | 57,1% (IC 51,1 a 62,9) | 7,7 g / −2,6 g | 18,9% | −3,9 (−8,2 a +0,4) | 39,9% | 52% |
+| ridge siglip2_b16_512 o1 | ViT-B | direta | 59,4% | 58,2% (IC 52,5 a 63,9) | 7,4 g / −3,8 g | 19,3% | −2,9 (−7,9 a +2,1) | 42,9% | 54% |
+| ft cv | ViT-B | direta | 59,4% | 57,5% (IC 51,8 a 63,2) | 7,6 g / −2,0 g | 18,9% | −3,6 (−7,9 a +0,7) | 41,7% | 60% |
+| mlp+aux-profundidade siglip2_b16 o8 | ViT-B | direta | 59,5% | 60,0% (IC 54,3 a 65,7) | 7,7 g / −5,8 g | 20,0% | −1,1 (−6,1 a +3,6) | 39,3% | 50% |
+| ridge siglip2_b16_512 o2 | ViT-B | direta | 59,7% | 61,1% (IC 55,4 a 66,8) | 7,0 g / −3,4 g | 18,3% | +0,0 (−5,4 a +5,4) | 47,6% | 60% |
+| ridge siglip2_b16_512 o2+gem+grade | ViT-B | direta | 60,2% | 58,9% (IC 53,2 a 64,6) | 7,3 g / −3,5 g | 19,0% | −2,1 (−7,5 a +3,2) | 44,0% | 56% |
+| mlp oculto1024 drop0.5 siglip2_b16 o8 | ViT-B | geo | 60,5% | 59,6% (IC 53,9 a 65,0) | 7,6 g / −5,6 g | 19,9% | −1,4 (−6,1 a +3,2) | 40,5% | 50% |
+| mlp siglip2_b16 o8 | ViT-B | geo | 60,6% | 62,1% (IC 56,4 a 67,9) | 7,3 g / −5,2 g | 19,4% | +1,1 (−3,6 a +5,7) | 44,0% | 54% |
+| mlp wd0.1 siglip2_b16 o8 | ViT-B | geo | 60,6% | 62,5% (IC 56,8 a 68,2) | 7,3 g / −5,2 g | 19,4% | +1,4 (−3,2 a +6,1) | 44,6% | 52% |
+| gpu ft siglip2_b16_224 r1 | ViT-B | direta | 60,9% | 60,7% (IC 55,0 a 66,4) | 6,8 g / −2,7 g | 17,2% | −0,4 (−5,4 a +4,7) | 47,0% | 56% |
+| gpu ridge dinov2_b14_336x448 o8 | ViT-B | direta | 61,2% | 58,9% (IC 53,2 a 64,3) | 7,3 g / −3,0 g | 18,1% | −2,1 (−8,2 a +3,9) | 44,6% | 54% |
+| gpu ridge siglip2_b16_384x512 o8 | ViT-B | direta | 61,5% | 60,4% (IC 54,6 a 66,1) | 7,0 g / −3,1 g | 17,4% | −0,7 (−6,1 a +4,6) | 45,2% | 62% |
+| gpu ft siglip2_b16_224 r3 | ViT-B | geo | 61,8% | 56,8% (IC 50,7 a 62,9) | 7,4 g / −2,2 g | 18,6% | −4,3 (−10,0 a +1,4) | 39,9% | 54% |
+| gpu ft dinov2_b14_336x448 r1 | ViT-B | geo | 62,0% | 65,4% (IC 59,6 a 70,7) | 7,0 g / −2,4 g | 18,5% | +4,3 (−1,4 a +10,0) | 50,0% | 56% |
+| gpu destila-rgbd siglip2_b16_224 r1 | ViT-B | m×d | 62,0% | 60,0% (IC 53,9 a 65,7) | 7,3 g / −2,3 g | 18,8% | −1,1 (−7,1 a +4,6) | 43,5% | 56% |
+| gpu ft siglip2_b16_224 r1 sem-escala | ViT-B | m×d | 62,5% | 60,0% (IC 53,9 a 65,4) | 7,5 g / −0,5 g | 17,8% | −1,1 (−7,1 a +5,0) | 43,5% | 56% |
+| gpu ridge dinov2_l14_336x448 o8 | maior | direta | 62,9% | 60,7% (IC 55,0 a 66,4) | 7,1 g / −2,9 g | 18,0% | −0,4 (−6,4 a +5,4) | 44,0% | 66% |
+| gpu ft dinov2_l14_224x308 r1 | maior | geo | 63,0% | 63,6% (IC 57,9 a 69,3) | 6,9 g / −3,2 g | 18,5% | +2,5 (−3,6 a +8,6) | 48,8% | 64% |
+| gpu ft siglip2_b16_384x512 r1 | ViT-B | direta | 64,7% | 66,4% (IC 60,7 a 71,8) | 6,2 g / −1,8 g | 18,5% | +5,4 (+0,0 a +11,1) | 54,2% | 64% |
+| gpu ridge siglip2_l16_384x512 o8 | maior | geo | 65,2% | 61,4% (IC 55,7 a 67,1) | 7,2 g / −2,3 g | 17,3% | +0,4 (−6,1 a +6,4) | 45,2% | 66% |
+| gpu ft siglip2_b16_384x512 r2 | ViT-B | direta | 65,2% | 62,9% (IC 57,1 a 68,2) | 6,3 g / −3,2 g | 17,3% | +1,8 (−3,9 a +7,2) | 47,6% | 58% |
+| gpu ft siglip2_b16_224 r2 **[único ViT-B]** | ViT-B | geo | 65,7% | 62,9% (IC 57,5 a 68,6) | 6,8 g / −2,7 g | 16,9% | +1,8 (−3,9 a +7,5) | 46,4% | 64% |
+| gpu ridge siglip2_so400m16_384x512 o8 **[único]** | maior | geo | 65,9% | 62,1% (IC 56,4 a 67,9) | 6,8 g / −2,2 g | 15,9% | +1,1 (−5,0 a +7,1) | 44,0% | 62% |
+
+</details>
+
+### 10.6 Híbridos
+
+Massa de 10.3, densidade de 10.4, as mesmas formas de 9.6 e 9.7. Leitura principal: LLM v3 com a média das duas rodadas. As diferenças são contra os híbridos escolhidos na seção 9. As 7 primeiras linhas são as formas da seção 8 com a massa e a densidade da seção 8 (referência).
+
+| Forma | Calib (deixa-fora) | Teste | MAE / viés | Δ vs híbrido v3 da seção 9 (71,4%) | Δ vs híbrido v2 da seção 9 (67,1%) | > 15 g | > 25 g | n5k v1 |
+|---|---|---|---|---|---|---|---|---|
+| Massa e dens. da seção 8 · massa modelo × dens LLM | 63,3% | 63,9% (IC 58,6 a 69,3) | 6,6 g / −2,6 g | −7,5 (−12,5 a −2,9) | −3,2 (−7,9 a +1,4) | 49,4% | 38,4% | 54% |
+| Massa e dens. da seção 8 · massa √(modelo·LLM) × dens LLM | 62,5% | 61,8% (IC 56,1 a 67,2) | 7,2 g / −3,4 g | −9,6 (−15,7 a −3,6) | −5,4 (−11,4 a +0,7) | 47,6% | 34,8% | 60% |
+| Massa e dens. da seção 8 · massa modelo^a·LLM^(1−a) × dens LLM | 61,7% | 63,2% (IC 57,5 a 68,6) | 6,6 g / −2,8 g | −8,2 (−13,6 a −2,9) | −3,9 (−8,9 a +1,1) | 47,0% | 34,8% | 54% |
+| Massa e dens. da seção 8 · massa^a × dens (LLM^b·modelo^(1−b)) | 65,0% | 62,9% (IC 57,1 a 68,6) | 6,3 g / −3,3 g | −8,6 (−13,2 a −3,9) | −4,3 (−8,6 a −0,4) | 48,8% | 42,0% | 60% |
+| Massa e dens. da seção 8 · blend log-linear (5 pesos) | 65,0% | 65,4% (IC 59,6 a 71,1) | 5,9 g / −1,2 g | −6,1 (−11,1 a −1,1) | −1,8 (−6,8 a +3,2) | 56,0% | 50,0% | 66% |
+| Massa e dens. da seção 8 · blend log-linear + proteína direta e do LLM (7 pesos) | 64,2% | 65,4% (IC 59,6 a 71,1) | 5,9 g / −1,0 g | −6,1 (−11,1 a −0,7) | −1,8 (−6,8 a +3,6) | 56,0% | 50,9% | 70% |
+| Massa e dens. da seção 8 · média geométrica: proteína direta do modelo e do LLM | 63,3% | 61,1% (IC 55,4 a 66,8) | 6,9 g / −3,8 g | −10,4 (−15,7 a −5,0) | −6,1 (−11,4 a −1,1) | 44,6% | 36,6% | 64% |
+| v2 · massa modelo × dens LLM | 63,3% | 67,9% (IC 62,5 a 73,2) | 6,3 g / −1,8 g | −3,6 (−8,9 a +1,8) | +0,7 (−4,6 a +6,1) | 54,8% | 45,5% | 66% |
+| v2 · massa √(modelo·LLM) × dens LLM | 62,5% | 63,6% (IC 57,9 a 69,3) | 7,0 g / −3,1 g | −7,9 (−14,3 a −1,4) | −3,6 (−9,6 a +2,5) | 50,0% | 36,6% | 58% |
+| v2 · massa modelo^a·LLM^(1−a) × dens LLM | 64,2% | 67,9% (IC 62,1 a 73,2) | 6,4 g / −2,2 g | −3,6 (−8,9 a +1,8) | +0,7 (−4,7 a +6,1) | 55,4% | 46,4% | 68% |
+| v2 · massa^a × dens (LLM^b·modelo^(1−b)) | 70,8% | 69,3% (IC 63,9 a 74,6) | 5,5 g / −2,1 g | −2,1 (−6,4 a +2,1) | +2,1 (−2,1 a +6,4) | 57,7% | 51,8% | 70% |
+| v2 · blend log-linear (5 pesos) **[escolhida pelo calib entre todas]** | 73,3% | 68,2% (IC 62,9 a 73,6) | 5,4 g / −1,4 g | −3,2 (−8,2 a +1,8) | +1,1 (−3,9 a +5,7) | 59,5% | 55,4% | 68% |
+| v2 · blend log-linear + proteína direta e do LLM (7 pesos) | 71,7% | 70,0% (IC 64,6 a 75,4) | 5,3 g / −1,2 g | −1,4 (−6,4 a +3,6) | +2,9 (−2,1 a +7,9) | 60,7% | 58,0% | 70% |
+| v2 · média geométrica: proteína direta do modelo e do LLM | 66,7% | 64,3% (IC 58,6 a 69,6) | 6,5 g / −3,4 g | −7,1 (−12,9 a −1,8) | −2,9 (−8,2 a +2,5) | 51,2% | 42,9% | 70% |
+| v2 · massa modelo × dens (LLM^b · modelo^(1−b)) | 71,7% | 69,3% (IC 63,9 a 74,6) | 5,5 g / −2,1 g | −2,1 (−6,4 a +2,1) | +2,1 (−2,1 a +6,4) | 57,7% | 51,8% | 70% |
+| v2 · massa modelo × Σ fonte (fração LLM^w ⊕ modelo) × dens por fonte do LLM | 65,8% | 69,6% (IC 64,3 a 75,0) | 5,7 g / −1,9 g | −1,8 (−6,8 a +2,9) | +2,5 (−2,1 a +7,1) | 57,1% | 50,9% | 70% |
+| v2 · massa^a × dens (LLM com frango pela média do treino ^b · modelo^(1−b)) | 70,8% | 69,3% (IC 63,9 a 74,6) | 5,5 g / −2,1 g | −2,1 (−6,4 a +2,1) | +2,1 (−2,1 a +6,1) | 57,7% | 51,8% | 68% |
+| v2 · massa modelo × dens (LLM com frango pela média do treino ^b · modelo^(1−b)) | 71,7% | 69,3% (IC 63,9 a 74,6) | 5,5 g / −2,1 g | −2,1 (−6,4 a +2,1) | +2,1 (−2,1 a +6,1) | 57,7% | 51,8% | 68% |
+| v2 · massa modelo × dens do modelo (sem LLM) | 71,7% | 69,6% (IC 64,3 a 75,0) | 5,6 g / −2,0 g | −1,8 (−6,4 a +2,5) | +2,5 (−2,5 a +7,5) | 57,7% | 53,6% | 64% |
+| v2 · massa modelo × dens (LLM^b · frações do modelo com a fonte do LLM como prior^(1−b)) | 67,5% | 68,6% (IC 62,9 a 73,9) | 5,6 g / −2,3 g | −2,9 (−7,5 a +1,8) | +1,4 (−3,2 a +5,7) | 56,0% | 48,2% | 66% |
+| v3 · massa modelo × dens LLM v3 | 69,2% | 73,9% (IC 68,6 a 78,9) | 5,5 g / −1,5 g | +2,5 (−2,1 a +7,1) | +6,8 (+1,4 a +11,8) | 63,1% | 58,0% | 62% |
+| v3 · massa modelo × dens (v3^b · modelo^(1−b)) | 70,0% | 73,6% (IC 68,2 a 78,6) | 5,3 g / −1,9 g | +2,1 (−1,4 a +5,7) | +6,4 (+2,1 a +10,7) | 62,5% | 56,2% | 68% |
+| v3 · massa^a (modelo, LLM v2) × dens (v3^b · modelo^(1−b)) | 69,2% | 73,6% (IC 68,2 a 78,6) | 5,3 g / −1,9 g | +2,1 (−1,4 a +5,7) | +6,4 (+2,1 a +10,7) | 62,5% | 56,2% | 68% |
+| v3 · massa modelo × dens (v2^b1 · v3^b2 · modelo^(1−b1−b2)) | 70,0% | 71,1% (IC 65,7 a 76,1) | 5,4 g / −2,1 g | −0,4 (−4,6 a +3,9) | +3,9 (−0,4 a +7,9) | 60,1% | 54,5% | 70% |
+| v3 · massa modelo × Σ fonte (fração v3^w ⊕ modelo) × dens por fonte do v3 | 69,2% | 74,3% (IC 69,3 a 79,3) | 5,3 g / −1,6 g | +2,9 (−1,1 a +6,8) | +7,1 (+2,9 a +11,4) | 63,7% | 58,9% | 60% |
+| v3 · massa modelo × dens (v3 com frango pela média do treino ^b · modelo^(1−b)) **[melhor com v3: número principal]** | 70,8% | 72,9% (IC 67,5 a 78,2) | 5,4 g / −1,8 g | +1,4 (−2,1 a +5,4) | +5,7 (+1,1 a +10,4) | 61,3% | 56,2% | 70% |
+| v3 · massa modelo × dens (v3^b · frações do modelo com a fonte declarada no v3 como prior^(1−b)) | 70,8% | 75,0% (IC 70,0 a 80,0) | 5,3 g / −1,9 g | +3,6 (−0,0 a +7,1) | +7,9 (+3,6 a +12,1) | 63,7% | 57,1% | 66% |
+| v3 · massa modelo × frações do modelo com a fonte declarada no v3 como prior (sem densidade do LLM) | 65,8% | 64,6% (IC 58,9 a 70,4) | 6,0 g / −2,3 g | −6,8 (−11,8 a −1,8) | −2,5 (−7,5 a +2,5) | 52,4% | 47,3% | 64% |
+
+**As três leituras do LLM v3** (a forma é escolhida no `calib` em cada uma):
+
+| Leitura | Melhor forma com v3 no `calib` | Calib (deixa-fora) | Teste | Δ vs híbrido v3 da seção 9, mesma leitura | Δ vs híbrido v2 da seção 9 (67,1%) | > 15 g | > 25 g | n5k v1 | Massa × densidade v3, sem nenhum peso |
+|---|---|---|---|---|---|---|---|---|---|
+| **Média das duas rodadas (número principal)** | (v3 com frango pela média do treino)^0,4 · modelo^0,6 | 70,8% | **72,9%** (IC 67,5 a 78,2) | +1,4 (−2,1 a +5,4), contra 71,4% | +5,7 (+1,1 a +10,4) | 61,3% | 56,2% | 70% | 73,9% (IC 68,6 a 78,9) |
+| Rodada 1 sozinha | v3^0,5 · modelo^0,5 | 70,8% | 72,9% (IC 67,5 a 78,2) | +2,5 (−1,1 a +6,1), contra 70,4% | +5,7 (+1,8 a +10,0) | 61,3% | 55,4% | 70% | 73,2% (IC 67,9 a 78,6) |
+| Rodada 2 sozinha | v3^0,6 · frações do modelo^0,4 | 71,7% | 74,3% (IC 68,9 a 79,3) | +5,7 (+1,8 a +9,6), contra 68,6% | +7,1 (+2,5 a +11,8) | 63,1% | 56,2% | 62% | 73,2% (IC 67,9 a 78,2) |
+| **Forma que o `calib` escolhe entre todas** (igual nas três leituras) | só LLM v2: mistura log-linear de 5 pesos | 73,3% | **68,2%** (IC 62,9 a 73,6) | −3,2 (−8,2 a +1,8), contra 71,4% | +1,1 (−3,9 a +5,7) | 59,5% | 55,4% | 68% | |
+
+Por faixa de proteína real no teste (56 pratos por faixa):
+
+| Faixa | Só imagem s9 | **Só imagem s10** | Híbrido v3 s9 (média) | **Híbrido v3 s10 (média)** | Forma do `calib` entre todas (v2) | Massa s10 × dens. v3, sem pesos | Massa s8 × dens. real | Massa s10 × dens. real | Massa real × dens. do modelo s10 | Massa real × dens. v3 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0–5 g | 93% | 91% | 93% | 91% | 88% | 93% | 100% | 100% | 93% | 93% |
+| 5–15 g | 88% | 84% | 91% | 89% | 75% | 88% | 93% | 96% | 88% | 93% |
+| 15–25 g | 59% | 66% | 73% | 71% | 68% | 73% | 77% | 89% | 71% | 73% |
+| 25–40 g | 38% | **48%** | 45% | **54%** | 57% | 52% | 62% | 71% | 66% | 77% |
+| > 40 g | 46% | **59%** | 55% | **59%** | 54% | 64% | 75% | 80% | 59% | 68% |
+| **Todos** | 64,6% | **69,6%** | 71,4% | **72,9%** | 68,2% | 73,9% | 81,4% | 87,5% | 75,4% | 80,7% |
+| **> 15 g** | 47,6% | 57,7% | 57,7% | 61,3% | 59,5% | 63,1% | 71,4% | 80,4% | 65,5% | 72,6% |
+| **> 25 g** | 42,0% | 53,6% | 50,0% | 56,2% | 55,4% | 58,0% | 68,8% | 75,9% | 62,5% | 72,3% |
+
+1. **Número principal: 72,9%** (IC 67,5 a 78,2), MAE 5,4 g, viés −1,8 g. Contra o híbrido com v3 da seção 9 (71,4%) o ganho é de +1,4 e **não se distingue de zero** (IC −2,1 a +5,4). Contra o híbrido com v2 da seção 9: +5,7 (IC +1,1 a +10,4). Contra o só imagem desta seção: +3,2 (IC +0,4 a +6,4).
+2. **A forma que o `calib` prefere entre todas dá 68,2% no teste** (IC 62,9 a 73,6), abaixo do só imagem (69,6%). Ela usa só o LLM v2 e ajusta 5 pesos em 120 pratos. No `calib` ela parecia 2,5 pontos melhor que a melhor forma com v3; no teste ficou 4,6 pontos pior (IC da diferença: +0,4 a +9,3 a favor da forma com v3). **Os 120 pratos do `calib` não separam formas de híbrido com segurança:** as formas com a densidade v3 valem 69% a 71% no `calib` e 71% a 75% no teste; as formas com v2, 62% a 73% no `calib` e 64% a 70% no teste.
+3. **Todas as formas que usam a densidade v3 ficam em 70% ou mais no teste, nas três leituras:** 71,1% a 75,0% com a média das rodadas, 71,4% a 74,3% com a rodada 1, 70,4% a 74,3% com a rodada 2. A forma sem nenhum peso ajustado (massa × densidade v3) dá 73,9%, 73,2% e 73,2%. Uma forma não escolhida chega a 75,0% (IC 70,0 a 80,0).
+4. **O LLM ajuda menos do que ajudava.** Com a massa nova, o só imagem está a 3 pontos do híbrido com v3 (69,6% contra 72,9%); na seção 9 a distância era de 7 (64,6% contra 71,4%). No `calib`, o só imagem (71,7%) fica acima das formas com v3 (até 70,8%) e abaixo só da mistura de 5 pesos com v2 (73,3%).
+5. **Acima de 25 g:** 56,2% no híbrido com v3 (seção 9: 50,0%) e 53,6% no só imagem (42,0%). A faixa de 25 a 40 g saiu de 38–45% para 48–54% e continua a mais fraca.
+6. **No `n5k_v1`:** 70% no número principal (seção 9: 62%), 62% a 70% nas formas com v3. Com 50 pratos, ±14 pontos.
+
+### 10.7 Conclusão
+
+1. **Onde estamos, no `teste`.**
+   - **Só imagem (conjunto de servidor): 69,6%** (IC 64,3 a 75,0). Seção 9: 64,6%. Ganho de +5,0 (IC +0,4 a +9,6).
+   - **Híbrido com o LLM v3, média das rodadas: 72,9%** (IC 67,5 a 78,2). Seção 9: 71,4%. Ganho de +1,4 (IC −2,1 a +5,4), não distinguível.
+   - Forma que o `calib` escolhe entre todas (só LLM v2): 68,2% (IC 62,9 a 73,6).
+   - Modelo único do tamanho de um ViT-B: 62,9% (IC 57,5 a 68,6). Seção 8: 61,1%.
+2. **A meta de 70% está demonstrada? Não.** Pela regra de 10.2, seria preciso o limite inferior do IC em 70% ou mais no número principal **e** na forma que o `calib` escolhe entre todas. Os limites são 67,5% e 62,9%. O que os dados sustentam é mais fraco e mais específico:
+   - a estimativa pontual do híbrido com v3 está acima de 70% em **todas** as formas que usam a densidade v3 e nas três leituras (70,4% a 75,0%), inclusive na forma sem nenhum peso ajustado (73,2% a 73,9%, com limite inferior de 67,9% a 68,6%);
+   - nenhuma forma escolhida tem o limite inferior em 70%; uma não escolhida tem (75,0%, IC 70,0 a 80,0), e escolher por ela seria escolher pelo teste;
+   - com 280 pratos, um IC de 95% tem cerca de ±5,4 pontos: para o limite inferior chegar a 70% a estimativa teria de estar perto de 75%, ou o teste teria de ser maior.
+3. **O que os modelos de GPU compraram, com segurança:** um modelo de massa melhor (com a densidade real, 81,4% → 87,5%, IC do ganho +2,5 a +9,6; viés acima de 25 g de −12% e −8% para −6% e −2%) e, por causa dele, um pipeline só de imagem melhor (+5,0, IC +0,4 a +9,6), com os pratos acima de 25 g saindo de 42% para 54%. **O que não compraram:** densidade melhor (75,4% contra 76,1% com a massa real), ganho distinguível no híbrido com v3, um modelo único claramente melhor para o aparelho.
+4. **Limites que continuam.**
+   - **Pratos de 25 a 40 g:** 48% (só imagem) e 54% (híbrido). Ali a massa nova ainda só dá 71% com a densidade real, e a densidade do modelo, 66% com a massa real.
+   - **O `calib` é pequeno para escolher a forma do híbrido** (item 2 de 10.6). Com mais pratos de calibração, ou fixando de antemão a forma sem pesos, essa fonte de variação some.
+   - **O teste já foi lido muitas vezes** (item 6). Nenhuma escolha o usou, mas 280 pratos lidos em 12 execuções de `dens_avalia.py` e em várias de `zen_avalia.py` deixam de ser um teste intocado: as próximas mudanças pedem um conjunto de teste novo.
+   - **Tudo continua sendo Nutrition5k:** um refeitório, câmera a altura fixa, sem prato brasileiro. Os modelos de GPU não viram os itens brasileiros, então 8.8 não foi refeita. A robustez de escala (8.7) não foi medida de novo.
+5. **Para o aparelho e para o servidor.**
+   - **No aparelho:** o `gpu ft siglip2_b16_224 r2`, um SigLIP 2 B/16 a 224 px com ajuste fino completo e uma cabeça de 22 saídas, usado pela rota geométrica com média de 8 orientações. Teste: 62,9%. Falta converter para Core ML, medir a latência e medir a escala.
+   - **No servidor, só imagem (69,6%):** dez redes. Massa: cinco backbones congelados em alta resolução (SigLIP 2 B/16, L/16 e So400m/16 a 384×512; DINOv2 B/14 e L/14 a 336×448), 8 orientações cada, com ridge. Densidade: quatro modelos com ajuste fino (SigLIP 2 B/16 a 224 e a 384×512, DINOv2 B/14 e L/14), mais três cabeças de frações sobre o SigLIP 2 B/16 congelado (224 px e 384×512) e a cabeça de densidade do So400m. Hoje só existem as previsões: nem os pesos dos ajustes finos (fora o `r2`) nem as cabeças ridge foram guardados, e servir isso pede rodar o treino de novo com `--guarda-pesos todos`.
+   - **No servidor, híbrido (72,9%):** o mesmo, mais uma chamada ao LLM de visão em nuvem com a instrução v3. Uma rodada basta (9.7 d).
+6. **Registro de método.** (a) A regra de leitura (10.2) foi escrita antes de qualquer número de teste dos modelos novos; até ali só a CV do Kaggle tinha sido lida. (b) As previsões por prato dos três pipelines de referência da seção 9 foram gravadas antes de os modelos de GPU entrarem no banco, sem ler gabarito; o script confere que elas dão 64,6%, 67,1% e 71,4% (e 70,4% e 68,6% nas rodadas). (c) `dens_avalia.py` passou a escolher a massa pela CV no banco inteiro e a somar os 13 conjuntos de GPU; `--sem-gpu` refaz o estado da seção 9, e foi conferido no `calib` que as escolhas saem iguais às de antes. (d) Depois de ver a escolha no `calib` e antes de ler o teste, registrei em 10.2 qual das duas leituras da regra 4 é o número principal e que a meta só conta como demonstrada com as duas. (e) Execuções que leram o teste nesta seção: duas de `zen_avalia.py` (ensaio e ingestão, saída idêntica) e três de `dens_avalia.py` (média das rodadas, rodada 1, rodada 2). Com as nove da seção 9, `dens_avalia.py` leu o teste 12 vezes. Só no `calib` ou no `n5k_v1`: `--sem-gpu --so-cv`, `--so-cv` e `--ensaio`. (f) Nenhuma forma nova, nenhum conjunto novo, nenhuma mudança na instrução.
+
 ## Reproduzir
 
 ```
@@ -984,6 +1425,18 @@ python3 dens_avalia.py --so-cv   # escolhas por CV e calib, sem ler o teste
 python3 dens_avalia.py           # avaliação no teste; com estimativas_v3_partes.csv, inclui as formas com o LLM v3
 DENS_V3_RODADA=1 python3 dens_avalia.py && DENS_V3_RODADA=2 python3 dens_avalia.py   # cada rodada cega do LLM v3 sozinha (o padrão é a média das rodadas)
 python3 dens_rodadas.py          # compara as rodadas (9.7 d)
+python3 dens_avalia.py --sem-gpu  # refaz o estado da seção 9 (sem os modelos de GPU da seção 10)
 python3 ../protein_from_shares.py ../../docs/dados/precisao/estimativas_v3_partes.csv ../../docs/dados/precisao/estimativas_v3_pratos.csv
 ```
 As previsões ficam em `$TD/resultados/dens/banco/` e os resumos em `$TD/resultados/dens/{analise,avalia}.json`. Tempo de CPU: cerca de 1 h 15 min, dos quais 40 min são a extração do TIPS.
+
+Seção 10 (treino em GPU). O pacote e as instruções para rodar no Kaggle ou no Colab estão em `eval/treino/kaggle/LEIA-ME.md`; a saída (previsões, registros e pesos) fica fora do repositório.
+```
+python3 eval/treino/kaggle/ingere_kaggle.py <pasta_saida> --ensaio <pasta_qualquer>   # confere e avalia numa cópia do banco
+python3 eval/treino/kaggle/ingere_kaggle.py <pasta_saida>                              # copia para o banco e roda zen_avalia.py
+cd eval/treino
+python3 dens_avalia.py --so-cv                                  # escolhas por CV e calib com os modelos de GPU, sem ler o teste
+python3 dens_avalia.py                                          # massa escolhida pela CV no banco inteiro; LLM v3 = média das rodadas
+DENS_V3_RODADA=1 python3 dens_avalia.py && DENS_V3_RODADA=2 python3 dens_avalia.py
+```
+`dens_avalia.py` lê `resultados/dens/ref_pre_gpu.npz` (previsões por prato dos pipelines da seção 9, gravadas antes da ingestão) para as comparações pareadas.
