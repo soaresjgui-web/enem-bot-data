@@ -1369,7 +1369,7 @@ Por faixa de proteína real no teste (56 pratos por faixa):
 
 ## 11. Conjunto de teste novo (teste2) (11/11/2026)
 
-**Por quê:** o `teste` (280 pratos) já foi lido em mais de uma dezena de execuções, e com 280 pratos o intervalo de 95% tem cerca de ±5 pontos. Para confirmar ou refutar a meta de 70% é preciso um conjunto maior, nunca pontuado, e um pipeline congelado. **Esta seção foi escrita antes de existir qualquer previsão para o `teste2`.** Os resultados entram em 11.4.
+**Por quê:** o `teste` (280 pratos) já foi lido em mais de uma dezena de execuções, e com 280 pratos o intervalo de 95% tem cerca de ±5 pontos. Para confirmar ou refutar a meta de 70% é preciso um conjunto maior, nunca pontuado, e um pipeline congelado. **Esta seção foi escrita antes de existir qualquer previsão para o `teste2`.** Os resultados entram em 11.5.
 
 ### 11.1 Quem entra no teste2
 
@@ -1422,7 +1422,23 @@ Nada é escolhido nem ajustado de novo. São os dois pipelines escolhidos na se�
 4. **Também saem, sem mudar a decisão:** o só imagem congelado, pela mesma medida; o acerto simples (sem ponderar), marcado como não comparável; por faixa; acima de 15 g e de 25 g; os 107 pratos sem irmão no `teste`; e **`teste` + `teste2` juntos** (acerto por faixa com os pratos dos dois conjuntos, cinco faixas com o mesmo peso, intervalo por cadeia sobre a união), com o número de pratos e de cadeias. No conjunto, o `teste` entra com o mesmo pipeline congelado e com a rodada 1 do LLM v3, para que os dois lados usem uma rodada só.
 5. **O teste2 é lido uma vez.** O script de pontuação roda uma única vez no teste2. Antes dele, só conferências sem gabarito (paridade nos 450 pratos antigos, pratos sem previsão, partes que somam 100, nomes sem casamento). Se alguma conferência falhar, conserta-se a mecânica e registra-se aqui o que mudou; a regra e o pipeline não mudam.
 
-### 11.4 Resultados
+### 11.4 Preparação do lado da CPU (sem gabarito do teste2)
+
+Feito antes de chegarem a rodada cega v3 e a nova execução no Kaggle. Nenhum rótulo do teste2 foi lido e nada foi pontuado nele.
+
+- **Features do teste2:** SigLIP 2 B/16 a 224 px e a 384×512, 2 orientações, para as 829 fotos (`zen_extrai.py --conj teste2`; 3,5 min e 30 min de CPU). Conferência da extração: 50 pratos antigos (`n5k_v1`) extraídos de novo dão as mesmas features do banco (diferença máxima de 0,0002, que é o arredondamento de 16 bits).
+- **As três cabeças de frações** (`teste2_cabecas.py`): treinadas de novo em todo o treino com o mesmo código, a mesma configuração e a mesma semente. Nos 450 pratos antigos, as previsões novas são **idênticas** às do banco (diferença máxima de 0,00000 g/g nas três cabeças e nos três conjuntos). São, portanto, os mesmos modelos da seção 10, agora com previsão para o teste2.
+- **Script de pontuação** (`teste2_avalia.py`): implementa 11.2 e 11.3 e tem três modos. `--confere` só faz conferências sem gabarito (pode rodar à vontade). `--ensaio` roda a pontuação inteira com o `teste` **antigo** no lugar do teste2, sem ler o teste2. Sem opção, pontua o teste2 uma vez, grava uma marca e recusa rodar de novo.
+- **Ensaio no `teste` antigo, com as previsões da primeira execução no Kaggle:** o script refaz os números da seção 10: só imagem 69,6%; erro de massa de 15,3%; massa × densidade v3 da rodada 1, sem pesos, 73,2%; modelo único `r2` 62,9%. O híbrido congelado (forma e peso de 11.2) com a rodada 1 dá 72,1% no `teste` (IC por cadeia: 66,8 a 77,3; o `teste` tem 230 cadeias para 280 pratos). Esse é o lado do `teste` na leitura conjunta de 11.3. Foi mais uma leitura do `teste` antigo, só de conferência.
+- **Comando da leitura única**, quando as duas entradas existirem (`<scratchpad>/kaggle_out2/` e `docs/dados/precisao/estimativas_v3_teste2_partes.csv`):
+
+```
+cd eval/treino
+python3 teste2_avalia.py <scratchpad>/kaggle_out2 --confere   # sem gabarito; tem de terminar com "PRONTO para a leitura única do teste2."
+python3 teste2_avalia.py <scratchpad>/kaggle_out2             # a leitura única
+```
+
+### 11.5 Resultados
 
 > **[A PREENCHER — depois da rodada cega v3 do teste2 e da nova execução no Kaggle]**
 
@@ -1499,3 +1515,15 @@ python3 dens_avalia.py                                          # massa escolhid
 DENS_V3_RODADA=1 python3 dens_avalia.py && DENS_V3_RODADA=2 python3 dens_avalia.py
 ```
 `dens_avalia.py` lê `resultados/dens/ref_pre_gpu.npz` (previsões por prato dos pipelines da seção 9, gravadas antes da ingestão) para as comparações pareadas.
+
+Seção 11 (teste2). As fotos já estão em `$TD/img/`; os lotes cegos ficam fora do repositório.
+```
+cd eval/treino
+python3 teste2_monta.py $TD <scratchpad>/cego4            # quem entra, ids neutros, gabarito, lista para o Kaggle, lotes cegos
+python3 zen_extrai.py $TD siglip2_b16 --orient 2 --conj teste2 --saida siglip2_b16_teste2          # ~4 min
+python3 zen_extrai.py $TD siglip2_b16_512 --orient 2 --conj teste2 --saida siglip2_b16_512_teste2  # ~30 min
+OMP_NUM_THREADS=2 python3 teste2_cabecas.py               # as três cabeças de frações, com paridade nos 450 antigos
+python3 teste2_avalia.py <pasta_kaggle_1> --ensaio        # ensaio no teste antigo: refaz os números da seção 10
+python3 teste2_avalia.py <pasta_kaggle_2> --confere       # conferências sem gabarito
+python3 teste2_avalia.py <pasta_kaggle_2>                 # leitura única do teste2
+```
