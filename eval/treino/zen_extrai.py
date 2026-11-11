@@ -3,7 +3,7 @@
 resolução maior, tokens intermediários (para ajuste fino parcial) e variantes de escala.
 
 Uso: python3 zen_extrai.py <dir_treino> <backbone> [--orient 8] [--tokens 9] [--variante base]
-                           [--conj treino,aval,br] [--saida nome]
+                           [--conj treino,aval,br|teste2] [--saida nome]
   backbones: siglip2_b16 (224×224, imagem inteira achatada, como nas seções 2 e 7),
              siglip2_b16_512 (384×512, proporção original), siglip_b16, vits16_in21k,
              tips_b14 / tips_s14 (336×448; TIPS do Google DeepMind, pesos em gs://tips_data; carregador
@@ -54,6 +54,10 @@ def lista(td, conj):
         for r in csv.DictReader(f):
             if "aval" in conj or r["split"] in conj:
                 itens.append((r["dish_id"], os.path.join(td, "img", r["dish_id"], "rgb.png")))
+    if "teste2" in conj:   # conjunto de teste novo (seção 11): ids em docs/dados/precisao/n5k_teste2_amostra.csv
+        arq = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "docs", "dados", "precisao", "n5k_teste2_amostra.csv")
+        with open(arq) as f:
+            itens += [(r["dish_id"], os.path.join(td, "img", r["dish_id"], "rgb.png")) for r in csv.DictReader(f)]
     if "br" in conj:
         for p in sorted(glob.glob(os.path.join(SCR, "cego2", "lote*", "*"))):
             pid = os.path.splitext(os.path.basename(p))[0]

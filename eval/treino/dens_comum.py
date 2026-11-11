@@ -172,7 +172,7 @@ def llm_v2_fontes(prato_ids):
 V3_PARTES = os.environ.get("DENS_V3") or os.path.join(PREC, "estimativas_v3_partes.csv")   # DENS_V3: outro arquivo (ensaio)
 
 
-def llm_v3(prato_ids, arq=V3_PARTES, pesos_alt=(0.0, 0.25, 0.40)):
+def llm_v3(prato_ids, arq=V3_PARTES, pesos_alt=(0.0, 0.25, 0.40), rodada=None):
     """LLM v3 (identificação + partes da massa, prompt_v3.md). Devolve None se o arquivo ainda não existe; senão
     dict(dens [n], tem [n] bool, FF [n, fontes] fração de massa por fonte, DF [n, fontes] densidade por fonte (NaN se ausente),
     fonte [n] índice da fonte principal declarada pelo estimador)."""
@@ -181,7 +181,7 @@ def llm_v3(prato_ids, arq=V3_PARTES, pesos_alt=(0.0, 0.25, 0.40)):
     from protein_from_shares import Casador, densidades, TACO_PADRAO, N5K_PADRAO
     with open(arq, newline="", encoding="utf-8") as f:
         linhas = list(csv.DictReader(f))
-    rod = os.environ.get("DENS_V3_RODADA", "")           # "1", "2"...: só essa rodada; vazio: todas (média das rodadas)
+    rod = os.environ.get("DENS_V3_RODADA", "") if rodada is None else str(rodada)   # "1", "2"...: só essa rodada; vazio: todas (média)
     if rod:
         linhas = [l for l in linhas if ((l.get("rodada") or "1").strip() or "1") == rod]
     pratos, comps, _ = densidades(linhas, Casador(TACO_PADRAO, N5K_PADRAO, 0.5), list(pesos_alt))
