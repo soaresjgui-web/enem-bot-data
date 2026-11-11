@@ -1367,6 +1367,65 @@ Por faixa de proteína real no teste (56 pratos por faixa):
    - **No servidor, híbrido (72,9%):** o mesmo, mais uma chamada ao LLM de visão em nuvem com a instrução v3. Uma rodada basta (9.7 d).
 6. **Registro de método.** (a) A regra de leitura (10.2) foi escrita antes de qualquer número de teste dos modelos novos; até ali só a CV do Kaggle tinha sido lida. (b) As previsões por prato dos três pipelines de referência da seção 9 foram gravadas antes de os modelos de GPU entrarem no banco, sem ler gabarito; o script confere que elas dão 64,6%, 67,1% e 71,4% (e 70,4% e 68,6% nas rodadas). (c) `dens_avalia.py` passou a escolher a massa pela CV no banco inteiro e a somar os 13 conjuntos de GPU; `--sem-gpu` refaz o estado da seção 9, e foi conferido no `calib` que as escolhas saem iguais às de antes. (d) Depois de ver a escolha no `calib` e antes de ler o teste, registrei em 10.2 qual das duas leituras da regra 4 é o número principal e que a meta só conta como demonstrada com as duas. (e) Execuções que leram o teste nesta seção: duas de `zen_avalia.py` (ensaio e ingestão, saída idêntica) e três de `dens_avalia.py` (média das rodadas, rodada 1, rodada 2). Com as nove da seção 9, `dens_avalia.py` leu o teste 12 vezes. Só no `calib` ou no `n5k_v1`: `--sem-gpu --so-cv`, `--so-cv` e `--ensaio`. (f) Nenhuma forma nova, nenhum conjunto novo, nenhuma mudança na instrução.
 
+## 11. Conjunto de teste novo (teste2) (11/11/2026)
+
+**Por quê:** o `teste` (280 pratos) já foi lido em mais de uma dezena de execuções, e com 280 pratos o intervalo de 95% tem cerca de ±5 pontos. Para confirmar ou refutar a meta de 70% é preciso um conjunto maior, nunca pontuado, e um pipeline congelado. **Esta seção foi escrita antes de existir qualquer previsão para o `teste2`.** Os resultados entram em 11.4.
+
+### 11.1 Quem entra no teste2
+
+Regra fixa (`eval/treino/teste2_monta.py`), sem amostragem por rótulo: entram **todos** os pratos do Nutrition5k que passam em tudo abaixo.
+
+| Passo | Pratos |
+|---|---|
+| Com foto zenital | 3.490 |
+| Passam nos filtros do v2 (massa ≥ 20 g; sem ingrediente vazio, `deprecated` ou `plate only`; soma das proteínas e das gramas coerente com o total) | 3.353 |
+| Fora dos 450 ids de avaliação (`calib`, `teste`, `n5k_v1`) | 2.918 |
+| Nunca usados em treino (fora dos 1.684 do treino zenital estrito e dos 2.999 pratos cujos quadros laterais treinaram o ridge da seção 8) | 1.234 |
+| Desses, a menos de 120 s de algum prato de treino (mesma cadeia) | 0 |
+| Desses, na cadeia de algum prato do `calib` (saem: o `calib` ajustou os pesos e a forma do híbrido) | 405 |
+| **teste2** | **829 pratos, em 190 cadeias** |
+
+- **Conferência de cada componente dos pipelines da seção 10:** os cinco backbones congelados com ridge (massa), os quatro ajustes finos e as três cabeças de frações (densidade), a recuperação por vizinhos e todas as outras cabeças de CPU e de GPU foram treinados **só** nos 1.684 pratos do treino zenital estrito (no Kaggle, as mesmas listas, conferidas por hash na ingestão). O único treino com outros pratos é o ridge com quadros laterais da seção 8, que não entra nos pipelines da seção 10; mesmo assim, nenhum dos 2.999 pratos dele é candidato nem está na cadeia de um candidato. Os backbones vêm de pré-treino em dados da web, não do Nutrition5k.
+- **De onde vêm:** split oficial de treino 635, de teste 169, sem split 25; café 1: 804, café 2: 25. Por faixa de proteína (só contagem): 0–5 g 316; 5–15 g 169; 15–25 g 132; 25–40 g 110; > 40 g 102. Por número de ingredientes: 1: 191; 2 a 4: 235; 5 ou mais: 403.
+- **Limite que não dá para contornar com o Nutrition5k, dito antes dos resultados: o teste2 não é independente do `teste`.** Todo prato que nunca entrou no treino ficou de fora justamente por estar na cadeia de um prato de avaliação. Dos 829, **722 são "irmãos" de pratos do `teste` antigo** (o mesmo prato, fotografado segundos antes ou depois, com um ingrediente a mais ou a menos) e 107 estão em cadeias que só têm pratos do `n5k_v1`. O teste2 é novo no sentido de que nenhum modelo viu essas fotos e nenhuma previsão para elas foi pontuada; não é uma amostra nova de pratos. Três consequências, já fixadas:
+  1. os intervalos são calculados **por cadeia** (bootstrap que sorteia cadeias inteiras), não por prato: a unidade independente é a cadeia, e são 190;
+  2. o resultado conjunto `teste` + `teste2` também é por cadeia, juntando irmãos na mesma unidade;
+  3. os 107 pratos (24 cadeias) sem irmão no `teste` são relatados à parte. É a única parte independente do `teste`, e é pequena.
+- **A composição é outra.** O `teste` foi sorteado com 56 pratos por faixa de proteína. O teste2 é o que sobrou: 38% dos pratos têm até 5 g, que são os fáceis (acerto acima de 90% pela tolerância de ±5 g). Um acerto simples no teste2 sairia inflado e não seria comparável aos números das seções 8 a 10. Por isso a medida principal é **ponderada para as cinco faixas terem o mesmo peso** (11.3).
+- **Lotes cegos:** ids neutros `e0001` a `e0829` em ordem aleatória (semente fixa), 28 lotes de 29 ou 30 fotos embaralhadas em `<scratchpad>/cego4/loteNN/`, com o mesmo texto do estimador v3 (`INSTRUCOES.md`). O gabarito está em `gabarito_pratos_teste2.csv` (mesmo esquema do v2) e `n5k_teste2_amostra.csv` (com a cadeia e o tipo de cadeia de cada prato); a lista sem rótulo para o Kaggle, em `eval/treino/kaggle/listas/aval2_ids.csv`.
+
+### 11.2 Pipeline congelado
+
+Nada é escolhido nem ajustado de novo. São os dois pipelines escolhidos na seção 10, com as constantes de lá.
+
+- **Massa:** exp da média dos logs de massa de cinco backbones congelados com ridge e 8 orientações: `gpu ridge siglip2_b16_384x512 o8`, `gpu ridge dinov2_b14_336x448 o8`, `gpu ridge dinov2_l14_336x448 o8`, `gpu ridge siglip2_l16_384x512 o8`, `gpu ridge siglip2_so400m16_384x512 o8`.
+- **Densidade do modelo:** média em log (com o mesmo piso de 0,01) de cinco estimativas:
+  1. a cabeça de densidade da média dos quatro ajustes finos `gpu ft siglip2_b16_224 r1`, `gpu ft siglip2_b16_384x512 r1`, `gpu ft dinov2_b14_336x448 r1`, `gpu ft dinov2_l14_224x308 r1`;
+  2. a cabeça de densidade de `gpu ridge siglip2_so400m16_384x512 o8`;
+  3. `soft-mlp ingrediente-l2 siglip2_b16_512` (rota por frações);
+  4. `soft-mlp fonte-l2d siglip2_b16_512` (rota por frações);
+  5. `soft-mlp fonte-l2 +perda-dens peso-faixa ambos` (rota por frações).
+- **Só imagem (congelado):** massa × densidade do modelo. No `teste`: 69,6%.
+- **Híbrido (congelado, número principal):** massa × [(densidade v3 com os componentes de frango e peru na densidade média do treino, 28,25 g/100 g)^0,4 × (densidade do modelo)^0,6]. É a forma e o peso que o `calib` escolheu na seção 10 com a média das duas rodadas (0,4 para o LLM). No `teste`: 72,9% com a média das rodadas.
+- **LLM v3:** a mesma instrução (`eval/prompt_v3.md`), convertida por `protein_from_shares.py` com os mesmos pesos da segunda hipótese. **O teste2 recebe UMA rodada cega.** A seção 9.7 (d) mostrou que duas rodadas concordam em 0,977 na densidade por prato e que a média não melhora a densidade; na seção 10, cada rodada sozinha deu 72,9% e 74,3% no `teste` (com a forma escolhida para cada rodada).
+- **O que muda por força:** as previsões para o teste2 só existem depois de rodar de novo, no Kaggle, as nove configurações acima com os pesos guardados, e de treinar de novo as três cabeças de CPU (os pesos não tinham sido guardados). As receitas, as listas de treino e as sementes são as mesmas; o ridge é determinístico, o ajuste fino em GPU não é idêntico bit a bit. Antes de pontuar, a paridade é conferida **sem gabarito**: correlação e diferença mediana entre as previsões novas e as da seção 10 nos 450 pratos antigos, e a CV no treino. O peso 0,4, as definições dos conjuntos e a densidade do frango **não** são reajustados com os modelos novos.
+- **Fora do congelado, só como relato:** massa × densidade v3 sem nenhum peso; o modelo único `gpu ft siglip2_b16_224 r2` pela rota geométrica, se as previsões dele forem geradas. As formas com o LLM v2 (inclusive a que o `calib` preferia entre todas na seção 10) **não** são avaliadas no teste2: não há rodada v2 para esses pratos.
+
+### 11.3 Regra de decisão, escrita antes de pontuar
+
+1. **Medida principal:** critério do produto (±20% ou ±5 g) do **híbrido congelado** no teste2, **ponderado para as cinco faixas de proteína real terem o mesmo peso** (as faixas de todas as tabelas: até 5, 5–15, 15–25, 25–40, mais de 40 g).
+2. **Intervalo:** bootstrap de 95% por percentil, 4.000 sorteios de **cadeias** com reposição, com os pesos por faixa recalculados em cada sorteio.
+3. **Decisão:**
+   - **70% demonstrado** só se o limite inferior do intervalo da medida principal no teste2 for 70% ou mais;
+   - **70% refutado** se o limite superior ficar abaixo de 70%;
+   - caso contrário, **não demonstrado** (compatível com 70%, sem prova).
+4. **Também saem, sem mudar a decisão:** o só imagem congelado, pela mesma medida; o acerto simples (sem ponderar), marcado como não comparável; por faixa; acima de 15 g e de 25 g; os 107 pratos sem irmão no `teste`; e **`teste` + `teste2` juntos** (acerto por faixa com os pratos dos dois conjuntos, cinco faixas com o mesmo peso, intervalo por cadeia sobre a união), com o número de pratos e de cadeias. No conjunto, o `teste` entra com o mesmo pipeline congelado e com a rodada 1 do LLM v3, para que os dois lados usem uma rodada só.
+5. **O teste2 é lido uma vez.** O script de pontuação roda uma única vez no teste2. Antes dele, só conferências sem gabarito (paridade nos 450 pratos antigos, pratos sem previsão, partes que somam 100, nomes sem casamento). Se alguma conferência falhar, conserta-se a mecânica e registra-se aqui o que mudou; a regra e o pipeline não mudam.
+
+### 11.4 Resultados
+
+> **[A PREENCHER — depois da rodada cega v3 do teste2 e da nova execução no Kaggle]**
+
 ## Reproduzir
 
 ```
