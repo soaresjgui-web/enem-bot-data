@@ -1,5 +1,7 @@
 # Datasets internacionais para TREINO do estimador de massa/proteína (2026-11-09)
 
+> **Atualização (11/11/2026):** com acesso ao Kaggle, o levantamento continua em [`fontes_treino.md`](fontes_treino.md). Mudam três linhas da tabela abaixo: NutritionVerse-Real é **CC BY-NC-SA 4.0** e o peso dele é nominal por tipo de item, não medido por prato; MetaFood3D é **CC BY-NC 4.0** (as cópias do Kaggle trazem licenças erradas); e há um dataset novo com licença comercial, o FlavoriaFoodWeight1700.
+
 Objetivo: ampliar os dados de treino do modelo que estima massa (g) e proteína (g) a partir de uma foto. Este levantamento não repete o trabalho do outro agente, que treina com as imagens overhead RGB/depth do Nutrition5k em `scratchpad/treino`.
 
 **Critérios obrigatórios** (os mesmos do v2):
