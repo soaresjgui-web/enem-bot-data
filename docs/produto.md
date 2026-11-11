@@ -68,7 +68,7 @@ iOS nativo: Swift 6, SwiftUI, SwiftData, Foundation Models + Vision (on-device),
 
 ## 7. Precisão medida, maior risco e próximo passo
 
-Critério: proteína dentro de ±20% ou ±5 g; meta ≥ 70%. Conjunto de teste fora do treino (280 pratos); detalhes em [`dados/precisao/resultado_v2.md`](dados/precisao/resultado_v2.md) e [`dados/precisao/resultado_modelo_treinado.md`](dados/precisao/resultado_modelo_treinado.md).
+Critério: proteína dentro de ±20% ou ±5 g. **70% é a meta mínima, não o teto** (decisão da fundadora, 11/11/2026: é a nutrição das pessoas): o produto precisa passar de 70% com folga, isto é, com o limite inferior do intervalo em 70% ou mais. Conjunto de teste fora do treino (280 pratos); detalhes em [`dados/precisao/resultado_v2.md`](dados/precisao/resultado_v2.md) e [`dados/precisao/resultado_modelo_treinado.md`](dados/precisao/resultado_modelo_treinado.md).
 
 | Abordagem | Acerto |
 |---|---|
@@ -91,7 +91,7 @@ Critério: proteína dentro de ±20% ou ±5 g; meta ≥ 70%. Conjunto de teste f
 - **Fotos laterais no treino** removem o viés de ângulo (comida brasileira só com imagem: 22% → 36%) e ficam no conjunto de treino.
 - **Não existe base pública latino-americana com peso medido** ([`dados/precisao/datasets_internacionais.md`](dados/precisao/datasets_internacionais.md)); os dados brasileiros terão de ser coletados.
 
-**Decisão para a v1:** **uma única foto de cima** (decisão da fundadora, 09/11/2026), com círculo-guia e aviso de nível; sugestão automática pelo híbrido (modelo treinado para o peso + LLM em nuvem com o roteiro v3 para a identificação); em confiança baixa, faixa mais larga e destaque para conferir as porções; ajuste de porção opcional. Sem segunda foto. Sem ajuste, o acerto fica em torno de 70% (teste novo: 70,8% com LLM, 69,7% sem), sem a meta demonstrada; os 71–76% com ajuste da versão anterior são simulação, não teste com usuárias. O ajuste de porção continua necessário, principalmente acima de 25 g de proteína.
+**Decisão para a v1 (atualizada em 11/11/2026):** **uma única foto de cima**, com círculo-guia e aviso de nível; a proteína sai **só de modelos de imagem** (sem LLM em nuvem: no teste novo ele não mostrou ganho seguro); o conjunto de nove redes será **reduzido aos vencedores**, de preferência um modelo só; em confiança baixa, faixa mais larga e destaque para conferir as porções; em pratos com muita proteína, o seletor de tamanho do item de proteína já vem aberto. Hoje o acerto está em torno de 70% (teste novo: 69,7% só com imagem, IC 65–74), **abaixo da meta mínima com folga**. Frentes abertas para subir: mais dados de treino (públicos com licença comercial e coleta brasileira) e pratos com mais de 25 g de proteína.
 
 **Maiores riscos:** (1) nenhuma foto brasileira tirada de cima no conjunto de teste (UFPR e Liv Up são em ângulo), então o desempenho no Brasil sob a nova premissa é desconhecido; (2) peso e densidade em pratos com mais de 25 g de proteína; custo e latência do LLM em nuvem por foto, contra a promessa de fotos ilimitadas; (3) identificação on-device (Foundation Models) não testada; (4) o modelo exportado tem 116–231 MB e a latência no iPhone não foi medida.
 
