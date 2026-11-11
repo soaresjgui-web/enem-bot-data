@@ -1593,7 +1593,7 @@ Orçamento: cerca de 3,5 h de relógio em 2 × T4 (a cota semanal está no fim).
 | 12 | `gpu3 ft siglip2_b16_384x512 r1 destilado` (**U3**) | Idem a 384×512, receita `r1` (12 épocas) | 151 min |
 | 13 | `gpu3 ft siglip2_b16_224 r2` (**U0**) | A receita `r2` sem mudança, só com o treino_v2. Mede quanto vem dos dados e quanto do resto | 61 min |
 
-Ordem sugerida: GPU A extrai So400m e B/16; GPU B extrai L/16 e os dois DINOv2 (~40 min); cabeças e professor (~5 min); depois GPU A roda U3 e GPU B roda U4 e U0. Total: cerca de 3,3 h de relógio, mais as medidas de serviço.
+Ordem sugerida: GPU A extrai So400m e B/16; GPU B extrai L/16 e os dois DINOv2 (~40 min); cabeças e professor (~5 min); depois GPU A roda U3 e GPU B roda U4 e U0. Total: cerca de 3,3 h de relógio, mais as medidas de serviço. **Com a base externa de 12.5**, as configurações 1 a 10 rodam também na versão `+flavoria`, a decisão de adoção sai antes dos ajustes finos, e o total passa para cerca de 3,8 h.
 
 **Detalhes que precisam ser iguais ao que está escrito:**
 
@@ -1640,6 +1640,43 @@ A pesquisa de bases externas está em curso (`docs/dados/precisao/fontes_treino.
 4. **Escala:** se a distância da câmera for outra, a base entra com a escala aleatória ligada e com um viés de log-massa por domínio na cabeça (aprendido no treino; na previsão vale o do `n5k_zenital`). Sem isso, a massa aprende a distância da base, que é o problema de 8.7.
 5. **Higiene:** qualquer base derivada do Nutrition5k passa pela regra de cadeia contra o teste2 antes de entrar; bases com fotos repetidas do mesmo prato são agrupadas por `grupo`.
 6. **Adoção pela CV:** cada base é uma ablação pré-declarada (com e sem), e só fica se o critério de CV no treino_v2 subir pelo menos 1,0 ponto. As leituras do teste2 continuam sendo no máximo duas.
+
+### 12.5 Primeira base externa: FlavoriaFoodWeight1700 (pré-registro, antes de qualquer resultado da terceira execução)
+
+**O que é** (`docs/dados/precisao/fontes_treino.md`): cerca de 2.000 fotos, de 850 a 1.000 pratos depois da limpeza, de uma linha de almoço da Universidade de Turku (Zenodo 5850856, CC BY 4.0). Cada porção foi **pesada por componente** pela balança da linha (246 nomes); **não há proteína nem calorias medidas**. Fotos de cima, 1024×1024, com o prato recortado para encher o quadro, dois quadros por bandeja. Pratos bem mais pesados que os do Nutrition5k (mediana de ~470 g contra 170 g). A lista vem em `eval/treino/kaggle/listas/externo_flavoria.csv`, no esquema de 12.4. Se a lista não estiver pronta ou não passar nas conferências, a execução segue como em 12.3, sem ela.
+
+**Como entra no treino.**
+
+| Alvo | No Flavoria | Peso na perda |
+|---|---|---|
+| Massa total (log) | Medida | 1 |
+| Massa por grupo (`m_*`) e frações por fonte (`ff_*`) | Derivadas dos gramas pesados, por um mapa de nomes | 0,5 (o mapa de nomes tem erro, e a linha serve pratos prontos que o Nutrition5k separa em ingredientes) |
+| Proteína, densidade, kcal, gordura, carboidrato, proteína por grupo, densidade composta das frações | Só existe a estimativa **fraca** (nome → tabela) | **0: não é usada.** Fica para uma ablação futura, se a massa mostrar ganho |
+| Destilação do professor | | 0: as fotos do Flavoria só entram com rótulos |
+
+- **Só treina:** fold −1, nunca nos folds de validação. O critério de CV continua calculado só nos pratos do treino_v2. Os dois quadros da mesma bandeja têm o mesmo `grupo`.
+- **Teto de peso:** a soma dos pesos das fotos de treino do Flavoria é **metade** da soma dos pesos do Nutrition5k; dentro do Flavoria, peso igual por foto (não há faixa de proteína para ponderar).
+- **Enquadramento:** as fotos do Nutrition5k **não** são recortadas pelo prato nesta execução. Motivos: mudaria a entrada e, com ela, a referência do teste2; a caixa do prato não está no pacote do Kaggle; e a seção 8.7 mediu um custo de 0,6 ponto de MAPE para o recorte. Fica como o passo seguinte, quando o círculo-guia do app estiver definido (aí os dois domínios ficam "prato enchendo o quadro"). Nesta execução:
+  - a foto quadrada do Flavoria é **encaixada no centro de um quadro 4:3** (laterais preenchidas com a cor mediana da borda da própria foto) e daí em diante passa pelo mesmo pré-processamento das fotos do Nutrition5k, em todos os backbones;
+  - **viés de log-massa por domínio:** de cada alvo de massa do Flavoria (total e por grupo, em log) subtrai-se a diferença entre a média do domínio e a média do Nutrition5k no treino do fold; na previsão de fotos do Nutrition5k não se soma nada, e na de fotos do Flavoria soma-se a diferença de volta. Vale igual para ridge, MLP e ajuste fino. O viés absorve junto a diferença de enquadramento e o fato de os pratos serem mesmo mais pesados; o que o Flavoria ensina é a variação **dentro** do domínio e as frações em pratos grandes;
+  - nos ajustes finos, a escala aleatória (0,7 a 1,3) vale para os dois domínios.
+
+**Parte segurada do Flavoria (teste externo de massa).** 20% dos `grupo`s, fixos: os dos últimos dias de coleta, se a lista tiver data; senão, os grupos com `sha1(grupo) mod 5 == 0`. Marcados como `teste_ext`; nunca treinam e **nunca entram em nenhuma escolha**.
+
+**Ablação que decide a adoção, só nas configurações baratas.** As configurações 1 a 10 de 12.3 (cinco ridge, três cabeças de frações, professor, U1) rodam **duas vezes**: só com o treino_v2 (`gpu3 …`) e com o treino_v2 mais o treino do Flavoria (`gpu3 … +flavoria`). Custo a mais: features das ~2.000 fotos nos cinco backbones com 8 orientações, cerca de **50 min de GPU**, mais ~10 min de cabeças: perto de **+30 min de relógio** nas duas GPUs (total da execução: ~3,8 h). Ordem: features do Nutrition5k e do Flavoria; cabeças e professor nas duas versões; decisão pela regra abaixo, gravada no registro; só então os ajustes finos.
+
+**Regra de adoção, aplicada às previsões fora-do-fold do professor no treino_v2 (com Flavoria menos sem Flavoria). Para o Flavoria, ela vale no lugar do item 6 de 12.4, que só tinha a primeira condição:**
+
+1. **Adota** se o critério de CV ponderado por faixa subir **1,0 ponto ou mais**;
+2. **ou** se ele não cair mais que 0,3 ponto **e** o critério nas duas faixas acima de 25 g (média das duas) subir **2,0 pontos ou mais**;
+3. senão, **não adota**.
+
+- Os ajustes finos caros rodam **uma vez**, com o resultado da regra: U4 e U3 treinam com o Flavoria se ele for adotado, e sem ele se não for. **U0 treina sempre só com o treino_v2**, para continuar medindo o efeito dos dados do Nutrition5k. O U1 e o professor que concorrem em 12.3 são os da versão adotada.
+- Se o orçamento apertar, a ordem de corte é: U0, depois U3. As duplicatas com Flavoria não são cortadas antes dos ajustes finos, porque a decisão depende delas.
+
+**Relato secundário, fora do domínio, com rótulo claro.** A CV no Nutrition5k não enxerga o que mais se espera do Flavoria (pratos grandes, prato enchendo o quadro, isto é, o uso no celular). Por isso sai também, no `teste_ext` do Flavoria, o **erro de massa** (MAPE e viés mediano, no total e nos pratos com mais de 600 g) do professor e do U1 **com e sem** o Flavoria no treino, e dos ajustes finos como foram treinados. Para os modelos sem Flavoria, dois números: a previsão crua e a previsão corrigida por uma constante (a razão mediana medida no treino do Flavoria), para separar "erra a escala" de "erra a ordem". **Esse relato não escolhe nada, não é o critério do produto (não há proteína medida) e não conta como leitura do teste2.**
+
+**O que eu espero:** no critério de CV do Nutrition5k, efeito perto de zero (entre −0,5 e +1 ponto), porque o domínio e o enquadramento são outros e a proteína do Flavoria não entra. Acho mais provável que a regra **não** adote do que adote. No teste externo, espero uma queda grande do erro de massa com o Flavoria no treino (terceiros relatam 45% → 25%); isso mede transferência para pratos grandes, não o produto.
 
 ## Reproduzir
 
