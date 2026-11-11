@@ -14,7 +14,11 @@
         "zenital": "imagery/realsense_overhead/<dish_id>/rgb.png",
         "profundidade": "imagery/realsense_overhead/<dish_id>/depth_raw.png",
         "lateral": "imagery/side_angles/<dish_id>/camera_<A|B|C|D>frame<NNN>.jpeg",
-        "rotulos": ["dish_nutrition_values.csv", "dish_ingredients.csv", "ingredients_metadata.csv"]
+        "rotulos": [
+          "dish_nutrition_values.csv",
+          "dish_ingredients.csv",
+          "ingredients_metadata.csv"
+        ]
       },
       "formato_rotulo": {
         "dish_nutrition_values.csv": "dish_id,calories,mass,fat,carb,protein (4.768 linhas: só o café 1)",
@@ -30,26 +34,33 @@
     },
     {
       "id": "flavoria",
-      "uso": "treino_comercial (só massa; sem proteína nem kcal)",
-      "o_que_e": "FlavoriaFoodWeight1700 (Universidade de Turku, 2022): linha de almoço automatizada na Finlândia; cada bandeja é fotografada de cima (segundo o projeto de terceiros; nenhuma foto foi vista aqui) e cada porção servida é pesada pela balança da linha.",
+      "uso": "treino_comercial (só massa, massa por grupo e frações por fonte; sem proteína nem kcal medidas)",
+      "o_que_e": "FlavoriaFoodWeight1700 (Universidade de Turku, 2022): linha de almoço automatizada na Finlândia; o prato de cada bandeja é fotografado de cima (foto 1024x1024 já recortada e mascarada no prato) e cada porção servida é pesada pela balança da cuba.",
       "kaggle_ref": null,
-      "onde": "https://zenodo.org/records/5850856 (DOI 10.5281/zenodo.5850856), ~2,6 GB: dataset_csv.tar e dataset_images_and_csv.tar. Baixar no notebook (internet ligada) ou subir uma vez como dataset privado do Kaggle.",
-      "espelho": "huggingface.co/datasets/shalev396/calorie-lens-data, configs flavoria / flavoria_sessions / flavoria_items (856 pratos já limpos, 512x512 JPEG; de terceiros)",
-      "licenca": "CC BY 4.0 segundo o registro do Zenodo. Lido só pelo resumo de busca: zenodo.org está bloqueado nesta máquina. CONFERIR no registro antes de treinar.",
-      "citar": "Sarapisto, T., Koivunen, L., Mäkilä, T., Klami, A., Ojansivu, P. (2022). FlavoriaFoodWeight1700: Automated Lunch Line Meal Pictures with Automatic Measurement of Weight and Contents. Zenodo.",
-      "formato_rotulo": {
-        "csv_em_dataset_csv.tar": "uma linha por pesagem; colunas usadas: session_id, tray_id, user_identification_time, component_name, weight_of_a_component (gramas). Os ids de sessão se repetem entre arquivos: a chave é session_id + nome do arquivo.",
-        "imagens": "PNG ~1024 px no tar de imagens; a foto certa é a 'identification' (nome casa com tray<N>_<unix>_<...>_identification_*.png). A foto 'enter' costuma mostrar uma mão.",
-        "casamento": "mesma bandeja (tray_id) e horário de identificação igual ao da foto, com tolerância de 5 s; os CSVs misturam UTC com horário da Finlândia (+2/+3 h)."
+      "onde": "https://zenodo.org/api/records/5850856/files/dataset_images_and_csv.tar/content (2.576.977.920 bytes, md5 56270b20f0261777bd5e81f46cfd9097) e .../files/dataset_csv.tar/content (1.277.440 bytes, md5 74410f922287ceffbd8092d7dd4e5530). O notebook baixa o tar de imagens; nada disso fica no repositório.",
+      "licenca": "CC BY 4.0 (registro do Zenodo, conferido em 11/11/2026: license cc-by-4.0, access_right open)",
+      "citar": "Sarapisto, T., Koivunen, L., Mäkilä, T., Klami, A., Ojansivu, P. (2022). FlavoriaFoodWeight1700: Automated Lunch Line Meal Pictures with Automatic Measurement of Weight and Contents (1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.5850856",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_flavoria.csv (1.967 linhas = fotos; 1.264 pratos), montada por eval/dados_ext/flavoria_monta.py",
+      "formato_da_lista": {
+        "unidade": "UMA LINHA POR FOTO. Os quadros da mesma bandeja repetem os rótulos e têm o mesmo `grupo`.",
+        "colunas_de_treino_v2": "dish_id (flv_<bandeja>_<época>_<e|i>), cadeia = -1, fold = -1, split_oficial (pasta do tar: train|val|test), massa (g, medida), proteina/kcal/gordura/carbo VAZIAS, m_<grupo> (g, dos gramas pesados pelo mapa de nomes), p_<grupo> VAZIAS, ff_<fonte> (fração da massa, pelo mapa de nomes; somam 1)",
+        "colunas_de_12.4": "dominio = flavoria; grupo = flv_<session_id> (uma bandeja servida); vista = zenital_mascarada",
+        "colunas_extras": "split_ext (treino_ext | teste_ext; teste = 10 a 20/11/2020), data (dia local), arquivo (caminho exato dentro do tar, ex.: images/train/tray431_1601883545_1601883546.30_identification_0.5.png), quadro (enter | identification), quadro_preferido (1 no quadro mais limpo do prato), n_quadros, sessao, bandeja, registrado, dif_s (época da foto menos a da identificação), componentes (nome:gramas;...), n_componentes, proteina_fraca_g, proteina_fraca_conf (A|B|C do maior contribuinte), proteina_fraca_fontes_g, arco_borda_oculta (0 a 1), oclusao (1 se arco >= 0,20), avisos (repeticao | foto_a_mais_de_30s)"
       },
-      "como_ler": "1) somar as pesagens por (sessão, componente); 2) descartar bandejas com sopa ou sobremesa (servidas fora do prato), com um componente acima de 600 g (falha da balança) e pratos fora de 30-1.200 g; 3) casar a foto de identificação; 4) mass_g = soma dos componentes; ingredients = componente:gramas; protein_g e kcal vazios; split por DIA de almoço (os cardápios se repetem no dia). Na perda, mascarar os alvos de proteína/densidade.",
-      "contagens_de_terceiros": "3.345 sessões de pesagem; 856 pratos limpos com foto (555 treino + 301 teste por dia); 246 nomes de componente, 52 deles alimentos simples; massa mediana 472 g; 138 pratos acima de 600 g.",
+      "formato_bruto": {
+        "csv": "11 arquivos; uma linha por pesagem: session_id, weighing_event_time, [weighting_type,] scale_identifier, weight_of_a_component (g, inteiro), component_name, tray_id, user_identification_time. Um arquivo está em UTC, os outros em hora local da Finlândia; duas grafias de data.",
+        "imagens": "images/<train|val|test>/tray<N>_<época UTC>_<época.frac>_<enter|identification>_0.5.png; 2.013 PNG 1024x1024",
+        "tar": "formato pax: cada membro tem 1.536 bytes de cabeçalho antes dos dados (dá para buscar um arquivo por HTTP Range a partir da listagem)"
+      },
       "cuidados": [
-        "Molhos do balcão de autosserviço e pão não são pesados: a massa é um limite inferior.",
-        "Rótulo de massa com ruído de balança automática (378 de 3.345 sessões caem só no filtro de 600 g).",
-        "Nomes de componente em inglês e finlandês; proteína só sairia de uma tabela (Fineli/TBCA) aplicada à mão, e só para os componentes simples."
+        "A proteína fraca (nome -> tabela) NÃO é alvo: 68% dela vem de densidades de confiança C.",
+        "O nome do componente vem do cardápio da cuba; em saladas ele às vezes não bate com a foto. O peso é confiável.",
+        "28% da massa está em prato_misto (pratos prontos que o Nutrition5k separaria em ingredientes).",
+        "119 fotos têm oclusao = 1 (quase todas 'enter', com a cabeça de quem carrega a bandeja); em 36 pratos todos os quadros estão marcados.",
+        "Prato enchendo o quadro, fundo preto: outra escala e outro enquadramento que o Nutrition5k.",
+        "Itens do autosserviço (pão da mesa de pães, molho de salada) podem não estar no peso."
       ],
-      "verificado": "Nada no arquivo bruto. O formato acima vem do leitor de terceiros (github.com/shalev396/ml-lab, calorie-lens/training/src/flavoria.py, MIT) e do mapa de componentes dele (246 linhas, lido aqui). O espelho do HF não baixa daqui (CDN bloqueada)."
+      "verificado": "Registro do Zenodo; listagem completa do tar de imagens (em fluxo); tamanho de todos os 2.013 PNG; os 11 CSVs inteiros; casamento foto-pesagem ao segundo em 877 de 883 fotos 'identification'; cerca de 110 fotos olhadas; 8 pratos comparados com a lista de componentes."
     },
     {
       "id": "openimages_comida",

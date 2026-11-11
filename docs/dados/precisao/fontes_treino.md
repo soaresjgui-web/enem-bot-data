@@ -4,7 +4,7 @@
 
 **Resposta curta.** Não existe um segundo Nutrition5k com licença comercial. O que existe, por ordem de valor:
 
-1. **Um dataset novo, comercial, de cima e pesado por componente que ainda não usamos: FlavoriaFoodWeight1700** (Finlândia, CC BY 4.0, ~850 pratos limpos de uma linha de almoço com balança automática). Só tem **peso**, sem proteína, e são pratos grandes (mediana de 472 g, contra 170 g no nosso treino).
+1. **Um dataset novo, comercial, de cima e pesado por componente que ainda não usamos: FlavoriaFoodWeight1700** (Finlândia, CC BY 4.0, **1.264 pratos e 1.967 fotos** depois da nossa limpeza, de uma linha de almoço com balança automática). Só tem **peso**, sem proteína, e são pratos grandes (mediana de 459 g, contra 170 g no nosso treino). **Atualização do mesmo dia: licença e arquivos conferidos, lista de treino pronta** (seção 2.1).
 2. **Pratos do próprio Nutrition5k que hoje estão presos nos conjuntos de avaliação:** 1.669 pratos de cima fora do treino, uns 500 deles com mais de 25 g (o treino tem 461). Usá-los custa o teste.
 3. **Três datasets com peso medido, todos com licença não comercial, dois deles bem maiores que o nosso treino:** OmniFood8K (8.036 pratos chineses), Food Portion Benchmark (14.083 imagens) e MetaFood3D (637 objetos). Só entram no produto se os autores licenciarem. **Isso depende de e-mail da fundadora.**
 4. **Fotos sem rótulo** para destilar as nove redes num modelo só: há fontes com licença comercial (MyFoodRepo, Open Images, SNAPMe), mas pequenas ou ruidosas depois de filtrar por "prato visto de cima".
@@ -18,8 +18,8 @@ Este documento não repete `datasets_internacionais.md` (09/11) nem `fontes.md` 
 
 - **Kaggle:** cerca de 100 buscas na API (`datasets list -s`), em inglês e português: nutrition5k, nutritionverse, metafood3d, ecustfd, food weight/portion/mass/volume/depth/RGB-D, calorie estimation, plate waste, leftover, canteen/tray, school lunch, hospital meal, FoodSeg103, UECFood, Food-101, Food2K, Open Images, Recipe1M, MyFoodRepo, CNFOOD, brazilian food, comida brasileira, flavoria e outras. Para cada candidato li o metadado (licença declarada), a listagem de arquivos e, nos principais, uma amostra dos rótulos.
 - **A licença que aparece no Kaggle é a que o uploader escolheu.** Em cópias de terceiros ela não vale nada: o MetaFood3D aparece como MIT e Apache-2.0 e o original é CC BY-NC. Só confio no rótulo do Kaggle quando a conta é dos autores (NutritionVerse-Real) ou quando coincide com o original (Nutrition5k).
-- **Hosts que respondem daqui:** `www.kaggle.com`, `huggingface.co` (cartões e arquivos pequenos; os arquivos grandes ficam numa CDN bloqueada), `raw.githubusercontent.com`, `storage.googleapis.com`, `open-images-dataset.s3.amazonaws.com`, `www.livup.com.br`, `www.swift.com.br`, `www.seara.com.br`, `www.sadia.com.br`, `www.paodeacucar.com`, `mercado.carrefour.com.br`, `www.tbca.net.br`, `edisciplinas.usp.br`, `nutritotal.com.br`, `agdatacommons.nal.usda.gov`.
-- **Bloqueados (403 do proxy):** `zenodo.org`, `arxiv.org`, `doi.org`, `www.mdpi.com`, `data.mendeley.com`, `lorenz.ecn.purdue.edu`, `drive.google.com`, `*.github.io`, `figshare.com`, `aihub.or.kr`, `universe.roboflow.com`, `mrfit.com.br`, `99app.com`, `ifood.com.br`, todos os sites de receita testados e todos os repositórios de universidades brasileiras e portuguesas testados. Para esses, o que está escrito vem de **resumo de busca na web**, e está marcado assim.
+- **Hosts que respondem daqui:** `www.kaggle.com`, `huggingface.co` (cartões e arquivos pequenos; os arquivos grandes ficam numa CDN bloqueada), `raw.githubusercontent.com`, `storage.googleapis.com`, `open-images-dataset.s3.amazonaws.com`, `www.livup.com.br`, `www.swift.com.br`, `www.seara.com.br`, `www.sadia.com.br`, `www.paodeacucar.com`, `mercado.carrefour.com.br`, `www.tbca.net.br`, `edisciplinas.usp.br`, `nutritotal.com.br`, `agdatacommons.nal.usda.gov` e, desde a tarde de 11/11, `zenodo.org`.
+- **Bloqueados (403 do proxy):** `arxiv.org`, `doi.org`, `www.mdpi.com`, `data.mendeley.com`, `lorenz.ecn.purdue.edu`, `drive.google.com`, `*.github.io`, `figshare.com`, `aihub.or.kr`, `universe.roboflow.com`, `mrfit.com.br`, `99app.com`, `ifood.com.br`, todos os sites de receita testados e todos os repositórios de universidades brasileiras e portuguesas testados. Para esses, o que está escrito vem de **resumo de busca na web**, e está marcado assim.
 - Níveis de verificação usados nas tabelas: **A** = conferido aqui no arquivo ou no texto da própria fonte; **B** = lido em resumo de busca ou em material de terceiros; **C** = de memória, sem conferência nesta sessão.
 
 ## 1. Tabela ranqueada
@@ -28,7 +28,7 @@ Ordem pelo valor esperado para o modelo do produto. "Comercial" = a licença per
 
 | # | Fonte | O que tem | Licença e uso permitido | Onde está | Como entra no treino | Ganho esperado e por quê | Verificação |
 |---|---|---|---|---|---|---|---|
-| 1 | **FlavoriaFoodWeight1700** (U. Turku, 2022) | ~2.000 fotos de bandeja tiradas **de cima** (segundo terceiros; não vi as fotos) numa linha de almoço; cada porção pesada pela balança da linha, **por componente** (246 nomes). 3.345 sessões de pesagem; depois da limpeza de terceiros, **856 pratos com foto**. Massa mediana de 472 g, 138 pratos acima de 600 g. **Sem proteína nem kcal.** | **CC BY 4.0: comercial, com atribuição** | Zenodo 5850856 (~2,6 GB). **Não está no Kaggle.** Espelho limpo no HF (`shalev396/calorie-lens-data`). Nenhum dos dois baixa daqui; do notebook do Kaggle devem baixar | Cabeça de massa com a perda mascarada nos alvos de proteína; gramas por componente para os 52 alimentos simples; separar por **dia** de almoço. 301 pratos de dias separados servem de segundo teste de massa | **Massa em pratos grandes e fora do Nutrition5k: provável. No teste do Nutrition5k: pequeno (0 a 2 pontos, chute).** Evidência de terceiros: um modelo treinado só com Nutrition5k errava a massa desses pratos em 45% (207 g a menos, em média); com 555 pratos do Flavoria no treino, 25%. No nosso teste2 o erro de massa não é o que mais limita (com a massa real a densidade do modelo dá 78,8%) | **B** para licença e contagens (Zenodo bloqueado); **A** para o mapa de componentes e o leitor de terceiros, lidos no GitHub |
+| 1 | **FlavoriaFoodWeight1700** (U. Turku, 2022) | 2.013 fotos 1024×1024 de pratos **de cima**, já recortadas e mascaradas no prato, 1 a 4 quadros por bandeja; cada porção pesada pela balança da linha, **por componente** (246 nomes). 3.343 sessões de pesagem, 1.292 com foto; depois da limpeza, **1.264 pratos / 1.967 fotos**. Massa mediana de 459 g, 202 pratos acima de 600 g. **Sem proteína nem kcal** | **CC BY 4.0: comercial, com atribuição** | Zenodo 5850856 (2,58 GB). **Não está no Kaggle**; o notebook baixa do Zenodo | Lista pronta em `eval/treino/kaggle/listas/externo_flavoria.csv`, no esquema de 12.4/12.5: massa, massa por grupo e frações por fonte; proteína fica vazia. 230 pratos dos últimos dias são o teste externo de massa | **Massa em pratos grandes e fora do Nutrition5k: provável. No teste do Nutrition5k: pequeno (0 a 2 pontos, chute).** Evidência de terceiros: um modelo treinado só com Nutrition5k errava a massa desses pratos em 45% (207 g a menos, em média); com 555 pratos do Flavoria no treino, 25%. No nosso teste2 o erro de massa não é o que mais limita | **A**: licença no registro do Zenodo, listagem completa do tar, os 11 CSVs e cerca de 110 fotos olhadas |
 | 2 | **Nutrition5k: pratos de cima fora do treino** | 1.669 pratos que passam nos filtros e não estão nos 1.684 do treino: 435 de avaliação (`calib`, `teste`, `n5k_v1`), 829 do teste2, 405 em cadeias do `calib`. **Uns 500 com mais de 25 g** (525 contando só o filtro de massa ≥ 20 g; o treino tem 461) | CC BY 4.0: comercial | Já baixados (bucket do Google) | Treinar o modelo de **produção** com tudo, depois de fechar a avaliação | **É a maior reserva de pratos ricos em proteína, e dobra a faixa fraca. Ganho incerto:** a curva de aprendizado com backbone congelado estabiliza em ~400 pratos, mas ela não foi medida por faixa nem com ajuste fino. **Custo: acaba o teste do Nutrition5k**; a medida passaria a ser validação cruzada por cadeia e conjuntos externos | **A** (contagens feitas aqui) |
 | 3 | **OmniFood8K** (CVPR 2026, U. Yunnan / CAS) | **8.036 cenas reais** de pratos chineses, várias vistas por cena, ingredientes pesados, nutrientes | **CC BY-NC 4.0: não comercial.** Só entra com licença dos autores | Google Drive (link no repositório dos autores); bloqueado daqui. Não está no Kaggle nem no HF | Se licenciado: treino direto de massa e proteína, 5 vezes o nosso treino | **O maior ganho possível entre os rotulados, se houver licença.** Cozinha diferente da brasileira, mas com arroz, carnes e pratos mistos em porções de refeição | **A** para a licença (README dos autores, lido no GitHub); **B** para o conteúdo (não vi nenhuma foto nem rótulo) |
 | 4 | **Fotos sem rótulo para destilação** (MyFoodRepo, Open Images, SNAPMe, quadros do Nutrition5k) | Ver seção 4. Depois de filtrar por "prato de cima": algo como 20 a 35 mil fotos com licença comercial (estimativa) | CC BY 4.0, CC BY 2.0, domínio público | Kaggle (MyFoodRepo), S3 e GCS (Open Images), USDA (SNAPMe) | Pseudo-rótulo das nove redes → um modelo só | **Aproxima o modelo único (63–65%) do conjunto (70%); não sobe o teto.** Sem evidência nossa: é o efeito usual de destilação, não medido aqui | **A** para Open Images (contado e amostrado); **B** para o resto |
@@ -45,15 +45,65 @@ A coleta brasileira própria (`docs/coleta-brasil.md`) fica fora desta tabela po
 
 ## 2. Rotulados com peso medido: detalhes
 
-### 2.1 FlavoriaFoodWeight1700
+### 2.1 FlavoriaFoodWeight1700 (verificado e montado em 11/11/2026)
 
-- **O que é.** O restaurante Flavoria, da Universidade de Turku, tem uma linha de almoço instrumentada: a bandeja tem RFID, uma câmera fotografa a bandeja de cima e a balança de cada cuba registra quantos gramas a pessoa serviu. O dataset junta ~2.000 fotos e os CSVs das pesagens. **Não vi nenhuma foto dele:** "de cima" vem só do projeto de terceiros que o usou ("photographs each tray from above"). É a primeira coisa a conferir ao baixar.
-- **Por que interessa.** É o único conjunto encontrado que tem, ao mesmo tempo, foto de cima, peso medido por componente, refeição de verdade (prato feito com proteína, acompanhamento e salada) e licença comercial. Os componentes são do tipo que falta: "Lemon chicken" 172 g, "minced meat patties" 146 g, "Chicken and chorizo paella" 306 g, "Salmon and penne casserole" 307 g (medianas por porção, do mapa de componentes).
-- **O que ele não tem.** Proteína e calorias. Dos 246 nomes de componente, 52 são alimentos simples (arroz, batata, tomate, cenoura); os outros são preparações da casa, em inglês e finlandês, sem receita. Dá para atribuir densidade de proteína por tabela aos simples; para as preparações seria um chute, e eu não faria.
-- **Ruído do rótulo.** Balança automática: 378 das 3.345 sessões têm um componente acima de 600 g (cuba levantada ou reabastecida). Molhos do autosserviço e pão não são pesados, então a massa é um limite inferior. Sopas e sobremesas ficam fora do prato.
-- **Evidência de que ajuda (de terceiros, não nossa).** O projeto `shalev396/ml-lab` (calorie-lens, MIT) treinou com Nutrition5k + 555 pratos do Flavoria e relata, nos 301 pratos de dias não vistos: erro de massa de 45,4% → 25,5%, e 16,1% na cabeça de totais; em pratos acima de 600 g, erro de 410 g → 86 g. No teste oficial do Nutrition5k ele relata 12,6% de erro de massa. Não reproduzi nada disso.
-- **O que não consegui conferir.** A licença no próprio registro do Zenodo (li "cc-by-4.0, Dataset Open" só no resumo da busca) e os arquivos brutos. O catálogo de dados da Universidade de Helsinque lista o mesmo dataset como "Restricted Availability"; pode ser só o espelho deles. **Abrir `zenodo.org/records/5850856` e conferir antes de treinar.**
-- **Pista adicional.** O grupo mantém um catálogo (`flavoriadatacatalog.tt.utu.fi`) e um sistema mais novo, Flavoria Flex, com foto antes e depois e pesagem. É um contato possível para mais dados do mesmo tipo.
+> Sarapisto, T., Koivunen, L., Mäkilä, T., Klami, A., Ojansivu, P. (2022). *FlavoriaFoodWeight1700: Automated Lunch Line Meal Pictures with Automatic Measurement of Weight and Contents* (1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.5850856. Licença **CC BY 4.0**: a atribuição acima é obrigatória em qualquer uso, inclusive no modelo do produto.
+
+**Estado: pronto para o treino.** A lista está em `eval/treino/kaggle/listas/externo_flavoria.csv`; quem a monta é `eval/dados_ext/flavoria_monta.py`, a partir do `dataset_csv.tar` (1,3 MB) e de duas tabelas nossas: `flavoria_componentes.csv` (os 246 nomes) e `flavoria_arquivos.csv` (a listagem do tar de imagens, com as medidas por foto). As imagens não estão no repositório nem nesta máquina: o notebook baixa `https://zenodo.org/api/records/5850856/files/dataset_images_and_csv.tar/content` (2,58 GB).
+
+**O que foi conferido.**
+
+- **Licença:** `cc-by-4.0`, acesso aberto, publicado em 10/06/2022, no registro do Zenodo (API do registro, depois que `zenodo.org` foi liberado).
+- **Arquivos:** `dataset_images_and_csv.tar` (2.576.977.920 bytes, md5 `56270b20f0261777bd5e81f46cfd9097`) e `dataset_csv.tar` (1.277.440 bytes, md5 `74410f922287ceffbd8092d7dd4e5530`). Listei o tar de imagens inteiro em fluxo, sem gravar: **2.013 PNG, todos 1024×1024**, em `images/train` (1.716), `images/val` (104) e `images/test` (193), mais os mesmos 11 CSVs. **Não há README.**
+- **As fotos** (vi cerca de 110, em mosaicos): um prato raso branco visto **de cima**, já recortado e mascarado (fundo preto fora do prato), enchendo o quadro. É a refeição de verdade: salada, acompanhamento e prato quente no mesmo prato. A luz é fraca e uniforme. Cada bandeja tem um quadro `enter` (1.130) e, quando a pessoa se identifica, um `identification` (883), tirados com 2 a 13 s de diferença.
+- **Os CSVs:** 12.284 pesagens, 3.343 sessões, 687 bandejas, 246 nomes de componente, 30 balanças (duas linhas "koti", comida caseira, e uma "vege", vegetariana; cubas de salada e cubas quentes), 32 dias de almoço entre 05/10 e 20/11/2020. Colunas: `session_id, weighing_event_time, [weighting_type,] scale_identifier, weight_of_a_component, component_name, tray_id, user_identification_time`.
+- **`registered` e `non_registered`** não são explicados em lugar nenhum. O que os dados mostram: só as sessões dos arquivos `registered` têm foto `identification`; as dos `non_registered` têm no máximo a foto `enter`. Leio como "a pessoa se identificou no leitor" contra "passou sem se identificar". Duas sessões aparecem nos dois arquivos.
+- **Horários:** um dos arquivos está em UTC e os outros em hora local (UTC+3 até 24/10, UTC+2 depois). Com isso, a época no nome da foto `identification` coincide com `user_identification_time` **ao segundo em 877 de 883 fotos**: o casamento foto ↔ pesagem é firme.
+- **Só 1.292 das 3.343 sessões têm foto.** As outras 2.051 não entram.
+
+**Limpeza** (regras e contagens que o script imprime):
+
+| Regra | O que faz | Quantos |
+|---|---|---|
+| E1 | Linhas de pesagem repetidas, e as duas sessões exportadas em dois arquivos (vale a `registered`) | 13 linhas |
+| E2 | Pesagens abaixo de 5 g: descartadas. O histograma tem um pico em 3 g (toque no talher) | 660 pesagens |
+| P1 | Bandeja com sopa ou sobremesa (18 nomes): sai, porque são servidas em tigela ou prato à parte, fora da foto | 18 pratos com foto |
+| P2 | Bandeja com pesagem implausível (> 300 g numa cuba de salada ou > 650 g numa cuba quente; são os vales dos dois histogramas): sai inteira | 9 pratos com foto |
+| P3 | Massa total fora de 30 a 1.200 g | 1 prato com foto |
+| F1 | Foto sem sessão da mesma bandeja a até 90 s | 0 fotos |
+| | **Ficam** | **1.264 pratos, 1.967 fotos** (861 `identification`, 1.106 `enter`) |
+
+- As falhas de balança existem (no CSV inteiro, 440 pesagens passam de 600 g; o padrão típico é "620 g de alface" seguido de "58 g" na mesma cuba, 7 s depois), mas **quase não caem nas sessões com foto**: os autores parecem ter publicado fotos só de sessões já filtradas. Por isso a limpeza tira 28 pratos, e não centenas.
+- Pesagens repetidas na mesma cuba são somadas (68 pratos, aviso `repeticao`).
+- Um projeto de terceiros (`shalev396/ml-lab`) chega a 856 pratos porque só usa as fotos `identification`. Nós ficamos também com as bandejas que só têm a foto `enter`.
+
+**O que saiu.**
+
+| | Pratos | Fotos | Massa mediana | Acima de 600 g | Proteína fraca > 25 g |
+|---|---|---|---|---|---|
+| Tudo | 1.264 | 1.967 | 459 g (p10 310, p90 650, máx. 1.090) | 202 | 653 |
+| `treino_ext` | 1.034 | 1.591 | 457 g | 154 | 532 |
+| `teste_ext` (10 a 20/11/2020, 7 dias) | 230 (18,2%) | 376 | 485 g | 48 | 120 |
+
+- **Parte segurada (12.5):** os últimos dias inteiros de coleta. Com os 7 últimos dias dá 18,2% dos grupos; com 8 (incluindo 09/11) daria 23,7%. Fiquei com o corte mais perto de 20%. Nenhum dia está dos dois lados.
+- **Composição pela massa:** vegetal 29%, prato pronto (misto) 28%, amido 25%, proteína animal 13%, leguminosa 4%, molho 1,5%. Fontes de proteína presentes (≥ 20 g no prato): prato pronto em 632 pratos, leguminosa e soja em 193, peixe em 184, frango em 141, suína e embutidos em 135, bovina em 38. Quase não há ovo, laticínio nem castanhas.
+- **Proteína fraca** (gramas pesados × densidade de tabela pelo nome): mediana de 25,5 g por prato; 653 pratos acima de 25 g; em 450 deles, mais de 25 g vêm de componentes que são fonte de proteína; em cerca de 430, de um único componente. **68% dessa proteína vem de densidades de confiança C** (preparações com receita suposta). Ela está na lista em colunas separadas (`proteina_fraca_g`, `proteina_fraca_conf`, `proteina_fraca_fontes_g`); a coluna `proteina` fica **vazia**.
+
+**O mapa de nomes** (`eval/dados_ext/flavoria_componentes.csv`): para cada um dos 246 nomes, a tradução, o grupo (os 8 de `grupos_alimentos.py`), a fonte de proteína (as 10 de `dens_comum.py`), a referência de tabela (`taco:` ou `n5k:`, com mistura explícita quando é preparação) e a densidade calculada dela, a confiança (A 43, B 88, C 115) e a razão nos casos ambíguos, quase todos nomes finlandeses. Convenções: peça de proteína, com ou sem molho por cima (filé empanado, almôndega, salsicha), vai para a fonte dela; proteína cozida dentro de molho, massa ou legumes (ensopado, curry, lasanha, paella, wok, gratinado) vai para `prato_misto`, como no Nutrition5k; mistura de salada com leguminosa vai para leguminosa quando ela é metade ou mais.
+
+**Problemas conhecidos do rótulo.**
+
+1. **O nome do componente vem do cardápio programado na cuba, não do que foi servido.** Na sessão exportada duas vezes, 2 dos 6 nomes diferem entre os arquivos, com a mesma balança e o mesmo peso. Em 8 fotos comparadas com a lista, os pratos quentes bateram em todas; em 2, um item de salada não batia ("Watermelon" era salada de tomate, pepino e azeitona; "Kurkku-mandariini" era tzatziki). **O peso é confiável; o nome das saladas, nem sempre.** Como quase tudo no balcão de saladas cai em `vegetal`, isso pesa pouco nos grupos e nas frações.
+2. **Pratos prontos entram inteiros.** 28% da massa está em `prato_misto`, onde o Nutrition5k separaria frango, arroz e molho. É a razão do peso 0,5 nesses alvos em 12.5.
+3. **Itens não pesados.** Não dá para saber pelo CSV. Nas fotos conferidas, o molho servido sobre o prato na linha vegetariana (tártaro, creme azedo com gergelim) **estava** pesado, e o pão pita também (entra como "pita recheada de falafel"). Pão da mesa de pães e molho de salada do autosserviço podem não estar.
+4. **Oclusão.** Nas fotos `enter` aparece com frequência a **cabeça** de quem carrega a bandeja, cobrindo até metade do prato. A medida barata que montei (maior arco da borda branca encoberto, `arco_borda_oculta`, calculada por `eval/dados_ext/flavoria_quadros.py` lendo o tar em fluxo) marca 119 fotos com `oclusao = 1` (110 `enter`, 9 `identification`). Num sorteio de 32 marcadas, 27 eram oclusão de verdade; ela não pega mão pequena na borda e erra quando a comida passa da borda. Em 36 pratos todos os quadros estão marcados. `quadro_preferido` aponta o quadro mais limpo de cada prato (856 `identification`, 408 `enter`).
+5. **Nem tudo é prato.** Pelo menos uma foto mostra uma embalagem preta para viagem.
+6. **Enquadramento e escala.** O prato enche o quadro e o fundo é preto: não é o enquadramento do Nutrition5k. 12.5 trata disso com o viés de massa por domínio.
+7. **O split oficial do tar** (`train`/`val`/`test`, guardado em `split_oficial`) não respeita dias. O nosso `split_ext` é por dia.
+
+**Evidência de que ajuda (de terceiros, não nossa).** O projeto calorie-lens treinou com Nutrition5k + 555 pratos do Flavoria e relata, em 301 pratos de dias não vistos, erro de massa de 45,4% → 25,5%, e de 410 g → 86 g nos pratos acima de 600 g. Não reproduzi.
+
+**Pista adicional.** O grupo mantém um catálogo (`flavoriadatacatalog.tt.utu.fi`) e um sistema mais novo, Flavoria Flex, com foto antes e depois e pesagem. É um contato possível para mais dados do mesmo tipo.
 
 ### 2.2 NutritionVerse-Real: licença verificada e um problema nos rótulos
 
@@ -113,7 +163,7 @@ Objetivo: usar as nove redes do servidor como professor e treinar um modelo só 
 | **Open Images, classes de comida** | **88.516** fotos com rótulo humano positivo (84.813 "Food") no treino | Imagens CC BY 2.0 (A: 4.922 de 4.922 na validação); anotações CC BY 4.0 | Não como recorte de comida; baixa direto do S3 dentro do notebook (e daqui) | **Muito ruído (A):** em 24 fotos sorteadas, 1 ou 2 eram um prato visto de cima; o resto, pessoas, feiras, embalagens, bebidas. Depois de um filtro zero-shot devem sobrar 5 a 10 mil (estimativa). Tem rostos: filtrar |
 | **SNAPMe** (USDA) | 3.311 fotos de refeição de celular | Domínio público (`fontes.md`, 4.5) | Não; `agdatacommons.nal.usda.gov` responde daqui | Já temos o script (`coleta_snapme.py`). O rótulo é autorrelato: usar só a foto |
 | **Quadros laterais do Nutrition5k** | 36.970 já extraídos; ~115 por prato na cópia do Kaggle | CC BY 4.0 | Sim | Mesmo refeitório: pouca variedade |
-| **Fotos do Flavoria fora dos 856 pratos limpos** | não contadas (o dataset tem ~2.000 fotos) | CC BY 4.0 (B) | Não | Bandejas de cima; parte mostra uma mão |
+| **Fotos do Flavoria fora da lista** | 46 de 2.013 (pratos tirados pela limpeza) | CC BY 4.0 | Não | Quase todas as fotos do Flavoria já entram com rótulo |
 | Food-101 | 101.000 | Imagens do Foodspotting; o acordo original só cobre uso científico (B). **Não é limpa para produto** | Sim (`dansbecker/food-101`, `kmader/food41`) | No Kaggle aparece como "other" e "copyright-authors" |
 | UEC FOOD-256, Food2K, VireoFood, ChineseFoodNet, ISIA | 30 mil a 1 milhão | Pesquisa não comercial (C; ChineseFoodNet: "free for academic research" na própria descrição do Kaggle, A) | UECFOOD256 e ChineseFoodNet sim; **Food2K não** | Não usar no produto |
 | Recipe1M+ | 13 milhões de imagens | Acordo de pesquisa (C) | Só derivados de texto (`shlokpatel0812/culinaai-datasets`); imagens não | Não usar |
@@ -165,7 +215,7 @@ Uso realista: mais algumas centenas de fotos de **alimento isolado** com gramas,
 
 ## 6. O que eu faria primeiro
 
-1. **Flavoria no próximo notebook do Kaggle** (meio dia): conferir a licença no Zenodo, baixar os 2,6 GB, rodar a limpeza descrita em `eval/dados_ext/fontes_treino.json`, treinar a massa com a perda mascarada e medir duas coisas: a CV no treino do Nutrition5k e os dias de teste do Flavoria. O `teste` e o teste2 não entram em nenhuma escolha. Antes de treinar, passar o modelo atual nos pratos do Flavoria: se ele errar a massa em dezenas de por cento, isso por si só já é o achado: mostra quanto o modelo sofre fora do Nutrition5k.
+1. **Flavoria na próxima execução do Kaggle.** Feito o que dava para fazer daqui: licença conferida, lista montada (`externo_flavoria.csv`), regra de uso pré-registrada em 12.5 de `resultado_modelo_treinado.md`. Falta rodar. O primeiro número a olhar é o erro de massa do modelo atual nos 230 pratos do `teste_ext`: se for de dezenas de por cento, isso por si só mostra quanto o modelo sofre fora do Nutrition5k.
 2. **Curva de aprendizado por faixa de proteína, na CV** (barato, sem tocar em teste): decide se vale gastar o teste do Nutrition5k para dobrar os pratos acima de 25 g.
 3. **Cinco e-mails** (seção 8): OmniFood8K primeiro.
 4. **Série de porções de proteína + marmitas compradas, de cima** (um fim de semana, ~100 refeições): é o primeiro dado brasileiro de cima que o projeto teria, e cai na faixa fraca.
@@ -193,15 +243,14 @@ O que eu **não** faria: gastar tempo com os quadros laterais do Nutrition5k (j�
 | Perguntar onde está o dataset e qual a licença | FLIC: Marco Buzzelli, UNIMIB | 401 bandejas pesadas, de cima |
 | Perguntar se já foi lançado e sob qual licença | ACETADA: Curtin University (autores do arXiv 2507.07048) | 806 fotos de celular com comida pesada |
 | Confirmar permissão de uso em produto | ECUSTFD: Liang & Li, ECUST | Já baixado, sem licença declarada |
-| Conferir a licença no registro | Zenodo 5850856 (Flavoria) | Antes do primeiro treino |
 | Decidir | Uso de datasets NC só para **avaliar** dentro da empresa | NutritionVerse-Real, FPB, OmniFood8K como testes externos |
 | Decidir | Gastar o teste do Nutrition5k para treinar o modelo de produção | Depois do item 2 da seção 6 |
-| Liberar hosts no ambiente | `zenodo.org`, `us.aws.cdn.hf.co`, `drive.google.com`, `swiftbr.vteximg.com.br`, `ian-af.up.pt`, `gupea.ufpr.br`, `www.mdpi.com`, `data.mendeley.com` | Conferir daqui o que hoje está como B |
+| Liberar hosts no ambiente | `us.aws.cdn.hf.co`, `drive.google.com`, `swiftbr.vteximg.com.br`, `ian-af.up.pt`, `gupea.ufpr.br`, `www.mdpi.com`, `data.mendeley.com` | Conferir daqui o que hoje está como B |
 
 ## 9. O que não consegui verificar
 
-- A licença do Flavoria no próprio Zenodo, e qualquer arquivo bruto dele.
-- Se o notebook do Kaggle alcança de fato o Zenodo, a CDN do HF e o Google Drive. É a premissa da tarefa; não testei.
+- No Flavoria: o que `registered` e `non_registered` querem dizer (não há README; a leitura da seção 2.1 é inferência), e quais itens do autosserviço não são pesados.
+- Se o notebook do Kaggle alcança de fato o Zenodo, a CDN do HF e o Google Drive. É a premissa da tarefa; não testei. Daqui, o Zenodo entregou os 2,6 GB em cerca de 20 min.
 - O conteúdo do OmniFood8K (ângulo das fotos, formato dos rótulos, se o peso é por prato). Depois do que apareceu no NutritionVerse-Real, **não assumir que "pesado" quer dizer pesado prato a prato** antes de abrir os rótulos.
 - Licença e download do FLIC, do ACETADA e do LeFood-Set.
 - As licenças de MyFoodRepo, Food-101, UEC FOOD-256, Food2K e Recipe1M+ nas páginas oficiais (B ou C).
@@ -219,6 +268,10 @@ $K datasets metadata <ref> -p <pasta>           # licença declarada
 $K datasets files <ref> --csv --page-size 200   # listagem (paginar com --page-token)
 $K datasets download nutritionverse/nutritionverse-real -f nutritionverse_dish_metadata3.csv -p <pasta>
 python3 -I eval/dados_ext/manifestos_kaggle.py nvreal <raiz do dataset> <saida.csv>
+# Flavoria: listagem do tar em fluxo (sem gravar) e lista de treino
+curl -sL https://zenodo.org/api/records/5850856/files/dataset_images_and_csv.tar/content | tar -tvf - > listagem.txt
+curl -sL -o dataset_csv.tar https://zenodo.org/api/records/5850856/files/dataset_csv.tar/content
+python3 -I eval/dados_ext/flavoria_monta.py monta dataset_csv.tar     # grava eval/treino/kaggle/listas/externo_flavoria.csv
 # Open Images: contar fotos de comida no treino (lê ~400 MB em fluxo, não grava)
 curl -s https://storage.googleapis.com/openimages/v5/train-annotations-human-imagelabels-boxable.csv | <filtro por LabelName e Confidence=1>
 ```

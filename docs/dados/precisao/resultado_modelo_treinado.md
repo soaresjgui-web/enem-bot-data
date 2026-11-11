@@ -1678,6 +1678,14 @@ A pesquisa de bases externas está em curso (`docs/dados/precisao/fontes_treino.
 
 **O que eu espero:** no critério de CV do Nutrition5k, efeito perto de zero (entre −0,5 e +1 ponto), porque o domínio e o enquadramento são outros e a proteína do Flavoria não entra. Acho mais provável que a regra **não** adote do que adote. No teste externo, espero uma queda grande do erro de massa com o Flavoria no treino (terceiros relatam 45% → 25%); isso mede transferência para pratos grandes, não o produto.
 
+**Adendo ao pré-registro (11/11/2026, depois de a lista `externo_flavoria.csv` ficar pronta e antes de qualquer resultado da terceira execução):**
+
+- **Tamanho real:** a lista tem 1.264 pratos em 1.967 fotos (uma linha por foto), e não os 850–1.000 pratos estimados acima, porque as bandejas que só têm a foto `enter` foram mantidas. O custo de extração não muda (cerca de 2.000 fotos).
+- **Fotos ocluídas:** as fotos com `oclusao = 1` (119, quase todas com a cabeça de quem carrega a bandeja por cima do prato) **não entram no treino nem na métrica do `teste_ext`**. O filtro é automático e imperfeito (27 de 32 corretas numa amostra; mãos pequenas na borda escapam).
+- **Métrica por prato no `teste_ext`:** usa só a foto com `quadro_preferido == 1` de cada prato, para que um prato com dois quadros não conte duas vezes. No treino vale o peso uniforme por foto já definido.
+- **Divisão:** vale a coluna `split_ext` (dias 10, 11, 12, 13, 16, 19 e 20 de novembro de 2020 em `teste_ext`: 230 pratos, 18,2%), e não as pastas `train`/`val`/`test` do arquivo original, que ignoram os dias.
+- **Nomes dos componentes** são menos confiáveis que os pesos (vêm do cardápio atribuído à balança); isso já está coberto pelo peso 0,5 dos alvos derivados dos nomes.
+
 ## Reproduzir
 
 ```
