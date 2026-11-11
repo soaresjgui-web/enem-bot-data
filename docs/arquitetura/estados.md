@@ -10,7 +10,7 @@ enum MealCaptureState: Codable, Equatable {
     case requestingCameraPermission
     case cameraDenied                                   // UX: explicar + botão "Abrir Ajustes" + opção galeria/busca manual
     case framing(liveLabels: [DetectedLabel], alignment: FramingAlignment) // câmera aberta, rótulos ao vivo, guia de enquadramento
-    case analyzing(photo: PhotoRef)                     // modelo on-device rodando
+    case analyzing(photo: PhotoRef, attempt: Int)       // análise em andamento; repete sozinha até 3 vezes antes de falhar
     case suggested(Estimate)                            // proteína pronta, faixa + confiança (.high/.medium/.low)
     case editing(Estimate, focusedItem: ItemID?)        // ajuste opcional
     case saving(Estimate)
@@ -39,7 +39,7 @@ enum FramingAlignment: Codable, Equatable {
 enum CaptureQuality: Codable, Equatable { case aligned, misaligned(FramingAlignment), unverified } // unverified = galeria
 ```
 
-**Premissa de produto (09/11/2026): sempre uma única foto, tirada de cima.** Não existe estado de "segunda foto". O círculo-guia e o aviso de nível padronizam ângulo e escala, que é o que o modelo de peso precisa. O disparo nunca fica bloqueado: `shutterTapped` fora de `aligned` (ou `galleryPicked`) segue para `analyzing` com `CaptureQuality` registrada na `PhotoRef`, e a `Estimate` sai com confiança rebaixada. Confiança baixa não é um estado separado: é `suggested(Estimate)` com `confidence == .low`, e a UI mostra a faixa mais larga, o destaque "Confira as porções" e a opção "Tirar outra foto".
+**Premissa de produto (09/11/2026): sempre uma única foto, tirada de cima.** Não existe estado de "segunda foto". O círculo-guia e o aviso de nível padronizam ângulo e escala, que é o que o modelo de peso precisa. O disparo nunca fica bloqueado: `shutterTapped` fora de `aligned` (ou `galleryPicked`) segue para `analyzing` com `CaptureQuality` registrada na `PhotoRef`, e a `Estimate` sai com confiança rebaixada. **Confiança calibrada por faixa de proteína:** o selo usa o acerto medido do modelo na faixa do prato (cerca de 90% até 15 g; 54–59% acima de 25 g, ver `docs/produto.md` §7). Quando o prato tem mais de ~25 g de proteína, a tela `suggested` não mostra "confiança alta": mostra "Confira o tamanho" com o seletor do item de proteína já aberto. Confiança baixa não é um estado separado: é `suggested(Estimate)` com `confidence == .low`, e a UI mostra a faixa mais larga, o destaque "Confira as porções" e a opção "Tirar outra foto".
 
 | De | Evento | Para |
 |---|---|---|
@@ -48,6 +48,9 @@ enum CaptureQuality: Codable, Equatable { case aligned, misaligned(FramingAlignm
 | framing | shutterTapped / galleryPicked | analyzing |
 | framing | barcodeScanned | analyzing (lookup de produto) |
 | analyzing | estimateReady | suggested |
+| analyzing(attempt < 3) | estimateFailed (erro recuperável: rede, tempo esgotado) | analyzing(attempt + 1), sem mostrar erro |
+| analyzing(attempt = 3) | estimateFailed | failed(recoverFrom:) com três saídas: tentar de novo, estimativa do aparelho, registro manual |
+| suggested | itemChanged (seletor de tamanho do item de proteína, aberto na própria tela) | suggested (estimativa recalculada) |
 | framing | alignmentChanged / labelsUpdated | framing (dados atualizados) |
 | suggested | retakeTapped | framing |
 | suggested | adjustTapped | editing |
@@ -80,8 +83,8 @@ A configuração é `completa` quando todas as partes estão `feita`; só então
 
 ## 3. Próximas máquinas a modelar
 
-- **Onboarding e meta de proteína** (`OnboardingMachine`): perfil → objetivo → modo caneta (opcional) → meta calculada → paywall.
+- **Onboarding e meta de proteína** (`OnboardingMachine`): boas-vindas → medidas → objetivo e caneta → meta calculada → primeira foto (ou prato de exemplo) → primeiro resultado → paywall. A primeira foto reutiliza a `MealCaptureMachine`; o paywall só aparece depois de `suggested`. Sem login na v1 (a conta é a do aparelho; "Restaurar compra" fica no paywall).
 - **Assinatura** (`EntitlementMachine`): unknown → trial(ativo, dias) → active → gracePeriod → billingRetry → expired → restored. Fonte da verdade: StoreKit 2/RevenueCat; UI nunca lê flags soltas.
-- **Diário da caneta** (`InjectionScheduleMachine`): sem aplicação configurada → agendada → dia da aplicação → registrada → atrasada.
+- **Diário da caneta** (`InjectionScheduleMachine`): sem aplicação configurada → agendada → dia da aplicação → registrada → atrasada. Dirige o cartão fixo no topo da tela Hoje (no dia da aplicação e nos dois dias seguintes).
 - **Sincronização com Apple Health** (`HealthSyncMachine`): notAuthorized → authorizing → denied / syncing → upToDate → failed(retryAt).
-- **Meta do dia** (`DailyGoalMachine`): abaixo da meta → perto (≥ 80%) → batida → excedida; dirige o anel, as sugestões "quanto falta" e as comemorações.
+- **Meta do dia** (`DailyGoalMachine`): abaixo da meta → perto (≥ 80%) → batida → excedida; dirige o anel, **a única ação da tela Hoje** (a sugestão "quanto falta"; com apetite baixo no modo caneta, opções pequenas e densas) e as comemorações.

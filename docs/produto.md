@@ -31,7 +31,9 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 4. **Check-in feminino** — sintomas do dia; respostas com fontes às dúvidas em alta (amamentação, anticoncepcional). Base para o modo 40+.
 5. **Evolução + Apple Health** — peso, proteína e água lidos/escritos no Health; gráficos; widget "proteína de hoje".
 
-**Plano do dia:** tela inicial com meta de proteína, quanto falta e check-in rápido.
+**Plano do dia:** tela inicial com o anel da meta e **uma única ação** (quanto falta e o que registrar agora). No dia da aplicação da caneta e nos dois seguintes, um cartão fixo no topo.
+
+**Jornada (mock em `docs/mock/jornada.html`, 21 telas):** o onboarding termina com a **primeira foto e o primeiro resultado antes do paywall**; na sugestão de proteína, a faixa provável tem o mesmo destaque do número, o selo de confiança segue o acerto medido por faixa e, em pratos com muita proteína, o seletor de tamanho do item de proteína já vem aberto; a Evolução destaca a constância na meta, com o peso opcional; o check-in devolve na hora uma ligação entre sintoma e proteína.
 
 **Papel da IA on-device:** objetivo de custo marginal zero por foto → **fotos ilimitadas** em todos os planos; resposta < 1 s; funciona offline. **Estado em 09/11/2026:** **Estado em 11/11/2026:** um modelo único exportável para o aparelho (SigLIP 2 B/16; a versão anterior foi convertida para Core ML com 231 MB em FP16 e 116 MB em 8 bits) chega a 61–63% sem nenhum LLM. Em servidor, dez redes de imagem chegam a 69,6% sem LLM e a 72,9% com uma chamada de LLM em nuvem. A diferença entre aparelho e servidor é de 7 a 10 pontos, e a promessa de custo zero por foto só vale para a versão do aparelho. Latência no iPhone e identificação com Foundation Models **ainda não foram medidas**.
 
@@ -41,7 +43,7 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 
 ## 4. Preço
 
-Assinatura com **trial de 7 dias** e **hard paywall após o onboarding**; sem plano semanal nem vitalício.
+Assinatura com **trial de 7 dias** e **hard paywall após o onboarding** (que inclui a primeira foto e o primeiro resultado); sem plano semanal nem vitalício.
 
 | Mercado | Mensal | Anual | Exibição do anual |
 |---|---|---|---|
