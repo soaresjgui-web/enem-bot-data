@@ -276,7 +276,7 @@ def transicao(p, ev):
 
 
 def estado_config(partes):
-    """Estado da configuração, derivado das partes: completa | falhou | sem_orcamento | em_andamento | pendente."""
+    """Estado da configuração, derivado das partes: completa | falhou | sem_orcamento | cancelada | em_andamento | pendente."""
     es = {Estado(p["estado"]) for p in partes.values()}
     if es == {Estado.FEITA}:
         return "completa"
@@ -286,6 +286,8 @@ def estado_config(partes):
         return "sem_orcamento"
     if es == {Estado.PENDENTE}:
         return "pendente"
+    if Estado.CANCELADA in es and not es & {Estado.PENDENTE, Estado.RODANDO}:
+        return "cancelada"
     return "em_andamento"
 
 
@@ -309,6 +311,19 @@ def simula_orcamento(cfgs, estado, livres, seg_parte, limite):
     return cabe
 
 
+def seg_parte(c, cfgs, estado):
+    """Segundos estimados por parte de uma configuração. Função pura. Com partes já medidas nesta sessão: a mediana
+    delas. Sem nenhuma: a estimativa declarada (est_min), corrigida pela razão medido/declarado das partes já medidas
+    em outras configurações do mesmo tipo (se os ajustes finos estão saindo 20% mais lentos, o próximo também sairá)."""
+    medidas = lambda x: [q["seg"] for q in estado[slug(x["nome"])].values() if q["estado"] == Estado.FEITA.value and q["seg"] and not q.get("retomada")]
+    decl = lambda x: x["est_min"] * 60.0 / len(partes_de(x))
+    m = medidas(c)
+    if m:
+        return float(np.median(m))
+    razoes = [v / decl(x) for x in cfgs if x["tipo"] == c["tipo"] for v in medidas(x)]
+    return decl(c) * (float(np.median(razoes)) if razoes else 1.0)
+
+
 def proxima_acao(cfgs, estado, cabe):
     """O que um processo livre faz agora? Função pura (estado das partes, o que cabe) -> uma ação:
       ("cancela", cfg, motivo)      uma dependência não ficou pronta nem vai ficar;
@@ -330,14 +345,14 @@ def proxima_acao(cfgs, estado, cabe):
         mortas = [d["nome"] for d in deps if estado_config(est(d)) != "completa" and not viva(d)]
         if mortas:
             return "cancela", c, f"dependência não ficou pronta: {mortas[0]}"
-        if not cabe.get(c["nome"], True):
-            return "sem_orcamento", c, pend[0]
         if any(estado_config(est(d)) != "completa" for d in deps):
             bloqueio = espera = True
             continue
         if bloqueio and not c.get("livre"):
             espera = True
             continue
+        if not cabe.get(c["nome"], True):       # só se decide o corte quando chega a vez da configuração
+            return "sem_orcamento", c, pend[0]
         return "roda", c, pend[0]
     return ("espera", None, None) if espera else ("fim", None, None)
 
@@ -375,6 +390,7 @@ def autoteste():
     assert f("feita", "feita") == "completa" and f("feita", "falhou", "cancelada") == "falhou"
     assert f("feita", "sem_orcamento") == "sem_orcamento" and f("pendente", "pendente") == "pendente"
     assert f("feita", "pendente") == "em_andamento" and f("rodando", "pendente") == "em_andamento"
+    assert f("cancelada", "cancelada") == "cancelada" and f("feita", "cancelada") == "cancelada" and f("cancelada", "pendente") == "em_andamento"
     assert json.loads(json.dumps(m)) == m                                                     # serializável
     assert len({slug(c["nome"]) for c in todas_as_configs()}) == len(todas_as_configs())
     assert all(c["bb"] in BACKBONES for c in todas_as_configs() if c["bb"])
@@ -393,7 +409,99 @@ def autoteste():
     assert all(set(v) <= nomes and len(set(v)) == len(v) for v in list(RODADAS.values()) + list(PIPELINES.values()) + list(PIPELINES3.values()))
     assert len(RODADAS["2"]) == 11 and all(set(v) <= set(RODADAS["2"]) for v in PIPELINES.values())
     assert [c["nome"] for c in configs_da_rodada("2")][0] == "gpu ridge siglip2_b16_224 o8"      # a paridade roda primeiro
+    # ---- escalonador (funções puras)
+    cs = [dict(nome="r", tipo="ridge", livre=True), dict(nome="f", tipo="fracoes", livre=True, depende=["r"]),
+          dict(nome="p", tipo="professor", depende=["r", "f"]), dict(nome="a", tipo="ft", depende=["p"]), dict(nome="z", tipo="ft")]
+    novo = lambda: {slug(c["nome"]): {q: parte_inicial() for q in partes_de(c)} for c in cs}
+    marca = lambda e, nome, est, partes=None: [e[nome][q].update(estado=est) for q in (partes or e[nome])]
+    e = novo()
+    assert proxima_acao(cs, e, {})[:2] == ("roda", cs[0]) and proxima_acao(cs, e, {})[2] == "tudo"
+    marca(e, "r", "rodando")
+    assert proxima_acao(cs, e, {})[0] == "espera"                    # 'z' não tem dependência, mas não fura a fila dos alunos
+    marca(e, "r", "feita")
+    assert proxima_acao(cs, e, {})[1]["nome"] == "f"
+    marca(e, "f", "feita"); marca(e, "p", "feita")
+    assert proxima_acao(cs, e, {})[1:] == (cs[3], "fold0")
+    marca(e, "a", "rodando")
+    assert proxima_acao(cs, e, {})[1:] == (cs[4], "fold0")           # todas as partes de 'a' já estão com alguém: 'z' pode ir
+    e = novo(); marca(e, "r", "falhou")
+    assert proxima_acao(cs, e, {})[:2] == ("cancela", cs[1])         # dependência morta: cancela quem depende dela
+    marca(e, "f", "cancelada"); marca(e, "p", "cancelada"); marca(e, "a", "cancelada")
+    assert proxima_acao(cs, e, {})[:2] == ("roda", cs[4])            # sem professor, o U0 ainda roda
+    assert proxima_acao(cs, e, {"z": False})[0] == "sem_orcamento"
+    e2 = novo(); marca(e2, "r", "rodando")
+    assert proxima_acao(cs, e2, {"z": False})[0] == "espera"         # o corte de orçamento só se decide quando chega a vez
+    cz = [dict(nome="x", tipo="ft", est_min=60), dict(nome="y", tipo="ft", est_min=120), dict(nome="w", tipo="ridge", est_min=5)]
+    ez = {q["nome"]: {r: parte_inicial() for r in partes_de(q)} for q in cz}
+    assert seg_parte(cz[1], cz, ez) == 1200.0 and seg_parte(cz[2], cz, ez) == 300.0
+    ez["x"]["fold0"].update(estado="feita", seg=900.0)                  # x saiu 1,5 × mais lento que o declarado
+    assert seg_parte(cz[0], cz, ez) == 900.0 and seg_parte(cz[1], cz, ez) == 1800.0 and seg_parte(cz[2], cz, ez) == 300.0
+    marca(e, "z", "feita")
+    assert proxima_acao(cs, e, {})[0] == "fim"
+    e = novo(); marca(e, "r", "feita"); marca(e, "f", "feita"); marca(e, "p", "feita")
+    seg = lambda c: 100.0
+    assert simula_orcamento(cs, e, [0.0, 0.0], seg, 600) == {"a": True, "z": True}       # 12 partes de 100 s em 2 processos: 600 s
+    assert simula_orcamento(cs, e, [0.0, 0.0], seg, 599) == {"a": True, "z": False}      # corta a de menor prioridade
+    assert simula_orcamento(cs, e, [0.0, 0.0], lambda c: 250.0 if c["nome"] == "a" else 100.0, 700) == {"a": False, "z": True}   # a cara sai; a barata ainda cabe
+    assert simula_orcamento(cs, e, [0.0, 400.0], seg, 600) == {"a": True, "z": False}    # um processo ocupado até 400 s
+    try:
+        import torch  # noqa: F401
+    except ImportError:
+        return print("autoteste: ok (sem torch: alvos aninhados não testados)")
+    teste_aninhado()
     print("autoteste: ok")
+
+
+def teste_aninhado():
+    """Os alvos de treino do aluno que fica sem o fold k NUNCA dependem dos rótulos do fold k. Dados sintéticos, mesmas
+    funções da produção (ridge_aninhado, fracoes_aninhado, combina_professor, alvos_do_aluno, cabeca_folds): troca-se
+    todo rótulo do fold k e exige-se que (a) os alvos aninhados de k, nos pratos fora de k, não mudem; (b) as previsões
+    do aluno para o fold k não mudem; e, para o teste ter força, (c) os alvos dos outros alunos mudem."""
+    import torch
+    torch.set_num_threads(1)
+    rng = np.random.default_rng(0)
+    n, o, Dm, K = 60, 2, 12, 4
+    fold = np.arange(n) % 5
+    X = rng.normal(size=(n, o, Dm)).astype(np.float32)
+    cfg = dict(MLP3, oculto=8, epocas=6, lote=16)
+    dev = torch.device("cpu")
+
+    def rotulos(semente):
+        r = np.random.default_rng(semente)
+        massa = np.exp(4.5 + 0.5 * X[:, 0, 0] + 0.2 * r.normal(size=n))
+        FF = np.abs(X[:, 0, 1:1 + K]) + 0.1 * r.random((n, K)); FF /= FF.sum(1, keepdims=True)
+        prot = massa * (FF @ np.array([0.28, 0.2, 0.1, 0.02])) * np.exp(0.1 * r.normal(size=n))
+        T = np.c_[np.log(massa), np.log1p(prot), np.log1p(4 * prot), np.log(prot / massa + EPS_D), r.normal(size=n), r.normal(size=n)]
+        return massa, prot, FF, T
+
+    def alvos(massa, prot, FF, T):
+        an_r = ridge_aninhado(X, T, fold)                                             # [5, n, alvos]
+        an_f = fracoes_aninhado(X, T, FF, massa, prot, fold, cfg, dev)                # [5, n]
+        an = np.stack([np.stack(combina_professor([an_r[k][:, I_M]], [lg_dens(an_f[k]), an_r[k][:, I_D]]), 1) for k in range(5)])
+        P = ridge_cv_or(X, T, fold)[0].mean(1); _, F, dens = cabeca_folds(X, T, FF, massa, prot, fold, cfg, dev)
+        oof = np.stack(combina_professor([P[:, I_M]], [lg_dens(np.array([F[i].mean(0) @ dens[fold[i]] for i in range(n)])), P[:, I_D]]), 1)
+        return oof, an
+
+    base = rotulos(1); outro = rotulos(2)
+    oof0, an0 = alvos(*base)
+    for k in range(5):
+        assert np.isnan(an0[k][fold == k]).all() and not np.isnan(an0[k][fold != k]).any()
+    for k in (0, 3):
+        troca = [np.where((fold == k).reshape((-1,) + (1,) * (b.ndim - 1)), o2, b) for b, o2 in zip(base, outro)]    # só os rótulos do fold k mudam
+        oof1, an1 = alvos(*troca)
+        fora = fold != k
+        assert np.abs(alvos_do_aluno(oof1, an1, k)[fora] - alvos_do_aluno(oof0, an0, k)[fora]).max() < 1e-5, "alvo do aluno depende do fold de validação"
+        assert max(np.abs(an1[j][fold != j] - an0[j][fold != j])[~np.isnan(an0[j][fold != j])].max() for j in range(5) if j != k) > 1e-3   # os outros alunos mudam
+        assert np.abs(oof1 - oof0).max() > 1e-3                                       # e os alvos comuns (modelo final) também
+        # o aluno sem o fold k (cabeça destilada, U1): mesmas previsões para o fold k com ou sem os rótulos verdadeiros de k
+        p0 = cabeca_folds(X, base[3], base[2], base[0], base[1], fold, cfg, dev, an0)[0][fold == k]
+        p1 = cabeca_folds(X, troca[3], troca[2], troca[0], troca[1], fold, cfg, dev, an1)[0][fold == k]
+        assert np.abs(p1 - p0).max() < 1e-4, "a previsão fora-do-fold do aluno depende dos rótulos do fold de validação"
+    # NNLS da densidade por fonte e peso por faixa
+    d = dens_por_fonte(base[2], base[0], base[0] * (base[2] @ np.array([0.28, 0.2, 0.1, 0.02])))
+    assert np.abs(d - np.array([0.28, 0.2, 0.1, 0.02])).max() < 1e-6
+    w = peso_faixa(np.array([1.0, 2, 3, 10, 30, 50, 60]))
+    assert abs(w.mean() - 1) < 1e-9 and abs(w[:3].sum() - w[3]) < 1e-9 and abs(w[5:].sum() - w[4]) < 1e-9
 
 
 # ------------------------------------------------------------------ dados (listas do repositório; sem gabarito de avaliação)
@@ -747,6 +855,56 @@ def treina_cabeca(X, T, FF, w, dc, cfg, dev, alvos_prof=None, semente=0):
     pesos = dict(mu=mu.astype(np.float32), sd=sd.astype(np.float32), tm=tm.astype(np.float32), ts=ts.astype(np.float32),
                  W1=est["1.weight"], b1=est["1.bias"], W2=est["4.weight"], b2=est["4.bias"], dens_fonte=dc.astype(np.float32))
     return pesos, prev
+
+
+def _uma_cabeca(X, T, FF, massa, prot, m, cfg, dev, alvos=None):
+    """Treina a cabeça de frações SÓ com os pratos da máscara m: rótulos, peso por faixa, densidade por fonte e alvos
+    do professor (já recortados em m) saem todos de m. Devolve (densidade por fonte, pesos para servir, função de previsão)."""
+    assert alvos is None or not np.isnan(alvos).any(), "alvo do professor faltando para um prato de treino"
+    dc = dens_por_fonte(FF[m], massa[m], prot[m])
+    pesos, prev = treina_cabeca(X[m], T[m], FF[m], peso_faixa(prot[m]), dc, cfg, dev, alvos)
+    return dc, pesos, prev
+
+
+def cabeca_folds(X, T, FF, massa, prot, fold, cfg, dev, alvos_aninhados=None, tempo=lambda: None):
+    """Previsões fora-do-fold da cabeça de frações: para cada fold k, treina sem k e prevê k. Com alvos_aninhados
+    [5, n, 3] (U1), o aluno sem o fold k é destilado com alvos_aninhados[k], que vêm de professores que também não
+    viram o fold k. Devolve (22 saídas [n, o, 22], frações [n, o, K], densidade por fonte de cada fold [5, K])."""
+    n, o = X.shape[:2]
+    P, F = np.zeros((n, o, T.shape[1]), np.float32), np.zeros((n, o, FF.shape[1]), np.float32)
+    dens = np.zeros((int(fold.max()) + 1, FF.shape[1]), np.float32)
+    for k in sorted(set(fold.tolist())):
+        tempo()
+        m = fold != k
+        dens[k], _, prev = _uma_cabeca(X, T, FF, massa, prot, m, cfg, dev, None if alvos_aninhados is None else alvos_aninhados[k][m])
+        P[~m], F[~m] = prev(X[~m])
+    return P, F, dens
+
+
+def fracoes_aninhado(X, T, FF, massa, prot, fold, cfg, dev, tempo=lambda: None):
+    """[5, n]: na posição [k, i], a densidade pelas frações do prato i (fold j != k) prevista por uma cabeça treinada SEM
+    os folds j e k (8 orientações). Linhas do próprio fold k: NaN."""
+    an = np.full((int(fold.max()) + 1, len(fold)), np.nan, np.float32)
+    for j, k, S in pares_aninhados(fold):
+        tempo()
+        dc, _, prev = _uma_cabeca(X, T, FF, massa, prot, np.isin(fold, list(S)), cfg, dev)
+        an[k, fold == j] = prev(X[fold == j])[1].mean(1) @ dc
+        an[j, fold == k] = prev(X[fold == k])[1].mean(1) @ dc
+    return an
+
+
+def combina_professor(lm, ld):
+    """Professor: massa = média em log das massas; densidade = média em log (com piso) das densidades; proteína =
+    massa × densidade. Entradas: listas de log-massa e de log(densidade + piso). Devolve (log-massa, log-densidade com
+    piso, log1p-proteína)."""
+    lm, ld = np.mean(lm, 0), np.mean(ld, 0)
+    return lm, ld, np.log1p(np.exp(lm) * np.clip(np.exp(ld) - EPS_D, 0, None))
+
+
+def alvos_do_aluno(alvos_oof, alvos_aninhados, k):
+    """Alvos do professor para o aluno treinado sem o fold k (k = None: modelo final, com as previsões fora-do-fold
+    comuns). Para k dado, o alvo de um prato do fold j vem de um professor treinado sem os folds j e k."""
+    return alvos_oof if k is None else alvos_aninhados[k]
 
 
 def rotas_cv(D, pred, sufixo=""):
@@ -1609,33 +1767,18 @@ def roda_parte3(a, cfg, parte, cfgs, D, C, dev, prazo, rot, t0):
         Xtr, Ttr, FFtr, mtr, ptr = X[lin_tr], D.T[tr], D.FF[tr], D.massa[tr], D.proteina[tr]
         prof = parte_de(cfg["professor"]) if cfg.get("professor") else None
         dens_fonte = np.zeros((6, K), np.float32)
-
-        def uma(m, alvos):
-            """Treina nos pratos da máscara m (posições em tr), só com rótulos e alvos de m."""
-            tempo()
-            assert alvos is None or not np.isnan(alvos).any(), "alvo do professor faltando para um prato de treino"
-            dc = dens_por_fonte(FFtr[m], mtr[m], ptr[m])
-            pesos, prev = treina_cabeca(Xtr[m], Ttr[m], FFtr[m], peso_faixa(ptr[m]), dc, cfg, dev, alvos)
-            return dc, pesos, prev
-
-        for k in sorted(set(fold_tr.tolist())):
-            m = fold_tr != k
-            dc, _, prev = uma(m, None if prof is None else prof["alvos_aninhados"][k][tr][m])
-            guarda("oof", tr[~m], n, *prev(Xtr[~m]), dc)
-            dens_fonte[k] = dc
-        todos = np.ones(len(tr), bool)
-        dc, pesos, prev = uma(todos, None if prof is None else prof["alvos_oof"][tr])
+        P, F, dens_fonte[:5] = cabeca_folds(Xtr, Ttr, FFtr, mtr, ptr, fold_tr, cfg, dev, None if prof is None else prof["alvos_aninhados"][:, tr], tempo)
+        for k in range(5):
+            guarda("oof", tr[fold_tr == k], n, P[fold_tr == k], F[fold_tr == k], dens_fonte[k])
+        tempo()
+        dc, pesos, prev = _uma_cabeca(Xtr, Ttr, FFtr, mtr, ptr, np.ones(len(tr), bool), cfg, dev,
+                                      None if prof is None else alvos_do_aluno(prof["alvos_oof"], None, None)[tr])
         dens_fonte[5] = dc
         for s in D.conj:
             guarda(s, usa[s], len(D.conj[s]), *prev(X[lin[s]]), dc)
         saida.update(dens_fonte=dens_fonte, fontes=np.array(D.fontes))
         if cfg["tipo"] == "fracoes":     # densidade por frações aninhada, para os alvos do professor
-            an = nan(5, n)
-            for j, k, S in pares_aninhados(fold_tr):
-                m = np.isin(fold_tr, list(S))
-                dcs, _, prevs = uma(m, None)
-                an[k, tr[fold_tr == j]] = media_or(prevs(Xtr[fold_tr == j])[1], 8) @ dcs
-                an[j, tr[fold_tr == k]] = media_or(prevs(Xtr[fold_tr == k])[1], 8) @ dcs
+            an = nan(5, n); an[:, tr] = fracoes_aninhado(Xtr, Ttr, FFtr, mtr, ptr, fold_tr, cfg, dev, tempo)
             saida["aninhado_dens_ff"] = an
         arq_c = arq_de(a.saida, cfg, "cabeca")
         np.savez(arq_c + ".tmp.npz", nome=cfg["nome"], listas_hash=D.hash, fontes=np.array(D.fontes), **pesos)
@@ -1649,11 +1792,7 @@ def roda_parte3(a, cfg, parte, cfgs, D, C, dev, prazo, rot, t0):
         # massa = média em log das massas ridge; densidade = média em log (piso 0,01) das densidades das cabeças de
         # frações e da cabeça de densidade de um ridge; proteína = massa × densidade. Só combina previsões já gravadas.
         R, Fz, Dz = [parte_de(x) for x in cfg["massa"]], [parte_de(x) for x in cfg["fracoes"]], parte_de(cfg["dens_ridge"])
-
-        def combina(lm, ld):
-            lm, ld = np.mean(lm, 0), np.mean(ld, 0)
-            return lm, ld, np.log1p(np.exp(lm) * np.clip(np.exp(ld) - EPS_D, 0, None))
-
+        combina = combina_professor
         for chave in ["oof"] + list(D.conj):
             for suf in ORIENT:
                 P = np.mean([r[chave + suf] for r in R], 0)       # colunas que o professor não define: média dos ridges
@@ -1675,7 +1814,7 @@ def roda_parte3(a, cfg, parte, cfgs, D, C, dev, prazo, rot, t0):
         alvos = None
         if cfg.get("professor"):    # alvos aninhados: para o aluno sem o fold k, o professor também nunca viu o fold k
             zp = parte_de(cfg["professor"])
-            alvos = zp["alvos_oof"] if k is None else zp["alvos_aninhados"][k]
+            alvos = alvos_do_aluno(zp["alvos_oof"], zp["alvos_aninhados"], k)
         rede, preve, hist, (tm, ts) = treina(cfg, D, C, trk, va, dev, prazo, a.div_lote, semente=sem, rotulo=rot, alvos_prof=alvos)
         dc = preve.dens_fonte
         if dc is not None:
@@ -2216,23 +2355,20 @@ def orquestra(a, cfgs):
         Cache(a.cache, D).prepara(profundidade=any(c["tipo"] == "destila-rgbd" for c in pendentes))
 
     rodando = {}        # processo -> (configuração, início) da parte em execução
-    reserva = 0 if a.sem_servico else 240        # tempo guardado para a fase de serviço dos candidatos
+    reserva = 0 if a.sem_servico else 330        # tempo guardado para a fase de serviço dos candidatos a modelo único
 
-    def seg_parte(c):
-        """Segundos por parte: mediana das partes já medidas nesta sessão; antes disso, a estimativa declarada."""
-        feitas = [x["seg"] for x in estado[slug(c["nome"])].values() if x["estado"] == Estado.FEITA.value and x["seg"] and not x["retomada"]]
-        return float(np.median(feitas)) if feitas else c["est_min"] * 60.0 / len(partes_de(c))
+    seg = lambda c: seg_parte(c, cfgs, estado)
 
     def proxima(i, dev):
         """Decide o que o processo i faz (ver proxima_acao e simula_orcamento); aplica cancelamentos e cortes de orçamento."""
         while True:
             agora = time.time()
-            livres = [agora if j not in rodando else max(agora, rodando[j][1] + seg_parte(rodando[j][0])) for j in range(len(disp))]
-            acao, c, x = proxima_acao(cfgs, estado, simula_orcamento(cfgs, estado, livres, seg_parte, prazo - reserva))
+            livres = [agora if j not in rodando else max(agora, rodando[j][1] + seg(rodando[j][0])) for j in range(len(disp))]
+            acao, c, x = proxima_acao(cfgs, estado, simula_orcamento(cfgs, estado, livres, seg, prazo - reserva))
             if acao == "cancela":
                 diz(f"{c['nome']} cancelada: {x}"); cancela(c, x)
             elif acao == "sem_orcamento":
-                diz(f"{c['nome']} não cabe no orçamento ({seg_parte(c) / 60:.1f} min por parte, restam {(prazo - reserva - agora) / 60:.0f} min): fica de fora")
+                diz(f"{c['nome']} não cabe no orçamento ({seg(c) / 60:.1f} min por parte, restam {(prazo - reserva - agora) / 60:.0f} min): fica de fora")
                 evento(c, x, tipo="sem_orcamento"); cancela(c, "sem orçamento para a configuração inteira")
             elif acao == "roda":
                 evento(c, x, tipo="iniciou", dispositivo=dev); rodando[i] = (c, agora)
@@ -2296,7 +2432,7 @@ def orquestra(a, cfgs):
                 or not os.path.exists(arq_de(a.saida, c, "pesos" if c["tipo"] in ("ft", "destila-rgbd") else "cabeca")):
             return evento(c, "servico", tipo="cancelou", motivo="configuração incompleta ou sem arquivos de servir")
         while est_serv[s]["servico"]["estado"] == Estado.PENDENTE.value:
-            if time.time() + 300 > prazo:
+            if time.time() + (60 if c["tipo"] in ("ft", "destila-rgbd") else 200) > prazo:     # backbone congelado grande: carregar + medir leva ~2,5 min
                 return evento(c, "servico", tipo="sem_orcamento")
             evento(c, "servico", tipo="iniciou", dispositivo=disp[0])
             diz(f"[{disp[0]}] serviço: {c['nome']}; restam {(prazo - time.time()) / 60:.0f} min")

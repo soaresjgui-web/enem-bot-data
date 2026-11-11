@@ -4,6 +4,17 @@
 Uso: python3 eval/treino/kaggle/ingere_kaggle.py <pasta baixada com `kaggle kernels output`>
          [--ensaio DIR] [--so-confere] [--referencia PASTA] [--substitui]
 
+Saída da execução 3 (seção 12.3; treino_v2, só teste2) — nada aqui lê gabarito de avaliação e nada é escolhido:
+  1. Confere as listas (hash de treino_v2.csv e de aval2_ids.csv), e em cada pred__*.npz: ids e ordem do treino e do
+     teste2, folds, formatos, nenhuma previsão faltando nem valor não finito, as três variantes de orientações, as
+     frações (somam 1; a densidade pelas frações bate com frações × dens_fonte do fold), os alvos aninhados do professor
+     (NaN exatamente nos pratos do próprio fold), nenhuma previsão para os 450 pratos da avaliação antiga.
+  2. Paridade das features dos cinco backbones com a execução 2: cada `gpu3 ridge` traz as previsões no teste2 de uma
+     réplica do ridge da execução 2 (lista e folds antigos, features desta execução); elas têm de repetir as do
+     `gpu ridge` correspondente (--referencia = pasta da saída da execução 2; padrão: <TD>/resultados/zen_banco_r2).
+  3. Sem --so-confere: copia cada configuração completa para <TD>/resultados/zen_banco_r3/<nome>.npz (todas as chaves).
+     A regra de 12.3 (rota, orientações, C1, C2) é aplicada pelo agente de avaliação a partir desses arquivos.
+
 Saída SEM teste2 (execução 1, seção 10):
   1. Lê manifesto.json e cada pred__*.npz da pasta. Confere que as listas usadas no Kaggle são as desta pasta
      (hash), que elas batem com <TD>/meta/zen_treino.csv, zen_aval.csv e com os folds de zen_comum.Dados, que cada
@@ -193,6 +204,121 @@ def rodada2(a, L, M, entradas, problemas, res_real):
           f"O banco da seção 10 não foi alterado e nenhum gabarito de avaliação foi lido. Paridade em {os.path.join(res, 'ingestao_kaggle_r2.json')}.")
 
 
+def rodada3(a, M, raiz):
+    """Conferências da saída da execução 3 (ver o cabeçalho). Sem gabarito de avaliação."""
+    L = G.Dados(os.path.join(AQUI, "listas"), rodada="3")
+    if M.get("formato") != G.FORMATO or M["listas_hash"] != L.hash or M.get("listas2_hash") != L.hash2:
+        raise SystemExit(f"listas ou formato diferentes dos desta pasta (manifesto: {M.get('formato')}, {M['listas_hash']}, {M.get('listas2_hash')}; "
+                         f"aqui: {G.FORMATO}, {L.hash}, {L.hash2})")
+    import csv
+    cad = {}
+    for r in csv.DictReader(open(os.path.join(AQUI, "listas", "treino_v2.csv"))):
+        assert cad.setdefault(r["cadeia"], r["fold"]) == r["fold"], "cadeia em dois folds"
+    n, n2, N, K = len(L.ids), len(L.conj["teste2"]), L.N, len(L.fontes)
+    print(f"listas: treino_v2 {n} pratos em {len(cad)} cadeias, 5 folds (hash {L.hash}); teste2 {n2} pratos, fora do treino (hash {L.hash2})")
+    print(f"saída do Kaggle: {M['formato']}, rodada {M['rodada']}, {M['inicio']}, {M.get('duracao_min')} min, GPUs {M['gpus'] or 'nenhuma'}, "
+          f"torch {M.get('torch')}, timm {M.get('timm')}, smoke={M['smoke']}, externos={M.get('externo')}")
+    cfgs = {c["nome"]: c for c in G.todas_as_configs()}
+    parcial = bool(M["smoke"])
+    if parcial and not (a.ensaio or a.so_confere):
+        raise SystemExit("Saída de --smoke: use --so-confere ou --ensaio DIR.")
+    entradas, problemas = {}, []
+    for arq in sorted(glob.glob(os.path.join(raiz, "pred__*.npz"))):
+        z = dict(np.load(arq, allow_pickle=False))
+        nome = str(z["nome"]); c = cfgs.get(nome.replace(" +ext", ""), {})
+        try:
+            assert str(z["listas_hash"]) == L.hash and str(z["listas2_hash"]) == L.hash2, "hash das listas"
+            assert list(z["ids_treino"]) == L.ids and np.array_equal(z["fold"], L.fold), "ordem do treino ou folds"
+            assert list(z["ids_teste2"]) == L.conj["teste2"], "ordem do teste2"
+            assert not any(k.split("_")[0] in ("calib", "teste", "n5k") and not k.startswith("teste2") for k in z), "previsão para a avaliação antiga"
+            usa = (~np.isnan(z["oof"][:, 0]), ~np.isnan(z["teste2"][:, 0])) if parcial else (np.ones(n, bool), np.ones(n2, bool))
+            tem_ff = "oof_ff" in z
+            assert tem_ff == bool(c.get("tipo") in ("fracoes", "unico") or (c.get("tipo") == "ft" and c.get("fracoes"))), "cabeça de frações"
+            for suf in G.ORIENT:
+                for ch, m, u in (("oof", n, usa[0]), ("teste2", n2, usa[1])):
+                    v = z[ch + suf]
+                    assert v.shape == (m, N), f"formato de {ch + suf}"
+                    assert np.isfinite(v[u]).all(), f"valor faltando ou não finito em {ch + suf}"
+                    if tem_ff:
+                        f, d = z[ch + "_ff" + suf], z[ch + "_dens_ff" + suf]
+                        assert f.shape == (m, K) and d.shape == (m,), f"formato das frações de {ch + suf}"
+                        assert np.isfinite(f[u]).all() and (f[u] >= -1e-6).all() and np.abs(f[u].sum(1) - 1).max() < 1e-3, f"frações de {ch + suf} não somam 1"
+                        dc = z["dens_fonte"][L.fold[u]] if ch == "oof" else z["dens_fonte"][5][None]
+                        assert np.abs(d[u] - (f[u] * dc).sum(1)).max() < 1e-4, f"densidade pelas frações de {ch + suf} não bate com frações × dens_fonte"
+            if tem_ff:
+                assert z["dens_fonte"].shape == (6, K) and (z["dens_fonte"] >= 0).all() and list(z["fontes"]) == L.fontes, "dens_fonte"
+            for ch in ("oof_aninhado", "aninhado_dens_ff", "alvos_aninhados"):      # NaN exatamente no próprio fold
+                if ch in z:
+                    falta = np.isnan(z[ch].reshape(5, n, -1)).any(2)
+                    for k in range(5):
+                        assert falta[k][L.fold == k].all() and not falta[k][(L.fold != k) & usa[0]].any(), f"{ch}: NaN fora do lugar no fold {k}"
+            if c.get("tipo") == "professor":
+                assert np.allclose(z["alvos_oof"][usa[0]], z["oof"][usa[0]][:, [G.I_M, G.I_D, G.I_P]]), "alvos_oof do professor"
+            assert M["configs"].get(nome, {}).get("estado") == "completa", f"estado no manifesto: {M['configs'].get(nome, {}).get('estado')}"
+        except AssertionError as e:
+            problemas.append(f"{nome}: {e}")
+            continue
+        entradas[nome] = z
+    print(f"\n{'configuração':46s} | estado        | previsões | CV: RMSE log-massa | melhor rota com 8 orientações (critério de CV) | serviço: conferência")
+    serv = {}
+    if os.path.exists(os.path.join(raiz, "servico.json")):
+        serv = json.load(open(os.path.join(raiz, "servico.json")))["modelos"]
+    for nome, ic in M["configs"].items():
+        cv = ic.get("cv_treino") or {}
+        rot = max(cv["rotas"]["o8"].items(), key=lambda kv: kv[1]) if "rotas" in cv else None
+        sc = serv.get(nome, {}).get("conferencia")
+        print(f"{nome[:46]:46s} | {ic['estado']:13s} | {'ok' if nome in entradas else '—':9s} | {cv.get('rmse_logm', float('nan')):.4f}             | "
+              f"{(rot[0] + ' ' + format(rot[1], '.1f') + '%') if rot else '':46s} | "
+              + (f"dif. máx. {sc['max_dif_log']:.4f} em log" + (f", {sc['max_dif_fracao']:.4f} nas frações" if 'max_dif_fracao' in sc else "") if sc else ic.get("servico", {}).get("estado", "")))
+    for p in problemas:
+        print("  RECUSADA:", p)
+    faltam = [x for x in (G.RODADAS["3"] if not M["smoke"] else []) if x not in entradas]
+    if faltam:
+        print("  não vieram (orçamento, falha ou dependência):", faltam)
+    # paridade das features com a execução 2, pela réplica do ridge antigo
+    ref_pasta = a.referencia or os.path.join(zen_comum.TD, "resultados", "zen_banco_r2")
+    nomes_r2 = {str(z["r2_nome"]): nome for nome, z in entradas.items() if "r2_teste2" in z}
+    ref = {}
+    if glob.glob(os.path.join(ref_pasta, "**", "manifesto.json"), recursive=True):
+        for arq in glob.glob(os.path.join(ref_pasta, "**", "pred__*.npz"), recursive=True):
+            zr = np.load(arq, allow_pickle=False)
+            if str(zr["nome"]) in nomes_r2 and "teste2" in zr.files:
+                ref[str(zr["nome"])] = zr["teste2"].astype(np.float64)
+    else:
+        for x in nomes_r2:
+            if os.path.exists(os.path.join(ref_pasta, x + ".npz")):
+                zr = np.load(os.path.join(ref_pasta, x + ".npz"), allow_pickle=False)
+                if "teste2" in zr.files:
+                    ref[x] = zr["teste2"].astype(np.float64)
+    print(f"\nparidade das features com a execução 2 ({ref_pasta}): réplica do ridge antigo sobre as features novas × previsões da execução 2 no teste2 (sem gabarito)")
+    avisos = []
+    for x, nome in nomes_r2.items():
+        if x not in ref:
+            print(f"  {nome[:44]:44s} sem referência da execução 2 ({x})")
+            continue
+        r2 = entradas[nome]["r2_teste2"]; u = ~np.isnan(r2[:, 0])
+        pm, pt = _par(r2[u, G.I_M], ref[x][u, G.I_M]), float(np.abs(r2[u] - ref[x][u]).max())
+        print(f"  {nome[:44]:44s} log-massa: corr {pm['corr']:.5f}, |dif| mediana {pm['dif_mediana']:.5f}, máxima {pm['dif_max']:.4f} | máxima nas 22 saídas {pt:.4f}"
+              f" | CV da réplica: RMSE {float(entradas[nome]['r2_cv_rmse_logm']):.4f} em {int(entradas[nome]['r2_n'])} pratos")
+        if pm["corr"] < 0.9995 or pm["dif_mediana"] > 0.002:
+            avisos.append(f"{nome}: as features não repetem as da execução 2 (corr {pm['corr']:.4f}, |dif| mediana {pm['dif_mediana']:.4f}); o ambiente (torch, timm, pesos) pode ter mudado")
+    if not nomes_r2:
+        print("  nenhuma configuração trouxe a réplica (r2_teste2)")
+    for x in avisos:
+        print("ATENÇÃO:", x)
+    if a.so_confere:
+        return print(f"\nconferências feitas: {len(entradas)} configurações aceitas, {len(problemas)} recusadas (nada gravado)")
+    res = os.path.join(os.path.abspath(a.ensaio), "resultados") if a.ensaio else os.path.join(zen_comum.TD, "resultados")
+    dest = os.path.join(res, "zen_banco_r3")
+    os.makedirs(dest, exist_ok=True)
+    for nome, z in entradas.items():
+        np.savez(os.path.join(dest, nome + ".npz"), **z)
+    json.dump(dict(pasta=os.path.abspath(a.pasta), manifesto={k: M.get(k) for k in ("formato", "rodada", "inicio", "duracao_min", "gpus", "torch", "timm", "listas_hash", "listas2_hash", "externo", "tamanho_saida")},
+                   ingeridas=sorted(entradas), recusadas=problemas, faltam=faltam, avisos=avisos, cv_treino={x: M["configs"][x].get("cv_treino") for x in entradas}),
+              open(os.path.join(res, "ingestao_kaggle_r3.json"), "w"), indent=1, ensure_ascii=False)
+    print(f"\n{len(entradas)} configurações gravadas em {dest} (todas as chaves de pred__*.npz). Nenhum gabarito de avaliação foi lido e nada foi escolhido aqui.")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("pasta")
@@ -201,6 +327,9 @@ def main():
     ap.add_argument("--referencia", help="execução 1 para a paridade: pasta de banco ou de saída do Kaggle (padrão: <TD>/resultados/zen_banco)")
     ap.add_argument("--substitui", action="store_true", help="saída com teste2: troca também as entradas do zen_banco e roda zen_avalia (lê o teste antigo)")
     a = ap.parse_args()
+    man = sorted(glob.glob(os.path.join(a.pasta, "**", "manifesto.json"), recursive=True))
+    if man and json.load(open(man[0])).get("rodada") == "3":       # execução 3: treino_v2, só teste2
+        return rodada3(a, json.load(open(man[0])), os.path.dirname(man[0]))
     D = zen_comum.Dados()
     L = confere_listas(D)
     print(f"listas: {len(L.ids)} pratos de treino, 5 folds, {sum(len(v) for v in L.aval.values())} de avaliação; iguais às da CPU (hash {L.hash})"

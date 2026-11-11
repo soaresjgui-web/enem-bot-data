@@ -7,8 +7,8 @@ Uso:
   python3 monta_pacote.py notebook   regrava nutrelle_treino_gpu.ipynb a partir de treino_gpu.py e das listas
   python3 monta_pacote.py confere    falha se o notebook não corresponde aos arquivos desta pasta (rode antes do push)
 
-Por que embutir: `kaggle kernels push` envia um único arquivo de código. O notebook grava treino_gpu.py e as
-listas em disco e chama o script; não depende de dataset anexado nem do repositório.
+Por que embutir: `kaggle kernels push` envia um único arquivo de código. O notebook grava treino_gpu.py (em texto) e as
+listas (comprimidas, byte a byte) em disco e chama o script; não depende de dataset anexado nem do repositório.
 
 Listas (só ids e metadados públicos do Nutrition5k, CC BY 4.0; nenhuma imagem):
   treino.csv    os 1.684 pratos do treino zenital estrito, com cadeia, fold (GroupKFold por cadeia, o mesmo da CPU)
@@ -16,13 +16,15 @@ Listas (só ids e metadados públicos do Nutrition5k, CC BY 4.0; nenhuma imagem)
   aval_ids.csv  prato_id, split, dish_id dos 450 pratos de avaliação, SEM gabarito
   aval2_ids.csv prato_id, split, dish_id dos 829 pratos do teste2 (seção 11), SEM gabarito; é gravado por
                 eval/treino/teste2_monta.py, não por este script, que só o embute e confere
+  treino_v2.csv os 2.281 pratos do treino ampliado da seção 12 (folds novos por cadeia, alvos e frações da massa por
+                fonte de proteína); é gravado por eval/treino/treino_v2_monta.py; aqui só é embutido e conferido
 """
-import csv, hashlib, json, os, sys
+import base64, csv, gzip, hashlib, json, os, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LISTAS = os.path.join(AQUI, "listas")
 NOTEBOOK = os.path.join(AQUI, "nutrelle_treino_gpu.ipynb")
-EMBUTIDOS = ["treino_gpu.py", "listas/treino.csv", "listas/aval_ids.csv", "listas/aval2_ids.csv"]
+EMBUTIDOS = ["treino_gpu.py", "listas/treino.csv", "listas/aval_ids.csv", "listas/aval2_ids.csv", "listas/treino_v2.csv"]
 DESTINO = "/tmp/nutrelle_codigo"     # fora da pasta de saída do Kaggle
 
 
@@ -64,6 +66,14 @@ def _hash():
     return h.hexdigest()
 
 
+def _celula_lista(n):
+    """Célula que regrava uma lista byte a byte (gzip + base64)."""
+    dados = base64.b64encode(gzip.compress(open(os.path.join(AQUI, n), "rb").read(), 9, mtime=0)).decode()
+    linhas = "\n".join(dados[i:i + 120] for i in range(0, len(dados), 120))
+    return (f"# {n} (gzip + base64; o arquivo sai idêntico ao do repositório)\nimport base64, gzip\n"
+            f"open('{DESTINO}/{n}', 'wb').write(gzip.decompress(base64.b64decode(\'\'\'\n{linhas}\n\'\'\')))\nprint('gravado: {DESTINO}/{n}')")
+
+
 def notebook():
     md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
     code = lambda t: dict(cell_type="code", metadata={}, execution_count=None, outputs=[], source=t)
@@ -71,26 +81,30 @@ def notebook():
         md("# Nutrelle — treino em GPU (seções 8, 10 e 11: uma única foto de cima)\n\n"
            "Notebook gerado por `eval/treino/kaggle/monta_pacote.py`; **não edite à mão** (edite `treino_gpu.py` e gere de novo). "
            "Roda sem interação: baixa as fotos zenitais do Nutrition5k do bucket público, treina as configurações da rodada "
-           "(padrão: execução 2, as 11 configurações do pipeline congelado da seção 11) até o orçamento de tempo e grava previsões "
-           "(treino fora-do-fold, 450 pratos de avaliação e teste2, sem ler gabarito), registros, os arquivos para servir cada modelo "
+           "(padrão: execução 3, as 13 configurações da seção 12.3, com o treino_v2 e previsões só no teste2) até o orçamento de tempo "
+           "e grava previsões (fora-do-fold no treino e no teste2, sem ler gabarito), registros, os arquivos para servir cada modelo "
            "e `servico.json` (latências) na pasta de saída.\n\n"
            "Kaggle: *Settings → Accelerator → GPU T4 x2* e *Internet → On*. Colab: *Ambiente de execução → GPU*. "
            "Instruções completas em `eval/treino/kaggle/LEIA-ME.md`."),
         code("# Parâmetros (os padrões servem para o Kaggle)\n"
              "import json, os\n"
-             "ORCAMENTO_H = 11.0   # horas de relógio; o que não couber fica marcado como 'sem_orcamento' e pode ser retomado\n"
+             "RODADA = '3'         # 3 = seção 12.3 (um modelo só, treino_v2); 2 = seção 11; 1 = seção 10\n"
+             "ORCAMENTO_H = 3.5    # horas de relógio (execução 3: a cota semanal está no fim); o que não couber inteiro não começa\n"
              "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_saida'   # no Colab, aponte para o Drive para retomar\n"
-             "EXTRA = []           # ex.: ['--rodada', '1'] (as 15 da seção 10); ['--so', 'ridge'] para rodar só parte; ['--retoma', '/content/drive/MyDrive/nutrelle_saida']\n"
+             "EXTRA = []           # ex.: ['--so', 'ridge'] para rodar só parte; ['--retoma', '/content/drive/MyDrive/nutrelle_saida']; dados externos: ver LEIA-ME\n"
              "# as variáveis de ambiente NUTRELLE_SAIDA e NUTRELLE_EXTRA (lista em JSON) substituem os valores acima sem editar o notebook\n"
              "SAIDA = os.environ.get('NUTRELLE_SAIDA') or SAIDA\n"
              "EXTRA = json.loads(os.environ.get('NUTRELLE_EXTRA') or 'null') or EXTRA\n"
              f"os.makedirs('{DESTINO}/listas', exist_ok=True)"),
     ]
-    for n in EMBUTIDOS:
-        cells.append(code(f"%%writefile {DESTINO}/{n}\n" + open(os.path.join(AQUI, n)).read()))
+    for n in EMBUTIDOS:      # o script vai em texto (dá para ler no Kaggle); as listas, comprimidas (o notebook fica abaixo de 1 MB)
+        if n.endswith(".py"):
+            cells.append(code(f"%%writefile {DESTINO}/{n}\n" + open(os.path.join(AQUI, n)).read()))
+        else:
+            cells.append(code(_celula_lista(n)))
     cells.append(code(
         "import subprocess, sys\n"
-        f"cmd = [sys.executable, '-u', '{DESTINO}/treino_gpu.py', '--saida', SAIDA, '--orcamento-h', str(ORCAMENTO_H)] + EXTRA\n"
+        f"cmd = [sys.executable, '-u', '{DESTINO}/treino_gpu.py', '--rodada', RODADA, '--saida', SAIDA, '--orcamento-h', str(ORCAMENTO_H)] + EXTRA\n"
         "p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)\n"
         "for linha in p.stdout:\n"
         "    print(linha, end='')\n"
@@ -121,16 +135,27 @@ def confere():
     nb = json.load(open(NOTEBOOK))
     assert nb["metadata"]["nutrelle"]["sha256"] == _hash(), "notebook desatualizado: rode `python3 monta_pacote.py notebook`"
     for n in EMBUTIDOS:
-        cab = f"%%writefile {DESTINO}/{n}\n"
-        cel = [c for c in nb["cells"] if c["cell_type"] == "code" and c["source"].startswith(cab)]
-        assert len(cel) == 1 and cel[0]["source"][len(cab):] == open(os.path.join(AQUI, n)).read(), n
+        if n.endswith(".py"):
+            cab = f"%%writefile {DESTINO}/{n}\n"
+            cel = [c for c in nb["cells"] if c["cell_type"] == "code" and c["source"].startswith(cab)]
+            assert len(cel) == 1 and cel[0]["source"][len(cab):] == open(os.path.join(AQUI, n)).read(), n
+        else:
+            assert sum(c["source"] == _celula_lista(n) for c in nb["cells"]) == 1, n
+    assert os.path.getsize(NOTEBOOK) < 1_000_000, "notebook com mais de 1 MB"
     meta = json.load(open(os.path.join(AQUI, "kernel-metadata.json")))
     assert meta["code_file"] == os.path.basename(NOTEBOOK) and meta["enable_gpu"] and meta["enable_internet"]
     # o teste2 não pode cruzar com o treino nem com os 450 (a mesma conferência que treino_gpu.Dados faz ao rodar)
     ids = lambda arq: [r["dish_id"] for r in csv.DictReader(open(os.path.join(LISTAS, arq)))]
     tr, av, av2 = ids("treino.csv"), ids("aval_ids.csv"), ids("aval2_ids.csv")
     assert len(set(av2)) == len(av2) and not set(av2) & (set(tr) | set(av)), "aval2_ids.csv cruza com o treino ou com a avaliação antiga"
-    print(f"listas: treino {len(tr)}, avaliação {len(av)}, teste2 {len(av2)}; interseções vazias")
+    v2 = list(csv.DictReader(open(os.path.join(LISTAS, "treino_v2.csv"))))
+    assert len({r["dish_id"] for r in v2}) == len(v2) and not {r["dish_id"] for r in v2} & set(av2), "treino_v2.csv cruza com o teste2"
+    cad = {}
+    for r in v2:        # cada cadeia inteira num fold só; frações por fonte somam 1
+        assert cad.setdefault(r["cadeia"], r["fold"]) == r["fold"], "treino_v2: cadeia em dois folds"
+        assert abs(sum(float(r[c]) for c in r if c.startswith("ff_")) - 1) < 2e-3, "treino_v2: frações por fonte não somam 1"
+    assert set(tr) <= {r["dish_id"] for r in v2}, "treino antigo fora do treino_v2 (a réplica de paridade com a execução 2 precisa dele)"
+    print(f"listas: treino {len(tr)}, avaliação {len(av)}, teste2 {len(av2)}, treino_v2 {len(v2)} em {len(cad)} cadeias; interseções com o teste2 vazias")
     if meta["id"].startswith("USUARIO_KAGGLE/"):
         print("atenção: troque USUARIO_KAGGLE em kernel-metadata.json pelo seu usuário do Kaggle antes do push")
     print("confere: notebook e kernel-metadata.json em dia")
