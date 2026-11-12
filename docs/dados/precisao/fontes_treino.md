@@ -12,6 +12,8 @@
 
 **Segunda varredura (12/11/2026), seção 10:** com Zenodo, Figshare, Dataverse, arXiv e Mendeley liberados, não apareceu nenhum conjunto novo de pratos compostos pesados com licença comercial. Saíram duas listas a mais (LeFood-Set, com peso medido de itens isolados; SNAPMe, com rótulo fraco e uso pendente de decisão) e um pedido de acesso que vale fazer (ClinicPlate).
 
+**Mudança de escopo (12/11/2026), seção 11:** a fundadora decidiu não restringir o treino a bases de licença comercial. Saíram as listas do OmniFood8K (8.017 cenas de cima, com proteína recalculada; 405 acima de 25 g) e do Food Portion Benchmark (2.503 fotos de cima com massa medida), a do SNAPMe voltou, e toda lista externa leva agora `licenca` e `uso_declarado` em cada linha. ACETADA segue bloqueado; MetaFood3D e ClinicPlate esperam o pedido da fundadora.
+
 Este documento não repete `datasets_internacionais.md` (09/11) nem `fontes.md` (08/11). O que mudou desde então: acesso à API do Kaggle e a possibilidade de anexar datasets ou baixar da internet dentro do notebook de treino.
 
 **Nenhum experimento de treino foi rodado aqui.** Toda coluna "ganho esperado" é julgamento, com a evidência que existe ao lado. A especificação de leitura das fontes prontas está em `eval/dados_ext/fontes_treino.json`; o leitor do NutritionVerse-Real, em `eval/dados_ext/manifestos_kaggle.py`.
@@ -390,6 +392,82 @@ Nada disso muda a conta da primeira passada: **prato composto, rico em proteína
 - **O mapa de nomes** (`eval/dados_ext/mensa_componentes.csv`, 314 nomes) sai de 87 regras ordenadas escritas em `mensa_monta.py`; cada linha guarda a regra que casou. Li a tabela inteira e corrigi dois casos. Confiança: A 35, B 171, C 108.
 - **Ressalvas:** são bandejas com vários pratos, não um prato (`vista = zenital_bandeja`); iogurte e biscoito aparecem em embalagem fechada (somados em `embalado_g`); fruta inteira é pesada com casca; só seis fotógrafos; imagens pequenas.
 
+## 11. Bases sem licença comercial, por decisão da fundadora (12/11/2026)
+
+A fundadora decidiu não restringir o treino a bases de licença comercial: o objetivo é enriquecer o modelo, qualquer que seja a base. Para que essa decisão fique rastreável, **toda lista externa passou a levar duas colunas em cada linha**: `licenca` (o texto exato da licença) e `uso_declarado` (`comercial_ok`, `nao_comercial`, `sem_licenca` ou `autores_pedem_nao_treinar`). Quem treina pode filtrar por elas a qualquer momento.
+
+Um limite continua: **não contornar controle de acesso**. Base atrás de formulário ou de acesso restrito espera o pedido da própria fundadora, e cópia de terceiros que pula esse controle não é usada. Por isso MetaFood3D (formulário oficial; as cópias do Kaggle têm licença errada) e ClinicPlate (Zenodo, acesso restrito) continuam sem lista.
+
+### 11.1 Tabela de procedência
+
+Listas em `eval/treino/kaggle/listas/`. "Acima de 25 g" conta pratos (ou cenas, ou bandejas), não fotos, salvo indicação.
+
+| Base | `licenca` | `uso_declarado` | Lista | Tamanho | Acima de 25 g de proteína | Natureza do rótulo | De onde baixa, e do Kaggle |
+|---|---|---|---|---|---|---|---|
+| **OmniFood8K** | CC BY-NC 4.0 | `nao_comercial` | `externo_omnifood.csv` (uma linha por cena) | 8.017 cenas, 48.102 fotos, todas de cima | **405 cenas** (só 101 sem a ressalva de osso ou casca); 1.554 entre 15 e 25 g | Massa pesada por porção. Proteína, kcal, gordura e carboidrato **recalculados**: ingredientes pesados x tabela dos autores | Google Drive, um zip de 2,7 GB. Do Kaggle deve baixar, mas o Drive corta por cota: guardar como dataset **privado** do Kaggle |
+| **Food Portion Benchmark** | CC BY-NC 4.0 | `nao_comercial` | `externo_fpb.csv` (uma linha por foto) | 12.466 fotos de 1.036 bandejas; **de cima: 2.503 fotos de 904 bandejas** | Proteína **fraca**. De cima: 362 bandejas (311 só das fontes; 257 com um item-fonte acima de 25 g). Todas as vistas: 401 / 346 / 289 | Massa pesada por item. Proteína só fraca (classe -> densidade de tabela) | Hugging Face, arquivo a arquivo; as de cima somam 0,31 GB. Do Kaggle baixa sem token |
+| **SNAPMe** | CC BY-SA 4.0 | `autores_pedem_nao_treinar` | `externo_snapme.csv` | 1.163 fotos de 95 pessoas | 277 fotos declaradas (203 só das fontes) | **Autorrelato** (ASA24), nada pesado; tudo em colunas `*_fraca` | Figshare, tar.gz de 2,03 GB. Do Kaggle baixa |
+| **Flavoria** | CC BY 4.0 | `comercial_ok` | `externo_flavoria.csv` | 1.967 fotos de 1.264 pratos | Proteína fraca: 653 pratos (450 só das fontes) | Massa pesada; proteína fraca | Zenodo 5850856. Do Kaggle baixa |
+| **LeFood-Set** | CC BY 4.0 | `comercial_ok` | `externo_lefood.csv` | 811 fotos de 524 porções | 0 | Massa pesada; proteína fraca | Mendeley Data (URLs em `lefood_arquivos.csv`). Do Kaggle baixa |
+| **GT Mensa 2025** | CC BY 4.0 | `comercial_ok` | `externo_mensa.csv` | 200 bandejas | Proteína fraca: 131 no total, 39 só das fontes, 17 com um item acima de 25 g | Massa pesada por item; proteína fraca | GitHub (raw). Do Kaggle baixa |
+| **ACETADA** | CC BY-NC 4.0 (por terceiros; não li a página) | seria `nao_comercial` | **sem lista: bloqueado** | 806 pares antes/depois, segundo o artigo | não sei | Comida pesada a 0,1 g, segundo o artigo | `skynet.ecn.purdue.edu`: o proxy desta sessão recusa o host (403 no CONNECT) |
+| **NutritionVerse-Real** | CC BY-NC-SA 4.0 | seria `nao_comercial` | sem lista (11.5) | 889 fotos de celular de 225 pratos | Nominal: 165 pratos; 129 depois de tirar três tipos de item suspeitos (2.2) | Peso **nominal por tipo de item**, não medido por prato | Kaggle, conta dos autores (anexa direto ao kernel) |
+| **ECUSTFD** | nenhuma declarada | seria `sem_licenca` | sem lista (11.5) | 2.968 fotos de 19 alimentos isolados | 0 (só o ovo é fonte) | Massa e volume medidos | GitHub |
+| **MetaFood3D** | CC BY-NC 4.0, com formulário | **espera o pedido da fundadora** | sem lista | 637 a 743 objetos | não sei | Peso e nutrientes por objeto | Formulário oficial. As cópias do Kaggle não são usadas |
+| **ClinicPlate** | CC BY 4.0, acesso restrito | **espera o pedido da fundadora** | sem lista | 9.868 fotos | não sei | Porções hospitalares pesadas a 1 g | Zenodo 21626434, botão de pedido de acesso |
+
+O alcance do Kaggle é o que espero de um kernel com internet ligada; **não testei de dentro de um kernel**.
+
+### 11.2 OmniFood8K (lista pronta; a maior fonte nova de proteína medida por tabela)
+
+**Citar:** Yu, D.; Min, W.; Jiang, Q.; Lin, X.; Jin, X.; Jiang, S. *OmniFood8K: Single-Image Nutrition Estimation via Hierarchical Frequency-Aligned Fusion.* CVPR 2026 (arXiv:2604.12356). https://github.com/yudongjian/OmniFood8K-food. Licença CC BY-NC 4.0 (README dos autores).
+
+- **O que é:** 141 pratos chineses cozidos em laboratório (cada ingrediente cru pesado), 24 frutas e arroz, servidos em porções pesadas num prato branco sobre mesa branca. Cada cena junta de 1 a 7 porções; são 8.037 cenas com 6 fotos de 640x480.
+- **Como conferi:** listei o zip pelo Drive com leituras parciais (sem gravar os 2,7 GB), baixei as quatro tabelas de rótulo e 18 fotos de três cenas. **As seis câmeras são todas de cima ou quase**; mudam a altura, a posição e o giro do prato. A lista tem uma linha por cena, com `arquivo_base` (a pasta dentro do zip) e `quadros`.
+- **A proteína publicada pelos autores não bate com os ingredientes deles.** Em 52 dos 141 pratos ela difere por mais de 2 vezes da conta feita com os ingredientes pesados e a tabela de nutrição dos próprios autores (peixe frito: 0,8 g publicados contra cerca de 76 g; fungo preto: 56 g contra 2,8 g). Por isso os alvos da lista são **recalculados** (`natureza_rotulo = pesado_x_tabela_recalculado`): gramas crus de cada ingrediente x tabela, divididos pelo peso do prato pronto, vezes a porção servida. O valor dos autores fica em `proteina_autores`; 4.802 cenas levam o aviso `autores_divergem`. Pelos rótulos dos autores seriam 495 cenas acima de 25 g; pela conta refeita, 405.
+- **Regras e contagens:** saem 19 cenas com um componente que não existe na tabela de pratos (id 177) e 1 sem fotos. 155 cenas ficam com os alvos de nutrição vazios e a massa preenchida (`ingredientes_inconsistentes`: soma dos crus acima de 2,5 vezes o prato pronto, ou ingrediente com peso zero; são 2 pratos). 224 cenas têm a soma das porções diferente do total publicado (`massa_difere_do_total`; vale a soma).
+- **Problema que fica: osso, casca e concha.** Asa, pé e coxa de frango, costela, peixe inteiro, camarão, amêijoa, amendoim e milho foram pesados inteiros, e a tabela é da parte comestível. Apliquei uma fração comestível **suposta** por ingrediente (`omnifood_ingredientes.csv`, coluna `comestivel_suposto`; 0,40 a 0,72) só nos nutrientes; a massa continua a pesada. 2.109 cenas levam o aviso `osso_ou_casca`, e **das 405 cenas acima de 25 g só 101 não o têm**.
+- **Números:** massa p10 103 g, mediana 176 g, p90 305 g. Proteína por faixa (0–5 / 5–15 / 15–25 / 25–40 / acima de 40 g): 2.460 / 3.443 / 1.554 / 373 / 32. Cenas com pelo menos 20 g de comida de cada fonte: soja e leguminosas 2.063, suína 1.348, frango 1.081, peixe 935, ovo 862, nozes 452, bovina 146.
+- **Parte segurada:** o teste dos autores (2.351 cenas) vira `teste_ext`. Ele usa **os mesmos 165 pratos do treino** em todas as cenas, então mede porção e combinação, não prato novo. Das 405 cenas acima de 25 g, 193 estão no treino e 212 no teste.
+- **Veredito:** é a única base nova com proteína em gramas para milhares de fotos de cima, e enche a faixa de 15 a 25 g; acima de 25 g ajuda menos do que o tamanho sugere, e com rótulo de tabela mais fração comestível suposta. Fundo de laboratório e cozinha chinesa: esperar ganho em massa e em proteína moderada, não no prato brasileiro.
+
+### 11.3 Food Portion Benchmark (lista pronta; massa medida, proteína fraca)
+
+**Citar:** Sanatbyek, A.; Rakhimzhanova, T.; Nurmanova, B.; Omarova, Z.; Rakhmankulova, A.; Orazbayev, R.; Varol, H. A.; Chan, M. Y. *A multitask deep learning model for food scene recognition and portion estimation: the Food Portion Benchmark (FPB) dataset.* IEEE Access, 2025. https://huggingface.co/datasets/issai/Food_Portion_Benchmark. Licença CC BY-NC 4.0 (cartão do dataset).
+
+- **O que é:** 138 classes de comida da Ásia Central (plov, beshbarmak, lagman, samsa, shashlyk, sopas, pães, doces, bebidas) em três tamanhos de porção, num prato branco sobre bandeja marrom de refeitório. Rótulo YOLO com uma sexta coluna, o peso do item em gramas. Há pratos sozinhos (7 em cada 10 fotos de cima) e bandejas com 2 a 7 itens.
+- **Como conferi:** clonei o repositório sem as imagens (rótulos em texto, imagens como ponteiros com sha256 e tamanho) e abri cerca de 500 imagens em folhas de contato. O peso muda entre sessões do mesmo prato e tamanho (doner grande: 720 g num dia, 680 g em outro), então **é medido por porção servida**, não nominal. Quando a classe tem duas caixas, o peso vem dividido entre elas (39 + 39 = 78 g): vale a soma.
+- **Vista (o ponto que decide o uso):**
+  - `zenital`, 2.503 fotos: câmera RealSense fixa acima da bandeja. Na primeira campanha (nomes com data) são os quadros 01 a 04 de cada sessão, e a bandeja passa da borda do quadro; na segunda (nomes sem data), todos os 914 arquivos são de cima, com a bandeja inteira (70 de 70 abertos).
+  - `lateral`, 3.164 fotos: a mesma câmera, quadros 05 a 12, vista baixa com a bandeja pequena no meio da sala. Não serve para a foto de cima.
+  - `obliqua`, 6.799 fotos: celulares, de 30 a 70 graus, em quatro ou oito giros da bandeja. É o ângulo de quem fotografa sentada, mas não é de cima.
+  - No dia 09Dec três sessões têm a ordem dos quadros trocada. Nesse dia a vista sai do tamanho da caixa dentro da sessão, e conferi os 260 quadros um a um: 89 de cima e 171 laterais, todos certos. Nos outros dias, os 73 quadros que abri seguem a regra do número.
+- **Regras e contagens (14.076 imagens lidas):** 1 rótulo sem imagem; 444 cópias da mesma imagem (mesmo sha256) retiradas, e 12 imagens retiradas porque as duas anotações dão pesos diferentes; 795 fotos só de bebida e 359 em que nenhum item de comida tem peso saem. Ficam 12.466 fotos. Em 446 delas parte dos itens não tem peso (lima, cebola, batata e espinafre nunca foram pesados): `massa` e frações ficam **vazias**, com a soma do que foi pesado em `massa_pesada_g`. O salmão é o caso que mais custa: 109 das 161 fotos com salmão caem aqui (o peixe foi pesado, a guarnição não).
+- **Massa:** sem as bebidas (17 classes, em `bebida_g`), como no Mensa. De cima: p10 72 g, mediana 227 g, p90 669 g.
+- **Proteína fraca:** `fpb_classes.csv` liga cada classe a grupo, fonte e densidade de tabela (confiança A 40, B 63, C 35). Abri recortes de 48 classes para decidir as duvidosas. Corrigi duas densidades da tabela do Nutrition5k que inflavam tudo: "broth" (16,5 g/100 g, é concentrado; caldo de sopa conta zero) e "bread" (13,5; usei o pão francês da TACO, 8,0). Mais da metade da massa é de pratos em que a carne vem misturada (`prato_misto`), com receita suposta.
+- **Problemas de rótulo que ficam:** 709 fotos têm um item da bandeja sem anotação, por estar escondido (aviso `item_sem_anotacao`; 272 delas de cima); quase toda foto tem xadrez de calibração, e as `_ref` têm talheres, régua e guardanapo; 13 classes são sopa (o peso inclui o caldo); carne de cavalo curada e frios foram postos em `suina_embutido`.
+- **Parte segurada:** a divisão dos autores é por imagem e põe a mesma bandeja dos três lados (fica em `split_autores`). `grupo` junta as bandejas que repetem a mesma porção (mesma classe e mesmo peso) e `split_ext` segue a regra de reserva de 12.5. O maior grupo tem 4.112 fotos, porque os itens se repetem entre bandejas; de cima ficam 2.106 fotos no treino e 312 no teste.
+- **Veredito:** 2.418 fotos de cima com massa medida de 868 bandejas, muitas com carne visível: vale como treino de massa e de identidade do item, no mesmo papel do Flavoria. A proteína é só fraca. As 6.535 fotos oblíquas com massa só entram se o treino quiser robustez a ângulo.
+
+### 11.4 ACETADA: bloqueado
+
+Não há lista. O dataset está em `skynet.ecn.purdue.edu/~coburn6/ACETADA/`, e **o proxy desta sessão recusa esse host** (403 no CONNECT). O host liberado, `lorenz.ecn.purdue.edu`, é outro servidor e hoje apresenta um certificado vencido em 16/10/2026, então também não foi lido. Tudo o que sei continua vindo de terceiros (10.4): CC BY-NC 4.0, 806 pares antes/depois de 152 adultos, comida pesada a 0,1 g, fotos de celular. Falta liberar `skynet.ecn.purdue.edu`.
+
+### 11.5 SNAPMe, NutritionVerse-Real, ECUSTFD e MADiMa
+
+- **SNAPMe voltou para o repositório** com as colunas de procedência: `externo_snapme.csv` e `eval/dados_ext/snapme_arquivos.csv`. Nada mudou nos rótulos (10.2): 1.163 fotos, tudo autorrelato em colunas `*_fraca`, nenhuma coluna de alvo preenchida. `uso_declarado = autores_pedem_nao_treinar` porque o registro diz "This data set should not be used to train models".
+- **NutritionVerse-Real: só como rótulo fraco, nunca como alvo.** Os pesos são nominais por tipo de item (2.2): o mesmo item tem sempre o mesmo peso, então massa e proteína viram função da classe e da contagem, não do que se vê. Para itens contados (asinha, sushi, ovo, almôndega) isso é plausível; para itens cortados, não. Como eu usaria: os 187 pratos que sobram depois de tirar os três tipos suspeitos (129 com mais de 25 g nominais), em colunas `*_fraca`, marcados `nao_comercial`, com o ângulo não rotulado. É a única destas bases com muita foto de celular de prato rico em proteína, então pode valer como sinal fraco para a faixa alta. Não montei a lista nesta rodada; o leitor que já existe (`manifestos_kaggle.py nvreal`) marca os pesos nominais.
+- **ECUSTFD:** massa medida, mas de 19 alimentos isolados (frutas, pães, doces; só o ovo é fonte de proteína) e sem licença declarada. Não acrescenta prato composto rico em proteína. Não montei lista.
+- **MADiMa:** não verifiquei nesta rodada. Pelo que lembro do artigo (Allegra et al., 2017), são refeições de refeitório com peso e o acesso é por pedido aos autores; se for assim, cai na regra do controle de acesso.
+
+### 11.6 O que isto muda para a faixa acima de 25 g
+
+- **Proteína em gramas (alvo de verdade, por tabela):** só o OmniFood8K. 405 cenas acima de 25 g (193 no treino dos autores), 101 delas sem a ressalva de osso ou casca, e 1.554 entre 15 e 25 g.
+- **Massa medida com fonte de proteína visível, de cima:** FPB, com 311 bandejas em que as fontes somam mais de 25 g de proteína fraca (257 com um único item acima de 25 g), e Flavoria, com 450 pratos.
+- **Rótulo fraco de celular:** SNAPMe, 203 fotos com mais de 25 g declarados só das fontes.
+
+Nenhuma destas bases traz proteína **medida** acima de 25 g em prato brasileiro; o que entra é massa medida, identidade do item e proteína de tabela.
+
 ## Reproduzir
 
 ```
@@ -411,6 +489,11 @@ python3 -I eval/dados_ext/snapme_monta.py monta master.csv
 R=https://raw.githubusercontent.com/Metabolic-Intelligence-Lab/vlm-food-benchmark/main
 curl -sO $R/labels_flat.csv; curl -sO $R/GT_Mensa_2025/image_participants.csv
 python3 -I eval/dados_ext/mensa_monta.py monta labels_flat.csv image_participants.csv
+# OmniFood8K e Food Portion Benchmark (seção 11)
+python3 -I <scratchpad>/varredura2/scripts/zipremoto.py "<URL do Drive em omnifood_monta.py>" extrai <pasta> 0-OminiFood8k/8k-result.xlsx 0-OminiFood8k/ingred-nutrition.xlsx 0-OminiFood8k/train_new333.txt 0-OminiFood8k/test_new333.txt
+python3 -I eval/dados_ext/omnifood_monta.py monta <pasta>
+GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/datasets/issai/Food_Portion_Benchmark fpb   # 173 MB, sem as imagens
+python3 -I eval/dados_ext/fpb_monta.py monta fpb/FPB_Dataset/RGB
 # Open Images: contar fotos de comida no treino (lê ~400 MB em fluxo, não grava)
 curl -s https://storage.googleapis.com/openimages/v5/train-annotations-human-imagelabels-boxable.csv | <filtro por LabelName e Confidence=1>
 ```

@@ -62,6 +62,8 @@ TOL_FOTO_S = 90
 FRACAO_TESTE = 0.20
 ARCO_OCLUSAO = 0.20            # maior arco da borda do prato encoberto, em fração de volta
 PROTEINA_FRACA_ALTA_G = 25.0
+# procedência em cada linha (decisão de 2026-11-12: toda lista externa leva `licenca` e `uso_declarado`)
+LICENCA, USO = "CC BY 4.0", "comercial_ok"
 ARQ_UTC = "registered_2020_10_05-2020_10_18"
 FIM_HORARIO_VERAO = datetime.date(2020, 10, 25)
 
@@ -338,7 +340,8 @@ def cmd_monta(origem, saida):
     dias_teste = dias[:n_dias]
     cab = (base + ["dominio", "grupo", "vista", "split_ext", "data", "arquivo", "quadro",
               "quadro_preferido", "n_quadros", "sessao", "bandeja", "registrado", "dif_s", "componentes", "n_componentes",
-              "proteina_fraca_g", "proteina_fraca_conf", "proteina_fraca_fontes_g", "arco_borda_oculta", "oclusao", "avisos"])
+              "proteina_fraca_g", "proteina_fraca_conf", "proteina_fraca_fontes_g", "arco_borda_oculta", "oclusao", "avisos",
+              "licenca", "uso_declarado"])
     linhas, ids = [], set()
     resumo = dict(massa=[], pf=[], pff=[], fotos=Counter(), split=Counter(), fotos_split=Counter())
     for k in ficam:
@@ -374,7 +377,7 @@ def cmd_monta(origem, saida):
                           + ["flavoria", grupo, "zenital_mascarada", split, s["data"].isoformat(), f["arquivo"], f["tipo"],
                              int(i == ip), len(quadros), s["sessao"], s["bandeja"], s["registrado"], f["dif_s"],
                              ";".join(f"{n.replace(';', ',')}:{g:.0f}" for n, g in s["comp"]), len(s["comp"]),
-                             f"{pf:.1f}", max(por_conf, key=por_conf.get), f"{pff:.1f}", f["arco"], ocl, "|".join(avisos)])
+                             f"{pf:.1f}", max(por_conf, key=por_conf.get), f"{pff:.1f}", f["arco"], ocl, "|".join(avisos), LICENCA, USO])
     os.makedirs(os.path.dirname(saida), exist_ok=True)
     with open(saida, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n"); w.writerow(cab); w.writerows(linhas)
@@ -399,7 +402,7 @@ def cmd_monta(origem, saida):
           f" -> {resumo['split']['teste_ext']} pratos ({resumo['split']['teste_ext'] / len(ficam):.1%}), {resumo['fotos_split']['teste_ext']} fotos"
           f" | treino_ext: {resumo['split']['treino_ext']} pratos, {resumo['fotos_split']['treino_ext']} fotos")
     print(f"  fração acumulada de grupos, do último dia para trás: {[(d.isoformat()[5:], round(a, 3)) for d, a in zip(dias, acum[1:])][:10]}")
-    print(f"  avisos (pratos): {dict(Counter(a for l in linhas if l[cab.index('quadro_preferido')] == 1 for a in l[-1].split('|') if a))}")
+    print(f"  avisos (pratos): {dict(Counter(a for l in linhas if l[cab.index('quadro_preferido')] == 1 for a in l[cab.index('avisos')].split('|') if a))}")
     oc = [l[cab.index('oclusao')] for l in linhas]
     print(f"  oclusao (fotos): {dict(Counter(oc))} | preferido por tipo: {dict(Counter(l[cab.index('quadro')] for l in linhas if l[cab.index('quadro_preferido')] == 1))}")
     print("gravado:", os.path.relpath(saida), f"({len(cab)} colunas)")

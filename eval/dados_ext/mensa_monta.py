@@ -39,6 +39,8 @@ MAPA = os.path.join(AQUI, "mensa_componentes.csv")
 SAIDA = os.path.join(AQUI, "..", "treino", "kaggle", "listas", "externo_mensa.csv")
 URL = "https://raw.githubusercontent.com/Metabolic-Intelligence-Lab/vlm-food-benchmark/main/GT_Mensa_2025/resized_images/"
 PROTEINA_FRACA_ALTA_G = 25.0
+# procedência em cada linha (decisão de 2026-11-12: toda lista externa leva `licenca` e `uso_declarado`)
+LICENCA, USO = "CC BY 4.0", "comercial_ok"
 
 SOPA_LEG = "0.6*n5k:mixed vegetables|0.4*DILUENTE"
 SOPA_LEGUMINOSA = "0.4*n5k:lentils|0.6*DILUENTE"
@@ -198,7 +200,8 @@ def cmd_monta(labels, participantes, saida):
         quem = {r["resized_filename"]: r["participant_id"] for r in csv.DictReader(f)}
     base = confere_esquema()
     cab = base + ["dominio", "grupo", "vista", "split_ext", "arquivo", "url", "componentes", "n_componentes", "bebida_g",
-                  "embalado_g", "proteina_fraca_g", "proteina_fraca_conf", "proteina_fraca_fontes_g", "maior_fonte_fraca_g", "avisos"]
+                  "embalado_g", "proteina_fraca_g", "proteina_fraca_conf", "proteina_fraca_fontes_g", "maior_fonte_fraca_g", "avisos", "licenca",
+                  "uso_declarado"]
     por_foto = defaultdict(list)
     for img, nome, g in ler_itens(labels):
         por_foto[img].append((nome, g))
@@ -226,7 +229,7 @@ def cmd_monta(labels, participantes, saida):
                       + [f"{mg[g]:.1f}" for g in GRUPOS] + [""] * len(GRUPOS) + [f"{ff[k] / massa:.4f}" for k in FONTES]
                       + ["mensa", grupo, "zenital_bandeja", split, "GT_Mensa_2025/resized_images/" + img, URL + img,
                          ";".join(f"{n.replace(';', ',')}:{g:.0f}" for n, g in comp), len(comp), f"{beb:.0f}", f"{emb:.0f}",
-                         f"{pf:.1f}", max(por_conf, key=por_conf.get), f"{pff:.1f}", f"{maior:.1f}", "|".join(avisos)])
+                         f"{pf:.1f}", max(por_conf, key=por_conf.get), f"{pff:.1f}", f"{maior:.1f}", "|".join(avisos), LICENCA, USO])
     assert len({l[0] for l in linhas}) == len(linhas)
     os.makedirs(os.path.dirname(saida), exist_ok=True)
     with open(saida, "w", encoding="utf-8", newline="") as f:
@@ -235,7 +238,7 @@ def cmd_monta(labels, participantes, saida):
     m = sorted(float(l[i["massa"]]) for l in linhas); q = lambda p: m[int(p * (len(m) - 1))]
     pf = [float(l[i["proteina_fraca_g"]]) for l in linhas]
     print(f"fotos (linhas): {len(linhas)} | participantes: {dict(Counter(l[i['grupo']] for l in linhas))}")
-    print(f"  split: {dict(Counter(l[i['split_ext']] for l in linhas))} | um item só: {sum('um_item_so' in l[-1] for l in linhas)}")
+    print(f"  split: {dict(Counter(l[i['split_ext']] for l in linhas))} | um item só: {sum('um_item_so' in l[i['avisos']] for l in linhas)}")
     print(f"  massa sem bebida (g): p10 {q(.1):.0f} mediana {q(.5):.0f} p90 {q(.9):.0f} máx {m[-1]:.0f} | > 600 g: {sum(v > 600 for v in m)}")
     print(f"  proteína FRACA (g): mediana {sorted(pf)[len(pf) // 2]:.1f} | > {PROTEINA_FRACA_ALTA_G:.0f} g: {sum(v > PROTEINA_FRACA_ALTA_G for v in pf)}"
           f" | só das fontes > 25 g: {sum(float(l[i['proteina_fraca_fontes_g']]) > 25 for l in linhas)}"

@@ -34,6 +34,8 @@ MAPA = os.path.join(AQUI, "lefood_componentes.csv")
 ARQUIVOS = os.path.join(AQUI, "lefood_arquivos.csv")
 SAIDA = os.path.join(AQUI, "..", "treino", "kaggle", "listas", "externo_lefood.csv")
 MIN_SOBRA_G = 5.0
+# procedência em cada linha (decisão de 2026-11-12: toda lista externa leva `licenca` e `uso_declarado`)
+LICENCA, USO = "CC BY 4.0", "comercial_ok"
 
 
 def cmd_mapa():
@@ -69,7 +71,8 @@ def cmd_monta(xlsx, saida):
         arq = {r["arquivo"]: r for r in csv.DictReader(f)}
     base = confere_esquema()
     cab = base + ["dominio", "grupo", "vista", "split_ext", "arquivo", "url", "quadro", "componentes", "n_componentes",
-                  "proteina_fraca_g", "proteina_fraca_conf", "proteina_fraca_fontes_g", "nivel_sobra", "avisos"]
+                  "proteina_fraca_g", "proteina_fraca_conf", "proteina_fraca_fontes_g", "nivel_sobra", "avisos", "licenca",
+                  "uso_declarado"]
     cont = Counter(); linhas = []
     for x in ler_xlsx(xlsx):
         cont["linhas_xlsx"] += 1
@@ -90,7 +93,7 @@ def cmd_monta(xlsx, saida):
                           + [f"{1 if fo == c['fonte'] else 0:.4f}" for fo in FONTES]
                           + ["lefood", grupo, "zenital", split, nome, arq[nome]["url"], quadro,
                              f"{x['nome']}:{g:.0f}", 1, f"{pf:.1f}", c["confianca"],
-                             f"{pf if c['fonte'] != 'sem_proteina' else 0:.1f}", x["nivel"], "|".join(avisos)])
+                             f"{pf if c['fonte'] != 'sem_proteina' else 0:.1f}", x["nivel"], "|".join(avisos), LICENCA, USO])
             cont["fotos_" + quadro] += 1
     assert len({l[0] for l in linhas}) == len(linhas)
     os.makedirs(os.path.dirname(saida), exist_ok=True)

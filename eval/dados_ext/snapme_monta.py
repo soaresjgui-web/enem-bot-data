@@ -47,6 +47,9 @@ from dens_comum import fonte_de  # noqa: E402
 ARQUIVOS = os.path.join(AQUI, "snapme_arquivos.csv")
 SAIDA = os.path.join(AQUI, "..", "treino", "kaggle", "listas", "externo_snapme.csv")
 MIN_G, MAX_G = 20.0, 2000.0
+# procedência em cada linha (decisão de 2026-11-12: toda lista externa leva `licenca` e `uso_declarado`)
+# o registro do dataset pede: "This data set should not be used to train models" — por isso o valor abaixo
+LICENCA, USO = "CC BY-SA 4.0", "autores_pedem_nao_treinar"
 BEBIDA = re.compile(r"coffee|\btea\b|water|juice|soda|soft drink|\bmilk\b|beer|wine|latte|smoothie|drink|cola|lemonade|kombucha|"
                     r"shake|cocktail|espresso|cappuccino|cocoa|hot chocolate|liquor|whiskey|vodka|sports drink|energy drink", re.I)
 
@@ -109,7 +112,7 @@ def cmd_monta(master, saida):
     cab = (base + ["dominio", "grupo", "vista", "split_ext", "arquivo", "arquivo_depois", "largura", "altura", "dia_estudo",
                    "massa_fraca_g", "proteina_fraca_g", "kcal_fraca", "gordura_fraca_g", "carbo_fraca_g", "bebida_g"]
            + [f"m_fraca_{g}" for g in GRUPOS] + [f"ff_fraca_{k}" for k in FONTES]
-           + ["proteina_fraca_fontes_g", "componentes", "n_componentes", "avisos"])
+           + ["proteina_fraca_fontes_g", "componentes", "n_componentes", "avisos", "licenca", "uso_declarado"])
     linhas = []
     for (suj, dia, caminho), its in sorted(fotos.items()):
         if any(x["packaged_food"] == "1" for x in its):
@@ -138,7 +141,7 @@ def cmd_monta(master, saida):
                          f"{sum(num(x['FoodAmt']) for x in its if BEBIDA.search(x['Food_Description'])):.0f}"]
                       + [f"{mg[k]:.0f}" for k in GRUPOS] + [f"{ff[k] / g:.4f}" for k in FONTES]
                       + [f"{pff:.1f}", ";".join(f"{x['Food_Description'].replace(';', ',')}:{num(x['FoodAmt']):.0f}" for x in its),
-                         len(its), "autorrelato"])
+                         len(its), "autorrelato", LICENCA, USO])
     assert len({l[0] for l in linhas}) == len(linhas), "dish_id repetido"
     os.makedirs(os.path.dirname(saida), exist_ok=True)
     with open(saida, "w", encoding="utf-8", newline="") as f:
