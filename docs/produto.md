@@ -31,6 +31,13 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 4. **Check-in feminino** — sintomas do dia; respostas com fontes às dúvidas em alta (amamentação, anticoncepcional). Base para o modo 40+.
 5. **Evolução + Apple Health** — peso, proteína e água lidos/escritos no Health; gráficos; widget "proteína de hoje".
 
+**O que o app conta (decisão da fundadora, 12/11/2026):**
+- **Proteína** é o número principal, com meta diária e **meta por refeição** (cerca de 25–30 g, para distribuir ao longo do dia).
+- **Carboidratos, calorias e gordura** aparecem como informação secundária, só depois de o acerto deles ser medido (o modelo já os estima; a medição está em andamento).
+- **Fibra**, estimada pela identificação de cada item na tabela TACO, com precisão menor que a da proteína; é o que se ajusta para a prisão de ventre comum com as canetas.
+- **Água**, registrada em um toque (não pela foto), com lembrete no modo caneta.
+- Fora da v1: sódio, açúcar e micronutrientes (a foto não dá precisão para isso).
+
 **Plano do dia:** tela inicial com o anel da meta e **uma única ação** (quanto falta e o que registrar agora). No dia da aplicação da caneta e nos dois seguintes, um cartão fixo no topo.
 
 **Jornada (mock em `docs/mock/jornada.html`, 21 telas):** o onboarding termina com a **primeira foto e o primeiro resultado antes do paywall**; na sugestão de proteína, a faixa provável tem o mesmo destaque do número, o selo de confiança segue o acerto medido por faixa e, em pratos com muita proteína, o seletor de tamanho do item de proteína já vem aberto; a Evolução destaca a constância na meta, com o peso opcional; o check-in devolve na hora uma ligação entre sintoma e proteína.
