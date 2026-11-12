@@ -271,6 +271,7 @@ O que eu **não** faria: gastar tempo com os quadros laterais do Nutrition5k (j�
 |---|---|---|---|---|---|
 | **SNAPMe** (USDA, 2022) | 1.163 fotos "antes", 95 pessoas | **Autorrelato** (ASA24): nada pesado | **CC BY-SA 4.0**, e os autores pedem para não treinar com ele | **277** (203 contando só os itens que são fonte de proteína) | `externo_snapme.csv`: todos os alvos vazios, autorrelato em colunas `*_fraca` |
 | **LeFood-Set** (Indonésia, 2025) | 811 fotos, 524 porções | Peso **medido** em balança, um item por prato | CC BY 4.0 | **0** (máximo de 15,6 g); 512 fotos são de uma fonte de proteína | `externo_lefood.csv`: massa, grupo e fonte preenchidos |
+| **GT Mensa 2025** (Itália, 2026; achado depois, ver 10.9) | 200 fotos de bandeja inteira | Peso **medido** por item em balança de cozinha (870 itens) | CC BY 4.0 | 39 bandejas com mais de 25 g vindos de fontes de proteína; 17 com um único item acima de 25 g | `externo_mensa.csv`: massa, grupo e fonte preenchidos |
 | Flavoria (para comparar) | 1.967 fotos, 1.264 pratos | Peso medido por componente | CC BY 4.0 | 450 | `externo_flavoria.csv` |
 
 ### 10.1 O que foi buscado
@@ -319,7 +320,7 @@ O filtro automático pega pouco e erra muito nesses repositórios (a busca do Ze
 | Pista | O que achei agora |
 |---|---|
 | **ACETADA** | **CC BY-NC 4.0**, não CC BY 4.0. Está publicado em `skynet.ecn.purdue.edu/~coburn6/ACETADA/` (bloqueado daqui); um registro do Zenodo (23947978) e um artigo de 2026 (arXiv 2604.06352) já o usam. 806 pares antes/depois, comida de laboratório pesada a 0,1 g, foto de celular. Só com licença dos autores |
-| **FLIC** | **Continua sem abrir.** O DOI leva à MDPI, que segue bloqueada; não há versão no arXiv nem registro no Zenodo ou no Figshare. Preciso de `www.mdpi.com` para ler a declaração de disponibilidade |
+| **FLIC** | **Continua sem abrir, agora por outro motivo** (10.9): a MDPI devolve "Access Denied" a acesso automatizado, e o dataset está num Google Drive, bloqueado daqui |
 | **OmniFood8K** | Li o artigo (arXiv 2604.12356): não há subconjunto com licença comercial. O que é CC BY é o artigo; o dataset segue CC BY-NC 4.0 |
 | **Grupo do Flavoria** | Nenhum outro registro no Zenodo (busquei por *Flavoria*, *Sarapisto* e *lunch line*). O catálogo do grupo e o repositório da universidade estão bloqueados |
 | **Artigos de 2024 a 2026 que liberaram dados** | Dos 39 do arXiv, os que trazem peso medido são os já conhecidos (OmniFood8K, ACETADA, MetaFood3D, SimpleFood45, NutritionVerse-Real), todos não comerciais. Um artigo de outubro de 2026 (arXiv 2610.29025) testou a transferência de modelos de massa entre conjuntos e escreve que "poucos datasets públicos juntam foto e peso"; a lista dele é a nossa mais a biblioteca de porções do ASA24 |
@@ -334,7 +335,7 @@ O filtro automático pega pouco e erra muito nesses repositórios (a busca do Ze
 | FOODITY, desperdício | Zenodo 17023233 | **Sem licença** | 486 fotos de restos de um alimento só, com peso e volume |
 | NutriConv / PANCAKE | Zenodo 15800511 | CC BY 4.0 | 210 imagens de 182×136 px de um alimento só |
 | O'Hara et al., fotos de refeições (Dublin, 2025) | Figshare 28271003 | CC BY 4.0 | A planilha tem o peso de cada alimento e 16 nutrientes de 114 fotos (39 refeições em 3 tamanhos de porção), **mas as fotos não estão no registro** |
-| Benchmark de cantina com balança de cozinha (*Nutrients*, 2025) | Não localizado | CC BY 4.0 segundo resumo de busca | 870 itens pesados em fotos de cantina e de casa. O artigo está na MDPI, bloqueada; não achei o repositório |
+| Benchmark de cantina com balança de cozinha (*Nutrients*, 2026) | GitHub `Metabolic-Intelligence-Lab/vlm-food-benchmark` | CC BY 4.0 | **Passou**, depois de localizado: virou a lista `externo_mensa.csv` (10.9) |
 | Biblioteca de porções do ASA24 (NCI) | `epi.grants.cancer.gov` (bloqueado) | Governo dos EUA; não conferida | 6.329 miniaturas de estúdio de um alimento só, com peso de porção padrão. Não é prato nem peso medido por foto |
 | Central Asian Food Dataset; PUST Cafeteria; DishSeg24k; FoodBD | Figshare, Mendeley, arXiv | Variadas | Só classe ou segmentação; sem peso |
 | DFood-TJ (hospital, China) | Não localizado | Não conferida | Só por resumo de busca |
@@ -347,7 +348,8 @@ O filtro automático pega pouco e erra muito nesses repositórios (a busca do Ze
 3. **ClinicPlate, se o acesso for concedido:** três das sete comidas são fonte de proteína, em 10 níveis de porção pesados. Não sei quantas fotos passam de 25 g.
 4. **ACETADA, se licenciado:** 806 refeições de laboratório pesadas, em foto de celular.
 5. **OmniFood8K, se licenciado:** 8.036 pratos.
-6. **LeFood-Set:** zero pratos acima de 25 g; entra pelo peso e pela identidade de itens de proteína.
+6. **GT Mensa 2025:** 39 bandejas com mais de 25 g vindos de fontes de proteína (17 com um único item acima de 25 g), com peso medido por item. São só 200 fotos, e de bandeja inteira.
+7. **LeFood-Set:** zero pratos acima de 25 g; entra pelo peso e pela identidade de itens de proteína.
 
 Nada disso muda a conta da primeira passada: **prato composto, rico em proteína, de cima, pesado e com licença comercial só existe no Nutrition5k e no Flavoria.** O resto é pedido de licença ou coleta própria.
 
@@ -356,14 +358,37 @@ Nada disso muda a conta da primeira passada: **prato composto, rico em proteína
 1. **Pedir acesso ao ClinicPlate** no próprio Zenodo (registro 21626434, botão de pedido de acesso). A licença já é CC BY 4.0; falta só a liberação dos arquivos. É o pedido mais barato.
 2. **Decidir sobre o SNAPMe:** a licença permite uso comercial com atribuição e compartilha-igual, mas os autores pedem para não treinar. O caminho limpo é escrever para a pessoa de contato do registro (USDA) explicando o uso como rótulo fraco e pedindo a posição dela.
 3. **Pedir licença comercial do ACETADA e do OmniFood8K** (os dois CC BY-NC 4.0).
-4. **Liberar `www.mdpi.com`** no ambiente: destrava o FLIC (401 bandejas pesadas, de cima) e o benchmark de cantina com balança. Também ajudariam `skynet.ecn.purdue.edu`, `api.osf.io` e `epi.grants.cancer.gov`.
+4. **FLIC:** abrir o artigo no navegador (a MDPI recusa acesso automatizado daqui), copiar o link do Google Drive e a licença, e, se a licença não estiver escrita, perguntar aos autores (10.9). Também ajudariam no ambiente `skynet.ecn.purdue.edu`, `api.osf.io` e `epi.grants.cancer.gov`.
 
 ### 10.8 O que não consegui abrir
 
-- A MDPI (FLIC e o benchmark de cantina), a página do ACETADA, o catálogo do Flavoria, a biblioteca do ASA24 e toda a busca do OSF.
+- A MDPI (o host foi liberado, mas o site devolve "Access Denied" a acesso automatizado; ver 10.9), o Google Drive do FLIC, a página do ACETADA, o catálogo do Flavoria, a biblioteca do ASA24 e toda a busca do OSF.
 - A busca do Mendeley Data: só li registros cujo endereço eu já tinha.
 - Os arquivos do ClinicPlate (restritos) e as fotos de O'Hara et al. (não publicadas).
 - No SNAPMe, as imagens em tamanho original: trabalhei com miniaturas de 256 px, e o ângulo foi contado à mão em 96 fotos.
+
+### 10.9 Depois da liberação da MDPI (12/11/2026, tarde): FLIC e o benchmark de cantina
+
+**MDPI: liberada no ambiente, mas não abre.** `https://www.mdpi.com/2076-3417/16/11/5465` e `https://www.mdpi.com/2072-6643/18/21/3582` chegam ao servidor e voltam com **HTTP 403 "Access Denied"** (página do Akamai, com número de referência): é a proteção do próprio site contra acesso automatizado, não o proxy do ambiente. Não tentei contornar. O `doi.org` redireciona os metadados para `api.crossref.org`, que está bloqueado.
+
+**FLIC: continua sem verificação.**
+
+- Pelo resumo de uma busca na web, a página do artigo aponta um **Google Drive** para o dataset (acesso em 26/05/2026), coletado em 22 dias de junho e julho de 2024: 401 pares de bandeja cheia e sobra, com máscaras e massa medida. **Não vi o link, a licença nem nenhum arquivo.**
+- `drive.google.com` está bloqueado daqui; num notebook do Kaggle deve baixar, mas falta o identificador da pasta.
+- Busquei de novo no Zenodo (por autor e por tema) e no Figshare: nada. Os hosts da UNIMIB (`ivl.disco.unimib.it`, `boa.unimib.it`) também estão bloqueados.
+- **O que falta é de dois minutos num navegador:** abrir o artigo, copiar o link do Drive e ler a declaração de disponibilidade. Se a licença não estiver escrita, vale o pedido 4 de `pedidos_licenca.md`.
+
+**Benchmark de cantina: localizado, conferido e montado.**
+
+> Marchetti, T.; Capezzone, S.; Esposito, R.; De Spirito, M.; Maulucci, G. *Benchmarking Open-Source Vision-Language Models for Food Image Recognition and Portion Size Estimation.* Nutrients 2026, 18(21), 3582. https://doi.org/10.3390/nu18213582. Dados em `github.com/Metabolic-Intelligence-Lab/vlm-food-benchmark`, licença **CC BY 4.0** (arquivo `LICENSE-DATA`; o código é MIT).
+
+- **Baixa daqui** por `raw.githubusercontent.com`: `labels_flat.csv`, `GT_Mensa_2025/image_participants.csv` e as 200 fotos (20 MB). Baixei tudo para o scratchpad.
+- **O que é:** 200 fotos de celular (lado maior de até 748 px, sem EXIF) tiradas por seis pessoas num refeitório universitário italiano, quase todas de cima. **A foto é da bandeja inteira**: primeiro prato, segundo, acompanhamento, pão, iogurte, fruta e água, cada um no seu prato. 38 fotos são de um item só (pote de vidro, embalagem).
+- **Rótulo:** 870 itens, cada um com nome em inglês e **peso em balança de cozinha na hora da coleta, com a tara do prato descontada**. Conferi 8 bandejas contra a lista: os itens batem com o que se vê.
+- **Lista** (`externo_mensa.csv`, uma linha por foto): massa sem as bebidas (água, café e suco vão em `bebida_g`), massa por grupo e frações por fonte; proteína só fraca, em colunas à parte. Massa mediana de 602 g; 101 bandejas acima de 600 g. `grupo` = participante; as 34 fotos de um participante ficam como `teste_ext` pela regra de reserva de 12.5.
+- **Proteína fraca:** mediana de 28,5 g por bandeja, mas a maior parte vem de massa, pão e iogurte. **Só 39 bandejas têm mais de 25 g vindos de fontes de proteína, e 17 têm um único item acima de 25 g** (85 têm um item acima de 15 g). É cardápio de refeitório italiano: muito primeiro prato de massa, segundo prato pequeno (omelete, peixe, hambúrguer de legumes).
+- **O mapa de nomes** (`eval/dados_ext/mensa_componentes.csv`, 314 nomes) sai de 87 regras ordenadas escritas em `mensa_monta.py`; cada linha guarda a regra que casou. Li a tabela inteira e corrigi dois casos. Confiança: A 35, B 171, C 108.
+- **Ressalvas:** são bandejas com vários pratos, não um prato (`vista = zenital_bandeja`); iogurte e biscoito aparecem em embalagem fechada (somados em `embalado_g`); fruta inteira é pesada com casca; só seis fotógrafos; imagens pequenas.
 
 ## Reproduzir
 
@@ -382,6 +407,10 @@ python3 -I eval/dados_ext/flavoria_monta.py monta dataset_csv.tar     # grava ev
 python3 -I eval/dados_ext/lefood_monta.py monta data_original.xlsx     # o xlsx vem da URL de lefood_arquivos.csv
 curl -sL https://ndownloader.figshare.com/files/44532971 | tar -xzO --occurrence=1 snapme_db_09Dec2022/snapme_cs_db/master_SNAPME_linkfile.csv > master.csv
 python3 -I eval/dados_ext/snapme_monta.py monta master.csv
+# GT Mensa 2025 (benchmark de cantina)
+R=https://raw.githubusercontent.com/Metabolic-Intelligence-Lab/vlm-food-benchmark/main
+curl -sO $R/labels_flat.csv; curl -sO $R/GT_Mensa_2025/image_participants.csv
+python3 -I eval/dados_ext/mensa_monta.py monta labels_flat.csv image_participants.csv
 # Open Images: contar fotos de comida no treino (lê ~400 MB em fluxo, não grava)
 curl -s https://storage.googleapis.com/openimages/v5/train-annotations-human-imagelabels-boxable.csv | <filtro por LabelName e Confidence=1>
 ```

@@ -9,7 +9,7 @@
 | 1 | OmniFood8K | 8.036 cenas reais de pratos chineses, ingredientes pesados | Licença comercial para treino (hoje CC BY-NC 4.0) | Maior volume de pratos pesados que existe |
 | 2 | Food Portion Benchmark (ISSAI) | 14.083 imagens com peso medido | Licença comercial para treino (hoje CC BY-NC 4.0) | Volume; sem proteína, serve para o peso |
 | 3 | MetaFood3D (Purdue) | 637 alimentos com peso e nutrientes | Licença comercial (hoje CC BY-NC 4.0, com formulário) | Tem proteína medida |
-| 4 | FLIC (UNIMIB) | 401 bandejas de refeitório pesadas, foto de cima | Onde baixar e qual a licença | Mesmo formato do nosso uso |
+| 4 | FLIC (UNIMIB) | 401 bandejas de refeitório pesadas, foto de cima | **Primeiro abrir o artigo no navegador** (ver nota no pedido 4); pedir só se a licença não estiver escrita ou não permitir uso comercial | Mesmo formato do nosso uso |
 | 5 | ACETADA (Curtin) | 806 fotos de celular de refeições pesadas | Se a base será publicada e sob qual licença | Fotos de celular, o domínio real |
 
 | 6 | ClinicPlate (Zenodo, registro 21626434) | 9.868 fotos de porções hospitalares pesadas a 1 g, com macronutrientes; três dos sete alimentos são fontes de proteína, em dez tamanhos de porção | **Pedir acesso** no próprio Zenodo (a licença já é CC BY 4.0; só o acesso é restrito) | É o pedido mais simples e o de retorno mais provável: basta uma conta no Zenodo e uma frase dizendo o uso |
@@ -87,6 +87,8 @@ Best regards,
 [contact]
 
 ## 4. FLIC (UNIMIB)
+
+> **Antes de enviar (12/11/2026, tarde):** segundo o resumo de uma busca, a página do artigo (`https://www.mdpi.com/2076-3417/16/11/5465`) traz um link do Google Drive para o dataset. Daqui não deu para conferir: a MDPI devolve "Access Denied" a acesso automatizado e o Google Drive está bloqueado. Abrir o artigo no navegador, copiar o link e ler a declaração de disponibilidade. Se houver licença que permita uso comercial, este pedido não é necessário; se o link existir sem licença, trocar a segunda frase do segundo parágrafo por "The paper links a Google Drive folder, but I could not find the licence the dataset is released under."
 
 **Subject:** Access to the FLIC canteen tray dataset
 

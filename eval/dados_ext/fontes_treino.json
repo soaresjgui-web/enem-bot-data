@@ -140,6 +140,25 @@
         "É benchmark de outros grupos: treinar com ele impede comparar resultados nele."
       ],
       "verificado": "Arquivo inteiro lido em fluxo; linkfile inteiro; 96 miniaturas olhadas; 14 fotos comparadas com a lista de itens."
+    },
+    {
+      "id": "mensa",
+      "uso": "treino_comercial (massa medida por item; identidade do item; proteína só fraca)",
+      "o_que_e": "GT Mensa 2025 (VLM Food Benchmark): 200 fotos de celular, quase todas de cima, da bandeja inteira de um refeitório universitário italiano; 870 itens pesados em balança de cozinha, com a tara do prato descontada.",
+      "kaggle_ref": null,
+      "onde": "https://raw.githubusercontent.com/Metabolic-Intelligence-Lab/vlm-food-benchmark/main/ (labels_flat.csv, GT_Mensa_2025/image_participants.csv, GT_Mensa_2025/resized_images/001.jpg a 200.jpg; 20 MB)",
+      "licenca": "CC BY 4.0 para imagens e rótulos (arquivo LICENSE-DATA do repositório, lido em 12/11/2026); código MIT",
+      "citar": "Marchetti, T.; Capezzone, S.; Esposito, R.; De Spirito, M.; Maulucci, G. Benchmarking Open-Source Vision-Language Models for Food Image Recognition and Portion Size Estimation. Nutrients 2026, 18(21), 3582. https://doi.org/10.3390/nu18213582",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_mensa.csv (200 fotos), montada por eval/dados_ext/mensa_monta.py",
+      "formato_da_lista": "Uma linha por foto (bandeja). Colunas de treino_v2 como no Flavoria (massa medida, sem bebidas; m_* e ff_* dos gramas pesados pelo mapa de nomes; proteína vazia); dominio = mensa; grupo = men_<participante>; vista = zenital_bandeja; split_ext pela regra de reserva de 12.5; extras: arquivo, url, componentes, n_componentes, bebida_g, embalado_g, proteina_fraca_g, proteina_fraca_conf, proteina_fraca_fontes_g, maior_fonte_fraca_g, avisos (um_item_so | tem_embalado).",
+      "cuidados": [
+        "A foto mostra vários pratos numa bandeja, não um prato.",
+        "Iogurte, biscoito e cracker aparecem em embalagem fechada (embalado_g).",
+        "Fruta inteira é pesada com casca e caroço.",
+        "Só seis fotógrafos; 38 fotos são de um item só.",
+        "O mapa de nomes sai de regras; 108 dos 314 nomes têm densidade de confiança C."
+      ],
+      "verificado": "README, LICENSE-DATA, os dois CSV inteiros, as 200 imagens baixadas (todas JPEG válidos), 24 olhadas, 8 bandejas comparadas com a lista de itens."
     }
   ]
 }
