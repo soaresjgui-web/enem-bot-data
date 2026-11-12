@@ -12,6 +12,11 @@
 | 4 | FLIC (UNIMIB) | 401 bandejas de refeitório pesadas, foto de cima | Onde baixar e qual a licença | Mesmo formato do nosso uso |
 | 5 | ACETADA (Curtin) | 806 fotos de celular de refeições pesadas | Se a base será publicada e sob qual licença | Fotos de celular, o domínio real |
 
+| 6 | ClinicPlate (Zenodo, registro 21626434) | 9.868 fotos de porções hospitalares pesadas a 1 g, com macronutrientes; três dos sete alimentos são fontes de proteína, em dez tamanhos de porção | **Pedir acesso** no próprio Zenodo (a licença já é CC BY 4.0; só o acesso é restrito) | É o pedido mais simples e o de retorno mais provável: basta uma conta no Zenodo e uma frase dizendo o uso |
+| 7 | SNAPMe (USDA) | 1.163 fotos de celular de refeições reais, com nutrientes declarados pelos participantes | Perguntar se aceitam o uso como rótulo fraco de treino | Os autores pedem que a base não seja usada para treinar modelos; a licença é CC BY-SA 4.0 |
+
+**Correções depois da segunda busca (12/11/2026):** a ACETADA é CC BY-NC 4.0 e já está publicada (num servidor da Purdue), então o pedido 5 passa a ser de licença comercial, não de disponibilidade. A SNAPMe não é de domínio público, como constava antes.
+
 Antes de enviar: confirmar no site de cada base que a licença e o contato continuam os mesmos.
 
 ## O que dizer em todos
@@ -110,6 +115,28 @@ I am the founder of Nutrelle, a small Brazilian company building a nutrition app
 Your work describes ACETADA, a set of phone photos of meals with weighed food records. Phone photos with measured weights are what our model lacks most. I could not find a public release of the dataset.
 
 Could you tell us whether it is or will be available, and under which licence? If it is not public, would you consider sharing it for training and evaluating a commercial model under a data-use agreement? We would not redistribute it, and we would cite your work.
+
+Thank you for your time.
+
+Best regards,
+[name], founder, Nutrelle
+[contact]
+
+## 6. ClinicPlate (pedido de acesso no Zenodo)
+
+Não é e-mail: é o botão "Request access" no registro 21626434 do Zenodo, com uma conta sua. Texto sugerido para o campo de justificativa:
+
+> I am the founder of Nutrelle, a small Brazilian company building a nutrition app that estimates the protein of a meal from a single overhead photo. We would use ClinicPlate to train and evaluate portion-weight and protein estimation, under its CC BY 4.0 licence, citing the dataset in the app and in our documentation. We will not redistribute the images or labels.
+
+## 7. SNAPMe (USDA)
+
+**Subject:** Use of SNAPMe as weak-label training data
+
+Dear Dr. [name],
+
+I am the founder of Nutrelle, a small Brazilian company building a nutrition app that estimates the protein of a meal from a single photo taken with a phone.
+
+SNAPMe is the closest public dataset to how the app is used: real meals photographed at home. The record asks that it not be used to train models because it is a small curated set, and we want to respect that. I am writing to ask whether you would object to its use as weak-label training data alongside larger weighed datasets, with SNAPMe cited and its share-alike terms followed, or whether you would prefer that we use it for evaluation only.
 
 Thank you for your time.
 

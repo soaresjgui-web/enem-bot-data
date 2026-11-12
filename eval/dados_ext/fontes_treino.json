@@ -105,6 +105,41 @@
         "O ângulo da foto não é rotulado (há fotos de cima e inclinadas do mesmo prato)."
       ],
       "verificado": "CSV de rótulos inteiro, listagem completa (892 arquivos), 2 fotos abertas; leitor testado com o CSV real e nomes de arquivo reais."
+    },
+    {
+      "id": "lefood",
+      "uso": "treino_comercial (massa medida de um item por prato; identidade do item)",
+      "o_que_e": "LeFood-Set: comida de hospital da Indonésia, um item por prato branco sobre toalha quadriculada, foto de cima antes e depois de comer, peso em balança digital nas duas. 749x548 px.",
+      "kaggle_ref": null,
+      "onde": "Mendeley Data cchsk79jkt (52 MB, 1.049 arquivos); URL de cada arquivo em eval/dados_ext/lefood_arquivos.csv",
+      "licenca": "CC BY 4.0 (registro do Mendeley Data, conferido em 12/11/2026)",
+      "citar": "Sari, Yuita Arum; Wani, Yudi Arimba; Nakazawa, Atsushi (2025). LeFood-Set: Leftovers Food Dataset. Mendeley Data, V1. https://doi.org/10.17632/cchsk79jkt.1",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_lefood.csv (811 fotos, 524 porções), montada por eval/dados_ext/lefood_monta.py",
+      "formato_da_lista": "Uma linha por foto. Colunas de treino_v2 como no Flavoria (massa medida; m_* e ff_* do único item; proteína vazia); dominio = lefood; grupo = lef_<ID> (a porção, comum à foto antes e à depois); vista = zenital; split_ext pela regra de reserva de 12.5; extras: arquivo, url, quadro (antes|depois), componentes, proteina_fraca_g, proteina_fraca_conf, proteina_fraca_fontes_g, nivel_sobra (1 a 7), avisos.",
+      "cuidados": [
+        "Porções pequenas: massa mediana de 42 g; nenhuma foto passa de 16 g de proteína.",
+        "As fotos 'depois' com menos de 5 g de sobra ficaram de fora.",
+        "Só 524 das 678 linhas do xlsx têm foto publicada."
+      ],
+      "verificado": "Todos os arquivos baixados; xlsx inteiro; 32 fotos olhadas."
+    },
+    {
+      "id": "snapme",
+      "uso": "ROTULO FRACO, uso pendente de decisão (CC BY-SA 4.0; os autores pedem para não treinar com o dataset)",
+      "o_que_e": "SNAPMe (USDA): fotos de celular de tudo o que 95 pessoas comeram em até 3 dias, com marcador de escala na cena, ligadas item a item ao recordatório ASA24 do mesmo dia. Nada foi pesado.",
+      "kaggle_ref": null,
+      "onde": "https://ndownloader.figshare.com/files/44532971 (snapme_db_09Dec2022.tar.gz, 2.034.227.035 bytes, md5 95383fd42b78eb45adbad03c7673e8f7); listagem em eval/dados_ext/snapme_arquivos.csv",
+      "licenca": "CC BY-SA 4.0 (registro do Ag Data Commons / Figshare). Campo 'Use limitations' do registro: 'This data set should not be used to train models as it is a small curated data set.'",
+      "citar": "Chin, E. L.; Larke, J. A.; Bouzid, Y. Y.; Nguyen, T.; Vainberg, Y.; Smilowitz, J. T.; Lemay, D. G. (2022). SNAPMe: A Benchmark Dataset of Food Photos with Food Records for Evaluation of Computer Vision Algorithms in the Context of Dietary Assessment. Ag Data Commons. https://doi.org/10.15482/USDA.ADC/1528346",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_snapme.csv (1.163 fotos 'antes', 95 participantes), montada por eval/dados_ext/snapme_monta.py",
+      "formato_da_lista": "Uma linha por foto. TODAS as colunas de treino_v2 vazias (fora dish_id, cadeia = -1, fold = -1). dominio = snapme; grupo = snp_<participante>; vista = celular_nao_rotulada; split_ext pela regra de reserva de 12.5. Autorrelato em colunas à parte: massa_fraca_g, proteina_fraca_g, kcal_fraca, gordura_fraca_g, carbo_fraca_g, bebida_g, m_fraca_<grupo>, ff_fraca_<fonte>, proteina_fraca_fontes_g; mais arquivo (caminho dentro do tar.gz), arquivo_depois, largura, altura, dia_estudo, componentes, n_componentes, avisos.",
+      "cuidados": [
+        "A quantidade é a que a pessoa declarou ter comido, em porções padrão do ASA24; não serve como alvo de massa.",
+        "Cerca de 5 em cada 6 fotos são de cima ou quase (contagem à mão em 96); o ângulo não é rotulado.",
+        "Na ponta alta de proteína há valores que não cabem no prato.",
+        "É benchmark de outros grupos: treinar com ele impede comparar resultados nele."
+      ],
+      "verificado": "Arquivo inteiro lido em fluxo; linkfile inteiro; 96 miniaturas olhadas; 14 fotos comparadas com a lista de itens."
     }
   ]
 }

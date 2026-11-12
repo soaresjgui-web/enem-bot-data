@@ -7,8 +7,10 @@
 1. **Um dataset novo, comercial, de cima e pesado por componente que ainda não usamos: FlavoriaFoodWeight1700** (Finlândia, CC BY 4.0, **1.264 pratos e 1.967 fotos** depois da nossa limpeza, de uma linha de almoço com balança automática). Só tem **peso**, sem proteína, e são pratos grandes (mediana de 459 g, contra 170 g no nosso treino). **Atualização do mesmo dia: licença e arquivos conferidos, lista de treino pronta** (seção 2.1).
 2. **Pratos do próprio Nutrition5k que hoje estão presos nos conjuntos de avaliação:** 1.669 pratos de cima fora do treino, uns 500 deles com mais de 25 g (o treino tem 461). Usá-los custa o teste.
 3. **Três datasets com peso medido, todos com licença não comercial, dois deles bem maiores que o nosso treino:** OmniFood8K (8.036 pratos chineses), Food Portion Benchmark (14.083 imagens) e MetaFood3D (637 objetos). Só entram no produto se os autores licenciarem. **Isso depende de e-mail da fundadora.**
-4. **Fotos sem rótulo** para destilar as nove redes num modelo só: há fontes com licença comercial (MyFoodRepo, Open Images, SNAPMe), mas pequenas ou ruidosas depois de filtrar por "prato visto de cima".
+4. **Fotos sem rótulo** para destilar as nove redes num modelo só: há fontes com licença comercial (MyFoodRepo, Open Images), mas pequenas ou ruidosas depois de filtrar por "prato visto de cima". O SNAPMe saiu desta lista na segunda varredura: a licença é CC BY-SA 4.0 e os autores pedem para não treinar com ele (seção 10).
 5. **Dado brasileiro continua tendo de ser coletado.** Marmita de e-commerce rende dezenas de itens, com foto de estúdio em ângulo: serve de teste, não de treino.
+
+**Segunda varredura (12/11/2026), seção 10:** com Zenodo, Figshare, Dataverse, arXiv e Mendeley liberados, não apareceu nenhum conjunto novo de pratos compostos pesados com licença comercial. Saíram duas listas a mais (LeFood-Set, com peso medido de itens isolados; SNAPMe, com rótulo fraco e uso pendente de decisão) e um pedido de acesso que vale fazer (ClinicPlate).
 
 Este documento não repete `datasets_internacionais.md` (09/11) nem `fontes.md` (08/11). O que mudou desde então: acesso à API do Kaggle e a possibilidade de anexar datasets ou baixar da internet dentro do notebook de treino.
 
@@ -34,10 +36,10 @@ Ordem pelo valor esperado para o modelo do produto. "Comercial" = a licença per
 | 4 | **Fotos sem rótulo para destilação** (MyFoodRepo, Open Images, SNAPMe, quadros do Nutrition5k) | Ver seção 4. Depois de filtrar por "prato de cima": algo como 20 a 35 mil fotos com licença comercial (estimativa) | CC BY 4.0, CC BY 2.0, domínio público | Kaggle (MyFoodRepo), S3 e GCS (Open Images), USDA (SNAPMe) | Pseudo-rótulo das nove redes → um modelo só | **Aproxima o modelo único (63–65%) do conjunto (70%); não sobe o teto.** Sem evidência nossa: é o efeito usual de destilação, não medido aqui | **A** para Open Images (contado e amostrado); **B** para o resto |
 | 5 | **Food Portion Benchmark** (ISSAI, 2025) | 14.083 imagens, 138 classes da Ásia Central, peso por item em balança; vistas de cima e de 4 lados; sem proteína | **CC BY-NC 4.0: não comercial** | HF `issai/Food_Portion_Benchmark`. Imagens bloqueadas daqui; do Kaggle devem baixar. Não está no Kaggle | Se licenciado: massa. Sem licença: teste externo de massa | Médio para massa, se licenciado | **A** para a licença (cartão do HF); rótulos conferidos em 09/11 |
 | 6 | **FLIC** (UNIMIB, 2026) | Refeitório italiano, câmera a 65 cm **de cima**; 401 pares bandeja cheia/sobra (700 fotos cheias), cada prato pesado, máscaras | Artigo em CC BY; **licença do dataset e link de download não localizados** | Não localizado (artigo na MDPI, bloqueada) | Massa por prato da bandeja | Pequeno a médio: +400 a 700 pratos pesados de cima, outro refeitório | **B** |
-| 7 | **ACETADA** (Curtin / Purdue, 2025) | 806 fotos "antes da refeição" de 152 adultos em estudo de alimentação controlada; comida pesada e conferida por nutricionistas; foto de celular | CC BY 4.0 segundo resumo; **"com lançamento previsto"**, não confirmei que já saiu | Não localizado | Massa e nutrientes | Pequeno a médio; fotos de celular, o domínio certo | **B** |
+| 7 | **ACETADA** (Curtin / Purdue, 2025) | 806 fotos "antes da refeição" (e as "depois") de 152 adultos em estudo de alimentação controlada; comida pesada a 0,1 g e conferida por nutricionistas; foto de celular | **CC BY-NC 4.0: não comercial** (corrigido em 12/11: a página do dataset e um registro de terceiros dizem NC; na primeira passada estava como CC BY 4.0) | `skynet.ecn.purdue.edu/~coburn6/ACETADA/` (bloqueado daqui) | Só com licença dos autores | Médio se licenciado: é o domínio certo (celular, refeição real, peso medido) | **B** |
 | 8 | **MetaFood3D** (Purdue, 2024) | 637 objetos (743 na v2), 108 classes; cada um com peso, kcal, **proteína** e vídeo RGB-D real de celular; mediana de 93 g e 4 g de proteína (alimentos isolados) | **CC BY-NC 4.0, com formulário de pedido** (página oficial) | Purdue (bloqueado). No Kaggle há 4 cópias de terceiros com licenças inventadas (MIT, Apache-2.0) | Se licenciado: massa de alimento isolado | Baixo: alimento único, pouca proteína | **A** para a planilha de rótulos (637 linhas, lida aqui); **B** para a licença |
 | 9 | **Nutrition5k: pratos só com vídeo lateral** | 1.504 pratos sem foto de cima (1.432 passam nos filtros); só **119 com mais de 25 g** | CC BY 4.0 | Bucket; já temos 8 quadros por prato | Sinal auxiliar de treino | **Baixo.** Já testado na seção 8 (item 10): ganho pequeno na CV, nenhum no teste. Os quadros são oblíquos e cortam o prato | **A** |
-| 10 | **LeFood-Set** (Indonésia, 2025) | 524 pares antes/depois de comida de hospital, 34 classes, peso em balança digital | Não verificada (Mendeley) | `data.mendeley.com/datasets/cchsk79jkt` (bloqueado) | Massa | Baixo a médio | **B** |
+| 10 | **LeFood-Set** (Indonésia, 2025) | 524 porções de comida de hospital, um item por prato, foto de cima antes e depois de comer, peso em balança nas duas | **CC BY 4.0: comercial** (conferido no registro do Mendeley em 12/11) | Mendeley Data `cchsk79jkt`, 52 MB | **Lista pronta** (`externo_lefood.csv`, 811 fotos; seção 10) | Baixo para a faixa fraca (nenhum prato passa de 16 g de proteína); útil para identidade e peso de frango, peixe, ovo, tofu e tempeh | **A** |
 | 11 | **ECUSTFD** | 2.968 imagens, 19 alimentos isolados, peso e volume | Sem licença declarada | Já baixado | Massa | Baixo (já avaliado em `datasets_internacionais.md`) | **A** |
 | 12 | **NutritionVerse-Real** | 889 fotos de celular, 225 pratos com foto; **peso nominal por tipo de item, não medido por prato** (ver 2.2) | **CC BY-NC-SA 4.0: não comercial** | Kaggle `nutritionverse/nutritionverse-real` (1,1 GB); baixa daqui | Só avaliação, com filtro | Nenhum no treino; teste externo fraco | **A** |
 
@@ -161,7 +163,7 @@ Objetivo: usar as nove redes do servidor como professor e treinar um modelo só 
 |---|---|---|---|---|
 | **MyFoodRepo-273** (Food Recognition Benchmark, EPFL) | 24.119 fotos de refeição tiradas com celular (versão do artigo) | CC BY 4.0 segundo o artigo (B); conferir na página do AIcrowd | Sim: `awsaf49/food-recognition-2022-dataset` (2,6 GB), `sainikhileshreddy/food-recognition-2022` (5,3 GB) | **A melhor fonte pronta:** foto de usuário de app de dieta, o nosso domínio. Sem peso |
 | **Open Images, classes de comida** | **88.516** fotos com rótulo humano positivo (84.813 "Food") no treino | Imagens CC BY 2.0 (A: 4.922 de 4.922 na validação); anotações CC BY 4.0 | Não como recorte de comida; baixa direto do S3 dentro do notebook (e daqui) | **Muito ruído (A):** em 24 fotos sorteadas, 1 ou 2 eram um prato visto de cima; o resto, pessoas, feiras, embalagens, bebidas. Depois de um filtro zero-shot devem sobrar 5 a 10 mil (estimativa). Tem rostos: filtrar |
-| **SNAPMe** (USDA) | 3.311 fotos de refeição de celular | Domínio público (`fontes.md`, 4.5) | Não; `agdatacommons.nal.usda.gov` responde daqui | Já temos o script (`coleta_snapme.py`). O rótulo é autorrelato: usar só a foto |
+| **SNAPMe** (USDA) | 3.311 fotos de celular; 1.163 fotos "antes" de refeição não embalada | **CC BY-SA 4.0** no registro (corrigido em 12/11; estava como domínio público), e os autores pedem para **não treinar** com ele | Não; baixa de `ndownloader.figshare.com` | Reavaliado na seção 10 como rótulo fraco: lista pronta (`externo_snapme.csv`), uso pendente de decisão |
 | **Quadros laterais do Nutrition5k** | 36.970 já extraídos; ~115 por prato na cópia do Kaggle | CC BY 4.0 | Sim | Mesmo refeitório: pouca variedade |
 | **Fotos do Flavoria fora da lista** | 46 de 2.013 (pratos tirados pela limpeza) | CC BY 4.0 | Não | Quase todas as fotos do Flavoria já entram com rótulo |
 | Food-101 | 101.000 | Imagens do Foodspotting; o acordo original só cobre uso científico (B). **Não é limpa para produto** | Sim (`dansbecker/food-101`, `kmader/food41`) | No Kaggle aparece como "other" e "copyright-authors" |
@@ -241,7 +243,7 @@ O que eu **não** faria: gastar tempo com os quadros laterais do Nutrition5k (j�
 | Pedir licença comercial | ISSAI, Universidade Nazarbayev (Food Portion Benchmark) | 14 mil imagens com peso |
 | Pedir licença comercial e acesso | Purdue (MetaFood3D: formulário na página) | 637 a 743 objetos com proteína |
 | Perguntar onde está o dataset e qual a licença | FLIC: Marco Buzzelli, UNIMIB | 401 bandejas pesadas, de cima |
-| Perguntar se já foi lançado e sob qual licença | ACETADA: Curtin University (autores do arXiv 2507.07048) | 806 fotos de celular com comida pesada |
+| Pedir licença comercial | ACETADA: Curtin University e Purdue (autores do arXiv 2507.07048); já publicado, CC BY-NC 4.0 | 806 fotos de celular com comida pesada |
 | Confirmar permissão de uso em produto | ECUSTFD: Liang & Li, ECUST | Já baixado, sem licença declarada |
 | Decidir | Uso de datasets NC só para **avaliar** dentro da empresa | NutritionVerse-Real, FPB, OmniFood8K como testes externos |
 | Decidir | Gastar o teste do Nutrition5k para treinar o modelo de produção | Depois do item 2 da seção 6 |
@@ -252,12 +254,116 @@ O que eu **não** faria: gastar tempo com os quadros laterais do Nutrition5k (j�
 - No Flavoria: o que `registered` e `non_registered` querem dizer (não há README; a leitura da seção 2.1 é inferência), e quais itens do autosserviço não são pesados.
 - Se o notebook do Kaggle alcança de fato o Zenodo, a CDN do HF e o Google Drive. É a premissa da tarefa; não testei. Daqui, o Zenodo entregou os 2,6 GB em cerca de 20 min.
 - O conteúdo do OmniFood8K (ângulo das fotos, formato dos rótulos, se o peso é por prato). Depois do que apareceu no NutritionVerse-Real, **não assumir que "pesado" quer dizer pesado prato a prato** antes de abrir os rótulos.
-- Licença e download do FLIC, do ACETADA e do LeFood-Set.
+- Licença e download do FLIC (a MDPI continua bloqueada; ver seção 10). O LeFood-Set foi aberto e o ACETADA teve a licença esclarecida na segunda varredura.
 - As licenças de MyFoodRepo, Food-101, UEC FOOD-256, Food2K e Recipe1M+ nas páginas oficiais (B ou C).
 - A listagem completa dos quadros laterais na cópia do Nutrition5k no Kaggle (vi 31 pratos).
 - AI Hub (Coreia): continua sem verificação; exige cadastro coreano.
 - Se alguma marmitaria brasileira publica foto de cima: quase todos os hosts estão bloqueados.
 - Todos os números de ganho.
+
+## 10. Segunda varredura (12/11/2026): repositórios, pistas pendentes e SNAPMe
+
+**Por quê:** a terceira execução em GPU deixou o modelo único em 66,0% no teste2, o Nutrition5k acabou (tudo o que serve está no treino ou no teste) e o Flavoria não foi adotado pela regra de CV, embora tenha cortado o erro de massa fora do domínio. A instrução é buscar mais pratos, de preferência ricos em proteína, com peso medido e licença comercial.
+
+**Resposta curta: não achei nenhum conjunto novo de pratos compostos, de cima, pesados, com licença comercial.** Saíram duas listas novas, as duas com ressalva séria, e três pedidos que valem o tempo da fundadora.
+
+| | Fotos / pratos | Rótulo | Licença | Pratos com mais de 25 g de proteína (fraca) | Lista |
+|---|---|---|---|---|---|
+| **SNAPMe** (USDA, 2022) | 1.163 fotos "antes", 95 pessoas | **Autorrelato** (ASA24): nada pesado | **CC BY-SA 4.0**, e os autores pedem para não treinar com ele | **277** (203 contando só os itens que são fonte de proteína) | `externo_snapme.csv`: todos os alvos vazios, autorrelato em colunas `*_fraca` |
+| **LeFood-Set** (Indonésia, 2025) | 811 fotos, 524 porções | Peso **medido** em balança, um item por prato | CC BY 4.0 | **0** (máximo de 15,6 g); 512 fotos são de uma fonte de proteína | `externo_lefood.csv`: massa, grupo e fonte preenchidos |
+| Flavoria (para comparar) | 1.967 fotos, 1.264 pratos | Peso medido por componente | CC BY 4.0 | 450 | `externo_flavoria.csv` |
+
+### 10.1 O que foi buscado
+
+Hosts novos desde a primeira passada: `zenodo.org`, `doi.org`, `arxiv.org`, `data.mendeley.com`, `api.figshare.com`, `ndownloader.figshare.com`, `dataverse.harvard.edu`. As mesmas 54 consultas foram a cada repositório (40 em inglês, 14 em português e espanhol: *food image weight*, *food portion estimation images*, *meal images weight*, *plate waste images*, *canteen tray images*, *food volume estimation dataset*, *calorie estimation images dataset*, *dietary assessment images dataset*, *nutrient estimation food images*, *food scale images*, *hospital meal images*, *school lunch images*, *imagens alimentos peso*, *álbum fotográfico porções alimentos*, *estimación porciones alimentos imágenes* e variantes; a lista inteira está em `<scratchpad>/varredura2/scripts/consultas.py`).
+
+| Onde | Como | Registros vistos | Passaram no filtro de título e descrição | Abertos (licença, arquivos, amostra) |
+|---|---|---|---|---|
+| Zenodo | API de registros, só datasets: 54 consultas (50 primeiros de cada) + 12 consultas booleanas (até 200 de cada) + 4 dirigidas | 1.443 + 289 + 24 | cerca de 190 títulos lidos um a um | 6 |
+| Figshare | API de busca, só datasets: 54 consultas | 420 | 39 | 5 |
+| Harvard Dataverse | API de busca: 54 consultas | 1.249 | 16 | 0 (nenhum era de imagem de comida com peso) |
+| arXiv | Busca do site: 25 consultas | 111 artigos | 39 de 2024 a 2026 que falam de dataset e de peso ou porção | 5 artigos lidos |
+| Mendeley Data | **Sem busca:** a API pública ignora o termo de busca. Usei busca na web e a API de registro para o que já era conhecido | 4 registros achados pela web | | 1 (LeFood-Set, inteiro) |
+| OSF | **Não buscado:** `api.osf.io` está bloqueado | | | |
+| Kaggle e Hugging Face | Só os nomes novos desta passada (11 e 13 consultas) | | | 0 novos |
+
+O filtro automático pega pouco e erra muito nesses repositórios (a busca do Zenodo devolve ecologia e geologia para "food weight"), então o que decide é a leitura dos títulos. É possível que exista um dataset pequeno com título pouco óbvio que eu não vi.
+
+### 10.2 SNAPMe: reavaliado como rótulo fraco
+
+> Chin, E. L.; Larke, J. A.; Bouzid, Y. Y.; Nguyen, T.; Vainberg, Y.; Smilowitz, J. T.; Lemay, D. G. (2022). *SNAPMe: A Benchmark Dataset of Food Photos with Food Records for Evaluation of Computer Vision Algorithms in the Context of Dietary Assessment.* Ag Data Commons. https://doi.org/10.15482/USDA.ADC/1528346
+
+- **Baixa daqui:** `https://ndownloader.figshare.com/files/44532971` (2,03 GB, `tar.gz`). Li o arquivo inteiro em fluxo, guardando só os rótulos e miniaturas de 256 px.
+- **Licença: CC BY-SA 4.0** no registro (API do Figshare). **Não é domínio público**, como estava em `fontes.md` e na primeira passada. Dois pontos para a fundadora, não para mim:
+  1. o registro tem um campo *Use limitations* que diz, textualmente: **"This data set should not be used to train models as it is a small curated data set. Models trained with this small set of images would not be generalizable."** Não é cláusula da licença; é o pedido dos autores, e o SNAPMe é usado como benchmark por outros grupos;
+  2. o compartilha-igual: se um modelo treinado com as fotos conta como obra derivada é questão em aberto.
+- **O que tem:** 3.368 imagens (2.893 já reduzidas a 800×800). O arquivo `master_SNAPME_linkfile.csv` liga 4.761 itens do recordatório ASA24 à foto "antes" em que aparecem, com gramas declarados, nutrientes do FNDDS e os grupos do FPED. São 95 pessoas e até 3 dias cada.
+- **Depois das regras** (S1 item sem foto: 69 itens; S2 foto de embalagem: 199; S3 só bebida: 271; S4 massa declarada fora de 20 a 2.000 g: 25): **1.163 fotos**. Proteína declarada por foto: mediana 11,9 g; 162 fotos de 25 a 40 g e 115 acima de 40 g.
+- **As fotos** (vi 96 sorteadas): é o domínio do produto. Celular, em casa, prato ou tigela de verdade, mesa e luz variadas, com um marcador quadriculado de tamanho conhecido na cena. **Cerca de 80 das 96 foram tiradas de cima ou quase**; o resto, em ângulo. O ângulo não é rotulado (`vista = celular_nao_rotulada`).
+- **O rótulo:** em 14 fotos comparadas com a lista de itens, **a identidade bateu em todas** (salmão, coxa de frango, ovo, queijo). **A quantidade é porção padrão do ASA24**: "Pasta… 375 g" aparece igual em tigelas de tamanhos diferentes, e na ponta alta há valores que não cabem no prato (76, 78 e 90 g de proteína em refeições comuns). A quantidade declarada é a **comida**, não a servida: quando sobrou, a foto mostra mais do que o rótulo.
+- **Como ficou na lista:** todos os alvos do esquema **vazios**; o autorrelato vai em `massa_fraca_g`, `proteina_fraca_g`, `kcal_fraca`, `gordura_fraca_g`, `carbo_fraca_g`, `m_fraca_<grupo>` e `ff_fraca_<fonte>`. Grupo e fonte saem das mesmas regras do Nutrition5k aplicadas à descrição do FNDDS, com três ajustes documentados em `snapme_monta.py`. `grupo` = participante; 116 fotos de 12 participantes ficam como `teste_ext` pela regra de reserva de 12.5 (não há data de coleta utilizável).
+- **Para que serviria:** identidade da fonte de proteína em foto de celular e, com peso baixo, proteína e frações fracas. Não serve para massa. E só depois da decisão sobre a licença e o pedido dos autores.
+
+### 10.3 LeFood-Set
+
+> Sari, Yuita Arum; Wani, Yudi Arimba; Nakazawa, Atsushi (2025). *LeFood-Set: Leftovers Food Dataset.* Mendeley Data, V1. https://doi.org/10.17632/cchsk79jkt.1. Licença CC BY 4.0.
+
+- Baixei tudo (1.049 arquivos, 52 MB) pela API pública do Mendeley. São fotos 749×548 **de cima**, um prato raso branco sobre toalha quadriculada, **um item por prato**, fotografado antes e depois de comer, com o peso em balança digital nas duas.
+- O `data_original.xlsx` tem 678 linhas, mas **só 524 têm foto** (as preparações de legumes e as sopas não foram publicadas). Sobram 34 comidas: arroz e arroz papa (154 porções), frango em cinco preparos, tofu, tempeh, ovo, peixe, almôndega, croquete.
+- **Lista:** 811 fotos (524 "antes", 287 "depois" com sobra de 5 g ou mais; 237 pratos vazios saíram). Massa mediana de 42 g, máxima de 343 g. 512 fotos são de uma fonte de proteína (soja 189, frango 145, ovo 66, peixe 52, bovina 30, embutido 6, prato pronto 24).
+- **Limite:** são porções de hospital, pequenas. **Nenhuma foto passa de 16 g de proteína.** Não ataca a faixa acima de 25 g; ensina identidade e peso de itens de proteína isolados, e as fotos "depois" dão porções parciais do mesmo item. Cozinha indonésia.
+- O mapa das 34 comidas está em `eval/dados_ext/lefood_componentes.csv`, com a tradução e a razão.
+
+### 10.4 Pistas da primeira passada
+
+| Pista | O que achei agora |
+|---|---|
+| **ACETADA** | **CC BY-NC 4.0**, não CC BY 4.0. Está publicado em `skynet.ecn.purdue.edu/~coburn6/ACETADA/` (bloqueado daqui); um registro do Zenodo (23947978) e um artigo de 2026 (arXiv 2604.06352) já o usam. 806 pares antes/depois, comida de laboratório pesada a 0,1 g, foto de celular. Só com licença dos autores |
+| **FLIC** | **Continua sem abrir.** O DOI leva à MDPI, que segue bloqueada; não há versão no arXiv nem registro no Zenodo ou no Figshare. Preciso de `www.mdpi.com` para ler a declaração de disponibilidade |
+| **OmniFood8K** | Li o artigo (arXiv 2604.12356): não há subconjunto com licença comercial. O que é CC BY é o artigo; o dataset segue CC BY-NC 4.0 |
+| **Grupo do Flavoria** | Nenhum outro registro no Zenodo (busquei por *Flavoria*, *Sarapisto* e *lunch line*). O catálogo do grupo e o repositório da universidade estão bloqueados |
+| **Artigos de 2024 a 2026 que liberaram dados** | Dos 39 do arXiv, os que trazem peso medido são os já conhecidos (OmniFood8K, ACETADA, MetaFood3D, SimpleFood45, NutritionVerse-Real), todos não comerciais. Um artigo de outubro de 2026 (arXiv 2610.29025) testou a transferência de modelos de massa entre conjuntos e escreve que "poucos datasets públicos juntam foto e peso"; a lista dele é a nossa mais a biblioteca de porções do ASA24 |
+
+### 10.5 O que não passou, e por quê
+
+| Dataset | Onde | Licença | Por que não |
+|---|---|---|---|
+| **ClinicPlate** (Roma, 2026) | Zenodo 21626434 | CC BY 4.0, mas **acesso restrito** | **É o que mais vale pedir.** 9.868 fotos de porções individuais de 7 comidas de hospital (peixe cozido, presunto cozido, omelete, arroz, cenoura, erva-doce, abobrinha), 10 níveis de porção cada, **pesadas a 1 g**, com macronutrientes, em prato branco e bandeja. Não vi nenhum arquivo |
+| FoodWeight1.4M, amostra | Zenodo 20312279 | CC BY 4.0 | Baixei as 2.500 fotos: são produtos crus em saco plástico sobre a balança do supermercado (mediana de 448 g). Não é prato. O conjunto de 1,4 milhão ainda não foi publicado |
+| FoodSight (Pádua, 2025) | Zenodo 14887385 | CC BY 4.0 | 15.600 fotos de bandeja de refeitório, de cima, 1280×720, com segmentação e **sem peso**. Em 10 fotos sorteadas, 8 eram bandejas depois da refeição. Serviria só como foto sem rótulo |
+| FOODITY, desperdício | Zenodo 17023233 | **Sem licença** | 486 fotos de restos de um alimento só, com peso e volume |
+| NutriConv / PANCAKE | Zenodo 15800511 | CC BY 4.0 | 210 imagens de 182×136 px de um alimento só |
+| O'Hara et al., fotos de refeições (Dublin, 2025) | Figshare 28271003 | CC BY 4.0 | A planilha tem o peso de cada alimento e 16 nutrientes de 114 fotos (39 refeições em 3 tamanhos de porção), **mas as fotos não estão no registro** |
+| Benchmark de cantina com balança de cozinha (*Nutrients*, 2025) | Não localizado | CC BY 4.0 segundo resumo de busca | 870 itens pesados em fotos de cantina e de casa. O artigo está na MDPI, bloqueada; não achei o repositório |
+| Biblioteca de porções do ASA24 (NCI) | `epi.grants.cancer.gov` (bloqueado) | Governo dos EUA; não conferida | 6.329 miniaturas de estúdio de um alimento só, com peso de porção padrão. Não é prato nem peso medido por foto |
+| Central Asian Food Dataset; PUST Cafeteria; DishSeg24k; FoodBD | Figshare, Mendeley, arXiv | Variadas | Só classe ou segmentação; sem peso |
+| DFood-TJ (hospital, China) | Não localizado | Não conferida | Só por resumo de busca |
+| Atlas fotográficos de porções (Singapura 2026, Emirados 2018) | Figshare, material suplementar em PDF | CC BY 4.0 | Não abertos; são álbuns em PDF, um alimento por série |
+
+### 10.6 Ordem pelo valor para a faixa acima de 25 g
+
+1. **SNAPMe:** 277 fotos de celular com mais de 25 g declarados, o domínio do produto. Rótulo fraco e uso pendente de decisão.
+2. **Flavoria:** 450 pratos com mais de 25 g de proteína fraca vinda de fontes de proteína, com massa medida. Já está no pacote; a regra de CV não o adotou.
+3. **ClinicPlate, se o acesso for concedido:** três das sete comidas são fonte de proteína, em 10 níveis de porção pesados. Não sei quantas fotos passam de 25 g.
+4. **ACETADA, se licenciado:** 806 refeições de laboratório pesadas, em foto de celular.
+5. **OmniFood8K, se licenciado:** 8.036 pratos.
+6. **LeFood-Set:** zero pratos acima de 25 g; entra pelo peso e pela identidade de itens de proteína.
+
+Nada disso muda a conta da primeira passada: **prato composto, rico em proteína, de cima, pesado e com licença comercial só existe no Nutrition5k e no Flavoria.** O resto é pedido de licença ou coleta própria.
+
+### 10.7 O que depende da fundadora, em ordem
+
+1. **Pedir acesso ao ClinicPlate** no próprio Zenodo (registro 21626434, botão de pedido de acesso). A licença já é CC BY 4.0; falta só a liberação dos arquivos. É o pedido mais barato.
+2. **Decidir sobre o SNAPMe:** a licença permite uso comercial com atribuição e compartilha-igual, mas os autores pedem para não treinar. O caminho limpo é escrever para a pessoa de contato do registro (USDA) explicando o uso como rótulo fraco e pedindo a posição dela.
+3. **Pedir licença comercial do ACETADA e do OmniFood8K** (os dois CC BY-NC 4.0).
+4. **Liberar `www.mdpi.com`** no ambiente: destrava o FLIC (401 bandejas pesadas, de cima) e o benchmark de cantina com balança. Também ajudariam `skynet.ecn.purdue.edu`, `api.osf.io` e `epi.grants.cancer.gov`.
+
+### 10.8 O que não consegui abrir
+
+- A MDPI (FLIC e o benchmark de cantina), a página do ACETADA, o catálogo do Flavoria, a biblioteca do ASA24 e toda a busca do OSF.
+- A busca do Mendeley Data: só li registros cujo endereço eu já tinha.
+- Os arquivos do ClinicPlate (restritos) e as fotos de O'Hara et al. (não publicadas).
+- No SNAPMe, as imagens em tamanho original: trabalhei com miniaturas de 256 px, e o ângulo foi contado à mão em 96 fotos.
 
 ## Reproduzir
 
@@ -272,6 +378,10 @@ python3 -I eval/dados_ext/manifestos_kaggle.py nvreal <raiz do dataset> <saida.c
 curl -sL https://zenodo.org/api/records/5850856/files/dataset_images_and_csv.tar/content | tar -tvf - > listagem.txt
 curl -sL -o dataset_csv.tar https://zenodo.org/api/records/5850856/files/dataset_csv.tar/content
 python3 -I eval/dados_ext/flavoria_monta.py monta dataset_csv.tar     # grava eval/treino/kaggle/listas/externo_flavoria.csv
+# Segunda varredura: LeFood-Set e SNAPMe
+python3 -I eval/dados_ext/lefood_monta.py monta data_original.xlsx     # o xlsx vem da URL de lefood_arquivos.csv
+curl -sL https://ndownloader.figshare.com/files/44532971 | tar -xzO --occurrence=1 snapme_db_09Dec2022/snapme_cs_db/master_SNAPME_linkfile.csv > master.csv
+python3 -I eval/dados_ext/snapme_monta.py monta master.csv
 # Open Images: contar fotos de comida no treino (lê ~400 MB em fluxo, não grava)
 curl -s https://storage.googleapis.com/openimages/v5/train-annotations-human-imagelabels-boxable.csv | <filtro por LabelName e Confidence=1>
 ```

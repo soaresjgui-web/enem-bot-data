@@ -1,0 +1,35 @@
+componente,traducao,grupo,fonte,ref,proteina_100g,confianca,nota
+Nasi,arroz branco cozido,amido,sem_proteina,T_ARROZ,2.50,A,
+Tim,arroz papa (nasi tim: arroz cozido com mais água),amido,sem_proteina,0.7*T_ARROZ|0.3*DILUENTE,1.75,B,nasi tim é arroz bem macio para dieta hospitalar; mais água que o arroz comum
+Bubur,mingau de arroz,amido,sem_proteina,0.35*T_ARROZ|0.65*DILUENTE,0.88,B,bubur = mingau ralo de arroz
+Tempe bumbu bacem,tempeh cozido em molho doce (bacem),leguminosa,leguminosa_soja,0.9*n5k:tempeh|0.1*DILUENTE,16.92,B,
+Orek tempe,tempeh em tiras salteado com molho doce de soja,leguminosa,leguminosa_soja,0.9*n5k:tempeh|0.1*DILUENTE,16.92,B,
+Tempe goreng,tempeh frito,leguminosa,leguminosa_soja,n5k:tempeh,18.80,A,
+Tempe bb Kuning,tempeh em tempero amarelo (cúrcuma),leguminosa,leguminosa_soja,0.9*n5k:tempeh|0.1*DILUENTE,16.92,B,bb = bumbu (tempero)
+Ayam bumbu bistik,frango em molho bistik (pedaço com osso),proteina_animal,frango_peru,0.75*n5k:chicken thighs|0.25*DILUENTE,17.92,C,pedaço de frango com osso e molho; 25% do peso tratado como osso e molho
+Rendang ayam,rendang de frango (pedaço com osso),proteina_animal,frango_peru,0.75*n5k:chicken thighs|0.25*DILUENTE,17.92,C,peça de proteína com molho: classificada pela fonte
+Ayam bumbu laos,frango com tempero de galanga (pedaço com osso),proteina_animal,frango_peru,0.75*n5k:chicken thighs|0.25*DILUENTE,17.92,C,laos = galanga
+Ayam Bumbu Srundeng,frango com coco ralado temperado (pedaço com osso),proteina_animal,frango_peru,0.75*n5k:chicken thighs|0.25*DILUENTE,17.92,C,
+Opor Ayam,frango em leite de coco (pedaço com osso),proteina_animal,frango_peru,0.75*n5k:chicken thighs|0.25*DILUENTE,17.92,C,
+Ayam suwir,frango desfiado,proteina_animal,frango_peru,n5k:grilled chicken,22.60,B,
+Sambel Goreng Rempela Ati,moela e fígado de frango em molho de pimenta,proteina_animal,frango_peru,n5k:ground chicken,23.00,C,rempela = moela; ati = fígado; sem linha de miúdos na tabela
+Bali Tahu,tofu em molho balinês de pimenta,leguminosa,leguminosa_soja,n5k:tofu,8.00,B,tahu = tofu
+Tahu bumbu kecap,tofu em molho doce de soja,leguminosa,leguminosa_soja,n5k:tofu,8.00,B,
+Tahu bulat,bolinhas de tofu fritas,leguminosa,leguminosa_soja,n5k:tofu,8.00,C,tofu frito perde água e tem mais proteína por grama que o tofu fresco
+Oseng Tahu,tofu salteado,leguminosa,leguminosa_soja,n5k:tofu,8.00,B,
+Tahu goreng,tofu frito,leguminosa,leguminosa_soja,n5k:tofu,8.00,C,
+Perkedel Kentang,bolinho frito de batata,amido,sem_proteina,n5k:hash browns,2.60,B,
+Kroket Daging,croquete de batata com carne,misto,prato_misto,0.7*n5k:mashed potatoes|0.3*n5k:ground beef,5.45,C,
+Dadar jagung goreng,bolinho frito de milho,amido,sem_proteina,n5k:fritters,4.60,B,
+dadar jagung kukus,omelete de milho no vapor,amido,sem_proteina,n5k:fritters,4.60,C,proporção de ovo desconhecida
+Bali Telur,ovo cozido em molho balinês de pimenta,proteina_animal,ovo,T_OVO_COZ,13.30,B,telur = ovo
+Telur Mata Sapi,ovo frito (estrelado),proteina_animal,ovo,T_OVO_FRITO,15.60,A,
+Bali Putih Telur,clara de ovo em molho balinês,proteina_animal,ovo,n5k:egg whites,10.00,B,putih telur = clara
+Opor Telur,ovo cozido em leite de coco,proteina_animal,ovo,T_OVO_COZ,13.30,B,
+Telur orak arik,ovo mexido,proteina_animal,ovo,n5k:scrambled eggs,10.00,A,
+Ikan Acar Kuning,peixe em conserva amarela (cúrcuma),proteina_animal,peixe_marisco,n5k:fish,18.40,B,posta de peixe frita com molho; pode ter espinha
+ikan bb asam manis,peixe em molho agridoce,proteina_animal,peixe_marisco,n5k:fish,18.40,B,
+tumis bakso,almôndegas (bakso) salteadas,proteina_animal,bovina,n5k:meatballs,14.00,B,bakso leva carne e fécula de mandioca
+Oseng Bakso,almôndegas (bakso) salteadas,proteina_animal,bovina,n5k:meatballs,14.00,B,
+bola bola daging,almôndegas de carne,proteina_animal,bovina,n5k:meatballs,14.00,B,
+Oseng Sosis,salsicha salteada,proteina_animal,suina_embutido,n5k:hot dogs,9.80,B,na Indonésia a salsicha costuma ser de frango ou boi; fica na classe dos embutidos
