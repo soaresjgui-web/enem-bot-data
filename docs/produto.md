@@ -74,7 +74,7 @@ Critério: proteína dentro de ±20% ou ±5 g. **70% é a meta mínima, não o t
 |---|---|
 | LLM em nuvem sozinho | 55% |
 | Modelo treinado só com a imagem, 1ª versão | 48–52% |
-| Modelo só com a imagem, um modelo exportável para o aparelho | 61–64% |
+| Modelo único (93 M de parâmetros, 186 MB, 8 ms por foto numa GPU T4), treinado com 2.281 pratos | **66,0%** no teste novo (IC 62–70); versão anterior 64,5% |
 | Modelo só com a imagem, nove redes em servidor, sem LLM | **~70%** (69,6% no teste; 69,7% no teste novo, IC 65–74) |
 | **Híbrido: redes de imagem em servidor + LLM em nuvem com o roteiro v3** | **~71%** (72,9% no teste; **70,8% no teste novo, IC 66–75**; os dois juntos 71,5%, IC 68–75) |
 | Híbrido na comida brasileira (144 itens, fotos em ângulo, versão anterior) | 46–49% |
@@ -84,6 +84,11 @@ Critério: proteína dentro de ±20% ou ±5 g. **70% é a meta mínima, não o t
 - **O ganho do LLM não se repetiu:** no teste novo o híbrido fica só 1,1 ponto acima do modelo de imagem (IC −2,1 a +4,3), e a densidade do LLM em pratos com mais de 25 g foi pior que a do modelo treinado. O modelo só de imagem é o número mais estável do estudo (69,6%, 69,3% e 69,7% em três leituras).
 - **Pratos com muita proteína seguem sendo o problema:** no teste novo, 65% na faixa de 15–25 g e 52% acima de 25 g, nos dois pipelines.
 - **Custo de servir (medido no Kaggle):** as nove redes somam 1,8 bilhão de parâmetros e 3,6 GB em memória; uma foto leva 0,24 s numa GPU T4 com uma orientação e 1,7–2,0 s com as oito orientações usadas na avaliação; em CPU, de 13 s a quase 2 min. O modelo único para o aparelho tem 186 MB e leva 8 ms na T4 e 0,2 s em CPU com uma orientação. Não medidos: iPhone, a chamada do LLM, custo em dinheiro.
+- **Terceira rodada de treino (12/11/2026): reduzir a um modelo custa cerca de 4 pontos.** O modelo único escolhido pela regra registrada fez 66,0% no teste novo (IC 61,6–70,1), contra 69,7% das nove redes: **a meta mínima de 70% não foi demonstrada**, e o intervalo fica quase todo abaixo dela. Acima de 25 g de proteína ele acerta 48%.
+- **Mais dados da Nutrition5k ajudaram** (+3 pontos na validação cruzada com 2.281 pratos em vez de 1.684), mas a Nutrition5k agora está esgotada.
+- **Treinar o modelo pequeno para imitar o conjunto piorou** (61–64% na validação cruzada, contra 68% sem imitação), por um problema de receita de treino a corrigir na próxima rodada.
+- **A base Flavoria (1.264 pratos pesados, CC BY 4.0) não foi adotada pela regra** (−1 ponto na validação cruzada da Nutrition5k), mas fora da Nutrition5k ela reduz o erro de peso (21,8% → 18,7%; em pratos acima de 600 g, 29,7% → 18,4%). Sem ela, o modelo subestima pratos grandes de outro refeitório em cerca de 29%.
+- **Pista ainda não lida no teste:** um único modelo grande congelado (So400m) com duas cabeças chega a 71–72% na validação cruzada, a 61 ms por foto numa T4, empatado com o conjunto de cinco redes.
 - **Só Nutrition5k:** um refeitório americano, câmera a altura fixa; o teste novo não é independente do antigo (são pratos "irmãos"). Nenhum prato brasileiro foi avaliado com esses modelos.
 - **Sugestão automática com confiança:** só com a imagem, cerca de metade dos pratos pode ser aceita com ~69% de acerto; os aceitos são, na maioria, pratos de pouca proteína.
 - **Escala:** sem padronizar a distância, um zoom de ±30% derruba o híbrido de 60% para 46–54%; treinar com escala aleatória ou recortar pelo prato elimina a perda. Daí o círculo-guia na câmera.
