@@ -1,7 +1,7 @@
 # Modelo treinado: proteína só pela foto, sem informar porção (09/11/2026)
 
 **Pergunta:** um modelo **treinado** (e não um LLM em nuvem) consegue sugerir a proteína só pela foto e atingir a meta de **≥ 70% dos pratos dentro de ±20% ou ±5 g**?
-**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. No LLM, o erro estava na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede identificação e partes da massa em vez de gramas. **Com as estimativas v3, o híbrido fica em cerca de 70% no teste: 71,4% com a média de duas rodadas cegas independentes** (IC 66,4 a 76,4; +8,6 sobre o híbrido da seção 8, IC +3,9 a +13,2; +4,3 sobre o híbrido com v2, IC +1,4 a +7,5), 70,4% na primeira rodada sozinha e 68,6% na segunda, feita como réplica. **É a primeira estimativa pontual na meta de 70%, e não é a meta demonstrada:** o intervalo começa em 66%, a réplica sozinha ficou abaixo de 70%, são 280 pratos do Nutrition5k, o `n5k_v1` (50 pratos) dá 62%, o pipeline depende de um LLM em nuvem, e os pratos com mais de 25 g continuam em 45% e 55%, agora limitados pelo erro de massa. As duas rodadas erram nos mesmos pratos, então repetir a estimativa não melhora o resultado. **Atualização (seção 10, treino em GPU):** 15 configurações treinadas no Kaggle (2 × T4, 5,7 h) dão um modelo de massa melhor: a média de cinco backbones congelados de alta resolução baixa o erro de massa de 16,9% para 15,3% e reduz o viés nos pratos com mais de 25 g de −12% e −8% para −6% e −2%. Com ele, o **só imagem sobe de 64,6% para 69,6%** (IC 64 a 75; ganho de +5,0, IC +0,4 a +9,6), e os pratos com mais de 25 g saem de 42% para 54%. O **híbrido com o LLM v3 fica em 72,9%** (IC 67,5 a 78,2), +1,4 sobre os 71,4% de antes, sem diferença segura. Todas as formas com a densidade v3 dão de 70% a 75% no teste nas três leituras do LLM, mas **a meta de 70% continua não demonstrada**: o limite inferior do intervalo é 67,5%, e a forma de híbrido que o `calib` prefere entre todas dá 68,2%. Um modelo único que caiba no aparelho dá 62,9%, sem ganho seguro sobre os 61,1% da seção 8; o ganho está em juntar backbones grandes, no servidor. **Atualização (seção 11, conjunto de teste novo):** um segundo conjunto, o `teste2` (829 pratos do Nutrition5k nunca vistos por nenhum modelo, em 190 cadeias), foi lido **uma vez**, com o pipeline congelado e a regra escrita antes. **Híbrido com o LLM v3: 70,8%** (ponderado para as cinco faixas de proteína terem o mesmo peso; IC por cadeia de 66,3 a 75,2). **Só imagem: 69,7%** (IC 65,2 a 74,2). Os dois conjuntos juntos (1.109 pratos): 71,5% (IC 67,9 a 75,2). **Veredito pela regra: 70% não demonstrado e não refutado.** O nível de cerca de 70% se repetiu; o limite inferior do intervalo, não. No `teste2` o LLM não acrescentou nada distinguível ao só imagem (+1,1, IC −2,1 a +4,3), os pratos com mais de 25 g ficaram em 52%, e o modelo único de aparelho, em 64,5%. O `teste2` não é independente do `teste` (722 dos 829 pratos são o mesmo prato do `teste` em outro momento da montagem), e tudo continua sendo Nutrition5k. Servir o pipeline só de imagem custa cerca de 1,7 a 2,0 s por foto numa GPU T4, com 3,6 GB de pesos. **Seção 12 (desenho e pré-registro, sem resultados):** com a decisão de usar só imagem e reduzir as nove redes a um modelo (no máximo dois), o treino do Nutrition5k cresce de 1.684 para 2.281 pratos sem tocar no teste2, a próxima execução em GPU está especificada, e o teste2 pode ser lido mais duas vezes no máximo, uma por candidato congelado. A expectativa registrada é que um modelo só fique de 1 a 3 pontos abaixo das nove redes e que a meta não seja demonstrada só com o Nutrition5k. **Atualização (seção 12.6, terceira execução em GPU):** a regra pré-registrada escolheu como modelo único o **controle sem destilação** (SigLIP 2 B/16 a 224 px, a receita de antes treinada com o treino_v2, uma orientação): os alunos destilados com ajuste fino ficaram 4 a 5 pontos abaixo dele na validação cruzada, e nenhum par de modelos passou no critério. Na única leitura do teste2 ele dá **66,0%** (IC por cadeia 61,6 a 70,1): **70% não demonstrado**, 3,7 pontos abaixo das nove redes (IC −9,0 a +1,4) e 1,5 acima do mesmo modelo treinado com o treino antigo (IC −2,2 a +5,5); os pratos com mais de 25 g ficam em 48%. Ele custa 8 ms por foto numa T4 e 186 MB, contra 1,7 a 2,0 s e 3,6 GB das nove redes. Os 35% a mais de treino deram +2 a +3 pontos de validação cruzada à mesma receita. A destilação falhou por um erro de receita (os pesos das perdas novas abafaram a perda de massa) e, onde a comparação é limpa, custou 1,5 ponto. A base externa Flavoria não foi adotada (−1 ponto no Nutrition5k). Fora da regra de 12.3, um único backbone grande congelado (So400m) com duas cabeças empata com o conjunto de cinco redes na validação cruzada (71 a 72%). **Atualização (seção 12.7, emenda aprovada pelo fundador em 12/11/2026):** esse modelo foi lido no teste2, uma vez, com a definição fixada antes: **69,7%** (IC por cadeia 65,0 a 74,3; com a correção para as leituras repetidas, 64,1 a 75,4). **70% continua não demonstrado.** Ele repete o nível das nove redes (diferença pareada 0,0; IC −4,7 a +4,3) com um backbone só, a 61 ms por foto numa T4 e 859 MB, e fica 3,7 pontos acima do modelo de aparelho (IC −1,8 a +9,5; na validação cruzada, +3,2 com IC +0,4 a +6,0). É um modelo de servidor: não cabe no aparelho como está. Os pratos com mais de 25 g ficam em 54%. Foi a terceira leitura do teste2, decidida depois de ver a segunda: ele está gasto como teste de registro, e a prova da meta precisa de um conjunto novo. **Seção 13 (desenho e pré-registro da quarta execução, sem resultados):** com a decisão de usar qualquer base de treino, com a procedência registrada, entram cinco bases externas pesadas (OmniFood8K, a única com proteína; Flavoria, Food Portion Benchmark, Mensa e LeFood, só com massa). As bases de massa entram só na cabeça de massa, porque juntar o Flavoria nas duas cabeças custou 2 pontos no Nutrition5k. A regra de adoção protege o Nutrition5k (queda máxima de 1 ponto) e mede o ganho fora dele; partes de cada base ficam seguradas como teste de registro, o OmniFood8K por prato. O teste2 terá no máximo mais uma leitura. Nenhum desses conjuntos mede prato brasileiro em foto de celular: a meta do produto só pode ser julgada num conjunto brasileiro pesado, que ainda não existe. **Seção 12.8 (calorias, carboidratos e gordura, só validação cruzada):** com o mesmo tipo de critério da proteína, o modelo de servidor acerta 70,5% das kcal (piso de 50 kcal), 78,6% dos carboidratos (piso de 10 g) e 68,4% da gordura (piso de 5 g), e o modelo de aparelho, 65,0%, 75,0% e 65,6%. Nas refeições grandes a estimativa fica cerca de 20% abaixo do real (carboidrato acima de 50 g: 46% de acerto). Dá para mostrar kcal e carboidrato como estimativa, não como número para dose de insulina.
+**Resposta curta: não, com os dados que existem hoje.** Com higiene de dados rigorosa, o melhor modelo só de imagem fica em **~48–52%** no `teste` (280 pratos), abaixo do LLM (55%). Profundidade (RGB-D) não ajudou. O melhor resultado foi o **híbrido** "LLM identifica e dá a densidade, modelo treinado dá o peso", com **~60% no teste (59,6%) e 60–62% no n5k v1**: melhora o LLM em 5 pontos, mas ainda fica 10 pontos abaixo da meta. A comida brasileira em foto que não é zenital **quebra** o modelo de peso (Liv Up 3%). **Atualização (seção 7):** treinar também com os quadros laterais do Nutrition5k deixa o modelo robusto ao ângulo (foto lateral 44% → 49%) e leva o Brasil de 22% para 36% (Liv Up 3% → 26%), mas o híbrido continua em ~59–60%, longe de 70%. **Atualização (seção 8, premissa de uma única foto de cima):** com 8 orientações da foto, resolução maior, ajuste fino parcial e média de modelos, o modelo **só de imagem sobe de 50% para 61%** no teste (IC 55 a 67; +11 pontos sobre o anterior, IC +5 a +17) e alcança o LLM (55%). O erro de massa cai de 22% para 17%. O **híbrido escolhido fica em 63%** (IC 57 a 69; formas equivalentes dão de 62% a 66%), sem diferença segura para os 59,6% de antes. **A meta de 70% continua não atingida**, e o erro que sobra está mais na densidade (que alimento é) do que no peso. Cerca de metade dos pratos pode ser sugerida sozinha com ~70% de acerto, mas essa metade é, na maior parte, de pratos com pouca proteína. Fora da distância fixa do Nutrition5k o modelo erra a escala, a menos que seja treinado com escala aleatória ou com o prato enquadrado num guia. **Atualização (seção 9, densidade de proteína):** prever a fração da massa do prato que é cada fonte de proteína, somar a recuperação de pratos parecidos e um terceiro backbone melhora a densidade do modelo de 67,5% para 76,1% quando a massa é a real (IC do ganho: +2,9 a +14,3). No resultado final o ganho é menor: **só imagem 61,1% → 64,6%** (IC 59 a 70; ganho não distinguível) e **híbrido 62,9% → 67,1%** (IC 61 a 72,5; ganho de +4,3, IC +0,4 a +8,6). Melhoram os pratos de 5 a 25 g; **os de mais de 25 g praticamente não melhoram** (38–46%), porque ali o erro de massa já pesa tanto quanto o de densidade. No LLM, o erro estava na parte da massa que é proteína e na fonte, não na tabela; a instrução v3 pede identificação e partes da massa em vez de gramas. **Com as estimativas v3, o híbrido fica em cerca de 70% no teste: 71,4% com a média de duas rodadas cegas independentes** (IC 66,4 a 76,4; +8,6 sobre o híbrido da seção 8, IC +3,9 a +13,2; +4,3 sobre o híbrido com v2, IC +1,4 a +7,5), 70,4% na primeira rodada sozinha e 68,6% na segunda, feita como réplica. **É a primeira estimativa pontual na meta de 70%, e não é a meta demonstrada:** o intervalo começa em 66%, a réplica sozinha ficou abaixo de 70%, são 280 pratos do Nutrition5k, o `n5k_v1` (50 pratos) dá 62%, o pipeline depende de um LLM em nuvem, e os pratos com mais de 25 g continuam em 45% e 55%, agora limitados pelo erro de massa. As duas rodadas erram nos mesmos pratos, então repetir a estimativa não melhora o resultado. **Atualização (seção 10, treino em GPU):** 15 configurações treinadas no Kaggle (2 × T4, 5,7 h) dão um modelo de massa melhor: a média de cinco backbones congelados de alta resolução baixa o erro de massa de 16,9% para 15,3% e reduz o viés nos pratos com mais de 25 g de −12% e −8% para −6% e −2%. Com ele, o **só imagem sobe de 64,6% para 69,6%** (IC 64 a 75; ganho de +5,0, IC +0,4 a +9,6), e os pratos com mais de 25 g saem de 42% para 54%. O **híbrido com o LLM v3 fica em 72,9%** (IC 67,5 a 78,2), +1,4 sobre os 71,4% de antes, sem diferença segura. Todas as formas com a densidade v3 dão de 70% a 75% no teste nas três leituras do LLM, mas **a meta de 70% continua não demonstrada**: o limite inferior do intervalo é 67,5%, e a forma de híbrido que o `calib` prefere entre todas dá 68,2%. Um modelo único que caiba no aparelho dá 62,9%, sem ganho seguro sobre os 61,1% da seção 8; o ganho está em juntar backbones grandes, no servidor. **Atualização (seção 11, conjunto de teste novo):** um segundo conjunto, o `teste2` (829 pratos do Nutrition5k nunca vistos por nenhum modelo, em 190 cadeias), foi lido **uma vez**, com o pipeline congelado e a regra escrita antes. **Híbrido com o LLM v3: 70,8%** (ponderado para as cinco faixas de proteína terem o mesmo peso; IC por cadeia de 66,3 a 75,2). **Só imagem: 69,7%** (IC 65,2 a 74,2). Os dois conjuntos juntos (1.109 pratos): 71,5% (IC 67,9 a 75,2). **Veredito pela regra: 70% não demonstrado e não refutado.** O nível de cerca de 70% se repetiu; o limite inferior do intervalo, não. No `teste2` o LLM não acrescentou nada distinguível ao só imagem (+1,1, IC −2,1 a +4,3), os pratos com mais de 25 g ficaram em 52%, e o modelo único de aparelho, em 64,5%. O `teste2` não é independente do `teste` (722 dos 829 pratos são o mesmo prato do `teste` em outro momento da montagem), e tudo continua sendo Nutrition5k. Servir o pipeline só de imagem custa cerca de 1,7 a 2,0 s por foto numa GPU T4, com 3,6 GB de pesos. **Seção 12 (desenho e pré-registro, sem resultados):** com a decisão de usar só imagem e reduzir as nove redes a um modelo (no máximo dois), o treino do Nutrition5k cresce de 1.684 para 2.281 pratos sem tocar no teste2, a próxima execução em GPU está especificada, e o teste2 pode ser lido mais duas vezes no máximo, uma por candidato congelado. A expectativa registrada é que um modelo só fique de 1 a 3 pontos abaixo das nove redes e que a meta não seja demonstrada só com o Nutrition5k. **Atualização (seção 12.6, terceira execução em GPU):** a regra pré-registrada escolheu como modelo único o **controle sem destilação** (SigLIP 2 B/16 a 224 px, a receita de antes treinada com o treino_v2, uma orientação): os alunos destilados com ajuste fino ficaram 4 a 5 pontos abaixo dele na validação cruzada, e nenhum par de modelos passou no critério. Na única leitura do teste2 ele dá **66,0%** (IC por cadeia 61,6 a 70,1): **70% não demonstrado**, 3,7 pontos abaixo das nove redes (IC −9,0 a +1,4) e 1,5 acima do mesmo modelo treinado com o treino antigo (IC −2,2 a +5,5); os pratos com mais de 25 g ficam em 48%. Ele custa 8 ms por foto numa T4 e 186 MB, contra 1,7 a 2,0 s e 3,6 GB das nove redes. Os 35% a mais de treino deram +2 a +3 pontos de validação cruzada à mesma receita. A destilação falhou por um erro de receita (os pesos das perdas novas abafaram a perda de massa) e, onde a comparação é limpa, custou 1,5 ponto. A base externa Flavoria não foi adotada (−1 ponto no Nutrition5k). Fora da regra de 12.3, um único backbone grande congelado (So400m) com duas cabeças empata com o conjunto de cinco redes na validação cruzada (71 a 72%). **Atualização (seção 12.7, emenda aprovada pelo fundador em 12/11/2026):** esse modelo foi lido no teste2, uma vez, com a definição fixada antes: **69,7%** (IC por cadeia 65,0 a 74,3; com a correção para as leituras repetidas, 64,1 a 75,4). **70% continua não demonstrado.** Ele repete o nível das nove redes (diferença pareada 0,0; IC −4,7 a +4,3) com um backbone só, a 61 ms por foto numa T4 e 859 MB, e fica 3,7 pontos acima do modelo de aparelho (IC −1,8 a +9,5; na validação cruzada, +3,2 com IC +0,4 a +6,0). É um modelo de servidor: não cabe no aparelho como está. Os pratos com mais de 25 g ficam em 54%. Foi a terceira leitura do teste2, decidida depois de ver a segunda: ele está gasto como teste de registro, e a prova da meta precisa de um conjunto novo. **Seção 13 (desenho e pré-registro da quarta execução, sem resultados):** com a decisão de usar qualquer base de treino, com a procedência registrada, entram cinco bases externas pesadas (OmniFood8K, a única com proteína; Flavoria, Food Portion Benchmark, Mensa e LeFood, só com massa). As bases de massa entram só na cabeça de massa, porque juntar o Flavoria nas duas cabeças custou 2 pontos no Nutrition5k. A regra de adoção protege o Nutrition5k (queda máxima de 1 ponto) e mede o ganho fora dele; partes de cada base ficam seguradas como teste de registro, o OmniFood8K por prato. O teste2 terá no máximo mais uma leitura. Nenhum desses conjuntos mede prato brasileiro em foto de celular: a meta do produto só pode ser julgada num conjunto brasileiro pesado, que ainda não existe. **Seção 12.8 (calorias, carboidratos e gordura, só validação cruzada):** com o mesmo tipo de critério da proteína, o modelo de servidor acerta 70,5% das kcal (piso de 50 kcal), 78,6% dos carboidratos (piso de 10 g) e 68,4% da gordura (piso de 5 g), e o modelo de aparelho, 65,0%, 75,0% e 65,6%. Nas refeições grandes a estimativa fica cerca de 20% abaixo do real (carboidrato acima de 50 g: 46% de acerto). Dá para mostrar kcal e carboidrato como estimativa, não como número para dose de insulina. **Atualização (seção 13.11, quarta execução):** com cinco bases externas pesadas, a regra pré-registrada só admitiu a massa do OmniFood8K na cabeça de massa. O modelo de servidor escolhido dá **69,2% no teste2** (IC por cadeia de 65,0 a 73,7; na quarta e última leitura, com a correção para quatro leituras, 64,1 a 74,7): **70% não demonstrado**. Fica no mesmo nível do D1 e das nove redes, com 57% nos pratos acima de 25 g: o maior número do estudo nessa faixa, sem diferença segura. Nas cenas de pratos chineses nunca vistos do OmniFood8K, os três modelos lidos ficam entre 59% e 66%. Cada base externa melhora muito a massa do próprio domínio (Flavoria de 52% para 67% a ±20%), mas não transfere para os outros e custa de 2 a 3 pontos no Nutrition5k. A escala da foto é o limite que mais aparece: quem fotografa de mais perto muda a massa em 3 a 5 vezes. A próxima alavanca é enquadrar pelo prato (o círculo-guia), e o que falta para julgar os 70% é um conjunto brasileiro pesado de celular. O teste2 está encerrado. kcal e carboidrato no teste2: 71% e 84%.
 
 Scripts em `eval/treino/`. Dados, features, pesos e o `.mlpackage` ficam só no scratchpad (`…/scratchpad/treino/`), fora do repositório.
 
@@ -2148,6 +2148,180 @@ Orçamento: cerca de 4,5 h de relógio em 2 × T4 (540 minutos de GPU); a cota �
 - **Não espero que esta execução demonstre a meta em lugar nenhum.** O que ela pode entregar: um modelo de servidor que não perde no Nutrition5k e erra menos a massa fora dele; a primeira medida de proteína numa segunda cozinha; a resposta sobre a cabeça de frações no ajuste fino; e saber se o ajuste fino parcial do backbone grande vale as 8 horas do completo.
 - **O que continua faltando para o produto, com ou sem esta execução:** o recorte pelo círculo-guia (escala), e um conjunto brasileiro pesado, de celular, para treinar e, principalmente, para julgar os 70%.
 
+### 13.11 Resultado da quarta execução (13/11/2026)
+
+A quarta execução rodou no Kaggle (2 × T4, 3,7 h de relógio, nada cortado pelo orçamento). As seis bases chegaram: Mensa (GitHub), LeFood (Mendeley), FPB (Hugging Face), OmniFood8K (Google Drive, 2,54 GB, 15.741 fotos de cima), Flavoria (Zenodo) e SNAPMe (Figshare, só avaliação). A ingestão aceitou as 12 configurações (`ingere_kaggle.py --so-confere`). As tabelas de divisão usadas pelo kernel são as de 13.3: os sha256 batem com os gravados em cada previsão. **Paridade com o D1:** as cabeças R0 e H0 repetem as da terceira execução, com correlação de 1,00000 e CV de 71,29%. A fundadora delegou as decisões de treino (`docs/produto.md`): o que a regra de 13.9 permite é feito sem esperar aprovação. Script: `eval/treino/r4_avalia.py`.
+
+**a) Regra R13, só com validação cruzada, escrita aqui antes de abrir qualquer parte de registro ou o teste2.** As 15 combinações de uma cabeça de massa com uma de densidade, 1 orientação. N é o critério ponderado no treino_v2. O é o critério em quatro faixas no treino do OmniFood8K, com folds por prato principal e só o quadro `camera_0`. M é a % de pratos com a massa a ±20% em Flavoria, FPB de cima e Mensa. O e M levam a constante de massa por domínio.
+
+| Combinação | Bases | N | > 25 g | O | M | S = (N+O+M)/3 | Guarda |
+|---|---|---|---|---|---|---|---|
+| **R0×H0 = A0** (réplica do D1) | nenhuma | **71,3** | 51,9 | 54,2 | 43,2 | 56,2 | sim |
+| **R3×H0 = A\*** | OmniFood8K (só massa) | **70,5** | 51,8 | 55,8 | 47,1 | **57,8** | **sim** |
+| R4×H1 = **X** | as cinco | 69,2 | 48,9 | 56,0 | 57,4 | **60,9** | não (N −2,1) |
+| R4×H2 | as cinco | 68,2 | 48,6 | 55,7 | 57,4 | 60,4 | não |
+| R4×H0 | as cinco | 68,6 | 49,3 | 53,8 | 57,4 | 59,9 | não |
+| R2×H1 | as cinco | 68,1 | 46,4 | 52,6 | 56,8 | 59,2 | não |
+| R2×H2 | as cinco | 67,7 | 47,0 | 52,0 | 56,8 | 58,9 | não |
+| R2×H0 | Flavoria, LeFood, Mensa, FPB | 68,0 | 48,4 | 50,1 | 56,8 | 58,3 | não |
+| R3×H1 | OmniFood8K | 69,3 | 48,6 | 57,7 | 47,1 | 58,0 | não |
+| R1×H1 | Flavoria, LeFood, Mensa, OmniFood8K | 69,0 | 48,0 | 49,6 | 53,7 | 57,4 | não |
+| R3×H2 | as cinco | 68,0 | 48,5 | 56,6 | 47,1 | 57,3 | não |
+| R1×H0 | Flavoria, LeFood, Mensa | 69,2 | 49,3 | 48,8 | 53,7 | 57,3 | não (N −2,1) |
+| R1×H2 | as cinco | 67,8 | 47,3 | 49,0 | 53,7 | 56,8 | não |
+| R0×H1 | OmniFood8K | 69,6 | 48,1 | 56,4 | 43,2 | 56,4 | não |
+| R0×H2 | as cinco | 69,2 | 50,0 | 55,9 | 43,2 | 56,1 | não |
+
+- **Só duas combinações passam na guarda: o A0 e o R3×H0.** A guarda pede N a no máximo 1,0 ponto do A0 e o critério acima de 25 g a no máximo 2,5 pontos. Toda cabeça de massa com Flavoria, LeFood e Mensa (R1, R2, R4) derruba N em 2 a 3 pontos, e toda cabeça de densidade com OmniFood8K (H1, H2) em 1,7 a 2,0.
+- **A\* = R3×H0:** a cabeça de massa treinada também com a massa do OmniFood8K e a cabeça de densidade do D1, sem base externa. Contra o A0: N −0,8 (IC por cadeia −2,2 a +0,7); acima de 25 g −0,1 (IC −3,0 a +2,8); O +1,6 (IC por prato −3,1 a +7,9); M +3,9 pontos. Nenhuma dessas diferenças se distingue de zero. **O A\* é admissível e é outro modelo que não o A0, mas não é melhor que ele de forma demonstrável.**
+- **X = R4×H1** (todas as bases, nas duas cabeças): a maior nota S (60,9), com M de 57,4% (o A0 tem 43,2%), mas N −2,1 (IC −3,8 a −0,4) e acima de 25 g −3,0. É o "modelo enriquecido" de 13.9: vai para as partes de registro externas, não para o teste2.
+- **Melhor admissível só com dados liberados: o próprio A0.** O R1×H0 (Flavoria, LeFood e Mensa, todas CC BY) cai 2,1 em N. Hoje, o modelo que pode ser refeito sem bases não comerciais é o D1.
+- **Transferência (não decide nada, 13.9).**
+  - Massa do OmniFood8K na ridge, medida em domínios que não treinaram com ela: Flavoria +2,7, FPB +1,9, Mensa +7,2 pontos de pratos a ±20%. Nenhum intervalo exclui zero.
+  - Massas de Flavoria, LeFood e Mensa na ridge, medidas na proteína do OmniFood8K: **−5,4** (IC −9,3 a −0,8); com o FPB, −4,2 (IC −7,4 a −0,3).
+  - OmniFood8K na cabeça de densidade, medido no Nutrition5k: **−1,7** (IC −3,0 a −0,4).
+  - **Leitura:** o que cada base ensina vale para o domínio dela. Fora dele, ou não se mede ganho, ou se mede perda. Os dados não mostram generalização.
+- **S = A\* = R3×H0.** O P1 não passou na aceitação (abaixo). **Como o S não é o A0, a regra de 13.5 abre a última leitura do teste2 para ele.**
+- **Modelo de aparelho.**
+  - F1 e F2 não passaram na aceitação.
+  - O F3 (receita do U0 com as cinco bases) passou, mas a regra de 12.3 dá a ele 67,7% (geométrica, 1 orientação), **0,4 abaixo do U0** (68,0%). A regra pedia 1,0 acima.
+  - **Não há modelo de aparelho novo:** continua o C1 de 12.6. O F3 não é pontuado nas partes de registro.
+- **Relato secundário de 12.8, na CV:** kcal / carboidrato / gordura de 70,5 / 78,6 / 68,4% no A0, 70,5 / 78,6 / 68,7% no A\* e 69,7 / 78,7 / 69,5% no X. Nada muda.
+
+**b) Por que o ajuste fino com a cabeça de frações ainda estragou a massa.**
+
+| | Época 0 → última (RMSE de log-massa, média dos folds) | `α` médio | L_rot ÷ (L_frac + L_dens), última época | L_rot, última época |
+|---|---|---|---|---|
+| F3 (só a perda de rótulos, + bases) | 0,2545 → **0,2313** | | | 0,017 |
+| F1 (frações, perdas normalizadas) | 0,2545 → 0,2665 | 0,94 a 0,98 | 0,19 | 0,029 |
+| F2 (F1 + peso por faixa) | 0,2545 → 0,2622 | 0,94 a 0,97 | 0,21 | 0,030 |
+| P1 (So400m, 4 últimos blocos, frações) | 0,2167 → 0,2457 | 0,92 a 1,00 | 0,14 | 0,022 |
+
+- **O balanço funcionou como foi escrito.** O `α` ficou entre 0,92 e 1,00 o tempo todo. O gradiente auxiliar, medido na entrada da cabeça, ficou do tamanho do gradiente dos rótulos, nunca maior: os rótulos receberam metade, como 13.7 pedia.
+- **Metade não basta, e a falha é da minha especificação.** Eu equilibrei contra o termo dos rótulos inteiro, que é a média de 22 saídas; a massa é 1/22 dele. Com metade do gradiente indo para frações e densidade, a massa recebe uns 2%. As features se moveram para servir às frações, e a perda de rótulos terminou 70% acima da do F3 (0,029 contra 0,017).
+- **O problema não é treinar o backbone, é treiná-lo com a perda de frações.** O F3, mesma receita sem frações e com cinco bases a mais, melhora a massa como o U0. No P1 a queda é a maior (0,217 → 0,246), porque o ponto de partida já era a ridge boa do So400m.
+- **O que eu faria:** a cabeça de frações **sem gradiente para o backbone** (treinada sobre as features, com `stop-gradient`), ou o ajuste fino só com a perda de rótulos e a cabeça de frações treinada depois sobre as features congeladas do modelo ajustado. Nas features congeladas, a cabeça de frações sempre funcionou.
+
+**c) Antes da última leitura do teste2 (escrito antes de rodar).** O S é o R3×H0, e não o A0, então 13.5 manda ler. É a **quarta leitura** do teste2: sai o intervalo de 98,75% ao lado do de 95%, e "demonstrado no Nutrition5k" só se os dois limites inferiores ficarem em 70% ou mais.
+- **Expectação:** o S difere do D1 só na cabeça de massa, e na CV fica 0,8 ponto abaixo dele. Espero de 68 a 70,5% no teste2, com o palpite em 69%. A chance de demonstrar a meta é **menor que 3%**.
+- **Conferências sem gabarito, antes:** previsões completas e na ordem; o A0 refeito tem de reproduzir as previsões do D1 gravadas em 12.7; remontagem das duas cabeças.
+- **Também sai,** dentro da mesma leitura e sem leitura a mais, o critério de 12.8 para kcal, carboidrato e gordura.
+
+**d) Partes de registro externas: uma leitura, de três modelos** (A0, S e X, como 13.5 permite; não há modelo de aparelho novo). Rodou uma vez (`r4_avalia.py --registro`, com marca). A massa leva a constante do domínio, estimada nas partes de treino; os números crus saem ao lado.
+
+*OmniFood8K, cenas cujo prato principal de proteína nunca foi visto* (1.916 cenas com rótulo, 34 pratos principais; critério em quatro faixas; IC por bootstrap de prato principal):
+
+| | A0 (D1) | **S** (R3×H0) | X (R4×H1) |
+|---|---|---|---|
+| **Proteína, critério de quatro faixas** | **62,5%** (56,2 a 70,2) | **59,3%** (54,3 a 67,9) | **65,5%** (56,2 a 80,3) |
+| Por faixa: 0–5 / 5–15 / 15–25 / > 25 g | 94 / 76 / 51 / 28 | 98 / 79 / 51 / **9** | 99 / 87 / 43 / 32 |
+| Sem a ressalva de osso ou casca (1.453 cenas) | 53,1% (45,5 a 77,8) | 54,8% (48,6 a 81,9) | 52,5% (48,6 a 58,5) |
+| Sem a constante de massa | 56,1% | 57,1% | 64,5% |
+| Massa: a ±20% / MAPE / viés | 48,6% / 24,7% / −3% | 72,7% / 14,9% / −5% | 70,0% / 15,5% / −5% |
+| kcal (12.8; viés) | 32,3% (−38%) | 30,3% (−44%) | 25,8% (−47%) |
+| Carboidrato (12.8) | 64,8% (−20%) | 61,2% (−27%) | 58,4% (−33%) |
+| Gordura (12.8) | 35,4% (−56%) | 35,5% (−58%) | 46,8% (−47%) |
+| Cenas "mistas" (prato de registro como acompanhamento; 2.181) | 62,0% | 61,6% | 67,8% |
+
+- **Nenhum modelo chega a 70% nas cenas novas do OmniFood8K;** o melhor limite inferior é 56%.
+- A massa do OmniFood8K na cabeça de massa (S) acerta muito mais a massa dessas cenas (73% a ±20%, contra 49%). Mesmo assim, a proteína não melhora (−3,2, dentro do ruído), e os pratos com mais de 25 g caem de 28% para 9%: a densidade, que é a mesma nos dois, fica baixa nesses pratos, e a massa do A0 errava para cima e compensava. São 151 cenas de poucos pratos (amendoim, costela, pele de porco, tofu).
+- **kcal e gordura são muito subestimadas nessa cozinha:** viés de −38% a −58%. Refogado chinês leva óleo que a foto não mostra. Para o produto, kcal e gordura de comida frita ou com óleo vão sair baixas.
+
+*Bases só de massa (% a ±20%, MAPE e viés mediano, com a constante; cru entre parênteses; IC por cluster):*
+
+| Parte de registro | A0 (D1) | **S** | X | Pratos acima de 600 g, MAPE (A0 / S / X) |
+|---|---|---|---|---|
+| Flavoria, 227 pratos de 7 dias | 52,0% (41,5 a 66,3); 25,6%; −10% (cru 23%) | 57,3% (47,2 a 72,5); 22,8%; −7% | **66,5%** (60,0 a 73,6); 19,3%; −4% | 28,6% / 26,4% / **17,6%** (46 pratos) |
+| FPB de cima, 121 bandejas, 18 grupos | 31,4% (18,6 a 42,5); 34,6%; −20% | 35,5% (25,0 a 49,0); 33,4%; −13% | 42,1% (35,6 a 48,4); 25,0%; −15% | 28,3% / 27,8% / 25,1% (29) |
+| LeFood, 91 porções | 26,4%; 43,9% | 30,8%; 36,0% | **68,1%**; 16,8% | |
+| Mensa, 34 fotos de um participante | **inválido** (abaixo) | | | |
+
+- **Cada base melhora a massa do próprio domínio,** e só nele. O X, que treinou com as quatro, acerta 67% no Flavoria (A0: 52%) e 68% no LeFood (A0: 26%). Nos pratos de mais de 600 g do Flavoria, o erro cai de 29% para 18%, como em 12.6.
+- **O Mensa mostrou um erro meu e um problema real.**
+  - O participante segurado fotografou **itens soltos de perto** (33 das 34 fotos têm um item só); os outros cinco fotografaram a **bandeja inteira** (mediana de 600 a 740 g). Eu fixei a parte segurada por participante sem olhar o que cada um fotografou.
+  - A constante aprendida nas bandejas (×3,3) não serve para o close: o erro passa de 500%, e mesmo cru só 12% a 32% das fotos ficam a ±20%.
+  - **É o problema de escala de 8.7 em forma pura:** a mesma comida, fotografada por pessoas diferentes, muda de escala em 3 a 5 vezes, e nenhuma constante por domínio resolve.
+*SNAPMe* (1.163 fotos de celular em casa, 95 pessoas; **autorrelato, só correlação de postos**, IC por pessoa):
+
+| | Proteína | kcal | Gordura | Massa | Carboidrato |
+|---|---|---|---|---|---|
+| A0 | 0,64 (0,59 a 0,68) | 0,60 | 0,63 | 0,42 | 0,38 |
+| S | 0,59 (0,54 a 0,64) | 0,60 | 0,61 | 0,37 | 0,38 |
+| X | 0,62 (0,58 a 0,67) | 0,58 | 0,65 | 0,40 | 0,37 |
+
+  - A proteína prevista acompanha a declarada com correlação de 0,6 em foto de celular de verdade. A massa (0,4) acompanha menos que a proteína, o que é o esperado: a porção declarada é a padrão do recordatório, e a foto não tem escala.
+  - Nada disso é acerto em gramas.
+
+**e) Última leitura do teste2: o S** (13/11/2026; a quarta leitura do estudo; marca gravada). As conferências passaram: o A0 refeito reproduz o D1 de 12.7 com correlação de 1,000000, e as cabeças foram remontadas com diferença de 0,0003 e 0,0001 em log.
+
+**Veredito pela regra: 70% NÃO DEMONSTRADO.** O S dá **69,2%** (IC por cadeia de 95%: **65,0 a 73,7**; 98,75%: 64,1 a 74,7). Simples, 76,7%.
+
+| Faixa | Pratos | **S** (R3×H0) | D1 (12.7) | C1 (12.6) | Nove redes (11.5) | Massa do S: MAPE (viés) |
+|---|---|---|---|---|---|---|
+| 0–5 g | 316 | 98,1% | 98,1% | 98,7% | 97% | 25,8% (+5%) |
+| 5–15 g | 169 | 76,3% | 78,7% | 82,2% | 82% | 17,0% (+2%) |
+| 15–25 g | 132 | 57,6% | 64,4% | 53,0% | 64% | 16,1% (+5%) |
+| 25–40 g | 110 | 56,4% | 55,5% | 52,7% | 51% | 12,7% (0%) |
+| > 40 g | 102 | 57,8% | 52,0% | 43,1% | 55% | 14,1% (−1%) |
+| **Ponderado** | 829 | **69,2%** (65,0 a 73,7) | 69,7% | 66,0% | 69,7% | 19,3% (+3%) |
+| > 25 g | 212 | **57,1%** | 53,7% | 47,9% | 52,9% | |
+
+- **Contra o D1: −0,5** (IC −3,2 a +2,3); acima de 25 g, **+3,4** (IC −2,2 a +9,1).
+- **Contra as nove redes: −0,4** (IC −4,3 a +3,2). **Contra o C1: +3,3** (IC −1,9 a +8,6).
+- O S troca um pouco de acerto nos pratos de 5 a 25 g por um pouco nos de mais de 25 g: **57%**, o maior número nessa faixa em todo o estudo. A diferença não se distingue de zero.
+- Os 107 pratos sem irmão no `teste` antigo dão 76,7% (IC 67,7 a 84,8).
+- **kcal, carboidrato e gordura no teste2** (relato secundário de 12.8, na mesma leitura): **71,1%** (IC 65,9 a 76,5), **84,3%** (79,3 a 89,0) e **65,5%** (61,4 a 69,6). Os vieses medianos ficam entre +2% e +3%. Por faixa:
+  - kcal: 94 / 71 / 61 / 69 / 61;
+  - carboidrato: 99 / 96 / 90 / 69 / 68;
+  - gordura: 98 / 86 / 67 / 49 / 28.
+  - A CV de 12.8 se confirmou para kcal e carboidrato. A gordura acima de 35 g é fraca (28%).
+- **O teste2 está encerrado como teste de registro.** Quatro leituras; nenhum pipeline passou de 70% no limite inferior, e os quatro modelos lidos ficam entre 66% e 70%.
+
+**f) Custo de servir e procedência.**
+
+| Modelo | Papel | Treinado com (licença) | Só dados liberados? | Custo |
+|---|---|---|---|---|
+| **S** = R3×H0 | Servidor, escolhido pela R13 | Nutrition5k (CC BY 4.0) + **massa** do OmniFood8K (**CC BY-NC 4.0**) | **Não** | So400m congelado + 2 cabeças: 429,7 M de parâmetros, 860 MB em fp16, **66 ms** por foto na T4 (56 ms em lotes de 8), 3,5 s em CPU de 4 threads |
+| A0 = D1 = R0×H0 | Referência; **o melhor só com dados liberados** | Nutrition5k (CC BY 4.0) | **Sim** | O mesmo |
+| X = R4×H1 | Enriquecido, não lido no teste2 | Nutrition5k + Flavoria, LeFood, Mensa (CC BY 4.0) + FPB e OmniFood8K (**CC BY-NC 4.0**) | **Não** | O mesmo |
+| C1 | Aparelho (sem mudança) | Nutrition5k (CC BY 4.0) | Sim | 93 M, 186 MB, 8 ms na T4, 0,24 s em CPU |
+
+- **Para servir o S, nada precisa ser treinado de novo:** o backbone é público, e as cabeças `cabeca__gpu4_ridge_so400m__omni.npz` e `cabeca__gpu4_fracoes_so400m.npz` estão na saída da execução, fora do repositório, com a remontagem conferida.
+- **Atribuição obrigatória:** Nutrition5k, e OmniFood8K para o S; Flavoria, LeFood, Mensa e FPB também para o X.
+
+**g) O que isto significa para o produto.**
+
+1. **A meta de 70% não está demonstrada em lugar nenhum.**
+   - No Nutrition5k, o S dá 69,2% (65,0 a 73,7), o mesmo nível do D1 e das nove redes.
+   - Nas cenas novas do OmniFood8K, de 59% a 66%, todas com limite inferior abaixo de 57%.
+   - Em comida brasileira de celular, nada foi medido.
+2. **O que os dados externos mudaram.**
+   - **No Nutrition5k, quase nada, e só para pior:** só a massa do OmniFood8K na cabeça de massa passou na guarda (−0,8 na CV, −0,5 no teste2), e toda outra entrada custou de 1,7 a 3 pontos.
+   - **Fora dele, muito, e só no próprio domínio:** a massa a ±20% sobe de 52% para 67% no Flavoria e de 26% para 68% no LeFood quando a base entra no treino, e não sobe onde ela não entra.
+   - A proteína nas cenas novas do OmniFood8K melhora pouco (X +3, dentro do ruído) e piora acima de 25 g no S.
+   - **Não houve generalização mensurável.** Houve "mais domínios aprendidos", com custo no Nutrition5k.
+3. **A escala da foto é o limite que mais aparece, e é a próxima alavanca.**
+   - Sem a constante por domínio, a massa externa cai para 1% a 35% a ±20%.
+   - No Mensa, um fotógrafo que chegou mais perto muda a escala em 3 a 5 vezes.
+   - O app vai ter exatamente esse problema. O que pode resolver não é mais dado da mesma foto: é **enquadrar a foto pelo prato** (o círculo-guia), treinar e prever com o prato normalizado, e medir isso. Isso pede um detector de prato conferido nas bases e o tamanho do guia em pixels.
+4. **Segunda alavanca: um conjunto brasileiro pesado, de celular, com o guia.** Serve para treinar e, principalmente, para julgar os 70% do produto. O teste2 acabou.
+5. **No modelo de aparelho, nada mudou** (C1, 66% no teste2).
+   - A receita com frações ainda estraga a massa: falta a versão sem gradiente para o backbone, item (b).
+   - As bases externas no ajuste fino (F3) não ajudaram no Nutrition5k.
+6. **kcal e carboidrato:** 71% e 84% no teste2, com o servidor, no critério de 12.8. Dá para mostrar como estimativa com faixa. Gordura e kcal de comida com óleo ficam baixas (OmniFood8K: −40% a −58%).
+7. **Licença:** o S, escolhido pela regra, usa uma base não comercial e não ganha de forma demonstrável do D1 em lugar nenhum. Se a licença pesar, o D1 entrega o mesmo número hoje. A decisão de treino delegada segue a regra, então o modelo de servidor de registro passa a ser o S.
+
+**Registro de método da seção 13.**
+- (a) As regras de 13.1 a 13.10 foram escritas antes de qualquer resultado da quarta execução.
+- (b) A aplicação da R13 e o diagnóstico (itens a e b) foram escritos antes de qualquer leitura. A nota do item (c) foi escrita depois da leitura das partes externas e antes da do teste2.
+- (c) As partes de registro externas foram lidas uma vez, para três modelos; o teste2, uma vez, só para o S (quarta leitura do estudo).
+- (d) Antes das leituras rodaram, sem gabarito delas: `--so-cv` e as conferências embutidas nos modos de leitura.
+- (e) Nenhuma escolha foi refeita depois das leituras.
+- (f) A parte segurada do Mensa ficou inválida por um erro de desenho meu, achado na leitura; registro aqui e não troco a parte.
+- (g) As divisões que o kernel usou são as de 13.3 (sha256 conferidos).
+
+
+
 ## Reproduzir
 
 ```
@@ -2248,6 +2422,8 @@ python3 um_modelo_emenda.py <pasta_kaggle_3> --confere    # 12.7: conferências 
 python3 um_modelo_emenda.py <pasta_kaggle_3>              # 12.7: leitura única do D1 no teste2; recusa rodar de novo
 ```
 Seção 12.8: `cd eval/treino; python3 macros_cv.py <pasta_kaggle_3>` (só previsões fora-do-fold do treino_v2; grava `$TD/resultados/dens/um_modelo/macros_cv.json`).
+
+Seção 13.11: `cd eval/treino; python3 r4_avalia.py <pasta_kaggle_4> <pasta_divisoes> --so-cv` (R13 só com validação cruzada), depois `--registro` (leitura única das partes de registro externas) e `--teste2` (última leitura do teste2, só do S); resultados em `$TD/resultados/dens/r4/`.
 
 Seção 13 (quarta execução): `python3 eval/treino/externo_r4_divide.py <pasta_de_saida>` grava as divisões das bases externas (`divisao_r4_<dominio>.csv`: papel, folds, parte de registro), a partir das listas `externo_*.csv`; as do OmniFood8K, do FPB e do SNAPMe derivam de bases não comerciais e ficam fora do repositório.
 
