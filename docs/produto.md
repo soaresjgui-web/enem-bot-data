@@ -33,7 +33,7 @@ Privacidade e "cobrança honesta" **não** são diferenciais de posicionamento (
 
 **O que o app conta (decisão da fundadora, 12/11/2026):**
 - **Proteína** é o número principal, com meta diária e **meta por refeição** (cerca de 25–30 g, para distribuir ao longo do dia).
-- **Carboidratos, calorias e gordura** aparecem como informação secundária, só depois de o acerto deles ser medido (o modelo já os estima; a medição está em andamento).
+- **Carboidratos, calorias e gordura** aparecem como informação secundária, **sempre como estimativa com faixa** ("cerca de 450 kcal", "40 a 55 g de carboidrato"). Medido na validação cruzada da Nutrition5k (12/11/2026), modelo de servidor: calorias 70,5%, carboidratos 78,6%, gordura 68,4% (critério de ±20% ou ±50 kcal / ±10 g / ±5 g); no modelo de aparelho, 65–75%. Nos pratos com muito carboidrato (30 g ou mais) o acerto cai para 46–63%, com estimativa 14–20% baixa. **O app deve dizer que a estimativa de carboidrato não serve para calcular dose de insulina.**
 - **Fibra**, estimada pela identificação de cada item na tabela TACO, com precisão menor que a da proteína; é o que se ajusta para a prisão de ventre comum com as canetas.
 - **Água**, registrada em um toque (não pela foto), com lembrete no modo caneta.
 - Fora da v1: sódio, açúcar e micronutrientes (a foto não dá precisão para isso).
