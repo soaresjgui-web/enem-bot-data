@@ -4,38 +4,56 @@
 Uso:
   python3 monta_pacote.py listas     regrava listas/treino.csv e listas/aval_ids.csv a partir de <TD>/meta
                                      (zen_treino.csv, zen_aval.csv, gravados por zen_dados.py) e dos folds de zen_comum.Dados
-  python3 monta_pacote.py notebook   regrava nutrelle_treino_gpu.ipynb a partir de treino_gpu.py e das listas
-  python3 monta_pacote.py confere    falha se o notebook não corresponde aos arquivos desta pasta (rode antes do push)
+  python3 monta_pacote.py notebook   regrava nutrelle_treino_gpu.ipynb (o do REPOSITÓRIO): a quarta execução só com as
+                                     bases liberadas (Flavoria, LeFood, Mensa: uso comercial permitido)
+  python3 monta_pacote.py push <pasta fora do repositório> [--usuario U] [--espelho-omnifood U/slug] [--divisoes PASTA]
+                                     monta o notebook da quarta execução COMPLETA (as seis bases) e o kernel-metadata.json
+                                     numa pasta fora do repositório, pronta para `kaggle kernels push -p <pasta>`
+  python3 monta_pacote.py confere [<pasta do push>]
+                                     falha se o notebook do repositório não corresponde aos arquivos desta pasta ou se
+                                     embute qualquer coisa de uma base sem licença comercial (rode antes do commit e do
+                                     push); com a pasta, confere também o notebook completo
+
+Listas e tabelas que ficam fora do repositório (as das bases fechadas) são procuradas em listas/ e, depois, nas pastas
+dadas por --divisoes e pela variável NUTRELLE_SCRATCH (e nas subpastas listas_nc/ e listas_r4/ dela).
 
 Por que embutir: `kaggle kernels push` envia um único arquivo de código. O notebook grava treino_gpu.py (em texto) e as
 listas (comprimidas, byte a byte) em disco e chama o script; não depende de dataset anexado nem do repositório.
 
-Listas (só ids e metadados públicos do Nutrition5k, CC BY 4.0; nenhuma imagem):
-  treino.csv    os 1.684 pratos do treino zenital estrito, com cadeia, fold (GroupKFold por cadeia, o mesmo da CPU)
-                e os alvos (massa, macros, massa e proteína por grupo de alimento)
-  aval_ids.csv  prato_id, split, dish_id dos 450 pratos de avaliação, SEM gabarito
-  aval2_ids.csv prato_id, split, dish_id dos 829 pratos do teste2 (seção 11), SEM gabarito; é gravado por
-                eval/treino/teste2_monta.py, não por este script, que só o embute e confere
-  treino_v2.csv os 2.281 pratos do treino ampliado da seção 12 (folds novos por cadeia, alvos e frações da massa por
-                fonte de proteína); é gravado por eval/treino/treino_v2_monta.py; aqui só é embutido e conferido
-  externo_flavoria.csv  base externa da seção 12.5 (FlavoriaFoodWeight1700, Zenodo 5850856, CC BY 4.0): uma linha por
-                foto, só rótulos (massa pesada, massa por grupo, frações por fonte) e o caminho da foto dentro do .tar
-                do Zenodo; é gravado por eval/dados_ext/flavoria_monta.py; aqui só é embutido e conferido. As fotos são
-                baixadas pelo kernel. Se o arquivo não existir, o notebook sai sem a base (execução como em 12.3).
+Duas versões, por causa da procedência (seção 13 e fontes_treino.md, 11): as listas do OmniFood8K, do Food Portion
+Benchmark (CC BY-NC 4.0) e do SNAPMe (CC BY-SA 4.0, autores pedem para não treinar) e as tabelas de divisão delas ficam
+FORA do repositório público (.gitignore). O notebook do repositório não embute nada delas e roda sozinho, como uma quarta
+execução só com dados liberados; o completo é montado na hora do push, fora do repositório.
+
+Listas (só ids, metadados e rótulos; nenhuma imagem):
+  treino.csv, aval_ids.csv, aval2_ids.csv, treino_v2.csv   como nas execuções anteriores (aval2 = teste2, SEM gabarito)
+  ref_d1_r3.csv          previsões fora-do-fold das duas cabeças do D1 na execução 3 (conferência de paridade de 13.7)
+  externo_<base>.csv     uma base externa (eval/dados_ext/<base>_monta.py)
+  divisao_r4_<base>.csv  a divisão dela para a quarta execução (eval/treino/externo_r4_divide.py)
+No notebook vão versões ENXUTAS das duas últimas: sem as linhas `fora`, só as colunas que o kernel lê e com os rótulos das
+linhas que não são de treino (partes de registro, avaliação fraca) já apagados; o sha256 dos arquivos inteiros vai em
+procedencia_r4.json, para o manifesto de cada modelo (13.8).
 """
-import base64, csv, gzip, hashlib, json, os, re, sys
-import numpy as np
+import base64, csv, hashlib, io, json, lzma, os, re, subprocess, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LISTAS = os.path.join(AQUI, "listas")
+REPO = os.path.abspath(os.path.join(AQUI, "..", "..", ".."))
 NOTEBOOK = os.path.join(AQUI, "nutrelle_treino_gpu.ipynb")
-EXTERNO = "flavoria"                 # base externa ligada no notebook quando a lista dela existe em listas/
-LISTA_EXTERNA = "listas/externo_flavoria.csv"
-TEM_EXTERNO = os.path.exists(os.path.join(AQUI, LISTA_EXTERNA))
-EMBUTIDOS = ["treino_gpu.py", "listas/treino.csv", "listas/aval_ids.csv", "listas/aval2_ids.csv", "listas/treino_v2.csv"] + ([LISTA_EXTERNA] if TEM_EXTERNO else [])
-HASH_TESTE2 = "4aad94d89dc2440e"     # conteúdo de aval2_ids.csv (treino_gpu.Dados.hash2) usado na execução 2: o teste2 não muda
-N_TESTE2 = 829
+SLUG = "nutrelle-treino-gpu-r4"
+BASICOS = ["treino_gpu.py", "listas/aval2_ids.csv", "listas/treino_v2.csv", "listas/ref_d1_r3.csv"]      # a quarta execução não lê treino.csv nem aval_ids.csv
+LIBERADAS = ["flavoria", "lefood", "mensa"]                  # uso_declarado = comercial_ok: podem ir para o repositório público
+FECHADAS = ["omnifood", "fpb", "snapme"]                     # nao_comercial / autores_pedem_nao_treinar: só no notebook do push
+PREFIXO_FECHADAS = ("omn_", "fpb_", "snp_")
 DESTINO = "/tmp/nutrelle_codigo"     # fora da pasta de saída do Kaggle
+HASH_TESTE2 = "4aad94d89dc2440e"     # conteúdo de aval2_ids.csv (treino_gpu.Dados.hash2) desde a execução 2: o teste2 não muda
+N_TESTE2 = 829
+COLS_LISTA = ["dominio", "grupo", "vista", "arquivo", "arquivo_base", "quadros", "url", "sha256", "bytes", "licenca", "uso_declarado"]
+COLS_DIV = ["dish_id", "dominio", "grupo", "papel", "fold_ext", "folds_proibidos", "quadro_metrica", "quadro_metrica_nome", "quadros_treino",
+            "grupo_metrica", "peso_nutricao"]
+ASPAS3 = "'" * 3
+RX_CELULA = re.compile(r"open\('" + re.escape(DESTINO) + r"/([^']+)', 'wb'\)\.write\(lzma\.decompress\(base64\.b85decode\(" + ASPAS3 + r"\n(.*?)\n" + ASPAS3
+                       + re.escape(".replace('\\n', '')") + r"\)\)\)", re.S)
 
 
 def listas():
@@ -69,58 +87,114 @@ def listas():
     print(f"listas: {len(rows)} pratos de treino em {len(fc)} cadeias e 5 folds; {len(av)} de avaliação (sem gabarito); interseção 0")
 
 
-def _hash():
+def _opcao(nome, padrao=None):
+    return sys.argv[sys.argv.index(nome) + 1] if nome in sys.argv else padrao
+
+
+def extras():
+    """Pastas fora do repositório onde procurar as listas e tabelas das bases fechadas."""
+    sc = os.environ.get("NUTRELLE_SCRATCH", "")
+    return [x for x in [_opcao("--divisoes"), sc] + ([os.path.join(sc, "listas_nc"), os.path.join(sc, "listas_r4")] if sc else []) if x]
+
+
+def acha(nome, pastas):
+    for d in [LISTAS] + list(pastas):
+        if os.path.exists(os.path.join(d, nome)):
+            return os.path.join(d, nome)
+    raise FileNotFoundError(f"{nome} não está em listas/ nem em {list(pastas)} (use --divisoes ou NUTRELLE_SCRATCH)")
+
+
+def _bytes_csv(cab, linhas):
+    f = io.StringIO()
+    w = csv.DictWriter(f, cab, lineterminator="\n", extrasaction="ignore"); w.writeheader(); w.writerows(linhas)
+    return f.getvalue().encode()
+
+
+def _alvo(c):
+    return c in ("massa", "proteina", "kcal", "gordura", "carbo") or c.startswith(("m_", "p_", "ff_"))
+
+
+def enxuta(arq_lista, arq_div):
+    """(lista enxuta, divisão enxuta, procedência) de uma base: sem as linhas `fora`, só as colunas que o kernel lê, e os
+    rótulos das linhas que não são de treino apagados ANTES de sair desta máquina."""
+    bl, bd = open(arq_lista, "rb").read(), open(arq_div, "rb").read()
+    L = list(csv.DictReader(io.StringIO(bl.decode("utf-8"))))
+    V = list(csv.DictReader(io.StringIO(bd.decode("utf-8"))))
+    assert [r["dish_id"] for r in L] == [r["dish_id"] for r in V], f"{arq_lista}: lista e divisão desalinhadas"
+    v2 = next(csv.reader(open(os.path.join(LISTAS, "treino_v2.csv"))))
+    cab_l = [c for c in v2 if c in L[0]] + [c for c in COLS_LISTA if c in L[0]]
+    out_l, out_d = [], []
+    for r, v in zip(L, V):
+        if v["papel"] == "fora":
+            continue
+        tr = v["papel"] == "treino"
+        out_l.append({c: (r[c] if tr or not _alvo(c) else "") for c in cab_l})
+        out_d.append({c: (v.get(c, "") if tr or c != "peso_nutricao" else "") for c in COLS_DIV})
+    proc = dict(sha256_lista=hashlib.sha256(bl).hexdigest(), sha256_divisao=hashlib.sha256(bd).hexdigest(), linhas_lista=len(L),
+                linhas_no_pacote=len(out_l), licenca=L[0]["licenca"], uso_declarado=L[0]["uso_declarado"])
+    return _bytes_csv(cab_l, out_l), _bytes_csv(COLS_DIV, out_d), proc
+
+
+def conteudo(variante):
+    """{nome do arquivo no pacote: bytes} da variante 'repo' (só bases liberadas) ou 'push' (as seis)."""
+    arqs = {n: open(os.path.join(AQUI, n), "rb").read() for n in BASICOS}
+    proc, pastas = {}, ([] if variante == "repo" else extras())
+    for ch in LIBERADAS + (FECHADAS if variante == "push" else []):
+        lst, div, proc[ch] = enxuta(acha(f"externo_{ch}.csv", pastas), acha(f"divisao_r4_{ch}.csv", pastas))
+        arqs[f"listas/externo_{ch}.csv"], arqs[f"listas/divisao_r4_{ch}.csv"] = lst, div
+    arqs["listas/procedencia_r4.json"] = (json.dumps(proc, indent=1, ensure_ascii=False, sort_keys=True) + "\n").encode()
+    return arqs
+
+
+def _hash(arqs):
     h = hashlib.sha256()
-    for n in EMBUTIDOS:
-        h.update(open(os.path.join(AQUI, n), "rb").read())
+    for n in sorted(arqs):
+        h.update(n.encode()); h.update(arqs[n])
     return h.hexdigest()
 
 
-def _celula_lista(n):
-    """Célula que regrava uma lista byte a byte (gzip + base64)."""
-    dados = base64.b64encode(gzip.compress(open(os.path.join(AQUI, n), "rb").read(), 9, mtime=0)).decode()
-    linhas = "\n".join(dados[i:i + 120] for i in range(0, len(dados), 120))
-    return (f"# {n} (gzip + base64; o arquivo sai idêntico ao do repositório)\nimport base64, gzip\n"
-            f"open('{DESTINO}/{n}', 'wb').write(gzip.decompress(base64.b64decode(\'\'\'\n{linhas}\n\'\'\')))\nprint('gravado: {DESTINO}/{n}')")
+def _celula_arquivo(n, dados):
+    """Célula que regrava um arquivo byte a byte (lzma + base85: o notebook completo fica abaixo de 1 MB)."""
+    b85 = base64.b85encode(lzma.compress(dados, preset=9 | lzma.PRESET_EXTREME)).decode()
+    linhas = "\n".join(b85[i:i + 120] for i in range(0, len(b85), 120))
+    return (f"# {n} (lzma + base85; o arquivo sai idêntico ao montado por monta_pacote.py)\nimport base64, lzma\n"
+            f"open('{DESTINO}/{n}', 'wb').write(lzma.decompress(base64.b85decode({ASPAS3}\n{linhas}\n{ASPAS3}.replace('\\n', ''))))\nprint('gravado: {DESTINO}/{n}')")
 
 
-def notebook():
+def monta(variante):
+    arqs = conteudo(variante)
+    doms = LIBERADAS + (FECHADAS if variante == "push" else [])
     md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
     code = lambda t: dict(cell_type="code", metadata={}, execution_count=None, outputs=[], source=t)
+    aviso = ("**Versão do repositório: só bases liberadas** (Nutrition5k, Flavoria, LeFood-Set, GT Mensa). As configurações que usam "
+             "OmniFood8K ou o Food Portion Benchmark ficam de fora e o manifesto diz por quê; o SNAPMe também. A versão completa é montada "
+             "fora do repositório com `python3 monta_pacote.py push <pasta>`." if variante == "repo" else
+             "**Versão completa, montada fora do repositório** (as seis bases). Contém listas derivadas de bases sem licença comercial "
+             "(OmniFood8K e FPB, CC BY-NC 4.0) e do SNAPMe (CC BY-SA 4.0, só avaliação): **não commitar, não publicar**.")
     cells = [
-        md("# Nutrelle — treino em GPU (seções 8, 10, 11 e 12: uma única foto de cima)\n\n"
+        md("# Nutrelle — treino em GPU, quarta execução (seção 13: mais bases de treino; uma única foto de cima)\n\n"
            "Notebook gerado por `eval/treino/kaggle/monta_pacote.py`; **não edite à mão** (edite `treino_gpu.py` e gere de novo). "
-           "Roda sem interação: baixa as fotos zenitais do Nutrition5k do bucket público, treina as configurações da rodada "
-           "(padrão: execução 3, as 13 configurações da seção 12.3, com o treino_v2 e previsões só no teste2"
-           + (f"; com a base externa `{EXTERNO}` da seção 12.5, baixada do Zenodo, as configurações 1 a 10 rodam também na versão `+{EXTERNO}` "
-              "e o kernel decide a adoção pela regra pré-registrada antes dos ajustes finos" if TEM_EXTERNO else "") + ") até o orçamento de tempo "
-           "e grava previsões (fora-do-fold no treino e no teste2, sem ler gabarito), registros, os arquivos para servir cada modelo "
-           "e `servico.json` (latências) na pasta de saída.\n\n"
-           "Kaggle: *Settings → Accelerator → GPU T4 x2* e *Internet → On*. Colab: *Ambiente de execução → GPU*. "
-           "Instruções completas em `eval/treino/kaggle/LEIA-ME.md`."),
+           "Roda sem interação: baixa as fotos zenitais do Nutrition5k e as das bases externas (em paralelo, desde o início), extrai as "
+           "features do SigLIP 2 So400m, treina as configurações da seção 13.6 até o orçamento de tempo e grava previsões cruas "
+           "(fora-do-fold no treino; no teste2 e nas partes de registro das bases externas, **sem pontuar nada**), registros, os arquivos "
+           "para servir cada modelo e `servico.json`.\n\n" + aviso + "\n\n"
+           "Kaggle: *Settings → Accelerator → GPU T4 x2* e *Internet → On*. Instruções completas em `eval/treino/kaggle/LEIA-ME.md`."),
         code("# Parâmetros (os padrões servem para o Kaggle)\n"
              "import json, os\n"
-             "RODADA = '3'         # 3 = seção 12.3 (um modelo só, treino_v2); 2 = seção 11; 1 = seção 10\n"
-             "ORCAMENTO_H = {}    # horas de relógio; o que não couber inteiro não começa (ordem de corte: U0, depois U3)\n".format(4.5 if TEM_EXTERNO else 3.5)
-             + "EXTERNO = {!r}   # base externa de treino da seção 12.5 ('' = sem ela, como em 12.3); se o download falhar, a execução segue sem ela\n".format(EXTERNO if TEM_EXTERNO else "")
-             +
+             "RODADA = '4'         # 4 = seção 13 (este pacote só traz as listas da quarta execução)\n"
+             "ORCAMENTO_H = 4.5    # horas de relógio; o que não couber inteiro não começa (a ordem de 13.6 decide o que fica de fora)\n"
              "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_saida'   # no Colab, aponte para o Drive para retomar\n"
-             "EXTRA = []           # ex.: ['--so', 'ridge'] para rodar só parte; ['--retoma', '/content/drive/MyDrive/nutrelle_saida']; dados externos: ver LEIA-ME\n"
+             "EXTRA = []           # ex.: ['--so', 'ridge']; ['--dominios', 'flavoria,mensa']; ['--retoma', '<pasta>']; ['--espelho', '<pasta com o zip do OmniFood8K>']\n"
              "# as variáveis de ambiente NUTRELLE_SAIDA e NUTRELLE_EXTRA (lista em JSON) substituem os valores acima sem editar o notebook\n"
              "SAIDA = os.environ.get('NUTRELLE_SAIDA') or SAIDA\n"
              "EXTRA = json.loads(os.environ.get('NUTRELLE_EXTRA') or 'null') or EXTRA\n"
-             "EXTERNO = os.environ.get('NUTRELLE_EXTERNO', EXTERNO)\n"
              f"os.makedirs('{DESTINO}/listas', exist_ok=True)"),
     ]
-    for n in EMBUTIDOS:      # o script vai em texto (dá para ler no Kaggle); as listas, comprimidas (o notebook fica abaixo de 1 MB)
-        if n.endswith(".py"):
-            cells.append(code(f"%%writefile {DESTINO}/{n}\n" + open(os.path.join(AQUI, n)).read()))
-        else:
-            cells.append(code(_celula_lista(n)))
+    for n in sorted(arqs, key=lambda n: (n != "treino_gpu.py", n)):      # tudo comprimido (o script também): o notebook completo cabe em 1 MB
+        cells.append(code(_celula_arquivo(n, arqs[n])))
     cells.append(code(
         "import subprocess, sys\n"
-        f"cmd = [sys.executable, '-u', '{DESTINO}/treino_gpu.py', '--rodada', RODADA, '--saida', SAIDA, '--orcamento-h', str(ORCAMENTO_H)]\n"
-        "cmd += (['--externo', EXTERNO] if EXTERNO and RODADA == '3' else []) + EXTRA\n"
+        f"cmd = [sys.executable, '-u', '{DESTINO}/treino_gpu.py', '--rodada', RODADA, '--saida', SAIDA, '--orcamento-h', str(ORCAMENTO_H)] + EXTRA\n"
         "p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)\n"
         "for linha in p.stdout:\n"
         "    print(linha, end='')\n"
@@ -131,39 +205,133 @@ def notebook():
         "if os.path.exists(m):\n"
         "    m = json.load(open(m))\n"
         "    for nome, c in m['configs'].items():\n"
-        "        print(f\"{c['estado']:14s} {nome:46s} {c['cv_treino'] or ''}\")\n"
-        "        print(' ' * 15 + 'serviço:', c.get('servico', {}).get('estado'))\n"
-        "    print('melhor modelo:', m['melhor_modelo'])\n"
-        "    print('base externa:', (m.get('externo') or {}).get('situacao'), '| decisão:', m.get('decisao_externo'))\n"
+        "        print(f\"{c['estado']:14s} {nome:46s} serviço: {c.get('servico', {}).get('estado')}\")\n"
+        "    print('paridade com o D1:', m.get('paridade_d1'))\n"
+        "    print('confiança:', m.get('confianca'))\n"
+        "    print('bases externas:', {k: v.get('situacao') for k, v in (m.get('dominios') or {}).items()})\n"
         "    print('tamanho da saída:', m.get('tamanho_saida'))\n"
         "print(sorted(os.listdir(SAIDA)))"))
     for i, c in enumerate(cells):
         c["id"] = f"celula-{i}"
     nb = dict(cells=cells, nbformat=4, nbformat_minor=5,
-              metadata=dict(kernelspec=dict(display_name="Python 3", language="python", name="python3"),
-                            language_info=dict(name="python"), nutrelle=dict(sha256=_hash(), embutidos=EMBUTIDOS)))
-    with open(NOTEBOOK, "w") as f:
+              metadata=dict(kernelspec=dict(display_name="Python 3", language="python", name="python3"), language_info=dict(name="python"),
+                            nutrelle=dict(variante=variante, sha256=_hash(arqs), embutidos=sorted(arqs), dominios=doms)))
+    return nb
+
+
+def grava_nb(nb, arq):
+    with open(arq, "w") as f:
         json.dump(nb, f, indent=1, ensure_ascii=False)
         f.write("\n")
-    print(f"notebook: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB, sha256 dos embutidos {_hash()[:16]}")
+
+
+def notebook():
+    nb = monta("repo")
+    grava_nb(nb, NOTEBOOK)
+    print(f"notebook do repositório: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB, bases {nb['metadata']['nutrelle']['dominios']}, sha256 {nb['metadata']['nutrelle']['sha256'][:16]}")
+
+
+def dentro_do_repo(pasta):
+    return os.path.commonpath([os.path.realpath(pasta), os.path.realpath(REPO)]) == os.path.realpath(REPO)
+
+
+def push():
+    """Notebook completo + kernel-metadata.json numa pasta FORA do repositório."""
+    pasta = os.path.abspath(sys.argv[2])
+    if dentro_do_repo(pasta):
+        raise SystemExit("a pasta do push tem de ficar FORA do repositório (o notebook completo embute listas de bases sem licença comercial)")
+    os.makedirs(pasta, exist_ok=True)
+    nb = monta("push")
+    grava_nb(nb, os.path.join(pasta, os.path.basename(NOTEBOOK)))
+    meta = json.load(open(os.path.join(AQUI, "kernel-metadata.json")))
+    meta.update(id=f"{_opcao('--usuario', 'USUARIO_KAGGLE')}/{SLUG}", title=SLUG)
+    if _opcao("--espelho-omnifood"):
+        meta["dataset_sources"] = [_opcao("--espelho-omnifood")]
+    with open(os.path.join(pasta, "kernel-metadata.json"), "w") as f:
+        json.dump(meta, f, indent=2); f.write("\n")
+    confere_nb(nb, "push")
+    print(f"push: {pasta} | notebook {os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) / 1e3:.0f} kB, bases {nb['metadata']['nutrelle']['dominios']} | "
+          f"id {meta['id']} | dataset_sources {meta['dataset_sources']}")
+
+
+def _embutidos(nb):
+    """{nome: bytes} decodificados das células de um notebook."""
+    out = {}
+    for c in nb["cells"]:
+        src = c["source"] if isinstance(c["source"], str) else "".join(c["source"])
+        if c["cell_type"] != "code":
+            continue
+        for m in RX_CELULA.finditer(src):
+            out[m.group(1)] = lzma.decompress(base64.b85decode(m.group(2).replace("\n", "")))
+    return out
+
+
+def ignorado_pelo_git(caminho):
+    return subprocess.run(["git", "-C", REPO, "check-ignore", "-q", caminho], capture_output=True).returncode == 0
+
+
+def vazamentos(emb, texto_nb):
+    """O que, do notebook do repositório, vem de uma base fechada (lista vazia = nada)."""
+    erros = []
+    for n in emb:
+        if ignorado_pelo_git(os.path.join(AQUI, n)):
+            erros.append(f"{n} é ignorado pelo git (base sem licença comercial)")
+        if any(f"_{ch}." in n for ch in FECHADAS):
+            erros.append(f"{n}: arquivo de base fechada")
+    texto = b"\n".join(v for n, v in emb.items() if n.startswith("listas/")) + texto_nb.encode()
+    for pre in PREFIXO_FECHADAS:
+        if re.search(rb"(?<![A-Za-z0-9])" + pre.encode() + rb"[A-Za-z0-9]", texto):
+            erros.append(f"id de base fechada ({pre}…)")
+    for lic in (b"CC BY-NC", b"CC BY-SA", b"nao_comercial", b"autores_pedem_nao_treinar"):
+        if lic in texto:
+            erros.append(f"'{lic.decode()}' nas listas embutidas")
+    return erros
+
+
+def confere_nb(nb, variante):
+    """Um notebook (do repositório ou do push) corresponde aos arquivos desta pasta e não vaza nada que não devia."""
+    meta = nb["metadata"]["nutrelle"]
+    assert meta["variante"] == variante, f"variante {meta['variante']} no lugar de {variante}"
+    emb = _embutidos(nb)
+    if variante == "repo":      # antes de tudo: nada das bases sem licença comercial no notebook do repositório
+        texto_nb = "\n".join(c["source"] if isinstance(c["source"], str) else "".join(c["source"]) for c in nb["cells"]
+                             if not (c["cell_type"] == "code" and (c["source"] if isinstance(c["source"], str) else "").startswith(("# treino_gpu.py", "# listas/"))))
+        erros = vazamentos(emb, texto_nb)
+        assert not erros, "o notebook do repositório embute dado de base fechada: " + "; ".join(erros)
+        assert meta["dominios"] == LIBERADAS
+    else:
+        assert meta["dominios"] == LIBERADAS + FECHADAS
+    esperado = conteudo(variante)
+    assert set(emb) == set(esperado), f"arquivos embutidos diferentes: {sorted(set(emb) ^ set(esperado))}"
+    for n in esperado:
+        assert emb[n] == esperado[n], f"{n}: o notebook está desatualizado (rode `python3 monta_pacote.py {'notebook' if variante == 'repo' else 'push <pasta>'}`)"
+    assert meta["sha256"] == _hash(esperado)
+    for n, b in emb.items():    # as linhas que não são de treino não levam rótulo nenhum, em nenhuma base
+        if re.fullmatch(r"listas/externo_\w+\.csv", n):
+            ch = n[len("listas/externo_"):-4]
+            L = list(csv.DictReader(io.StringIO(b.decode())))
+            V = list(csv.DictReader(io.StringIO(emb[f"listas/divisao_r4_{ch}.csv"].decode())))
+            for r, v in zip(L, V):
+                if v["papel"] != "treino":
+                    assert not any(r[c] for c in r if _alvo(c)) and not v["peso_nutricao"], f"{n}: rótulo numa linha de {v['papel']}"
+            assert not any("fraca" in c or c in ("componentes", "cluster", "prato_principal") for c in list(L[0]) + list(V[0])), f"{n}: coluna que o kernel não lê"
+    if variante == "repo":
+        proc = json.loads(emb["listas/procedencia_r4.json"])
+        assert sorted(proc) == sorted(LIBERADAS) and all(v["uso_declarado"] == "comercial_ok" for v in proc.values())
+    return emb
 
 
 def confere():
+    import tempfile
+    import numpy as np
     nb = json.load(open(NOTEBOOK))
-    assert nb["metadata"]["nutrelle"]["sha256"] == _hash(), "notebook desatualizado: rode `python3 monta_pacote.py notebook`"
-    for n in EMBUTIDOS:
-        if n.endswith(".py"):
-            cab = f"%%writefile {DESTINO}/{n}\n"
-            cel = [c for c in nb["cells"] if c["cell_type"] == "code" and c["source"].startswith(cab)]
-            assert len(cel) == 1 and cel[0]["source"][len(cab):] == open(os.path.join(AQUI, n)).read(), n
-        else:
-            assert sum(c["source"] == _celula_lista(n) for c in nb["cells"]) == 1, n
-    assert os.path.getsize(NOTEBOOK) < 1_000_000, "notebook com mais de 1 MB"
+    emb = confere_nb(nb, "repo")
+    assert os.path.getsize(NOTEBOOK) < 1_000_000, "notebook do repositório com mais de 1 MB"
     meta = json.load(open(os.path.join(AQUI, "kernel-metadata.json")))
-    assert meta["code_file"] == os.path.basename(NOTEBOOK) and meta["enable_gpu"] and meta["enable_internet"]
-    # o teste2 não pode cruzar com o treino nem com os 450 (a mesma conferência que treino_gpu.Dados faz ao rodar)
+    assert meta["code_file"] == os.path.basename(NOTEBOOK) and meta["enable_gpu"] and meta["enable_internet"] and meta["id"].endswith("/" + SLUG)
+    # o teste2 não pode cruzar com nenhuma lista de treino e tem de ser o mesmo da execução 2
     ids = lambda arq: [r["dish_id"] for r in csv.DictReader(open(os.path.join(LISTAS, arq)))]
-    tr, av, av2 = ids("treino.csv"), ids("aval_ids.csv"), ids("aval2_ids.csv")
+    tr, av, av2 = ids("treino.csv"), ids("aval_ids.csv"), ids("aval2_ids.csv")      # as duas primeiras não vão no pacote, mas o teste2 não pode cruzar com elas
     assert len(set(av2)) == len(av2) and not set(av2) & (set(tr) | set(av)), "aval2_ids.csv cruza com o treino ou com a avaliação antiga"
     v2 = list(csv.DictReader(open(os.path.join(LISTAS, "treino_v2.csv"))))
     assert len({r["dish_id"] for r in v2}) == len(v2) and not {r["dish_id"] for r in v2} & set(av2), "treino_v2.csv cruza com o teste2"
@@ -171,68 +339,46 @@ def confere():
     for r in v2:        # cada cadeia inteira num fold só; frações por fonte somam 1
         assert cad.setdefault(r["cadeia"], r["fold"]) == r["fold"], "treino_v2: cadeia em dois folds"
         assert abs(sum(float(r[c]) for c in r if c.startswith("ff_")) - 1) < 2e-3, "treino_v2: frações por fonte não somam 1"
-    assert set(tr) <= {r["dish_id"] for r in v2}, "treino antigo fora do treino_v2 (a réplica de paridade com a execução 2 precisa dele)"
-    print(f"listas: treino {len(tr)}, avaliação {len(av)}, teste2 {len(av2)}, treino_v2 {len(v2)} em {len(cad)} cadeias; interseções com o teste2 vazias")
-    # o teste2 é o mesmo da execução 2 (conteúdo fixado) e não aparece em nenhuma lista de treino
+    assert set(tr) <= {r["dish_id"] for r in v2}
     sys.dont_write_bytecode = True
     sys.path.insert(0, AQUI)
     import treino_gpu as G
-    D = G.Dados(LISTAS, rodada="3")
+    D = G.Dados(LISTAS, rodada="4", dominios=[])
     assert D.hash2 == HASH_TESTE2 and len(av2) == N_TESTE2 and list(D.conj) == ["teste2"], "aval2_ids.csv mudou: o teste2 tem de ficar intocado"
-    par = [c for c in nb["cells"] if c["cell_type"] == "code" and c["source"].startswith("# Parâmetros")][0]["source"]
-    assert ("EXTERNO = %r " % (EXTERNO if TEM_EXTERNO else "")) in par, "parâmetro EXTERNO do notebook não corresponde à lista em listas/"
-    if TEM_EXTERNO:
-        confere_externo(G, D, set(tr) | set(av) | set(av2) | {r["dish_id"] for r in v2})
-    else:
-        print(f"base externa: {LISTA_EXTERNA} não existe; o notebook roda sem ela (como em 12.3)")
-    if meta["id"].startswith("USUARIO_KAGGLE/"):
-        print("atenção: troque USUARIO_KAGGLE em kernel-metadata.json pelo seu usuário do Kaggle antes do push")
-    print("confere: notebook e kernel-metadata.json em dia")
+    ref = list(csv.DictReader(io.StringIO(emb["listas/ref_d1_r3.csv"].decode())))
+    assert [r["dish_id"] for r in ref] == [r["dish_id"] for r in v2], "ref_d1_r3.csv fora da ordem do treino_v2"
 
-
-def confere_externo(G, D, n5k):
-    """A lista externa (12.5) nunca traz prato do Nutrition5k, não toca no teste2 e só entra com os alvos pré-registrados."""
-    x = list(csv.DictReader(open(os.path.join(AQUI, LISTA_EXTERNA), newline="")))
-    cab_v2 = next(csv.reader(open(os.path.join(LISTAS, "treino_v2.csv"))))
-    assert list(x[0])[:len(cab_v2)] == cab_v2, "lista externa: as primeiras colunas têm de ser as de treino_v2.csv, na mesma ordem"
-    assert all(c in x[0] for c in ("dominio", "grupo", "vista", "split_ext", "arquivo", "quadro_preferido", "oclusao")), "lista externa: coluna faltando"
-    ids = [r["dish_id"] for r in x]
-    assert len(set(ids)) == len(ids), "lista externa: id repetido"
-    assert not set(ids) & n5k, "lista externa: id de prato do Nutrition5k (treino, treino_v2, avaliação antiga ou teste2)"
-    assert not [i for i in ids if re.fullmatch(r"dish_\d+", i)], "lista externa: id no formato do Nutrition5k"
-    assert not [r for r in x if "dish_" in r["arquivo"] or "nutrition5k" in r["arquivo"].lower()], "lista externa: foto do Nutrition5k"
-    assert {r["dominio"] for r in x} == {EXTERNO} and {r["split_ext"] for r in x} == {"treino_ext", "teste_ext"}, "lista externa: domínio ou divisão"
-    assert all(r["cadeia"] == "-1" and r["fold"] == "-1" for r in x), "lista externa: só treina (fold −1)"
-    lado = {}
-    for r in x:         # os quadros de um prato ficam do mesmo lado; um quadro preferido por prato
-        assert lado.setdefault(r["grupo"], r["split_ext"]) == r["split_ext"], "lista externa: grupo dos dois lados da divisão"
-    pref = {}
-    for r in x:
-        pref[r["grupo"]] = pref.get(r["grupo"], 0) + (r["quadro_preferido"] == "1")
-    assert set(pref.values()) == {1}, "lista externa: cada prato tem de ter exatamente um quadro preferido"
-    assert all(float(r["massa"]) > 0 and abs(sum(float(r[c]) for c in r if c.startswith("ff_")) - 1) < 2e-3 for r in x), "lista externa: massa ou frações"
-    assert all(r[c] == "" for r in x for c in ["proteina", "kcal", "gordura", "carbo"] + [c for c in r if c.startswith("p_")]), \
-        "lista externa: proteína, kcal, gordura, carboidrato e proteína por grupo têm de vir vazios (não são medidos)"
-    assert len({os.path.basename(r["arquivo"]) for r in x}) == len(x) and all(re.fullmatch(r"images/(train|val|test)/tray\d+_\d+_[\d.]+_(enter|identification)_[\d.]+\.png", r["arquivo"]) for r in x), "lista externa: caminho da foto"
-    # o que o kernel lê: mesma função, mesmos pesos; alvos fora do pré-registro ficam mascarados (NaN), proteína fraca nunca é lida
-    E = G.Dados(LISTAS, rodada="3", externo=os.path.join(AQUI, LISTA_EXTERNA), externo_pesos=G.EXTERNOS[EXTERNO]["pesos"])
-    e = E.ext
-    usados = sorted(int(i) for i in np.where(np.isfinite(e["T"]).any(0))[0])
-    assert usados == [G.I_M] + list(range(E.I_MG.start, E.I_MG.stop)), f"lista externa: alvos usados {usados}"
-    assert E.hash == D.hash and E.hash2 == D.hash2 == HASH_TESTE2 and E.todos == D.todos and E.chave == D.chave, "a base externa mudou as listas do Nutrition5k ou o teste2"
-    assert not [i for i in e["ids"] if not i.startswith(f"ext:{EXTERNO}:")], "lista externa: id fora do domínio"
-    r = e["resumo"]
-    assert r["n"] == r["n_lista"] - r["fora_por_oclusao"] - r["fora_por_nao_ser_o_quadro_preferido_do_teste_ext"] and r["teste_ext"] == r["grupos_teste_ext"], "lista externa: filtros do adendo de 12.5"
-    assert 0.15 <= r["grupos_teste_ext"] / r["grupos"] <= 0.25, "lista externa: a parte segurada tem de ficar perto de 20% dos pratos"
-    info = G.EXTERNOS[EXTERNO]
-    assert info["url"].startswith("https://zenodo.org/api/records/5850856/") and info["lista"] == os.path.basename(LISTA_EXTERNA)
-    fila = G.com_externo(G.configs_da_rodada("3"), EXTERNO)
-    assert sum(1 for c in fila if c.get("externo") and c["tipo"] != "ft") == 10 and all(not c.get("externo") or EXTERNO in c["nome"] for c in fila)
-    print(f"base externa {EXTERNO}: lista {e['hash']}, {len(x)} fotos de {len(lado)} pratos; sem id do Nutrition5k; teste2 e listas do Nutrition5k intocados "
-          f"(hash {D.hash} / {D.hash2}); o kernel usa {r['treino']} fotos de treino ({r['grupos_treino']} pratos) e {r['teste_ext']} pratos de teste_ext "
-          f"({r['fora_por_oclusao']} fotos fora por oclusão, {r['fora_por_nao_ser_o_quadro_preferido_do_teste_ext']} por não serem o quadro preferido); "
-          f"alvos usados: massa total e massa por grupo (+ frações por fonte)")
+    def le_como_no_kaggle(emb, esperadas):
+        """O kernel lê as listas embutidas como no Kaggle (as conferências de le_dominio4: nenhum prato do Nutrition5k,
+        papéis, folds, licença) e o teste2 e as listas do Nutrition5k não mudam."""
+        with tempfile.TemporaryDirectory() as t:
+            os.makedirs(os.path.join(t, "listas"))
+            for n, b in emb.items():
+                if n.startswith("listas/"):
+                    open(os.path.join(t, n), "wb").write(b)
+            E = G.Dados(os.path.join(t, "listas"), rodada="4")
+            assert sorted(E.dom) == sorted(esperadas) and sorted(E.dom_fora) == sorted(set(G.DOMINIOS4) - set(esperadas)), E.dom_fora
+            assert E.hash == D.hash and E.hash2 == HASH_TESTE2 and E.todos == D.todos, "o pacote mudou as listas do Nutrition5k ou o teste2"
+            for ch, d in E.dom.items():
+                assert d["lista_enxuta"] and np.isnan(d["T"][d["reg"]]).all() and np.isnan(d["FF"][d["reg"]]).all()
+                print(f"  {ch:9s} {d['resumo']} | {d['licenca']}, {d['uso_declarado']} | lista inteira {d['sha256_lista'][:16]}")
+    le_como_no_kaggle(emb, LIBERADAS)
+    print(f"listas: treino {len(tr)}, avaliação {len(av)}, teste2 {len(av2)} (hash {D.hash2}, intocado), treino_v2 {len(v2)} em {len(cad)} cadeias; interseções com o teste2 vazias")
+    print(f"notebook do repositório: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB, só bases liberadas {LIBERADAS}; nenhum arquivo ignorado pelo git, nenhum id nem licença das bases fechadas")
+    if len(sys.argv) > 2:       # notebook do push
+        pasta = os.path.abspath(sys.argv[2])
+        assert not dentro_do_repo(pasta), "a pasta do push está dentro do repositório"
+        emb_p = confere_nb(json.load(open(os.path.join(pasta, os.path.basename(NOTEBOOK)))), "push")
+        assert os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) < 1_000_000, "notebook do push com mais de 1 MB"
+        le_como_no_kaggle(emb_p, LIBERADAS + FECHADAS)
+        mp = json.load(open(os.path.join(pasta, "kernel-metadata.json")))
+        assert mp["id"].endswith("/" + SLUG) and mp["code_file"] == os.path.basename(NOTEBOOK)
+        print(f"notebook do push em {pasta}: em dia, seis bases, {os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) / 1e6:.2f} MB; "
+              f"id {mp['id']}, dataset_sources {mp['dataset_sources']}")
+    elif meta["id"].startswith("USUARIO_KAGGLE/"):
+        print("o push usa a pasta montada por `monta_pacote.py push <pasta> --usuario <seu usuário>` (fora do repositório), não esta")
+    print("confere: ok")
 
 
 if __name__ == "__main__":
-    {"listas": listas, "notebook": notebook, "confere": confere}[sys.argv[1] if len(sys.argv) > 1 else "confere"]()
+    {"listas": listas, "notebook": notebook, "push": push, "confere": confere}[sys.argv[1] if len(sys.argv) > 1 else "confere"]()

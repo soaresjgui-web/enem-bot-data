@@ -4,6 +4,19 @@
 Uso: python3 eval/treino/kaggle/ingere_kaggle.py <pasta baixada com `kaggle kernels output`>
          [--ensaio DIR] [--so-confere] [--referencia PASTA] [--substitui]
 
+Saída da execução 4 (seção 13; treino_v2 + bases externas) — nada aqui lê rótulo de avaliação, nada é pontuado e nada é
+escolhido (a regra de 13.9 roda depois, na CPU):
+  1. Monta as listas exatamente como o pacote do Kaggle (monta_pacote.conteudo: versões enxutas, sem rótulo nas partes
+     de registro) e confere hash de treino_v2 e do teste2, e por base o hash da lista e da tabela de divisão.
+  2. Em cada pred__*.npz: ids e ordem do treino e do teste2, folds, as três variantes de orientações, frações; para cada
+     base pronta, extcv__ (fotos de treino, na ordem da lista, com o fold em que validam) e extreg__ (registro, registro
+     misto, avaliação fraca do SNAPMe), completas e finitas; a procedência (`so_comercial_ok` como em 13.8).
+  3. Paridade com o D1 da execução 3 (13.7), refeita aqui a partir de R0 e H0 (ref_d1_r3.csv); se falhar, nada é gravado.
+  4. Sem --so-confere: copia cada configuração completa para <TD>/resultados/zen_banco_r4/<nome>.npz e o resumo em
+     ingestao_kaggle_r4.json (estado, aceitação dos ajustes finos de 13.7, procedência, o que faltou e por quê).
+  As listas das bases fechadas (OmniFood8K, FPB, SNAPMe) e as tabelas de divisão delas são procuradas como no
+  monta_pacote.py (listas/, --divisoes, NUTRELLE_SCRATCH); sem elas, essas bases não são conferidas e o script avisa.
+
 Saída da execução 3 (seção 12.3; treino_v2, só teste2) — nada aqui lê gabarito de avaliação e nada é escolhido:
   1. Confere as listas (hash de treino_v2.csv e de aval2_ids.csv), e em cada pred__*.npz: ids e ordem do treino e do
      teste2, folds, formatos, nenhuma previsão faltando nem valor não finito, as três variantes de orientações, as
@@ -45,7 +58,7 @@ Saída COM teste2 (execução 2, seção 11) — nada aqui lê gabarito de avali
 --ensaio DIR  não toca em nada de <TD>/resultados: grava e avalia em DIR. É obrigatório para saídas de --smoke.
 --so-confere  só as conferências do passo 1.
 """
-import argparse, glob, json, os, shutil, sys
+import argparse, csv, glob, json, os, shutil, sys
 import numpy as np
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -211,7 +224,7 @@ def rodada2(a, L, M, entradas, problemas, res_real):
 def rodada3(a, M, raiz):
     """Conferências da saída da execução 3 (ver o cabeçalho). Sem gabarito de avaliação."""
     L = G.Dados(os.path.join(AQUI, "listas"), rodada="3")
-    if M.get("formato") != G.FORMATO or M["listas_hash"] != L.hash or M.get("listas2_hash") != L.hash2:
+    if M.get("formato") not in G.FORMATOS_ACEITOS or M["listas_hash"] != L.hash or M.get("listas2_hash") != L.hash2:
         raise SystemExit(f"listas ou formato diferentes dos desta pasta (manifesto: {M.get('formato')}, {M['listas_hash']}, {M.get('listas2_hash')}; "
                          f"aqui: {G.FORMATO}, {L.hash}, {L.hash2})")
     import csv
@@ -374,6 +387,125 @@ def rodada3(a, M, raiz):
     print(f"\n{len(entradas)} configurações gravadas em {dest} (todas as chaves de pred__*.npz). Nenhum gabarito de avaliação foi lido e nada foi escolhido aqui.")
 
 
+def rodada4(a, M, raiz):
+    """Conferências da saída da execução 4 (ver o cabeçalho). Sem rótulo de avaliação: só lê os rótulos do treino."""
+    import tempfile
+    import monta_pacote as P
+    if a.divisoes:
+        sys.argv += ["--divisoes", a.divisoes]
+    try:
+        arqs, variante = P.conteudo("push"), "completo"
+    except FileNotFoundError as e:
+        arqs, variante = P.conteudo("repo"), f"só bases liberadas ({e})"
+    t = tempfile.mkdtemp(prefix="ingere_r4_")
+    os.makedirs(os.path.join(t, "listas"))
+    for n, b in arqs.items():
+        if n.startswith("listas/"):
+            open(os.path.join(t, n), "wb").write(b)
+    L = G.Dados(os.path.join(t, "listas"), rodada="4")
+    shutil.rmtree(t)
+    if M.get("formato") not in G.FORMATOS_ACEITOS or M["listas_hash"] != L.hash or M.get("listas2_hash") != L.hash2:
+        raise SystemExit(f"listas ou formato diferentes dos desta pasta (manifesto: {M.get('formato')}, {M['listas_hash']}, {M.get('listas2_hash')}; aqui: {L.hash}, {L.hash2})")
+    n, n2, N, K = len(L.ids), len(L.conj["teste2"]), L.N, len(L.fontes)
+    print(f"listas ({variante}): treino_v2 {n} pratos (hash {L.hash}); teste2 {n2} pratos, fora do treino (hash {L.hash2})")
+    print(f"saída do Kaggle: {M['formato']}, rodada 4, {M['inicio']}, {M.get('duracao_min')} min, GPUs {M['gpus'] or 'nenhuma'}, torch {M.get('torch')}, timm {M.get('timm')}, smoke={M['smoke']}")
+    for ch, v in (M.get("dominios") or {}).items():
+        aqui = L.dom.get(ch) if "sha256_lista" in v else None
+        bate = aqui is not None and v.get("sha256_lista") == aqui["sha256_lista"] and v.get("sha256_divisao") == aqui["sha256_divisao"]
+        print(f"  base {ch:9s} {v.get('situacao')}" + (f" | {v.get('licenca')}, {v.get('uso_declarado')} | lista e divisão " + (
+            "iguais às desta máquina" if bate else "NÃO CONFERIDAS (sem a lista aqui)" if aqui is None else "DIFERENTES das desta máquina") if "sha256_lista" in v else ""))
+        if aqui is not None and not bate:
+            raise SystemExit(f"a lista ou a divisão de {ch} usada no Kaggle não é a desta máquina")
+    parcial = bool(M["smoke"])
+    if parcial and not (a.ensaio or a.so_confere):
+        raise SystemExit("Saída de --smoke: use --so-confere ou --ensaio DIR.")
+    cfgs = {c["nome"]: c for c in G.todas_as_configs()}
+    comerciais = {"R0", "R1", "H0", "F1", "F2", "P1"}
+    entradas, problemas = {}, []
+    for arq in sorted(glob.glob(os.path.join(raiz, "pred__*.npz"))):
+        z = dict(np.load(arq, allow_pickle=False))
+        nome = str(z["nome"]); c = cfgs.get(nome, {})
+        try:
+            assert c.get("v4"), "configuração fora da rodada 4"
+            assert str(z["listas_hash"]) == L.hash and str(z["listas2_hash"]) == L.hash2, "hash das listas"
+            assert list(z["ids_treino"]) == L.ids and np.array_equal(z["fold"], L.fold) and list(z["ids_teste2"]) == L.conj["teste2"], "ids, ordem ou folds"
+            usa = (~np.isnan(z["oof"][:, 0]), ~np.isnan(z["teste2"][:, 0])) if parcial else (np.ones(n, bool), np.ones(n2, bool))
+            tem_ff = "oof_ff" in z
+            for suf in G.ORIENT:
+                for ch_, m, u in (("oof", n, usa[0]), ("teste2", n2, usa[1])):
+                    v = z[ch_ + suf]
+                    assert v.shape == (m, N) and np.isfinite(v[u]).all(), f"{ch_ + suf} faltando, fora de formato ou não finito"
+                    if tem_ff:
+                        f = z[ch_ + "_ff" + suf]
+                        assert f.shape == (m, K) and np.abs(f[u].sum(1) - 1).max() < 1e-3, f"frações de {ch_ + suf}"
+            feitos = [str(x) for x in z["dominios"]]
+            listas_ext = json.loads(str(z["listas_ext"]))
+            for ch in feitos:
+                d = L.dom.get(ch)
+                if d is None:
+                    continue
+                assert parcial or listas_ext[ch]["hash"] == d["hash"], f"{ch}: fotos de outra lista"
+                pos = {x: i for i, x in enumerate(d["ids"])}
+                for pre, sel in (("extcv", d["treina"]), ("extreg", d["reg"])):
+                    ids = [str(x) for x in z[f"{pre}_ids__{ch}"]]
+                    if parcial:     # --smoke: um recorte das fotos, na ordem da lista e do papel certo
+                        assert all(x in pos and sel[pos[x]] for x in ids) and [pos[x] for x in ids] == sorted(pos[x] for x in ids), f"{pre} de {ch}: ids, ordem ou papel"
+                    else:
+                        assert ids == [d["ids"][i] for i in np.where(sel)[0]], f"{pre} de {ch}: ids ou ordem"
+                    assert z[f"{pre}__{ch}"].shape == (len(ids), N) and np.isfinite(z[f"{pre}__{ch}"]).all(), f"{pre} de {ch}: faltando ou não finito"
+                    if pre == "extcv":
+                        assert list(z[f"extcv_fold__{ch}"]) == [d["fold_ext"][pos[x]] for x in ids], f"{ch}: fold em que cada foto valida"
+                    else:
+                        assert list(z[f"extreg_papel__{ch}"]) == [d["papel"][pos[x]] for x in ids], f"{ch}: papel das fotos de registro"
+            proc = json.loads(str(z["procedencia"]))
+            ap_ = c.get("apelido")
+            assert proc["so_comercial_ok"] == (ap_ in comerciais), f"procedência: so_comercial_ok = {proc['so_comercial_ok']}"
+            assert M["configs"].get(nome, {}).get("estado") == "completa", f"estado no manifesto: {M['configs'].get(nome, {}).get('estado')}"
+        except (AssertionError, KeyError) as e:
+            problemas.append(f"{nome}: {type(e).__name__}: {e}")
+            continue
+        entradas[nome] = z
+    print(f"\n{'':4s}{'configuração':44s} | estado        | previsões | CV: RMSE log-massa | aceitação (13.7) | só dados comerciais | bases externas com previsão")
+    for nome, ic in M["configs"].items():
+        if not ic.get("apelido"):
+            continue
+        cv = ic.get("cv_treino") or {}
+        ac = cv.get("aceitacao")
+        print(f"{ic['apelido']:4s}{nome[:44]:44s} | {ic['estado']:13s} | {'ok' if nome in entradas else '—':9s} | {cv.get('rmse_logm', float('nan')):.4f}             | "
+              f"{('passou' if ac['passou'] else 'NÃO passou') if ac else '':16s} | {str(ic.get('so_comercial_ok')):19s} | "
+              + (", ".join(str(x) for x in entradas[nome]["dominios"]) if nome in entradas else ""))
+    for p_ in problemas:
+        print("  RECUSADA:", p_)
+    faltam = [x for x in (G.RODADAS["4"] if not parcial else []) if cfgs[x]["tipo"] not in ("externo", "feat") and x not in entradas]
+    if faltam:
+        print("  não vieram (orçamento, falha, base ausente):", faltam)
+    # paridade com o D1 da execução 3, refeita aqui
+    r0, h0 = (next((nm for nm in entradas if cfgs[nm].get("apelido") == x), None) for x in ("R0", "H0"))
+    par = dict(passou=False, motivo="R0 ou H0 não vieram")
+    if r0 and h0:
+        ref = {r["dish_id"]: [float(r[k]) for k in ("log_massa_o1", "log_massa_o8", "log_dens_regressao_o1", "log_dens_fracoes_o1")]
+               for r in csv.DictReader(open(os.path.join(AQUI, "listas", G.REF_D1)))}
+        par = G.paridade_d1(L, entradas[r0], entradas[h0], ref)
+    print(f"\nparidade com o D1 da execução 3 (13.7), refeita aqui: {'OK' if par['passou'] else 'FALHOU: ' + str(par.get('motivo'))}"
+          + (f" | correlações {', '.join(f'{k} {v:.5f}' for k, v in par['corr'].items())} | critério de CV do D1 {par['criterio_cv_d1']:.2f}% (71,3 ± 0,3)" if "corr" in par else "")
+          + f" | no kernel: {(M.get('paridade_d1') or {}).get('passou')}")
+    if a.so_confere:
+        return print(f"\nconferências feitas: {len(entradas)} configurações aceitas, {len(problemas)} recusadas (nada gravado; nenhuma previsão de registro ou do teste2 foi pontuada)")
+    if not par["passou"] and not parcial:
+        raise SystemExit("A paridade com o D1 falhou: nada é gravado no banco (13.7). As previsões continuam na pasta de saída.")
+    res = os.path.join(os.path.abspath(a.ensaio), "resultados") if a.ensaio else os.path.join(zen_comum.TD, "resultados")
+    dest = os.path.join(res, "zen_banco_r4")
+    os.makedirs(dest, exist_ok=True)
+    for nome, z in entradas.items():
+        np.savez(os.path.join(dest, nome + ".npz"), **z)
+    json.dump(dict(pasta=os.path.abspath(a.pasta), manifesto={k: M.get(k) for k in ("formato", "rodada", "inicio", "duracao_min", "gpus", "torch", "timm", "listas_hash",
+                                                                                     "listas2_hash", "dominios", "paridade_d1", "confianca", "tamanho_saida")},
+                   paridade_refeita=par, ingeridas=sorted(entradas), recusadas=problemas, faltam=faltam,
+                   configs={nm: {k: M["configs"][nm].get(k) for k in ("apelido", "estado", "cv_treino", "treinado_com", "so_comercial_ok", "confiavel")} for nm in M["configs"]}),
+              open(os.path.join(res, "ingestao_kaggle_r4.json"), "w"), indent=1, ensure_ascii=False)
+    print(f"\n{len(entradas)} configurações gravadas em {dest} (todas as chaves de pred__*.npz). Nada foi pontuado nem escolhido aqui (13.9 roda depois).")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("pasta")
@@ -381,8 +513,11 @@ def main():
     ap.add_argument("--so-confere", action="store_true")
     ap.add_argument("--referencia", help="execução 1 para a paridade: pasta de banco ou de saída do Kaggle (padrão: <TD>/resultados/zen_banco)")
     ap.add_argument("--substitui", action="store_true", help="saída com teste2: troca também as entradas do zen_banco e roda zen_avalia (lê o teste antigo)")
+    ap.add_argument("--divisoes", help="execução 4: pasta com as listas e tabelas de divisão das bases fechadas (fora do repositório)")
     a = ap.parse_args()
     man = sorted(glob.glob(os.path.join(a.pasta, "**", "manifesto.json"), recursive=True))
+    if man and json.load(open(man[0])).get("rodada") == "4":       # execução 4: treino_v2 + bases externas
+        return rodada4(a, json.load(open(man[0])), os.path.dirname(man[0]))
     if man and json.load(open(man[0])).get("rodada") == "3":       # execução 3: treino_v2, só teste2
         return rodada3(a, json.load(open(man[0])), os.path.dirname(man[0]))
     D = zen_comum.Dados()

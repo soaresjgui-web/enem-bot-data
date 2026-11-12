@@ -472,10 +472,13 @@ def proxima_acao(cfgs, estado, cabe, gpu=None):
         if not pend or c["tipo"] in ("externo", "decisao"):       # preparo da base externa e decisão: fora das GPUs
             continue
         deps = [por_nome[d] for d in c.get("depende", []) if d in por_nome]
-        mortas = [d["nome"] for d in deps if estado_config(est(d)) != "completa" and not viva(d)]
+        # dependência pronta = todas as partes dela feitas, menos a parte tardia (as previsões nas fotos externas da
+        # rodada 4 não são entrada de ninguém): assim R1 a R4 não esperam o R0 terminar as previsões externas
+        pronta = lambda d: all(est(d)[p]["estado"] == Estado.FEITA.value for p in partes_de(d) if p != d.get("tardia", {}).get("parte"))
+        mortas = [d["nome"] for d in deps if not pronta(d) and not viva(d)]
         if mortas:
             return "cancela", c, f"dependência não ficou pronta: {mortas[0]}"
-        if any(estado_config(est(d)) != "completa" for d in deps):
+        if any(not pronta(d) for d in deps):
             bloqueio = espera = True
             continue
         if bloqueio and not c.get("livre"):
@@ -3001,14 +3004,14 @@ def prepara_dominio4(a, D, ch):
     if falta:
         raise IOError(f"{len(falta)} fotos da lista de {ch} não estão em {raiz} (ex.: {falta[:2]})")
     os.makedirs(pasta, exist_ok=True)
-    from PIL import Image
+    from PIL import Image, ImageOps
     t0, n = time.time(), len(d["ids"])
     mm = np.lib.format.open_memmap(os.path.join(pasta, "rgb.tmp.npy"), mode="w+", dtype=np.uint8, shape=(n, C.H, C.W, 3))
     cor = np.zeros((n, 3), np.float32)
     giradas = [0]
 
     def um(i):
-        im = Image.open(de(d["arquivos"][i])).convert("RGB")
+        im = ImageOps.exif_transpose(Image.open(de(d["arquivos"][i]))).convert("RGB")     # foto de celular: a orientação gravada no EXIF vale
         if im.size[1] > im.size[0]:             # retrato -> paisagem
             im = im.transpose(Image.ROTATE_90); giradas[0] += 1
         z = min(C.W / im.size[0], C.H / im.size[1])
@@ -4592,7 +4595,7 @@ def orquestra(a, cfgs):
         if a.rodada != "4" or "passou" in info["paridade_d1"]:
             return
         r0, h0 = (next((c for c in cfgs if c.get("apelido") == x), None) for x in ("R0", "H0"))
-        arqs = [os.path.join(a.saida, f"pred__{slug(c['nome'])}.npz") if c else "" for c in (r0, h0)]
+        arqs = [arq_parte(a.saida, c, "tudo") if c else "" for c in (r0, h0)]      # sai assim que as duas cabeças terminam (antes das previsões externas)
         if not all(os.path.exists(x) for x in arqs):
             if fim:
                 info["paridade_d1"] = dict(passou=False, motivo="R0 ou H0 não ficaram prontas: a paridade com o D1 não pôde ser conferida")
@@ -4692,6 +4695,7 @@ def orquestra(a, cfgs):
         for c in cfgs:
             if estado_config(estado[slug(c["nome"])]) == "completa":
                 fecha_config(c)
+        confere_paridade()          # retomada: R0 e H0 já em disco
         manifesto()
         nomes, todas = {c["nome"] for c in cfgs}, {c["nome"]: c for c in getattr(a, "_todas", None) or todas_as_configs()}
         for c in cfgs:      # dependência fora desta execução (--so): tem de estar pronta em disco
@@ -4783,7 +4787,7 @@ def orquestra(a, cfgs):
         tenta_decisao(); manifesto()
 
     rodando = {}        # processo -> (configuração, início) da parte em execução
-    reserva = 0 if a.sem_servico else 330        # tempo guardado para a fase de serviço dos candidatos a modelo único
+    reserva = 0 if a.sem_servico else 720 if a.rodada == "4" else 330    # tempo guardado para a fase de serviço (rodada 4: dois So400m e três ajustes finos)
 
     seg = lambda c: seg_parte(c, cfgs, estado)
 
@@ -4827,6 +4831,8 @@ def orquestra(a, cfgs):
             with trava:
                 if rc == SAI_OK and parte_pronta(a, c, p, D):
                     evento(c, p, tipo="concluiu", seg=seg)
+                    if c.get("apelido") in ("R0", "H0") and p == "tudo":
+                        confere_paridade()
                     if c.get("v4") and p == "ext":      # os pesos de cada fold só serviam para prever as fotos externas
                         for arq_m in glob.glob(os.path.join(a.saida, f"modelo__{slug(c['nome'])}__fold*.pt")):
                             os.remove(arq_m)

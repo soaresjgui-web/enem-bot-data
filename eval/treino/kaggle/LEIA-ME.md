@@ -1,16 +1,72 @@
-# Treino em GPU (Kaggle ou Colab) — seções 8, 10, 11 e 12, uma única foto de cima
+# Treino em GPU (Kaggle ou Colab) — seções 8, 10, 11, 12 e 13, uma única foto de cima
 
 Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descritos em `docs/dados/precisao/resultado_modelo_treinado.md`. A inferência usa sempre **uma** foto RGB zenital. O critério é o do produto: proteína dentro de ±20% ou ±5 g.
 
-**Estado (11/11/2026):**
+**Estado (12/11/2026):**
 
 - **Execução 1 (seção 10)** rodou no Kaggle: 2× T4, 15 configurações em ~5,7 h; a paridade com a CPU conferiu (RMSE 0,2550 contra 0,2551).
 - **Execução 2 (seção 11)** rodou no Kaggle: 11 configurações em 4,5 h de relógio (torch 2.11.0+cu130, timm 1.0.30), com previsões no teste2, arquivos de servir e `servico.json`; saída de 1,27 GB.
-- **Execução 3 (seções 12.3 a 12.5) está pronta para o push e ainda não rodou em GPU.** É o padrão do script (`--rodada 3`) e do notebook. Foi testada só em CPU, com um backbone minúsculo, 40 pratos e 19 fotos do Flavoria; os tempos abaixo são estimativas feitas com os tempos medidos na execução 2.
+- **Execução 3 (seções 12.3 a 12.5)** rodou no Kaggle: 23 configurações em 3,6 h; resultados em 12.6 e 12.7.
+- **Execução 4 (seção 13) está pronta para o push e ainda não rodou em GPU.** É o padrão do script (`--rodada 4`) e dos dois notebooks. Foi testada só em CPU, com backbones minúsculos, 40 pratos do Nutrition5k e de 4 a 24 fotos reais de cada base externa; os tempos abaixo são estimativas.
 
 Para baixar a saída é preciso acesso a `www.kaggleusercontent.com`.
 
-## O que a execução 3 faz
+## O que a execução 4 faz
+
+Seção 13 de `docs/dados/precisao/resultado_modelo_treinado.md`: o D1 da execução 3 (So400m congelado, cabeça ridge para a massa, cabeça de frações para a densidade) com mais bases de treino, cada uma só na cabeça que ela supervisiona, mais três ajustes finos pequenos e um ajuste fino parcial do So400m. **Nada é decidido dentro do kernel:** ele só grava previsões e métricas de CV das partes de treino; a regra de 13.9 roda depois, na CPU.
+
+| Prioridade | Apelido | Configuração | O que é | GPU | Min (estimativa) |
+|---|---|---|---|---|---|
+| 1 | | `gpu4 feat so400m n5k` e `gpu4 feat so400m <base>` | features do So400m: Nutrition5k com 8 orientações; bases de uma foto com 2 (original e 180°); OmniFood8K e SNAPMe com 1 | A | 29 + 39 |
+| 1 | R0 | `gpu4 ridge so400m` | cabeça ridge, só treino_v2: réplica da do D1 | A | 1 |
+| 1 | H0 | `gpu4 fracoes so400m` | cabeça de frações, só treino_v2: réplica da do D1 | A | 5 |
+| 1 | R1 a R4 | `gpu4 ridge so400m +ok`, `+ok+fpb`, `+omni`, `+tudo` | R0 com a **massa total** de Flavoria, LeFood e Mensa; + FPB; só OmniFood8K; as cinco | A | 2, 2, 2, 3 |
+| 1 | H1 | `gpu4 fracoes so400m +omni` | H0 + OmniFood8K com os alvos de 13.4 | A | 8 |
+| 2 | F1 | `gpu4 ft siglip2_b16_224 r2 fracoes` | receita r2 + cabeça de frações com a perda corrigida (α, 13.7) | B | 64 |
+| 3 | P1 | `gpu4 ftparcial so400m` | ajuste fino parcial: 4 últimos blocos, norma, agrupador e cabeças; 6 épocas | A | 150 |
+| 4 | F3 | `gpu4 ft siglip2_b16_224 r2 +tudo` | receita do U0 sem mudança + as cinco bases | B | 96 |
+| 5 | H2 | `gpu4 fracoes so400m +omni+ff` | H1 + frações por fonte das bases de massa (peso 0,5) | A | 10 |
+| 6 | F2 | `gpu4 ft siglip2_b16_224 r2 fracoes faixa` | F1 + peso por faixa | B | 64 |
+
+- **Bases externas** (uma lista e uma tabela de divisão de `eval/treino/externo_r4_divide.py` por base). Todas baixam numa linha à parte desde o minuto zero, com novas tentativas, retomada e conferência, e prazo de 40 min; a que não chegar fica de fora, as configurações que dependem dela são canceladas e o manifesto diz por quê (`dominios.<base>.situacao`):
+
+  | Base | Licença, uso | De onde | Conferência |
+  |---|---|---|---|
+  | Flavoria | CC BY 4.0, comercial | Zenodo 5850856, um `.tar` de 2,58 GB | tamanho e md5 |
+  | LeFood-Set | CC BY 4.0, comercial | Mendeley Data, foto a foto (coluna `url`) | imagem íntegra |
+  | GT Mensa | CC BY 4.0, comercial | GitHub (raw), foto a foto | imagem íntegra |
+  | FPB, só de cima | CC BY-NC 4.0 | Hugging Face, foto a foto (`resolve/main/<arquivo>`) | tamanho e sha256 de cada foto |
+  | OmniFood8K | CC BY-NC 4.0 | espelho anexado ao kernel (árvore ou o zip); senão Google Drive (um zip de 2,73 GB), com a confirmação de arquivo grande | tamanho e CRC de cada foto |
+  | SNAPMe | CC BY-SA 4.0, autores pedem para não treinar | Figshare 44532971, `.tar.gz` de 2,03 GB | tamanho e integridade do gzip |
+
+  O **SNAPMe nunca treina**: só tem as fotos previstas por todas as configurações, cruas, para a avaliação fraca feita depois na CPU.
+- **Partes de registro fechadas (13.8).** Ao carregar cada base, o kernel apaga as colunas de alvo de toda linha que não é `treino` (`registro`, `registro_misto`, `avaliacao_fraca`); o notebook já vai com essas colunas vazias. O kernel não pontua nenhuma foto de registro nem o teste2: grava as previsões cruas e mais nada. O `--autoteste` confere isso.
+- **Como cada base supervisiona (13.4):** bases de massa só na cabeça de massa (R1 a R4) e no F3; o OmniFood8K na cabeça de densidade (H1, H2) com massa 1, nutrição 1 (0,5 com osso ou casca, 0 sem nutrição), grupos e frações 0,5; peso igual por grupo dentro da base, soma `min(0,5; grupos ÷ 2.281)` × a do Nutrition5k, todos reescalados se a soma passar de 1; viés por domínio retirado dos alvos extensivos (não da densidade nem das frações); fotos de outra base sempre encaixadas num quadro 4:3 com a cor mediana da borda, retrato girado para paisagem.
+- **Validação cruzada conjunta:** cada foto de treino de uma base externa valida no fold dela (`fold_ext`) e não treina nos `folds_proibidos` (no OmniFood8K, os folds de todos os pratos da cena).
+- **Conferência de paridade (13.7):** assim que R0 e H0 terminam, o kernel compara as previsões fora-do-fold delas com as do D1 da execução 3 (`listas/ref_d1_r3.csv`): correlação de 0,999 ou mais na massa (1 e 8 orientações) e nas duas densidades, e o critério de CV do D1 em 71,3 ± 0,3. Se falhar, `manifesto.json` marca tudo como não confiável (`confianca`, `confiavel` em cada configuração) e a ingestão não grava nada no banco.
+- **Ajustes finos com frações (F1, F2, P1):** perda = `L_rot` + α × (`L_frac` + `L_dens`), com α = min(1, ‖∂L_rot/∂f‖ ÷ ‖∂(L_frac + L_dens)/∂f‖) recalculado a cada passo e suavizado em 20 passos; logits das frações a partir de zero, com passo 10×; backbone parado na primeira época. O registro grava por época `L_rot`, `L_frac`, `L_dens` e `alfa`, e o `log__` traz a aceitação de 13.7 (RMSE de log-massa da última época não maior que o da época 0, média dos folds).
+- **O que cada configuração grava:** `pred__<config>.npz` com `oof`, `teste2` (1, 4 e 8 orientações), frações quando há, e para cada base `extcv__<base>` (fotos de treino, pelo modelo do fold em que validam) e `extreg__<base>` (registro, registro misto e avaliação fraca, pelo modelo final), cruas, com os ids, o fold e o papel; `vies__<base>` por fold; `procedencia` (13.8: `treinado_com` e `so_comercial_ok`); hashes de todas as listas e tabelas. Para servir: cabeças finais com conferência de remontagem (inclusive as de frações), pesos dos ajustes finos (o P1 só com os tensores treinados) e `servico.json` (T4 e CPU, 1 orientação: o So400m com as duas cabeças juntas, o P1 e os três ajustes finos).
+
+**Tempo e tamanho (estimativa, 2 × T4, com a fila simulada pelas mesmas funções do escalonador):** GPU A ~241 min (features 68, cabeças 31, P1 150 incluindo ~30 min de previsões nas 27,5 mil fotos externas), GPU B ~224 min (F1, F3, F2; ela também pega trabalho da A quando fica sem o seu), mais ~12 min de serviço: **~4,2 h de relógio**, dentro de `ORCAMENTO_H = 4.5`. Com 5% a mais de tempo que o estimado, o P1 não cabe e é cancelado pela projeção de tempo, como 13.6 prevê; sem o OmniFood8K, R3, R4, H1, H2 e F3 caem e a execução termina em ~3,3 h. Saída: ~0,9 GB (três `pesos__` de ~186 MB, o do P1 com ~150 MB, as partes das cabeças de frações com os pesos de cada fold). Cache em `/kaggle/temp`: ~31 GB (as fotos decodificadas do OmniFood8K são 14,5 GB).
+
+### Dois notebooks: o do repositório e o do push
+
+- `nutrelle_treino_gpu.ipynb` (no repositório, `python3 monta_pacote.py notebook`): só as bases **liberadas** (Flavoria, LeFood, Mensa). Roda sozinho: OmniFood8K, FPB e SNAPMe ficam de fora e o manifesto diz por quê. É a quarta execução "só com dados que podem ser refeitos comercialmente".
+- Notebook completo (`python3 monta_pacote.py push <pasta fora do repositório> --usuario <seu usuário> [--espelho-omnifood <usuário>/<dataset>]`): as seis bases. As listas e tabelas de divisão das bases fechadas são ignoradas pelo git e lidas de `listas/`, de `--divisoes <pasta>` ou da variável `NUTRELLE_SCRATCH` (e das subpastas `listas_nc/` e `listas_r4/` dela). **Não commitar essa pasta.**
+- `python3 monta_pacote.py confere [<pasta do push>]` falha se o notebook do repositório estiver desatualizado ou embutir qualquer arquivo ignorado pelo git, id (`omn_`, `fpb_`, `snp_`) ou licença de uma base fechada; com a pasta, confere também o notebook completo. Os dois ficam abaixo de 1 MB (listas enxutas, comprimidas com lzma).
+- **Espelho do OmniFood8K (recomendado):** o Google Drive corta por cota. Crie um dataset **privado** do Kaggle com o arquivo `0-OminiFood8k.zip` (2.731.585.789 bytes) do Drive, como está (o Kaggle pode extraí-lo; o kernel aceita a árvore extraída `0-OminiFood8k/8036/<cena>/camera_<k>.jpg` em qualquer nível até 4 pastas abaixo de `/kaggle/input`, ou o próprio zip), e passe `--espelho-omnifood <usuário>/<slug>` ao `push`, que o põe em `dataset_sources`. Sem o espelho, o kernel tenta o Drive.
+
+**O que olhar nas primeiras linhas do registro** (`kaggle kernels logs <usuário>/nutrelle-treino-gpu-r4`):
+
+1. `nutrelle-treino-gpu/4 | rodada 4: 25 configurações | treino 2281 pratos, avaliação teste2 829 | listas 460c298cb8e57fb0, teste2 4aad94d89dc2440e | orçamento 4.5 h`.
+2. Uma linha por base: `base externa omnifood (13.3): {'fotos': 15741, 'treino': 11586, 'grupos_treino': 3862, 'registro': 1928, 'registro_misto': 2227} | CC BY-NC 4.0, nao_comercial | lista fd6caa4415e4e652 (versão enxuta no pacote) …`; nas outras: flavoria 1848/1493/1001/355, lefood 811/661/433/150, mensa 200/166/166/34, fpb 2418/2106/747/312, snapme 1163 de avaliação fraca. `ATENÇÃO: a base externa … fica de FORA` diz o que não entrou.
+3. `[cuda:1] começa gpu4 ft siglip2_b16_224 r2 fracoes | fold0` logo no começo (a GPU B não espera as features).
+4. Nos primeiros 40 min: `base externa <base>: … baixados e conferidos` e `cache das fotos de <base>: … fotos`; o OmniFood8K diz se veio do espelho ou do Drive.
+5. Perto de 35 min: `== PARIDADE com o D1 da execução 3 (13.7): OK | correlação fora-do-fold: massa 1.0000 …, critério de CV do D1 71.29%`. Se sair `FALHOU`, nada desta execução deve ser lido.
+6. No F1, época 1 com `so_cabeca: True` e `alfa` perto de 1; nas seguintes, `alfa` abaixo de 1 se o termo das frações dominar; `L_rot` não pode subir.
+7. Nas linhas `== <config>: CV no treino`, a massa nas fotos de treino das bases externas (com a constante do domínio) e, nos ajustes finos, `aceitação (13.7): … PASSOU/NÃO PASSOU`.
+
+## O que a execução 3 fez
 
 Treina com `listas/treino_v2.csv` (2.281 pratos, 646 cadeias, folds novos, frações da massa por fonte de proteína) e prevê **só o teste2** (829 pratos, sem gabarito). As fotos do teste2 passam apenas pelos modelos finais, para gerar previsões: não entram em treino, destilação, nem em nada sem rótulo. Os 450 pratos da avaliação antiga não são previstos (parte deles agora é treino).
 
@@ -84,7 +140,9 @@ O ajuste fino em GPU não repete bit a bit; o ridge sobre backbone congelado dev
 | `listas/treino.csv`, `listas/aval_ids.csv` | Os 1.684 pratos do treino estrito com cadeia, fold e alvos; os 450 ids de avaliação **sem gabarito**. |
 | `listas/aval2_ids.csv` | Os 829 ids do teste2, **sem gabarito** (gravado por `eval/treino/teste2_monta.py`). |
 | `listas/treino_v2.csv` | Os 2.281 pratos do treino da seção 12, com cadeia, fold, alvos e frações por fonte (gravado por `eval/treino/treino_v2_monta.py`). |
-| `listas/externo_flavoria.csv` | Rótulos do Flavoria, uma linha por foto, e o caminho de cada foto dentro do `.tar` do Zenodo (gravado por `eval/dados_ext/flavoria_monta.py`). Nenhuma imagem. |
+| `listas/externo_<base>.csv` | Rótulos de uma base externa e onde está cada foto (gravados por `eval/dados_ext/<base>_monta.py`). Nenhuma imagem. Os do OmniFood8K, FPB e SNAPMe são ignorados pelo git (licença não comercial ou compartilha-igual). |
+| `listas/divisao_r4_<base>.csv` | Divisão da quarta execução (papel, fold, folds proibidos, quadro da métrica), de `eval/treino/externo_r4_divide.py`. As das bases fechadas também são ignoradas pelo git. |
+| `listas/ref_d1_r3.csv` | Previsões fora-do-fold das duas cabeças do D1 na execução 3, para a conferência de paridade (13.7). |
 | `monta_pacote.py` | Regrava as listas e o notebook; `confere` verifica se o notebook está em dia, se o teste2 é o mesmo da execução 2 (conteúdo fixado) e não cruza com nenhum treino, e se a lista externa não traz prato do Nutrition5k nem alvo fora do pré-registro. |
 | `conjuntos_gpu.json` | Conjuntos (médias) declarados antes de qualquer resultado de GPU. |
 | `ingere_kaggle.py` | Confere a saída e a leva para os bancos de previsões (ver "Trazer os resultados"). |
@@ -97,11 +155,12 @@ As listas só têm ids e metadados públicos do Nutrition5k (CC BY 4.0) e rótul
 pip install kaggle
 export KAGGLE_API_TOKEN=...                    # ou ~/.kaggle/access_token (ou o kaggle.json antigo)
 cd eval/treino/kaggle
-# troque USUARIO_KAGGLE pelo seu usuário em kernel-metadata.json ("id"), numa cópia fora do repositório
-python3 monta_pacote.py confere
-kaggle kernels push -p .                       # cria uma versão nova do mesmo notebook e já roda (Save & Run All)
-kaggle kernels status USUARIO/nutrelle-treino-gpu      # ou: kaggle kernels logs USUARIO/nutrelle-treino-gpu --follow
-kaggle kernels output USUARIO/nutrelle-treino-gpu -p <pasta_saida>
+export NUTRELLE_SCRATCH=<pasta com listas_nc/ e listas_r4/>      # as listas e tabelas das bases fechadas, fora do repositório
+python3 monta_pacote.py push <pasta_push> --usuario <seu usuário> --espelho-omnifood <seu usuário>/<dataset do OmniFood8K>
+python3 monta_pacote.py confere <pasta_push>
+kaggle kernels push -p <pasta_push>            # execução 4: kernel novo, nutrelle-treino-gpu-r4 (o do repositório fica com USUARIO_KAGGLE)
+kaggle kernels status USUARIO/nutrelle-treino-gpu-r4      # ou: kaggle kernels logs USUARIO/nutrelle-treino-gpu-r4 --follow
+kaggle kernels output USUARIO/nutrelle-treino-gpu-r4 -p <pasta_saida>
 ```
 
 A conta precisa estar verificada por telefone para ter GPU e internet. `"docker_image_pinning_type": "original"` pede o mesmo ambiente da primeira versão do notebook (execução 1: torch 2.11.0+cu130); as versões de torch e timm usadas ficam nas primeiras linhas do registro e em `manifesto.json`. A saída da execução 2 tem 1,27 GB e a da execução 3, cerca de 0,7 GB, quase tudo em `pesos__*.pt`; para baixar sem os pesos: `--file-pattern '^(?!pesos__)'`. O usuário real do Kaggle nunca entra no repositório: `kernel-metadata.json` fica com `USUARIO_KAGGLE`.
@@ -212,14 +271,14 @@ Duas pseudo-configurações usam a mesma máquina de estados, sem ocupar GPU: `e
 ## Teste rápido em CPU
 
 ```
-python3 treino_gpu.py --autoteste
-python3 treino_gpu.py --smoke --saida <pasta> --cache <pasta_cache>     # execução 3: ~3 min, 40 pratos + 4 do teste2, ViT-Ti, com a fase de serviço
-python3 treino_gpu.py --smoke --externo flavoria --externo-imagens <pasta com algumas fotos do Flavoria> --saida <pasta> --cache <pasta_cache>
+python3 treino_gpu.py --autoteste             # inclui o fechamento dos rótulos de registro, pesos por base, procedência, paridade, fila da execução 4
+python3 treino_gpu.py --smoke --listas <pasta com todas as listas e tabelas> --externo-imagens <pasta com uma subpasta de fotos por base> --saida <pasta> --cache <pasta_cache>
+python3 treino_gpu.py --rodada 3 --smoke --saida <pasta> --cache <pasta_cache>     # execução 3: ~3 min, 40 pratos + 4 do teste2, ViT-Ti
 python3 treino_gpu.py --rodada 2 --smoke --saida <pasta2> --cache <pasta_cache2>   # execução 2
 python3 ingere_kaggle.py <pasta> --so-confere
 ```
 
-Com `--externo-imagens`, o teste usa só as linhas da lista cujas fotos estão na pasta (até 16 de treino e 8 pratos de `teste_ext`) e não baixa nada.
+Na execução 4, com `--externo-imagens`, o teste usa de cada base só as fotos que estão em `<pasta>/<base>/` (com o caminho da lista ou só o nome do arquivo): algumas de treino em cada fold e algumas de registro; nada é baixado. Leva ~4 min em CPU e passa por todas as configurações, a paridade (que falha, de propósito: o backbone é outro) e a fase de serviço. Sem a pasta de uma base, o teste baixa as fotos dela de verdade (as bases de foto a foto, só as escolhidas; as de arquivo único, o arquivo inteiro).
 
 ## Dados e licenças
 

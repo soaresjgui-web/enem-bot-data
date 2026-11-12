@@ -6,5 +6,8 @@ __pycache__/
 eval/treino/kaggle/listas/externo_omnifood.csv
 eval/treino/kaggle/listas/externo_fpb.csv
 eval/treino/kaggle/listas/externo_snapme.csv
+eval/treino/kaggle/listas/divisao_r4_omnifood.csv
+eval/treino/kaggle/listas/divisao_r4_fpb.csv
+eval/treino/kaggle/listas/divisao_r4_snapme.csv
 eval/dados_ext/omnifood_arquivos.csv
 eval/dados_ext/snapme_arquivos.csv

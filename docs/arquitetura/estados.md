@@ -65,21 +65,39 @@ enum CaptureQuality: Codable, Equatable { case aligned, misaligned(FramingAlignm
 
 ## 2. Treino em GPU por partes (`eval/treino/kaggle/treino_gpu.py`)
 
-Ferramenta de treino, fora do app. Cada parte (configuração × `fold0`…`fold4`/`final`, ou `tudo` no ridge) tem um estado explícito, mudado só pela função pura `transicao(estado, evento)`, testada por `python3 treino_gpu.py --autoteste` e registrada em `eventos.jsonl` e `manifesto.json`.
+Ferramenta de treino, fora do app. Cada parte (configuração × `fold0`…`fold4`/`final`, `tudo` nas cabeças sobre features congeladas, `ext` nas previsões das fotos externas da quarta execução, `servico` na fase de serviço) tem um estado explícito, mudado só pela função pura `transicao(estado, evento)`, testada por `python3 treino_gpu.py --autoteste` e registrada em `eventos.jsonl` e `manifesto.json`.
 
 | De | Evento | Para |
 |---|---|---|
-| pendente | `retomou` (arquivo já existe) | feita |
+| pendente | `retomou` (arquivo já existe e foi feito com as mesmas listas) | feita |
 | pendente | `iniciou` | rodando |
 | pendente | `sem_orcamento` | sem_orcamento |
 | pendente | `reduziu_lote` (outra parte estourou a memória) | pendente, com lote menor |
-| pendente | `cancelou` (outra parte falhou ou ficou sem orçamento) | cancelada |
+| pendente | `cancelou` (outra parte falhou ou ficou sem orçamento; dependência que não vai ficar pronta; base externa ausente do pacote) | cancelada |
 | rodando | `concluiu` | feita |
 | rodando | `estourou_memoria` | pendente com lote ÷ 2 (até ÷ 4); depois, falhou |
 | rodando | `falhou` | pendente (1ª vez); falhou (2ª vez) |
 | rodando | `sem_orcamento` (a projeção de tempo não cabe) | sem_orcamento |
 
-A configuração é `completa` quando todas as partes estão `feita`; só então saem as previsões. Uma falha derruba só a configuração dela. Detalhes em `eval/treino/kaggle/LEIA-ME.md`.
+A configuração é `completa` quando todas as partes estão `feita`; só então saem as previsões. Uma falha derruba só a configuração dela e as que dependem dela.
+
+**Escalonador (o que cada processo faz a seguir).** Também funções puras, testadas sem GPU:
+
+| Função | Entrada → saída |
+|---|---|
+| `proxima_acao(configs, estado, cabe, gpu)` | → `roda` (primeira parte pendente, na ordem de prioridade, com as dependências prontas) \| `espera` \| `cancela` (dependência morta) \| `sem_orcamento` (decidido só quando chega a vez da configuração) \| `fim` |
+| `simula_orcamento(configs, estado, livres, seg_parte, limite)` | → quais configurações cabem inteiras no tempo que resta, em ordem de prioridade |
+| `seg_parte(config, configs, estado)` | → segundos por parte: mediana do que já foi medido, ou a estimativa corrigida pela razão medido/estimado do mesmo tipo |
+
+Mudanças da quarta execução (seção 13 de `docs/dados/precisao/resultado_modelo_treinado.md`):
+
+- **GPU preferida** (`gpu` na configuração): cada processo pega primeiro o trabalho da sua GPU (GPU A: features e cabeças do So400m, ajuste fino parcial; GPU B: os três ajustes finos pequenos) e só leva o da outra quando não tem nada seu para rodar. Na simulação do orçamento, as partes de uma configuração com GPU preferida contam só nela.
+- **Parte tardia** (`tardia`): a parte `ext` (previsões cruas nas fotos das bases externas) só roda depois das outras partes da configuração e quando todas as etapas de que ela depende já terminaram, bem ou mal. Uma dependência conta como pronta sem a sua parte tardia (R1 a R4 não esperam o R0 terminar as previsões externas).
+- **Etapas sem modelo na mesma máquina de estados:** `externo <base>` (baixar, conferir e preparar as fotos de uma base, numa linha à parte, desde o minuto zero; prazo de 40 min; `falhou` derruba por dependência só as configurações que usam aquela base) e `<prefixo> feat so400m <base>` (features congeladas de uma base). Base sem lista no pacote: a etapa dela é `cancelada` no início, com o motivo no manifesto.
+- **Conferência de paridade** (`paridade_d1`, função pura): assim que R0 e H0 terminam, compara com o D1 da execução 3; se falhar, o manifesto marca todas as configurações como `confiavel = false`. Não muda o estado de nenhuma parte.
+- **Nenhuma decisão dentro do kernel:** nada cancela uma configuração por resultado de outra.
+
+Detalhes em `eval/treino/kaggle/LEIA-ME.md`.
 
 ## 3. Próximas máquinas a modelar
 
