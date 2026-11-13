@@ -1,0 +1,259 @@
+{
+  "_sobre": "Especificação de leitura das fontes de treino/avaliação levantadas em docs/dados/precisao/fontes_treino.md (11/11/2026). Só descreve onde estão os arquivos e o formato dos rótulos; nenhum dado fica no repositório. 'verificado' diz o que foi conferido nesta máquina; o resto é de terceiros e precisa ser conferido na primeira execução no Kaggle.",
+  "_formato_manifesto": "dataset,image_path,dish_id,split,mass_g,protein_g,kcal,ingredients,camera,has_depth,license,eval_holdout,notes (o mesmo de eval/dados_ext/manifestos.py)",
+  "fontes": [
+    {
+      "id": "n5k_kaggle",
+      "uso": "treino_comercial",
+      "o_que_e": "Cópia do Nutrition5k no Kaggle: as mesmas 3.490 fotos zenitais do bucket do Google (rgb.png, depth_raw.png, depth_color.png) e quadros dos vídeos laterais (1 a cada 5; ~115 por prato).",
+      "kaggle_ref": "gillesokhin/nutrition5k-dataset",
+      "tamanho_bytes": 23324100212,
+      "licenca": "CC BY 4.0 (metadado do Kaggle; igual à do original)",
+      "como_anexar": "kernel-metadata.json -> \"dataset_sources\": [\"gillesokhin/nutrition5k-dataset\"]; monta em /kaggle/input/nutrition5k-dataset/",
+      "arquivos": {
+        "zenital": "imagery/realsense_overhead/<dish_id>/rgb.png",
+        "profundidade": "imagery/realsense_overhead/<dish_id>/depth_raw.png",
+        "lateral": "imagery/side_angles/<dish_id>/camera_<A|B|C|D>frame<NNN>.jpeg",
+        "rotulos": [
+          "dish_nutrition_values.csv",
+          "dish_ingredients.csv",
+          "ingredients_metadata.csv"
+        ]
+      },
+      "formato_rotulo": {
+        "dish_nutrition_values.csv": "dish_id,calories,mass,fat,carb,protein (4.768 linhas: só o café 1)",
+        "dish_ingredients.csv": "dish_id,ingr_id,ingr_name,grams,calories,fat,carb,protein (27.225 linhas)"
+      },
+      "como_ler": "Não usar os CSVs da cópia: faltam os 238 pratos do café 2. Continuar com eval/treino/kaggle/listas/*.csv (ids e alvos nossos) e trocar só a origem da imagem: se existir /kaggle/input/nutrition5k-dataset/imagery/realsense_overhead/<dish_id>/rgb.png, ler dali; senão, baixar do bucket como hoje.",
+      "cuidados": [
+        "Não acrescenta nenhum prato nem foto zenital ao que o bucket já tem: só evita o download e traz os quadros laterais já extraídos.",
+        "A descrição diz que alguns vídeos estavam corrompidos e que os quadros não foram filtrados.",
+        "Os 450 ids de avaliação e os 829 do teste2 estão na cópia: a separação continua sendo feita pelas nossas listas."
+      ],
+      "verificado": "Metadado (licença), os três CSVs (cabeçalho e contagem de linhas) e a listagem dos primeiros 14.000 arquivos: 3.490 pastas zenitais com 3 arquivos cada; quadros laterais vistos em 31 pratos. A listagem completa dos laterais não foi feita."
+    },
+    {
+      "id": "flavoria",
+      "uso": "treino_comercial (só massa, massa por grupo e frações por fonte; sem proteína nem kcal medidas)",
+      "o_que_e": "FlavoriaFoodWeight1700 (Universidade de Turku, 2022): linha de almoço automatizada na Finlândia; o prato de cada bandeja é fotografado de cima (foto 1024x1024 já recortada e mascarada no prato) e cada porção servida é pesada pela balança da cuba.",
+      "kaggle_ref": null,
+      "onde": "https://zenodo.org/api/records/5850856/files/dataset_images_and_csv.tar/content (2.576.977.920 bytes, md5 56270b20f0261777bd5e81f46cfd9097) e .../files/dataset_csv.tar/content (1.277.440 bytes, md5 74410f922287ceffbd8092d7dd4e5530). O notebook baixa o tar de imagens; nada disso fica no repositório.",
+      "licenca": "CC BY 4.0 (registro do Zenodo, conferido em 11/11/2026: license cc-by-4.0, access_right open)",
+      "citar": "Sarapisto, T., Koivunen, L., Mäkilä, T., Klami, A., Ojansivu, P. (2022). FlavoriaFoodWeight1700: Automated Lunch Line Meal Pictures with Automatic Measurement of Weight and Contents (1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.5850856",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_flavoria.csv (1.967 linhas = fotos; 1.264 pratos), montada por eval/dados_ext/flavoria_monta.py",
+      "formato_da_lista": {
+        "unidade": "UMA LINHA POR FOTO. Os quadros da mesma bandeja repetem os rótulos e têm o mesmo `grupo`.",
+        "colunas_de_treino_v2": "dish_id (flv_<bandeja>_<época>_<e|i>), cadeia = -1, fold = -1, split_oficial (pasta do tar: train|val|test), massa (g, medida), proteina/kcal/gordura/carbo VAZIAS, m_<grupo> (g, dos gramas pesados pelo mapa de nomes), p_<grupo> VAZIAS, ff_<fonte> (fração da massa, pelo mapa de nomes; somam 1)",
+        "colunas_de_12.4": "dominio = flavoria; grupo = flv_<session_id> (uma bandeja servida); vista = zenital_mascarada",
+        "colunas_extras": "split_ext (treino_ext | teste_ext; teste = 10 a 20/11/2020), data (dia local), arquivo (caminho exato dentro do tar, ex.: images/train/tray431_1601883545_1601883546.30_identification_0.5.png), quadro (enter | identification), quadro_preferido (1 no quadro mais limpo do prato), n_quadros, sessao, bandeja, registrado, dif_s (época da foto menos a da identificação), componentes (nome:gramas;...), n_componentes, proteina_fraca_g, proteina_fraca_conf (A|B|C do maior contribuinte), proteina_fraca_fontes_g, arco_borda_oculta (0 a 1), oclusao (1 se arco >= 0,20), avisos (repeticao | foto_a_mais_de_30s)"
+      },
+      "formato_bruto": {
+        "csv": "11 arquivos; uma linha por pesagem: session_id, weighing_event_time, [weighting_type,] scale_identifier, weight_of_a_component (g, inteiro), component_name, tray_id, user_identification_time. Um arquivo está em UTC, os outros em hora local da Finlândia; duas grafias de data.",
+        "imagens": "images/<train|val|test>/tray<N>_<época UTC>_<época.frac>_<enter|identification>_0.5.png; 2.013 PNG 1024x1024",
+        "tar": "formato pax: cada membro tem 1.536 bytes de cabeçalho antes dos dados (dá para buscar um arquivo por HTTP Range a partir da listagem)"
+      },
+      "cuidados": [
+        "A proteína fraca (nome -> tabela) NÃO é alvo: 68% dela vem de densidades de confiança C.",
+        "O nome do componente vem do cardápio da cuba; em saladas ele às vezes não bate com a foto. O peso é confiável.",
+        "28% da massa está em prato_misto (pratos prontos que o Nutrition5k separaria em ingredientes).",
+        "119 fotos têm oclusao = 1 (quase todas 'enter', com a cabeça de quem carrega a bandeja); em 36 pratos todos os quadros estão marcados.",
+        "Prato enchendo o quadro, fundo preto: outra escala e outro enquadramento que o Nutrition5k.",
+        "Itens do autosserviço (pão da mesa de pães, molho de salada) podem não estar no peso."
+      ],
+      "verificado": "Registro do Zenodo; listagem completa do tar de imagens (em fluxo); tamanho de todos os 2.013 PNG; os 11 CSVs inteiros; casamento foto-pesagem ao segundo em 877 de 883 fotos 'identification'; cerca de 110 fotos olhadas; 8 pratos comparados com a lista de componentes.",
+      "licenca_na_lista": "CC BY 4.0",
+      "uso_declarado": "comercial_ok"
+    },
+    {
+      "id": "openimages_comida",
+      "uso": "sem_rotulo (pseudo-rótulo / destilação)",
+      "o_que_e": "Fotos do Flickr do Open Images com rótulo humano positivo de comida (classes Food, Fast food, Salad, Sandwich, Pizza, Pasta, Sushi, Hamburger, Hot dog, French fries, Seafood, Taco, Burrito, Pancake, Waffle, Submarine sandwich).",
+      "kaggle_ref": null,
+      "onde": "rótulos: https://storage.googleapis.com/openimages/v5/train-annotations-human-imagelabels-boxable.csv (ImageID,Source,LabelName,Confidence); nomes das classes: .../openimages/v7/oidv7-class-descriptions-boxable.csv; imagens: https://open-images-dataset.s3.amazonaws.com/train/<ImageID>.jpg",
+      "licenca": "imagens CC BY 2.0 (coluna License da lista de imagens; 4.922 de 4.922 fotos de comida da validação), anotações CC BY 4.0. O Google não garante a licença de cada foto; guardar ImageID, autor e URL para atribuição.",
+      "como_ler": "filtrar Confidence=1 e LabelName nas classes acima -> 88.516 ImageIDs no treino; depois filtrar por um classificador zero-shot ('foto de um prato de comida vista de cima') e descartar fotos com rosto.",
+      "cuidados": [
+        "Muito ruído: numa amostra de 24 fotos, só 1 ou 2 eram um prato visto de cima; o resto são pessoas, feiras, embalagens, bebidas, ingredientes crus.",
+        "Estimativa (não medida) de fotos úteis depois do filtro: 5 a 10 mil."
+      ],
+      "verificado": "Contagem feita aqui no arquivo de rótulos do treino (8.996.795 linhas); 24 imagens baixadas do S3 e olhadas."
+    },
+    {
+      "id": "myfoodrepo",
+      "uso": "sem_rotulo (pseudo-rótulo / destilação)",
+      "o_que_e": "Food Recognition Benchmark (MyFoodRepo-273, EPFL/AIcrowd): fotos de refeições tiradas com celular por usuários suíços, com máscaras de 273 classes; sem peso.",
+      "kaggle_ref": "awsaf49/food-recognition-2022-dataset (2,6 GB, JPEG soltos) ou sainikhileshreddy/food-recognition-2022 (5,3 GB, formato hub)",
+      "licenca": "CC BY 4.0 segundo o artigo do benchmark (Frontiers in Nutrition, 2022), lido por resumo de busca. No Kaggle os rótulos são do uploader (CC0 e 'other') e não valem. Conferir na página do AIcrowd.",
+      "como_ler": "só as imagens; ignorar anotações. 24.119 imagens na versão do artigo; as cópias do Kaggle não foram contadas.",
+      "verificado": "Só o metadado e as primeiras linhas da listagem no Kaggle."
+    },
+    {
+      "id": "nvreal",
+      "uso": "so_avaliacao (licença não comercial) e, mesmo assim, com ressalva de rótulo",
+      "o_que_e": "NutritionVerse-Real (Waterloo): 889 fotos de celular de 225 pratos (251 no CSV), 45 tipos de item.",
+      "kaggle_ref": "nutritionverse/nutritionverse-real",
+      "tamanho_bytes": 1109170786,
+      "licenca": "CC BY-NC-SA 4.0 (metadado do Kaggle, conta dos autores)",
+      "arquivos": {
+        "rotulos": "nutritionverse_dish_metadata3.csv",
+        "imagens": "nutritionverse-manual/nutritionverse-manual/images/dish_<id>_IMG_<n>_jpeg.rf.<hash>.jpg",
+        "split": "nutritionverse-manual/nutritionverse-manual/updated-manual-dataset-splits.csv (file_name,category = Train|Val)"
+      },
+      "formato_rotulo": "dish_id,total_food_weight(g),total_calories(kcal),total_fats,total_carbohydrates,total_protein(g),... e, para i=1..7: food_item_type_i,food_weight_g_i,calories(kCal)_i,fat(g)_i,carbohydrates(g)_i,protein(g)_i,...",
+      "como_ler": "python3 -I eval/dados_ext/manifestos_kaggle.py nvreal /kaggle/input/nutritionverse-real saida.csv",
+      "cuidados": [
+        "O peso é nominal por tipo de item (um único valor por tipo no CSV inteiro), não medido prato a prato. Ex.: prato 100 = duas fatias de bolo de carne rotuladas com 2 x 701 g.",
+        "38 dos 225 pratos têm item de peso suspeito (meatloaf, near-whole-chicken, lasagna); sobram 129 pratos com mais de 25 g de proteína.",
+        "O ângulo da foto não é rotulado (há fotos de cima e inclinadas do mesmo prato)."
+      ],
+      "verificado": "CSV de rótulos inteiro, listagem completa (892 arquivos), 2 fotos abertas; leitor testado com o CSV real e nomes de arquivo reais.",
+      "uso_declarado": "nao_comercial",
+      "decisao_2026_11_12": "Sem lista de treino nesta rodada. Os pesos são nominais por tipo de item (o mesmo item tem sempre o mesmo peso), então massa e proteína são função da classe e da contagem, não do que se vê. Uso possível: rótulo fraco em colunas *_fraca, nunca em massa/proteina, só nos 187 pratos que sobram depois de tirar os três tipos de item suspeitos (129 com mais de 25 g nominais)."
+    },
+    {
+      "id": "lefood",
+      "uso": "treino_comercial (massa medida de um item por prato; identidade do item)",
+      "o_que_e": "LeFood-Set: comida de hospital da Indonésia, um item por prato branco sobre toalha quadriculada, foto de cima antes e depois de comer, peso em balança digital nas duas. 749x548 px.",
+      "kaggle_ref": null,
+      "onde": "Mendeley Data cchsk79jkt (52 MB, 1.049 arquivos); URL de cada arquivo em eval/dados_ext/lefood_arquivos.csv",
+      "licenca": "CC BY 4.0 (registro do Mendeley Data, conferido em 12/11/2026)",
+      "citar": "Sari, Yuita Arum; Wani, Yudi Arimba; Nakazawa, Atsushi (2025). LeFood-Set: Leftovers Food Dataset. Mendeley Data, V1. https://doi.org/10.17632/cchsk79jkt.1",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_lefood.csv (811 fotos, 524 porções), montada por eval/dados_ext/lefood_monta.py",
+      "formato_da_lista": "Uma linha por foto. Colunas de treino_v2 como no Flavoria (massa medida; m_* e ff_* do único item; proteína vazia); dominio = lefood; grupo = lef_<ID> (a porção, comum à foto antes e à depois); vista = zenital; split_ext pela regra de reserva de 12.5; extras: arquivo, url, quadro (antes|depois), componentes, proteina_fraca_g, proteina_fraca_conf, proteina_fraca_fontes_g, nivel_sobra (1 a 7), avisos.",
+      "cuidados": [
+        "Porções pequenas: massa mediana de 42 g; nenhuma foto passa de 16 g de proteína.",
+        "As fotos 'depois' com menos de 5 g de sobra ficaram de fora.",
+        "Só 524 das 678 linhas do xlsx têm foto publicada."
+      ],
+      "verificado": "Todos os arquivos baixados; xlsx inteiro; 32 fotos olhadas.",
+      "licenca_na_lista": "CC BY 4.0",
+      "uso_declarado": "comercial_ok"
+    },
+    {
+      "id": "snapme",
+      "uso": "ROTULO FRACO. Entra no treino por decisão da fundadora (12/11/2026), com uso_declarado = autores_pedem_nao_treinar em cada linha (CC BY-SA 4.0; o registro pede para não treinar com o dataset)",
+      "o_que_e": "SNAPMe (USDA): fotos de celular de tudo o que 95 pessoas comeram em até 3 dias, com marcador de escala na cena, ligadas item a item ao recordatório ASA24 do mesmo dia. Nada foi pesado.",
+      "kaggle_ref": null,
+      "onde": "https://ndownloader.figshare.com/files/44532971 (snapme_db_09Dec2022.tar.gz, 2.034.227.035 bytes, md5 95383fd42b78eb45adbad03c7673e8f7); listagem em eval/dados_ext/snapme_arquivos.csv",
+      "licenca": "CC BY-SA 4.0 (registro do Ag Data Commons / Figshare). Campo 'Use limitations' do registro: 'This data set should not be used to train models as it is a small curated data set.'",
+      "citar": "Chin, E. L.; Larke, J. A.; Bouzid, Y. Y.; Nguyen, T.; Vainberg, Y.; Smilowitz, J. T.; Lemay, D. G. (2022). SNAPMe: A Benchmark Dataset of Food Photos with Food Records for Evaluation of Computer Vision Algorithms in the Context of Dietary Assessment. Ag Data Commons. https://doi.org/10.15482/USDA.ADC/1528346",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_snapme.csv (1.163 fotos 'antes', 95 participantes), montada por eval/dados_ext/snapme_monta.py",
+      "formato_da_lista": "Uma linha por foto. TODAS as colunas de treino_v2 vazias (fora dish_id, cadeia = -1, fold = -1). dominio = snapme; grupo = snp_<participante>; vista = celular_nao_rotulada; split_ext pela regra de reserva de 12.5. Autorrelato em colunas à parte: massa_fraca_g, proteina_fraca_g, kcal_fraca, gordura_fraca_g, carbo_fraca_g, bebida_g, m_fraca_<grupo>, ff_fraca_<fonte>, proteina_fraca_fontes_g; mais arquivo (caminho dentro do tar.gz), arquivo_depois, largura, altura, dia_estudo, componentes, n_componentes, avisos.",
+      "cuidados": [
+        "A quantidade é a que a pessoa declarou ter comido, em porções padrão do ASA24; não serve como alvo de massa.",
+        "Cerca de 5 em cada 6 fotos são de cima ou quase (contagem à mão em 96); o ângulo não é rotulado.",
+        "Na ponta alta de proteína há valores que não cabem no prato.",
+        "É benchmark de outros grupos: treinar com ele impede comparar resultados nele."
+      ],
+      "verificado": "Arquivo inteiro lido em fluxo; linkfile inteiro; 96 miniaturas olhadas; 14 fotos comparadas com a lista de itens.",
+      "licenca_na_lista": "CC BY-SA 4.0",
+      "uso_declarado": "autores_pedem_nao_treinar"
+    },
+    {
+      "id": "mensa",
+      "uso": "treino_comercial (massa medida por item; identidade do item; proteína só fraca)",
+      "o_que_e": "GT Mensa 2025 (VLM Food Benchmark): 200 fotos de celular, quase todas de cima, da bandeja inteira de um refeitório universitário italiano; 870 itens pesados em balança de cozinha, com a tara do prato descontada.",
+      "kaggle_ref": null,
+      "onde": "https://raw.githubusercontent.com/Metabolic-Intelligence-Lab/vlm-food-benchmark/main/ (labels_flat.csv, GT_Mensa_2025/image_participants.csv, GT_Mensa_2025/resized_images/001.jpg a 200.jpg; 20 MB)",
+      "licenca": "CC BY 4.0 para imagens e rótulos (arquivo LICENSE-DATA do repositório, lido em 12/11/2026); código MIT",
+      "citar": "Marchetti, T.; Capezzone, S.; Esposito, R.; De Spirito, M.; Maulucci, G. Benchmarking Open-Source Vision-Language Models for Food Image Recognition and Portion Size Estimation. Nutrients 2026, 18(21), 3582. https://doi.org/10.3390/nu18213582",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_mensa.csv (200 fotos), montada por eval/dados_ext/mensa_monta.py",
+      "formato_da_lista": "Uma linha por foto (bandeja). Colunas de treino_v2 como no Flavoria (massa medida, sem bebidas; m_* e ff_* dos gramas pesados pelo mapa de nomes; proteína vazia); dominio = mensa; grupo = men_<participante>; vista = zenital_bandeja; split_ext pela regra de reserva de 12.5; extras: arquivo, url, componentes, n_componentes, bebida_g, embalado_g, proteina_fraca_g, proteina_fraca_conf, proteina_fraca_fontes_g, maior_fonte_fraca_g, avisos (um_item_so | tem_embalado).",
+      "cuidados": [
+        "A foto mostra vários pratos numa bandeja, não um prato.",
+        "Iogurte, biscoito e cracker aparecem em embalagem fechada (embalado_g).",
+        "Fruta inteira é pesada com casca e caroço.",
+        "Só seis fotógrafos; 38 fotos são de um item só.",
+        "O mapa de nomes sai de regras; 108 dos 314 nomes têm densidade de confiança C."
+      ],
+      "verificado": "README, LICENSE-DATA, os dois CSV inteiros, as 200 imagens baixadas (todas JPEG válidos), 24 olhadas, 8 bandejas comparadas com a lista de itens.",
+      "licenca_na_lista": "CC BY 4.0",
+      "uso_declarado": "comercial_ok"
+    },
+    {
+      "id": "omnifood8k",
+      "uso": "treino NAO COMERCIAL (massa pesada por porção; nutrientes recalculados de ingredientes pesados x tabela dos autores)",
+      "licenca_na_lista": "CC BY-NC 4.0",
+      "uso_declarado": "nao_comercial",
+      "o_que_e": "OmniFood8K: 141 pratos chineses cozidos em laboratório, 24 frutas e arroz, servidos em porções pesadas (1 a 7 por cena) num prato branco sobre mesa branca; 8.037 cenas, 6 fotos por cena, todas de cima ou quase, 640x480.",
+      "kaggle_ref": null,
+      "onde": "Google Drive, id 1tUIa1jXMLxRGLyex_jVkmqmHneIMU0wG (0-OminiFood8k.zip, 2.731.585.789 bytes): https://drive.usercontent.google.com/download?id=1tUIa1jXMLxRGLyex_jVkmqmHneIMU0wG&export=download&confirm=t ; dentro do zip, 0-OminiFood8k/8036/<cena>/camera_<0..5>.jpg (eval/dados_ext/omnifood_arquivos.csv)",
+      "alcance_do_kaggle": "Provável com internet ligada, mas o Drive corta por cota de download e pede confirmação em arquivo grande; mais seguro baixar uma vez e guardar como dataset PRIVADO do Kaggle (a licença NC não permite republicar).",
+      "licenca": "CC BY-NC 4.0 (README do repositório dos autores)",
+      "citar": "Yu, D.; Min, W.; Jiang, Q.; Lin, X.; Jin, X.; Jiang, S. OmniFood8K: Single-Image Nutrition Estimation via Hierarchical Frequency-Aligned Fusion. CVPR 2026 (arXiv:2604.12356). https://github.com/yudongjian/OmniFood8K-food",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_omnifood.csv (8.017 cenas, 48.102 fotos), montada por eval/dados_ext/omnifood_monta.py",
+      "formato_da_lista": "UMA LINHA POR CENA. Colunas de treino_v2 preenchidas (massa pesada; proteina, kcal, gordura, carbo, m_*, p_*, ff_* recalculados); extras: dominio = omnifood8k, grupo = omn_<cena>, vista = zenital, split_ext (teste dos autores = teste_ext), arquivo_base (pasta da cena no zip), quadros, n_quadros, componentes, n_componentes, natureza_rotulo = pesado_x_tabela_recalculado, proteina_autores, proteina_fontes_g, avisos, licenca, uso_declarado.",
+      "cuidados": [
+        "A proteína publicada pelos autores difere por mais de 2 vezes da conta com os ingredientes pesados em 52 dos 141 pratos; a lista usa a conta refeita e guarda o valor dos autores em proteina_autores.",
+        "2.109 cenas têm ingrediente pesado com osso, casca ou concha; os nutrientes usam uma fração comestível SUPOSTA (aviso osso_ou_casca). Das 405 cenas acima de 25 g, só 101 não têm esse aviso.",
+        "155 cenas ficam sem alvo de nutrição (ingredientes inconsistentes); a massa fica.",
+        "As 2.351 cenas do teste dos autores usam os mesmos 165 pratos do treino: a parte segurada mede porção e combinação, não prato novo.",
+        "Fundo de laboratório (prato branco, mesa branca), comida chinesa caseira; a proteína vem de tabela, não de análise."
+      ],
+      "contagens": {
+        "cenas": 8017,
+        "fotos": 48102,
+        "treino_ext": 5666,
+        "teste_ext": 2351,
+        "proteina_0_5": 2460,
+        "proteina_5_15": 3443,
+        "proteina_15_25": 1554,
+        "proteina_25_40": 373,
+        "proteina_acima_40": 32,
+        "acima_25g": 405,
+        "acima_25g_sem_osso_ou_casca": 101,
+        "acima_25g_pelos_autores": 495
+      }
+    },
+    {
+      "id": "fpb",
+      "uso": "treino NAO COMERCIAL (massa medida por item; identidade do item; proteína só fraca)",
+      "licenca_na_lista": "CC BY-NC 4.0",
+      "uso_declarado": "nao_comercial",
+      "o_que_e": "Food Portion Benchmark (ISSAI, Nazarbayev University): 138 classes de comida da Ásia Central em três tamanhos de porção, cada item pesado; prato branco em bandeja de refeitório; câmera RealSense fixa de cima e de lado, e celulares em ângulo.",
+      "kaggle_ref": null,
+      "onde": "https://huggingface.co/datasets/issai/Food_Portion_Benchmark (14.076 imagens, 11,4 GB; as 2.503 de cima somam 0,31 GB). Cada imagem: https://huggingface.co/datasets/issai/Food_Portion_Benchmark/resolve/main/<coluna arquivo>",
+      "alcance_do_kaggle": "Sim, com internet ligada (huggingface.co e o CDN são de uso corrente em kernels); repositório público, sem token. Baixar só as linhas escolhidas (snapshot_download com allow_patterns, ou uma URL por arquivo).",
+      "licenca": "CC BY-NC 4.0 (cartão do dataset no Hugging Face, lido em 12/11/2026)",
+      "citar": "Sanatbyek, A.; Rakhimzhanova, T.; Nurmanova, B.; Omarova, Z.; Rakhmankulova, A.; Orazbayev, R.; Varol, H. A.; Chan, M. Y. A multitask deep learning model for food scene recognition and portion estimation: the Food Portion Benchmark (FPB) dataset. IEEE Access, 2025. https://huggingface.co/datasets/issai/Food_Portion_Benchmark",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_fpb.csv (12.466 fotos de 1.036 bandejas; 2.503 fotos de cima), montada por eval/dados_ext/fpb_monta.py com o mapa eval/dados_ext/fpb_classes.csv",
+      "formato_da_lista": "Uma linha por foto. Colunas de treino_v2 como no Mensa (massa medida sem bebidas; m_* e ff_* dos gramas pesados pelo mapa de classes; proteína vazia); dominio = fpb; grupo (bandejas que repetem a mesma porção); vista = zenital | obliqua | lateral; split_ext pela regra de reserva de 12.5; extras: arquivo, sha256, bytes, dispositivo, porcao, tem_referencia, split_autores, prato, componentes, n_componentes, bebida_g, embalado_g, massa_pesada_g, proteina_fraca_g, proteina_fraca_conf, proteina_fraca_fontes_g, maior_fonte_fraca_g, avisos, licenca, uso_declarado.",
+      "cuidados": [
+        "Só as fotos da RealSense de cima (vista = zenital) são do nosso ponto de vista; as de celular são oblíquas e as demais, laterais baixas.",
+        "Na 1ª campanha a bandeja passa da borda do quadro; quase toda foto tem xadrez de calibração e as `_ref` têm talheres e régua.",
+        "446 fotos têm item de comida sem peso (lima, cebola, batata e espinafre nunca foram pesados): massa e frações vazias, com massa_pesada_g.",
+        "709 fotos têm um item da bandeja sem anotação (escondido): a massa é a dos itens anotados.",
+        "A proteína é fraca: classe -> densidade de tabela, 35 das 138 classes com confiança C (pratos regionais, recheio que não se vê).",
+        "O mesmo prato aparece nos três lados da divisão dos autores; usar split_ext."
+      ],
+      "contagens": {
+        "fotos": 12466,
+        "bandejas": 1036,
+        "zenital_fotos": 2503,
+        "zenital_bandejas": 904,
+        "zenital_com_massa": 2418,
+        "zenital_proteina_fraca_acima_25g_fotos": 785,
+        "zenital_proteina_fraca_acima_25g_bandejas": 362,
+        "zenital_fontes_acima_25g_fotos": 686,
+        "zenital_fontes_acima_25g_bandejas": 311,
+        "zenital_um_item_fonte_acima_25g_bandejas": 257,
+        "todas_fontes_acima_25g_bandejas": 346
+      }
+    }
+  ],
+  "_procedencia": "Toda lista externa leva as colunas `licenca` (texto exato da licença) e `uso_declarado` (comercial_ok | nao_comercial | sem_licenca | autores_pedem_nao_treinar), por decisão da fundadora de 12/11/2026 de não restringir o treino a bases de licença comercial. Bases atrás de formulário ou de acesso restrito (MetaFood3D oficial, ClinicPlate) esperam o pedido da fundadora; cópias de terceiros que contornam esse controle não são usadas.",
+  "_esperam_pedido_da_fundadora": [
+    {
+      "id": "metafood3d",
+      "motivo": "formulário de pedido na página oficial (CC BY-NC 4.0); as cópias no Kaggle têm licença errada e não são usadas"
+    },
+    {
+      "id": "clinicplate",
+      "motivo": "Zenodo 21626434, CC BY 4.0 com acesso restrito: pedir no próprio registro"
+    },
+    {
+      "id": "acetada",
+      "motivo": "CC BY-NC 4.0, publicado em skynet.ecn.purdue.edu/~coburn6/ACETADA/, host que o proxy desta sessão recusa (403 no CONNECT); sem lista"
+    }
+  ]
+}

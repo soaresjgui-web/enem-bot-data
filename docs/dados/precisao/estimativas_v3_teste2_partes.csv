@@ -1,0 +1,2967 @@
+prato_id,componente,alimento_ref,alimento_alt,certeza,preparo,parte_pct,fonte_principal
+e0017,tomates-cereja (tipo uva),cherry tomatoes,,alta,cru,100,nenhuma
+e0023,coxa de frango assada,chicken drumsticks,,alta,assado,19,frango_peru
+e0023,pedaço de frango assado com pele,chicken thighs,roast chicken,media,assado,24,frango_peru
+e0023,salada caesar (alface romana com molho),caesar salad,lettuce,media,cru,15,frango_peru
+e0023,fatia quadrada de pizza com batata e cebola,pizza,cheese pizza,media,assado,40,frango_peru
+e0023,tira de pimentão verde,bell peppers,green beans,baixa,assado,2,frango_peru
+e0042,frango em cubos,chicken breast,tofu,media,cozido,46,frango_peru
+e0042,cebola roxa fatiada,onions,,alta,cru,15,frango_peru
+e0042,tomates-cereja,cherry tomatoes,,alta,cru,24,frango_peru
+e0042,cenoura ralada,carrot,,alta,cru,5,frango_peru
+e0042,pedaços verdes (pepino/pimentão),cucumbers,bell peppers,baixa,cru,10,frango_peru
+e0055,salada de repolho em tiras temperada,cabbage,coleslaw,media,cru,44,nenhuma
+e0055,acelga cozida (talos vermelhos),chard,spinach (cooked),media,cozido,37,nenhuma
+e0055,rodelas de rabanete melancia,radishes,,alta,cru,10,nenhuma
+e0055,folhas de alface,lettuce,mixed greens,media,cru,5,nenhuma
+e0055,cenoura ralada,carrot,,alta,cru,4,nenhuma
+e0064,arroz frito com legumes,fried rice,brown rice,media,frito,30,ovo
+e0064,tiras de bacon,bacon,turkey bacon,media,frito,6,ovo
+e0064,ovos mexidos,scrambled eggs,,alta,mexido,26,ovo
+e0064,queijo cheddar ralado,cheddar cheese,,alta,nao_se_aplica,4,ovo
+e0064,batata em cubos assada,roasted potatoes,hash browns,media,assado,34,ovo
+e0081,abacaxi em pedaços,pineapple,,alta,cru,34,nenhuma
+e0081,melancia em cubos,watermelon,,alta,cru,38,nenhuma
+e0081,amoras,blackberries,,alta,cru,17,nenhuma
+e0081,framboesas,raspberries,,alta,cru,11,nenhuma
+e0105,carne fatiada assada (lombo),pork,chicken thighs,media,assado,42,suina_embutido
+e0105,couve-de-bruxelas assada,brussels sprouts,,alta,assado,30,suina_embutido
+e0105,salada de couve picada,kale,broccoli,media,cru,21,suina_embutido
+e0105,folhas verdes soltas,mixed greens,arugula,media,cru,4,suina_embutido
+e0105,lascas de amêndoa por cima,almonds,onions,baixa,nao_se_aplica,3,suina_embutido
+e0123,queijo cottage,cottage cheese,egg whites,media,nao_se_aplica,100,laticinio
+e0204,arroz cozido com grãos dourados,brown rice,white rice,media,cozido,100,nenhuma
+e0227,fatias de carne bovina grelhada,steak,roast beef,media,grelhado,100,bovina
+e0244,filés empanados (peixe),fish,chicken breast,media,empanado,48,peixe_marisco
+e0244,fatias de pizza de queijo e tomate,pizza,cheese pizza,media,assado,44,peixe_marisco
+e0244,pimentão/tomate picado por cima,bell peppers,salsa,baixa,cozido,6,peixe_marisco
+e0244,brotos e folhas,arugula,mixed greens,media,cru,2,peixe_marisco
+e0288,melão cantaloupe em pedaços,cantaloupe,,alta,cru,100,nenhuma
+e0311,folhas de espinafre cru,spinach (raw),,alta,cru,100,nenhuma
+e0327,alface romana,lettuce,caesar salad,media,cru,60,nenhuma
+e0327,molho caesar cremoso,caesar dressing,ranch dressing,media,nao_se_aplica,19,nenhuma
+e0327,croutons,croutons,chicken,media,assado,15,nenhuma
+e0327,azeitona,olives,,alta,processado,6,nenhuma
+e0415,frango grelhado em cubos,chicken breast,,alta,grelhado,62,frango_peru
+e0415,aspargos,asparagus,,alta,cozido,38,frango_peru
+e0477,azeitonas pretas kalamata,olives,,alta,processado,100,nenhuma
+e0482,salada de repolho em tiras temperada,cabbage,coleslaw,media,cru,66,nenhuma
+e0482,rodelas de rabanete melancia,radishes,,alta,cru,15,nenhuma
+e0482,folhas verdes,mixed greens,lettuce,media,cru,8,nenhuma
+e0482,cenoura ralada,carrot,,alta,cru,6,nenhuma
+e0482,vagem/ervilha-torta,snow peas,green beans,baixa,cru,5,nenhuma
+e0495,carne em pedaços cozida,pork,beef,media,ensopado,36,suina_embutido
+e0495,salada de repolho com cenoura,coleslaw,cabbage,media,cru,25,suina_embutido
+e0495,brócolis,broccoli,,alta,cozido,22,suina_embutido
+e0495,mix de folhas,mixed greens,lettuce,media,cru,12,suina_embutido
+e0495,pedaço de tomate,tomatoes,,alta,cru,3,suina_embutido
+e0495,cenoura ralada,carrot,,alta,cru,2,suina_embutido
+e0497,waffles,waffles,,alta,assado,26,ovo
+e0497,rodelas de linguiça,sausage,chicken apple sausage,media,grelhado,17,ovo
+e0497,claras de ovo,egg whites,feta cheese,media,mexido,17,ovo
+e0497,batata-doce e batata assadas em cubos,sweet potato,roasted potatoes,media,assado,26,ovo
+e0497,mexido amarelo com legumes,scrambled eggs,tofu,media,mexido,14,ovo
+e0527,couve-flor cozida,cauliflower,scrambled eggs,media,cozido,100,nenhuma
+e0541,abacaxi em pedaços,pineapple,,alta,cru,58,nenhuma
+e0541,morangos,strawberries,,alta,cru,31,nenhuma
+e0541,mirtilos,blueberries,,alta,cru,11,nenhuma
+e0567,brócolis,broccoli,,alta,cozido,92,nenhuma
+e0567,fatia de abobrinha,zucchini,,alta,cozido,8,nenhuma
+e0579,fatia retangular de pizza de queijo,cheese pizza,pizza,media,assado,81,prato_misto
+e0579,rúcula e folhas,arugula,mixed greens,media,cru,14,prato_misto
+e0579,azeitonas pretas,olives,,alta,processado,5,prato_misto
+e0591,abacaxi em pedaços,pineapple,,alta,cru,48,nenhuma
+e0591,melão verde em pedaços,honeydew melons,,alta,cru,52,nenhuma
+e0617,cubos de tofu,tofu,feta cheese,media,cru,33,leguminosa_soja
+e0617,berinjela assada,eggplant,mushroom,media,assado,35,leguminosa_soja
+e0617,aspargos,asparagus,,alta,cozido,19,leguminosa_soja
+e0617,cama de rúcula,arugula,,alta,cru,13,leguminosa_soja
+e0682,mix de folhas,mixed greens,,alta,cru,62,nenhuma
+e0682,framboesas,raspberries,strawberries,media,cru,30,nenhuma
+e0682,molho vinagrete,vinaigrette,olive oil,baixa,nao_se_aplica,8,nenhuma
+e0688,peito de frango empanado fatiado,chicken breast,,alta,empanado,34,frango_peru
+e0688,arroz branco,white rice,,alta,cozido,37,frango_peru
+e0688,brócolis,broccoli,,alta,cozido,27,frango_peru
+e0688,folhas verdes e pimentão,spinach (raw),bell peppers,baixa,cru,2,frango_peru
+e0701,ovos mexidos,scrambled eggs,,alta,mexido,54,ovo
+e0701,tira de bacon,bacon,turkey bacon,media,frito,5,ovo
+e0701,pudim de chia,chia seeds,puddings,media,nao_se_aplica,41,ovo
+e0788,ovos mexidos,scrambled eggs,,alta,mexido,52,ovo
+e0788,brócolis assado,broccoli,,alta,assado,48,ovo
+e0799,maçã inteira,apple,,alta,cru,100,nenhuma
+e0018,fatia de pizza de queijo,cheese pizza,,alta,assado,17,bovina
+e0018,salada caesar (alface romana com molho),caesar salad,lettuce,media,cru,10,bovina
+e0018,molho cremoso sobre a salada,caesar dressing,ranch dressing,media,nao_se_aplica,4,bovina
+e0018,mix de folhas com cebola roxa e azeitona,mixed greens,garden salad,media,cru,8,bovina
+e0018,fatias de carne bovina,steak,roast beef,media,grelhado,19,bovina
+e0018,batatas assadas,roasted potatoes,,alta,assado,25,bovina
+e0018,couve-flor cozida,cauliflower,macaroni and cheese,media,cozido,17,bovina
+e0111,frango assado (dois pedaços),chicken thighs,chicken breast,media,assado,64,frango_peru
+e0111,vagem,green beans,,alta,cozido,21,frango_peru
+e0111,mix de folhas,mixed greens,spinach (raw),media,cru,15,frango_peru
+e0112,grão amarelo miúdo,millet,couscous,media,cozido,34,nenhuma
+e0112,couve-de-bruxelas,brussels sprouts,,alta,assado,30,nenhuma
+e0112,mix de folhas,mixed greens,,alta,cru,13,nenhuma
+e0112,grão marrom por baixo,wheat berry,brown rice,baixa,cozido,18,nenhuma
+e0112,pedaços claros (cebola ou frango),onions,chicken,baixa,cozido,5,nenhuma
+e0141,ovos mexidos,scrambled eggs,,alta,mexido,41,ovo
+e0141,bacon (duas tiras),bacon,turkey bacon,media,frito,8,ovo
+e0141,brócolis assado,broccoli,,alta,assado,23,ovo
+e0141,espinafre com cenoura ralada,spinach (raw),spinach (cooked),media,cru,7,ovo
+e0141,morangos,strawberries,,alta,cru,15,ovo
+e0141,mirtilos,blueberries,,alta,cru,4,ovo
+e0141,molho vermelho sobre os ovos,salsa,ketchup,media,nao_se_aplica,2,ovo
+e0169,rúcula,arugula,,alta,cru,95,nenhuma
+e0169,cenoura ralada,carrot,bell peppers,media,cru,5,nenhuma
+e0171,fatia de pizza de queijo,cheese pizza,,alta,assado,100,prato_misto
+e0179,coxa de frango empanada,chicken drumsticks,fried chicken,media,empanado,52,frango_peru
+e0179,fatia de pizza de queijo,cheese pizza,,alta,assado,48,frango_peru
+e0210,atum desfiado em salada,tuna salad,tuna,media,processado,23,peixe_marisco
+e0210,posta de peixe branco com pele,cod,fish,media,assado,14,peixe_marisco
+e0210,cebola roxa fatiada,onions,,alta,cru,6,peixe_marisco
+e0210,tomates-cereja,cherry tomatoes,,alta,cru,23,peixe_marisco
+e0210,azeitonas pretas,olives,,alta,processado,8,peixe_marisco
+e0210,cenoura ralada,carrot,,alta,cru,12,peixe_marisco
+e0210,vagem assada,green beans,,alta,assado,14,peixe_marisco
+e0255,tangerina inteira,mandarin oranges,orange,media,cru,47,nenhuma
+e0255,uvas vermelhas,grapes,,alta,cru,53,nenhuma
+e0274,frango em cubos,grilled chicken,chicken breast,media,grelhado,48,frango_peru
+e0274,abacate fatiado,avocado,,alta,cru,25,frango_peru
+e0274,espinafre cru,spinach (raw),,alta,cru,13,frango_peru
+e0274,azeitonas pretas,olives,,alta,processado,9,frango_peru
+e0274,pepino,cucumbers,zucchini,media,cru,5,frango_peru
+e0281,pizza de pepperoni e queijo (duas fatias),pepperoni pizza,,alta,assado,33,prato_misto
+e0281,salada caesar,caesar salad,lettuce,media,cru,11,prato_misto
+e0281,macarrão com legumes,lo mein,pasta salad,media,refogado,20,prato_misto
+e0281,tofu em cubos,tofu,feta cheese,media,assado,11,prato_misto
+e0281,cenoura assada em rodelas,carrot,,alta,assado,13,prato_misto
+e0281,batatas assadas,roasted potatoes,mushroom,media,assado,12,prato_misto
+e0284,espinafre cru,spinach (raw),,alta,cru,28,laticinio
+e0284,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,22,laticinio
+e0284,azeitonas pretas,olives,,alta,processado,31,laticinio
+e0284,cenoura ralada,carrot,,alta,cru,19,laticinio
+e0299,pizza de queijo (duas fatias),cheese pizza,,alta,assado,59,prato_misto
+e0299,salada caesar com molho,caesar salad,lettuce,media,cru,32,prato_misto
+e0299,mix de folhas,mixed greens,,alta,cru,9,prato_misto
+e0319,cebola fatiada,onions,,alta,cru,40,nenhuma
+e0319,cenoura ralada,carrot,,alta,cru,38,nenhuma
+e0319,pedaços de tomate e pimentão,cherry tomatoes,bell peppers,baixa,cru,22,nenhuma
+e0338,melão cantaloupe em pedaços,cantaloupe,papayas,media,cru,100,nenhuma
+e0390,tofu em cubos,tofu,,alta,assado,28,leguminosa_soja
+e0390,cenoura em rodelas,carrot,,alta,assado,16,leguminosa_soja
+e0390,vagem,green beans,,alta,cozido,4,leguminosa_soja
+e0390,grão marrom,wheat berry,brown rice,media,cozido,14,leguminosa_soja
+e0390,rúcula,arugula,,alta,cru,7,leguminosa_soja
+e0390,mirtilos,blueberries,olives,baixa,cru,3,leguminosa_soja
+e0390,folha verde-escura cozida,kale,spinach (cooked),media,refogado,18,leguminosa_soja
+e0390,tiras de pimentão vermelho,bell peppers,sun dried tomatoes,media,assado,5,leguminosa_soja
+e0390,grão-de-bico,chickpeas,,alta,cozido,5,leguminosa_soja
+e0419,tiras de frango com crosta alaranjada,chicken,pork,baixa,refogado,52,frango_peru
+e0419,grão miúdo alaranjado,quinoa,couscous,baixa,cozido,35,frango_peru
+e0419,pedaços de tomate,tomatoes,bell peppers,media,cozido,8,frango_peru
+e0419,folhas verdes,arugula,spinach (raw),media,cru,5,frango_peru
+e0443,uvas vermelhas,grapes,,alta,cru,100,nenhuma
+e0516,melão cantaloupe em pedaços,cantaloupe,papayas,media,cru,48,laticinio
+e0516,base branca em grumos,cottage cheese,greek yogurt,media,nao_se_aplica,52,laticinio
+e0549,ovos mexidos,scrambled eggs,,alta,mexido,20,ovo
+e0549,abacaxi em pedaços,pineapple,,alta,cru,15,ovo
+e0549,melancia em cubos,watermelon,,alta,cru,30,ovo
+e0549,melão verde em pedaços,honeydew melons,,alta,cru,12,ovo
+e0549,pepino em pedaços,cucumbers,zucchini,media,cru,9,ovo
+e0549,batata-doce em cubos,sweet potato,squash,media,assado,6,ovo
+e0549,tomate-cereja,cherry tomatoes,,alta,cru,4,ovo
+e0549,espinafre,spinach (raw),,alta,cru,2,ovo
+e0549,cenoura ralada,carrot,,alta,cru,2,ovo
+e0555,melão verde em cubos,honeydew melons,pineapple,media,cru,30,frango_peru
+e0555,frango assado com ervas,roast chicken,chicken thighs,media,assado,28,frango_peru
+e0555,grão marrom-avermelhado,wheat berry,brown rice,media,cozido,18,frango_peru
+e0555,vagem,green beans,asparagus,media,assado,13,frango_peru
+e0555,rúcula,arugula,,alta,cru,9,frango_peru
+e0555,grãos pretos sobre a rúcula,black beans,olives,baixa,cozido,2,frango_peru
+e0602,maçã inteira,apple,,alta,cru,35,nenhuma
+e0602,melão cantaloupe em pedaços,cantaloupe,,alta,cru,31,nenhuma
+e0602,pedaço de espiga de milho,corn on the cob,,alta,cozido,15,nenhuma
+e0602,cenoura cozida em rodelas,carrot,,alta,cozido,19,nenhuma
+e0625,fatias de carne bovina,steak,roast beef,media,grelhado,34,bovina
+e0625,abóbora assada em fatias,squash,sweet potato,media,assado,33,bovina
+e0625,brócolis,broccoli,,alta,cozido,19,bovina
+e0625,rúcula e espinafre,arugula,spinach (raw),media,cru,11,bovina
+e0625,azeitonas pretas,olives,raisins,baixa,processado,3,bovina
+e0630,fatia de pizza de queijo,cheese pizza,,alta,assado,58,frango_peru
+e0630,coxa de frango assada,chicken drumsticks,chicken wings,media,assado,42,frango_peru
+e0635,fatia de pizza de queijo,cheese pizza,,alta,assado,44,frango_peru
+e0635,coxa de frango assada,chicken drumsticks,chicken wings,media,assado,31,frango_peru
+e0635,cenoura assada em rodelas,carrot,,alta,assado,25,frango_peru
+e0736,fatias de carne bovina,steak,beef,media,grelhado,45,bovina
+e0736,acelga refogada com talos vermelhos,chard,beets,media,refogado,35,bovina
+e0736,grão miúdo avermelhado com molho,quinoa,couscous,baixa,cozido,18,bovina
+e0736,folhas verdes,arugula,spinach (raw),media,cru,2,bovina
+e0751,ovos mexidos,scrambled eggs,,alta,mexido,46,ovo
+e0751,linguiça clara em pedaços,chicken apple sausage,sausage,media,grelhado,32,ovo
+e0751,bacon (três tiras),bacon,,alta,frito,9,ovo
+e0751,espinafre cru,spinach (raw),,alta,cru,6,ovo
+e0751,cenoura ralada,carrot,,alta,cru,2,ovo
+e0751,pepino,cucumbers,zucchini,media,cru,3,ovo
+e0751,tomate-cereja,cherry tomatoes,,alta,cru,2,ovo
+e0764,claras de ovo em pedaços,egg whites,cottage cheese,media,cozido,53,ovo
+e0764,batatas assadas em cubos,roasted potatoes,,alta,assado,36,ovo
+e0764,molho verde-amarronzado,salsa,gravy,media,nao_se_aplica,11,ovo
+e0780,batatas assadas em cubos,roasted potatoes,,alta,assado,55,nenhuma
+e0780,melão cantaloupe em cubos,cantaloupe,,alta,cru,45,nenhuma
+e0815,brócolis,broccoli,,alta,cozido,49,peixe_marisco
+e0815,pedaço de peixe branco com crosta temperada,fish,chicken breast,baixa,assado,33,peixe_marisco
+e0815,mini pimentões,bell peppers,,alta,assado,14,peixe_marisco
+e0815,abobrinha em rodela,zucchini,cucumbers,media,cozido,4,peixe_marisco
+e0593,alface romana picada,lettuce,,alta,cru,96,nenhuma
+e0593,folha roxa,mixed greens,lettuce,media,cru,4,nenhuma
+e0666,ovos mexidos,scrambled eggs,,alta,mexido,94,ovo
+e0666,molho vermelho (ketchup/pimenta),ketchup,salsa,media,nao_se_aplica,6,ovo
+e0364,posta de peixe com pele e crosta,fish,salmon,baixa,assado,100,peixe_marisco
+e0117,ovos mexidos,scrambled eggs,,alta,mexido,50,ovo
+e0117,morangos cortados,strawberries,,alta,cru,24,ovo
+e0117,batata-doce assada em cubos,sweet potato,,alta,assado,25,ovo
+e0117,mirtilo,blueberries,,alta,cru,1,ovo
+e0485,filé com crosta em dois pedaços,salmon,chicken,baixa,assado,65,peixe_marisco
+e0485,abóbora amarela em pedaços,squash,,alta,cozido,27,peixe_marisco
+e0485,abobrinha verde,zucchini,,alta,cozido,8,peixe_marisco
+e0139,metade de bagel,bagels,,alta,assado,75,nenhuma
+e0139,cream cheese,cream cheese,,alta,nao_se_aplica,25,nenhuma
+e0714,ovos mexidos,scrambled eggs,,alta,mexido,100,ovo
+e0773,pizza de queijo (fatia quadrada),cheese pizza,,alta,assado,21,bovina
+e0773,carne fatiada com ervas,steak,pork,media,grelhado,18,bovina
+e0773,abacaxi em cubos,pineapple,,alta,cru,16,bovina
+e0773,salada de alface com molho cremoso,caesar salad,lettuce,media,cru,15,bovina
+e0773,brócolis,broccoli,,alta,cozido,12,bovina
+e0773,batata-doce assada tostada,sweet potato,carrot,media,assado,10,bovina
+e0773,folhado dourado,pastries,fried chicken,baixa,assado,8,bovina
+e0191,arroz branco,white rice,,alta,cozido,36,suina_embutido
+e0191,carne fatiada com molho,pork,steak,baixa,assado,39,suina_embutido
+e0191,brócolis,broccoli,,alta,cozido,25,suina_embutido
+e0420,ovos mexidos,scrambled eggs,,alta,mexido,29,ovo
+e0420,hambúrgueres de linguiça (2),sausage,turkey,media,frito,20,ovo
+e0420,couve-flor,cauliflower,,alta,cozido,25,ovo
+e0420,batatas assadas,roasted potatoes,,alta,assado,26,ovo
+e0300,frango em tiras com molho,chicken,chicken breast,media,refogado,32,frango_peru
+e0300,pimentões em tiras,bell peppers,,alta,refogado,10,frango_peru
+e0300,cebola em tiras,onions,cabbage,media,refogado,9,frango_peru
+e0300,salada de grãos integrais,wheat berry,brown rice,media,cozido,36,frango_peru
+e0300,tomates-cereja,cherry tomatoes,,alta,cru,5,frango_peru
+e0300,rúcula,arugula,,alta,cru,8,frango_peru
+e0610,berinjela assada em cubos,eggplant,,alta,assado,34,frango_peru
+e0610,frango em pedaços,chicken,pork,media,assado,18,frango_peru
+e0610,couve-flor,cauliflower,mashed potatoes,media,cozido,19,frango_peru
+e0610,batatas assadas,roasted potatoes,,alta,assado,14,frango_peru
+e0610,carne com crosta de ervas,steak,tuna,baixa,grelhado,15,frango_peru
+e0356,pedaços de frango com cobertura de grãos,chicken,fish,baixa,assado,31,frango_peru
+e0356,grãos miúdos (quinoa),quinoa,couscous,baixa,cozido,15,frango_peru
+e0356,pimentões,bell peppers,sun dried tomatoes,media,assado,8,frango_peru
+e0356,folhas escuras refogadas,chard,spinach (cooked),media,refogado,37,frango_peru
+e0356,rúcula,arugula,,alta,cru,9,frango_peru
+e0717,abóbora amarela fatiada,squash,,alta,cozido,60,nenhuma
+e0717,abobrinha verde,zucchini,,alta,cozido,40,nenhuma
+e0551,pizza de queijo (pedaço),cheese pizza,,alta,assado,20,frango_peru
+e0551,frango escuro em pedaços,chicken thighs,chicken,media,assado,37,frango_peru
+e0551,grãos soltos junto ao frango,wheat berry,lentils,baixa,cozido,5,frango_peru
+e0551,cenouras assadas,carrot,sweet potato,media,assado,20,frango_peru
+e0551,salada de folhas escuras,kale,spinach (raw),media,cru,13,frango_peru
+e0551,pepino fatiado,cucumbers,zucchini,media,cru,3,frango_peru
+e0551,edamame,edamame,green peas,baixa,cozido,2,frango_peru
+e0369,brócolis,broccoli,,alta,cozido,68,nenhuma
+e0369,pimentões laranja e amarelo,bell peppers,,alta,cru,32,nenhuma
+e0728,fatias de carne clara,pork,chicken,baixa,assado,63,suina_embutido
+e0728,cubos dourados tostados,sweet potato,tofu,baixa,assado,37,suina_embutido
+e0488,cenoura ralada,carrot,,alta,cru,47,nenhuma
+e0488,tomates-cereja,cherry tomatoes,,alta,cru,50,nenhuma
+e0488,azeitona preta,olives,mushroom,baixa,processado,3,nenhuma
+e0180,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,100,prato_misto
+e0346,rodelas de linguiça clara,chicken apple sausage,sausage,media,grelhado,34,frango_peru
+e0346,framboesas,raspberries,,alta,cru,21,frango_peru
+e0346,batata-doce assada em cubos,sweet potato,,alta,assado,33,frango_peru
+e0346,batata assada em cubos,roasted potatoes,squash,media,assado,12,frango_peru
+e0061,grãos integrais temperados,wheat berry,brown rice,media,cozido,44,bovina
+e0061,carne escura em pedaços,beef,chicken thighs,baixa,refogado,24,bovina
+e0061,repolho em tiras,cabbage,coleslaw,media,cru,8,bovina
+e0061,salada caesar,caesar salad,,alta,cru,24,bovina
+e0790,folhas escuras refogadas,chard,spinach (cooked),media,refogado,80,nenhuma
+e0790,rúcula,arugula,,alta,cru,20,nenhuma
+e0726,linguiça fatiada tostada,sausage,chicken apple sausage,media,grelhado,100,suina_embutido
+e0138,melão cantaloupe em cubos,cantaloupe,,alta,cru,100,nenhuma
+e0578,frango em cubos,chicken breast,tofu,media,grelhado,26,frango_peru
+e0578,batatas assadas,roasted potatoes,,alta,assado,29,frango_peru
+e0578,frango em pedaços com molho cremoso,chicken,turkey,media,ensopado,23,frango_peru
+e0578,molho cremoso branco,ranch dressing,mayonnaise,baixa,nao_se_aplica,7,frango_peru
+e0578,couve picada no molho,kale,spinach (cooked),media,cozido,5,frango_peru
+e0578,grãos miúdos,quinoa,bulgur,baixa,cozido,10,frango_peru
+e0558,maçã inteira,apple,,alta,cru,40,nenhuma
+e0558,espiga de milho (2 pedaços),corn on the cob,,alta,cozido,27,nenhuma
+e0558,tomates-cereja,cherry tomatoes,,alta,cru,19,nenhuma
+e0558,cenoura em fatias,carrot,,alta,cozido,14,nenhuma
+e0014,frango escuro glaceado,chicken thighs,chicken wings,media,assado,25,frango_peru
+e0014,molho escuro do frango,barbecue sauce,teriyaki sauce,media,nao_se_aplica,3,frango_peru
+e0014,arroz integral,brown rice,,alta,cozido,20,frango_peru
+e0014,salada de quinoa,quinoa,couscous,media,cozido,18,frango_peru
+e0014,folhas na quinoa,arugula,spinach (raw),media,cru,3,frango_peru
+e0014,salada caesar,caesar salad,,alta,cru,13,frango_peru
+e0014,croutons,croutons,,alta,assado,3,frango_peru
+e0014,tomates-cereja,cherry tomatoes,,alta,cru,10,frango_peru
+e0014,azeitonas pretas,olives,,alta,processado,5,frango_peru
+e0334,abacaxi em pedaços,pineapple,,alta,cru,43,nenhuma
+e0334,melancia em cubos,watermelon,,alta,cru,40,nenhuma
+e0334,amoras,blackberries,,alta,cru,9,nenhuma
+e0334,framboesas,raspberries,,alta,cru,8,nenhuma
+e0409,vagem assada,green beans,asparagus,media,assado,76,nenhuma
+e0409,espinafre cru,spinach (raw),,alta,cru,17,nenhuma
+e0409,lascas claras (cebola),onions,parmesan cheese,baixa,cru,7,nenhuma
+e0092,melancia em cubos,watermelon,,alta,cru,52,nenhuma
+e0092,melão verde em cubos,honeydew melons,,alta,cru,48,nenhuma
+e0787,carne bovina braseada em pedaços,beef,brisket,media,ensopado,45,bovina
+e0787,cubos de abóbora alaranjada,squash,sweet potato,media,assado,48,bovina
+e0787,molho da carne,gravy,,baixa,nao_se_aplica,5,bovina
+e0787,cebolinha picada,green onions,,media,cru,2,bovina
+e0376,pedaços de carne dourada,pork,chicken thighs,media,refogado,32,suina_embutido
+e0376,arroz temperado sobre a carne,brown rice,fried rice,media,refogado,13,suina_embutido
+e0376,folhas verde-escuras,spinach (raw),chard,media,cru,9,suina_embutido
+e0376,salada de repolho com cenoura,coleslaw,cabbage,media,cru,32,suina_embutido
+e0376,fatias de rabanete melancia,radishes,,media,cru,9,suina_embutido
+e0376,folhas de alface,lettuce,,media,cru,5,suina_embutido
+e0768,mingau marrom,oatmeal,quinoa,media,cozido,25,ovo
+e0768,rodelas de banana,banana,,alta,cru,4,ovo
+e0768,pedacinhos de morango,strawberries,,baixa,cru,2,ovo
+e0768,claras mexidas,egg whites,,alta,mexido,20,ovo
+e0768,pão redondo aberto,english muffins,bagels,media,assado,12,ovo
+e0768,cobertura branca sobre o pão,egg whites,cream cheese,baixa,frito,10,ovo
+e0768,cubos de batata assada,roasted potatoes,sweet potato,media,assado,27,ovo
+e0798,pedaços de melão cantaloupe,cantaloupe,,alta,cru,100,nenhuma
+e0229,maçã inteira,apple,,alta,cru,38,nenhuma
+e0229,cenoura cozida em fatias,carrot,,alta,cozido,40,nenhuma
+e0229,rodelas de espiga de milho,corn on the cob,,alta,cozido,22,nenhuma
+e0650,ovos mexidos,scrambled eggs,,alta,mexido,37,ovo
+e0650,tira de bacon,bacon,,alta,frito,4,ovo
+e0650,abacaxi em cubos,pineapple,,alta,cru,32,ovo
+e0650,mirtilos,blueberries,,alta,cru,5,ovo
+e0650,pudim de chia,chia seeds,puddings,media,nao_se_aplica,22,ovo
+e0125,tomates-cereja,cherry tomatoes,,alta,cru,62,nenhuma
+e0125,tiras de pimentão verde e vermelho,bell peppers,,alta,cru,26,nenhuma
+e0125,cenoura ralada,carrot,,alta,cru,12,nenhuma
+e0333,duas fatias de pizza,pizza,,alta,assado,68,prato_misto
+e0333,folhas de espinafre cru,spinach (raw),,alta,cru,14,prato_misto
+e0333,cogumelos cozidos,mushroom,,alta,refogado,12,prato_misto
+e0333,fatia de tomate,tomatoes,,alta,cru,4,prato_misto
+e0333,cebola roxa em fatias,onions,,media,cru,2,prato_misto
+e0266,pera inteira,pears,,alta,cru,100,nenhuma
+e0772,corações de alcachofra,artichokes,,alta,processado,38,laticinio
+e0772,queijo branco esfarelado,feta cheese,tofu,media,nao_se_aplica,30,laticinio
+e0772,grão-de-bico,chickpeas,,alta,cozido,19,laticinio
+e0772,azeitonas pretas,olives,,alta,processado,13,laticinio
+e0676,claras mexidas,egg whites,,alta,mexido,45,ovo
+e0676,cubos de batata-doce assada,sweet potato,,alta,assado,31,ovo
+e0676,amoras,blackberries,,alta,cru,17,ovo
+e0676,framboesas,raspberries,,alta,cru,7,ovo
+e0354,três pedaços de pizza de queijo,cheese pizza,,alta,assado,100,prato_misto
+e0275,ovos mexidos,scrambled eggs,,alta,mexido,68,ovo
+e0275,tiras de bacon,bacon,,alta,frito,11,ovo
+e0275,salada de espinafre cru,spinach (raw),,alta,cru,13,ovo
+e0275,fatias de pepino,cucumbers,,media,cru,5,ovo
+e0275,cenoura ralada,carrot,,alta,cru,3,ovo
+e0656,fatia de pizza de pepperoni,pepperoni pizza,,alta,assado,100,prato_misto
+e0277,rodelas de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0045,vagem,green beans,,alta,cozido,50,nenhuma
+e0045,folhas verde-escuras cozidas,kale,spinach (cooked),media,refogado,47,nenhuma
+e0045,alho picado por cima,garlic,almonds,baixa,refogado,3,nenhuma
+e0027,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0691,pedaço de pizza de queijo,cheese pizza,lasagna,media,assado,100,prato_misto
+e0689,cubos de batata-doce assada,sweet potato,,alta,assado,100,nenhuma
+e0358,brócolis assado,broccoli,,alta,assado,100,nenhuma
+e0408,melancia em cubos,watermelon,,alta,cru,34,laticinio
+e0408,abacaxi em cubos,pineapple,,alta,cru,28,laticinio
+e0408,queijo cottage,cottage cheese,,alta,nao_se_aplica,22,laticinio
+e0408,amoras,blackberries,,alta,cru,9,laticinio
+e0408,framboesas,raspberries,,alta,cru,7,laticinio
+e0663,brócolis cozido,broccoli,,alta,cozido,58,nenhuma
+e0663,mix de folhas,mixed greens,,alta,cru,18,nenhuma
+e0663,fatias alaranjadas assadas,squash,sweet potato,baixa,assado,19,nenhuma
+e0663,tomate-cereja,cherry tomatoes,,alta,cru,5,nenhuma
+e0731,alface com molho cremoso,caesar salad,lettuce,media,cru,31,nenhuma
+e0731,pedaço claro na salada,croutons,chicken,baixa,nao_se_aplica,4,nenhuma
+e0731,couve-flor cozida,cauliflower,,alta,cozido,29,nenhuma
+e0731,brócolis cozido,broccoli,,alta,cozido,22,nenhuma
+e0731,folhas de rúcula e mix,mixed greens,arugula,media,cru,11,nenhuma
+e0731,mirtilos na salada,blueberries,olives,media,cru,3,nenhuma
+e0466,claras mexidas,egg whites,,alta,mexido,37,ovo
+e0466,molho verde por cima,salsa,,media,nao_se_aplica,13,ovo
+e0466,cubos de batata-doce assada,sweet potato,,alta,assado,20,ovo
+e0466,melancia em cubos,watermelon,,alta,cru,14,ovo
+e0466,morangos cortados,strawberries,,alta,cru,10,ovo
+e0466,mirtilos,blueberries,,alta,cru,6,ovo
+e0394,ovos mexidos,scrambled eggs,,alta,mexido,100,ovo
+e0322,cogumelos inteiros cozidos,mushroom,,alta,refogado,24,prato_misto
+e0322,couve-de-bruxelas assada,brussels sprouts,,alta,assado,12,prato_misto
+e0322,abobrinha amarela em fatias,squash,zucchini,media,refogado,16,prato_misto
+e0322,arroz branco,white rice,,alta,cozido,30,prato_misto
+e0322,fatia de pizza de queijo,cheese pizza,,alta,assado,18,prato_misto
+e0002,azeitonas pretas,olives,,alta,processado,49,nenhuma
+e0002,pepino em gomos,cucumbers,,alta,cru,38,nenhuma
+e0002,folhas de espinafre cru,spinach (raw),,alta,cru,13,nenhuma
+e0550,claras mexidas,egg whites,,alta,mexido,55,ovo
+e0550,cubos de batata-doce assada,sweet potato,,alta,assado,24,ovo
+e0550,melancia em cubos,watermelon,,alta,cru,21,ovo
+e0756,amêndoas,almonds,,alta,cru,43,nozes_sementes
+e0756,uvas vermelhas,grapes,,alta,cru,57,nozes_sementes
+e0119,morangos cortados,strawberries,,alta,cru,95,nenhuma
+e0119,mirtilos,blueberries,,alta,cru,5,nenhuma
+e0013,batata ralada dourada,hash browns,,alta,frito,38,ovo
+e0013,ovos mexidos,scrambled eggs,,alta,mexido,34,ovo
+e0013,abacaxi em cubos,pineapple,,alta,cru,28,ovo
+e0040,fatias de abóbora assada com casca,squash,,alta,assado,65,frango_peru
+e0040,montinho de frango picado com molho,chicken,fish,baixa,ensopado,22,frango_peru
+e0040,pedaço de batata dourada,roasted potatoes,squash,baixa,assado,13,frango_peru
+e0044,meia fatia de torrada,toast,,alta,assado,34,nenhuma
+e0044,abacate amassado,avocado,,alta,cru,48,nenhuma
+e0044,rodelas de rabanete,radishes,onions,media,cru,8,nenhuma
+e0044,folhas de rúcula,arugula,,alta,cru,3,nenhuma
+e0044,pedacinhos avermelhados por cima,onions,bacon,baixa,nao_se_aplica,7,nenhuma
+e0173,filé de peixe branco grelhado com molho,fish,chicken breast,media,grelhado,25,peixe_marisco
+e0173,pedaço de peixe em lascas,fish,chicken,baixa,assado,14,peixe_marisco
+e0173,azeitonas pretas,olives,,alta,nao_se_aplica,9,peixe_marisco
+e0173,tomates-cereja,cherry tomatoes,,alta,cru,16,peixe_marisco
+e0173,cubos de batata assada,roasted potatoes,squash,media,assado,14,peixe_marisco
+e0173,arroz integral,brown rice,wheat berry,media,cozido,19,peixe_marisco
+e0173,espinafre refogado,spinach (cooked),,alta,refogado,3,peixe_marisco
+e0213,couve-flor em floretes,cauliflower,,alta,cozido,100,nenhuma
+e0291,folhas verdes cruas,spinach (raw),kale,media,cru,9,nenhuma
+e0291,tiras de pimentão vermelho,bell peppers,,alta,cru,5,nenhuma
+e0291,rodelas de pepino,cucumbers,zucchini,media,cru,7,nenhuma
+e0291,rodelas de cenoura cozida e cenoura ralada,carrot,,alta,cozido,20,nenhuma
+e0291,cebola refogada,onions,fennel,media,refogado,3,nenhuma
+e0291,arroz vermelho/integral,brown rice,wild rice,media,cozido,18,nenhuma
+e0291,grão miúdo bege,bulgur,quinoa,media,cozido,22,nenhuma
+e0291,azeitonas pretas,olives,,alta,nao_se_aplica,11,nenhuma
+e0291,pedaço claro de batata,potatoes,cauliflower,baixa,cozido,5,nenhuma
+e0306,frango grelhado em cubos,grilled chicken,,alta,grelhado,30,frango_peru
+e0306,cuscuz amarelo,couscous,millet,media,cozido,32,frango_peru
+e0306,aspargos,asparagus,,alta,cozido,20,frango_peru
+e0306,alface romana,lettuce,,alta,cru,9,frango_peru
+e0306,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,3,frango_peru
+e0306,croutons,croutons,roasted potatoes,baixa,assado,3,frango_peru
+e0306,molho da salada,caesar dressing,salad dressing,media,nao_se_aplica,3,frango_peru
+e0335,mix de folhas,mixed greens,,alta,cru,100,nenhuma
+e0357,amêndoas,almonds,,alta,nao_se_aplica,16,nozes_sementes
+e0357,uvas vermelhas,grapes,,alta,cru,29,nozes_sementes
+e0357,pera inteira,pears,,alta,cru,55,nozes_sementes
+e0379,fatias de carne bovina com crosta,steak,lamb,media,grelhado,42,bovina
+e0379,vagem,green beans,,alta,refogado,21,bovina
+e0379,espinafre refogado,spinach (cooked),,alta,refogado,15,bovina
+e0379,arroz integral,brown rice,risotto,media,cozido,17,bovina
+e0379,cogumelo fatiado,mushroom,eggplant,media,refogado,5,bovina
+e0418,cubos de batata-doce assada,sweet potato,,alta,assado,24,ovo
+e0418,cubos claros de batata assada,roasted potatoes,squash,media,assado,8,ovo
+e0418,uvas vermelhas,grapes,,alta,cru,13,ovo
+e0418,abacaxi em cubos,pineapple,,alta,cru,22,ovo
+e0418,claras de ovo,egg whites,tofu,media,cozido,16,ovo
+e0418,ovos mexidos,scrambled eggs,,alta,mexido,17,ovo
+e0440,posta de salmão com pele escura,salmon,fish,media,grelhado,42,frango_peru
+e0440,frango desfiado em molho vermelho,chicken,pork,media,ensopado,52,frango_peru
+e0440,molho vermelho,pasta sauce,barbecue sauce,baixa,nao_se_aplica,4,frango_peru
+e0440,folhas verdes cozidas,spinach (cooked),green onions,baixa,refogado,2,frango_peru
+e0456,pedaços de salmão assado,salmon,fish,media,assado,57,peixe_marisco
+e0456,cenouras coloridas assadas,carrot,,alta,assado,41,peixe_marisco
+e0456,folhas verdes por baixo,spinach (cooked),mixed greens,baixa,refogado,2,peixe_marisco
+e0484,filé de peixe branco com pele,fish,chicken breast,media,assado,30,bovina
+e0484,arroz sob o peixe,white rice,brown rice,media,cozido,10,bovina
+e0484,fatias de carne bovina,steak,roast beef,media,grelhado,28,bovina
+e0484,gomos de abóbora com casca verde,squash,zucchini,media,assado,30,bovina
+e0484,folhas verdes cozidas,spinach (cooked),kale,baixa,refogado,2,bovina
+e0499,fatia de pizza,pizza,cheese pizza,media,assado,100,prato_misto
+e0520,ovos mexidos,scrambled eggs,,alta,mexido,44,ovo
+e0520,abacaxi em cubos,pineapple,,alta,cru,56,ovo
+e0529,dois pedaços de espiga de milho,corn on the cob,,alta,cozido,36,nozes_sementes
+e0529,amêndoas,almonds,,alta,nao_se_aplica,11,nozes_sementes
+e0529,melão cantaloupe em pedaços,cantaloupe,,alta,cru,30,nozes_sementes
+e0529,couve-flor em floretes,cauliflower,,alta,cru,23,nozes_sementes
+e0554,cubos de berinjela assada,eggplant,mushroom,media,assado,50,nenhuma
+e0554,couve-flor assada,cauliflower,potatoes,media,assado,32,nenhuma
+e0554,folhas de espinafre cru,spinach (raw),,alta,cru,10,nenhuma
+e0554,penne,pasta,,alta,cozido,5,nenhuma
+e0554,pedaço roxo-escuro (azeitona),olives,cranberries,baixa,nao_se_aplica,3,nenhuma
+e0613,claras de ovo em pedaços,egg whites,tofu,media,cozido,25,ovo
+e0613,batata ralada,hash browns,white rice,media,frito,16,ovo
+e0613,brócolis,broccoli,,alta,cozido,22,ovo
+e0613,cubos de batata-doce assada,sweet potato,,alta,assado,25,ovo
+e0613,framboesas,raspberries,,alta,cru,8,ovo
+e0613,amoras,blackberries,,alta,cru,4,ovo
+e0619,filé de peixe com crosta e cebola roxa,fish,chicken thighs,media,assado,32,suina_embutido
+e0619,fatias de lombo de porco assado,roast pork,roast turkey,media,assado,33,suina_embutido
+e0619,melão verde em cubos,honeydew melons,,alta,cru,35,suina_embutido
+e0644,amêndoas,almonds,,alta,nao_se_aplica,13,nozes_sementes
+e0644,tomates-cereja,cherry tomatoes,,alta,cru,27,nozes_sementes
+e0644,maçã inteira,apple,,alta,cru,39,nozes_sementes
+e0644,couve-flor em floretes,cauliflower,,alta,cru,21,nozes_sementes
+e0653,rúcula,arugula,,alta,cru,46,nenhuma
+e0653,aspargos,asparagus,,alta,cozido,42,nenhuma
+e0653,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,6,nenhuma
+e0653,pedaço roxo-avermelhado,beets,mixed greens,baixa,cozido,6,nenhuma
+e0654,mix de folhas,mixed greens,,alta,cru,27,nenhuma
+e0654,couve-de-bruxelas assada,brussels sprouts,,alta,assado,55,nenhuma
+e0654,framboesas,raspberries,,alta,cru,13,nenhuma
+e0654,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,5,nenhuma
+e0669,ovos mexidos,scrambled eggs,,alta,mexido,46,ovo
+e0669,brócolis,broccoli,,alta,cozido,35,ovo
+e0669,tiras de bacon,bacon,,alta,frito,12,ovo
+e0669,espinafre cru com cenoura ralada,spinach (raw),,alta,cru,7,ovo
+e0671,cubos de peito de frango,chicken breast,tofu,media,cozido,72,frango_peru
+e0671,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,16,frango_peru
+e0671,cenoura ralada,carrot,,alta,cru,5,frango_peru
+e0671,cebola roxa fatiada,onions,,alta,cru,7,frango_peru
+e0693,ovos mexidos,scrambled eggs,,alta,mexido,66,ovo
+e0693,cubos de batata-doce assada,sweet potato,,alta,assado,34,ovo
+e0757,cubos de peito de frango,chicken breast,turkey breast,media,cozido,25,frango_peru
+e0757,cogumelos inteiros,mushroom,,alta,refogado,14,frango_peru
+e0757,couve-de-bruxelas assada,brussels sprouts,,alta,assado,11,frango_peru
+e0757,abobrinha amarela em rodelas,squash,zucchini,media,assado,14,frango_peru
+e0757,arroz branco,white rice,,alta,cozido,23,frango_peru
+e0757,fatia pequena de pizza de queijo,cheese pizza,,alta,assado,13,frango_peru
+e0770,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0778,mix de folhas,mixed greens,,alta,cru,16,frango_peru
+e0778,cubos de frango,chicken breast,turkey breast,media,grelhado,37,frango_peru
+e0778,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,10,frango_peru
+e0778,brócolis,broccoli,,alta,cozido,16,frango_peru
+e0778,fatia de abacate,avocado,,alta,cru,15,frango_peru
+e0778,molho da salada,salad dressing,vinaigrette,media,nao_se_aplica,6,frango_peru
+e0822,claras de ovo em pedaços,egg whites,tofu,media,cozido,57,ovo
+e0822,melancia em cubos,watermelon,,alta,cru,26,ovo
+e0822,pedaços de waffle,waffles,,alta,assado,17,ovo
+e0733,rúcula,arugula,,alta,cru,78,nenhuma
+e0733,uvas-passas claras,raisins,almonds,baixa,nao_se_aplica,12,nenhuma
+e0733,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,10,nenhuma
+e0189,tofu em cubos dourados,tofu,roasted potatoes,media,assado,28,leguminosa_soja
+e0189,arroz integral com temperos,brown rice,wheat berry,media,cozido,43,leguminosa_soja
+e0189,legumes picados no arroz,mixed vegetables,bell peppers,media,refogado,8,leguminosa_soja
+e0189,rúcula e folhas,arugula,mixed greens,media,cru,16,leguminosa_soja
+e0189,fatia de rabanete,radishes,,alta,cru,5,leguminosa_soja
+e0253,filé de salmão com ervas,salmon,trout,media,assado,97,peixe_marisco
+e0253,folha de rúcula,arugula,,alta,cru,3,peixe_marisco
+e0675,linguiça em pedaços,sausage,chicken apple sausage,media,grelhado,26,suina_embutido
+e0675,batatas assadas,roasted potatoes,,alta,assado,28,suina_embutido
+e0675,melancia em cubos,watermelon,,alta,cru,21,suina_embutido
+e0675,morangos,strawberries,,alta,cru,21,suina_embutido
+e0675,mirtilos,blueberries,,alta,cru,4,suina_embutido
+e0681,pimentão vermelho e verde em tiras,bell peppers,,alta,cru,58,nenhuma
+e0681,tomates-cereja,cherry tomatoes,,alta,cru,42,nenhuma
+e0372,amêndoas,almonds,,alta,cru,8,nozes_sementes
+e0372,maçã inteira,apple,,alta,cru,36,nozes_sementes
+e0372,pedaço de espiga de milho,corn on the cob,,alta,cozido,14,nozes_sementes
+e0372,tomates-cereja,cherry tomatoes,,alta,cru,21,nozes_sementes
+e0372,couve-flor crua,cauliflower,,alta,cru,21,nozes_sementes
+e0761,ovos mexidos,scrambled eggs,,alta,mexido,55,ovo
+e0761,batata ralada dourada,hash browns,,alta,frito,45,ovo
+e0269,brócolis,broccoli,,alta,cozido,93,nenhuma
+e0269,pedaços claros,cauliflower,garlic,baixa,cozido,7,nenhuma
+e0308,cenoura ralada,carrot,,alta,cru,18,nenhuma
+e0308,pepino em rodelas,cucumbers,,alta,cru,23,nenhuma
+e0308,salsão picado,celery,,alta,cru,24,nenhuma
+e0308,tomates-cereja,cherry tomatoes,,alta,cru,35,nenhuma
+e0699,cenouras assadas,carrot,baby carrots,media,assado,100,nenhuma
+e0710,ovos mexidos,scrambled eggs,,alta,mexido,59,ovo
+e0710,bacon em tiras,bacon,,alta,frito,18,ovo
+e0710,mix de folhas,mixed greens,,alta,cru,11,ovo
+e0710,legumes assados,brussels sprouts,bell peppers,baixa,assado,12,ovo
+e0777,fatia de pizza de queijo,cheese pizza,,alta,assado,54,prato_misto
+e0777,alface romana com molho caesar,caesar salad,,alta,cru,39,prato_misto
+e0777,croutons,croutons,,alta,assado,4,prato_misto
+e0777,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,3,prato_misto
+e0496,filés de peixe dourados,fish,chicken,media,assado,78,peixe_marisco
+e0496,cogumelos,mushroom,,media,refogado,10,peixe_marisco
+e0496,vagem,green beans,green onions,media,cozido,6,peixe_marisco
+e0496,arroz selvagem,wild rice,,media,cozido,6,peixe_marisco
+e0310,fatia de peito de frango,chicken breast,turkey breast,media,assado,22,frango_peru
+e0310,grãos integrais,wheat berry,brown rice,media,cozido,27,frango_peru
+e0310,espiga de milho em pedaços,corn on the cob,,alta,cozido,32,frango_peru
+e0310,cenoura,carrot,,alta,cozido,5,frango_peru
+e0310,folhas de espinafre,spinach (raw),,media,cru,2,frango_peru
+e0310,pedaços dourados temperados,roasted potatoes,chicken,baixa,assado,12,frango_peru
+e0795,frango em cubos,chicken breast,tofu,media,grelhado,41,frango_peru
+e0795,brócolis,broccoli,,alta,cozido,36,frango_peru
+e0795,mix de folhas,mixed greens,,alta,cru,18,frango_peru
+e0795,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,5,frango_peru
+e0561,couve-flor crua,cauliflower,,alta,cru,36,nenhuma
+e0561,pedaço de espiga de milho,corn on the cob,,alta,cozido,20,nenhuma
+e0561,melão cantaloupe em fatias,cantaloupe,,alta,cru,44,nenhuma
+e0008,peito de frango fatiado,chicken breast,pork,media,grelhado,55,frango_peru
+e0008,pepino em fatias,cucumbers,,alta,cru,45,frango_peru
+e0679,pedaços de carne escura com molho,chicken thighs,pork,baixa,assado,26,frango_peru
+e0679,tofu em cubos,tofu,roasted potatoes,media,assado,24,frango_peru
+e0679,macarrão oriental,noodles,lo mein,media,cozido,22,frango_peru
+e0679,arroz integral,brown rice,wheat berry,media,cozido,14,frango_peru
+e0679,rúcula,arugula,,alta,cru,6,frango_peru
+e0679,"repolho, rabanete e cenoura",cabbage,coleslaw,media,cru,5,frango_peru
+e0679,brócolis,broccoli,,media,cozido,3,frango_peru
+e0428,filé de salmão com crosta de ervas,salmon,,alta,assado,50,peixe_marisco
+e0428,pedaço de pizza de queijo,cheese pizza,,alta,assado,16,peixe_marisco
+e0428,alcachofra,artichokes,,media,cozido,13,peixe_marisco
+e0428,feijão branco,white beans,,media,cozido,6,peixe_marisco
+e0428,legume escuro assado,eggplant,mushroom,baixa,assado,8,peixe_marisco
+e0428,pedaço de batata,potatoes,artichokes,baixa,cozido,7,peixe_marisco
+e0113,pedaço de pizza de pepperoni,pepperoni pizza,,alta,assado,58,prato_misto
+e0113,folhas de espinafre e mix,mixed greens,spinach (raw),media,cru,34,prato_misto
+e0113,queijo esfarelado,goat cheese,feta cheese,baixa,nao_se_aplica,3,prato_misto
+e0113,molho da salada,vinaigrette,balsamic vinegar,baixa,nao_se_aplica,5,prato_misto
+e0718,cenoura ralada,carrot,,alta,cru,100,nenhuma
+e0767,frango em cubos,chicken breast,chicken,media,grelhado,19,frango_peru
+e0767,cenoura ralada,carrot,,alta,cru,14,frango_peru
+e0767,pepino em rodelas,cucumbers,,alta,cru,19,frango_peru
+e0767,salsão picado,celery,,alta,cru,19,frango_peru
+e0767,tomates-cereja,cherry tomatoes,,alta,cru,29,frango_peru
+e0114,carne desfiada,pork,chicken thighs,baixa,assado,24,suina_embutido
+e0114,grãos integrais,wheat berry,brown rice,media,cozido,19,suina_embutido
+e0114,couve-flor,cauliflower,,media,assado,13,suina_embutido
+e0114,brócolis assado,broccoli,,alta,assado,9,suina_embutido
+e0114,cebola roxa em conserva,onions,,media,processado,3,suina_embutido
+e0114,folhas cozidas,spinach (cooked),kale,baixa,refogado,2,suina_embutido
+e0114,alface picada,lettuce,,alta,cru,6,suina_embutido
+e0114,pepino em cubos,cucumbers,,alta,cru,9,suina_embutido
+e0114,pimentão em cubos,bell peppers,,media,cru,8,suina_embutido
+e0114,tomate em cubos,tomatoes,,alta,cru,7,suina_embutido
+e0097,pizza de queijo,cheese pizza,pepperoni pizza,media,assado,47,prato_misto
+e0097,tomates-cereja assados,cherry tomatoes,,alta,assado,22,prato_misto
+e0097,brócolis assado,broccoli,,alta,assado,19,prato_misto
+e0097,rúcula,arugula,,alta,cru,9,prato_misto
+e0097,azeitonas pretas,olives,,alta,processado,3,prato_misto
+e0642,cubos brancos dourados,tofu,roasted potatoes,media,assado,40,leguminosa_soja
+e0642,pedaços dourados escuros,mushroom,tofu,baixa,assado,8,leguminosa_soja
+e0642,abóbora amarela em fatias,squash,,alta,cozido,29,leguminosa_soja
+e0642,abobrinha em fatias,zucchini,,alta,cozido,23,leguminosa_soja
+e0434,espinafre cru,spinach (raw),,alta,cru,26,nenhuma
+e0434,folhas roxas e verdes,mixed greens,,alta,cru,26,nenhuma
+e0434,morangos,strawberries,,alta,cru,27,nenhuma
+e0434,mirtilos,blueberries,,alta,cru,6,nenhuma
+e0434,amora,blackberries,,media,cru,4,nenhuma
+e0434,pedaços de nozes,pecans,walnuts,baixa,nao_se_aplica,5,nenhuma
+e0434,molho da salada,vinaigrette,balsamic vinegar,baixa,nao_se_aplica,6,nenhuma
+e0762,cenoura cozida em rodelas,carrot,,alta,cozido,100,nenhuma
+e0078,carne bovina fatiada,steak,beef,media,grelhado,24,bovina
+e0078,peixe branco com ervas,fish,chicken breast,media,assado,26,bovina
+e0078,cogumelos,mushroom,,alta,assado,11,bovina
+e0078,tomates-cereja,cherry tomatoes,,alta,cru,14,bovina
+e0078,abacate em fatias,avocado,,alta,cru,14,bovina
+e0078,fatia de abobrinha assada,zucchini,squash,media,assado,11,bovina
+e0341,filé de salmão com crosta escura,salmon,,alta,assado,34,peixe_marisco
+e0341,cuscuz israelense,couscous,wheat berry,media,cozido,34,peixe_marisco
+e0341,couve-de-bruxelas,brussels sprouts,,media,assado,9,peixe_marisco
+e0341,espinafre cru,spinach (raw),,alta,cru,13,peixe_marisco
+e0341,pimentão vermelho assado,bell peppers,tomatoes,media,assado,8,peixe_marisco
+e0341,fatia de pepino,cucumbers,,media,cru,2,peixe_marisco
+e0205,carne bovina fatiada,steak,beef,media,grelhado,48,bovina
+e0205,abacate em fatias,avocado,,alta,cru,28,bovina
+e0205,fatia de abobrinha assada,zucchini,squash,media,assado,24,bovina
+e0019,tiras de bacon,bacon,,alta,frito,100,suina_embutido
+e0020,brócolis assado,broccoli,,alta,assado,43,nenhuma
+e0020,morangos,strawberries,,alta,cru,37,nenhuma
+e0020,mirtilos,blueberries,,alta,cru,8,nenhuma
+e0020,folhas de espinafre,spinach (raw),,alta,cru,10,nenhuma
+e0020,cenoura ralada,carrot,,alta,cru,2,nenhuma
+e0032,fatia de pizza de pepperoni,pepperoni pizza,,alta,assado,38,prato_misto
+e0032,pimentão vermelho assado,bell peppers,tomatoes,media,assado,22,prato_misto
+e0032,cubos de tofu temperado,tofu,feta cheese,media,assado,18,prato_misto
+e0032,legumes assados escuros (batata/berinjela),roasted potatoes,eggplant,baixa,assado,20,prato_misto
+e0032,grãos soltos,chickpeas,peanuts,baixa,cozido,2,prato_misto
+e0093,filé de peixe branco com pele,fish,cod,media,assado,23,peixe_marisco
+e0093,carne bovina fatiada,beef,steak,media,grelhado,17,peixe_marisco
+e0093,grão miúdo cozido,quinoa,bulgur,media,cozido,15,peixe_marisco
+e0093,cogumelos assados,mushroom,,alta,assado,10,peixe_marisco
+e0093,tomates-cereja,cherry tomatoes,,alta,cru,13,peixe_marisco
+e0093,fatias de abacate,avocado,,alta,cru,15,peixe_marisco
+e0093,fatia de abobrinha grelhada,zucchini,eggplant,media,grelhado,7,peixe_marisco
+e0118,cenoura ralada,carrot,,alta,cru,42,laticinio
+e0118,cebola roxa fatiada,onions,,alta,cru,45,laticinio
+e0118,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,13,laticinio
+e0182,sementes de chia hidratadas,chia seeds,,alta,nao_se_aplica,10,nozes_sementes
+e0182,base cremosa do pudim de chia,milk,yogurt,media,nao_se_aplica,50,nozes_sementes
+e0182,fruta amarela em cubos,mangos,peaches,media,cru,40,nozes_sementes
+e0183,fatia de pizza de queijo,cheese pizza,pizza,media,assado,56,prato_misto
+e0183,salada caesar com croutons,caesar salad,,alta,cru,44,prato_misto
+e0208,brócolis,broccoli,,alta,cozido,30,nozes_sementes
+e0208,tangerina inteira,mandarin oranges,orange,media,cru,48,nozes_sementes
+e0208,amêndoas,almonds,,alta,cru,22,nozes_sementes
+e0223,filé de salmão,salmon,,alta,assado,17,peixe_marisco
+e0223,peça escura grelhada ao lado do salmão,steak,eggplant,baixa,grelhado,10,peixe_marisco
+e0223,brócolis,broccoli,,alta,cozido,21,peixe_marisco
+e0223,couve-de-bruxelas assada,brussels sprouts,,alta,assado,16,peixe_marisco
+e0223,pepino fatiado,cucumbers,,alta,cru,9,peixe_marisco
+e0223,salsão picado,celery,zucchini,media,cru,3,peixe_marisco
+e0223,tomates-cereja,cherry tomatoes,,alta,cru,12,peixe_marisco
+e0223,rabanete fatiado,radishes,,alta,cru,4,peixe_marisco
+e0223,cubos de abóbora assada,squash,sweet potato,media,assado,7,peixe_marisco
+e0223,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,1,peixe_marisco
+e0260,acelga colorida refogada,chard,,alta,refogado,100,nenhuma
+e0276,tomates-cereja,cherry tomatoes,,alta,cru,43,nenhuma
+e0276,pimentão vermelho e verde,bell peppers,,alta,cru,33,nenhuma
+e0276,cebola roxa fatiada,onions,,alta,cru,13,nenhuma
+e0276,azeitonas pretas,olives,,alta,processado,11,nenhuma
+e0336,tiras de bacon,bacon,,alta,frito,100,suina_embutido
+e0359,abacaxi em pedaços,pineapple,,alta,cru,65,nenhuma
+e0359,mirtilos,blueberries,,alta,cru,22,nenhuma
+e0359,morangos,strawberries,,alta,cru,13,nenhuma
+e0384,rúcula,arugula,,alta,cru,17,nenhuma
+e0384,couve-flor,cauliflower,,alta,cozido,41,nenhuma
+e0384,batatas assadas,roasted potatoes,,alta,assado,42,nenhuma
+e0395,claras de ovo mexidas,egg whites,scrambled eggs,media,mexido,32,ovo
+e0395,rodelas de linguiça,sausage,chicken apple sausage,media,processado,14,ovo
+e0395,cubos de batata-doce assada,sweet potato,roasted potatoes,media,assado,14,ovo
+e0395,abacaxi em pedaços,pineapple,,alta,cru,40,ovo
+e0483,ovos mexidos,scrambled eggs,,alta,mexido,40,ovo
+e0483,brócolis assado,broccoli,,alta,assado,29,ovo
+e0483,folhas de espinafre,spinach (raw),,alta,cru,5,ovo
+e0483,cenoura ralada,carrot,,alta,cru,1,ovo
+e0483,morangos,strawberries,,alta,cru,20,ovo
+e0483,mirtilos,blueberries,,alta,cru,4,ovo
+e0483,molho vermelho sobre os ovos,salsa,ketchup,baixa,nao_se_aplica,1,ovo
+e0510,ovos mexidos,scrambled eggs,,alta,mexido,57,ovo
+e0510,morangos,strawberries,,alta,cru,19,ovo
+e0510,folhas de espinafre,spinach (raw),,alta,cru,6,ovo
+e0510,brócolis assado,broccoli,,alta,assado,18,ovo
+e0536,fatia de pizza de pepperoni,pepperoni pizza,,alta,assado,33,prato_misto
+e0536,salada de espinafre,spinach (raw),mixed greens,media,cru,7,prato_misto
+e0536,queijo esfarelado na salada,feta cheese,goat cheese,baixa,nao_se_aplica,1,prato_misto
+e0536,abacaxi em pedaços,pineapple,,alta,cru,25,prato_misto
+e0536,couve-flor,cauliflower,,alta,cozido,34,prato_misto
+e0542,vagem assada,green beans,,alta,assado,100,nenhuma
+e0562,maçã inteira,apple,,alta,cru,100,nenhuma
+e0576,rodela de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0603,filé de salmão com pele,salmon,fish,media,assado,37,peixe_marisco
+e0603,grãos redondos marrons,wheat berry,barley,media,cozido,37,peixe_marisco
+e0603,couve-de-bruxelas assada,brussels sprouts,,alta,assado,26,peixe_marisco
+e0690,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0752,pedaços de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0753,maçã inteira,apple,,alta,cru,100,nenhuma
+e0800,brócolis,broccoli,,alta,cozido,80,nenhuma
+e0800,couve-de-bruxelas assada,brussels sprouts,,alta,assado,20,nenhuma
+e0802,mix de folhas,mixed greens,,alta,cru,35,nenhuma
+e0802,brócolis,broccoli,,alta,cozido,65,nenhuma
+e0807,peito de frango grelhado com azeitonas,grilled chicken,fish,media,grelhado,26,frango_peru
+e0807,pedaço de frango assado,chicken,fish,media,assado,16,frango_peru
+e0807,fatia de pizza com cebola roxa,pizza,cheese pizza,media,assado,26,frango_peru
+e0807,brócolis assado,broccoli,,alta,assado,21,frango_peru
+e0807,cogumelos,mushroom,eggplant,media,refogado,6,frango_peru
+e0807,vagem,green beans,celery,media,cozido,5,frango_peru
+e0812,brócolis,broccoli,,alta,cozido,24,nozes_sementes
+e0812,tangerina inteira,mandarin oranges,orange,media,cru,38,nozes_sementes
+e0812,amêndoas,almonds,,alta,cru,16,nozes_sementes
+e0812,morangos,strawberries,,alta,cru,22,nozes_sementes
+e0819,ovos mexidos,scrambled eggs,,alta,mexido,20,ovo
+e0819,abacaxi em pedaços,pineapple,,alta,cru,20,ovo
+e0819,melancia em cubos,watermelon,,alta,cru,43,ovo
+e0819,melão em cubos,honeydew melons,,alta,cru,17,ovo
+e0673,massa branca tipo purê,mashed potatoes,egg whites,baixa,cozido,34,peixe_marisco
+e0673,pedaços claros com molho verde,fish,chicken,baixa,cozido,27,peixe_marisco
+e0673,disco de carne tipo linguiça/hambúrguer,sausage,hamburgers,baixa,frito,18,peixe_marisco
+e0673,tomate picado (pico de gallo),salsa,tomatoes,media,cru,17,peixe_marisco
+e0673,molho verde,salsa,pesto,baixa,nao_se_aplica,4,peixe_marisco
+e0437,melancia em cubos,watermelon,,alta,cru,75,nenhuma
+e0437,morangos,strawberries,,alta,cru,18,nenhuma
+e0437,mirtilos,blueberries,,alta,cru,7,nenhuma
+e0594,filé claro com crosta,fish,chicken breast,baixa,assado,55,peixe_marisco
+e0594,feijão branco,white beans,,alta,cozido,22,peixe_marisco
+e0594,tomate/pimentão assado,cherry tomatoes,bell peppers,media,assado,10,peixe_marisco
+e0594,alcachofra/cebola,artichokes,onions,baixa,cozido,8,peixe_marisco
+e0594,rúcula,arugula,spinach (raw),media,cru,5,peixe_marisco
+e0094,claras de ovo mexidas,egg whites,scrambled eggs,media,mexido,70,ovo
+e0094,tiras de bacon bem tostadas,bacon,turkey bacon,media,frito,27,ovo
+e0094,molho vermelho picante,salsa,ketchup,baixa,nao_se_aplica,3,ovo
+e0380,pera inteira,pears,,alta,cru,57,nenhuma
+e0380,tangerina inteira,mandarin oranges,,alta,cru,26,nenhuma
+e0380,morangos fatiados,strawberries,,alta,cru,17,nenhuma
+e0011,berinjela assada em cubos,eggplant,mushroom,media,assado,78,nenhuma
+e0011,mix de folhas,mixed greens,,alta,cru,20,nenhuma
+e0011,azeite,olive oil,,baixa,nao_se_aplica,2,nenhuma
+e0623,claras de ovo mexidas,egg whites,cottage cheese,media,mexido,23,ovo
+e0623,pudim de chia,chia seeds,oatmeal,media,nao_se_aplica,20,ovo
+e0623,cubos dourados de batata,roasted potatoes,french toast,baixa,assado,20,ovo
+e0623,melancia em cubos,watermelon,,alta,cru,14,ovo
+e0623,morangos,strawberries,,alta,cru,10,ovo
+e0623,amoras,blackberries,,alta,cru,9,ovo
+e0623,framboesas,raspberries,,alta,cru,4,ovo
+e0241,azeitonas roxas,olives,kidney beans,media,processado,57,nenhuma
+e0241,espinafre cru,spinach (raw),,alta,cru,23,nenhuma
+e0241,cenoura ralada,carrot,,alta,cru,20,nenhuma
+e0744,grão integral marrom,wheat berry,brown rice,media,cozido,48,leguminosa_soja
+e0744,tofu em cubos temperado,tofu,,alta,assado,42,leguminosa_soja
+e0744,folhas verdes picadas,kale,spinach (cooked),baixa,cozido,6,leguminosa_soja
+e0744,tomate em pedaços,tomatoes,bell peppers,media,cru,4,leguminosa_soja
+e0130,ovos mexidos,scrambled eggs,,alta,mexido,48,ovo
+e0130,brócolis assado,broccoli,,alta,assado,28,ovo
+e0130,morangos,strawberries,,alta,cru,24,ovo
+e0472,filé de peixe branco com pele,fish,trout,media,assado,23,peixe_marisco
+e0472,carne bovina fatiada,steak,roast beef,media,grelhado,18,peixe_marisco
+e0472,grão miúdo dourado,quinoa,bulgur,media,cozido,19,peixe_marisco
+e0472,abacate em fatias,avocado,,alta,cru,17,peixe_marisco
+e0472,tomates-cereja,cherry tomatoes,,alta,cru,14,peixe_marisco
+e0472,cogumelos inteiros,mushroom,,alta,cozido,9,peixe_marisco
+e0668,claras de ovo mexidas,egg whites,cottage cheese,media,mexido,49,ovo
+e0668,batata-doce assada em cubos,sweet potato,squash,media,assado,20,ovo
+e0668,morangos,strawberries,,alta,cru,10,ovo
+e0668,melão verde,honeydew melons,,alta,cru,10,ovo
+e0668,melão cantaloupe,cantaloupe,,alta,cru,7,ovo
+e0668,mirtilos/uvas escuras,blueberries,grapes,media,cru,4,ovo
+e0021,batata-doce assada em cubos,sweet potato,squash,media,assado,46,ovo
+e0021,claras de ovo mexidas,egg whites,feta cheese,media,mexido,43,ovo
+e0021,tiras de bacon,bacon,turkey bacon,media,frito,11,ovo
+e0233,arroz com molho avermelhado,brown rice,white rice,media,cozido,40,leguminosa_soja
+e0233,tofu em cubos com molho,tofu,chicken,media,refogado,35,leguminosa_soja
+e0233,couve/folhas verdes,kale,arugula,media,cru,11,leguminosa_soja
+e0233,grão-de-bico,chickpeas,,alta,cozido,7,leguminosa_soja
+e0233,pimentão vermelho,bell peppers,,alta,cru,7,leguminosa_soja
+e0636,coxa de frango empanada,chicken drumsticks,fried chicken,media,empanado,43,frango_peru
+e0636,pedaço de massa com queijo,cheese pizza,quesadillas,baixa,assado,21,frango_peru
+e0636,rodelas alaranjadas assadas,sweet potato,carrot,media,assado,19,frango_peru
+e0636,mix de folhas,mixed greens,,alta,cru,17,frango_peru
+e0789,frango em cubos,chicken breast,turkey breast,media,grelhado,41,frango_peru
+e0789,pepino em gomos,cucumbers,,alta,cru,20,frango_peru
+e0789,azeitonas roxas,olives,kidney beans,media,processado,17,frango_peru
+e0789,espinafre cru,spinach (raw),,alta,cru,12,frango_peru
+e0789,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,5,frango_peru
+e0789,molho marrom,vinaigrette,salad dressing,media,nao_se_aplica,5,frango_peru
+e0589,filé de salmão,salmon,trout,media,assado,58,peixe_marisco
+e0589,abóbora amarela,squash,,alta,cozido,25,peixe_marisco
+e0589,abobrinha,zucchini,,alta,cozido,17,peixe_marisco
+e0067,ovos mexidos,scrambled eggs,,alta,mexido,100,ovo
+e0571,abacaxi em pedaços,pineapple,,alta,cru,50,nozes_sementes
+e0571,pudim de chia,chia seeds,oatmeal,media,nao_se_aplica,37,nozes_sementes
+e0571,pedaços de maçã,apple,pears,media,cru,13,nozes_sementes
+e0332,queijo cottage,cottage cheese,egg whites,media,nao_se_aplica,100,laticinio
+e0803,melão cantaloupe em pedaços,cantaloupe,,alta,cru,100,nenhuma
+e0036,espinafre cru,spinach (raw),,alta,cru,34,nenhuma
+e0036,tomates-cereja,cherry tomatoes,,alta,cru,34,nenhuma
+e0036,cenoura ralada,carrot,,alta,cru,14,nenhuma
+e0036,pepino,cucumbers,zucchini,media,cru,11,nenhuma
+e0036,molho/azeite,vinaigrette,olive oil,baixa,nao_se_aplica,7,nenhuma
+e0321,carne bovina fatiada,steak,lamb,media,grelhado,52,bovina
+e0321,arroz integral,brown rice,barley,media,cozido,24,bovina
+e0321,espinafre cozido,spinach (cooked),,alta,refogado,15,bovina
+e0321,molho de tomate em pedaços,salsa,pasta sauce,baixa,nao_se_aplica,5,bovina
+e0321,cogumelo,mushroom,eggplant,baixa,cozido,4,bovina
+e0655,maçã inteira,apple,,alta,cru,32,nenhuma
+e0655,tomates-uva,cherry tomatoes,,alta,cru,23,nenhuma
+e0655,uvas roxas,grapes,,alta,cru,21,nenhuma
+e0655,pedaço de espiga de milho,corn on the cob,,alta,cozido,13,nenhuma
+e0655,couve-flor crua,cauliflower,,alta,cru,11,nenhuma
+e0559,batata assada em cubos,roasted potatoes,sweet potato,media,assado,52,nenhuma
+e0559,metade de bagel,bagels,english muffins,media,assado,32,nenhuma
+e0559,cream cheese,cream cheese,,alta,nao_se_aplica,16,nenhuma
+e0622,claras de ovo mexidas,egg whites,cottage cheese,media,mexido,71,ovo
+e0622,batata-doce assada em cubos,sweet potato,squash,media,assado,29,ovo
+e0786,filés de salmão,salmon,,alta,assado,44,peixe_marisco
+e0786,tomates-cereja,cherry tomatoes,,alta,cru,27,peixe_marisco
+e0786,brócolis,broccoli,,alta,cozido,26,peixe_marisco
+e0786,cebola roxa,onions,,alta,cru,3,peixe_marisco
+e0352,alface com molho cremoso,caesar salad,lettuce,media,cru,100,nenhuma
+e0531,batata ralada dourada,hash browns,,alta,frito,54,suina_embutido
+e0531,linguiça em pedaços,sausage,chicken apple sausage,media,grelhado,46,suina_embutido
+e0620,morangos,strawberries,,alta,cru,32,suina_embutido
+e0620,cubos dourados,roasted potatoes,french toast,baixa,assado,32,suina_embutido
+e0620,tiras de bacon,bacon,turkey bacon,media,frito,14,suina_embutido
+e0620,framboesas,raspberries,,alta,cru,9,suina_embutido
+e0620,amoras,blackberries,,alta,cru,9,suina_embutido
+e0620,mirtilos,blueberries,,alta,cru,4,suina_embutido
+e0007,maçã inteira,apple,,alta,cru,38,nenhuma
+e0007,rodelas de espiga de milho,corn on the cob,,alta,cozido,24,nenhuma
+e0007,cenoura em fatias,carrot,sweet potato,media,cozido,24,nenhuma
+e0007,uvas,grapes,,alta,cru,14,nenhuma
+e0025,folhas verdes refogadas,chard,kale,media,refogado,92,nenhuma
+e0025,pedaços de cenoura,carrot,bell peppers,media,cozido,5,nenhuma
+e0025,azeite do refogado,olive oil,vegetable oil,baixa,nao_se_aplica,3,nenhuma
+e0034,claras de ovo mexidas,egg whites,,alta,mexido,44,ovo
+e0034,molho verde por cima,salsa,pesto,media,nao_se_aplica,15,ovo
+e0034,melancia em cubos,watermelon,,alta,cru,23,ovo
+e0034,dois pedaços de waffle,waffles,,alta,assado,18,ovo
+e0037,pedaços de frango,chicken,fish,baixa,assado,35,frango_peru
+e0037,rodelas de espiga de milho,corn on the cob,,alta,cozido,32,frango_peru
+e0037,acelga chinesa cozida,bok choy,cabbage,media,cozido,16,frango_peru
+e0037,folhas de espinafre temperadas,spinach (raw),mixed greens,media,cru,13,frango_peru
+e0037,mirtilos e amora,blueberries,blackberries,media,cru,4,frango_peru
+e0079,fatia de pizza de queijo,cheese pizza,pizza,media,assado,58,prato_misto
+e0079,mix de folhas,mixed greens,,alta,cru,25,prato_misto
+e0079,azeitonas pretas,olives,grapes,media,processado,8,prato_misto
+e0079,tomate,cherry tomatoes,tomatoes,media,cru,4,prato_misto
+e0079,queijo esfarelado,feta cheese,goat cheese,baixa,nao_se_aplica,3,prato_misto
+e0079,cebola roxa,onions,,alta,cru,2,prato_misto
+e0091,claras de ovo mexidas com pimenta,egg whites,,alta,mexido,100,ovo
+e0154,abacaxi em pedaços,pineapple,,alta,cru,33,ovo
+e0154,claras de ovo mexidas,egg whites,,alta,mexido,25,ovo
+e0154,batatas assadas,roasted potatoes,,alta,assado,22,ovo
+e0154,mirtilos,blueberries,,alta,cru,14,ovo
+e0154,morangos,strawberries,,alta,cru,6,ovo
+e0156,ovos mexidos,scrambled eggs,,alta,mexido,52,ovo
+e0156,rodelas de linguiça,sausage,chicken apple sausage,media,grelhado,20,ovo
+e0156,amoras,blackberries,,alta,cru,18,ovo
+e0156,framboesas,raspberries,,alta,cru,8,ovo
+e0156,molho de pimenta,salsa,ketchup,baixa,nao_se_aplica,2,ovo
+e0166,rodelas de linguiça,sausage,chicken apple sausage,media,grelhado,51,suina_embutido
+e0166,uvas,grapes,,alta,cru,25,suina_embutido
+e0166,tiras de bacon,bacon,,alta,frito,15,suina_embutido
+e0166,amêndoas,almonds,,alta,cru,9,suina_embutido
+e0193,maçã inteira,apple,,alta,cru,100,nenhuma
+e0217,brócolis,broccoli,,alta,cozido,62,nenhuma
+e0217,mix de folhas,mixed greens,,alta,cru,26,nenhuma
+e0217,fatia de abobrinha,zucchini,cucumbers,media,cru,5,nenhuma
+e0217,rabanete,radishes,,alta,cru,3,nenhuma
+e0217,cenoura ralada,carrot,,alta,cru,2,nenhuma
+e0217,molho da salada,vinaigrette,salad dressing,baixa,nao_se_aplica,2,nenhuma
+e0228,frango em cubos,chicken breast,tofu,media,grelhado,85,frango_peru
+e0228,cebola roxa fatiada,onions,,alta,cru,10,frango_peru
+e0228,cenoura ralada,carrot,,alta,cru,5,frango_peru
+e0315,carne com crosta de grãos,beef,pork,baixa,assado,28,bovina
+e0315,arroz integral,brown rice,,alta,cozido,28,bovina
+e0315,aspargos,asparagus,green beans,media,grelhado,21,bovina
+e0315,rúcula e espinafre,arugula,spinach (raw),media,cru,14,bovina
+e0315,cogumelo sob o arroz,mushroom,eggplant,baixa,grelhado,9,bovina
+e0328,rodelas de linguiça,sausage,chicken apple sausage,media,grelhado,100,suina_embutido
+e0350,uvas,grapes,,alta,cru,100,nenhuma
+e0367,uvas,grapes,,alta,cru,36,nenhuma
+e0367,tomates-cereja,cherry tomatoes,,alta,cru,33,nenhuma
+e0367,melão cantaloupe em pedaços,cantaloupe,,alta,cru,31,nenhuma
+e0386,pedaço de frango temperado,chicken thighs,salmon,media,assado,62,frango_peru
+e0386,rúcula,arugula,,alta,cru,27,frango_peru
+e0386,mirtilos,blueberries,olives,baixa,cru,5,frango_peru
+e0386,lascas de amêndoa,almonds,parmesan cheese,media,cru,4,frango_peru
+e0386,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,2,frango_peru
+e0387,tomates-cereja,cherry tomatoes,,alta,cru,42,peixe_marisco
+e0387,peixe branco com pele,fish,cod,media,cozido,33,peixe_marisco
+e0387,azeitonas pretas,olives,,alta,processado,25,peixe_marisco
+e0411,filé empanado,chicken breast,fish,media,empanado,27,frango_peru
+e0411,pedaço de pizza branca,cheese pizza,flatbread,media,assado,22,frango_peru
+e0411,mix de folhas,mixed greens,,alta,cru,18,frango_peru
+e0411,batata-doce assada,sweet potato,carrot,media,assado,17,frango_peru
+e0411,vagem,green beans,,alta,cozido,16,frango_peru
+e0423,frango em cubos,chicken breast,tofu,media,grelhado,43,frango_peru
+e0423,abacate em pedaços,avocado,,alta,cru,24,frango_peru
+e0423,espinafre cru,spinach (raw),,alta,cru,14,frango_peru
+e0423,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,8,frango_peru
+e0423,azeitonas pretas,olives,kidney beans,media,processado,8,frango_peru
+e0423,cenoura ralada,carrot,,alta,cru,3,frango_peru
+e0425,morangos,strawberries,,alta,cru,37,nenhuma
+e0425,batatas assadas,roasted potatoes,,alta,assado,30,nenhuma
+e0425,metade de bagel,bagels,,alta,assado,19,nenhuma
+e0425,cream cheese,cream cheese,,alta,nao_se_aplica,9,nenhuma
+e0425,mirtilos,blueberries,,alta,cru,3,nenhuma
+e0425,amora,blackberries,,alta,cru,2,nenhuma
+e0572,fatias de carne bovina,steak,roast beef,media,grelhado,64,bovina
+e0572,rúcula,arugula,,alta,cru,25,bovina
+e0572,cebola refogada sobre a carne,onions,shallots,baixa,refogado,7,bovina
+e0572,cenoura ralada,carrot,,alta,cru,4,bovina
+e0575,claras de ovo mexidas,egg whites,,alta,mexido,82,ovo
+e0575,tiras de bacon,bacon,turkey bacon,media,frito,18,ovo
+e0658,pedaços de pizza,pizza,flatbread,media,assado,35,frango_peru
+e0658,coxas de frango,chicken drumsticks,,alta,assado,33,frango_peru
+e0658,vagem assada,green beans,,alta,assado,16,frango_peru
+e0658,salada caesar,caesar salad,,alta,cru,16,frango_peru
+e0707,melão cantaloupe em pedaços,cantaloupe,,alta,cru,100,nenhuma
+e0722,ovos mexidos,scrambled eggs,,alta,mexido,60,ovo
+e0722,panqueca dobrada,pancakes,french toast,media,frito,40,ovo
+e0729,filé de salmão,salmon,,alta,assado,47,peixe_marisco
+e0729,pedaço de pizza de queijo,cheese pizza,flatbread,media,assado,17,peixe_marisco
+e0729,corações de alcachofra,artichokes,potatoes,media,cozido,16,peixe_marisco
+e0729,biscoito com gotas de chocolate,cookies,,alta,assado,8,peixe_marisco
+e0729,feijão branco,white beans,chickpeas,media,cozido,6,peixe_marisco
+e0729,pedaço escuro (cogumelo),mushroom,eggplant,baixa,cozido,6,peixe_marisco
+e0734,frango em cubos,chicken breast,tofu,media,grelhado,35,frango_peru
+e0734,abacate em fatias,avocado,,alta,cru,21,frango_peru
+e0734,molho cremoso branco,ranch dressing,caesar dressing,media,nao_se_aplica,17,frango_peru
+e0734,espinafre cru,spinach (raw),,alta,cru,16,frango_peru
+e0734,azeitonas pretas,olives,kidney beans,media,processado,8,frango_peru
+e0734,fatia de pepino,cucumbers,zucchini,media,cru,3,frango_peru
+e0749,rúcula e folhas,arugula,mixed greens,media,cru,31,nenhuma
+e0749,tomates-cereja,cherry tomatoes,,alta,cru,24,nenhuma
+e0749,fatias de abacate,avocado,,alta,cru,24,nenhuma
+e0749,acelga cozida,chard,kale,media,cozido,21,nenhuma
+e0792,tiras de bacon,bacon,,alta,frito,100,suina_embutido
+e0001,melão cantaloupe em pedaços,cantaloupe,,alta,cru,100,nenhuma
+e0003,cenoura em rodelas assada,carrot,,alta,assado,100,nenhuma
+e0043,fatia de pizza com queijo e bacon,pizza,cheese pizza,media,assado,61,prato_misto
+e0043,folhas de espinafre cru,spinach (raw),,alta,cru,15,prato_misto
+e0043,fatias de pepino,cucumbers,,alta,cru,12,prato_misto
+e0043,tomate-cereja,cherry tomatoes,,alta,cru,9,prato_misto
+e0043,cenoura ralada,carrot,,alta,cru,3,prato_misto
+e0137,ovos mexidos,scrambled eggs,,alta,mexido,38,ovo
+e0137,colherada de iogurte,yogurt,sour cream,media,nao_se_aplica,12,ovo
+e0137,melão verde em cubos,honeydew melons,,alta,cru,10,ovo
+e0137,abacaxi em pedaços,pineapple,,alta,cru,10,ovo
+e0137,melão cantaloupe,cantaloupe,,alta,cru,10,ovo
+e0137,melancia em cubos,watermelon,,alta,cru,6,ovo
+e0137,morangos,strawberries,,alta,cru,10,ovo
+e0137,amoras e mirtilos,berries,blackberries,media,cru,3,ovo
+e0137,folha de alface,lettuce,,alta,cru,1,ovo
+e0160,filé de peixe rosado com ervas,salmon,pork,media,grelhado,48,peixe_marisco
+e0160,abobrinha verde em rodelas,zucchini,,alta,refogado,35,peixe_marisco
+e0160,abóbora amarela em pedaços,squash,,alta,refogado,17,peixe_marisco
+e0186,fatia de pizza de queijo,cheese pizza,,alta,assado,100,prato_misto
+e0201,fatias de carne bovina,steak,roast beef,media,grelhado,23,bovina
+e0201,fatia de pizza de queijo,cheese pizza,pizza,media,assado,23,bovina
+e0201,salada caesar com crouton,caesar salad,,alta,cru,17,bovina
+e0201,couve-flor cozida,cauliflower,,alta,cozido,21,bovina
+e0201,mix de folhas,mixed greens,,alta,cru,9,bovina
+e0201,cebola roxa,onions,,alta,cru,2,bovina
+e0201,azeitonas pretas,olives,,media,nao_se_aplica,2,bovina
+e0201,tomate-cereja,cherry tomatoes,,media,cru,2,bovina
+e0201,queijo branco esfarelado,feta cheese,goat cheese,baixa,nao_se_aplica,1,bovina
+e0202,maçã inteira,apple,,alta,cru,100,nenhuma
+e0290,morangos cortados,strawberries,,alta,cru,34,nenhuma
+e0290,melão cantaloupe em cubos,cantaloupe,,alta,cru,34,nenhuma
+e0290,melancia em pedaços,watermelon,,alta,cru,27,nenhuma
+e0290,mirtilos,blueberries,,alta,cru,5,nenhuma
+e0345,morangos cortados,strawberries,,alta,cru,100,nenhuma
+e0349,claras de ovo mexidas,egg whites,,alta,mexido,57,ovo
+e0349,batata-doce em cubos assada,sweet potato,,alta,assado,43,ovo
+e0351,rúcula temperada,arugula,,alta,cru,84,nenhuma
+e0351,molho da salada,vinaigrette,salad dressing,media,nao_se_aplica,10,nenhuma
+e0351,pedacinhos marrons (nozes),walnuts,bacon,baixa,nao_se_aplica,6,nenhuma
+e0365,claras de ovo mexidas,egg whites,,alta,mexido,43,ovo
+e0365,batata-doce em cubos assada,sweet potato,,alta,assado,38,ovo
+e0365,framboesas,raspberries,,alta,cru,12,ovo
+e0365,amoras,blackberries,,alta,cru,7,ovo
+e0400,peito de frango em cubos,chicken breast,,alta,grelhado,52,frango_peru
+e0400,tomate-cereja,cherry tomatoes,,alta,cru,29,frango_peru
+e0400,pimentão verde em tiras,bell peppers,,alta,cru,10,frango_peru
+e0400,cenoura ralada,carrot,,alta,cru,9,frango_peru
+e0407,morangos cortados,strawberries,,alta,cru,100,nenhuma
+e0414,waffles,waffles,,alta,assado,34,ovo
+e0414,rodelas de linguiça,sausage,chicken apple sausage,media,grelhado,18,ovo
+e0414,claras de ovo,egg whites,,alta,mexido,15,ovo
+e0414,mexido amarelo com legumes,scrambled eggs,tofu,baixa,mexido,14,ovo
+e0414,brócolis no mexido,broccoli,,media,refogado,5,ovo
+e0414,batatas assadas em pedaços,roasted potatoes,,alta,assado,14,ovo
+e0478,grãos marrons cozidos,wheat berry,lentils,media,cozido,59,nenhuma
+e0478,rúcula temperada,arugula,,alta,cru,36,nenhuma
+e0478,molho da salada,vinaigrette,salad dressing,media,nao_se_aplica,5,nenhuma
+e0500,couve-de-bruxelas assada,brussels sprouts,,alta,assado,54,nenhuma
+e0500,couve-flor,cauliflower,,alta,cozido,18,nenhuma
+e0500,rúcula,arugula,,alta,cru,13,nenhuma
+e0500,tomate-cereja,cherry tomatoes,,media,cru,10,nenhuma
+e0500,queijo branco esfarelado,feta cheese,goat cheese,media,nao_se_aplica,5,nenhuma
+e0517,ovos mexidos com molho,scrambled eggs,,media,mexido,50,ovo
+e0517,pedaços de tortilha,tortilla chips,tortilla,media,frito,30,ovo
+e0517,molho de tomate (salsa),salsa,,media,nao_se_aplica,20,ovo
+e0540,filé de salmão,salmon,,alta,grelhado,33,peixe_marisco
+e0540,brócolis,broccoli,,alta,cozido,26,peixe_marisco
+e0540,tomate-cereja,cherry tomatoes,,alta,cru,15,peixe_marisco
+e0540,pepino em pedaços,cucumbers,,alta,cru,13,peixe_marisco
+e0540,rabanete fatiado,radishes,,alta,cru,6,peixe_marisco
+e0540,cebola roxa,onions,,alta,cru,3,peixe_marisco
+e0540,salsão,celery,,media,cru,3,peixe_marisco
+e0540,lascas de queijo,parmesan cheese,cheese,baixa,nao_se_aplica,1,peixe_marisco
+e0564,ovos mexidos,scrambled eggs,,alta,mexido,41,ovo
+e0564,melão verde em cubos,honeydew melons,,alta,cru,11,ovo
+e0564,abacaxi em pedaços,pineapple,,alta,cru,11,ovo
+e0564,melão cantaloupe,cantaloupe,,alta,cru,11,ovo
+e0564,morangos,strawberries,,alta,cru,11,ovo
+e0564,melancia em cubos,watermelon,,alta,cru,6,ovo
+e0564,amoras e mirtilos,berries,blackberries,media,cru,3,ovo
+e0564,folhas de alface,lettuce,,alta,cru,3,ovo
+e0564,iogurte sobre as frutas,yogurt,sour cream,media,nao_se_aplica,3,ovo
+e0592,uvas vermelhas,grapes,cherries,media,cru,100,nenhuma
+e0607,base branca cremosa na tigela,cottage cheese,greek yogurt,baixa,nao_se_aplica,61,laticinio
+e0607,morangos cortados,strawberries,,alta,cru,31,laticinio
+e0607,mirtilos,blueberries,,alta,cru,8,laticinio
+e0639,fatias de carne assada,steak,pork,media,assado,56,bovina
+e0639,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,41,bovina
+e0639,folha verde sob a carne,spinach (cooked),pesto,baixa,cozido,3,bovina
+e0703,ovos mexidos com molho,scrambled eggs,,media,mexido,44,ovo
+e0703,pedaços de tortilha,tortilla chips,tortilla,media,frito,26,ovo
+e0703,molho de tomate (salsa),salsa,,media,nao_se_aplica,18,ovo
+e0703,tiras de bacon,bacon,,alta,frito,12,ovo
+e0760,claras de ovo mexidas,egg whites,,alta,mexido,39,ovo
+e0760,ovos mexidos,scrambled eggs,,alta,mexido,17,ovo
+e0760,batatas assadas em cubos,roasted potatoes,,alta,assado,24,ovo
+e0760,melancia em cubos,watermelon,,alta,cru,20,ovo
+e0779,cogumelos salteados,mushroom,,alta,refogado,60,nenhuma
+e0779,aspargos,asparagus,,alta,cozido,40,nenhuma
+e0784,claras de ovo mexidas,egg whites,,alta,mexido,20,ovo
+e0784,queijo cottage,cottage cheese,greek yogurt,media,nao_se_aplica,16,ovo
+e0784,melancia em cubos,watermelon,,alta,cru,20,ovo
+e0784,abacaxi em pedaços,pineapple,,alta,cru,18,ovo
+e0784,batata-doce e batata assadas,sweet potato,roasted potatoes,media,assado,14,ovo
+e0784,framboesas,raspberries,,alta,cru,6,ovo
+e0784,amoras,blackberries,,alta,cru,6,ovo
+e0823,ensopado com molho de tomate e folhas,stews,pasta,baixa,ensopado,62,prato_misto
+e0823,brócolis ramoso cozido,broccoli,mustard greens,media,refogado,30,prato_misto
+e0823,pedaços de tomate,tomatoes,,media,cozido,8,prato_misto
+e0825,ovos mexidos,scrambled eggs,,alta,mexido,37,ovo
+e0825,batatas assadas em cubos,roasted potatoes,red potatoes,media,assado,25,ovo
+e0825,brócolis,broccoli,,alta,assado,18,ovo
+e0825,cenoura assada em pedaços,carrot,sweet potato,media,assado,11,ovo
+e0825,tiras de bacon,bacon,,alta,frito,9,ovo
+e0382,pedaço de pizza de queijo,cheese pizza,pepperoni pizza,media,assado,100,prato_misto
+e0677,claras mexidas,egg whites,scrambled eggs,media,mexido,38,ovo
+e0677,batatas assadas em cubos,roasted potatoes,,alta,assado,17,ovo
+e0677,melancia em cubos,watermelon,,alta,cru,15,ovo
+e0677,melão cantaloupe,cantaloupe,,alta,cru,12,ovo
+e0677,morangos,strawberries,,alta,cru,9,ovo
+e0677,abacaxi em cubos,pineapple,,alta,cru,6,ovo
+e0677,mirtilos,blueberries,,alta,cru,3,ovo
+e0295,arroz branco,white rice,egg whites,media,cozido,100,nenhuma
+e0226,pedaço pequeno de pizza,pizza,cheese pizza,media,assado,45,prato_misto
+e0226,folhas verdes,mixed greens,kale,media,cru,40,prato_misto
+e0226,tomate em pedaços,sun dried tomatoes,cherry tomatoes,baixa,cru,10,prato_misto
+e0226,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,5,prato_misto
+e0054,carne bovina fatiada,steak,lamb,media,grelhado,94,bovina
+e0054,molho de ervas,pesto,olive oil,baixa,nao_se_aplica,6,bovina
+e0245,peixe com crosta e molho,fish,chicken,media,assado,38,peixe_marisco
+e0245,batatinhas assadas,roasted potatoes,,alta,assado,21,peixe_marisco
+e0245,tomates-cereja,cherry tomatoes,,alta,cru,20,peixe_marisco
+e0245,pepino em meias-luas,cucumbers,zucchini,media,cru,15,peixe_marisco
+e0245,rabanete fatiado,radishes,,alta,cru,6,peixe_marisco
+e0791,cubos brancos de queijo,feta cheese,tofu,baixa,nao_se_aplica,100,laticinio
+e0268,sopa ou molho de tomate,tomato soup,salsa,baixa,cozido,100,nenhuma
+e0211,ovos mexidos,scrambled eggs,,alta,mexido,60,ovo
+e0211,cenoura em rodelas,carrot,,alta,assado,32,ovo
+e0211,bacon,bacon,,alta,frito,8,ovo
+e0746,ovos mexidos,scrambled eggs,,alta,mexido,100,ovo
+e0725,salada de atum,tuna salad,chicken salad,media,nao_se_aplica,40,peixe_marisco
+e0725,tomates-cereja,cherry tomatoes,,alta,cru,24,peixe_marisco
+e0725,cenoura ralada,carrot,,alta,cru,17,peixe_marisco
+e0725,pedaço de peixe com pele,fish,cod,media,assado,11,peixe_marisco
+e0725,azeitonas pretas,olives,,alta,processado,8,peixe_marisco
+e0399,peixe com crosta de farinha,fish,chicken,media,assado,36,peixe_marisco
+e0399,pedaços de pizza,pizza,cheese pizza,media,assado,31,peixe_marisco
+e0399,batatas assadas,roasted potatoes,,alta,assado,30,peixe_marisco
+e0399,pimentão/tomate picado sobre o peixe,bell peppers,tomatoes,baixa,cozido,3,peixe_marisco
+e0170,grãos integrais com arroz,wild rice,wheat berry,media,cozido,36,leguminosa_soja
+e0170,folhas verdes,mixed greens,kale,media,cru,22,leguminosa_soja
+e0170,cubos dourados de tofu,tofu,squash,baixa,assado,16,leguminosa_soja
+e0170,brócolis,broccoli,,alta,cozido,12,leguminosa_soja
+e0170,pepino,cucumbers,zucchini,media,cru,8,leguminosa_soja
+e0170,azeitonas,olives,,alta,processado,4,leguminosa_soja
+e0170,queijo esfarelado,feta cheese,goat cheese,media,nao_se_aplica,2,leguminosa_soja
+e0378,ovos mexidos,scrambled eggs,,alta,mexido,70,ovo
+e0378,bacon,bacon,,alta,frito,30,ovo
+e0827,melão verde em pedaços,honeydew melons,apple,media,cru,70,nenhuma
+e0827,folhas verdes,mixed greens,lettuce,media,cru,30,nenhuma
+e0501,peixe em lascas com molho,fish,chicken,media,assado,44,peixe_marisco
+e0501,berinjela assada em cubos,eggplant,,alta,assado,36,peixe_marisco
+e0501,folhas verdes,mixed greens,,alta,cru,13,peixe_marisco
+e0501,rodela de batata assada,roasted potatoes,turnips,media,assado,7,peixe_marisco
+e0215,melão verde,honeydew melons,,alta,cru,30,ovo
+e0215,melancia,watermelon,,alta,cru,25,ovo
+e0215,ovos mexidos,scrambled eggs,,alta,mexido,25,ovo
+e0215,abacaxi,pineapple,,alta,cru,13,ovo
+e0215,bacon,bacon,,alta,frito,7,ovo
+e0563,pedaços de pizza,pizza,cheese pizza,media,assado,50,peixe_marisco
+e0563,filés de peixe com pele,fish,trout,media,assado,34,peixe_marisco
+e0563,grãos de trigo sobre o peixe,wheat berry,barley,media,cozido,12,peixe_marisco
+e0563,lascas de queijo,parmesan cheese,cheese,media,nao_se_aplica,2,peixe_marisco
+e0563,folhas de espinafre,spinach (raw),mixed greens,media,cru,2,peixe_marisco
+e0441,pimentões vermelho e verde em tiras,bell peppers,jalapenos,media,cru,55,nenhuma
+e0441,cebola roxa fatiada,onions,shallots,media,cru,30,nenhuma
+e0441,azeitonas pretas,olives,eggplant,baixa,processado,15,nenhuma
+e0102,melão cantaloupe,cantaloupe,papayas,media,cru,53,nenhuma
+e0102,morangos,strawberries,,alta,cru,27,nenhuma
+e0102,mirtilos,blueberries,,alta,cru,8,nenhuma
+e0102,framboesas,raspberries,,alta,cru,6,nenhuma
+e0102,amoras,blackberries,,alta,cru,6,nenhuma
+e0534,mingau de aveia,oatmeal,cereal,media,cozido,28,ovo
+e0534,claras mexidas,egg whites,scrambled eggs,media,mexido,21,ovo
+e0534,batatas assadas em cubos,roasted potatoes,,alta,assado,21,ovo
+e0534,morangos,strawberries,,alta,cru,11,ovo
+e0534,abacaxi,pineapple,,alta,cru,10,ovo
+e0534,mirtilos,blueberries,,alta,cru,7,ovo
+e0534,rodelas de banana,banana,,alta,cru,2,ovo
+e0194,espinafre cru,spinach (raw),,alta,cru,48,nenhuma
+e0194,fatias claras de fruta,apple,hard boiled eggs,baixa,cru,38,nenhuma
+e0194,cebola em fatias finas,onions,fennel,baixa,cru,9,nenhuma
+e0194,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,5,nenhuma
+e0535,pepino em palitos,cucumbers,,alta,cru,72,leguminosa_soja
+e0535,homus,hummus,peanut butter,media,nao_se_aplica,28,leguminosa_soja
+e0087,ovos mexidos,scrambled eggs,,alta,mexido,80,ovo
+e0087,bacon,bacon,,alta,frito,20,ovo
+e0150,pão redondo tostado em metades,english muffins,bagels,media,assado,55,nenhuma
+e0150,cream cheese,cream cheese,butter,media,nao_se_aplica,27,nenhuma
+e0150,rodelas de pepino,cucumbers,pickles,media,cru,18,nenhuma
+e0739,folhas verdes,mixed greens,lettuce,media,cru,100,nenhuma
+e0293,melão verde,honeydew melons,,alta,cru,40,nenhuma
+e0293,melancia,watermelon,,alta,cru,38,nenhuma
+e0293,abacaxi,pineapple,,alta,cru,22,nenhuma
+e0068,folhas verdes,mixed greens,,alta,cru,66,nenhuma
+e0068,tomate-cereja,cherry tomatoes,,alta,cru,20,nenhuma
+e0068,molho da salada,vinaigrette,salad dressing,baixa,nao_se_aplica,10,nenhuma
+e0068,grão-de-bico,chickpeas,,alta,cozido,4,nenhuma
+e0765,coxa de frango,chicken drumsticks,,alta,assado,37,frango_peru
+e0765,arroz integral temperado,country rice,brown rice,media,cozido,33,frango_peru
+e0765,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,30,frango_peru
+e0672,couve-de-bruxelas assada,brussels sprouts,,alta,assado,53,nenhuma
+e0672,arroz com grãos,country rice,brown rice,media,cozido,26,nenhuma
+e0672,folhas verdes,mixed greens,,alta,cru,21,nenhuma
+e0461,melancia em cubos,watermelon,,alta,cru,30,ovo
+e0461,uvas escuras,grapes,olives,media,cru,5,ovo
+e0461,abacaxi em pedaços,pineapple,,alta,cru,13,ovo
+e0461,batata-doce assada em cubos,sweet potato,yam,media,assado,20,ovo
+e0461,batata assada em cubos,roasted potatoes,potatoes,media,assado,5,ovo
+e0461,ovos mexidos,scrambled eggs,,alta,mexido,15,ovo
+e0461,claras de ovo,egg whites,feta cheese,media,mexido,12,ovo
+e0813,fatia de pizza de queijo,cheese pizza,pizza,media,assado,25,suina_embutido
+e0813,carne com crosta de ervas,pork,chicken,baixa,assado,25,suina_embutido
+e0813,arroz integral sobre a carne,brown rice,wild rice,media,cozido,3,suina_embutido
+e0813,brócolis,broccoli,,alta,cozido,12,suina_embutido
+e0813,couve-flor,cauliflower,,alta,cozido,14,suina_embutido
+e0813,salada caesar com molho cremoso,caesar salad,,alta,cru,11,suina_embutido
+e0813,croutons,croutons,bread,media,assado,2,suina_embutido
+e0813,mix de folhas,mixed greens,,alta,cru,6,suina_embutido
+e0813,azeitonas pretas,olives,blueberries,media,processado,2,suina_embutido
+e0263,tofu em cubos,tofu,,alta,assado,37,leguminosa_soja
+e0263,cenoura em rodelas,carrot,,alta,cozido,17,leguminosa_soja
+e0263,vagem,green beans,,alta,cozido,4,leguminosa_soja
+e0263,abóbora/cebola refogada,squash,onions,baixa,refogado,11,leguminosa_soja
+e0263,grãos de trigo,wheat berry,brown rice,media,cozido,17,leguminosa_soja
+e0263,rúcula,arugula,,alta,cru,9,leguminosa_soja
+e0263,mirtilos,blueberries,olives,media,cru,4,leguminosa_soja
+e0263,framboesa,raspberries,cranberries,media,cru,1,leguminosa_soja
+e0152,brócolis assado,broccoli,,alta,assado,100,nenhuma
+e0519,amêndoas,almonds,,alta,cru,100,nozes_sementes
+e0347,fatia de pizza com cebola roxa,pizza,cheese pizza,media,assado,41,peixe_marisco
+e0347,salmão com crosta,salmon,chicken,media,grelhado,26,peixe_marisco
+e0347,espinafre cru,spinach (raw),,alta,cru,9,peixe_marisco
+e0347,mix de folhas,mixed greens,arugula,media,cru,6,peixe_marisco
+e0347,cenoura ralada,carrot,,alta,cru,2,peixe_marisco
+e0347,pedaço de espiga de milho,corn on the cob,,alta,cozido,16,peixe_marisco
+e0317,abacaxi em pedaços,pineapple,,alta,cru,94,nenhuma
+e0317,pedacinhos de melancia,watermelon,tomatoes,media,cru,4,nenhuma
+e0317,migalhas brancas,egg whites,feta cheese,baixa,nao_se_aplica,2,nenhuma
+e0392,maçã inteira,apple,,alta,cru,54,nenhuma
+e0392,pedaço de espiga de milho,corn on the cob,,alta,cozido,21,nenhuma
+e0392,cenoura em fatias,carrot,,alta,cozido,25,nenhuma
+e0436,cenoura ralada,carrot,,alta,cru,26,nenhuma
+e0436,pepino em fatias,cucumbers,,alta,cru,32,nenhuma
+e0436,tomates-cereja,cherry tomatoes,,alta,cru,42,nenhuma
+e0026,fatia de pizza de queijo,cheese pizza,,alta,assado,33,frango_peru
+e0026,frango em pedaços (coxa),chicken thighs,chicken,media,assado,38,frango_peru
+e0026,grãos de trigo,wheat berry,brown rice,media,cozido,7,frango_peru
+e0026,cenouras assadas,carrot,,alta,assado,22,frango_peru
+e0796,cubos de frango,chicken breast,tofu,media,cozido,16,frango_peru
+e0796,vagem,green beans,asparagus,media,cozido,10,frango_peru
+e0796,cogumelo inteiro,mushroom,sausage,media,assado,6,frango_peru
+e0796,salada caesar com molho cremoso,caesar salad,,alta,cru,16,frango_peru
+e0796,croutons,croutons,bread,media,assado,2,frango_peru
+e0796,peixe branco em lascas com ervas,fish,chicken,baixa,assado,34,frango_peru
+e0796,peça dourada empanada,fried chicken,fish,baixa,empanado,16,frango_peru
+e0509,mix de folhas,mixed greens,,alta,cru,60,nenhuma
+e0509,cebola roxa em fatias,onions,,alta,cru,40,nenhuma
+e0811,fatia de pizza com bacon,pizza,pepperoni pizza,media,assado,100,prato_misto
+e0706,frango em cubos,chicken breast,tofu,media,grelhado,54,frango_peru
+e0706,brócolis,broccoli,,alta,cozido,28,frango_peru
+e0706,alface romana,lettuce,cabbage,media,cru,18,frango_peru
+e0084,melancia em cubos,watermelon,,alta,cru,27,nozes_sementes
+e0084,morangos,strawberries,,alta,cru,24,nozes_sementes
+e0084,mirtilos,blueberries,,alta,cru,2,nozes_sementes
+e0084,amoras,blackberries,,alta,cru,8,nozes_sementes
+e0084,pudim de chia,chia seeds,puddings,media,nao_se_aplica,39,nozes_sementes
+e0829,batata-doce assada em cubos,sweet potato,yam,media,assado,75,nenhuma
+e0829,batata assada em cubos,roasted potatoes,potatoes,media,assado,25,nenhuma
+e0279,amêndoas,almonds,,alta,cru,100,nozes_sementes
+e0435,amêndoas,almonds,,alta,cru,100,nozes_sementes
+e0597,batatas assadas,roasted potatoes,,alta,assado,42,nenhuma
+e0597,vagem,green beans,,alta,cozido,28,nenhuma
+e0597,rúcula,arugula,,alta,cru,14,nenhuma
+e0597,cenoura,carrot,sweet potato,media,cozido,6,nenhuma
+e0597,abóbora amarela,squash,mangos,baixa,assado,6,nenhuma
+e0597,mirtilos,blueberries,olives,media,cru,3,nenhuma
+e0597,noz,walnuts,mushroom,baixa,cru,1,nenhuma
+e0004,fatia de pizza de queijo,cheese pizza,,alta,assado,26,prato_misto
+e0004,arroz branco,white rice,,alta,cozido,48,prato_misto
+e0004,abóbora amarela e abobrinha,squash,zucchini,media,refogado,26,prato_misto
+e0363,fatia de pizza de queijo,cheese pizza,,alta,assado,100,prato_misto
+e0029,maçã inteira,apple,,alta,cru,100,nenhuma
+e0101,azeitonas kalamata,olives,grapes,media,processado,66,nenhuma
+e0101,mix de folhas,mixed greens,,alta,cru,34,nenhuma
+e0286,salada de frango em pedaços,chicken salad,feta cheese,media,nao_se_aplica,48,frango_peru
+e0286,grão-de-bico,chickpeas,,alta,cozido,30,frango_peru
+e0286,azeitonas kalamata,olives,,alta,processado,22,frango_peru
+e0560,abacaxi em pedaços,pineapple,,alta,cru,100,nenhuma
+e0106,mix de folhas,mixed greens,,alta,cru,100,nenhuma
+e0569,arroz integral,brown rice,,alta,cozido,50,nenhuma
+e0569,espinafre,spinach (raw),spinach (cooked),media,cru,25,nenhuma
+e0569,cogumelo,mushroom,beef,baixa,refogado,25,nenhuma
+e0489,fatias de carne bovina,steak,roast beef,media,grelhado,36,bovina
+e0489,fatia de pizza com carne e legumes,pizza,,alta,assado,34,bovina
+e0489,framboesas,raspberries,,alta,cru,15,bovina
+e0489,amoras,blackberries,,alta,cru,15,bovina
+e0273,rúcula temperada,arugula,,alta,cru,81,nenhuma
+e0273,pedaços de noz,walnuts,parmesan cheese,baixa,cru,13,nenhuma
+e0273,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,6,nenhuma
+e0028,brócolis,broccoli,,alta,cozido,67,nenhuma
+e0028,pimentão amarelo,bell peppers,squash,media,refogado,13,nenhuma
+e0028,abobrinha em fatia,zucchini,cucumbers,media,refogado,7,nenhuma
+e0028,pedaço vermelho (tomate),cherry tomatoes,bell peppers,media,cozido,9,nenhuma
+e0028,tira de cenoura,carrot,bell peppers,media,cozido,4,nenhuma
+e0168,mix de folhas,mixed greens,arugula,media,cru,55,nenhuma
+e0168,rodelas de abobrinha ou pepino,zucchini,cucumbers,media,cru,28,nenhuma
+e0168,queijo branco esfarelado,feta cheese,goat cheese,media,nao_se_aplica,7,nenhuma
+e0168,azeitona verde,olives,brussels sprouts,baixa,processado,5,nenhuma
+e0168,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,5,nenhuma
+e0587,almôndegas claras,meatballs,chicken apple sausage,media,assado,40,bovina
+e0587,brócolis assado,broccoli,,alta,assado,27,bovina
+e0587,morangos,strawberries,,alta,cru,27,bovina
+e0587,ovo mexido (pouco),scrambled eggs,cheddar cheese,media,mexido,6,bovina
+e0640,morangos cortados,strawberries,,alta,cru,82,nenhuma
+e0640,mirtilos,blueberries,,alta,cru,18,nenhuma
+e0146,couve-flor,cauliflower,,alta,cozido,100,nenhuma
+e0297,rodelas de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0381,filé dourado em pedaços,fish,chicken thighs,media,grelhado,60,peixe_marisco
+e0381,brócolis assado,broccoli,,alta,assado,28,peixe_marisco
+e0381,cogumelos refogados,mushroom,walnuts,baixa,refogado,7,peixe_marisco
+e0381,talos verdes,green onions,asparagus,baixa,refogado,5,peixe_marisco
+e0151,fatias de carne clara assada,roast pork,chicken breast,media,assado,34,suina_embutido
+e0151,filé com crosta dourada,fish,chicken thighs,baixa,assado,26,suina_embutido
+e0151,cubos de melão verde,honeydew melons,cucumbers,media,cru,30,suina_embutido
+e0151,rúcula e espinafre,arugula,spinach (raw),media,cru,10,suina_embutido
+e0103,tiras de bacon,bacon,,alta,frito,100,suina_embutido
+e0775,batatas assadas,roasted potatoes,,alta,assado,34,suina_embutido
+e0775,cubos de abacaxi,pineapple,,alta,cru,28,suina_embutido
+e0775,pedaço de linguiça,sausage,hot dogs,media,grelhado,10,suina_embutido
+e0775,morangos,strawberries,,alta,cru,10,suina_embutido
+e0775,mix de folhas roxas e verdes,mixed greens,,alta,cru,10,suina_embutido
+e0775,espinafre cru com cenoura,spinach (raw),,alta,cru,8,suina_embutido
+e0459,carne bovina em fatias com molho,beef,brisket,media,ensopado,36,bovina
+e0459,abóbora assada em fatias,squash,sweet potato,media,assado,23,bovina
+e0459,arroz integral com a carne,brown rice,wild rice,media,cozido,15,bovina
+e0459,tomates-cereja,cherry tomatoes,,alta,cru,9,bovina
+e0459,rúcula,arugula,,alta,cru,5,bovina
+e0459,folha verde cozida,bok choy,chard,baixa,refogado,3,bovina
+e0459,nozes-pecã,pecans,walnuts,media,nao_se_aplica,3,bovina
+e0459,grão-de-bico,chickpeas,,alta,cozido,3,bovina
+e0459,pedaço de cebola assada,onions,cauliflower,baixa,assado,3,bovina
+e0502,almôndegas claras,meatballs,chicken apple sausage,media,assado,95,bovina
+e0502,restos de ovo mexido,scrambled eggs,cheddar cheese,media,mexido,5,bovina
+e0581,cenoura em rodelas,carrot,,alta,cozido,100,nenhuma
+e0342,brócolis,broccoli,,alta,cozido,100,nenhuma
+e0005,arroz integral com cebola,brown rice,fried rice,media,cozido,23,suina_embutido
+e0005,couve-de-bruxelas assada,brussels sprouts,,alta,assado,19,suina_embutido
+e0005,carne desfiada escura,pork,chicken thighs,baixa,assado,16,suina_embutido
+e0005,arroz branco,white rice,,alta,cozido,10,suina_embutido
+e0005,pepino em cubos,cucumbers,,alta,cru,8,suina_embutido
+e0005,brócolis,broccoli,,alta,assado,8,suina_embutido
+e0005,pimentão picado,bell peppers,,alta,cru,5,suina_embutido
+e0005,tomate picado,tomatoes,,alta,cru,4,suina_embutido
+e0005,cebola roxa em conserva,onions,,alta,processado,4,suina_embutido
+e0005,alface picada,lettuce,,alta,cru,3,suina_embutido
+e0353,azeitonas pretas,olives,,alta,processado,100,nenhuma
+e0162,maçã inteira,apple,,alta,cru,76,nozes_sementes
+e0162,amêndoas,almonds,,alta,nao_se_aplica,17,nozes_sementes
+e0162,folhas de espinafre,spinach (raw),,alta,cru,7,nozes_sementes
+e0662,peito de frango fatiado,chicken breast,roast pork,media,assado,36,frango_peru
+e0662,couve-flor,cauliflower,,alta,cozido,28,frango_peru
+e0662,batatas assadas,roasted potatoes,,alta,assado,24,frango_peru
+e0662,rúcula,arugula,,alta,cru,12,frango_peru
+e0070,mix de folhas,mixed greens,,alta,cru,70,nenhuma
+e0070,cubos alaranjados,carrot,squash,baixa,cozido,25,nenhuma
+e0070,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,5,nenhuma
+e0267,fatia de pizza de queijo,cheese pizza,pizza,media,assado,30,frango_peru
+e0267,pedaços de frango,chicken,pork,media,assado,24,frango_peru
+e0267,carne bovina enrolada,steak,roast beef,media,assado,23,frango_peru
+e0267,batatas roxas assadas,roasted potatoes,eggplant,media,assado,21,frango_peru
+e0267,vagem dentro da carne,green beans,asparagus,baixa,cozido,2,frango_peru
+e0494,fatia de pizza de queijo,cheese pizza,pizza,media,assado,37,bovina
+e0494,carne bovina fatiada,beef,steak,media,grelhado,27,bovina
+e0494,brócolis,broccoli,,alta,cozido,20,bovina
+e0494,pedaço dourado folhado,pastries,chicken,baixa,assado,13,bovina
+e0494,molho de ervas sobre a carne,pesto,olive oil,baixa,nao_se_aplica,3,bovina
+e0218,rúcula,arugula,,alta,cru,42,nenhuma
+e0218,pepino em meia-lua,cucumbers,zucchini,media,cru,34,nenhuma
+e0218,rabanete fatiado,radishes,,alta,cru,14,nenhuma
+e0218,queijo esfarelado,feta cheese,goat cheese,media,nao_se_aplica,5,nenhuma
+e0218,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,5,nenhuma
+e0824,massa gratinada com molho de tomate e queijo,lasagna,macaroni and cheese,media,assado,38,peixe_marisco
+e0824,filé empanado ou temperado,fish,chicken breast,baixa,assado,23,peixe_marisco
+e0824,abobrinha verde e amarela,zucchini,squash,media,refogado,21,peixe_marisco
+e0824,salada caesar com lascas de parmesão,caesar salad,,alta,cru,18,peixe_marisco
+e0059,frango em fatias,chicken breast,chicken,media,assado,23,frango_peru
+e0059,tiras marrons fatiadas,beef,tempeh,baixa,grelhado,23,frango_peru
+e0059,batatas assadas,roasted potatoes,,alta,assado,17,frango_peru
+e0059,grãos integrais avermelhados,wheat berry,brown rice,media,cozido,16,frango_peru
+e0059,couve-flor assada,cauliflower,,alta,assado,7,frango_peru
+e0059,tomate assado,tomatoes,,alta,assado,6,frango_peru
+e0059,brócolis,broccoli,,alta,assado,5,frango_peru
+e0059,rúcula,arugula,,alta,cru,3,frango_peru
+e0470,rúcula,arugula,,alta,cru,82,nenhuma
+e0470,grãos escuros (feijão-preto),black beans,olives,baixa,cozido,12,nenhuma
+e0470,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,6,nenhuma
+e0504,brócolis cru,broccoli,,alta,cru,33,laticinio
+e0504,queijo branco esfarelado,feta cheese,egg whites,media,nao_se_aplica,30,laticinio
+e0504,espinafre cru,spinach (raw),,alta,cru,20,laticinio
+e0504,cenoura ralada,carrot,,alta,cru,17,laticinio
+e0692,mingau de aveia,oatmeal,grits,media,cozido,96,nenhuma
+e0692,pedacinhos marrons por cima,walnuts,raisins,baixa,nao_se_aplica,4,nenhuma
+e0063,morangos cortados,strawberries,,alta,cru,100,nenhuma
+e0200,ovo cozido picado,hard boiled eggs,egg whites,media,cozido,40,ovo
+e0200,morangos fatiados,strawberries,,alta,cru,40,ovo
+e0200,tiras de bacon escuras,bacon,turkey bacon,media,frito,17,ovo
+e0200,molho vermelho sobre o ovo,salsa,ketchup,baixa,nao_se_aplica,3,ovo
+e0476,cebola roxa fatiada,onions,,alta,cru,52,nenhuma
+e0476,azeitonas pretas,olives,,alta,processado,48,nenhuma
+e0817,cenoura em pedaços,carrot,,alta,cozido,100,nenhuma
+e0259,frango em cubos,chicken breast,,alta,grelhado,42,frango_peru
+e0259,abacate em fatias,avocado,,alta,cru,27,frango_peru
+e0259,brócolis,broccoli,,alta,cozido,20,frango_peru
+e0259,mix de folhas,mixed greens,,alta,cru,11,frango_peru
+e0142,fatia de pizza de queijo,cheese pizza,pizza,media,assado,100,prato_misto
+e0110,uvas,grapes,,alta,cru,33,nenhuma
+e0110,tomates-cereja,cherry tomatoes,,alta,cru,39,nenhuma
+e0110,melão cantaloupe em pedaços,cantaloupe,,alta,cru,28,nenhuma
+e0022,waffles,waffles,,alta,assado,30,ovo
+e0022,rodelas de linguiça,sausage,chicken apple sausage,media,frito,25,ovo
+e0022,mexido amarelo com legumes,scrambled eggs,tofu,media,mexido,24,ovo
+e0022,pedaços brancos por cima,egg whites,goat cheese,baixa,cozido,17,ovo
+e0022,brócolis no mexido,broccoli,spinach (cooked),media,cozido,4,ovo
+e0452,couve-flor,cauliflower,,alta,cozido,100,nenhuma
+e0104,cenoura em rodelas,carrot,,alta,cozido,100,nenhuma
+e0165,pera inteira,pears,,alta,cru,100,nenhuma
+e0140,pedaço de pizza de pepperoni,pepperoni pizza,pizza,media,assado,32,prato_misto
+e0140,abóbora assada com casca,squash,sweet potato,media,assado,38,prato_misto
+e0140,brócolis,broccoli,,alta,cozido,30,prato_misto
+e0615,berinjela assada,eggplant,mushroom,media,assado,82,nenhuma
+e0615,pedaços dourados refogados,onions,mixed vegetables,baixa,refogado,15,nenhuma
+e0615,pedacinho branco,feta cheese,cauliflower,baixa,nao_se_aplica,3,nenhuma
+e0505,espinafre cru,spinach (raw),,alta,cru,100,nenhuma
+e0633,arroz integral com molho,brown rice,country rice,media,cozido,35,frango_peru
+e0633,filé dourado sob o arroz,chicken breast,fish,baixa,empanado,25,frango_peru
+e0633,rúcula e folhas,arugula,mixed greens,media,cru,8,frango_peru
+e0633,acelga cozida,chard,spinach (cooked),media,refogado,13,frango_peru
+e0633,abacate em fatias,avocado,,alta,cru,11,frango_peru
+e0633,tomates-cereja,cherry tomatoes,,alta,cru,8,frango_peru
+e0175,ovos mexidos com legumes,scrambled eggs,egg whites,media,mexido,62,ovo
+e0175,molho de tomate tipo salsa,salsa,pasta sauce,media,nao_se_aplica,14,ovo
+e0175,abobrinha em pedaços,zucchini,,alta,refogado,20,ovo
+e0175,espinafre e pimentão no mexido,spinach (cooked),bell peppers,baixa,refogado,4,ovo
+e0124,bagel tostado em duas metades,bagels,english muffins,media,assado,52,laticinio
+e0124,cream cheese,cream cheese,,alta,nao_se_aplica,17,laticinio
+e0124,palito de queijo,mozzarella cheese,cheese,media,nao_se_aplica,16,laticinio
+e0124,rodelas de pepino,cucumbers,pickles,media,cru,15,laticinio
+e0741,mix de folhas,mixed greens,spinach (raw),media,cru,80,nenhuma
+e0741,cenoura ralada,carrot,,alta,cru,12,nenhuma
+e0741,molho da salada,vinaigrette,salad dressing,baixa,nao_se_aplica,8,nenhuma
+e0645,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,33,prato_misto
+e0645,salada caesar,caesar salad,,alta,cru,18,prato_misto
+e0645,brócolis,broccoli,,alta,cozido,18,prato_misto
+e0645,couve-flor,cauliflower,,alta,cozido,20,prato_misto
+e0645,mix de folhas,mixed greens,,alta,cru,9,prato_misto
+e0645,mirtilos,blueberries,olives,media,cru,2,prato_misto
+e0511,frango grelhado em cubos,grilled chicken,tofu,media,grelhado,63,frango_peru
+e0511,abacate em fatias,avocado,,alta,cru,21,frango_peru
+e0511,mix de folhas,mixed greens,,alta,cru,13,frango_peru
+e0511,cebola roxa,onions,,alta,cru,3,frango_peru
+e0108,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0737,arroz integral misto,brown rice,wild rice,media,cozido,19,frango_peru
+e0737,vagem fina,green beans,asparagus,media,cozido,9,frango_peru
+e0737,fatias de melão,honeydew melons,,alta,cru,19,frango_peru
+e0737,coxa de frango assada,chicken drumsticks,,alta,assado,20,frango_peru
+e0737,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,17,frango_peru
+e0737,salada caesar,caesar salad,,alta,cru,16,frango_peru
+e0052,frango assado com osso e pele,roast chicken,chicken drumsticks,media,assado,52,frango_peru
+e0052,pedaços claros de frango com ervas,chicken,fish,baixa,cozido,36,frango_peru
+e0052,grãos miúdos espalhados,quinoa,couscous,baixa,cozido,9,frango_peru
+e0052,folhas verdes,mixed greens,spinach (cooked),baixa,cru,3,frango_peru
+e0301,brócolis assado,broccoli,,alta,assado,24,nenhuma
+e0301,morangos,strawberries,,alta,cru,15,nenhuma
+e0301,mirtilos,blueberries,,alta,cru,7,nenhuma
+e0301,abacaxi em cubos,pineapple,,alta,cru,54,nenhuma
+e0185,couve-flor,cauliflower,,alta,cozido,100,nenhuma
+e0421,batatas escuras assadas,roasted potatoes,eggplant,media,assado,18,frango_peru
+e0421,couve-flor,cauliflower,mashed potatoes,media,cozido,21,frango_peru
+e0421,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,26,frango_peru
+e0421,pedaços de frango dourado,chicken,roast chicken,media,assado,18,frango_peru
+e0421,fatias de carne bovina,steak,roast beef,media,grelhado,15,frango_peru
+e0421,talos verdes junto da carne,asparagus,green beans,baixa,cozido,2,frango_peru
+e0144,tiras de bacon,bacon,turkey bacon,media,frito,19,suina_embutido
+e0144,batata ralada dourada,hash browns,white rice,media,frito,56,suina_embutido
+e0144,salsa de tomate e molho verde,salsa,guacamole,media,nao_se_aplica,25,suina_embutido
+e0230,tangerina inteira,mandarin oranges,orange,media,cru,100,nenhuma
+e0629,arroz amarelo,white rice,couscous,media,cozido,29,frango_peru
+e0629,frango com molho escuro,chicken thighs,pork,media,assado,44,frango_peru
+e0629,salada caesar,caesar salad,lettuce,media,cru,27,frango_peru
+e0176,uvas roxas,grapes,cherries,media,cru,100,nenhuma
+e0086,pera inteira,pears,,alta,cru,100,nenhuma
+e0727,carne desfiada cozida,beef,pork,media,ensopado,80,bovina
+e0727,cenoura cozida,carrot,,alta,cozido,20,bovina
+e0748,frango grelhado picado,grilled chicken,chicken breast,media,grelhado,48,frango_peru
+e0748,homus,hummus,tahini,media,nao_se_aplica,21,frango_peru
+e0748,tomates-cereja,cherry tomatoes,,alta,cru,21,frango_peru
+e0748,cenoura ralada,carrot,,alta,cru,7,frango_peru
+e0748,cebola roxa,onions,,alta,cru,3,frango_peru
+e0184,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,18,bovina
+e0184,salada caesar,caesar salad,,alta,cru,14,bovina
+e0184,salada de folhas com cebola e tomate,mixed greens,garden salad,media,cru,8,bovina
+e0184,fatias de carne bovina,steak,roast beef,media,grelhado,19,bovina
+e0184,batatas assadas,roasted potatoes,,alta,assado,25,bovina
+e0184,couve-flor,cauliflower,,alta,cozido,16,bovina
+e0557,fatias de carne bovina,steak,roast beef,media,grelhado,45,bovina
+e0557,batatas assadas em pedaços,roasted potatoes,turnips,media,assado,30,bovina
+e0557,couve-flor assada,cauliflower,,alta,assado,14,bovina
+e0557,folhas verdes cozidas,spinach (cooked),chard,media,refogado,8,bovina
+e0557,azeite do assado,olive oil,butter,baixa,nao_se_aplica,3,bovina
+e0329,ovos mexidos,scrambled eggs,,alta,mexido,100,ovo
+e0508,folhas de espinafre e rúcula,mixed greens,spinach (raw),media,cru,43,leguminosa_soja
+e0508,cubos dourados de tofu com gergelim,tofu,roasted potatoes,media,assado,35,leguminosa_soja
+e0508,pedaço claro sob as folhas,chicken,fish,baixa,cozido,14,leguminosa_soja
+e0508,pedacinhos de cenoura,carrot,bell peppers,baixa,cru,3,leguminosa_soja
+e0508,molho da salada,salad dressing,vinaigrette,baixa,nao_se_aplica,5,leguminosa_soja
+e0060,batatas assadas em cubos,roasted potatoes,,alta,assado,100,nenhuma
+e0177,amêndoas,almonds,,alta,cru,14,nozes_sementes
+e0177,tomates-cereja,cherry tomatoes,,alta,cru,42,nozes_sementes
+e0177,rodelas de espiga de milho,corn on the cob,,alta,cozido,44,nozes_sementes
+e0442,mix de folhas,mixed greens,lettuce,media,cru,70,nenhuma
+e0442,pedaços de cogumelo,mushroom,eggplant,baixa,refogado,27,nenhuma
+e0442,grãos de milho,corn,,alta,cozido,3,nenhuma
+e0242,frango em cubos,chicken breast,grilled chicken,media,grelhado,65,frango_peru
+e0242,tomates-cereja,cherry tomatoes,tomatoes,media,cru,20,frango_peru
+e0242,cebola roxa em fatias,onions,,alta,cru,8,frango_peru
+e0242,pimentão verde,bell peppers,cucumbers,media,cru,7,frango_peru
+e0646,azeitonas pretas,olives,,alta,processado,11,prato_misto
+e0646,quadrado gratinado com molho de tomate,lasagna,cheese pizza,baixa,assado,28,prato_misto
+e0646,grãos cozidos,wheat berry,brown rice,media,cozido,18,prato_misto
+e0646,pedaços de carne junto aos grãos,pork,beef,baixa,cozido,8,prato_misto
+e0646,cubos amarelos de abacaxi,pineapple,roasted potatoes,media,cru,14,prato_misto
+e0646,lascas de queijo,parmesan cheese,cheese,media,nao_se_aplica,6,prato_misto
+e0646,pedaço de frango,chicken,fish,media,cozido,12,prato_misto
+e0646,folhas verdes cozidas,spinach (cooked),chard,media,refogado,3,prato_misto
+e0455,ovos mexidos,scrambled eggs,,alta,mexido,88,ovo
+e0455,mix de folhas,mixed greens,,alta,cru,12,ovo
+e0391,mix de folhas,mixed greens,,alta,cru,100,nenhuma
+e0481,batatas assadas,roasted potatoes,,alta,assado,40,frango_peru
+e0481,pedaços de frango assado,roast chicken,chicken thighs,media,assado,36,frango_peru
+e0481,salada de couve picada,kale,broccoli,media,cru,22,frango_peru
+e0481,molho da salada,salad dressing,parmesan cheese,baixa,nao_se_aplica,2,frango_peru
+e0652,pedaços de linguiça,sausage,meatballs,media,grelhado,100,suina_embutido
+e0388,batata ralada dourada,hash browns,,alta,frito,100,nenhuma
+e0254,hambúrgueres de linguiça,sausage,ground turkey,media,grelhado,100,suina_embutido
+e0073,melancia em cubos,watermelon,,alta,cru,100,nenhuma
+e0665,pedaços de carne com molho,pork,chicken thighs,baixa,ensopado,55,suina_embutido
+e0665,grãos cozidos,wheat berry,brown rice,baixa,cozido,20,suina_embutido
+e0665,repolho em tiras,cabbage,coleslaw,media,cru,15,suina_embutido
+e0665,cenoura e pimentão picados,mixed vegetables,carrot,baixa,cru,5,suina_embutido
+e0665,molho avermelhado,barbecue sauce,pasta sauce,baixa,nao_se_aplica,5,suina_embutido
+e0199,quadrado gratinado com molho de tomate,lasagna,cheese pizza,baixa,assado,39,prato_misto
+e0199,lascas de queijo,parmesan cheese,cheese,media,nao_se_aplica,15,prato_misto
+e0199,grãos cozidos,wheat berry,brown rice,media,cozido,26,prato_misto
+e0199,pedaços de carne junto aos grãos,pork,beef,baixa,cozido,13,prato_misto
+e0199,folhas verdes cozidas,spinach (cooked),chard,media,refogado,7,prato_misto
+e0240,ovos mexidos,scrambled eggs,,alta,mexido,33,ovo
+e0240,tira de bacon,bacon,,alta,frito,3,ovo
+e0240,abacaxi em cubos,pineapple,,alta,cru,33,ovo
+e0240,framboesas,raspberries,,alta,cru,7,ovo
+e0240,mirtilos,blueberries,,alta,cru,4,ovo
+e0240,pudim de chia,chia seeds,puddings,media,nao_se_aplica,20,ovo
+e0116,fatias grossas de carne,steak,pork,media,grelhado,50,bovina
+e0116,rúcula,arugula,,alta,cru,13,bovina
+e0116,cenoura ralada,carrot,,alta,cru,3,bovina
+e0116,rodela de rabanete,radishes,,alta,cru,2,bovina
+e0116,cubos de tofu dourado,tofu,roasted potatoes,media,assado,16,bovina
+e0116,repolho e chicória em tiras,cabbage,onions,media,cru,8,bovina
+e0116,grãos cozidos,wheat berry,lentils,baixa,cozido,6,bovina
+e0116,molho de ervas sobre a carne,pesto,olive oil,media,nao_se_aplica,2,bovina
+e0685,ovos mexidos,scrambled eggs,,alta,mexido,46,ovo
+e0685,brócolis assado,broccoli,,alta,assado,16,ovo
+e0685,morangos,strawberries,,alta,cru,10,ovo
+e0685,mirtilos,blueberries,,alta,cru,3,ovo
+e0685,abacaxi em cubos,pineapple,,alta,cru,25,ovo
+e0552,pedaço de pizza de queijo,cheese pizza,quesadillas,media,assado,100,prato_misto
+e0246,arroz integral,brown rice,,alta,cozido,62,nenhuma
+e0246,mix de folhas,mixed greens,lettuce,media,cru,20,nenhuma
+e0246,azeitonas verdes,olives,brussels sprouts,media,processado,7,nenhuma
+e0246,queijo branco esfarelado,feta cheese,goat cheese,media,nao_se_aplica,4,nenhuma
+e0246,pedaço de pepino,cucumbers,onions,baixa,cru,3,nenhuma
+e0246,cenoura ralada,carrot,,alta,cru,2,nenhuma
+e0246,sementes,sunflower seeds,almonds,baixa,cru,2,nenhuma
+e0033,brócolis ramoso refogado,broccoli,,alta,refogado,97,nenhuma
+e0033,azeite,olive oil,butter,baixa,nao_se_aplica,3,nenhuma
+e0203,fatias de pizza de queijo,cheese pizza,pizza,media,assado,55,bovina
+e0203,fatias de carne,steak,pork,media,grelhado,29,bovina
+e0203,pedaço de massa folhada,pastries,pies,baixa,assado,13,bovina
+e0203,molho de ervas sobre a carne,pesto,olive oil,media,nao_se_aplica,3,bovina
+e0776,peixe em lascas,tuna,fish,media,processado,55,peixe_marisco
+e0776,pedaço com crosta escura de tempero,fish,chicken breast,baixa,grelhado,18,peixe_marisco
+e0776,tomates-cereja,cherry tomatoes,,alta,cru,18,peixe_marisco
+e0776,cenoura ralada,carrot,,alta,cru,7,peixe_marisco
+e0776,amêndoas,almonds,,alta,cru,2,peixe_marisco
+e0016,abóbora assada em fatias,squash,sweet potato,media,assado,36,nenhuma
+e0016,folhas de rúcula e espinafre,mixed greens,arugula,media,cru,13,nenhuma
+e0016,tomates-cereja,cherry tomatoes,,alta,cru,12,nenhuma
+e0016,porção de grãos cozidos,wheat berry,risotto,baixa,cozido,12,nenhuma
+e0016,grão-de-bico,chickpeas,,alta,cozido,8,nenhuma
+e0016,pedaço dourado assado,roasted potatoes,tofu,baixa,assado,8,nenhuma
+e0016,pedaços de cebola,onions,fennel,baixa,cozido,7,nenhuma
+e0016,azeitonas pretas,olives,,alta,processado,4,nenhuma
+e0331,abacaxi em cubos,pineapple,,alta,cru,42,ovo
+e0331,batatas em cubos douradas,roasted potatoes,hash browns,media,assado,32,ovo
+e0331,ovos mexidos,scrambled eggs,,alta,mexido,18,ovo
+e0331,bacon,bacon,,alta,frito,8,ovo
+e0383,abacate em fatias,avocado,,alta,cru,53,nenhuma
+e0383,mix de folhas,mixed greens,,alta,cru,34,nenhuma
+e0383,cebola roxa em fatias,onions,,alta,cru,13,nenhuma
+e0708,batatas pequenas assadas,roasted potatoes,falafel,media,assado,39,peixe_marisco
+e0708,folhas escuras refogadas,chard,spinach (cooked),media,refogado,25,peixe_marisco
+e0708,peixe em lascas com molho,fish,chicken,baixa,assado,21,peixe_marisco
+e0708,rúcula,arugula,,alta,cru,7,peixe_marisco
+e0708,pimentão verde,bell peppers,,alta,assado,4,peixe_marisco
+e0708,pedaço de abóbora,squash,bell peppers,baixa,assado,4,peixe_marisco
+e0031,rodelas de linguiça clara,chicken apple sausage,sausage,media,grelhado,100,frango_peru
+e0747,pedaço de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0590,morangos cortados ao meio,strawberries,,alta,cru,88,nenhuma
+e0590,mirtilos,blueberries,,alta,cru,12,nenhuma
+e0282,batatas assadas em pedaços,roasted potatoes,potatoes,media,assado,58,suina_embutido
+e0282,tiras de bacon,bacon,,alta,frito,18,suina_embutido
+e0282,morangos cortados,strawberries,,alta,cru,24,suina_embutido
+e0343,fatias de carne grelhada rosada,steak,salmon,baixa,grelhado,34,bovina
+e0343,vagens,green beans,,alta,cozido,36,bovina
+e0343,couve refogada,kale,spinach (cooked),media,refogado,30,bovina
+e0614,brócolis assado,broccoli,,alta,assado,100,nenhuma
+e0471,pedaços de frango com molho,chicken thighs,chicken,media,refogado,58,frango_peru
+e0471,fatia pequena de pizza de queijo,cheese pizza,pizza,media,assado,34,frango_peru
+e0471,grãozinhos marrons no molho,peanuts,lentils,baixa,refogado,6,frango_peru
+e0471,cebolinha picada,green onions,green beans,media,cru,2,frango_peru
+e0528,tomates-cereja,cherry tomatoes,,alta,cru,59,nenhuma
+e0528,pepino em meias-luas,cucumbers,zucchini,media,cru,38,nenhuma
+e0528,cenoura ralada,carrot,,alta,cru,3,nenhuma
+e0077,amêndoas,almonds,,alta,cru,35,nozes_sementes
+e0077,tangerina inteira,mandarin oranges,orange,media,cru,65,nozes_sementes
+e0159,melancia em cubos,watermelon,,alta,cru,53,nenhuma
+e0159,abacaxi em pedaços,pineapple,,alta,cru,47,nenhuma
+e0258,filé de peixe com crosta,fish,chicken breast,media,empanado,45,peixe_marisco
+e0258,tomates-cereja,cherry tomatoes,,alta,cru,24,peixe_marisco
+e0258,batatinhas assadas,roasted potatoes,red potatoes,media,assado,22,peixe_marisco
+e0258,rabanete fatiado,radishes,,alta,cru,5,peixe_marisco
+e0258,folhas e tomate picado sob o peixe,mixed vegetables,spinach (cooked),baixa,refogado,4,peixe_marisco
+e0264,pedaço de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0355,frango em cubos,chicken breast,turkey breast,media,grelhado,70,frango_peru
+e0355,azeitonas pretas,olives,,alta,processado,30,frango_peru
+e0325,uvas,grapes,,alta,cru,100,nenhuma
+e0360,fatia de pizza de pepperoni,pepperoni pizza,pizza,media,assado,26,bovina
+e0360,couve-flor,cauliflower,,alta,cozido,22,bovina
+e0360,abacaxi em pedaços,pineapple,,alta,cru,17,bovina
+e0360,pedaço de carne grelhada escura,steak,beef,media,grelhado,12,bovina
+e0360,mistura marrom esfarelada,ground beef,wheat berry,baixa,refogado,9,bovina
+e0360,repolho em tiras,coleslaw,cabbage,media,cru,7,bovina
+e0360,salada de folhas,mixed greens,spinach (raw),media,cru,7,bovina
+e0324,massa gratinada com molho de tomate e queijo,lasagna,pasta,media,assado,100,prato_misto
+e0249,fatia de pizza de queijo,cheese pizza,lasagna,media,assado,27,suina_embutido
+e0249,pedaços de carne,pork,beef,baixa,assado,23,suina_embutido
+e0249,arroz integral com grãos,brown rice,wheat berry,media,cozido,19,suina_embutido
+e0249,azeitonas pretas,olives,,alta,processado,15,suina_embutido
+e0249,lascas de queijo,parmesan cheese,cheese,media,nao_se_aplica,10,suina_embutido
+e0249,espinafre refogado,spinach (cooked),kale,media,refogado,6,suina_embutido
+e0128,fatias de carne bovina,steak,,alta,grelhado,40,bovina
+e0128,abóbora assada em fatias,squash,sweet potato,media,assado,45,bovina
+e0128,rúcula,arugula,,alta,cru,13,bovina
+e0128,cenoura ralada,carrot,,alta,cru,2,bovina
+e0430,coxa de frango empanada,chicken drumsticks,fried chicken,media,empanado,25,frango_peru
+e0430,fatia de pizza de queijo,cheese pizza,pizza,media,assado,25,frango_peru
+e0430,arroz integral com legumes,brown rice,wild rice,media,cozido,30,frango_peru
+e0430,vagens,green beans,,alta,cozido,20,frango_peru
+e0537,maçã inteira,apple,,alta,cru,100,nenhuma
+e0604,claras mexidas,egg whites,tofu,media,mexido,47,ovo
+e0604,melão cantaloupe em cubos,cantaloupe,papayas,media,cru,21,ovo
+e0604,batatas assadas em cubos,roasted potatoes,sweet potato,media,assado,19,ovo
+e0604,abacaxi em pedaços,pineapple,,alta,cru,13,ovo
+e0479,claras mexidas,egg whites,feta cheese,media,mexido,68,ovo
+e0479,purê alaranjado,sweet potato,scrambled eggs,baixa,cozido,32,ovo
+e0637,maçã inteira,apple,,alta,cru,100,nenhuma
+e0072,ovos mexidos,scrambled eggs,,alta,mexido,49,ovo
+e0072,brócolis,broccoli,,alta,cozido,29,ovo
+e0072,tiras de bacon,bacon,,alta,frito,9,ovo
+e0072,folhas de espinafre,spinach (raw),mixed greens,media,cru,9,ovo
+e0072,cenoura ralada,carrot,,alta,cru,2,ovo
+e0072,pepino fatiado,cucumbers,zucchini,media,cru,2,ovo
+e0611,berinjela assada em cubos,eggplant,mushroom,media,assado,50,nenhuma
+e0611,batatas assadas,roasted potatoes,potatoes,media,assado,33,nenhuma
+e0611,mix de folhas,mixed greens,,alta,cru,17,nenhuma
+e0448,melancia em cubos,watermelon,,alta,cru,56,suina_embutido
+e0448,tiras de bacon,bacon,,alta,frito,17,suina_embutido
+e0448,morangos,strawberries,watermelon,media,cru,15,suina_embutido
+e0448,mirtilos,blueberries,,alta,cru,12,suina_embutido
+e0149,fatias de carne bovina,steak,lamb,media,grelhado,31,bovina
+e0149,filé claro com molho branco,fish,chicken breast,baixa,assado,22,bovina
+e0149,mix de folhas temperado,mixed greens,arugula,media,cru,17,bovina
+e0149,azeitonas pretas,olives,,alta,processado,14,bovina
+e0149,pedaços escuros avermelhados,beets,dates,baixa,cozido,9,bovina
+e0149,molho cremoso branco,ranch dressing,sour cream,baixa,nao_se_aplica,5,bovina
+e0149,queijo esfarelado,feta cheese,goat cheese,media,nao_se_aplica,2,bovina
+e0464,fatia de pizza de pepperoni,pepperoni pizza,pizza,media,assado,52,prato_misto
+e0464,brócolis,broccoli,,alta,cozido,48,prato_misto
+e0678,azeitonas pretas,olives,,alta,processado,52,nenhuma
+e0678,grão miúdo cozido,bulgur,quinoa,media,cozido,48,nenhuma
+e0049,pedaços de carne com molho,pork,beef,baixa,refogado,34,suina_embutido
+e0049,macarrão tipo lo mein,noodles,lo mein,media,cozido,30,suina_embutido
+e0049,cubos de tofu dourado,tofu,roasted potatoes,media,assado,20,suina_embutido
+e0049,repolho e cenoura em tiras,coleslaw,cabbage,media,cru,8,suina_embutido
+e0049,arroz sobre a carne,brown rice,white rice,baixa,cozido,8,suina_embutido
+e0525,pudim de chia,puddings,chia seeds,media,nao_se_aplica,88,nozes_sementes
+e0525,amoras,blackberries,,alta,cru,12,nozes_sementes
+e0015,morangos cortados ao meio,strawberries,,alta,cru,19,nenhuma
+e0015,tangerina inteira,mandarin oranges,orange,media,cru,34,nenhuma
+e0015,uvas vermelhas,grapes,,alta,cru,47,nenhuma
+e0024,uvas vermelhas,grapes,,alta,cru,100,nenhuma
+e0050,ovos mexidos,scrambled eggs,,alta,mexido,40,ovo
+e0050,brócolis assado,broccoli,,alta,assado,30,ovo
+e0050,molho de tomate tipo salsa sobre os ovos,salsa,ketchup,media,nao_se_aplica,12,ovo
+e0050,tiras de bacon,bacon,turkey bacon,media,frito,11,ovo
+e0050,folhas de espinafre cruas com cenoura ralada,spinach (raw),mixed greens,media,cru,7,ovo
+e0131,fatia de carne bovina rosada,steak,roast beef,media,grelhado,50,bovina
+e0131,batatas assadas em pedaços,roasted potatoes,potatoes,media,assado,44,bovina
+e0131,molho verde de ervas sobre a carne,pesto,olive oil,baixa,nao_se_aplica,6,bovina
+e0133,pedaço de frango dourado,chicken thighs,chicken breast,media,assado,28,frango_peru
+e0133,pilaf de grãos com cebola,wheat berry,brown rice,baixa,cozido,52,frango_peru
+e0133,amêndoas laminadas,almonds,parmesan cheese,media,nao_se_aplica,3,frango_peru
+e0133,salada de rúcula,arugula,mixed greens,media,cru,12,frango_peru
+e0133,mirtilos na salada,blueberries,olives,baixa,cru,3,frango_peru
+e0133,lascas de queijo na salada,parmesan cheese,almonds,baixa,nao_se_aplica,2,frango_peru
+e0147,folhas de rúcula e mix verde,arugula,mixed greens,media,cru,24,leguminosa_soja
+e0147,cenoura ralada,carrot,,alta,cru,4,leguminosa_soja
+e0147,fatias de rabanete,radishes,onions,media,cru,3,leguminosa_soja
+e0147,cubos de tofu dourado,tofu,croutons,media,assado,40,leguminosa_soja
+e0147,grãos de trigo cozidos,wheat berry,lentils,media,cozido,24,leguminosa_soja
+e0147,repolho roxo picado,cabbage,onions,baixa,cru,5,leguminosa_soja
+e0164,rodelas de linguiça clara douradas,chicken apple sausage,sausage,media,grelhado,56,frango_peru
+e0164,brócolis assado,broccoli,,alta,assado,39,frango_peru
+e0164,pedacinhos de ovo mexido,scrambled eggs,cheddar cheese,baixa,mexido,5,frango_peru
+e0224,filé de peixe branco com cobertura,fish,chicken breast,media,assado,40,peixe_marisco
+e0224,rodelas de cenoura assada,carrot,sweet potato,media,assado,50,peixe_marisco
+e0224,folhas verdes cozidas sobre o peixe,spinach (cooked),chard,baixa,refogado,5,peixe_marisco
+e0224,feijão branco sobre o peixe,white beans,almonds,baixa,cozido,5,peixe_marisco
+e0239,três fatias pequenas de pizza de queijo,cheese pizza,,alta,assado,72,prato_misto
+e0239,salada caesar com molho cremoso,caesar salad,,alta,cru,28,prato_misto
+e0252,brócolis cozido,broccoli,,alta,cozido,51,frango_peru
+e0252,couve-de-bruxelas assada,brussels sprouts,,alta,assado,14,frango_peru
+e0252,fatias de frango com ervas e pimentão,chicken breast,pork,media,grelhado,33,frango_peru
+e0252,folhas de espinafre,spinach (cooked),spinach (raw),media,refogado,2,frango_peru
+e0262,framboesas,raspberries,,alta,cru,65,nenhuma
+e0262,amoras,blackberries,,alta,cru,35,nenhuma
+e0278,frango desfiado com farelo dourado,chicken,fish,baixa,assado,39,frango_peru
+e0278,batatinhas assadas inteiras,roasted potatoes,potatoes,media,assado,32,frango_peru
+e0278,folhas escuras refogadas,chard,spinach (cooked),media,refogado,21,frango_peru
+e0278,rúcula crua,arugula,mixed greens,media,cru,6,frango_peru
+e0278,pedaços de pimentão vermelho,bell peppers,tomatoes,media,refogado,2,frango_peru
+e0280,filé de salmão temperado,salmon,fish,media,assado,43,peixe_marisco
+e0280,pedaço de espiga de milho,corn on the cob,,alta,cozido,34,peixe_marisco
+e0280,mix de folhas com espinafre,mixed greens,spinach (raw),media,cru,20,peixe_marisco
+e0280,cenoura ralada,carrot,,alta,cru,3,peixe_marisco
+e0318,cubos de peito de frango,chicken breast,tofu,media,grelhado,23,frango_peru
+e0318,batatas assadas em pedaços,roasted potatoes,potatoes,media,assado,27,frango_peru
+e0318,mistura cremosa de frango com espinafre,chicken,cauliflower,baixa,ensopado,29,frango_peru
+e0318,filé fino dourado com brotos,fish,chicken breast,baixa,frito,15,frango_peru
+e0318,grãos cozidos na base,quinoa,brown rice,baixa,cozido,6,frango_peru
+e0417,claras de ovo mexidas,egg whites,feta cheese,media,mexido,34,ovo
+e0417,pudim de chia,chia seeds,puddings,media,nao_se_aplica,27,ovo
+e0417,cubos de melancia,watermelon,,alta,cru,18,ovo
+e0417,morangos cortados,strawberries,,alta,cru,14,ovo
+e0417,amoras,blackberries,,alta,cru,5,ovo
+e0417,mirtilos,blueberries,,alta,cru,2,ovo
+e0444,batata ralada dourada,hash browns,,alta,frito,39,suina_embutido
+e0444,pedaços de linguiça,sausage,hot dogs,media,grelhado,35,suina_embutido
+e0444,couve-de-bruxelas assada,brussels sprouts,,alta,assado,26,suina_embutido
+e0453,uvas vermelhas,grapes,,alta,cru,100,nenhuma
+e0469,pepino em pedaços,cucumbers,zucchini,media,cru,40,nenhuma
+e0469,floretes de brócolis,broccoli,,alta,cru,40,nenhuma
+e0469,mini pimentão laranja,bell peppers,baby carrots,media,cru,20,nenhuma
+e0475,dois pedaços de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0490,uvas vermelhas,grapes,,alta,cru,37,nenhuma
+e0490,tomates-cereja alongados,cherry tomatoes,,alta,cru,33,nenhuma
+e0490,pedaços de melão cantaloupe,cantaloupe,papayas,media,cru,30,nenhuma
+e0498,morangos cortados ao meio,strawberries,,alta,cru,19,nenhuma
+e0498,tangerina inteira,mandarin oranges,orange,media,cru,34,nenhuma
+e0498,uvas vermelhas,grapes,,alta,cru,47,nenhuma
+e0546,mix de folhas,mixed greens,arugula,media,cru,44,laticinio
+e0546,pedaço de pepino,cucumbers,zucchini,media,cru,24,laticinio
+e0546,queijo branco esfarelado,feta cheese,goat cheese,media,nao_se_aplica,15,laticinio
+e0546,azeitona verde,olives,pickles,media,processado,10,laticinio
+e0546,pedaço de tomate,cherry tomatoes,bell peppers,media,cru,7,laticinio
+e0634,couve picada crua,kale,caesar salad,media,cru,75,nenhuma
+e0634,molho da salada,caesar dressing,vinaigrette,baixa,nao_se_aplica,10,nenhuma
+e0634,queijo ralado em lascas,parmesan cheese,cheese,media,nao_se_aplica,8,nenhuma
+e0634,crouton,croutons,,alta,assado,7,nenhuma
+e0687,cenoura ralada em tiras,carrot,,alta,cru,100,nenhuma
+e0696,floretes de couve-flor,cauliflower,,alta,cozido,100,nenhuma
+e0705,cubos de peito de frango,chicken breast,turkey breast,media,grelhado,38,frango_peru
+e0705,fatias de pepino,cucumbers,,alta,cru,21,frango_peru
+e0705,azeitonas pretas,olives,grapes,media,processado,15,frango_peru
+e0705,folhas de espinafre na base,spinach (raw),mixed greens,media,cru,12,frango_peru
+e0705,lascas de queijo,parmesan cheese,cheese,media,nao_se_aplica,7,frango_peru
+e0705,molho marrom por cima,vinaigrette,salad dressing,media,nao_se_aplica,7,frango_peru
+e0730,batatas assadas em pedaços,roasted potatoes,,alta,assado,50,nenhuma
+e0730,pedaços de melão verde,honeydew melons,,alta,cru,23,nenhuma
+e0730,morangos cortados,strawberries,,alta,cru,11,nenhuma
+e0730,folhas de alface,lettuce,mixed greens,media,cru,10,nenhuma
+e0730,mirtilos,blueberries,,alta,cru,6,nenhuma
+e0783,tiras de pimentão vermelho e verde,bell peppers,,alta,cru,48,nenhuma
+e0783,cebola roxa fatiada,onions,,alta,cru,30,nenhuma
+e0783,repolho claro picado,cabbage,lettuce,baixa,cru,13,nenhuma
+e0783,cenoura ralada,carrot,,alta,cru,9,nenhuma
+e0805,fatia pequena de pizza de pepperoni,pepperoni pizza,,alta,assado,40,prato_misto
+e0805,pedaços de abacaxi,pineapple,,alta,cru,43,prato_misto
+e0805,mix de folhas,mixed greens,spinach (raw),media,cru,17,prato_misto
+e0814,duas metades de pão tostado,english muffins,bagels,media,assado,66,nenhuma
+e0814,cream cheese por cima,cream cheese,butter,media,nao_se_aplica,34,nenhuma
+e0256,cubos de tofu,tofu,feta cheese,media,cru,22,leguminosa_soja
+e0256,feijão preto,black beans,,alta,cozido,22,leguminosa_soja
+e0256,azeitonas roxas,olives,kidney beans,media,processado,21,leguminosa_soja
+e0256,brócolis,broccoli,,alta,cozido,20,leguminosa_soja
+e0256,mix de folhas,mixed greens,,alta,cru,13,leguminosa_soja
+e0256,lascas de amêndoa,almonds,parmesan cheese,media,cru,2,leguminosa_soja
+e0754,fatia de carne rosada,steak,lamb,media,grelhado,28,bovina
+e0754,molho de ervas sobre a carne,pesto,salsa,media,nao_se_aplica,4,bovina
+e0754,couve-flor,cauliflower,,alta,cozido,45,bovina
+e0754,batata assada,roasted potatoes,,alta,assado,23,bovina
+e0155,melão cantaloupe em pedaços,cantaloupe,,alta,cru,100,nenhuma
+e0586,ovos mexidos,scrambled eggs,,alta,mexido,18,ovo
+e0586,abacaxi em pedaços,pineapple,,alta,cru,15,ovo
+e0586,melancia em cubos,watermelon,,alta,cru,36,ovo
+e0586,melão verde em cubos,honeydew melons,,alta,cru,15,ovo
+e0586,cubos de batata-doce assada,sweet potato,carrot,media,assado,8,ovo
+e0586,folhas de espinafre,spinach (raw),,alta,cru,1,ovo
+e0586,cenoura ralada,carrot,,alta,cru,2,ovo
+e0586,tomate-cereja,cherry tomatoes,,alta,cru,3,ovo
+e0586,rodelas de pepino,cucumbers,zucchini,media,cru,2,ovo
+e0750,cubos de tofu,tofu,feta cheese,media,cru,22,leguminosa_soja
+e0750,feijão preto,black beans,,alta,cozido,22,leguminosa_soja
+e0750,azeitonas roxas,olives,kidney beans,media,processado,21,leguminosa_soja
+e0750,brócolis,broccoli,,alta,cozido,20,leguminosa_soja
+e0750,mix de folhas,mixed greens,,alta,cru,13,leguminosa_soja
+e0750,lascas de amêndoa,almonds,parmesan cheese,media,cru,2,leguminosa_soja
+e0272,salada caesar com lascas de parmesão,caesar salad,,alta,cru,22,nenhuma
+e0272,cenoura assada em fatias,carrot,sweet potato,media,assado,33,nenhuma
+e0272,arroz integral temperado,brown rice,risotto,media,cozido,28,nenhuma
+e0272,pedaços escuros no arroz,mushroom,beef,baixa,refogado,12,nenhuma
+e0272,pedaço escuro assado,sweet potato,squash,baixa,assado,5,nenhuma
+e0721,folhas de espinafre cru,spinach (raw),,alta,cru,100,nenhuma
+e0129,filé de salmão com pele,salmon,,alta,assado,54,peixe_marisco
+e0129,arroz integral,brown rice,,alta,cozido,11,peixe_marisco
+e0129,abobrinha verde,zucchini,,alta,refogado,18,peixe_marisco
+e0129,abóbora amarela,squash,zucchini,media,refogado,14,peixe_marisco
+e0129,rúcula,arugula,,alta,cru,2,peixe_marisco
+e0129,pimentão vermelho,bell peppers,tomatoes,media,refogado,1,peixe_marisco
+e0207,cebola roxa fatiada,onions,,alta,cru,100,nenhuma
+e0069,pizza de pepperoni,pepperoni pizza,,alta,assado,70,prato_misto
+e0069,cenoura assada em rodelas,carrot,,alta,assado,30,prato_misto
+e0524,linguiça em pedaços,sausage,chicken apple sausage,media,grelhado,45,suina_embutido
+e0524,batata assada,roasted potatoes,,alta,assado,55,suina_embutido
+e0627,amêndoas,almonds,,alta,cru,20,nozes_sementes
+e0627,pera inteira,pears,,alta,cru,80,nozes_sementes
+e0143,fatias de carne com ervas,steak,lamb,media,grelhado,33,bovina
+e0143,molho de ervas sobre a carne,pesto,salsa,media,nao_se_aplica,2,bovina
+e0143,pedaço grelhado com molho branco,chicken,fish,baixa,grelhado,25,bovina
+e0143,molho branco cremoso,ranch dressing,sour cream,baixa,nao_se_aplica,6,bovina
+e0143,azeitonas roxas,olives,,alta,processado,22,bovina
+e0143,salada de rúcula e folhas,arugula,mixed greens,media,cru,12,bovina
+e0337,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0429,fatia de pizza de queijo,cheese pizza,,alta,assado,23,prato_misto
+e0429,arroz branco,white rice,,alta,cozido,38,prato_misto
+e0429,couve-de-bruxelas assada,brussels sprouts,,alta,assado,18,prato_misto
+e0429,abóbora amarela em pedaços,squash,zucchini,media,refogado,21,prato_misto
+e0250,ovos mexidos,scrambled eggs,,alta,mexido,25,ovo
+e0250,arroz frito,fried rice,brown rice,media,frito,25,ovo
+e0250,batata assada em cubos,roasted potatoes,,alta,assado,16,ovo
+e0250,brócolis assado,broccoli,,alta,assado,12,ovo
+e0250,abacaxi em pedaços,pineapple,,alta,cru,12,ovo
+e0250,morangos,strawberries,,alta,cru,8,ovo
+e0250,mirtilos,blueberries,,alta,cru,2,ovo
+e0599,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0493,rodelas de milho na espiga,corn on the cob,,alta,cozido,100,nenhuma
+e0632,atum em lascas,tuna,chicken,media,processado,68,peixe_marisco
+e0632,cenoura ralada,carrot,,alta,cru,14,peixe_marisco
+e0632,tomate-cereja,cherry tomatoes,,alta,cru,16,peixe_marisco
+e0632,pedacinhos de salsão,celery,green onions,baixa,cru,2,peixe_marisco
+e0704,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0670,ovos mexidos,scrambled eggs,,alta,mexido,47,ovo
+e0670,bacon em tiras,bacon,,alta,frito,11,ovo
+e0670,brócolis assado,broccoli,,alta,assado,42,ovo
+e0190,peixe branco em lascas,fish,cod,media,assado,20,peixe_marisco
+e0190,feijão branco sobre o peixe,white beans,garlic,media,cozido,5,peixe_marisco
+e0190,folhas cozidas sobre o peixe,spinach (cooked),chard,media,refogado,2,peixe_marisco
+e0190,grãos de trigo temperados,wheat berry,barley,media,cozido,25,peixe_marisco
+e0190,abobrinha em fatias,zucchini,,alta,refogado,25,peixe_marisco
+e0190,cenoura assada em rodelas,carrot,,alta,assado,23,peixe_marisco
+e0467,arroz vermelho/integral,brown rice,wild rice,media,cozido,38,nenhuma
+e0467,folhas verdes,spinach (raw),arugula,media,cru,3,nenhuma
+e0467,cenoura em pedaços,carrot,,alta,assado,9,nenhuma
+e0467,pedacinho amarelo,squash,pineapple,baixa,cozido,2,nenhuma
+e0467,milho na espiga,corn on the cob,,alta,cozido,48,nenhuma
+e0222,pedaços dourados temperados,roasted potatoes,chicken,media,assado,100,nenhuma
+e0172,cubos de carne com molho,pork,beef,media,ensopado,59,suina_embutido
+e0172,cubos de tofu dourado,tofu,roasted potatoes,media,grelhado,30,suina_embutido
+e0172,arroz grudado na carne,fried rice,brown rice,baixa,cozido,8,suina_embutido
+e0172,cebola refogada,onions,green onions,media,refogado,3,suina_embutido
+e0723,claras de ovo em pedaços,egg whites,feta cheese,media,cozido,17,ovo
+e0723,pudim de chia,chia seeds,puddings,media,nao_se_aplica,24,ovo
+e0723,tira de bacon,bacon,,alta,frito,3,ovo
+e0723,framboesas,raspberries,,alta,cru,14,ovo
+e0723,amoras,blackberries,,alta,cru,8,ovo
+e0723,uvas roxas,grapes,,alta,cru,20,ovo
+e0723,cubos de batata-doce assada,sweet potato,squash,media,assado,14,ovo
+e0616,claras de ovo,egg whites,,alta,cozido,45,ovo
+e0616,rodelas de linguiça,sausage,chicken apple sausage,media,grelhado,22,ovo
+e0616,cubos de batata-doce assada,sweet potato,carrot,media,assado,25,ovo
+e0616,cubos de batata,roasted potatoes,potatoes,media,assado,8,ovo
+e0167,torta de forno com queijo e feijão preto,quiche,enchiladas,baixa,assado,65,prato_misto
+e0167,batata ralada frita,hash browns,,alta,frito,35,prato_misto
+e0161,batata assada em cubos,roasted potatoes,,alta,assado,100,nenhuma
+e0158,maçã inteira,apple,,alta,cru,38,nenhuma
+e0158,cenoura em rodelas,carrot,,alta,assado,27,nenhuma
+e0158,couve-flor em floretes,cauliflower,,alta,cozido,22,nenhuma
+e0158,pedaço de espiga de milho,corn on the cob,,alta,cozido,13,nenhuma
+e0605,ovos mexidos,scrambled eggs,egg whites,media,mexido,55,ovo
+e0605,abacaxi em pedaços,pineapple,mangos,media,cru,45,ovo
+e0197,melão cantaloupe em pedaços,cantaloupe,papayas,media,cru,100,nenhuma
+e0598,grão-de-bico,chickpeas,,alta,cozido,30,leguminosa_soja
+e0598,folhas de espinafre/rúcula,spinach (raw),arugula,media,cru,14,leguminosa_soja
+e0598,mix de folhas,mixed greens,lettuce,media,cru,12,leguminosa_soja
+e0598,pepino em fatias,cucumbers,zucchini,media,cru,16,leguminosa_soja
+e0598,fatia de pera,pears,apple,media,cru,10,leguminosa_soja
+e0598,azeitonas pretas,olives,,alta,processado,6,leguminosa_soja
+e0598,cebola roxa,onions,,alta,cru,4,leguminosa_soja
+e0598,pimentão vermelho picado,bell peppers,tomatoes,baixa,cru,2,leguminosa_soja
+e0598,cenoura ralada,carrot,,alta,cru,2,leguminosa_soja
+e0598,molho da salada,vinaigrette,salad dressing,baixa,nao_se_aplica,4,leguminosa_soja
+e0715,filé de salmão com pele,salmon,trout,media,assado,45,peixe_marisco
+e0715,brócolis,broccoli,,alta,cozido,24,peixe_marisco
+e0715,tomates-cereja,cherry tomatoes,,alta,cru,21,peixe_marisco
+e0715,rabanete em fatias,radishes,,alta,cru,7,peixe_marisco
+e0715,cebola roxa,onions,,alta,cru,3,peixe_marisco
+e0188,maçã inteira,apple,,alta,cru,100,nenhuma
+e0821,batata-doce assada em cubos,sweet potato,squash,media,assado,34,suina_embutido
+e0821,framboesas,raspberries,,alta,cru,22,suina_embutido
+e0821,queijo branco em pedaços,feta cheese,egg whites,media,nao_se_aplica,20,suina_embutido
+e0821,amoras,blackberries,,alta,cru,13,suina_embutido
+e0821,tiras de bacon,bacon,turkey bacon,media,frito,11,suina_embutido
+e0257,carne bovina fatiada,steak,roast beef,media,grelhado,34,bovina
+e0257,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,22,bovina
+e0257,salada caesar (alface com molho),caesar salad,lettuce,media,cru,22,bovina
+e0257,mix de folhas,mixed greens,spinach (raw),media,cru,10,bovina
+e0257,azeitonas pretas,olives,,alta,processado,3,bovina
+e0257,cebola roxa,onions,,alta,cru,3,bovina
+e0257,tomate,cherry tomatoes,tomatoes,media,cru,2,bovina
+e0257,queijo feta esfarelado,feta cheese,goat cheese,baixa,nao_se_aplica,2,bovina
+e0257,croutons,croutons,,alta,assado,2,bovina
+e0247,abacaxi em pedaços,pineapple,mangos,media,cru,42,ovo
+e0247,claras de ovo mexidas,egg whites,feta cheese,media,mexido,36,ovo
+e0247,mirtilos,blueberries,,alta,cru,15,ovo
+e0247,morangos,strawberries,,alta,cru,7,ovo
+e0720,pedaço de pizza,pizza,cheese pizza,media,assado,62,prato_misto
+e0720,salada caesar (alface com molho),caesar salad,lettuce,media,cru,33,prato_misto
+e0720,croutons,croutons,,alta,assado,5,prato_misto
+e0487,frango em cubos,chicken breast,turkey breast,media,grelhado,42,frango_peru
+e0487,abacate em pedaços,avocado,,alta,cru,23,frango_peru
+e0487,folhas de espinafre,spinach (raw),,alta,cru,13,frango_peru
+e0487,azeitonas pretas,olives,beets,media,processado,10,frango_peru
+e0487,lascas de parmesão,parmesan cheese,artichokes,media,nao_se_aplica,8,frango_peru
+e0487,cenoura ralada,carrot,,alta,cru,4,frango_peru
+e0697,berinjela assada em cubos,eggplant,mushroom,media,assado,52,nenhuma
+e0697,couve-flor cozida/amassada,cauliflower,mashed potatoes,media,cozido,48,nenhuma
+e0530,rúcula,arugula,mixed greens,media,cru,42,nenhuma
+e0530,pepino em fatias,cucumbers,zucchini,media,cru,28,nenhuma
+e0530,mix de folhas,mixed greens,chard,media,cru,14,nenhuma
+e0530,amêndoas,almonds,pumpkin seeds,media,nao_se_aplica,6,nenhuma
+e0530,queijo feta esfarelado,feta cheese,goat cheese,media,nao_se_aplica,5,nenhuma
+e0530,molho da salada,vinaigrette,salad dressing,baixa,nao_se_aplica,5,nenhuma
+e0657,melancia em cubos,watermelon,,alta,cru,83,nenhuma
+e0657,morangos,strawberries,,alta,cru,15,nenhuma
+e0657,mirtilos,blueberries,,alta,cru,2,nenhuma
+e0071,frango em cubos,chicken breast,tofu,media,grelhado,49,frango_peru
+e0071,tomates-cereja,cherry tomatoes,,alta,cru,36,frango_peru
+e0071,azeitonas pretas,olives,,alta,processado,15,frango_peru
+e0769,brócolis,broccoli,,alta,cozido,38,nenhuma
+e0769,rabanete em fatias,radishes,,alta,cru,26,nenhuma
+e0769,pepino em pedaços,cucumbers,zucchini,media,cru,20,nenhuma
+e0769,cebola roxa,onions,,alta,cru,16,nenhuma
+e0573,salada caesar (alface com molho),caesar salad,lettuce,media,cru,45,nenhuma
+e0573,tomates-cereja,cherry tomatoes,,alta,cru,30,nenhuma
+e0573,azeitonas pretas,olives,,alta,processado,18,nenhuma
+e0573,croutons,croutons,,alta,assado,5,nenhuma
+e0573,sementes,sunflower seeds,pine nuts,baixa,nao_se_aplica,2,nenhuma
+e0074,berinjela assada em cubos,eggplant,mushroom,media,assado,40,nenhuma
+e0074,couve-flor cozida/amassada,cauliflower,mashed potatoes,media,cozido,37,nenhuma
+e0074,pedaços dourados (batata assada),roasted potatoes,fish,baixa,assado,23,nenhuma
+e0465,melão cantaloupe em pedaços,cantaloupe,papayas,media,cru,65,nenhuma
+e0465,pedaço de espiga de milho,corn on the cob,,alta,cozido,21,nenhuma
+e0465,mix de folhas,mixed greens,,alta,cru,14,nenhuma
+e0083,maçã inteira,apple,,alta,cru,100,nenhuma
+e0684,batatas vermelhas assadas,red potatoes,beets,baixa,assado,48,suina_embutido
+e0684,tiras de bacon,bacon,,alta,frito,29,suina_embutido
+e0684,couve-de-bruxelas,brussels sprouts,,alta,assado,23,suina_embutido
+e0403,cenoura em rodelas,carrot,,alta,assado,100,nenhuma
+e0010,ovos mexidos,scrambled eggs,omelets,media,mexido,46,ovo
+e0010,batata ralada (hash brown),hash browns,white rice,media,frito,28,ovo
+e0010,linguiça aberta ao meio,sausage,hot dogs,media,grelhado,22,ovo
+e0010,ketchup,ketchup,salsa,media,nao_se_aplica,4,ovo
+e0231,ovos mexidos,scrambled eggs,,alta,mexido,53,ovo
+e0231,brócolis,broccoli,,alta,assado,34,ovo
+e0231,folhas de espinafre,spinach (raw),,alta,cru,8,ovo
+e0231,pepino em fatia,cucumbers,radishes,media,cru,3,ovo
+e0231,cenoura ralada,carrot,,alta,cru,2,ovo
+e0316,tomates-cereja,cherry tomatoes,,alta,cru,60,nenhuma
+e0316,cenoura ralada,carrot,,alta,cru,40,nenhuma
+e0075,pedaço de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0404,maçã inteira,apple,,alta,cru,100,nenhuma
+e0048,pepino em fatias,cucumbers,zucchini,media,cru,55,nenhuma
+e0048,rabanete em fatias,radishes,,alta,cru,45,nenhuma
+e0115,pudim de chia,puddings,chia seeds,media,nao_se_aplica,26,suina_embutido
+e0115,batata-doce assada em cubos,sweet potato,squash,media,assado,22,suina_embutido
+e0115,framboesas,raspberries,,alta,cru,15,suina_embutido
+e0115,queijo branco em pedaços,feta cheese,egg whites,media,nao_se_aplica,13,suina_embutido
+e0115,amoras,blackberries,,alta,cru,9,suina_embutido
+e0115,tiras de bacon,bacon,turkey bacon,media,frito,8,suina_embutido
+e0115,uvas escuras,grapes,cherries,media,cru,7,suina_embutido
+e0582,fatia de carne rosada,steak,roast beef,media,grelhado,70,bovina
+e0582,cobertura verde tipo pesto/chimichurri,pesto,lentils,baixa,nao_se_aplica,25,bovina
+e0582,brotos verdes,mixed greens,arugula,media,cru,5,bovina
+e0235,ovos mexidos,scrambled eggs,,alta,mexido,42,ovo
+e0235,tiras de bacon,bacon,,alta,frito,18,ovo
+e0235,cubos de batata-doce assada,sweet potato,squash,media,assado,25,ovo
+e0235,morangos,strawberries,,alta,cru,14,ovo
+e0235,mirtilo,blueberries,,alta,cru,1,ovo
+e0566,quadrado gratinado com molho de tomate,lasagna,quiche,baixa,assado,68,prato_misto
+e0566,folhas de espinafre,spinach (raw),mixed greens,media,cru,20,prato_misto
+e0566,cubos de legumes na salada,mixed vegetables,carrot,media,cru,9,prato_misto
+e0566,molho da salada,salad dressing,vinaigrette,baixa,nao_se_aplica,3,prato_misto
+e0212,filé de salmão com pele,salmon,trout,media,grelhado,86,peixe_marisco
+e0212,arroz integral por cima,brown rice,wheat berry,media,cozido,11,peixe_marisco
+e0212,rúcula,arugula,,alta,cru,3,peixe_marisco
+e0398,cenoura em rodelas,carrot,,alta,assado,100,nenhuma
+e0326,claras mexidas,egg whites,,alta,mexido,49,ovo
+e0326,cubos de batata-doce assada,sweet potato,squash,media,assado,20,ovo
+e0326,melancia em cubos,watermelon,,alta,cru,20,ovo
+e0326,mirtilos,blueberries,,alta,cru,8,ovo
+e0326,morango,strawberries,cherry tomatoes,media,cru,3,ovo
+e0163,cenoura em rodelas,carrot,,alta,cozido,60,nenhuma
+e0163,couve-flor,cauliflower,,alta,cozido,40,nenhuma
+e0735,frango fatiado com crosta,roast chicken,chicken breast,media,assado,52,frango_peru
+e0735,folhas verdes cozidas,kale,chard,media,refogado,13,frango_peru
+e0735,quinoa,quinoa,bulgur,media,cozido,8,frango_peru
+e0735,cenoura,carrot,,alta,assado,5,frango_peru
+e0735,mix de folhas,mixed greens,,alta,cru,8,frango_peru
+e0735,tomate,tomatoes,bell peppers,media,cru,4,frango_peru
+e0735,rodela de milho na espiga,corn on the cob,,alta,cozido,10,frango_peru
+e0648,fatias de carne,steak,pork,media,grelhado,55,bovina
+e0648,arroz branco,white rice,,alta,cozido,45,bovina
+e0431,cubos de tofu,tofu,chicken breast,media,assado,30,leguminosa_soja
+e0431,couve picada temperada,kale,,alta,cru,28,leguminosa_soja
+e0431,kimchi,kimchi,,alta,nao_se_aplica,21,leguminosa_soja
+e0431,azeitonas pretas,olives,,alta,processado,14,leguminosa_soja
+e0431,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,3,leguminosa_soja
+e0431,molho cremoso da couve,caesar dressing,salad dressing,media,nao_se_aplica,4,leguminosa_soja
+e0303,frango desfiado ao molho vermelho,chicken,pork,media,ensopado,30,frango_peru
+e0303,filé de salmão com pele,salmon,fish,media,grelhado,27,frango_peru
+e0303,cubos de abóbora assada,squash,sweet potato,media,assado,22,frango_peru
+e0303,rúcula,arugula,,alta,cru,9,frango_peru
+e0303,batata assada,roasted potatoes,,alta,assado,7,frango_peru
+e0303,queijo em lascas na salada,parmesan cheese,onions,media,nao_se_aplica,2,frango_peru
+e0303,molho de tomate,pasta sauce,barbecue sauce,baixa,nao_se_aplica,3,frango_peru
+e0661,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0402,arroz integral,brown rice,,alta,cozido,30,frango_peru
+e0402,quinoa misturada ao arroz,quinoa,couscous,media,cozido,9,frango_peru
+e0402,tira de frango,chicken breast,fish,media,grelhado,11,frango_peru
+e0402,salada caesar de alface romana,caesar salad,lettuce,media,cru,18,frango_peru
+e0402,croutons,croutons,chicken,baixa,assado,3,frango_peru
+e0402,tomates-cereja,cherry tomatoes,,alta,cru,18,frango_peru
+e0402,azeitonas pretas,olives,,alta,processado,9,frango_peru
+e0402,rúcula,arugula,,alta,cru,2,frango_peru
+e0085,ovos mexidos,scrambled eggs,,alta,mexido,36,ovo
+e0085,queijo ralado sobre os ovos,cheddar cheese,cheese,media,nao_se_aplica,3,ovo
+e0085,rodelas de linguiça,sausage,chicken apple sausage,media,grelhado,19,ovo
+e0085,pão redondo tostado,english muffins,bagels,media,assado,16,ovo
+e0085,cream cheese com ervas,cream cheese,,alta,nao_se_aplica,8,ovo
+e0085,amoras,blackberries,,alta,cru,12,ovo
+e0085,framboesas,raspberries,,alta,cru,6,ovo
+e0732,arroz branco,white rice,,alta,cozido,35,nozes_sementes
+e0732,uvas,grapes,,alta,cru,27,nozes_sementes
+e0732,tomates-cereja,cherry tomatoes,,alta,cru,22,nozes_sementes
+e0732,amêndoas,almonds,,alta,cru,12,nozes_sementes
+e0732,folhas de espinafre,spinach (raw),,alta,cru,4,nozes_sementes
+e0514,claras mexidas,egg whites,,alta,mexido,74,ovo
+e0514,cubos de batata-doce assada,sweet potato,squash,media,assado,26,ovo
+e0454,cenoura ralada,carrot,,alta,cru,42,nenhuma
+e0454,tiras de pimentão vermelho e verde,bell peppers,tomatoes,media,cru,50,nenhuma
+e0454,cebola fatiada,onions,,alta,cru,8,nenhuma
+e0095,disco moído bege (hambúrguer),ground turkey,sausage,baixa,grelhado,100,frango_peru
+e0305,waffles,waffles,,alta,assado,44,ovo
+e0305,mexido amarelo temperado,scrambled eggs,tofu,baixa,mexido,29,ovo
+e0305,brócolis no mexido,broccoli,mixed vegetables,media,refogado,7,ovo
+e0305,porções brancas cremosas,greek yogurt,egg whites,baixa,nao_se_aplica,20,ovo
+e0261,abóbora amarela,squash,,alta,cozido,65,nenhuma
+e0261,abobrinha verde,zucchini,cucumbers,media,cozido,35,nenhuma
+e0370,pedaços de peixe branco selado,fish,tofu,media,grelhado,42,peixe_marisco
+e0370,milho com grãos,corn,bulgur,media,cozido,35,peixe_marisco
+e0370,mix de folhas,mixed greens,,alta,cru,20,peixe_marisco
+e0370,molho,vinaigrette,salad dressing,baixa,nao_se_aplica,3,peixe_marisco
+e0771,pedaços de linguiça,sausage,chicken apple sausage,media,grelhado,27,suina_embutido
+e0771,ovos mexidos,scrambled eggs,,alta,mexido,26,suina_embutido
+e0771,batata ralada dourada,hash browns,,alta,frito,26,suina_embutido
+e0771,couve-de-bruxelas,brussels sprouts,,alta,assado,21,suina_embutido
+e0473,arroz amarelo,white rice,fried rice,media,cozido,52,nenhuma
+e0473,vagem,green beans,asparagus,media,assado,33,nenhuma
+e0473,folhas de espinafre,spinach (raw),,alta,cru,10,nenhuma
+e0473,cebola fatiada,onions,artichokes,media,cozido,5,nenhuma
+e0051,maçã inteira,apple,,alta,cru,100,nenhuma
+e0816,rodelas de milho na espiga,corn on the cob,,alta,cozido,100,nenhuma
+e0271,frango com molho escuro,chicken thighs,pork,media,assado,28,frango_peru
+e0271,batatas assadas,roasted potatoes,,alta,assado,45,frango_peru
+e0271,romanesco,cauliflower,broccoli,media,cozido,25,frango_peru
+e0271,molho barbecue,barbecue sauce,teriyaki sauce,media,nao_se_aplica,2,frango_peru
+e0680,melão cantaloupe em pedaços,cantaloupe,papayas,media,cru,100,nenhuma
+e0006,cubos dourados de rabanada,french toast,roasted potatoes,baixa,frito,30,nenhuma
+e0006,melancia,watermelon,,alta,cru,41,nenhuma
+e0006,morangos,strawberries,,alta,cru,22,nenhuma
+e0006,mirtilos,blueberries,,alta,cru,7,nenhuma
+e0066,mix de folhas,mixed greens,,alta,cru,45,nenhuma
+e0066,cenoura ralada,carrot,,alta,cru,27,nenhuma
+e0066,repolho roxo,cabbage,,alta,cru,14,nenhuma
+e0066,tiras de pimentão,bell peppers,celery,media,cru,9,nenhuma
+e0066,cebola fatiada,onions,,alta,cru,5,nenhuma
+e0178,fatia de pizza de queijo,cheese pizza,pizza,media,assado,37,frango_peru
+e0178,coxinha da asa/coxa de frango,chicken drumsticks,chicken wings,media,assado,22,frango_peru
+e0178,cenoura em rodelas cozida,carrot,,alta,cozido,25,frango_peru
+e0178,salada de folhas,mixed greens,spinach (raw),media,cru,12,frango_peru
+e0178,tomate-cereja e pepino da salada,cherry tomatoes,cucumbers,media,cru,4,frango_peru
+e0580,cubos de tofu,tofu,,alta,assado,31,leguminosa_soja
+e0580,brócolis,broccoli,,alta,cozido,12,leguminosa_soja
+e0580,batata vermelha em pedaços,red potatoes,sausage,baixa,assado,12,leguminosa_soja
+e0580,couve-de-bruxelas assada,brussels sprouts,,alta,assado,23,leguminosa_soja
+e0580,rúcula,arugula,mixed greens,media,cru,6,leguminosa_soja
+e0580,couve-flor na salada,cauliflower,feta cheese,media,cru,4,leguminosa_soja
+e0580,tomate,cherry tomatoes,tomatoes,media,cru,4,leguminosa_soja
+e0580,grãos integrais,wheat berry,brown rice,media,cozido,8,leguminosa_soja
+e0626,metade de bagel,bagels,toast,media,assado,68,nenhuma
+e0626,cream cheese,cream cheese,,alta,nao_se_aplica,32,nenhuma
+e0695,bacon,bacon,ham,media,frito,7,suina_embutido
+e0695,ovos mexidos,scrambled eggs,,alta,mexido,17,suina_embutido
+e0695,abacaxi em pedaços,pineapple,,alta,cru,14,suina_embutido
+e0695,melancia em cubos,watermelon,,alta,cru,28,suina_embutido
+e0695,melão em cubos,honeydew melons,,alta,cru,14,suina_embutido
+e0695,folhas de espinafre,spinach (raw),,alta,cru,2,suina_embutido
+e0695,cenoura ralada,carrot,,alta,cru,2,suina_embutido
+e0695,pepino em rodelas,cucumbers,,alta,cru,2,suina_embutido
+e0695,tomate-cereja,cherry tomatoes,,alta,cru,3,suina_embutido
+e0695,cubos de batata-doce assada,sweet potato,squash,media,assado,6,suina_embutido
+e0695,legumes claros cozidos,zucchini,onions,baixa,cozido,5,suina_embutido
+e0082,cubos de tofu com molho,tofu,chicken,media,refogado,28,leguminosa_soja
+e0082,arroz com molho,brown rice,white rice,media,cozido,32,leguminosa_soja
+e0082,salada de rúcula e folhas,arugula,mixed greens,media,cru,18,leguminosa_soja
+e0082,amoras e mirtilos,blackberries,blueberries,media,cru,9,leguminosa_soja
+e0082,grão-de-bico,chickpeas,,alta,cozido,7,leguminosa_soja
+e0082,pimentão vermelho,bell peppers,,alta,cru,6,leguminosa_soja
+e0759,fatia de pizza de queijo,cheese pizza,pepperoni pizza,media,assado,100,prato_misto
+e0412,melancia em cubos,watermelon,,alta,cru,48,nenhuma
+e0412,abacaxi em pedaços,pineapple,,alta,cru,52,nenhuma
+e0294,azeitonas pretas,olives,kidney beans,media,processado,48,nenhuma
+e0294,pepino em rodelas,cucumbers,,alta,cru,30,nenhuma
+e0294,espinafre cru,spinach (raw),,alta,cru,22,nenhuma
+e0413,alface com molho caesar,caesar salad,lettuce,media,cru,72,nenhuma
+e0413,pedaço amarelo (massa),pasta,scrambled eggs,baixa,cozido,20,nenhuma
+e0413,lasca de queijo,parmesan cheese,croutons,baixa,nao_se_aplica,5,nenhuma
+e0413,pedacinho de cenoura,carrot,tomatoes,baixa,cru,3,nenhuma
+e0445,arroz com molho de tomate,white rice,brown rice,media,cozido,33,peixe_marisco
+e0445,pedaço gratinado com queijo e molho,lasagna,enchiladas,media,assado,38,peixe_marisco
+e0445,filé de peixe temperado,fish,chicken breast,media,assado,29,peixe_marisco
+e0214,batatas assadas em pedaços,roasted potatoes,,alta,assado,100,nenhuma
+e0302,amêndoas,almonds,,alta,cru,13,nozes_sementes
+e0302,tangerina,mandarin oranges,,alta,cru,20,nozes_sementes
+e0302,uvas vermelhas,grapes,,alta,cru,22,nozes_sementes
+e0302,pera inteira,pears,,alta,cru,45,nozes_sementes
+e0683,fatias de carne bovina com molho,steak,roast beef,media,assado,60,bovina
+e0683,tiras claras com molho branco,chicken breast,fish,baixa,grelhado,37,bovina
+e0683,brotos e folhinhas,mixed greens,arugula,media,cru,3,bovina
+e0651,mix de folhas,mixed greens,,alta,cru,100,nenhuma
+e0596,morangos,strawberries,,alta,cru,28,nenhuma
+e0596,melancia,watermelon,,alta,cru,18,nenhuma
+e0596,melão cantaloupe,cantaloupe,,alta,cru,28,nenhuma
+e0596,abacaxi,pineapple,mangos,media,cru,22,nenhuma
+e0596,mirtilos,blueberries,,alta,cru,4,nenhuma
+e0065,pedaços de salmão com crosta,salmon,fish,media,assado,100,peixe_marisco
+e0450,filé de peixe com cobertura,fish,chicken thighs,media,assado,67,peixe_marisco
+e0450,cogumelos inteiros,mushroom,,alta,assado,24,peixe_marisco
+e0450,tomate picado,tomatoes,bell peppers,media,cozido,6,peixe_marisco
+e0450,folhas verdes,mixed greens,spinach (raw),media,cru,3,peixe_marisco
+e0439,homus,hummus,tahini,media,nao_se_aplica,26,frango_peru
+e0439,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,10,frango_peru
+e0439,frango em cubos,chicken breast,tofu,media,cozido,23,frango_peru
+e0439,cebola roxa fatiada,onions,,alta,cru,8,frango_peru
+e0439,tomate-cereja,cherry tomatoes,,alta,cru,24,frango_peru
+e0439,pepino,cucumbers,celery,media,cru,7,frango_peru
+e0439,cenoura,carrot,bell peppers,media,cru,2,frango_peru
+e0058,pedaços de frango,chicken,fish,media,assado,45,frango_peru
+e0058,grãos cozidos,quinoa,couscous,media,cozido,44,frango_peru
+e0058,vagens,green beans,asparagus,media,cozido,11,frango_peru
+e0225,pudim de chia,chia seeds,puddings,media,nao_se_aplica,54,nozes_sementes
+e0225,morangos,strawberries,,alta,cru,31,nozes_sementes
+e0225,mirtilos,blueberries,,alta,cru,3,nozes_sementes
+e0225,amoras,blackberries,,alta,cru,12,nozes_sementes
+e0089,uvas,grapes,,alta,cru,100,nenhuma
+e0738,salada de couve kale com molho,kale,,alta,cru,22,frango_peru
+e0738,lascas de queijo,parmesan cheese,feta cheese,media,nao_se_aplica,3,frango_peru
+e0738,verdura cozida (acelga chinesa),bok choy,chard,media,cozido,19,frango_peru
+e0738,folhas de espinafre,spinach (raw),,alta,cru,2,frango_peru
+e0738,milho na espiga,corn on the cob,,alta,cozido,25,frango_peru
+e0738,fatias de carne clara com ervas,chicken breast,pork,baixa,assado,22,frango_peru
+e0738,alcachofra,artichokes,potatoes,baixa,cozido,7,frango_peru
+e0046,brócolis assado,broccoli,,alta,assado,54,nenhuma
+e0046,morangos,strawberries,,alta,cru,32,nenhuma
+e0046,mirtilos,blueberries,,alta,cru,14,nenhuma
+e0804,filé de salmão com molho,salmon,fish,media,assado,67,peixe_marisco
+e0804,mix de folhas e espinafre,mixed greens,spinach (raw),media,cru,30,peixe_marisco
+e0804,cenoura ralada,carrot,,alta,cru,3,peixe_marisco
+e0393,couve-flor,cauliflower,,alta,cozido,100,nenhuma
+e0219,cenoura em rodelas cozida,carrot,,alta,cozido,27,nenhuma
+e0219,melão cantaloupe em pedaços,cantaloupe,,alta,cru,43,nenhuma
+e0219,couve-flor,cauliflower,,alta,cru,30,nenhuma
+e0503,pepino fatiado,cucumbers,,alta,cru,65,nenhuma
+e0503,espinafre cru,spinach (raw),,alta,cru,35,nenhuma
+e0667,fatia de pizza de queijo,cheese pizza,pizza,media,assado,20,frango_peru
+e0667,brócolis,broccoli,,alta,cozido,22,frango_peru
+e0667,salada de couve kale,kale,spinach (raw),media,cru,9,frango_peru
+e0667,pepino em rodelas,cucumbers,,alta,cru,2,frango_peru
+e0667,cenoura assada,carrot,sweet potato,media,assado,15,frango_peru
+e0667,pedaços de frango escuro,chicken thighs,chicken drumsticks,media,assado,27,frango_peru
+e0667,grãos soltos,wheat berry,lentils,baixa,cozido,5,frango_peru
+e0298,milho na espiga,corn on the cob,,alta,cozido,54,frango_peru
+e0298,fatias de carne clara com ervas e molho,chicken breast,pork,baixa,assado,44,frango_peru
+e0298,folha de espinafre,spinach (raw),,alta,cru,2,frango_peru
+e0628,filé de salmão assado com crosta,salmon,fish,media,assado,33,peixe_marisco
+e0628,abacaxi em pedaços,pineapple,,alta,cru,25,peixe_marisco
+e0628,abobrinha em pedaços,zucchini,cucumbers,media,cru,14,peixe_marisco
+e0628,folhas de espinafre e rúcula,spinach (raw),arugula,media,cru,12,peixe_marisco
+e0628,tomates-cereja,cherry tomatoes,,alta,cru,13,peixe_marisco
+e0628,queijo ralado em fios,parmesan cheese,mozzarella cheese,media,nao_se_aplica,3,peixe_marisco
+e0702,atum desfiado,tuna,chicken,media,processado,60,peixe_marisco
+e0702,cenoura ralada,carrot,,alta,cru,17,peixe_marisco
+e0702,amêndoas inteiras,almonds,,alta,cru,8,peixe_marisco
+e0702,tomate-cereja,cherry tomatoes,,alta,cru,8,peixe_marisco
+e0702,itens escuros (azeitonas ou feijão),olives,kidney beans,baixa,processado,5,peixe_marisco
+e0702,salsão picado,celery,green onions,media,cru,2,peixe_marisco
+e0660,frango em cubos,chicken breast,tofu,media,grelhado,18,frango_peru
+e0660,vagem fina / aspargos,green beans,asparagus,media,cozido,12,frango_peru
+e0660,batatas assadas,roasted potatoes,mushroom,media,assado,17,frango_peru
+e0660,salada cremosa de frango com ervas,chicken salad,tuna salad,media,nao_se_aplica,35,frango_peru
+e0660,filé fino dourado na frigideira,fish,chicken breast,baixa,frito,18,frango_peru
+e0076,fatias de pizza (queijo e molho de carne),pizza,cheese pizza,media,assado,66,prato_misto
+e0076,folhas de espinafre cru,spinach (raw),,alta,cru,10,prato_misto
+e0076,mix de folhas,mixed greens,kale,media,cru,8,prato_misto
+e0076,fatia de tomate,tomatoes,,alta,cru,6,prato_misto
+e0076,azeitonas / cogumelos escuros,olives,mushroom,baixa,processado,7,prato_misto
+e0076,cebola roxa,onions,,alta,cru,3,prato_misto
+e0313,batata-doce assada em cubos,sweet potato,,alta,assado,62,nenhuma
+e0313,framboesas,raspberries,,alta,cru,22,nenhuma
+e0313,amoras,blackberries,,alta,cru,16,nenhuma
+e0716,mix de folhas,mixed greens,,alta,cru,100,nenhuma
+e0547,claras de ovo mexidas,egg whites,scrambled eggs,media,mexido,70,ovo
+e0547,rodelas de linguiça,sausage,chicken apple sausage,media,frito,30,ovo
+e0570,frango grelhado em cubos,grilled chicken,tofu,media,grelhado,52,frango_peru
+e0570,brócolis,broccoli,,alta,cozido,20,frango_peru
+e0570,corações de alcachofra,artichokes,onions,media,cozido,13,frango_peru
+e0570,alface romana picada,lettuce,cabbage,media,cru,13,frango_peru
+e0570,molho / azeite,salad dressing,olive oil,baixa,nao_se_aplica,2,frango_peru
+e0474,salada de atum com cebola roxa e salsão,tuna salad,chicken salad,media,nao_se_aplica,30,peixe_marisco
+e0474,pedaço de peixe com pele,fish,hard boiled eggs,baixa,cozido,10,peixe_marisco
+e0474,tomates-cereja,cherry tomatoes,,alta,cru,21,peixe_marisco
+e0474,azeitonas pretas,olives,,alta,processado,8,peixe_marisco
+e0474,cenoura ralada,carrot,,alta,cru,14,peixe_marisco
+e0474,vagem cozida,green beans,,alta,cozido,17,peixe_marisco
+e0782,fatia de pizza de queijo,cheese pizza,,alta,assado,43,prato_misto
+e0782,salada caesar (alface romana com molho),caesar salad,lettuce,media,cru,31,prato_misto
+e0782,croutons,croutons,,alta,assado,3,prato_misto
+e0782,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,2,prato_misto
+e0782,brócolis,broccoli,,alta,cozido,21,prato_misto
+e0462,couve-flor,cauliflower,,alta,cozido,28,nenhuma
+e0462,cenoura em rodelas,carrot,,alta,cozido,27,nenhuma
+e0462,maçã inteira,apple,,alta,cru,45,nenhuma
+e0533,tiras de bacon,bacon,,alta,frito,100,suina_embutido
+e0234,fatias de abacate com casca,avocado,zucchini,media,cru,100,nenhuma
+e0480,tofu em cubos,tofu,chicken breast,media,refogado,35,leguminosa_soja
+e0480,arroz vermelho / integral,brown rice,wheat berry,media,cozido,35,leguminosa_soja
+e0480,cenoura em rodelas,carrot,,alta,cozido,12,leguminosa_soja
+e0480,cebola / erva-doce cozida,onions,fennel,media,refogado,12,leguminosa_soja
+e0480,vagem,green beans,,alta,cozido,4,leguminosa_soja
+e0480,molho / óleo,vegetable oil,soy sauce,baixa,nao_se_aplica,2,leguminosa_soja
+e0307,fatias de carne bovina assada,roast beef,steak,media,assado,38,bovina
+e0307,pedaço de pizza de queijo,cheese pizza,flatbread,media,assado,27,bovina
+e0307,abobrinha e abóbora amarela assadas,zucchini,squash,media,assado,22,bovina
+e0307,berinjela assada,eggplant,mushroom,media,assado,10,bovina
+e0307,folha verde sob a carne,spinach (raw),mixed greens,media,cru,3,bovina
+e0109,batatas assadas em pedaços,roasted potatoes,,alta,assado,47,nenhuma
+e0109,uvas vermelhas,grapes,cherry tomatoes,media,cru,31,nenhuma
+e0109,brócolis,broccoli,,alta,cozido,22,nenhuma
+e0243,melancia em cubos,watermelon,,alta,cru,37,nenhuma
+e0243,melão cantaloupe,cantaloupe,,alta,cru,21,nenhuma
+e0243,abacaxi em pedaços,pineapple,,alta,cru,21,nenhuma
+e0243,morangos,strawberries,,alta,cru,11,nenhuma
+e0243,mirtilos,blueberries,,alta,cru,3,nenhuma
+e0243,framboesas,raspberries,,alta,cru,3,nenhuma
+e0243,amoras,blackberries,,alta,cru,4,nenhuma
+e0463,ovos mexidos,scrambled eggs,,alta,mexido,100,ovo
+e0304,cebola roxa fatiada,onions,,alta,cru,52,nenhuma
+e0304,azeitonas pretas,olives,,alta,processado,48,nenhuma
+e0797,brócolis,broccoli,,alta,cozido,45,nenhuma
+e0797,pepino em cubos,cucumbers,zucchini,media,cru,30,nenhuma
+e0797,cebola roxa fatiada,onions,,alta,cru,15,nenhuma
+e0797,cenoura baby,baby carrots,bell peppers,media,cru,8,nenhuma
+e0797,pedaço de pimentão amarelo,bell peppers,squash,media,cru,2,nenhuma
+e0361,tomates-cereja,cherry tomatoes,,alta,cru,70,nenhuma
+e0361,azeitonas pretas,olives,,alta,processado,30,nenhuma
+e0270,brócolis,broccoli,,alta,cozido,50,nenhuma
+e0270,mix de folhas,mixed greens,,alta,cru,40,nenhuma
+e0270,cenoura ralada,carrot,,alta,cru,7,nenhuma
+e0270,molho da salada,salad dressing,vinaigrette,baixa,nao_se_aplica,3,nenhuma
+e0344,cenoura ralada,carrot,,alta,cru,75,laticinio
+e0344,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,25,laticinio
+e0237,morangos fatiados,strawberries,,alta,cru,40,nenhuma
+e0237,brócolis assado,broccoli,,alta,assado,45,nenhuma
+e0237,folhas de espinafre cru,spinach (raw),,alta,cru,13,nenhuma
+e0237,cenoura ralada,carrot,,alta,cru,2,nenhuma
+e0491,claras de ovo mexidas,egg whites,,alta,mexido,57,ovo
+e0491,melancia em cubos,watermelon,,alta,cru,14,ovo
+e0491,morangos,strawberries,watermelon,media,cru,6,ovo
+e0491,mirtilos,blueberries,,alta,cru,2,ovo
+e0491,batata-doce assada em cubos,sweet potato,,alta,assado,21,ovo
+e0035,ovos mexidos,scrambled eggs,,alta,mexido,50,ovo
+e0035,rodelas de linguiça,sausage,chicken apple sausage,media,frito,23,ovo
+e0035,amoras,blackberries,,alta,cru,18,ovo
+e0035,framboesas,raspberries,,alta,cru,8,ovo
+e0035,molho de pimenta,salsa,ketchup,media,nao_se_aplica,1,ovo
+e0449,azeitonas pretas,olives,,alta,processado,100,nenhuma
+e0828,fatia de carne bovina ao ponto,steak,lamb,media,grelhado,26,bovina
+e0828,molho de ervas sobre a carne,pesto,salsa,media,nao_se_aplica,3,bovina
+e0828,cogumelos salteados,mushroom,,alta,refogado,17,bovina
+e0828,couve-flor cozida,cauliflower,potatoes,media,cozido,37,bovina
+e0828,batatas assadas,roasted potatoes,,alta,assado,17,bovina
+e0057,frango em molho vermelho,chicken,shrimp,media,ensopado,37,frango_peru
+e0057,salada de repolho com cenoura,coleslaw,cabbage,media,cru,9,frango_peru
+e0057,lentilhas / grãos cozidos,lentils,wheat berry,media,cozido,16,frango_peru
+e0057,brócolis,broccoli,,alta,cozido,25,frango_peru
+e0057,rúcula,arugula,,alta,cru,11,frango_peru
+e0057,molho vermelho,barbecue sauce,salsa,baixa,nao_se_aplica,2,frango_peru
+e0766,cenoura ralada,carrot,,alta,cru,90,nenhuma
+e0766,cebola roxa em fatias por baixo,onions,cabbage,baixa,cru,10,nenhuma
+e0041,fatias de lombo de porco,pork,steak,media,assado,100,suina_embutido
+e0794,filé de salmão assado com crosta,salmon,fish,media,assado,48,peixe_marisco
+e0794,abobrinha amarela em pedaços,squash,zucchini,media,cozido,19,peixe_marisco
+e0794,tomates-cereja,cherry tomatoes,,alta,cru,15,peixe_marisco
+e0794,salada de espinafre e rúcula,spinach (raw),arugula,media,cru,13,peixe_marisco
+e0794,queijo ralado em tiras,parmesan cheese,mozzarella cheese,media,nao_se_aplica,3,peixe_marisco
+e0794,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,2,peixe_marisco
+e0544,pedaço de lasanha com queijo e molho,lasagna,cheese pizza,baixa,assado,34,prato_misto
+e0544,azeitonas pretas,olives,,alta,processado,13,prato_misto
+e0544,lascas de queijo,parmesan cheese,cheese,media,nao_se_aplica,8,prato_misto
+e0544,batata assada em cubos,roasted potatoes,,alta,assado,15,prato_misto
+e0544,arroz integral temperado,brown rice,wheat berry,media,cozido,26,prato_misto
+e0544,folhas verdes refogadas,spinach (cooked),kale,media,refogado,4,prato_misto
+e0221,brócolis,broccoli,,alta,cozido,100,nenhuma
+e0100,frango em cubos,chicken breast,grilled chicken,media,grelhado,62,frango_peru
+e0100,tomates-cereja,cherry tomatoes,,alta,cru,25,frango_peru
+e0100,cenoura ralada,carrot,,alta,cru,10,frango_peru
+e0100,cebola roxa em fatias,onions,,alta,cru,3,frango_peru
+e0460,fatias de pizza de pepperoni,pepperoni pizza,,alta,assado,26,prato_misto
+e0460,macarrão com legumes,noodles,lo mein,media,cozido,30,prato_misto
+e0460,cubos de tofu,tofu,feta cheese,media,assado,11,prato_misto
+e0460,cenoura cozida em rodelas,carrot,,alta,cozido,17,prato_misto
+e0460,batata assada,roasted potatoes,,alta,assado,14,prato_misto
+e0460,grãos pequenos soltos,peanuts,chickpeas,baixa,nao_se_aplica,2,prato_misto
+e0584,salada caesar de alface romana,caesar salad,lettuce,media,cru,17,frango_peru
+e0584,legumes escuros assados,eggplant,roasted potatoes,baixa,assado,12,frango_peru
+e0584,couve-flor,cauliflower,,alta,cozido,12,frango_peru
+e0584,frango assado em pedaços,roast chicken,chicken breast,media,assado,18,frango_peru
+e0584,fatias de carne bovina,steak,roast beef,media,grelhado,16,frango_peru
+e0584,vagem junto da carne,green beans,asparagus,baixa,cozido,3,frango_peru
+e0584,fatia de pizza de queijo,cheese pizza,,alta,assado,22,frango_peru
+e0385,cenoura cozida em rodelas,carrot,,alta,cozido,100,nenhuma
+e0601,arroz integral,brown rice,,alta,cozido,100,nenhuma
+e0377,claras de ovo mexidas,egg whites,scrambled eggs,media,mexido,32,ovo
+e0377,molho de tomate por cima,salsa,pasta sauce,media,nao_se_aplica,11,ovo
+e0377,batata assada em cubos,roasted potatoes,,alta,assado,18,ovo
+e0377,melão cantaloupe,cantaloupe,,alta,cru,11,ovo
+e0377,melancia,watermelon,,alta,cru,16,ovo
+e0377,morangos,strawberries,,alta,cru,9,ovo
+e0377,mirtilos,blueberries,,alta,cru,3,ovo
+e0039,tira de bacon,bacon,,alta,frito,12,suina_embutido
+e0039,framboesas,raspberries,,alta,cru,22,suina_embutido
+e0039,amoras,blackberries,,alta,cru,27,suina_embutido
+e0039,batata-doce assada em pedaços,sweet potato,roasted potatoes,media,assado,39,suina_embutido
+e0296,cenoura cozida em rodelas,carrot,,alta,cozido,100,nenhuma
+e0806,pizza de queijo,cheese pizza,pizza,media,assado,45,prato_misto
+e0806,rúcula e folhas,arugula,mixed greens,media,cru,7,prato_misto
+e0806,penne com espinafre,pasta salad,pasta,media,cozido,9,prato_misto
+e0806,tomates-cereja,cherry tomatoes,,alta,assado,18,prato_misto
+e0806,brócolis assado,broccoli,,alta,assado,19,prato_misto
+e0806,azeitonas pretas,olives,,alta,processado,2,prato_misto
+e0774,mix de folhas,mixed greens,,alta,cru,27,leguminosa_soja
+e0774,cubos brancos de tofu,tofu,feta cheese,media,cru,19,leguminosa_soja
+e0774,aspargos,asparagus,green beans,media,cozido,18,leguminosa_soja
+e0774,berinjela assada,eggplant,mushroom,media,assado,35,leguminosa_soja
+e0774,azeite,olive oil,,baixa,nao_se_aplica,1,leguminosa_soja
+e0339,cenoura cozida em rodelas,carrot,,alta,cozido,100,nenhuma
+e0451,filé de peixe com crosta,fish,tilapia,media,empanado,83,peixe_marisco
+e0451,tomate picado,tomatoes,sun dried tomatoes,media,cozido,15,peixe_marisco
+e0451,ramos de rúcula,arugula,,media,cru,2,peixe_marisco
+e0518,peixe com crosta e tomate,fish,chicken breast,media,assado,20,peixe_marisco
+e0518,fatias de carne acinzentada,pork,mushroom,baixa,assado,16,peixe_marisco
+e0518,tomates-cereja,cherry tomatoes,,alta,cru,17,peixe_marisco
+e0518,pepino em meias-luas,cucumbers,zucchini,media,cru,16,peixe_marisco
+e0518,rabanete fatiado,radishes,,alta,cru,7,peixe_marisco
+e0518,batatas assadas,roasted potatoes,,alta,assado,16,peixe_marisco
+e0518,alface e espinafre,lettuce,mixed greens,media,cru,8,peixe_marisco
+e0220,tiras de bacon,bacon,,alta,frito,30,suina_embutido
+e0220,hambúrgueres de linguiça,sausage,,alta,frito,70,suina_embutido
+e0446,ovos mexidos com molho,scrambled eggs,nachos,baixa,mexido,62,ovo
+e0446,rodelas de linguiça,sausage,hot dogs,media,frito,33,ovo
+e0446,molho de tomate,salsa,,baixa,nao_se_aplica,5,ovo
+e0135,fatia de pão escuro torrado,toast,french toast,media,assado,30,nenhuma
+e0135,banana inteira,banana,,alta,cru,70,nenhuma
+e0181,claras de ovo mexidas,egg whites,scrambled eggs,media,mexido,33,ovo
+e0181,molho de tomate por cima,salsa,pasta sauce,media,nao_se_aplica,14,ovo
+e0181,abacaxi em cubos,pineapple,,alta,cru,13,ovo
+e0181,melão cantaloupe,cantaloupe,,alta,cru,20,ovo
+e0181,batata assada em cubos,roasted potatoes,,alta,assado,20,ovo
+e0711,berinjela assada,eggplant,mushroom,media,assado,100,nenhuma
+e0568,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0389,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0618,atum desfiado,tuna,chicken,media,processado,64,peixe_marisco
+e0618,cenoura ralada,carrot,,alta,cru,15,peixe_marisco
+e0618,tomates-cereja,cherry tomatoes,,alta,cru,17,peixe_marisco
+e0618,azeitonas,olives,,baixa,processado,4,peixe_marisco
+e0574,couve-flor,cauliflower,,alta,cozido,100,nenhuma
+e0209,espinafre cru,spinach (raw),,alta,cru,13,nenhuma
+e0209,mix de folhas roxas e verdes,mixed greens,,alta,cru,13,nenhuma
+e0209,abacaxi em cubos,pineapple,,alta,cru,50,nenhuma
+e0209,morangos,strawberries,,alta,cru,17,nenhuma
+e0209,frutinhas escuras,blueberries,blackberries,media,cru,5,nenhuma
+e0209,molho da salada,vinaigrette,,baixa,nao_se_aplica,2,nenhuma
+e0600,brócolis,broccoli,,alta,cozido,43,nenhuma
+e0600,alface romana,lettuce,,alta,cru,18,nenhuma
+e0600,corações de alcachofra,artichokes,cabbage,media,processado,35,nenhuma
+e0600,pedaços escuros (tomate seco),sun dried tomatoes,dates,baixa,processado,4,nenhuma
+e0538,maçã inteira,apple,,alta,cru,37,nozes_sementes
+e0538,melão cantaloupe em cubos,cantaloupe,,alta,cru,26,nozes_sementes
+e0538,tomates-cereja,cherry tomatoes,,alta,cru,21,nozes_sementes
+e0538,amêndoas,almonds,,alta,cru,16,nozes_sementes
+e0810,abacaxi em pedaços,pineapple,,alta,cru,32,suina_embutido
+e0810,batata assada em pedaços,roasted potatoes,pineapple,media,assado,24,suina_embutido
+e0810,tiras de bacon,bacon,turkey bacon,media,frito,10,suina_embutido
+e0810,morangos,strawberries,,alta,cru,24,suina_embutido
+e0810,amoras,blackberries,,alta,cru,8,suina_embutido
+e0810,mirtilos,blueberries,,alta,cru,2,suina_embutido
+e0486,batata assada em pedaços,roasted potatoes,,alta,assado,60,nenhuma
+e0486,uvas vermelhas,grapes,cherries,media,cru,40,nenhuma
+e0539,peixe branco com pele,fish,cod,media,assado,27,peixe_marisco
+e0539,tomates-cereja,cherry tomatoes,,alta,cru,27,peixe_marisco
+e0539,azeitonas pretas,olives,,alta,processado,14,peixe_marisco
+e0539,cenoura ralada,carrot,,alta,cru,32,peixe_marisco
+e0809,cenoura cozida glaceada,carrot,baby carrots,media,cozido,100,nenhuma
+e0136,morangos cortados,strawberries,,alta,cru,70,nenhuma
+e0136,folhas de espinafre cru,spinach (raw),,alta,cru,27,nenhuma
+e0136,cenoura ralada,carrot,,alta,cru,3,nenhuma
+e0694,batata assada com casca,roasted potatoes,red potatoes,media,assado,48,frango_peru
+e0694,frango assado temperado,roast chicken,chicken thighs,media,assado,34,frango_peru
+e0694,salada de couve picada,kale,caesar salad,media,cru,14,frango_peru
+e0694,queijo ralado na salada,parmesan cheese,feta cheese,media,nao_se_aplica,2,frango_peru
+e0694,molho da salada,caesar dressing,salad dressing,baixa,nao_se_aplica,2,frango_peru
+e0283,pizza de queijo (2 fatias finas),cheese pizza,pizza,media,assado,84,prato_misto
+e0283,mix de folhas,mixed greens,,alta,cru,16,prato_misto
+e0513,fatia de pizza de queijo,cheese pizza,pizza,media,assado,38,prato_misto
+e0513,salada caesar (alface romana com molho),caesar salad,lettuce,media,cru,28,prato_misto
+e0513,crouton,croutons,bread,media,assado,3,prato_misto
+e0513,mix de folhas,mixed greens,,alta,cru,18,prato_misto
+e0513,cebola roxa em fatias,onions,,alta,cru,3,prato_misto
+e0513,azeitona preta,olives,grapes,media,processado,3,prato_misto
+e0513,tomate-cereja,cherry tomatoes,tomatoes,media,cru,4,prato_misto
+e0513,queijo branco esfarelado,feta cheese,goat cheese,media,nao_se_aplica,3,prato_misto
+e0745,salada caesar (alface romana com molho),caesar salad,lettuce,media,cru,32,bovina
+e0745,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,3,bovina
+e0745,carne bovina em tiras,beef,mushroom,media,refogado,30,bovina
+e0745,arroz temperado escuro,brown rice,fried rice,media,cozido,35,bovina
+e0522,omelete dobrada,omelets,,alta,frito,50,ovo
+e0522,arroz branco,white rice,fried rice,media,cozido,35,ovo
+e0522,feijão preto misturado ao arroz,black beans,kidney beans,media,cozido,10,ovo
+e0522,pimentão verde picado,bell peppers,green onions,baixa,refogado,5,ovo
+e0047,cebola roxa em fatias,onions,,alta,cru,100,nenhuma
+e0659,salada caesar (alface romana com molho),caesar salad,lettuce,media,cru,24,frango_peru
+e0659,fatia quadrada de pizza de queijo,cheese pizza,pizza,media,assado,20,frango_peru
+e0659,frango em molho vermelho,chicken,curries,media,ensopado,26,frango_peru
+e0659,brócolis,broccoli,,alta,cozido,13,frango_peru
+e0659,arroz integral/vermelho,brown rice,wild rice,media,cozido,9,frango_peru
+e0659,tomate-cereja,cherry tomatoes,,alta,assado,3,frango_peru
+e0659,cubo claro (tofu ou batata),tofu,roasted potatoes,baixa,assado,2,frango_peru
+e0659,legumes refogados (abobrinha e pimentão),zucchini,bell peppers,baixa,refogado,3,frango_peru
+e0406,salmão com pele (2 pedaços),salmon,,alta,assado,97,peixe_marisco
+e0406,pinoli,pine nuts,sunflower seeds,media,nao_se_aplica,3,peixe_marisco
+e0053,salada de repolho com cenoura,coleslaw,cabbage,media,cru,22,nenhuma
+e0053,batata assada com ervas,roasted potatoes,potatoes,media,assado,37,nenhuma
+e0053,tomate assado com molho,tomatoes,bell peppers,baixa,assado,15,nenhuma
+e0053,couve-flor romanesco,cauliflower,broccoli,media,cozido,22,nenhuma
+e0053,folhas roxas e verdes,mixed greens,cabbage,media,cru,4,nenhuma
+e0553,melão cantaloupe em cubos,cantaloupe,,alta,cru,37,nenhuma
+e0553,abacaxi em pedaços,pineapple,,alta,cru,30,nenhuma
+e0553,morangos,strawberries,,alta,cru,20,nenhuma
+e0553,amoras,blackberries,,alta,cru,6,nenhuma
+e0553,mirtilos,blueberries,,alta,cru,4,nenhuma
+e0553,framboesas,raspberries,,alta,cru,3,nenhuma
+e0545,peito de frango em cubos,chicken breast,,alta,grelhado,55,frango_peru
+e0545,tomates-cereja,cherry tomatoes,,alta,cru,45,frango_peru
+e0416,salmão com pele,salmon,fish,media,assado,30,suina_embutido
+e0416,carne desfiada em molho alaranjado,pork,chicken,baixa,ensopado,37,suina_embutido
+e0416,batata assada,roasted potatoes,potatoes,media,assado,17,suina_embutido
+e0416,cubos de batata-doce assada,sweet potato,squash,media,assado,15,suina_embutido
+e0416,folhas de rúcula,arugula,spinach (raw),media,cru,1,suina_embutido
+e0543,pizza de pepperoni,pepperoni pizza,,alta,assado,56,prato_misto
+e0543,cenoura assada em rodelas,carrot,,alta,assado,21,prato_misto
+e0543,batata assada com casca,roasted potatoes,eggplant,media,assado,23,prato_misto
+e0096,maçã inteira,apple,,alta,cru,100,nenhuma
+e0340,claras de ovo mexidas,egg whites,,alta,mexido,53,ovo
+e0340,batata assada em cubos,roasted potatoes,,alta,assado,26,ovo
+e0340,melão cantaloupe em cubos,cantaloupe,,alta,cru,21,ovo
+e0232,batata-doce assada em cubos,sweet potato,,alta,assado,38,ovo
+e0232,batata assada em cubos,roasted potatoes,potatoes,media,assado,12,ovo
+e0232,ovos mexidos,scrambled eggs,,alta,mexido,27,ovo
+e0232,claras de ovo,egg whites,hard boiled eggs,media,mexido,23,ovo
+e0174,azeitonas pretas,olives,,alta,processado,100,nenhuma
+e0134,salmão com pele,salmon,,alta,assado,100,peixe_marisco
+e0422,brócolis em floretes,broccoli,,alta,cru,66,nenhuma
+e0422,alface romana picada,lettuce,,alta,cru,28,nenhuma
+e0422,azeitona preta,olives,sun dried tomatoes,baixa,processado,3,nenhuma
+e0422,molho da salada,salad dressing,vinaigrette,baixa,nao_se_aplica,3,nenhuma
+e0289,cenoura ralada,carrot,,alta,cru,41,nenhuma
+e0289,azeitonas pretas,olives,,alta,processado,24,nenhuma
+e0289,tomate em pedaços,tomatoes,bell peppers,media,cru,21,nenhuma
+e0289,pepino em pedaços,cucumbers,bell peppers,media,cru,10,nenhuma
+e0289,cebola em fatias,onions,,alta,cru,4,nenhuma
+e0373,ovos mexidos,scrambled eggs,,alta,mexido,35,ovo
+e0373,batata assada em pedaços,roasted potatoes,,alta,assado,19,ovo
+e0373,tiras de bacon,bacon,sausage,media,frito,8,ovo
+e0373,melancia em cubos,watermelon,,alta,cru,30,ovo
+e0373,mirtilos,blueberries,,alta,cru,4,ovo
+e0373,morangos,strawberries,watermelon,media,cru,4,ovo
+e0132,couve-flor em floretes,cauliflower,,alta,cozido,100,nenhuma
+e0427,acelga chinesa refogada,bok choy,chard,media,refogado,22,peixe_marisco
+e0427,filé de peixe branco com pele,fish,tilapia,media,assado,24,peixe_marisco
+e0427,pedaço claro de peixe ou frango,fish,chicken,baixa,assado,20,peixe_marisco
+e0427,milho na espiga (2 pedaços),corn on the cob,,alta,cozido,33,peixe_marisco
+e0427,folha de espinafre,spinach (raw),bok choy,media,cru,1,peixe_marisco
+e0090,tortilha em molho vermelho (chilaquiles),tortilla chips,tacos,media,ensopado,22,ovo
+e0090,ovos mexidos com molho,scrambled eggs,chicken,media,mexido,28,ovo
+e0090,batatas assadas,roasted potatoes,,alta,assado,30,ovo
+e0090,queijo branco esfarelado,feta cheese,goat cheese,media,nao_se_aplica,8,ovo
+e0090,molho vermelho,salsa,pasta sauce,media,nao_se_aplica,9,ovo
+e0090,rúcula,arugula,,alta,cru,3,ovo
+e0396,lentilha preta,lentils,black beans,media,cozido,28,leguminosa_soja
+e0396,tofu em cubos,tofu,feta cheese,media,assado,22,leguminosa_soja
+e0396,grão-de-bico,chickpeas,,alta,cozido,14,leguminosa_soja
+e0396,espinafre cru,spinach (raw),,alta,cru,8,leguminosa_soja
+e0396,pepino em rodelas,cucumbers,,alta,cru,8,leguminosa_soja
+e0396,mix de folhas,mixed greens,,alta,cru,5,leguminosa_soja
+e0396,cebola roxa,onions,,alta,cru,3,leguminosa_soja
+e0396,cenoura ralada,carrot,,alta,cru,2,leguminosa_soja
+e0396,fatia de pera,pears,apple,baixa,cru,5,leguminosa_soja
+e0396,pimentão vermelho,bell peppers,tomatoes,media,cru,2,leguminosa_soja
+e0396,azeitonas pretas,olives,black beans,baixa,processado,3,leguminosa_soja
+e0447,peixe grelhado com pele,fish,mackerel,media,grelhado,35,peixe_marisco
+e0447,abobrinha assada,zucchini,,alta,assado,38,peixe_marisco
+e0447,abóbora amarela,squash,zucchini,media,assado,7,peixe_marisco
+e0447,pimentão vermelho e verde,bell peppers,,alta,assado,6,peixe_marisco
+e0447,cebola refogada,onions,garlic,media,refogado,14,peixe_marisco
+e0686,ovos mexidos,scrambled eggs,,alta,mexido,18,ovo
+e0686,abacaxi em pedaços,pineapple,,alta,cru,18,ovo
+e0686,melancia em cubos,watermelon,,alta,cru,38,ovo
+e0686,melão em pedaços,honeydew melons,,alta,cru,15,ovo
+e0686,espinafre cru,spinach (raw),,alta,cru,3,ovo
+e0686,cenoura ralada,carrot,,alta,cru,2,ovo
+e0686,pepino em rodela,cucumbers,zucchini,media,cru,2,ovo
+e0686,tomate-cereja,cherry tomatoes,,alta,cru,4,ovo
+e0698,frango em cubos,chicken breast,turkey breast,media,cozido,33,frango_peru
+e0698,brócolis,broccoli,,alta,cru,33,frango_peru
+e0698,cenoura ralada,carrot,,alta,cru,19,frango_peru
+e0698,espinafre cru,spinach (raw),,alta,cru,15,frango_peru
+e0638,alface romana,lettuce,caesar salad,media,cru,52,nenhuma
+e0638,molho cremoso,caesar dressing,ranch dressing,media,nao_se_aplica,16,nenhuma
+e0638,brócolis,broccoli,,alta,cozido,32,nenhuma
+e0548,bacon em tiras,bacon,,alta,frito,11,suina_embutido
+e0548,batatas assadas,roasted potatoes,,alta,assado,27,suina_embutido
+e0548,melancia em cubos,watermelon,,alta,cru,41,suina_embutido
+e0548,mirtilos,blueberries,,alta,cru,10,suina_embutido
+e0548,morangos,strawberries,,alta,cru,11,suina_embutido
+e0265,morangos,strawberries,,alta,cru,54,nenhuma
+e0265,mirtilos,blueberries,,alta,cru,9,nenhuma
+e0265,espinafre temperado,spinach (raw),,alta,cru,28,nenhuma
+e0265,cenoura ralada,carrot,,alta,cru,5,nenhuma
+e0265,molho da salada,vinaigrette,olive oil,media,nao_se_aplica,4,nenhuma
+e0056,claras mexidas,egg whites,cottage cheese,media,mexido,43,ovo
+e0056,molho verde,salsa,gravy,media,nao_se_aplica,12,ovo
+e0056,melancia em cubos,watermelon,,alta,cru,17,ovo
+e0056,morangos,strawberries,,alta,cru,9,ovo
+e0056,mirtilos,blueberries,,alta,cru,2,ovo
+e0056,batata-doce assada,sweet potato,squash,media,assado,17,ovo
+e0612,arroz branco,white rice,,alta,cozido,33,frango_peru
+e0612,frango em pedaços com molho,chicken,tofu,baixa,refogado,17,frango_peru
+e0612,salada cremosa de repolho e couve,coleslaw,caesar salad,media,cru,19,frango_peru
+e0612,fatias de pizza fina,pizza,flatbread,media,assado,31,frango_peru
+e0624,fatia de pizza de queijo,cheese pizza,,alta,assado,100,prato_misto
+e0099,rúcula,arugula,,alta,cru,72,nenhuma
+e0099,lasca de queijo,parmesan cheese,cheese,baixa,nao_se_aplica,10,nenhuma
+e0099,pedaço de tomate,cherry tomatoes,bell peppers,baixa,cru,10,nenhuma
+e0099,molho da salada,vinaigrette,olive oil,media,nao_se_aplica,8,nenhuma
+e0120,espinafre cru,spinach (raw),,alta,cru,45,nenhuma
+e0120,cenoura ralada,carrot,,alta,cru,55,nenhuma
+e0251,filé de peixe com pele e molho cremoso,fish,cod,media,assado,22,peixe_marisco
+e0251,carne bovina fatiada com molho,beef,brisket,media,ensopado,18,peixe_marisco
+e0251,grão miúdo cozido,quinoa,bulgur,media,cozido,16,peixe_marisco
+e0251,couve picada,kale,,alta,cru,9,peixe_marisco
+e0251,aspargos,asparagus,green beans,media,cozido,3,peixe_marisco
+e0251,tomates-cereja,cherry tomatoes,,alta,cru,12,peixe_marisco
+e0251,abacate em fatias,avocado,,alta,cru,16,peixe_marisco
+e0251,croutons,croutons,tofu,media,assado,2,peixe_marisco
+e0251,molho cremoso com parmesão,caesar dressing,parmesan cheese,media,nao_se_aplica,2,peixe_marisco
+e0826,linguiça em rodelas,sausage,chicken apple sausage,media,grelhado,31,ovo
+e0826,ovos mexidos,scrambled eggs,,alta,mexido,67,ovo
+e0826,molho de pimenta,salsa,ketchup,media,nao_se_aplica,2,ovo
+e0719,melão em pedaços,honeydew melons,,alta,cru,41,suina_embutido
+e0719,abacaxi em pedaços,pineapple,,alta,cru,19,suina_embutido
+e0719,melancia em cubos,watermelon,,alta,cru,30,suina_embutido
+e0719,bacon em tiras,bacon,,alta,frito,10,suina_embutido
+e0583,batatas assadas,roasted potatoes,,alta,assado,100,nenhuma
+e0121,carne em cubos,pork,tuna,baixa,grelhado,72,suina_embutido
+e0121,arroz com molho,white rice,fried rice,media,cozido,25,suina_embutido
+e0121,cebolinha,green onions,bell peppers,media,refogado,3,suina_embutido
+e0433,duas fatias de pizza de queijo,cheese pizza,,alta,assado,100,prato_misto
+e0674,abacaxi em pedaços,pineapple,,alta,cru,25,nenhuma
+e0674,melancia em cubos,watermelon,,alta,cru,54,nenhuma
+e0674,melão em pedaços,honeydew melons,,alta,cru,21,nenhuma
+e0755,couve-flor,cauliflower,,alta,cru,98,nenhuma
+e0755,pedacinhos de cenoura,carrot,,alta,cru,2,nenhuma
+e0330,claras mexidas,egg whites,scrambled eggs,media,mexido,53,ovo
+e0330,metade de bagel,bagels,english muffins,media,assado,29,ovo
+e0330,cream cheese,cream cheese,,alta,nao_se_aplica,18,ovo
+e0080,mix de folhas,mixed greens,,alta,cru,38,suina_embutido
+e0080,pedaço de carne,pork,fish,baixa,grelhado,47,suina_embutido
+e0080,arroz sobre a carne,white rice,parmesan cheese,baixa,cozido,12,suina_embutido
+e0080,molho da salada,vinaigrette,olive oil,baixa,nao_se_aplica,3,suina_embutido
+e0195,carne bovina fatiada,steak,roast beef,media,grelhado,30,frango_peru
+e0195,frango em pedaços,chicken thighs,chicken breast,media,assado,32,frango_peru
+e0195,brócolis,broccoli,,alta,cozido,38,frango_peru
+e0606,cenoura ralada,carrot,,alta,cru,36,nenhuma
+e0606,pimentão verde em tiras,bell peppers,,alta,cru,36,nenhuma
+e0606,pimentão vermelho em tiras,bell peppers,tomatoes,media,cru,22,nenhuma
+e0606,azeitonas pretas,olives,raisins,baixa,processado,6,nenhuma
+e0088,abacaxi em pedaços,pineapple,,alta,cru,26,ovo
+e0088,melancia em cubos,watermelon,,alta,cru,21,ovo
+e0088,framboesas,raspberries,,alta,cru,8,ovo
+e0088,amoras,blackberries,,alta,cru,8,ovo
+e0088,batata-doce assada em cubos,sweet potato,squash,media,assado,19,ovo
+e0088,ovos mexidos,scrambled eggs,,alta,mexido,18,ovo
+e0287,espinafre temperado,spinach (raw),,alta,cru,11,nenhuma
+e0287,mix de folhas,mixed greens,,alta,cru,11,nenhuma
+e0287,morangos,strawberries,,alta,cru,13,nenhuma
+e0287,abacaxi em pedaços,pineapple,,alta,cru,26,nenhuma
+e0287,batatas assadas,roasted potatoes,,alta,assado,36,nenhuma
+e0287,molho da salada,vinaigrette,olive oil,media,nao_se_aplica,2,nenhuma
+e0287,cenoura ralada,carrot,,alta,cru,1,nenhuma
+e0742,ovos mexidos,scrambled eggs,,alta,mexido,39,ovo
+e0742,bacon em tiras,bacon,,alta,frito,11,ovo
+e0742,abacaxi em pedaços,pineapple,,alta,cru,50,ovo
+e0405,alface romana,lettuce,caesar salad,media,cru,21,nenhuma
+e0405,molho cremoso,caesar dressing,ranch dressing,media,nao_se_aplica,6,nenhuma
+e0405,croutons,croutons,tofu,media,assado,3,nenhuma
+e0405,arroz integral,brown rice,,alta,cozido,39,nenhuma
+e0405,tomates-cereja,cherry tomatoes,,alta,cru,21,nenhuma
+e0405,azeitonas pretas,olives,,alta,processado,10,nenhuma
+e0793,couve-flor,cauliflower,,alta,cozido,100,nenhuma
+e0426,pizza de queijo (2 pedaços),cheese pizza,,alta,assado,28,prato_misto
+e0426,arroz amarelo,white rice,fried rice,media,cozido,21,prato_misto
+e0426,vagem,green beans,asparagus,media,cozido,14,prato_misto
+e0426,salada caesar com molho cremoso,caesar salad,chicken salad,media,cru,32,prato_misto
+e0426,mix de folhas,mixed greens,,alta,cru,5,prato_misto
+e0187,brócolis,broccoli,,alta,cru,55,nenhuma
+e0187,mix de folhas,mixed greens,,alta,cru,28,nenhuma
+e0187,azeitonas pretas,olives,grapes,media,processado,17,nenhuma
+e0664,melão cantaloupe em pedaços,cantaloupe,,alta,cru,100,nenhuma
+e0595,salada caesar,caesar salad,,alta,cru,90,nenhuma
+e0595,pedaço de crouton,croutons,chicken,baixa,assado,10,nenhuma
+e0397,frango em cubos,chicken breast,turkey breast,media,cozido,29,frango_peru
+e0397,azeitonas pretas,olives,grapes,media,processado,29,frango_peru
+e0397,brócolis,broccoli,,alta,cru,24,frango_peru
+e0397,mix de folhas,mixed greens,,alta,cru,14,frango_peru
+e0397,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,4,frango_peru
+e0127,melão cantaloupe em pedaços,cantaloupe,,alta,cru,46,nenhuma
+e0127,cenoura em rodelas,carrot,,alta,cozido,32,nenhuma
+e0127,couve-flor,cauliflower,,alta,cozido,22,nenhuma
+e0148,massa gratinada com molho e queijo,lasagna,enchiladas,media,assado,45,prato_misto
+e0148,salada caesar,caesar salad,,alta,cru,25,prato_misto
+e0148,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,3,prato_misto
+e0148,filé com crosta,fish,chicken breast,baixa,assado,27,prato_misto
+e0371,ovos mexidos,scrambled eggs,,alta,mexido,100,ovo
+e0565,espinafre cru,spinach (raw),,alta,cru,100,nenhuma
+e0107,bacon (2 tiras),bacon,,alta,frito,30,suina_embutido
+e0107,morangos,strawberries,,alta,cru,70,suina_embutido
+e0526,ovos mexidos,scrambled eggs,,alta,mexido,13,ovo
+e0526,claras de ovo,egg whites,hard boiled eggs,media,cozido,28,ovo
+e0526,molho de tomate/salsa,salsa,pasta sauce,media,nao_se_aplica,10,ovo
+e0526,batatas assadas em cubos,roasted potatoes,potatoes,media,assado,17,ovo
+e0526,melancia em cubos,watermelon,,alta,cru,19,ovo
+e0526,uvas roxas,grapes,,alta,cru,13,ovo
+e0577,pedaço de pizza com carne,pizza,quiche,media,assado,53,prato_misto
+e0577,framboesas,raspberries,,alta,cru,24,prato_misto
+e0577,amoras,blackberries,,alta,cru,23,prato_misto
+e0312,carne fatiada com crosta,chicken,pork,baixa,assado,40,frango_peru
+e0312,tomates-cereja,cherry tomatoes,,alta,cru,27,frango_peru
+e0312,batatinhas assadas,roasted potatoes,red potatoes,media,assado,27,frango_peru
+e0312,folhas sob a carne,arugula,spinach (raw),baixa,cru,3,frango_peru
+e0312,tomate picado,tomatoes,salsa,media,cru,3,frango_peru
+e0712,pizza de pepperoni,pepperoni pizza,,alta,assado,100,prato_misto
+e0609,frango com molho escuro,chicken thighs,chicken breast,media,assado,55,frango_peru
+e0609,molho barbecue,barbecue sauce,teriyaki sauce,media,nao_se_aplica,4,frango_peru
+e0609,salada caesar,caesar salad,lettuce,media,cru,37,frango_peru
+e0609,lasca de parmesão,parmesan cheese,cheese,media,nao_se_aplica,4,frango_peru
+e0145,couve-flor,cauliflower,,alta,cozido,70,nenhuma
+e0145,rúcula,arugula,,alta,cru,27,nenhuma
+e0145,pedacinhos castanhos na salada,walnuts,bacon,baixa,nao_se_aplica,3,nenhuma
+e0368,pizza de queijo,cheese pizza,,alta,assado,33,prato_misto
+e0368,salada caesar,caesar salad,,alta,cru,30,prato_misto
+e0368,couve crespa,kale,,alta,cru,12,prato_misto
+e0368,cubos de abobrinha,zucchini,cucumbers,media,cru,5,prato_misto
+e0368,tiras de frango,grilled chicken,pita bread,media,grelhado,15,prato_misto
+e0368,batata assada,roasted potatoes,croutons,media,assado,5,prato_misto
+e0320,berinjela assada em cubos,eggplant,mushroom,media,assado,37,frango_peru
+e0320,couve-flor cozida,cauliflower,mashed potatoes,media,cozido,26,frango_peru
+e0320,batatas assadas,roasted potatoes,potatoes,media,assado,17,frango_peru
+e0320,frango fatiado,chicken breast,turkey breast,media,assado,20,frango_peru
+e0781,cenoura ralada,carrot,,alta,cru,70,frango_peru
+e0781,pedaços brancos sob a cenoura,chicken breast,feta cheese,baixa,cozido,20,frango_peru
+e0781,tomates-cereja,cherry tomatoes,,alta,cru,10,frango_peru
+e0713,linguiça em pedaços,chicken apple sausage,sausage,media,grelhado,48,suina_embutido
+e0713,bacon,bacon,,alta,frito,16,suina_embutido
+e0713,espinafre cru,spinach (raw),,alta,cru,14,suina_embutido
+e0713,tomates-cereja,cherry tomatoes,,alta,cru,14,suina_embutido
+e0713,cenoura ralada,carrot,,alta,cru,4,suina_embutido
+e0713,rodela de pepino,cucumbers,zucchini,media,cru,4,suina_embutido
+e0062,frango em cubos,chicken breast,turkey breast,media,grelhado,43,frango_peru
+e0062,brócolis,broccoli,,alta,cru,42,frango_peru
+e0062,espinafre cru,spinach (raw),,alta,cru,15,frango_peru
+e0820,cenoura cozida em fatias,carrot,,alta,cozido,100,nenhuma
+e0521,ovos mexidos,scrambled eggs,,alta,mexido,73,ovo
+e0521,espinafre cru,spinach (raw),,alta,cru,20,ovo
+e0521,cenoura ralada,carrot,,alta,cru,3,ovo
+e0521,rodela de pepino,cucumbers,zucchini,media,cru,4,ovo
+e0198,pizza de queijo,cheese pizza,,alta,assado,28,prato_misto
+e0198,salada caesar,caesar salad,,alta,cru,25,prato_misto
+e0198,couve-de-bruxelas,brussels sprouts,,alta,assado,17,prato_misto
+e0198,couve crespa,kale,,alta,cru,10,prato_misto
+e0198,cubos de abobrinha,zucchini,cucumbers,media,cru,4,prato_misto
+e0198,tiras de frango,grilled chicken,pita bread,media,grelhado,12,prato_misto
+e0198,batata assada,roasted potatoes,croutons,media,assado,4,prato_misto
+e0248,frango em cubos,chicken breast,turkey breast,media,cozido,61,frango_peru
+e0248,azeitonas pretas,olives,black beans,media,processado,18,frango_peru
+e0248,espinafre cru,spinach (raw),,alta,cru,13,frango_peru
+e0248,lascas de parmesão,parmesan cheese,cheese,media,nao_se_aplica,5,frango_peru
+e0248,cenoura ralada,carrot,,alta,cru,3,frango_peru
+e0588,ovos mexidos,scrambled eggs,,alta,mexido,73,ovo
+e0588,bacon (1 tira),bacon,turkey bacon,media,frito,14,ovo
+e0588,queijo cheddar ralado,cheddar cheese,carrot,media,nao_se_aplica,13,ovo
+e0556,pedaço de carne,pork,chicken thighs,baixa,assado,70,suina_embutido
+e0556,arroz,white rice,rice noodles,media,cozido,22,suina_embutido
+e0556,grãos soltos,wheat berry,brown rice,baixa,cozido,4,suina_embutido
+e0556,repolho roxo,cabbage,,alta,cru,4,suina_embutido
+e0492,frango recheado com crosta,chicken breast,pork,media,assado,62,frango_peru
+e0492,pedaço de espiga de milho,corn on the cob,,alta,cozido,16,frango_peru
+e0492,quinoa,quinoa,bulgur,media,cozido,7,frango_peru
+e0492,folhas de couve,kale,spinach (cooked),media,refogado,6,frango_peru
+e0492,cenoura assada,carrot,sweet potato,media,assado,5,frango_peru
+e0492,cogumelos,mushroom,eggplant,media,refogado,4,frango_peru
+e0012,cubos de batata assada dourada,roasted potatoes,french toast,media,assado,28,nenhuma
+e0012,melão cantaloupe em pedaços,cantaloupe,,alta,cru,27,nenhuma
+e0012,melancia em cubos,watermelon,,alta,cru,27,nenhuma
+e0012,morangos cortados,strawberries,,alta,cru,14,nenhuma
+e0012,mirtilos,blueberries,,alta,cru,4,nenhuma
+e0030,arroz branco,white rice,,alta,cozido,66,prato_misto
+e0030,pedaço de pizza de queijo,cheese pizza,pizza,media,assado,34,prato_misto
+e0038,frango em cubos,grilled chicken,chicken breast,media,grelhado,34,frango_peru
+e0038,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,8,frango_peru
+e0038,azeitonas pretas,olives,,alta,processado,20,frango_peru
+e0038,pepino em fatias longas,cucumbers,,alta,cru,25,frango_peru
+e0038,folhas de espinafre,spinach (raw),,alta,cru,13,frango_peru
+e0098,melancia em cubos,watermelon,,alta,cru,100,nenhuma
+e0126,rúcula,arugula,,alta,cru,80,nenhuma
+e0126,mirtilos,blueberries,,alta,cru,12,nenhuma
+e0126,tirinhas vermelhas,bell peppers,strawberries,baixa,cru,8,nenhuma
+e0153,cenoura cozida em pedaços,carrot,sweet potato,media,cozido,100,nenhuma
+e0192,fatia retangular de pizza de queijo,cheese pizza,pizza,media,assado,44,prato_misto
+e0192,salada caesar (alface romana com molho cremoso),caesar salad,,alta,cru,33,prato_misto
+e0192,crouton,croutons,,alta,assado,2,prato_misto
+e0192,couve kale picada,kale,,alta,cru,12,prato_misto
+e0192,cubos claros na salada de kale,apple,zucchini,baixa,cru,9,prato_misto
+e0216,bastões brancos assados,turnips,roasted potatoes,media,assado,22,bovina
+e0216,fatias de carne bovina,steak,beef,media,grelhado,19,bovina
+e0216,cuscuz amarelo com passas,couscous,millet,media,cozido,29,bovina
+e0216,abobrinha amarela e verde em fatias,squash,zucchini,media,cozido,19,bovina
+e0216,folhas de espinafre,spinach (raw),,alta,cru,3,bovina
+e0216,batata assada dourada,roasted potatoes,,alta,assado,8,bovina
+e0285,ovos mexidos,scrambled eggs,,alta,mexido,59,ovo
+e0285,pedacinhos alaranjados no ovo,cheddar cheese,bell peppers,baixa,nao_se_aplica,4,ovo
+e0285,brócolis assado,broccoli,,alta,assado,37,ovo
+e0309,melão verde em cubos,honeydew melons,,alta,cru,100,nenhuma
+e0323,cogumelos assados,mushroom,,alta,assado,100,nenhuma
+e0348,claras de ovo com pimenta,egg whites,,alta,mexido,35,ovo
+e0348,mirtilos,blueberries,,alta,cru,16,ovo
+e0348,pudim de chia,chia seeds,yogurt,media,nao_se_aplica,20,ovo
+e0348,cubos de batata assada,roasted potatoes,french toast,media,assado,29,ovo
+e0362,frango fatiado,grilled chicken,chicken breast,media,grelhado,28,frango_peru
+e0362,grão avermelhado cozido,wheat berry,brown rice,media,cozido,20,frango_peru
+e0362,tiras marrons retangulares,tempeh,beef,baixa,grelhado,24,frango_peru
+e0362,batata assada em cubos,roasted potatoes,,alta,assado,16,frango_peru
+e0362,couve-flor assada,cauliflower,,alta,assado,8,frango_peru
+e0362,folhas verdes,arugula,spinach (raw),media,cru,4,frango_peru
+e0374,amêndoas,almonds,,alta,cru,100,nozes_sementes
+e0375,carne bovina fatiada com molho,beef,brisket,media,ensopado,34,bovina
+e0375,pedaços de frango assado,roast chicken,chicken thighs,media,assado,18,bovina
+e0375,arroz integral,brown rice,wheat berry,media,cozido,8,bovina
+e0375,rúcula e espinafre,arugula,spinach (raw),media,cru,5,bovina
+e0375,tomates-cereja,cherry tomatoes,,alta,cru,8,bovina
+e0375,grão-de-bico,chickpeas,,alta,cozido,3,bovina
+e0375,itens escuros na salada,pecans,olives,baixa,nao_se_aplica,3,bovina
+e0375,abóbora assada em fatias com casca,squash,,alta,assado,18,bovina
+e0375,pedaço de cebola assada,onions,fennel,baixa,assado,3,bovina
+e0401,pera inteira,pears,,alta,cru,52,nozes_sementes
+e0401,morangos cortados,strawberries,,alta,cru,16,nozes_sementes
+e0401,amêndoas,almonds,,alta,cru,7,nozes_sementes
+e0401,tangerina inteira,mandarin oranges,orange,media,cru,25,nozes_sementes
+e0410,cubos de batata assada,roasted potatoes,french toast,media,assado,52,nenhuma
+e0410,melancia em cubos,watermelon,,alta,cru,48,nenhuma
+e0424,uvas vermelhas e uma verde,grapes,cherry tomatoes,media,cru,100,nenhuma
+e0432,claras de ovo,egg whites,,alta,mexido,34,ovo
+e0432,ovos mexidos,scrambled eggs,,alta,mexido,14,ovo
+e0432,uvas roxas,grapes,,alta,cru,15,ovo
+e0432,melancia em cubos,watermelon,,alta,cru,17,ovo
+e0432,batata assada em cubos,roasted potatoes,,alta,assado,20,ovo
+e0457,filés de peixe branco com pele,fish,cod,media,assado,34,peixe_marisco
+e0457,carne bovina fatiada com molho,beef,brisket,media,ensopado,26,peixe_marisco
+e0457,grãos de arroz integral,brown rice,wheat berry,media,cozido,3,peixe_marisco
+e0457,abacate em fatias,avocado,,alta,cru,21,peixe_marisco
+e0457,tomates-cereja,cherry tomatoes,,alta,cru,16,peixe_marisco
+e0458,cubos de tofu,tofu,feta cheese,media,assado,36,leguminosa_soja
+e0458,grão-de-bico,chickpeas,,alta,cozido,22,leguminosa_soja
+e0458,grãos de trigo,wheat berry,brown rice,media,cozido,4,leguminosa_soja
+e0458,mix de folhas e espinafre,mixed greens,spinach (raw),media,cru,14,leguminosa_soja
+e0458,pepino em fatias,cucumbers,,alta,cru,10,leguminosa_soja
+e0458,cebola roxa,onions,,alta,cru,2,leguminosa_soja
+e0458,fatia de pera,pears,apple,media,cru,6,leguminosa_soja
+e0458,pedaços vermelhos,bell peppers,tomatoes,media,cru,3,leguminosa_soja
+e0458,azeitonas pretas,olives,blueberries,baixa,processado,3,leguminosa_soja
+e0468,tiras de bacon,bacon,,alta,frito,100,suina_embutido
+e0507,salada caesar (alface romana com molho),caesar salad,,alta,cru,88,nenhuma
+e0507,crouton,croutons,,alta,assado,12,nenhuma
+e0621,brócolis,broccoli,,alta,cozido,100,nenhuma
+e0647,filé de salmão,salmon,,alta,assado,25,peixe_marisco
+e0647,couve-de-bruxelas assada,brussels sprouts,,alta,assado,19,peixe_marisco
+e0647,brócolis,broccoli,,alta,cozido,21,peixe_marisco
+e0647,tomates-cereja,cherry tomatoes,,alta,cru,14,peixe_marisco
+e0647,rabanete em fatias,radishes,,alta,cru,4,peixe_marisco
+e0647,pepino em fatias,cucumbers,,alta,cru,5,peixe_marisco
+e0647,salsão picado,celery,cucumbers,media,cru,8,peixe_marisco
+e0647,cebola roxa,onions,,alta,cru,3,peixe_marisco
+e0647,lascas de parmesão,parmesan cheese,,alta,nao_se_aplica,1,peixe_marisco
+e0649,maçã inteira,apple,,alta,cru,100,nenhuma
+e0700,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0743,framboesas,raspberries,,alta,cru,33,suina_embutido
+e0743,amoras,blackberries,,alta,cru,50,suina_embutido
+e0743,tira de bacon,bacon,,alta,frito,17,suina_embutido
+e0801,folhas de espinafre temperadas,spinach (raw),,alta,cru,38,nenhuma
+e0801,mix de folhas roxas e verdes,mixed greens,,alta,cru,38,nenhuma
+e0801,cenoura ralada,carrot,,alta,cru,8,nenhuma
+e0801,itens escuros na salada,olives,blackberries,baixa,nao_se_aplica,8,nenhuma
+e0801,molho da salada,vinaigrette,salad dressing,media,nao_se_aplica,8,nenhuma
+e0506,fatia de pizza de pepperoni,pepperoni pizza,,alta,assado,100,prato_misto
+e0785,fatia quadrada de pizza de queijo,cheese pizza,,alta,assado,28,bovina
+e0785,fatias de carne bovina com ervas,steak,lamb,media,grelhado,20,bovina
+e0785,abacaxi em cubos,pineapple,,alta,cru,17,bovina
+e0785,brócolis,broccoli,,alta,cozido,14,bovina
+e0785,cenoura assada tostada,carrot,sweet potato,media,assado,11,bovina
+e0785,pedaço de massa folhada dourada,pastries,quesadillas,baixa,assado,10,bovina
+e0512,claras de ovo mexidas,egg whites,cottage cheese,media,mexido,24,ovo
+e0512,melancia em cubos,watermelon,,alta,cru,18,ovo
+e0512,morangos,strawberries,,alta,cru,13,ovo
+e0512,mirtilos,blueberries,,alta,cru,2,ovo
+e0512,amoras,blackberries,,alta,cru,4,ovo
+e0512,pudim de chia,chia seeds,puddings,media,nao_se_aplica,21,ovo
+e0512,batata assada em cubos,roasted potatoes,,alta,assado,18,ovo
+e0740,batata-doce assada em cubos,sweet potato,,alta,assado,50,ovo
+e0740,batata assada em cubos,roasted potatoes,squash,media,assado,15,ovo
+e0740,claras de ovo,egg whites,cottage cheese,media,mexido,35,ovo
+e0724,frango assado com molho escuro,chicken thighs,chicken wings,media,assado,23,frango_peru
+e0724,arroz integral,brown rice,,alta,cozido,18,frango_peru
+e0724,quinoa com espinafre,quinoa,couscous,media,cozido,16,frango_peru
+e0724,batata assada,roasted potatoes,,alta,assado,12,frango_peru
+e0724,tomates-cereja,cherry tomatoes,,alta,cru,12,frango_peru
+e0724,salada de alface com molho cremoso,caesar salad,lettuce,media,cru,10,frango_peru
+e0724,azeitonas pretas,olives,,alta,processado,5,frango_peru
+e0724,croutons,croutons,bread,media,assado,2,frango_peru
+e0724,brócolis,broccoli,,alta,cozido,2,frango_peru
+e0238,espinafre cru,spinach (raw),,alta,cru,40,nenhuma
+e0238,pepino em rodelas,cucumbers,,alta,cru,60,nenhuma
+e0608,maçã inteira,apple,,alta,cru,100,nenhuma
+e0631,batata assada com ervas,roasted potatoes,,alta,assado,68,nenhuma
+e0631,couve-flor romanesco,cauliflower,broccoli,media,cozido,32,nenhuma
+e0196,kimchi,kimchi,,alta,processado,48,nenhuma
+e0196,azeitonas pretas,olives,,alta,processado,52,nenhuma
+e0641,pedaço de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0314,maçã inteira,apple,,alta,cru,48,nenhuma
+e0314,cenoura cozida em rodelas,carrot,,alta,cozido,29,nenhuma
+e0314,tomates-cereja,cherry tomatoes,,alta,cru,23,nenhuma
+e0206,queijo cottage,cottage cheese,,alta,nao_se_aplica,55,laticinio
+e0206,abacaxi em pedaços,pineapple,,alta,cru,45,laticinio
+e0236,filé de peixe branco com crosta,tilapia,cod,media,assado,45,peixe_marisco
+e0236,arroz integral,brown rice,,alta,cozido,35,peixe_marisco
+e0236,pedaços brancos sobre o arroz,egg whites,cod,baixa,cozido,18,peixe_marisco
+e0236,folha de espinafre cozida,spinach (cooked),,alta,cozido,2,peixe_marisco
+e0532,carne fatiada grelhada,steak,roast pork,media,grelhado,48,bovina
+e0532,fatias de pizza de pepperoni,pepperoni pizza,,alta,assado,52,bovina
+e0808,batata assada temperada,roasted potatoes,sweet potato,media,assado,54,nenhuma
+e0808,rúcula,arugula,,alta,cru,22,nenhuma
+e0808,cubos de abóbora,squash,cantaloupe,media,assado,14,nenhuma
+e0808,nozes,walnuts,pecans,media,nao_se_aplica,5,nenhuma
+e0808,pedacinhos vermelhos secos,sun dried tomatoes,cranberries,baixa,nao_se_aplica,3,nenhuma
+e0808,mirtilos,blueberries,,alta,cru,2,nenhuma
+e0585,fatias de abacate,avocado,,alta,cru,100,nenhuma
+e0515,tomates-cereja,cherry tomatoes,,alta,cru,100,nenhuma
+e0292,pedaço de espiga de milho,corn on the cob,,alta,cozido,100,nenhuma
+e0009,peito de frango em cubos,chicken breast,,alta,cozido,45,frango_peru
+e0009,batata assada em gomos,roasted potatoes,,alta,assado,55,frango_peru
+e0763,peças empanadas com crosta,chicken breast,tofu,baixa,empanado,45,frango_peru
+e0763,folhas verdes cozidas,chard,kale,media,refogado,15,frango_peru
+e0763,aspargos,asparagus,green beans,media,grelhado,12,frango_peru
+e0763,rodela de espiga de milho,corn on the cob,,alta,cozido,9,frango_peru
+e0763,mix de folhas,mixed greens,,alta,cru,6,frango_peru
+e0763,quinoa,quinoa,,alta,cozido,5,frango_peru
+e0763,cenoura assada,carrot,sweet potato,media,assado,5,frango_peru
+e0763,pimentão vermelho,bell peppers,tomatoes,media,assado,3,frango_peru
+e0818,fatia quadrada de pizza de queijo,cheese pizza,,alta,assado,34,bovina
+e0818,fatias de carne bovina com ervas,steak,lamb,media,grelhado,24,bovina
+e0818,brócolis,broccoli,,alta,cozido,17,bovina
+e0818,cenoura assada tostada,carrot,sweet potato,media,assado,13,bovina
+e0818,pedaço de massa folhada dourada,pastries,quesadillas,baixa,assado,12,bovina
+e0758,bolinhos redondos com ervas,falafel,biscuits,baixa,assado,100,leguminosa_soja
+e0643,espinafre cru,spinach (raw),,alta,cru,52,nenhuma
+e0643,folhas roxas,mixed greens,,alta,cru,12,nenhuma
+e0643,cubos de abóbora,squash,cantaloupe,media,assado,18,nenhuma
+e0643,mirtilos,blueberries,black beans,baixa,cru,11,nenhuma
+e0643,nozes,walnuts,pecans,media,nao_se_aplica,7,nenhuma
+e0709,alface picada,lettuce,,alta,cru,22,nenhuma
+e0709,tomate picado,tomatoes,,alta,cru,22,nenhuma
+e0709,pepino em cubos,cucumbers,,alta,cru,26,nenhuma
+e0709,pimentão verde,bell peppers,,alta,cru,13,nenhuma
+e0709,milho,corn,,alta,cozido,10,nenhuma
+e0709,cenoura picada,carrot,bell peppers,media,cru,7,nenhuma
+e0122,tomates-cereja,cherry tomatoes,,alta,cru,45,nenhuma
+e0122,cenoura ralada,carrot,,alta,cru,30,nenhuma
+e0122,cebola roxa fatiada,onions,,alta,cru,25,nenhuma
+e0366,claras de ovo mexidas,egg whites,scrambled eggs,media,mexido,100,ovo
+e0523,filé de salmão com ervas,salmon,,alta,assado,38,peixe_marisco
+e0523,fatia de pizza branca de queijo,cheese pizza,flatbread,media,assado,15,peixe_marisco
+e0523,couve-flor assada,cauliflower,,alta,assado,14,peixe_marisco
+e0523,alcachofra,artichokes,,alta,cozido,11,peixe_marisco
+e0523,cookie,cookies,,alta,assado,10,peixe_marisco
+e0523,pedaço de peixe com pele escura,mackerel,eggplant,baixa,assado,9,peixe_marisco
+e0523,pedacinhos rosados,shrimp,salmon,baixa,cozido,3,peixe_marisco
+e0157,ovos mexidos,scrambled eggs,,alta,mexido,41,ovo
+e0157,batata em cubos dourada,hash browns,roasted potatoes,media,frito,47,ovo
+e0157,tira de bacon,bacon,,alta,frito,6,ovo
+e0157,queijo cheddar ralado,cheddar cheese,,alta,nao_se_aplica,6,ovo
+e0438,morangos cortados,strawberries,,alta,cru,80,nenhuma
+e0438,mirtilos,blueberries,,alta,cru,20,nenhuma

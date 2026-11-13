@@ -1,0 +1,139 @@
+classe,fotos,fotos_sem_peso,mediana_g,grupo,fonte,ref,proteina_100g,confianca,tipo
+achichuk,151,0,71,vegetal,sem_proteina,0.7*T_TOMATE|0.3*n5k:onions,1.10,B,
+almond,90,0,75,outros,nozes_sementes,n5k:almonds,22.40,A,
+apple_juice,109,6,203,outros,sem_proteina,n5k:apple juice,0.10,A,bebida
+apple_strudel,157,13,227,outros,sem_proteina,n5k:strudels,5.00,B,
+balqaymaq,206,0,98,laticinio,laticinio,0.7*n5k:cream|0.3*n5k:sugar,1.96,C,
+bauyrsak,223,17,176,amido,sem_proteina,"0.85*taco:Pão, trigo, francês|0.15*n5k:oil",6.80,B,
+beef,29,0,46,proteina_animal,bovina,n5k:roast beef,29.10,B,
+beef_cutlet,154,5,152,proteina_animal,bovina,"0.75*n5k:ground beef|0.25*taco:Pão, trigo, francês",12.65,B,
+beefstroganov,121,0,176,misto,prato_misto,0.5*n5k:beef|0.5*n5k:gravy,14.00,B,
+beet_salad,151,0,275,vegetal,sem_proteina,0.9*T_BETERRABA|0.1*n5k:mayonnaise,1.27,B,
+belise_tea,137,3,376,outros,sem_proteina,n5k:tea,0.00,B,bebida
+beshbarmak,182,12,404,misto,prato_misto,0.3*n5k:beef|0.45*n5k:noodles|0.15*n5k:potatoes|0.1*n5k:onions,10.23,B,
+black_tea,298,26,161,outros,sem_proteina,n5k:tea,0.00,A,bebida
+bliny,201,11,195,amido,sem_proteina,n5k:crepes,5.90,B,
+borek,251,0,235,misto,prato_misto,n5k:empanadas,11.10,C,
+borsh,179,0,329,misto,prato_misto,0.1*n5k:beef|0.3*n5k:mixed vegetables|0.6*DILUENTE,3.11,C,sopa
+bread,186,6,45,amido,sem_proteina,"taco:Pão, trigo, francês",8.00,A,
+broccoli,232,21,137,vegetal,sem_proteina,T_BROCOLIS,2.10,A,
+buckwheat,219,4,202,amido,sem_proteina,0.28*n5k:bulgur|0.72*DILUENTE,3.36,B,
+bukteme,155,3,170,misto,prato_misto,n5k:empanadas,11.10,C,
+bun,152,0,180,amido,sem_proteina,n5k:buns,9.80,A,
+burger,167,0,245,misto,prato_misto,n5k:hamburgers,16.80,B,
+butter,79,0,14,gordura_molho,sem_proteina,n5k:butter,0.80,A,condimento
+caesar_salad,155,4,206,misto,prato_misto,0.2*n5k:grilled chicken|0.8*n5k:caesar salad,7.08,C,
+capuccino,143,0,385,outros,sem_proteina,n5k:cappuccino,2.60,A,bebida
+cereal,168,0,59,amido,sem_proteina,n5k:cereal,12.00,B,
+chak_chak,155,28,169,outros,sem_proteina,0.6*n5k:donuts|0.4*n5k:honey,3.78,C,
+cheburek,148,30,216,misto,prato_misto,n5k:empanadas,11.10,B,
+cheese_sticks,304,21,161,laticinio,laticinio,0.6*n5k:mozzarella cheese|0.4*n5k:bread crumbs,22.08,B,
+cheesecake,46,0,128,outros,sem_proteina,n5k:cheesecake,5.70,B,
+chelpek,162,13,184,amido,sem_proteina,0.85*n5k:flatbread|0.15*n5k:oil,7.73,B,
+chicken,65,0,50,proteina_animal,frango_peru,0.85*n5k:chicken thighs|0.15*DILUENTE,20.31,C,
+chicken_in_plum,192,19,196,misto,prato_misto,0.55*n5k:chicken thighs|0.15*n5k:mushroom|0.3*n5k:cream,14.45,C,
+chocolate,196,21,71,outros,sem_proteina,n5k:chocolate,4.90,A,
+ciabatta,127,0,177,amido,sem_proteina,"taco:Pão, trigo, francês",8.00,A,
+coke,115,0,182,outros,sem_proteina,DILUENTE,0.00,A,bebida
+compote,141,3,235,outros,sem_proteina,n5k:fruit punch,0.00,B,bebida
+cottage_cheese,143,0,204,laticinio,laticinio,n5k:cottage cheese,11.00,B,
+croissant,187,0,114,amido,sem_proteina,n5k:croissants,8.00,A,
+cupcake,172,0,93,outros,sem_proteina,n5k:cupcakes,4.20,A,
+dapanji,93,11,562,misto,prato_misto,0.35*n5k:chicken thighs|0.3*n5k:potatoes|0.25*n5k:noodles|0.1*DILUENTE,10.09,B,
+doner,319,13,496,misto,prato_misto,n5k:gyros,12.00,B,
+dried_apricot,90,0,101,vegetal,sem_proteina,n5k:raisins,3.10,B,
+dumpling_with_soup,256,5,231,misto,prato_misto,0.5*n5k:dumplings|0.5*DILUENTE,3.10,B,sopa
+egg,195,0,44,proteina_animal,ovo,T_OVO_FRITO,15.60,B,
+fanta,133,0,216,outros,sem_proteina,DILUENTE,0.00,A,bebida
+fettucini,178,3,206,misto,prato_misto,0.8*n5k:pasta|0.1*n5k:cheese|0.1*T_TOMATE,6.69,C,
+fish_soup,55,0,301,misto,prato_misto,0.15*n5k:fish|0.25*n5k:mixed vegetables|0.6*DILUENTE,3.18,C,sopa
+french_fries,165,0,45,amido,sem_proteina,n5k:french fries,3.40,A,
+fresh_salad,293,17,193,vegetal,sem_proteina,0.5*T_TOMATE|0.5*T_PEPINO,1.00,B,
+fried_aubergine,175,0,116,vegetal,sem_proteina,0.9*n5k:eggplant|0.1*n5k:oil,0.90,B,
+fried_dumplings,156,4,65,misto,prato_misto,n5k:dumplings,6.20,B,
+fried_lagman,210,3,302,misto,prato_misto,0.6*n5k:noodles|0.2*n5k:beef|0.2*n5k:mixed vegetables,8.24,B,
+funchosa,250,15,200,amido,sem_proteina,0.7*n5k:rice noodles|0.3*T_CENOURA,1.02,B,
+golubcy,198,4,166,misto,prato_misto,0.35*n5k:ground beef|0.25*T_ARROZ|0.4*n5k:cabbage,6.12,B,
+greek_salad,128,28,176,vegetal,laticinio,n5k:greek salad,3.20,B,
+green_tea,245,12,164,outros,sem_proteina,n5k:tea,0.00,A,bebida
+grilled_vegetables,295,8,401,vegetal,sem_proteina,n5k:mixed vegetables,1.70,B,
+honey,60,0,41,outros,sem_proteina,n5k:honey,0.30,A,condimento
+hvorost,125,3,102,outros,sem_proteina,n5k:pastries,7.20,B,
+icecream,83,2,250,outros,sem_proteina,n5k:ice creams,3.50,A,
+irimshik,174,59,175,laticinio,laticinio,n5k:cottage cheese,11.00,C,
+kazy,37,0,74,proteina_animal,suina_embutido,n5k:sausage,19.30,C,
+kefir,187,33,227,laticinio,laticinio,n5k:buttermilk,3.30,B,bebida
+kespe,153,0,276,misto,prato_misto,0.25*n5k:noodles|0.1*n5k:beef|0.65*DILUENTE,3.73,C,sopa
+ketchup,170,20,25,gordura_molho,sem_proteina,n5k:ketchup,1.30,A,condimento
+khachapuri,269,20,264,misto,laticinio,"0.6*taco:Pão, trigo, francês|0.3*n5k:cheese|0.1*n5k:eggs",13.55,B,
+kirieshki_cheese,161,13,48,amido,sem_proteina,n5k:croutons,12.00,A,embalado
+kirieshki_shashlyk,169,22,137,amido,sem_proteina,n5k:croutons,12.00,A,embalado
+koktal,86,5,156,misto,prato_misto,0.5*n5k:fish|0.4*n5k:mixed vegetables|0.1*n5k:cheese,12.38,C,
+korean_carrot,178,0,228,vegetal,sem_proteina,0.92*T_CENOURA|0.08*n5k:oil,1.20,B,
+kurt,151,4,77,laticinio,laticinio,n5k:swiss cheese,27.60,C,
+kuyrdak,317,14,373,misto,prato_misto,0.6*n5k:beef|0.3*n5k:potatoes|0.1*n5k:onions,16.31,C,
+kymyz,92,13,206,laticinio,laticinio,0.65*n5k:milk|0.35*DILUENTE,2.28,B,bebida
+lemonade,290,22,500,outros,sem_proteina,n5k:lemonade,0.10,A,bebida
+lentiil_soup,139,0,293,leguminosa,leguminosa_soja,0.3*n5k:lentils|0.7*DILUENTE,2.70,B,sopa
+lime,108,108,,vegetal,sem_proteina,n5k:lime,0.70,A,
+lulya_kebab,155,6,268,misto,prato_misto,0.45*n5k:lamb|0.25*n5k:flatbread|0.3*n5k:coleslaw,13.69,C,
+malibu_salad,118,4,96,misto,prato_misto,0.3*n5k:ham|0.2*n5k:cheese|0.3*T_PEPINO|0.2*n5k:mayonnaise,11.77,C,
+manpar,212,10,360,misto,prato_misto,0.2*n5k:pasta|0.1*n5k:beef|0.2*n5k:mixed vegetables|0.5*DILUENTE,3.96,C,sopa
+mashed_potato,337,3,132,amido,sem_proteina,n5k:mashed potatoes,1.70,A,
+mayonnaise,295,43,40,gordura_molho,sem_proteina,n5k:mayonnaise,1.00,A,condimento
+meat_assorty,103,0,202,proteina_animal,suina_embutido,0.8*n5k:roast beef|0.2*n5k:garden salad,24.50,C,
+meatball,205,1,148,proteina_animal,bovina,n5k:meatballs,14.00,B,
+multifruit,151,1,237,outros,sem_proteina,n5k:fruit punch,0.00,B,bebida
+napoleon,155,2,148,outros,sem_proteina,n5k:cakes,3.00,B,
+naryn,159,6,347,misto,prato_misto,0.35*n5k:noodles|0.2*n5k:beef|0.45*DILUENTE,6.78,C,sopa
+nauryz_koje,132,70,166,misto,prato_misto,0.5*n5k:buttermilk|0.2*n5k:barley|0.05*n5k:beef|0.25*DILUENTE,3.41,C,sopa
+nuggets,163,0,61,proteina_animal,frango_peru,n5k:chicken nuggets,16.00,A,
+okroshka,81,0,198,misto,prato_misto,0.5*n5k:buttermilk|0.2*n5k:potatoes|0.1*n5k:eggs|0.1*T_PEPINO|0.1*n5k:bologna,4.90,C,sopa
+olivie_salad,179,0,135,misto,prato_misto,0.8*n5k:potato salad|0.1*n5k:eggs|0.1*n5k:bologna,5.00,B,
+onion,84,84,,vegetal,sem_proteina,n5k:onions,1.10,A,
+orama_nan,190,4,199,misto,prato_misto,n5k:dumplings,6.20,B,
+pahlava,162,11,100,outros,sem_proteina,n5k:pastries,7.20,B,
+pie,162,0,199,misto,prato_misto,"0.7*taco:Pão, trigo, francês|0.3*n5k:cheese",13.10,C,
+pirojki,113,5,127,misto,prato_misto,0.75*n5k:buns|0.25*n5k:mashed potatoes,7.78,C,
+pistachio,90,0,64,outros,nozes_sementes,0.53*n5k:pistachios|0.47*DILUENTE,11.13,B,
+pizza,145,0,186,misto,prato_misto,n5k:pizza,11.00,A,
+plov,249,27,234,misto,prato_misto,0.6*T_ARROZ|0.2*n5k:beef|0.15*T_CENOURA_COZ|0.05*n5k:oil,6.82,B,
+pod_shuboi,156,4,245,misto,prato_misto,0.2*n5k:herring|0.3*T_BETERRABA|0.25*n5k:potatoes|0.1*n5k:eggs|0.15*n5k:mayonnaise,3.23,B,
+pomergranate_juice,140,12,204,outros,sem_proteina,n5k:grape juice,0.60,B,bebida
+pop_corn,159,9,128,amido,sem_proteina,n5k:popcorn,11.00,A,
+potato,145,145,,amido,sem_proteina,n5k:roasted potatoes,2.10,A,
+quesadilla,157,8,192,misto,prato_misto,n5k:quesadillas,16.00,B,
+raisins,90,0,67,vegetal,sem_proteina,n5k:raisins,3.10,A,
+ramen,183,0,408,misto,prato_misto,0.3*n5k:noodles|0.05*n5k:eggs|0.05*n5k:pork|0.6*DILUENTE,3.27,C,sopa
+raspberry_jam,155,4,50,outros,sem_proteina,n5k:jams,0.40,A,condimento
+rice,411,0,95,amido,sem_proteina,T_ARROZ,2.50,A,
+rice_porridge,316,21,154,amido,laticinio,0.3*T_ARROZ|0.7*n5k:milk,3.20,B,
+rollton,198,20,293,amido,sem_proteina,0.6*n5k:noodles|0.4*DILUENTE,2.70,C,
+salad_mushrooms,198,7,189,vegetal,sem_proteina,0.9*n5k:mushroom|0.1*n5k:oil,2.79,B,
+salmon,161,0,133,proteina_animal,peixe_marisco,n5k:salmon,24.00,A,
+samsa,184,34,204,misto,prato_misto,n5k:empanadas,11.10,B,
+sandwich,258,21,107,misto,prato_misto,n5k:sandwiches,11.00,B,
+sausage,321,6,85,proteina_animal,suina_embutido,n5k:hot dogs,9.80,B,
+sausage_in_dough,129,0,200,misto,prato_misto,0.5*n5k:hot dogs|0.5*n5k:buns,9.80,B,
+shashlyk_beef,134,4,72,proteina_animal,bovina,n5k:steak,25.00,B,
+shashlyk_chicken,209,5,99,proteina_animal,frango_peru,n5k:grilled chicken,22.60,B,
+shorpa,172,3,401,misto,prato_misto,0.15*n5k:beef|0.25*n5k:potatoes|0.6*DILUENTE,4.40,C,sopa
+shubat,112,3,166,laticinio,laticinio,n5k:milk,3.50,B,bebida
+sirne,132,0,314,misto,prato_misto,0.5*n5k:lamb|0.35*n5k:potatoes|0.15*DILUENTE,13.05,C,
+sorpa,122,5,365,outros,sem_proteina,0.05*n5k:beef|0.95*DILUENTE,1.30,C,sopa
+spinach,107,107,,vegetal,sem_proteina,n5k:spinach (cooked),3.00,A,
+sprite,129,0,224,outros,sem_proteina,DILUENTE,0.00,A,bebida
+syrniki,181,10,242,laticinio,laticinio,0.7*n5k:cottage cheese|0.15*n5k:flour|0.1*n5k:eggs|0.05*n5k:sugar,10.48,B,
+taba_nan,313,24,183,amido,sem_proteina,"taco:Pão, trigo, francês",8.00,A,
+tea_with_milk,112,15,184,outros,sem_proteina,0.2*n5k:milk|0.8*n5k:tea,0.70,B,bebida
+tiramisu,286,21,121,outros,sem_proteina,n5k:cakes,3.00,B,
+toast,234,166,65,amido,sem_proteina,"taco:Pão, trigo, francês",8.00,B,
+tom_yam,297,21,498,misto,prato_misto,0.1*n5k:shrimp|0.1*n5k:mushroom|0.2*n5k:coconut milk|0.6*DILUENTE,3.17,C,sopa
+tongue_salad,173,0,134,misto,prato_misto,0.3*n5k:beef|0.1*n5k:cheese|0.4*n5k:garden salad|0.2*n5k:mayonnaise,12.94,C,
+tuc,197,20,65,amido,sem_proteina,n5k:crackers,6.60,A,embalado
+udon,167,0,158,misto,prato_misto,0.65*n5k:noodles|0.15*n5k:grilled chicken|0.2*n5k:mixed vegetables,6.66,C,
+vinegret,180,0,199,vegetal,sem_proteina,0.4*T_BETERRABA|0.3*T_BATATA|0.2*T_CENOURA_COZ|0.1*n5k:pickles,1.07,B,
+walnut,90,0,64,outros,nozes_sementes,n5k:walnuts,15.10,A,
+water,319,21,212,outros,sem_proteina,DILUENTE,0.00,A,bebida
+zhal_zhaya,36,0,68,proteina_animal,suina_embutido,n5k:pastrami,21.60,C,
+zhent,166,16,112,outros,sem_proteina,0.4*n5k:millet|0.25*n5k:cottage cheese|0.2*n5k:butter|0.15*n5k:sugar,4.31,C,

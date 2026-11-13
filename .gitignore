@@ -1,0 +1,13 @@
+__pycache__/
+
+# Listas derivadas de bases sem licença comercial ou com compartilha-igual: ficam fora do
+# repositório público. São refeitas pelos scripts em eval/dados_ext/ (omnifood_monta.py,
+# fpb_monta.py, snapme_monta.py) e embutidas só no notebook montado fora do repositório.
+eval/treino/kaggle/listas/externo_omnifood.csv
+eval/treino/kaggle/listas/externo_fpb.csv
+eval/treino/kaggle/listas/externo_snapme.csv
+eval/treino/kaggle/listas/divisao_r4_omnifood.csv
+eval/treino/kaggle/listas/divisao_r4_fpb.csv
+eval/treino/kaggle/listas/divisao_r4_snapme.csv
+eval/dados_ext/omnifood_arquivos.csv
+eval/dados_ext/snapme_arquivos.csv
