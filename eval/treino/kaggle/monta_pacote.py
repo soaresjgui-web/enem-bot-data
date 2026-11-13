@@ -216,7 +216,7 @@ def monta(variante):
         code("# Parâmetros (os padrões servem para o Kaggle)\n"
              "import json, os\n"
              f"RODADA = '{KERNEL[1:]}'         # este pacote só traz as listas desta execução\n"
-             "ORCAMENTO_H = 4.5    # horas de relógio; o que não couber inteiro não começa (a ordem de prioridade decide o que fica de fora)\n"
+             "ORCAMENTO_H = 5.0    # horas de relógio; o que não couber inteiro não começa (a ordem de prioridade decide o que fica de fora)\n"
              "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_saida'   # no Colab, aponte para o Drive para retomar\n"
              "EXTRA = []           # ex.: ['--so', 'ridge']; ['--dominios', 'flavoria,mensa']; ['--retoma', '<pasta>']; ['--espelho', '<pasta com o zip do OmniFood8K>']\n"
              "# as variáveis de ambiente NUTRELLE_SAIDA e NUTRELLE_EXTRA (lista em JSON) substituem os valores acima sem editar o notebook\n"

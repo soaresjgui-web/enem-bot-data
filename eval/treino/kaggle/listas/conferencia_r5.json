@@ -6,7 +6,47 @@
   5,
   6
  ],
- "reprovados": [],
- "conferida": false,
- "nota": "Preencher depois da conferência a olho das folhas da etapa 0 (14.3): 'reprovados' = bases com menos de 36 certas em 40 ou mais de 1 errada; 'conferida' = true só depois da conferência. A regra é a da emenda a 14.3: união das caixas das consultas de prato e tigela (0, 1, 5, 6)."
+ "reprovados": [
+  "snapme"
+ ],
+ "conferida": true,
+ "nota": "Conferência a olho das folhas da regra emendada (só prato e tigela; 14.3), 40 fotos por base: contagens = [certa, cortada, errada]. Passa com 36 ou mais certas e no máximo 1 errada. Reprovada: snapme (2 erradas), que fica com a foto inteira. Mensa passa no limite (36). Registro em 14.9.",
+ "contagens": {
+  "n5k": [
+   40,
+   0,
+   0
+  ],
+  "flavoria": [
+   40,
+   0,
+   0
+  ],
+  "lefood": [
+   40,
+   0,
+   0
+  ],
+  "fpb": [
+   40,
+   0,
+   0
+  ],
+  "omnifood": [
+   40,
+   0,
+   0
+  ],
+  "mensa": [
+   36,
+   4,
+   0
+  ],
+  "snapme": [
+   37,
+   1,
+   2
+  ]
+ },
+ "quando": "2026-11-13"
 }

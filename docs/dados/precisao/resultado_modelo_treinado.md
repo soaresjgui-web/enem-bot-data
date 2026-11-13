@@ -2470,7 +2470,7 @@ Custo: cerca de 25,4 mil fotos (Nutrition5k 3.110, OmniFood8K 15.741, Flavoria 1
 - números crus e com constante; intervalos de 95% e de 97,5%;
 - a parte do Mensa sai só como "teste de escala" (fotos de perto de um participante) e não julga nada;
 - comparação pareada com o A0 e o S de 13.11, que já foram lidos;
-- **antes da leitura,** o item correspondente de 14.9 é escrito.
+- **antes da leitura,** o item correspondente de 14.10 é escrito.
 
 **O que esta regra não mostra.** Escolher entre 28 candidatos de servidor na mesma CV deixa o vencedor otimista, talvez em 1 ponto. A segunda leitura das partes de registro é a única conferência fora da escolha, e é fora do Nutrition5k. Nenhuma das duas coisas mede comida brasileira.
 
@@ -2489,9 +2489,50 @@ Custo: cerca de 25,4 mil fotos (Nutrition5k 3.110, OmniFood8K 15.741, Flavoria 1
 - **A aposta principal não é subir o Nutrition5k, é tornar a massa usável fora dele sem constante.** Se o recorte não fizer M cru subir, o problema da escala fica para o conjunto brasileiro (prato e distância conhecidos) e para pedir na coleta o diâmetro do prato, que `coleta-brasil.md` já anota.
 - **Risco honesto do recorte:** o detector pode errar diferente em cada domínio, e "a refeição inteira" numa bandeja não é "um prato" no guia. A conferência a olho pega o grosso; o resto aparece como diferença entre domínios em M.
 
-### 14.9 Resultado
+### 14.9 Conferência a olho do detector (etapa 0), antes da execução principal
 
-(a preencher depois da execução; a primeira parte, com a conferência a olho do detector, é escrita antes da execução principal)
+A etapa 0 rodou no Kaggle (29,5 min nas duas T4; OWLv2 `google/owlv2-base-patch16-ensemble@cfd3195ba4ea`). Conferi a olho as folhas da **regra emendada** (união das caixas de prato e tigela; emenda de 14.3): 40 fotos por base, com a caixa e a janela recortada lado a lado. Nada de rótulo de massa ou proteína foi aberto.
+
+**Como julguei.** Pelo que o modelo recebe: a janela.
+- **Certa:** a janela contém a refeição inteira (todo item de comida que entra na massa do rótulo; bebida não conta), e o prato ou recipiente é o objeto principal.
+- **Cortada:** um item da refeição fica parcial ou totalmente fora da janela.
+- **Errada:** a janela está centrada em outra coisa.
+
+A caixa às vezes fica dentro do fundo do prato ou deslocada (Nutrition5k 31 e 32, Flavoria 27 e 30). A margem da janela (o lado maior da caixa ocupa 80% da altura) recupera a refeição, e eu contei como certa.
+
+| Base | Certa | Cortada | Errada | Veredito | Recurso, regra emendada: elipse / `sem_prato` (todas as fotos) | `sem_prato` na regra original de sete consultas | Caixa da regra emendada difere da original (IoU < 0,7) |
+|---|---|---|---|---|---|---|---|
+| Nutrition5k | 40 | 0 | 0 | **passa** | 2 / 3 (0,1%) | 0% | 8,8% |
+| Flavoria | 40 | 0 | 0 | **passa** | 0 / 0 | 0% | 0,1% |
+| LeFood | 40 | 0 | 0 | **passa** | 0 / 0 | 0% | 0% |
+| FPB (de cima) | 40 | 0 | 0 | **passa** | 28 / 0 | 0% | 80,0% |
+| OmniFood8K | 40 | 0 | 0 | **passa** | 13 / 0 | 0% | 2,8% |
+| Mensa | 36 | 4 | 0 | **passa, no limite** | 9 / 4 (2,0%) | 0% | 24,1% |
+| SNAPMe | 37 | 1 | **2** | **reprovada** | 123 / 51 (4,4%) | 4,0% | 22,6% |
+
+- **Mensa.** As quatro cortadas:
+  - duas bandejas em que um prato ou um pão na borda fica fora da janela;
+  - dois potes de vidro em que a elipse caiu no meio ou num canto do pote.
+  - É a consequência anunciada na emenda: em bandeja, a caixa é a união dos pratos, e pão, fruta e iogurte fora de prato só entram pela margem da janela.
+- **SNAPMe.** As duas erradas:
+  - uma elipse no canto da mesa, com o copo da bebida fora;
+  - uma caixa num pilão branco ao fundo, com a caneca no centro.
+  - **O SNAPMe fica com a foto inteira nas configurações com recorte.** Ele só serve de avaliação fraca, então isso não muda nenhum treino.
+- **A amostra de 40 sobrerrepresenta os casos de recurso** (o Mensa teve 8 de 40 fotos por elipse ou `sem_prato`, contra 6,5% no total): a conferência foi mais dura que um sorteio simples.
+- **Nutrition5k, concordância com a caixa da profundidade de 8.7** (1.874 pratos com a caixa gravada):
+
+| Regra | IoU mediana | Pratos com IoU de 0,7 ou mais |
+|---|---|---|
+| Original, sete consultas | 0,952 | 86,1% |
+| **Emendada, só prato e tigela** | **0,956** | **94,2%** |
+
+  Com a caixa da profundidade refeita no kernel (2.272 pratos), a regra original dá 0,953 e 86,7%. A emenda aproxima a caixa do prato que a profundidade vê; a consulta de bandeja era o que a afastava.
+- **Decisão gravada em `eval/treino/kaggle/listas/conferencia_r5.json`:** `"conferida": true`, regra `so_prato` (consultas 0, 1, 5, 6), `reprovados: ["snapme"]`.
+- As cópias das folhas com o veredito por foto ficam no scratchpad (`conferencia_r5/`), fora do repositório: as fotos são de terceiros.
+
+### 14.10 Resultado
+
+(a preencher depois da execução principal; a conferência do detector está em 14.9)
 
 ## Reproduzir
 
