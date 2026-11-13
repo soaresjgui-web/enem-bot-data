@@ -97,6 +97,14 @@ Mudanças da quarta execução (seção 13 de `docs/dados/precisao/resultado_mod
 - **Conferência de paridade** (`paridade_d1`, função pura): assim que R0 e H0 terminam, compara com o D1 da execução 3; se falhar, o manifesto marca todas as configurações como `confiavel = false`. Não muda o estado de nenhuma parte.
 - **Nenhuma decisão dentro do kernel:** nada cancela uma configuração por resultado de outra.
 
+Mudanças da quinta execução (seção 14), só no escalonador; a máquina de estados das partes não muda:
+
+- **GPU preferida flexível** (`gpu_flexivel`, nos ajustes finos F4, P2, F4c e F5): `simula_orcamento` devolve, além de `True`/`False`, `"qualquer_gpu"` quando a configuração não cabe na GPU dela mas cabe se as partes forem para o processo que fica livre primeiro; `proxima_acao` deixa então a outra GPU pegar as partes dela antes do próprio trabalho de prioridade menor. Assim a ordem de corte de 14.5 vale entre as duas GPUs: se o P2 (GPU A) atrasar, a GPU B ajuda nele e quem sai é o F5, depois o F4c. Sem `gpu_flexivel` (quarta execução), nada muda.
+- **Portão da conferência a olho:** sem `"conferida": true` em `listas/conferencia_r5.json`, a execução nem começa (`--sem-conferencia` ou `--smoke` passam). Não é um estado de parte: é uma pré-condição.
+- **Base sem recorte:** se o Nutrition5k foi reprovado na conferência ou não tem tabela da etapa 0, todas as configurações sobre o recorte (features, R0c–R4c, H0c, H1c, F4c) são `cancelada` no início, com o motivo; o F4, o P2 e o F5 (foto inteira) seguem. Base externa reprovada ou sem tabela entra com a foto inteira, e o manifesto diz por quê.
+- A etapa `externo <base>` também prepara os recortes da base (com o sha256 de cada foto conferido contra a tabela da etapa 0); a parte `ext` dos ajustes finos espera os recortes, como esperava as fotos.
+- A conferência de paridade com o D1 não se aplica (o R0 e o H0 não são refeitos).
+
 Detalhes em `eval/treino/kaggle/LEIA-ME.md`.
 
 ## 3. Próximas máquinas a modelar

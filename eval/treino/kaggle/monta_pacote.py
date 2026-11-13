@@ -4,15 +4,19 @@
 Uso:
   python3 monta_pacote.py listas     regrava listas/treino.csv e listas/aval_ids.csv a partir de <TD>/meta
                                      (zen_treino.csv, zen_aval.csv, gravados por zen_dados.py) e dos folds de zen_comum.Dados
-  python3 monta_pacote.py notebook   regrava nutrelle_treino_gpu.ipynb (o do REPOSITÓRIO): a quarta execução só com as
-                                     bases liberadas (Flavoria, LeFood, Mensa: uso comercial permitido)
-  python3 monta_pacote.py push <pasta fora do repositório> [--usuario U] [--espelho-omnifood U/slug] [--divisoes PASTA]
-                                     monta o notebook da quarta execução COMPLETA (as seis bases) e o kernel-metadata.json
-                                     numa pasta fora do repositório, pronta para `kaggle kernels push -p <pasta>`
-  python3 monta_pacote.py confere [<pasta do push>]
+  python3 monta_pacote.py notebook [--kernel K]
+                                     regrava o notebook do REPOSITÓRIO do kernel K, só com as bases liberadas (Flavoria,
+                                     LeFood, Mensa: uso comercial permitido). K = r5 (padrão: a execução principal da quinta
+                                     execução, nutrelle_treino_gpu.ipynb), r5a (a etapa 0, deteccao_r5/) ou r4
+  python3 monta_pacote.py push <pasta fora do repositório> [--kernel K] [--usuario U] [--espelho-omnifood U/slug] [--divisoes PASTA]
+                                     monta o notebook COMPLETO (as seis bases) e o kernel-metadata.json numa pasta fora do
+                                     repositório, pronta para `kaggle kernels push -p <pasta>`; no r5, `kernel_sources`
+                                     aponta para U/nutrelle-deteccao-r5 (a saída da etapa 0)
+  python3 monta_pacote.py confere [<pasta do push>] [--kernel K]
                                      falha se o notebook do repositório não corresponde aos arquivos desta pasta ou se
                                      embute qualquer coisa de uma base sem licença comercial (rode antes do commit e do
-                                     push); com a pasta, confere também o notebook completo
+                                     push); com a pasta, confere também o notebook completo; no r5, também que nada do
+                                     teste2 vai embutido
 
 Listas e tabelas que ficam fora do repositório (as das bases fechadas) são procuradas em listas/ e, depois, nas pastas
 dadas por --divisoes e pela variável NUTRELLE_SCRATCH (e nas subpastas listas_nc/ e listas_r4/ dela).
@@ -41,18 +45,22 @@ LISTAS = os.path.join(AQUI, "listas")
 REPO = os.path.abspath(os.path.join(AQUI, "..", "..", ".."))
 # Um pacote por kernel. `pasta`: onde ficam, no repositório, o notebook só com bases liberadas e o kernel-metadata.json.
 KERNELS = {
-    "r4": dict(nome="quarta execução (seção 13)", pasta=AQUI, notebook="nutrelle_treino_gpu.ipynb", slug="nutrelle-treino-gpu-r4", script="treino_gpu.py",
+    "r4": dict(nome="quarta execução (seção 13); o notebook do repositório agora é o da quinta", pasta=AQUI, notebook="nutrelle_treino_gpu_r4.ipynb",
+               slug="nutrelle-treino-gpu-r4", script="treino_gpu.py",
                basicos=["treino_gpu.py", "listas/aval2_ids.csv", "listas/treino_v2.csv", "listas/ref_d1_r3.csv"],     # não lê treino.csv nem aval_ids.csv
                args="['--rodada', '4']", orcamento=4.5, manifesto="manifesto.json"),
     "r5a": dict(nome="etapa 0 da quinta execução (seção 14.3: caixa da refeição em cada foto)", pasta=os.path.join(AQUI, "deteccao_r5"),
                 notebook="nutrelle_deteccao_r5.ipynb", slug="nutrelle-deteccao-r5", script="deteccao_r5.py",
                 basicos=["deteccao_r5.py", "treino_gpu.py", "listas/treino_v2.csv", "listas/caixas_profundidade_n5k.csv"],
                 args="[]", orcamento=1.5, manifesto="manifesto_r5.json"),
+    "r5": dict(nome="quinta execução (seção 14): recorte pelo prato e receitas corrigidas", pasta=AQUI, notebook="nutrelle_treino_gpu.ipynb", slug="nutrelle-treino-gpu-r5",
+               script="treino_gpu.py", basicos=["treino_gpu.py", "deteccao_r5.py", "listas/treino_v2.csv", "listas/conferencia_r5.json"],     # sem o teste2 (14.1)
+               args="['--rodada', '5']", orcamento=4.5, manifesto="manifesto.json", fontes_kernel=["nutrelle-deteccao-r5"]),
 }
-KERNEL = "r4"           # mudado por --kernel
+KERNEL = "r5"           # mudado por --kernel
 NOTEBOOK = os.path.join(AQUI, "nutrelle_treino_gpu.ipynb")
-SLUG = "nutrelle-treino-gpu-r4"
-BASICOS = KERNELS["r4"]["basicos"]
+SLUG = "nutrelle-treino-gpu-r5"
+BASICOS = KERNELS["r5"]["basicos"]
 
 
 def usa_kernel(k):
@@ -157,8 +165,6 @@ def conteudo(variante):
     """{nome do arquivo no pacote: bytes} da variante 'repo' (só bases liberadas) ou 'push' (as seis)."""
     arqs = {n: open(os.path.join(AQUI, n), "rb").read() for n in BASICOS}
     proc, pastas = {}, ([] if variante == "repo" else extras())
-    if KERNEL == "r5a":      # a etapa 0 detecta em todas as fotos, inclusive as de registro: as listas vão com os rótulos de treino apagados também
-        pass
     for ch in LIBERADAS + (FECHADAS if variante == "push" else []):
         lst, div, proc[ch] = enxuta(acha(f"externo_{ch}.csv", pastas), acha(f"divisao_r4_{ch}.csv", pastas))
         arqs[f"listas/externo_{ch}.csv"], arqs[f"listas/divisao_r4_{ch}.csv"] = lst, div
@@ -194,17 +200,23 @@ def monta(variante):
              "**Versão completa, montada fora do repositório** (as seis bases). Contém listas derivadas de bases sem licença comercial "
              "(OmniFood8K e FPB, CC BY-NC 4.0) e do SNAPMe (CC BY-SA 4.0, só avaliação): **não commitar, não publicar**.")
     cells = [
-        md("# Nutrelle — treino em GPU, quarta execução (seção 13: mais bases de treino; uma única foto de cima)\n\n"
-           "Notebook gerado por `eval/treino/kaggle/monta_pacote.py`; **não edite à mão** (edite `treino_gpu.py` e gere de novo). "
-           "Roda sem interação: baixa as fotos zenitais do Nutrition5k e as das bases externas (em paralelo, desde o início), extrai as "
-           "features do SigLIP 2 So400m, treina as configurações da seção 13.6 até o orçamento de tempo e grava previsões cruas "
-           "(fora-do-fold no treino; no teste2 e nas partes de registro das bases externas, **sem pontuar nada**), registros, os arquivos "
-           "para servir cada modelo e `servico.json`.\n\n" + aviso + "\n\n"
+        md(("# Nutrelle — treino em GPU, quarta execução (seção 13: mais bases de treino; uma única foto de cima)\n\n" if KERNEL == "r4" else
+            "# Nutrelle — treino em GPU, quinta execução (seção 14: recorte pelo prato e receitas corrigidas; uma única foto de cima)\n\n")
+           + "Notebook gerado por `eval/treino/kaggle/monta_pacote.py`; **não edite à mão** (edite `treino_gpu.py` e gere de novo). "
+           + ("Roda sem interação: baixa as fotos zenitais do Nutrition5k e as das bases externas (em paralelo, desde o início), extrai as "
+              "features do SigLIP 2 So400m, treina as configurações da seção 13.6 até o orçamento de tempo e grava previsões cruas "
+              "(fora-do-fold no treino; no teste2 e nas partes de registro das bases externas, **sem pontuar nada**), registros, os arquivos "
+              "para servir cada modelo e `servico.json`." if KERNEL == "r4" else
+              "Lê a saída do kernel da etapa 0 (`nutrelle-deteccao-r5`, anexada em *Input*) e `listas/conferencia_r5.json` (regra e bases reprovadas na "
+              "conferência a olho; sem `\"conferida\": true` o kernel não começa). Baixa as fotos, recorta cada uma na janela do guia, extrai as features do "
+              "So400m sobre o recorte, treina as configurações de 14.5 até o orçamento e grava previsões cruas (fora-do-fold no treino e nas partes de "
+              "registro das bases externas, **sem pontuar nada; nenhuma do teste2**), os arquivos para servir e `servico.json`.")
+           + "\n\n" + aviso + "\n\n"
            "Kaggle: *Settings → Accelerator → GPU T4 x2* e *Internet → On*. Instruções completas em `eval/treino/kaggle/LEIA-ME.md`."),
         code("# Parâmetros (os padrões servem para o Kaggle)\n"
              "import json, os\n"
-             "RODADA = '4'         # 4 = seção 13 (este pacote só traz as listas da quarta execução)\n"
-             "ORCAMENTO_H = 4.5    # horas de relógio; o que não couber inteiro não começa (a ordem de 13.6 decide o que fica de fora)\n"
+             f"RODADA = '{KERNEL[1:]}'         # este pacote só traz as listas desta execução\n"
+             "ORCAMENTO_H = 4.5    # horas de relógio; o que não couber inteiro não começa (a ordem de prioridade decide o que fica de fora)\n"
              "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_saida'   # no Colab, aponte para o Drive para retomar\n"
              "EXTRA = []           # ex.: ['--so', 'ridge']; ['--dominios', 'flavoria,mensa']; ['--retoma', '<pasta>']; ['--espelho', '<pasta com o zip do OmniFood8K>']\n"
              "# as variáveis de ambiente NUTRELLE_SAIDA e NUTRELLE_EXTRA (lista em JSON) substituem os valores acima sem editar o notebook\n"
@@ -229,6 +241,7 @@ def monta(variante):
         "    for nome, c in m['configs'].items():\n"
         "        print(f\"{c['estado']:14s} {nome:46s} serviço: {c.get('servico', {}).get('estado')}\")\n"
         "    print('paridade com o D1:', m.get('paridade_d1'))\n"
+        "    print('recorte pelo prato:', {k: v for k, v in (m.get('prato') or {}).items() if k in ('regra', 'consultas', 'reprovados', 'n5k_ok')})\n"
         "    print('confiança:', m.get('confianca'))\n"
         "    print('bases externas:', {k: v.get('situacao') for k, v in (m.get('dominios') or {}).items()})\n"
         "    print('tamanho da saída:', m.get('tamanho_saida'))\n"
@@ -237,7 +250,7 @@ def monta(variante):
         c["id"] = f"celula-{i}"
     nb = dict(cells=cells, nbformat=4, nbformat_minor=5,
               metadata=dict(kernelspec=dict(display_name="Python 3", language="python", name="python3"), language_info=dict(name="python"),
-                            nutrelle=dict(variante=variante, sha256=_hash(arqs), embutidos=sorted(arqs), dominios=doms)))
+                            nutrelle=dict(kernel=KERNEL, variante=variante, sha256=_hash(arqs), embutidos=sorted(arqs), dominios=doms)))
     return nb
 
 
@@ -328,7 +341,8 @@ def push():
     nb = monta("push")
     grava_nb(nb, os.path.join(pasta, os.path.basename(NOTEBOOK)))
     meta = json.load(open(os.path.join(os.path.dirname(NOTEBOOK), "kernel-metadata.json")))
-    meta.update(id=f"{_opcao('--usuario', 'USUARIO_KAGGLE')}/{SLUG}", title=SLUG)
+    usuario = _opcao("--usuario", "USUARIO_KAGGLE")
+    meta.update(id=f"{usuario}/{SLUG}", title=SLUG, kernel_sources=[f"{usuario}/{k}" for k in KERNELS[KERNEL].get("fontes_kernel", [])])
     if _opcao("--espelho-omnifood"):
         meta["dataset_sources"] = [_opcao("--espelho-omnifood")]
     with open(os.path.join(pasta, "kernel-metadata.json"), "w") as f:

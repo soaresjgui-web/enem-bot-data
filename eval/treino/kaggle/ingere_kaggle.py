@@ -4,6 +4,13 @@
 Uso: python3 eval/treino/kaggle/ingere_kaggle.py <pasta baixada com `kaggle kernels output`>
          [--ensaio DIR] [--so-confere] [--referencia PASTA] [--substitui]
 
+Saída da execução 5 (seção 14; recorte pelo prato) — as mesmas conferências da execução 4, com estas diferenças: não há
+teste2 (nenhuma chave teste2 pode vir); o conjunto de avaliação é 'remontagem' (8 pratos do próprio treino, só para
+conferir a remontagem dos modelos finais); os ajustes finos trazem a cabeça sem gradiente (_sg: oof, remontagem, extcv,
+extreg) e ela é conferida como as demais; não há paridade com o D1 (14.5); o recorte de cada base (regra, conferência a
+olho, sha256 da tabela da etapa 0; com --caixas, contra o arquivo baixado) é mostrado. Grava em zen_banco_r5 e
+ingestao_kaggle_r5.json. As previsões de registro e do SNAPMe não são pontuadas aqui.
+
 Saída da execução 4 (seção 13; treino_v2 + bases externas) — nada aqui lê rótulo de avaliação, nada é pontuado e nada é
 escolhido (a regra de 13.9 roda depois, na CPU):
   1. Monta as listas exatamente como o pacote do Kaggle (monta_pacote.conteudo: versões enxutas, sem rótulo nas partes
@@ -387,12 +394,13 @@ def rodada3(a, M, raiz):
     print(f"\n{len(entradas)} configurações gravadas em {dest} (todas as chaves de pred__*.npz). Nenhum gabarito de avaliação foi lido e nada foi escolhido aqui.")
 
 
-def rodada4(a, M, raiz):
-    """Conferências da saída da execução 4 (ver o cabeçalho). Sem rótulo de avaliação: só lê os rótulos do treino."""
+def rodada4(a, M, raiz, rod="4"):
+    """Conferências da saída da execução 4 ou 5 (ver o cabeçalho). Sem rótulo de avaliação: só lê os rótulos do treino."""
     import tempfile
     import monta_pacote as P
     if a.divisoes:
         sys.argv += ["--divisoes", a.divisoes]
+    P.usa_kernel("r4" if rod == "4" else "r5")         # as listas exatamente como o pacote daquela execução (a 5 não leva o teste2)
     try:
         arqs, variante = P.conteudo("push"), "completo"
     except FileNotFoundError as e:
@@ -402,13 +410,15 @@ def rodada4(a, M, raiz):
     for n, b in arqs.items():
         if n.startswith("listas/"):
             open(os.path.join(t, n), "wb").write(b)
-    L = G.Dados(os.path.join(t, "listas"), rodada="4")
+    L = G.Dados(os.path.join(t, "listas"), rodada=rod)
     shutil.rmtree(t)
+    av = "teste2" if rod == "4" else "remontagem"      # execução 5: sem teste2; 'remontagem' = 8 pratos do treino, só para conferir a remontagem
     if M.get("formato") not in G.FORMATOS_ACEITOS or M["listas_hash"] != L.hash or M.get("listas2_hash") != L.hash2:
         raise SystemExit(f"listas ou formato diferentes dos desta pasta (manifesto: {M.get('formato')}, {M['listas_hash']}, {M.get('listas2_hash')}; aqui: {L.hash}, {L.hash2})")
-    n, n2, N, K = len(L.ids), len(L.conj["teste2"]), L.N, len(L.fontes)
-    print(f"listas ({variante}): treino_v2 {n} pratos (hash {L.hash}); teste2 {n2} pratos, fora do treino (hash {L.hash2})")
-    print(f"saída do Kaggle: {M['formato']}, rodada 4, {M['inicio']}, {M.get('duracao_min')} min, GPUs {M['gpus'] or 'nenhuma'}, torch {M.get('torch')}, timm {M.get('timm')}, smoke={M['smoke']}")
+    n, n2, N, K = len(L.ids), len(L.conj[av]), L.N, len(L.fontes)
+    print(f"listas ({variante}): treino_v2 {n} pratos (hash {L.hash}); " + (f"teste2 {n2} pratos, fora do treino (hash {L.hash2})" if rod == "4" else
+          f"sem teste2; conjunto 'remontagem' = {n2} pratos do próprio treino (só para conferir a remontagem dos modelos finais)"))
+    print(f"saída do Kaggle: {M['formato']}, rodada {rod}, {M['inicio']}, {M.get('duracao_min')} min, GPUs {M['gpus'] or 'nenhuma'}, torch {M.get('torch')}, timm {M.get('timm')}, smoke={M['smoke']}")
     for ch, v in (M.get("dominios") or {}).items():
         aqui = L.dom.get(ch) if "sha256_lista" in v else None
         bate = aqui is not None and v.get("sha256_lista") == aqui["sha256_lista"] and v.get("sha256_divisao") == aqui["sha256_divisao"]
@@ -416,23 +426,30 @@ def rodada4(a, M, raiz):
             "iguais às desta máquina" if bate else "NÃO CONFERIDAS (sem a lista aqui)" if aqui is None else "DIFERENTES das desta máquina") if "sha256_lista" in v else ""))
         if aqui is not None and not bate:
             raise SystemExit(f"a lista ou a divisão de {ch} usada no Kaggle não é a desta máquina")
+    if rod == "5":
+        confere_prato5(a, M)
     parcial = bool(M["smoke"])
     if parcial and not (a.ensaio or a.so_confere):
         raise SystemExit("Saída de --smoke: use --so-confere ou --ensaio DIR.")
     cfgs = {c["nome"]: c for c in G.todas_as_configs()}
-    comerciais = {"R0", "R1", "H0", "F1", "F2", "P1"}
+    comerciais = {"R0", "R1", "H0", "F1", "F2", "P1"} if rod == "4" else {"R0c", "R1c", "H0c", "F4", "F4c", "P2"}
     entradas, problemas = {}, []
     for arq in sorted(glob.glob(os.path.join(raiz, "pred__*.npz"))):
         z = dict(np.load(arq, allow_pickle=False))
         nome = str(z["nome"]); c = cfgs.get(nome, {})
         try:
-            assert c.get("v4"), "configuração fora da rodada 4"
-            assert str(z["listas_hash"]) == L.hash and str(z["listas2_hash"]) == L.hash2, "hash das listas"
-            assert list(z["ids_treino"]) == L.ids and np.array_equal(z["fold"], L.fold) and list(z["ids_teste2"]) == L.conj["teste2"], "ids, ordem ou folds"
-            usa = (~np.isnan(z["oof"][:, 0]), ~np.isnan(z["teste2"][:, 0])) if parcial else (np.ones(n, bool), np.ones(n2, bool))
-            tem_ff = "oof_ff" in z
+            assert c.get("v4") and bool(c.get("v5")) == (rod == "5"), f"configuração fora da rodada {rod}"
+            assert str(z["listas_hash"]) == L.hash and str(z["listas2_hash"]) == str(L.hash2 or ""), "hash das listas"
+            assert list(z["ids_treino"]) == L.ids and np.array_equal(z["fold"], L.fold) and list(z["ids_" + av]) == L.conj[av], "ids, ordem ou folds"
+            assert rod == "4" or not any(k.startswith("teste2") or k == "ids_teste2" for k in z), "previsão do teste2 na execução 5"
+            usa = (~np.isnan(z["oof"][:, 0]), ~np.isnan(z[av][:, 0])) if parcial else (np.ones(n, bool), np.ones(n2, bool))
+            tem_ff, tem_sg = "oof_ff" in z, "oof_sg" in z
+            assert tem_sg == bool(c.get("fracoes_sg")), "cabeça sem gradiente (14.4) presente só nos ajustes finos da execução 5"
             for suf in G.ORIENT:
-                for ch_, m, u in (("oof", n, usa[0]), ("teste2", n2, usa[1])):
+                for ch_, m, u in (("oof", n, usa[0]), (av, n2, usa[1])):
+                    if tem_sg:
+                        v = z[ch_ + "_sg" + suf]
+                        assert v.shape == (m, N) and np.isfinite(v[u]).all(), f"{ch_}_sg{suf}: cabeça sem gradiente faltando ou não finita"
                     v = z[ch_ + suf]
                     assert v.shape == (m, N) and np.isfinite(v[u]).all(), f"{ch_ + suf} faltando, fora de formato ou não finito"
                     if tem_ff:
@@ -453,6 +470,8 @@ def rodada4(a, M, raiz):
                     else:
                         assert ids == [d["ids"][i] for i in np.where(sel)[0]], f"{pre} de {ch}: ids ou ordem"
                     assert z[f"{pre}__{ch}"].shape == (len(ids), N) and np.isfinite(z[f"{pre}__{ch}"]).all(), f"{pre} de {ch}: faltando ou não finito"
+                    if tem_sg:
+                        assert z[f"{pre}_sg__{ch}"].shape == (len(ids), N) and np.isfinite(z[f"{pre}_sg__{ch}"]).all(), f"{pre}_sg de {ch}: faltando ou não finito"
                     if pre == "extcv":
                         assert list(z[f"extcv_fold__{ch}"]) == [d["fold_ext"][pos[x]] for x in ids], f"{ch}: fold em que cada foto valida"
                     else:
@@ -476,34 +495,59 @@ def rodada4(a, M, raiz):
               + (", ".join(str(x) for x in entradas[nome]["dominios"]) if nome in entradas else ""))
     for p_ in problemas:
         print("  RECUSADA:", p_)
-    faltam = [x for x in (G.RODADAS["4"] if not parcial else []) if cfgs[x]["tipo"] not in ("externo", "feat") and x not in entradas]
+    faltam = [x for x in (G.RODADAS[rod] if not parcial else []) if cfgs[x]["tipo"] not in ("externo", "feat") and x not in entradas]
     if faltam:
         print("  não vieram (orçamento, falha, base ausente):", faltam)
-    # paridade com o D1 da execução 3, refeita aqui
+    # paridade com o D1 da execução 3, refeita aqui (só na execução 4: a 5 não refaz o R0 nem o H0, 14.5)
     r0, h0 = (next((nm for nm in entradas if cfgs[nm].get("apelido") == x), None) for x in ("R0", "H0"))
-    par = dict(passou=False, motivo="R0 ou H0 não vieram")
-    if r0 and h0:
+    par = dict(passou=False, motivo="R0 ou H0 não vieram") if rod == "4" else dict(passou=True, situacao="não se aplica (14.5)")
+    if rod == "4" and r0 and h0:
         ref = {r["dish_id"]: [float(r[k]) for k in ("log_massa_o1", "log_massa_o8", "log_dens_regressao_o1", "log_dens_fracoes_o1")]
                for r in csv.DictReader(open(os.path.join(AQUI, "listas", G.REF_D1)))}
         par = G.paridade_d1(L, entradas[r0], entradas[h0], ref)
-    print(f"\nparidade com o D1 da execução 3 (13.7), refeita aqui: {'OK' if par['passou'] else 'FALHOU: ' + str(par.get('motivo'))}"
-          + (f" | correlações {', '.join(f'{k} {v:.5f}' for k, v in par['corr'].items())} | critério de CV do D1 {par['criterio_cv_d1']:.2f}% (71,3 ± 0,3)" if "corr" in par else "")
-          + f" | no kernel: {(M.get('paridade_d1') or {}).get('passou')}")
+    if rod == "4":
+        print(f"\nparidade com o D1 da execução 3 (13.7), refeita aqui: {'OK' if par['passou'] else 'FALHOU: ' + str(par.get('motivo'))}"
+              + (f" | correlações {', '.join(f'{k} {v:.5f}' for k, v in par['corr'].items())} | critério de CV do D1 {par['criterio_cv_d1']:.2f}% (71,3 ± 0,3)" if "corr" in par else "")
+              + f" | no kernel: {(M.get('paridade_d1') or {}).get('passou')}")
     if a.so_confere:
         return print(f"\nconferências feitas: {len(entradas)} configurações aceitas, {len(problemas)} recusadas (nada gravado; nenhuma previsão de registro ou do teste2 foi pontuada)")
     if not par["passou"] and not parcial:
         raise SystemExit("A paridade com o D1 falhou: nada é gravado no banco (13.7). As previsões continuam na pasta de saída.")
     res = os.path.join(os.path.abspath(a.ensaio), "resultados") if a.ensaio else os.path.join(zen_comum.TD, "resultados")
-    dest = os.path.join(res, "zen_banco_r4")
+    dest = os.path.join(res, f"zen_banco_r{rod}")
     os.makedirs(dest, exist_ok=True)
     for nome, z in entradas.items():
         np.savez(os.path.join(dest, nome + ".npz"), **z)
     json.dump(dict(pasta=os.path.abspath(a.pasta), manifesto={k: M.get(k) for k in ("formato", "rodada", "inicio", "duracao_min", "gpus", "torch", "timm", "listas_hash",
-                                                                                     "listas2_hash", "dominios", "paridade_d1", "confianca", "tamanho_saida")},
+                                                                                     "listas2_hash", "dominios", "paridade_d1", "confianca", "tamanho_saida", "prato", "detector")},
                    paridade_refeita=par, ingeridas=sorted(entradas), recusadas=problemas, faltam=faltam,
                    configs={nm: {k: M["configs"][nm].get(k) for k in ("apelido", "estado", "cv_treino", "treinado_com", "so_comercial_ok", "confiavel")} for nm in M["configs"]}),
-              open(os.path.join(res, "ingestao_kaggle_r4.json"), "w"), indent=1, ensure_ascii=False)
-    print(f"\n{len(entradas)} configurações gravadas em {dest} (todas as chaves de pred__*.npz). Nada foi pontuado nem escolhido aqui (13.9 roda depois).")
+              open(os.path.join(res, f"ingestao_kaggle_r{rod}.json"), "w"), indent=1, ensure_ascii=False)
+    print(f"\n{len(entradas)} configurações gravadas em {dest} (todas as chaves de pred__*.npz). Nada foi pontuado nem escolhido aqui "
+          + ("(13.9 roda depois)." if rod == "4" else "(a leitura de 14.7 roda depois, na CPU; as previsões de registro e do SNAPMe não foram pontuadas)."))
+
+
+def confere_prato5(a, M):
+    """Execução 5: o recorte pelo prato de cada base (14.3) — regra, conferência a olho e, com --caixas (a saída baixada
+    da etapa 0), o sha256 de cada tabela usada contra o arquivo."""
+    import hashlib
+    P5 = M.get("prato") or {}
+    print(f"recorte pelo prato (14.3): regra {P5.get('regra')}, consultas {P5.get('consultas')} | conferência a olho feita: {P5.get('conferida')} | "
+          f"reprovadas: {P5.get('reprovados') or 'nenhuma'} | detector: {(M.get('detector') or {}).get('licenca')}")
+    for ch, v in (P5.get("por_base") or {}).items():
+        bate = ""
+        if a.caixas:
+            arq = os.path.join(a.caixas, f"caixas_r5_{ch}.csv")
+            if os.path.exists(arq):
+                ok = hashlib.sha256(open(arq, "rb").read()).hexdigest() == v.get("sha256_tabela")
+                if not ok:
+                    raise SystemExit(f"a tabela da etapa 0 de {ch} usada no Kaggle não é a de {a.caixas}")
+                bate = " | tabela igual à de --caixas"
+            else:
+                bate = " | tabela NÃO CONFERIDA (fora de --caixas)"
+        print(f"  {ch:9s} {v.get('situacao')} | métodos {v.get('metodos')} | sem prato {v.get('taxa_sem_prato')}{bate}")
+    if not P5.get("conferida") and not M.get("smoke"):
+        print("  ATENÇÃO: a execução rodou sem a conferência a olho marcada (--sem-conferencia).")
 
 
 def main():
@@ -513,11 +557,12 @@ def main():
     ap.add_argument("--so-confere", action="store_true")
     ap.add_argument("--referencia", help="execução 1 para a paridade: pasta de banco ou de saída do Kaggle (padrão: <TD>/resultados/zen_banco)")
     ap.add_argument("--substitui", action="store_true", help="saída com teste2: troca também as entradas do zen_banco e roda zen_avalia (lê o teste antigo)")
-    ap.add_argument("--divisoes", help="execução 4: pasta com as listas e tabelas de divisão das bases fechadas (fora do repositório)")
+    ap.add_argument("--divisoes", help="execuções 4 e 5: pasta com as listas e tabelas de divisão das bases fechadas (fora do repositório)")
+    ap.add_argument("--caixas", help="execução 5: pasta com as tabelas da etapa 0 (caixas_r5_<base>.csv) para conferir o sha256")
     a = ap.parse_args()
     man = sorted(glob.glob(os.path.join(a.pasta, "**", "manifesto.json"), recursive=True))
-    if man and json.load(open(man[0])).get("rodada") == "4":       # execução 4: treino_v2 + bases externas
-        return rodada4(a, json.load(open(man[0])), os.path.dirname(man[0]))
+    if man and json.load(open(man[0])).get("rodada") in ("4", "5"):     # execuções 4 e 5: treino_v2 + bases externas (5: recorte pelo prato, 14)
+        return rodada4(a, json.load(open(man[0])), os.path.dirname(man[0]), json.load(open(man[0]))["rodada"])
     if man and json.load(open(man[0])).get("rodada") == "3":       # execução 3: treino_v2, só teste2
         return rodada3(a, json.load(open(man[0])), os.path.dirname(man[0]))
     D = zen_comum.Dados()

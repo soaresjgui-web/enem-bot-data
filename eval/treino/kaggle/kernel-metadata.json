@@ -1,6 +1,6 @@
 {
-  "id": "USUARIO_KAGGLE/nutrelle-treino-gpu-r4",
-  "title": "nutrelle-treino-gpu-r4",
+  "id": "USUARIO_KAGGLE/nutrelle-treino-gpu-r5",
+  "title": "nutrelle-treino-gpu-r5",
   "code_file": "nutrelle_treino_gpu.ipynb",
   "language": "python",
   "kernel_type": "notebook",
@@ -12,6 +12,8 @@
   "docker_image_pinning_type": "original",
   "dataset_sources": [],
   "competition_sources": [],
-  "kernel_sources": [],
+  "kernel_sources": [
+    "USUARIO_KAGGLE/nutrelle-deteccao-r5"
+  ],
   "model_sources": []
 }
