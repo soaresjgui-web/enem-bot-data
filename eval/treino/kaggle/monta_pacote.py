@@ -39,9 +39,27 @@ import base64, csv, hashlib, io, json, lzma, os, re, subprocess, sys
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LISTAS = os.path.join(AQUI, "listas")
 REPO = os.path.abspath(os.path.join(AQUI, "..", "..", ".."))
+# Um pacote por kernel. `pasta`: onde ficam, no repositório, o notebook só com bases liberadas e o kernel-metadata.json.
+KERNELS = {
+    "r4": dict(nome="quarta execução (seção 13)", pasta=AQUI, notebook="nutrelle_treino_gpu.ipynb", slug="nutrelle-treino-gpu-r4", script="treino_gpu.py",
+               basicos=["treino_gpu.py", "listas/aval2_ids.csv", "listas/treino_v2.csv", "listas/ref_d1_r3.csv"],     # não lê treino.csv nem aval_ids.csv
+               args="['--rodada', '4']", orcamento=4.5, manifesto="manifesto.json"),
+    "r5a": dict(nome="etapa 0 da quinta execução (seção 14.3: caixa da refeição em cada foto)", pasta=os.path.join(AQUI, "deteccao_r5"),
+                notebook="nutrelle_deteccao_r5.ipynb", slug="nutrelle-deteccao-r5", script="deteccao_r5.py",
+                basicos=["deteccao_r5.py", "treino_gpu.py", "listas/treino_v2.csv", "listas/caixas_profundidade_n5k.csv"],
+                args="[]", orcamento=1.5, manifesto="manifesto_r5.json"),
+}
+KERNEL = "r4"           # mudado por --kernel
 NOTEBOOK = os.path.join(AQUI, "nutrelle_treino_gpu.ipynb")
 SLUG = "nutrelle-treino-gpu-r4"
-BASICOS = ["treino_gpu.py", "listas/aval2_ids.csv", "listas/treino_v2.csv", "listas/ref_d1_r3.csv"]      # a quarta execução não lê treino.csv nem aval_ids.csv
+BASICOS = KERNELS["r4"]["basicos"]
+
+
+def usa_kernel(k):
+    """Escolhe o pacote com que as funções abaixo trabalham."""
+    global KERNEL, NOTEBOOK, SLUG, BASICOS
+    KERNEL, kk = k, KERNELS[k]
+    NOTEBOOK, SLUG, BASICOS = os.path.join(kk["pasta"], kk["notebook"]), kk["slug"], kk["basicos"]
 LIBERADAS = ["flavoria", "lefood", "mensa"]                  # uso_declarado = comercial_ok: podem ir para o repositório público
 FECHADAS = ["omnifood", "fpb", "snapme"]                     # nao_comercial / autores_pedem_nao_treinar: só no notebook do push
 PREFIXO_FECHADAS = ("omn_", "fpb_", "snp_")
@@ -139,6 +157,8 @@ def conteudo(variante):
     """{nome do arquivo no pacote: bytes} da variante 'repo' (só bases liberadas) ou 'push' (as seis)."""
     arqs = {n: open(os.path.join(AQUI, n), "rb").read() for n in BASICOS}
     proc, pastas = {}, ([] if variante == "repo" else extras())
+    if KERNEL == "r5a":      # a etapa 0 detecta em todas as fotos, inclusive as de registro: as listas vão com os rótulos de treino apagados também
+        pass
     for ch in LIBERADAS + (FECHADAS if variante == "push" else []):
         lst, div, proc[ch] = enxuta(acha(f"externo_{ch}.csv", pastas), acha(f"divisao_r4_{ch}.csv", pastas))
         arqs[f"listas/externo_{ch}.csv"], arqs[f"listas/divisao_r4_{ch}.csv"] = lst, div
@@ -162,6 +182,8 @@ def _celula_arquivo(n, dados):
 
 
 def monta(variante):
+    if KERNEL == "r5a":
+        return monta_deteccao(variante)
     arqs = conteudo(variante)
     doms = LIBERADAS + (FECHADAS if variante == "push" else [])
     md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
@@ -219,6 +241,61 @@ def monta(variante):
     return nb
 
 
+def monta_deteccao(variante):
+    """Notebook da etapa 0 (14.3): baixa as fotos, roda o OWLv2 e a reserva por elipse, grava as tabelas de caixas e as
+    folhas de contato. Não treina nada e não lê rótulo."""
+    arqs = conteudo(variante)
+    doms = LIBERADAS + (FECHADAS if variante == "push" else [])
+    md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
+    code = lambda t: dict(cell_type="code", metadata={}, execution_count=None, outputs=[], source=t)
+    aviso = ("**Versão do repositório: só bases liberadas** (Nutrition5k, Flavoria, LeFood-Set, GT Mensa). A completa é montada fora do repositório "
+             "com `python3 monta_pacote.py push <pasta> --kernel r5a`." if variante == "repo" else
+             "**Versão completa, montada fora do repositório** (as seis bases): contém listas de bases sem licença comercial. **Não commitar, não publicar.**")
+    cells = [
+        md("# Nutrelle — etapa 0 da quinta execução: a caixa da refeição em cada foto (seção 14.3)\n\n"
+           "Notebook gerado por `eval/treino/kaggle/monta_pacote.py --kernel r5a`; **não edite à mão**. Baixa as fotos dos pratos de "
+           "treino_v2 e de todas as bases externas (inclusive as partes de registro), roda o detector OWLv2 base "
+           "(`google/owlv2-base-patch16-ensemble`, Apache 2.0) nas duas GPUs, com a reserva por elipse do OpenCV, e grava por base "
+           "`caixas_r5_<base>.csv` (caixa, nota, método, janela do guia, sha256 de cada foto), as folhas de contato de 40 fotos "
+           "(`folha_r5_<base>_<k>.jpg`, com a regra; `folha_r5_<base>_so_prato_<k>.jpg`, diagnóstico) e `resumo_r5.json`. "
+           "Nenhum rótulo é lido.\n\n" + aviso + "\n\nKaggle: *GPU T4 x2* e *Internet → On*."),
+        code("# Parâmetros\n"
+             "import json, os, subprocess, sys\n"
+             f"ORCAMENTO_H = {KERNELS['r5a']['orcamento']}\n"
+             "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_deteccao'\n"
+             "EXTRA = []           # ex.: ['--dominios', 'flavoria,mensa']; ['--espelho', '<pasta>']\n"
+             "SAIDA = os.environ.get('NUTRELLE_SAIDA') or SAIDA\n"
+             "EXTRA = json.loads(os.environ.get('NUTRELLE_EXTRA') or 'null') or EXTRA\n"
+             "for mod, pacote in (('transformers', 'transformers'), ('cv2', 'opencv-python-headless'), ('huggingface_hub', 'huggingface_hub')):\n"
+             "    try:\n"
+             "        __import__(mod)\n"
+             "    except ImportError:\n"
+             "        subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', pacote], check=False)\n"
+             f"os.makedirs('{DESTINO}/listas', exist_ok=True)"),
+    ]
+    for n in sorted(arqs, key=lambda n: (not n.endswith(".py"), n)):
+        cells.append(code(_celula_arquivo(n, arqs[n])))
+    cells.append(code(
+        "import subprocess, sys\n"
+        f"cmd = [sys.executable, '-u', '{DESTINO}/deteccao_r5.py', '--saida', SAIDA, '--orcamento-h', str(ORCAMENTO_H)] + EXTRA\n"
+        "p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)\n"
+        "for linha in p.stdout:\n"
+        "    print(linha, end='')\n"
+        "print('código de saída:', p.wait())"))
+    cells.append(code(
+        "import json, os\n"
+        "r = os.path.join(SAIDA, 'resumo_r5.json')\n"
+        "if os.path.exists(r):\n"
+        "    for b, v in json.load(open(r))['bases'].items():\n"
+        "        print(b, {k: v.get(k) for k in ('fotos', 'por_metodo', 'taxa_sem_prato', 'iou_profundidade_gravada', 'iou_profundidade_refeita', 'diagnostico_uniao_so_prato', 'situacao')})\n"
+        "print(sorted(os.listdir(SAIDA)))"))
+    for i, c in enumerate(cells):
+        c["id"] = f"celula-{i}"
+    return dict(cells=cells, nbformat=4, nbformat_minor=5,
+                metadata=dict(kernelspec=dict(display_name="Python 3", language="python", name="python3"), language_info=dict(name="python"),
+                              nutrelle=dict(kernel=KERNEL, variante=variante, sha256=_hash(arqs), embutidos=sorted(arqs), dominios=doms)))
+
+
 def grava_nb(nb, arq):
     with open(arq, "w") as f:
         json.dump(nb, f, indent=1, ensure_ascii=False)
@@ -227,7 +304,14 @@ def grava_nb(nb, arq):
 
 def notebook():
     nb = monta("repo")
+    os.makedirs(os.path.dirname(NOTEBOOK), exist_ok=True)
     grava_nb(nb, NOTEBOOK)
+    meta_arq = os.path.join(os.path.dirname(NOTEBOOK), "kernel-metadata.json")
+    if not os.path.exists(meta_arq):        # kernel novo: o kernel-metadata.json do repositório, com o usuário de exemplo
+        meta = json.load(open(os.path.join(AQUI, "kernel-metadata.json")))
+        meta.update(id=f"USUARIO_KAGGLE/{SLUG}", title=SLUG, code_file=os.path.basename(NOTEBOOK), dataset_sources=[], kernel_sources=[])
+        with open(meta_arq, "w") as f:
+            json.dump(meta, f, indent=2); f.write("\n")
     print(f"notebook do repositório: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB, bases {nb['metadata']['nutrelle']['dominios']}, sha256 {nb['metadata']['nutrelle']['sha256'][:16]}")
 
 
@@ -243,7 +327,7 @@ def push():
     os.makedirs(pasta, exist_ok=True)
     nb = monta("push")
     grava_nb(nb, os.path.join(pasta, os.path.basename(NOTEBOOK)))
-    meta = json.load(open(os.path.join(AQUI, "kernel-metadata.json")))
+    meta = json.load(open(os.path.join(os.path.dirname(NOTEBOOK), "kernel-metadata.json")))
     meta.update(id=f"{_opcao('--usuario', 'USUARIO_KAGGLE')}/{SLUG}", title=SLUG)
     if _opcao("--espelho-omnifood"):
         meta["dataset_sources"] = [_opcao("--espelho-omnifood")]
@@ -298,7 +382,7 @@ def confere_nb(nb, variante):
                              if not (c["cell_type"] == "code" and (c["source"] if isinstance(c["source"], str) else "").startswith(("# treino_gpu.py", "# listas/"))))
         erros = vazamentos(emb, texto_nb)
         assert not erros, "o notebook do repositório embute dado de base fechada: " + "; ".join(erros)
-        assert meta["dominios"] == LIBERADAS
+        assert meta["dominios"] == LIBERADAS and meta.get("kernel", "r4") == KERNEL
     else:
         assert meta["dominios"] == LIBERADAS + FECHADAS
     esperado = conteudo(variante)
@@ -322,12 +406,24 @@ def confere_nb(nb, variante):
 
 
 def confere():
+    """Confere o notebook do repositório de cada kernel (ou só o de --kernel) e, se dada, a pasta do push dele."""
+    pasta = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else None
+    ks = [_opcao("--kernel")] if _opcao("--kernel") else [k for k, v in KERNELS.items() if os.path.exists(os.path.join(v["pasta"], v["notebook"]))]
+    assert not pasta or len(ks) == 1, "com a pasta do push, diga qual kernel (--kernel)"
+    for k in ks:
+        usa_kernel(k)
+        print(f"== {k}: {KERNELS[k]['nome']}")
+        confere_kernel(pasta)
+    print("confere: ok")
+
+
+def confere_kernel(pasta):
     import tempfile
     import numpy as np
     nb = json.load(open(NOTEBOOK))
     emb = confere_nb(nb, "repo")
     assert os.path.getsize(NOTEBOOK) < 1_000_000, "notebook do repositório com mais de 1 MB"
-    meta = json.load(open(os.path.join(AQUI, "kernel-metadata.json")))
+    meta = json.load(open(os.path.join(os.path.dirname(NOTEBOOK), "kernel-metadata.json")))
     assert meta["code_file"] == os.path.basename(NOTEBOOK) and meta["enable_gpu"] and meta["enable_internet"] and meta["id"].endswith("/" + SLUG)
     # o teste2 não pode cruzar com nenhuma lista de treino e tem de ser o mesmo da execução 2
     ids = lambda arq: [r["dish_id"] for r in csv.DictReader(open(os.path.join(LISTAS, arq)))]
@@ -345,8 +441,10 @@ def confere():
     import treino_gpu as G
     D = G.Dados(LISTAS, rodada="4", dominios=[])
     assert D.hash2 == HASH_TESTE2 and len(av2) == N_TESTE2 and list(D.conj) == ["teste2"], "aval2_ids.csv mudou: o teste2 tem de ficar intocado"
-    ref = list(csv.DictReader(io.StringIO(emb["listas/ref_d1_r3.csv"].decode())))
-    assert [r["dish_id"] for r in ref] == [r["dish_id"] for r in v2], "ref_d1_r3.csv fora da ordem do treino_v2"
+    if "listas/ref_d1_r3.csv" in emb:
+        ref = list(csv.DictReader(io.StringIO(emb["listas/ref_d1_r3.csv"].decode())))
+        assert [r["dish_id"] for r in ref] == [r["dish_id"] for r in v2], "ref_d1_r3.csv fora da ordem do treino_v2"
+    assert not any("aval2" in n or "teste2" in n for n in emb) or KERNEL == "r4", "a quinta execução não leva o teste2 (14.1)"
 
     def le_como_no_kaggle(emb, esperadas):
         """O kernel lê as listas embutidas como no Kaggle (as conferências de le_dominio4: nenhum prato do Nutrition5k,
@@ -358,15 +456,15 @@ def confere():
                     open(os.path.join(t, n), "wb").write(b)
             E = G.Dados(os.path.join(t, "listas"), rodada="4")
             assert sorted(E.dom) == sorted(esperadas) and sorted(E.dom_fora) == sorted(set(G.DOMINIOS4) - set(esperadas)), E.dom_fora
-            assert E.hash == D.hash and E.hash2 == HASH_TESTE2 and E.todos == D.todos, "o pacote mudou as listas do Nutrition5k ou o teste2"
+            assert E.hash == D.hash and (E.hash2 == HASH_TESTE2 and E.todos == D.todos if KERNEL == "r4" else E.hash2 is None), "o pacote mudou as listas do Nutrition5k ou o teste2"
             for ch, d in E.dom.items():
                 assert d["lista_enxuta"] and np.isnan(d["T"][d["reg"]]).all() and np.isnan(d["FF"][d["reg"]]).all()
                 print(f"  {ch:9s} {d['resumo']} | {d['licenca']}, {d['uso_declarado']} | lista inteira {d['sha256_lista'][:16]}")
     le_como_no_kaggle(emb, LIBERADAS)
     print(f"listas: treino {len(tr)}, avaliação {len(av)}, teste2 {len(av2)} (hash {D.hash2}, intocado), treino_v2 {len(v2)} em {len(cad)} cadeias; interseções com o teste2 vazias")
     print(f"notebook do repositório: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB, só bases liberadas {LIBERADAS}; nenhum arquivo ignorado pelo git, nenhum id nem licença das bases fechadas")
-    if len(sys.argv) > 2:       # notebook do push
-        pasta = os.path.abspath(sys.argv[2])
+    if pasta:       # notebook do push
+        pasta = os.path.abspath(pasta)
         assert not dentro_do_repo(pasta), "a pasta do push está dentro do repositório"
         emb_p = confere_nb(json.load(open(os.path.join(pasta, os.path.basename(NOTEBOOK)))), "push")
         assert os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) < 1_000_000, "notebook do push com mais de 1 MB"
@@ -376,9 +474,10 @@ def confere():
         print(f"notebook do push em {pasta}: em dia, seis bases, {os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) / 1e6:.2f} MB; "
               f"id {mp['id']}, dataset_sources {mp['dataset_sources']}")
     elif meta["id"].startswith("USUARIO_KAGGLE/"):
-        print("o push usa a pasta montada por `monta_pacote.py push <pasta> --usuario <seu usuário>` (fora do repositório), não esta")
-    print("confere: ok")
+        print(f"o push usa a pasta montada por `monta_pacote.py push <pasta> --kernel {KERNEL} --usuario <seu usuário>` (fora do repositório), não esta")
 
 
 if __name__ == "__main__":
+    if _opcao("--kernel"):
+        usa_kernel(_opcao("--kernel"))
     {"listas": listas, "notebook": notebook, "push": push, "confere": confere}[sys.argv[1] if len(sys.argv) > 1 else "confere"]()

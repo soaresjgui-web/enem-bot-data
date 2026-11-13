@@ -1,4 +1,4 @@
-# Treino em GPU (Kaggle ou Colab) — seções 8, 10, 11, 12 e 13, uma única foto de cima
+# Treino em GPU (Kaggle ou Colab) — seções 8, 10 a 14, uma única foto de cima
 
 Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descritos em `docs/dados/precisao/resultado_modelo_treinado.md`. A inferência usa sempre **uma** foto RGB zenital. O critério é o do produto: proteína dentro de ±20% ou ±5 g.
 
@@ -7,9 +7,25 @@ Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descr
 - **Execução 1 (seção 10)** rodou no Kaggle: 2× T4, 15 configurações em ~5,7 h; a paridade com a CPU conferiu (RMSE 0,2550 contra 0,2551).
 - **Execução 2 (seção 11)** rodou no Kaggle: 11 configurações em 4,5 h de relógio (torch 2.11.0+cu130, timm 1.0.30), com previsões no teste2, arquivos de servir e `servico.json`; saída de 1,27 GB.
 - **Execução 3 (seções 12.3 a 12.5)** rodou no Kaggle: 23 configurações em 3,6 h; resultados em 12.6 e 12.7.
-- **Execução 4 (seção 13) está pronta para o push e ainda não rodou em GPU.** É o padrão do script (`--rodada 4`) e dos dois notebooks. Foi testada só em CPU, com backbones minúsculos, 40 pratos do Nutrition5k e de 4 a 24 fotos reais de cada base externa; os tempos abaixo são estimativas.
+- **Execução 4 (seção 13)** rodou no Kaggle: as seis bases baixaram, a paridade com o D1 saiu exata e nada foi cortado; resultados em 13.11.
+- **Execução 5 (seção 14), etapa 0 (14.3): pronta para o push e ainda não rodou em GPU.** Kernel separado, `nutrelle-deteccao-r5` (`deteccao_r5/`), descrito logo abaixo. A execução principal da quinta execução só roda depois da conferência a olho das folhas de contato.
 
 Para baixar a saída é preciso acesso a `www.kaggleusercontent.com`.
+
+## Quinta execução, etapa 0: a caixa da refeição em cada foto (14.3)
+
+`deteccao_r5.py`, num kernel próprio (`deteccao_r5/nutrelle_deteccao_r5.ipynb`, slug `nutrelle-deteccao-r5`). Não treina nada e não lê rótulo nenhum.
+
+- **Fotos:** os 2.281 pratos de treino_v2 (o teste2 está encerrado e não entra) e todas as fotos das bases externas que a quarta execução usava, inclusive as das partes de registro: Flavoria 1.848, LeFood 811, Mensa 200, FPB de cima 2.418, OmniFood8K 15.741 (três quadros por cena de treino e o `camera_0` das de registro), SNAPMe 1.163. Total: 24.462. As bases baixam como na quarta execução (mesmas funções, prazo de 40 min), em paralelo com a detecção.
+- **Detector:** OWLv2 base (`google/owlv2-base-patch16-ensemble`, revisão `cfd3195ba4ea`, sha256 dos pesos conferido; Apache 2.0) em meia precisão, um processo por GPU, imagem a 960 px, as sete consultas de 14.3; caixas com nota ≥ 0,15 e área ≥ 2%, NMS a 0,5, **união** das que sobram. O pré-processamento é feito na GPU, igual ao do `Owlv2Processor` (em 12 fotos reais de seis bases a caixa saiu com IoU de 0,93 a 1,00 contra a do processador). Sem caixa: a maior elipse do OpenCV (área de 10% a 95%, razão de eixos ≥ 0,5). Sem elipse: `sem_prato`, foto inteira.
+- **Janela do guia:** 4:3, centrada na caixa, altura = maior lado ÷ 0,80, cor mediana da borda onde sai da foto; `sem_prato` = o menor 4:3 que contém a foto. A foto é tomada como o modelo a vê: orientação do EXIF aplicada e retrato girado para paisagem.
+- **Nutrition5k:** IoU com a caixa da profundidade de 8.7 (`zen_prato.py`): a gravada naquela época (`listas/caixas_profundidade_n5k.csv`, 1.874 dos 2.281 pratos) e a refeita no kernel, com a mesma conta, para todos (`depth_raw.png` do mesmo bucket). Em 9 pratos do teste a refeita repetiu a gravada (IoU 1,00).
+- **Saída:** `caixas_r5_<base>.csv` (id da foto, arquivo, sha256 da foto, tamanho, `girada`, método, caixa, nota, nº de caixas, janela, versão do detector; e, para diagnóstico, a caixa só das consultas de prato e tigela, a elipse e até 40 caixas brutas com a consulta), `folha_r5_<base>_<1|2>.jpg` (40 fotos sorteadas com semente 0: a foto com a caixa em vermelho e a janela em amarelo, e o recorte ao lado) com `folha_r5_<base>.csv` (posição → foto, coluna `veredito` vazia para a conferência), as mesmas 40 fotos em `folha_r5_<base>_so_prato_<k>.jpg`, `resumo_r5.json` (por base: métodos, taxa de `sem_prato`, IoU com a profundidade, diagnóstico), `manifesto_r5.json` (detector, licença, parâmetros) e o registro.
+- **Refazer a regra na CPU, sem GPU nem fotos:** `python3 deteccao_r5.py --refaz-regra <saída da etapa 0> --saida <pasta> [--consultas 0,1,5,6]` regrava as tabelas com outra seleção de consultas, a partir das caixas brutas e da elipse gravadas. Com as sete consultas, repete a tabela original.
+- **Teste:** `python3 deteccao_r5.py --autoteste`; `python3 deteccao_r5.py --smoke 2 --cpu --workers 2 --listas <listas com as tabelas de divisão> --externo-imagens <pasta com uma subpasta por base> --saida <pasta> --cache <cache>` (com o OWLv2 de verdade; `--sem-detector` testa só a reserva).
+- **Push:** `NUTRELLE_SCRATCH=<scratchpad> python3 monta_pacote.py push <pasta fora do repositório> --kernel r5a --usuario <você>` e `python3 monta_pacote.py confere <pasta> --kernel r5a`. O notebook do repositório (`monta_pacote.py notebook --kernel r5a`) leva só as bases liberadas. Tempo estimado: ~20 min de detecção nas duas T4 depois que as bases chegam (~40 min de GPU, como 14.3), ~1 h de relógio com os downloads; orçamento de 1,5 h.
+
+**Atenção, visto no teste em CPU antes de rodar:** com a regra de 14.3 (união de todas as consultas), a consulta "a food tray" pega a **plataforma da balança** no Nutrition5k (nota 0,26 a 0,31, 80% da foto) e a **bandeja marrom** no FPB; a união vira quase a foto inteira e o recorte não enquadra o prato. Em 9 de 10 fotos do Nutrition5k e em 12 de 12 do FPB, a caixa da regra difere da caixa só de prato e tigela (IoU < 0,7). As folhas `_so_prato` mostram a alternativa nas mesmas 40 fotos, e `--refaz-regra` regrava a tabela na CPU se a conferência a olho preferir ela. A regra não foi mudada aqui: é pré-registrada.
 
 ## O que a execução 4 faz
 
