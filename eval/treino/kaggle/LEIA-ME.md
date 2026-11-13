@@ -1,17 +1,58 @@
-# Treino em GPU (Kaggle ou Colab) — seções 8, 10 a 14, uma única foto de cima
+# Treino em GPU (Kaggle ou Colab) — seções 8, 10 a 15, uma única foto de cima
 
 Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descritos em `docs/dados/precisao/resultado_modelo_treinado.md`. A inferência usa sempre **uma** foto RGB zenital. O critério é o do produto: proteína dentro de ±20% ou ±5 g.
 
-**Estado (12/11/2026):**
+**Estado (13/11/2026):**
 
 - **Execução 1 (seção 10)** rodou no Kaggle: 2× T4, 15 configurações em ~5,7 h; a paridade com a CPU conferiu (RMSE 0,2550 contra 0,2551).
 - **Execução 2 (seção 11)** rodou no Kaggle: 11 configurações em 4,5 h de relógio (torch 2.11.0+cu130, timm 1.0.30), com previsões no teste2, arquivos de servir e `servico.json`; saída de 1,27 GB.
 - **Execução 3 (seções 12.3 a 12.5)** rodou no Kaggle: 23 configurações em 3,6 h; resultados em 12.6 e 12.7.
 - **Execução 4 (seção 13)** rodou no Kaggle: as seis bases baixaram, a paridade com o D1 saiu exata e nada foi cortado; resultados em 13.11.
 - **Execução 5 (seção 14), etapa 0 (14.3):** kernel separado, `nutrelle-deteccao-r5` (`deteccao_r5/`), enviado em 13/11/2026; descrito logo abaixo.
-- **Execução 5, principal (14.4 a 14.6): pronta para o push e ainda não rodou em GPU.** Kernel `nutrelle-treino-gpu-r5` (`nutrelle_treino_gpu.ipynb`), que lê a saída da etapa 0. Só roda depois da conferência a olho das folhas de contato (`listas/conferencia_r5.json`).
+- **Execução 5, principal (14.4 a 14.6)** rodou no Kaggle de ponta a ponta, sem cortes; resultados em 14.10.
+- **Execução 6 (seção 15): pronta para o push e ainda não rodou em GPU.** Kernel `nutrelle-treino-gpu-r6` (`nutrelle_treino_gpu.ipynb`), descrito logo abaixo. O notebook da quinta execução fica no histórico do git (`monta_pacote.py notebook --kernel r5` o refaz como `nutrelle_treino_gpu_r5.ipynb`).
 
 Para baixar a saída é preciso acesso a `www.kaggleusercontent.com`.
+
+## Sexta execução: protocolo no recorte (15.4 a 15.6)
+
+`treino_gpu.py --rodada 6`, no kernel `nutrelle-treino-gpu-r6`. **Nada é decidido dentro do kernel, nenhuma previsão do teste2 é gerada e nenhuma foto de registro é pontuada.** A regra R15 (15.5) roda depois, na CPU.
+
+| Prioridade | Apelido | Configuração | O que é | Min (estimativa) |
+|---|---|---|---|---|
+| 1 | | `gpu6 feat so400m prato n5k` e `… prato <base>` | features do So400m sobre o recorte, como na quinta execução (a quinta não as guardou) | 22 + 37 |
+| 1 | R0c6, H0c6, R4c6 | `gpu6 ridge so400m prato`, `gpu6 fracoes so400m prato`, `gpu6 ridge so400m prato +tudo` | R0c, H0c e R4c refeitas: paridade com a quinta execução; a R4c é o ponto de partida do P3 e a entrada da H0c-m | 1, 3, 2 |
+| 2 | P3 (+ HP3) | `gpu6 ftparcial so400m prato rotulos +tudo` | ajuste fino parcial do So400m no recorte, só a perda de rótulos (pesos do P2), massa das seis bases, partindo da ridge R4c, parada pela validação interna; depois, a cabeça de densidade HP3 sobre as features dele | 245 |
+| 3 | F5c | `gpu6 ft siglip2_b16_224 r2 fracoes-sg prato +tudo` | receita do F4c (U0, cabeça sem gradiente, erro de enquadramento) + as massas das cinco bases, sem viés por domínio | 85 |
+| 4 | H0c-m | `gpu6 fracoes so400m prato +massa` | H0c com a log-massa da ridge R4c como entrada a mais, aninhada no treino | 5 |
+
+- **Entradas:** a saída da etapa 0 da quinta execução (`kernel_sources` = `<usuário>/nutrelle-deteccao-r5`, como na quinta), `listas/conferencia_r5.json` (a conferência já feita: regra `so_prato`, SNAPMe reprovado e com a foto inteira) e `listas/ref_r5_prato.csv` (R4c e H0c fora-do-fold da quinta execução, para a paridade). **A saída da quinta execução não é anexada:** a R4c é refeita no kernel (ver o P3) e conferida contra ela.
+- **Paridade (15.4):** assim que a R4c6 e a H0c6 terminam, as previsões fora-do-fold delas são comparadas com as da quinta execução (correlação ≥ 0,999 na massa com 1 e 8 orientações e nas duas densidades; critério da REF, massa × média das duas densidades, 1 orientação, em 68,34 ± 0,3). Se falhar, o manifesto marca tudo como não confiável e a ingestão não grava nada.
+- **P3 (15.4):**
+  - **Partida:** em cada fold, a cabeça de 22 saídas começa na ridge R4c refeita **só com as linhas de treino do modelo** (sem o fold de fora e sem a validação interna): as 22 saídas da R0c com a massa trocada pela da R4c (seis bases, sem viés, alfas da R0c6 e da R4c6). Por isso a R4c é recomputada no kernel em vez de lida da quinta execução: a ridge da quinta viu as cadeias da validação interna, e a época 0 sairia otimista na parada. O kernel confere que, com essas cadeias de volta, a conta repete a R4c6 do mesmo fold (`ini.dif_r4c6_log` em cada parte).
+  - **Treino:** 2 épocas só de cabeça (backbone parado, otimizador próprio da cabeça, passo 1e-3) e 5 épocas com os 4 últimos blocos (passo 1e-5 no topo, decaimento 0,75 por bloco, aquecimento de 10% e cosseno); média móvel de 0,999; erro de enquadramento de ±10% em todas as bases (nas externas, sobre o recorte já gravado); Nutrition5k com os 22 alvos e os pesos do P2, bases externas só com a massa total e os tetos de 13.4, sem viés por domínio.
+  - **Parada:** em cada fold, as cadeias com `sha1(cadeia) mod 10 == 0` ficam de fora como validação interna; o RMSE de log-massa delas (1 orientação, média móvel) é medido na época 0 e no fim de cada uma das 7 épocas, e vale o checkpoint de menor RMSE (a época 0 concorre). O fold de fora só é olhado na época 0 e no checkpoint escolhido (aceitação de 13.7 com ele). O modelo final treina as 7 épocas com tudo e grava a média móvel de cada época no cache; na parte `ext` vale a da **mediana das épocas escolhidas nos folds**.
+  - **HP3:** em cada fold, features do backbone escolhido nos pratos de treino (2 vistas: o recorte exato e um com erro de enquadramento) e uma cabeça como a H0c (MLP3, 60 épocas); na validação, 8 orientações (OOF com 1, 4 e 8). No final, a mesma conta com todos os pratos. As fotos externas passam uma vez por cada modelo: massa da cabeça principal e a HP3.
+  - **Sem efeito:** se a parada escolher a época 0 em todos os folds, `log__…json` marca `aceitacao.sem_efeito` ("ajuste fino sem efeito", 15.4).
+- **H0c-m (15.4):** entrada = [features ‖ log-massa da ridge R4c]. No modelo que deixa o fold q de fora, o prato do fold j recebe a ridge treinada sem q e sem j (aninhada: o rótulo de massa dele nunca entra na coluna dele); o prato do fold q, a R4c fora-do-fold. O kernel confere que essa coluna repete a R4c6 gravada. A procedência marca as bases da R4c como "massa total, pela entrada de log-massa da ridge R4c" (por isso a H0c-m não é só comercial).
+- **O que cada configuração grava (15.6):** tudo o que a quinta gravava, sem teste2. P3: `oof`, `oof_hp3`, `oof_ff`, `oof_dens_ff` (as duas últimas da HP3) com 1, 4 e 8 orientações; `extcv__`, `extcv_hp3__`, `extreg__`, `extreg_hp3__` crus; `escolha` (por fold: época escolhida, curva interna, partida), `final_p3` (épocas escolhidas e a do final), as cabeças HP3 de cada fold (`hp3_fold<k>_*`); pesos em meia precisão só dos tensores treinados, com a HP3 dentro (`cabeca_hp3`) e à parte (`cabecahp3__<config>.npz`). F5c: como o F4c, com a cabeça sem gradiente. H0c-m: a cabeça e, no arquivo de servir, a fórmula da entrada de massa. Arquivos de servir com remontagem conferida de todas as cabeças (a H0c-m e a HP3 também), `servico.json` com 1 e 4 orientações (T4 e CPU): REF (R4c × H0c refeitas), P3 + HP3, F5c, e os pares REF + F5c e P3 + F5c (soma dos dois).
+- **Ordem de corte (15.3): H0c-m, depois F5c; o P3 não é cortado antes delas.** Nenhuma configuração tem GPU preferida: cada processo pega a primeira parte pronta na ordem de prioridade, então as features se repartem entre as duas GPUs e as 7 partes do P3 também (cada fold e o final são independentes; a época do final é escolhida depois, na parte `ext`). Como a fila corta quem não cabe, a H0c-m (5 min) quase sempre cabe; o corte que importa é o do F5c.
+- **OmniFood8K é obrigatório nesta execução:** sem ele, a R4c6 não existe e o P3, o F5c e a H0c-m são cancelados (a execução fica só com a R0c6 e a H0c6). Na quinta, ele veio do Google Drive em 2 min; o espelho (`--espelho-omnifood`) continua valendo.
+
+**Tempo e tamanho (estimativa, 2 × T4, fila simulada com as funções do escalonador e as chegadas das bases da quinta execução):** ~207 min de treino + ~15 min de serviço: **~3,7 h de relógio**, dentro de `ORCAMENTO_H = 4.5`. Com 10% a mais de tempo, ~4,0 h e nada cortado; com 25% a mais, o F5c é cortado; com 40% a mais, nem o P3 cabe em 4,5 h. Saída: ~0,6 GB (P3 ~150 MB, F5c ~186 MB, as partes das cabeças). Cache em `/kaggle/temp`: o da quinta (~50 GB) mais ~1 GB das épocas do P3 final.
+
+**Push:** `python3 monta_pacote.py notebook` (o do repositório: só as bases liberadas), `NUTRELLE_SCRATCH=<scratchpad> python3 monta_pacote.py push <pasta fora do repositório> --usuario <você> [--espelho-omnifood <você>/<dataset>]`, `python3 monta_pacote.py confere <pasta>` (sem `--kernel`, o kernel sai do próprio notebook da pasta; a conferência do r6 exige `ref_r5_prato.csv` na ordem do treino_v2, a conferência a olho marcada e o `kernel_sources` certo) e `kaggle kernels push -p <pasta>`.
+
+**O que olhar nas primeiras linhas do registro** (`kaggle kernels logs <usuário>/nutrelle-treino-gpu-r6`):
+
+1. `nutrelle-treino-gpu/6 | rodada 6: 19 configurações | treino 2281 pratos, avaliação remontagem 8 | listas 460c298cb8e57fb0, teste2 None | orçamento 4.5 h`.
+2. `recorte pelo prato (14.3): … regra so_prato, consultas [0, 1, 5, 6] | reprovadas na conferência a olho: ['snapme'] | conferência feita: True` e uma linha por base.
+3. `[cuda:0] começa gpu6 feat so400m prato n5k` e, quando as bases chegam, a outra GPU com as features delas.
+4. Perto de 40 min: `== PARIDADE com a R4c e a H0c da quinta execução (15.4): OK | … critério de CV 68.3x% (esperado 68.34 ± 0.3)`. Se sair `FALHOU`, nada desta execução deve ser lido.
+5. No P3, por fold: `época 0 (cabeça = ridge): {… 'int_rmse_logm': …}`, as épocas com `so_cabeca: True` nas duas primeiras, e `checkpoint escolhido pela validação interna: época k`; na parte `ext`, `modelo final: época k (escolhidas nos folds: […])`.
+6. Nas linhas `== <config>: CV no treino`, `aceitação (13.7): … PASSOU/NÃO PASSOU` (no P3, com o checkpoint escolhido).
+
+**Trazer:** `python3 ingere_kaggle.py <pasta baixada> [--caixas <saída baixada da etapa 0>] [--so-confere]`: as conferências da quinta, mais a HP3 (`_hp3`) e a paridade refeita aqui (se falhar, nada é gravado); grava em `zen_banco_r6`.
 
 ## Quinta execução, etapa 0: a caixa da refeição em cada foto (14.3)
 
@@ -205,6 +246,7 @@ O ajuste fino em GPU não repete bit a bit; o ridge sobre backbone congelado dev
 | `listas/ref_d1_r3.csv` | Previsões fora-do-fold das duas cabeças do D1 na execução 3, para a conferência de paridade (13.7). |
 | `listas/caixas_profundidade_n5k.csv` | Caixas do prato tiradas da profundidade em 8.7 (1.874 pratos de treino_v2), para o IoU da etapa 0. |
 | `listas/conferencia_r5.json` | Resultado da conferência a olho das folhas da etapa 0: regra, consultas, bases reprovadas e `conferida`. A execução principal não começa sem `"conferida": true`. |
+| `listas/ref_r5_prato.csv` | Previsões fora-do-fold da R4c (log-massa, 1 e 8 orientações) e da H0c (as duas densidades, 1 orientação) da quinta execução, para a paridade da sexta (15.4). |
 | `monta_pacote.py` | Regrava as listas e o notebook; `confere` verifica se o notebook está em dia, se o teste2 é o mesmo da execução 2 (conteúdo fixado) e não cruza com nenhum treino, e se a lista externa não traz prato do Nutrition5k nem alvo fora do pré-registro. |
 | `conjuntos_gpu.json` | Conjuntos (médias) declarados antes de qualquer resultado de GPU. |
 | `ingere_kaggle.py` | Confere a saída e a leva para os bancos de previsões (ver "Trazer os resultados"). |
@@ -333,8 +375,9 @@ Duas pseudo-configurações usam a mesma máquina de estados, sem ocupar GPU: `e
 ## Teste rápido em CPU
 
 ```
-python3 treino_gpu.py --autoteste             # inclui o fechamento dos rótulos de registro, pesos por base, procedência, paridade, filas das execuções 4 e 5, F4 = U0 bit a bit
+python3 treino_gpu.py --autoteste             # inclui o fechamento dos rótulos de registro, pesos por base, procedência, paridade, filas das execuções 4 a 6, F4 = U0 bit a bit, coluna aninhada sem vazamento
 python3 treino_gpu.py --rodada 5 --smoke --listas <listas> --externo-imagens <fotos por base> --caixas <saída da etapa 0 (ou de deteccao_r5.py --smoke)> --saida <pasta> --cache <pasta_cache>
+python3 treino_gpu.py --rodada 6 --smoke …     # as mesmas entradas, mais ref_r5_prato.csv nas listas; ~2 min em CPU
 python3 treino_gpu.py --smoke --listas <pasta com todas as listas e tabelas> --externo-imagens <pasta com uma subpasta de fotos por base> --saida <pasta> --cache <pasta_cache>
 python3 treino_gpu.py --rodada 3 --smoke --saida <pasta> --cache <pasta_cache>     # execução 3: ~3 min, 40 pratos + 4 do teste2, ViT-Ti
 python3 treino_gpu.py --rodada 2 --smoke --saida <pasta2> --cache <pasta_cache2>   # execução 2

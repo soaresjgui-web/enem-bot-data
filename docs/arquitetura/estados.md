@@ -105,6 +105,12 @@ Mudanças da quinta execução (seção 14), só no escalonador; a máquina de e
 - A etapa `externo <base>` também prepara os recortes da base (com o sha256 de cada foto conferido contra a tabela da etapa 0); a parte `ext` dos ajustes finos espera os recortes, como esperava as fotos.
 - A conferência de paridade com o D1 não se aplica (o R0 e o H0 não são refeitos).
 
+Mudanças da sexta execução (seção 15); a máquina de estados das partes e as funções do escalonador não mudam:
+
+- **Sem GPU preferida:** nenhuma configuração declara `gpu`, então cada processo pega a primeira parte pronta na ordem de prioridade (as features do recorte e as 7 partes do P3 se repartem entre as duas GPUs). A ordem de corte (H0c-m, depois F5c) é a da prioridade, como antes.
+- **Parte `final` do P3 sem modelo:** ela treina todas as épocas e grava a média móvel de cada uma no cache; o modelo final (época = mediana das escolhidas nos folds), a HP3 final, os conjuntos de previsão e o arquivo de servir saem na parte tardia `ext`, que já roda depois de todas as outras partes. Por isso a `final` do P3 conta como pronta com as épocas gravadas, e a `ext` só com o arquivo de servir (`parte_pronta4`).
+- **Paridade:** a mesma função pura (`paridade_d1`) compara a R4c6 e a H0c6 com a quinta execução (`listas/ref_r5_prato.csv`, critério 68,34 ± 0,3); se falhar, o manifesto marca tudo como não confiável. Não muda o estado de nenhuma parte.
+
 Detalhes em `eval/treino/kaggle/LEIA-ME.md`.
 
 ## 3. Próximas máquinas a modelar

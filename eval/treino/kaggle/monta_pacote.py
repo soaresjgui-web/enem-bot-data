@@ -6,8 +6,8 @@ Uso:
                                      (zen_treino.csv, zen_aval.csv, gravados por zen_dados.py) e dos folds de zen_comum.Dados
   python3 monta_pacote.py notebook [--kernel K]
                                      regrava o notebook do REPOSITÓRIO do kernel K, só com as bases liberadas (Flavoria,
-                                     LeFood, Mensa: uso comercial permitido). K = r5 (padrão: a execução principal da quinta
-                                     execução, nutrelle_treino_gpu.ipynb), r5a (a etapa 0, deteccao_r5/) ou r4
+                                     LeFood, Mensa: uso comercial permitido). K = r6 (padrão: a sexta execução,
+                                     nutrelle_treino_gpu.ipynb), r5a (a etapa 0 da quinta, deteccao_r5/), r5 ou r4
   python3 monta_pacote.py push <pasta fora do repositório> [--kernel K] [--usuario U] [--espelho-omnifood U/slug] [--divisoes PASTA]
                                      monta o notebook COMPLETO (as seis bases) e o kernel-metadata.json numa pasta fora do
                                      repositório, pronta para `kaggle kernels push -p <pasta>`; no r5, `kernel_sources`
@@ -38,7 +38,7 @@ No notebook vão versões ENXUTAS das duas últimas: sem as linhas `fora`, só a
 linhas que não são de treino (partes de registro, avaliação fraca) já apagados; o sha256 dos arquivos inteiros vai em
 procedencia_r4.json, para o manifesto de cada modelo (13.8).
 """
-import base64, csv, hashlib, io, json, lzma, os, re, subprocess, sys
+import base64, csv, glob, hashlib, io, json, lzma, os, re, subprocess, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LISTAS = os.path.join(AQUI, "listas")
@@ -52,15 +52,19 @@ KERNELS = {
     "r5a": dict(nome="etapa 0 da quinta execução (seção 14.3: caixa da refeição em cada foto)", pasta=os.path.join(AQUI, "deteccao_r5"),
                 notebook="nutrelle_deteccao_r5.ipynb", slug="nutrelle-deteccao-r5", script="deteccao_r5.py",
                 basicos=["deteccao_r5.py", "treino_gpu.py", "listas/treino_v2.csv", "listas/caixas_profundidade_n5k.csv"],
-                args="[]", orcamento=1.5, manifesto="manifesto_r5.json"),
-    "r5": dict(nome="quinta execução (seção 14): recorte pelo prato e receitas corrigidas", pasta=AQUI, notebook="nutrelle_treino_gpu.ipynb", slug="nutrelle-treino-gpu-r5",
-               script="treino_gpu.py", basicos=["treino_gpu.py", "deteccao_r5.py", "listas/treino_v2.csv", "listas/conferencia_r5.json"],     # sem o teste2 (14.1)
-               args="['--rodada', '5']", orcamento=4.5, manifesto="manifesto.json", fontes_kernel=["nutrelle-deteccao-r5"]),
+                args="[]", orcamento=1.5, manifesto="manifesto_r5.json",
+                congelado="rodou em 13/11/2026; o notebook do repositório fica como rodou (o treino_gpu.py embutido é o daquele dia)"),
+    "r5": dict(nome="quinta execução (seção 14); o notebook do repositório agora é o da sexta", pasta=AQUI, notebook="nutrelle_treino_gpu_r5.ipynb",
+               slug="nutrelle-treino-gpu-r5", script="treino_gpu.py", basicos=["treino_gpu.py", "deteccao_r5.py", "listas/treino_v2.csv", "listas/conferencia_r5.json"],
+               args="['--rodada', '5']", orcamento=5.0, manifesto="manifesto.json", fontes_kernel=["nutrelle-deteccao-r5"]),     # sem o teste2 (14.1)
+    "r6": dict(nome="sexta execução (seção 15): protocolo no recorte (P3 + HP3, F5c, H0c-m)", pasta=AQUI, notebook="nutrelle_treino_gpu.ipynb", slug="nutrelle-treino-gpu-r6",
+               script="treino_gpu.py", basicos=["treino_gpu.py", "deteccao_r5.py", "listas/treino_v2.csv", "listas/conferencia_r5.json", "listas/ref_r5_prato.csv"],
+               args="['--rodada', '6']", orcamento=4.5, manifesto="manifesto.json", fontes_kernel=["nutrelle-deteccao-r5"]),     # sem o teste2 (15.1)
 }
-KERNEL = "r5"           # mudado por --kernel
+KERNEL = "r6"           # mudado por --kernel
 NOTEBOOK = os.path.join(AQUI, "nutrelle_treino_gpu.ipynb")
-SLUG = "nutrelle-treino-gpu-r5"
-BASICOS = KERNELS["r5"]["basicos"]
+SLUG = "nutrelle-treino-gpu-r6"
+BASICOS = KERNELS["r6"]["basicos"]
 
 
 def usa_kernel(k):
@@ -201,12 +205,18 @@ def monta(variante):
              "(OmniFood8K e FPB, CC BY-NC 4.0) e do SNAPMe (CC BY-SA 4.0, só avaliação): **não commitar, não publicar**.")
     cells = [
         md(("# Nutrelle — treino em GPU, quarta execução (seção 13: mais bases de treino; uma única foto de cima)\n\n" if KERNEL == "r4" else
-            "# Nutrelle — treino em GPU, quinta execução (seção 14: recorte pelo prato e receitas corrigidas; uma única foto de cima)\n\n")
+            "# Nutrelle — treino em GPU, quinta execução (seção 14: recorte pelo prato e receitas corrigidas; uma única foto de cima)\n\n" if KERNEL == "r5" else
+            "# Nutrelle — treino em GPU, sexta execução (seção 15: protocolo no recorte; uma única foto de cima)\n\n")
            + "Notebook gerado por `eval/treino/kaggle/monta_pacote.py`; **não edite à mão** (edite `treino_gpu.py` e gere de novo). "
            + ("Roda sem interação: baixa as fotos zenitais do Nutrition5k e as das bases externas (em paralelo, desde o início), extrai as "
               "features do SigLIP 2 So400m, treina as configurações da seção 13.6 até o orçamento de tempo e grava previsões cruas "
               "(fora-do-fold no treino; no teste2 e nas partes de registro das bases externas, **sem pontuar nada**), registros, os arquivos "
               "para servir cada modelo e `servico.json`." if KERNEL == "r4" else
+              "Lê a saída do kernel da etapa 0 (`nutrelle-deteccao-r5`, anexada em *Input*), `listas/conferencia_r5.json` (a regra e as bases da "
+              "conferência a olho) e `listas/ref_r5_prato.csv` (R4c e H0c fora-do-fold da quinta execução, para a paridade). Refaz as features do "
+              "So400m no recorte, a R0c, a R4c e a H0c (paridade), e treina o P3 (com a HP3), o F5c e a H0c-m de 15.6 até o orçamento; grava "
+              "previsões cruas (fora-do-fold no treino e nas partes de registro das bases externas, **sem pontuar nada; nenhuma do teste2**), os "
+              "arquivos para servir e `servico.json`." if KERNEL == "r6" else
               "Lê a saída do kernel da etapa 0 (`nutrelle-deteccao-r5`, anexada em *Input*) e `listas/conferencia_r5.json` (regra e bases reprovadas na "
               "conferência a olho; sem `\"conferida\": true` o kernel não começa). Baixa as fotos, recorta cada uma na janela do guia, extrai as features do "
               "So400m sobre o recorte, treina as configurações de 14.5 até o orçamento e grava previsões cruas (fora-do-fold no treino e nas partes de "
@@ -216,7 +226,7 @@ def monta(variante):
         code("# Parâmetros (os padrões servem para o Kaggle)\n"
              "import json, os\n"
              f"RODADA = '{KERNEL[1:]}'         # este pacote só traz as listas desta execução\n"
-             "ORCAMENTO_H = 5.0    # horas de relógio; o que não couber inteiro não começa (a ordem de prioridade decide o que fica de fora)\n"
+             f"ORCAMENTO_H = {KERNELS[KERNEL]['orcamento']}    # horas de relógio; o que não couber inteiro não começa (a ordem de prioridade decide o que fica de fora)\n"
              "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_saida'   # no Colab, aponte para o Drive para retomar\n"
              "EXTRA = []           # ex.: ['--so', 'ridge']; ['--dominios', 'flavoria,mensa']; ['--retoma', '<pasta>']; ['--espelho', '<pasta com o zip do OmniFood8K>']\n"
              "# as variáveis de ambiente NUTRELLE_SAIDA e NUTRELLE_EXTRA (lista em JSON) substituem os valores acima sem editar o notebook\n"
@@ -240,8 +250,10 @@ def monta(variante):
         "    m = json.load(open(m))\n"
         "    for nome, c in m['configs'].items():\n"
         "        print(f\"{c['estado']:14s} {nome:46s} serviço: {c.get('servico', {}).get('estado')}\")\n"
-        "    print('paridade com o D1:', m.get('paridade_d1'))\n"
-        "    print('recorte pelo prato:', {k: v for k, v in (m.get('prato') or {}).items() if k in ('regra', 'consultas', 'reprovados', 'n5k_ok')})\n"
+        + ("    print('paridade com o D1:', m.get('paridade_d1'))\n" if KERNEL == "r4" else
+           "    print('paridade (sexta execução: R4c e H0c refeitas × quinta):', m.get('paridade_d1'))\n" if KERNEL == "r6" else
+           "    print('paridade:', m.get('paridade_d1'))\n")
+        + "    print('recorte pelo prato:', {k: v for k, v in (m.get('prato') or {}).items() if k in ('regra', 'consultas', 'reprovados', 'n5k_ok')})\n"
         "    print('confiança:', m.get('confianca'))\n"
         "    print('bases externas:', {k: v.get('situacao') for k, v in (m.get('dominios') or {}).items()})\n"
         "    print('tamanho da saída:', m.get('tamanho_saida'))\n"
@@ -401,9 +413,14 @@ def confere_nb(nb, variante):
         assert meta["dominios"] == LIBERADAS + FECHADAS
     esperado = conteudo(variante)
     assert set(emb) == set(esperado), f"arquivos embutidos diferentes: {sorted(set(emb) ^ set(esperado))}"
-    for n in esperado:
-        assert emb[n] == esperado[n], f"{n}: o notebook está desatualizado (rode `python3 monta_pacote.py {'notebook' if variante == 'repo' else 'push <pasta>'}`)"
-    assert meta["sha256"] == _hash(esperado)
+    congelado = variante == "repo" and KERNELS[KERNEL].get("congelado")
+    for n in esperado:          # kernel que já rodou (congelado): o notebook do repositório fica como rodou; as listas têm de ser as de hoje
+        if not (congelado and n.endswith(".py")):
+            assert emb[n] == esperado[n], f"{n}: o notebook está desatualizado (rode `python3 monta_pacote.py {'notebook' if variante == 'repo' else 'push <pasta>'}`)"
+    if congelado:
+        print(f"  {KERNEL}: notebook congelado ({congelado}); scripts embutidos {', '.join(n for n in esperado if n.endswith('.py') and emb[n] != esperado[n]) or 'iguais aos de hoje'}")
+    else:
+        assert meta["sha256"] == _hash(esperado)
     for n, b in emb.items():    # as linhas que não são de treino não levam rótulo nenhum, em nenhuma base
         if re.fullmatch(r"listas/externo_\w+\.csv", n):
             ch = n[len("listas/externo_"):-4]
@@ -422,6 +439,11 @@ def confere_nb(nb, variante):
 def confere():
     """Confere o notebook do repositório de cada kernel (ou só o de --kernel) e, se dada, a pasta do push dele."""
     pasta = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else None
+    if pasta and not _opcao("--kernel"):        # com a pasta do push, o kernel sai do próprio notebook dela (nunca pula a conferência)
+        nbs = glob.glob(os.path.join(pasta, "*.ipynb"))
+        assert len(nbs) == 1, f"a pasta do push tem de ter um notebook só: {nbs}"
+        sys.argv += ["--kernel", json.load(open(nbs[0]))["metadata"]["nutrelle"]["kernel"]]
+        usa_kernel(_opcao("--kernel"))
     ks = [_opcao("--kernel")] if _opcao("--kernel") else [k for k, v in KERNELS.items() if os.path.exists(os.path.join(v["pasta"], v["notebook"]))]
     assert not pasta or len(ks) == 1, "com a pasta do push, diga qual kernel (--kernel)"
     for k in ks:
@@ -458,7 +480,11 @@ def confere_kernel(pasta):
     if "listas/ref_d1_r3.csv" in emb:
         ref = list(csv.DictReader(io.StringIO(emb["listas/ref_d1_r3.csv"].decode())))
         assert [r["dish_id"] for r in ref] == [r["dish_id"] for r in v2], "ref_d1_r3.csv fora da ordem do treino_v2"
-    assert not any("aval2" in n or "teste2" in n for n in emb) or KERNEL == "r4", "a quinta execução não leva o teste2 (14.1)"
+    assert not any("aval2" in n or "teste2" in n for n in emb) or KERNEL == "r4", "a quinta e a sexta execuções não levam o teste2 (14.1, 15.1)"
+    if KERNEL == "r6":      # a paridade da sexta execução: as previsões da quinta, na ordem do treino_v2
+        ref = list(csv.DictReader(io.StringIO(emb["listas/ref_r5_prato.csv"].decode())))
+        assert [r["dish_id"] for r in ref] == [r["dish_id"] for r in v2], "ref_r5_prato.csv fora da ordem do treino_v2"
+        assert "listas/conferencia_r5.json" in emb and json.loads(emb["listas/conferencia_r5.json"])["conferida"], "a conferência a olho da etapa 0 tem de estar marcada"
 
     def le_como_no_kaggle(emb, esperadas):
         """O kernel lê as listas embutidas como no Kaggle (as conferências de le_dominio4: nenhum prato do Nutrition5k,
@@ -485,6 +511,8 @@ def confere_kernel(pasta):
         le_como_no_kaggle(emb_p, LIBERADAS + FECHADAS)
         mp = json.load(open(os.path.join(pasta, "kernel-metadata.json")))
         assert mp["id"].endswith("/" + SLUG) and mp["code_file"] == os.path.basename(NOTEBOOK)
+        dono = mp["id"].split("/")[0]
+        assert sorted(mp.get("kernel_sources", [])) == sorted(f"{dono}/{k}" for k in KERNELS[KERNEL].get("fontes_kernel", [])), "kernel_sources do push"
         print(f"notebook do push em {pasta}: em dia, seis bases, {os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) / 1e6:.2f} MB; "
               f"id {mp['id']}, dataset_sources {mp['dataset_sources']}")
     elif meta["id"].startswith("USUARIO_KAGGLE/"):
