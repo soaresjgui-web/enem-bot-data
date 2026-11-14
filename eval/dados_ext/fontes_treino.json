@@ -239,6 +239,78 @@
         "zenital_um_item_fonte_acima_25g_bandejas": 257,
         "todas_fontes_acima_25g_bandejas": 346
       }
+    },
+    {
+      "id": "foodbd",
+      "uso": "ROTULO DE NUTRICIONISTA (proteína do prato estimada, sem massa), em colunas *_fraca",
+      "licenca_na_lista": "CC BY 4.0",
+      "uso_declarado": "comercial_ok",
+      "o_que_e": "FoodBD: 3.523 fotos de celular de refeições caseiras de Bangladesh, de cima ou quase; em 1.837, proteína, kcal, gordura, carboidrato e fibra do prato estimados por nutricionista.",
+      "onde": "Mendeley Data, https://data.mendeley.com/public-api/datasets/xh3ghf3jbg (lista de arquivos e URLs); a URL de cada foto vai na coluna url",
+      "alcance_do_kaggle": "Provável (API pública do Mendeley, sem login); há também cópias do dataset no Kaggle (mirzaashifmugdho/foodbd-a-polygon-annotated-meal-image-dataset)",
+      "licenca": "CC BY 4.0 (registro do Mendeley Data, V2); as cópias do Kaggle dizem CC BY-SA 4.0",
+      "citar": "FoodBD: A Polygon-Annotated Meal Image Dataset of Bangladeshi Cuisine with Visual and Nutritional Labels. Mendeley Data, V2 (2025). https://doi.org/10.17632/xh3ghf3jbg.2",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_foodbd.csv (1.828 fotos), montada por eval/dados_ext/foodbd_monta.py",
+      "contagens": {
+        "fotos": 1828,
+        "proteina_0_5": 250,
+        "proteina_5_15": 1311,
+        "proteina_15_25": 227,
+        "proteina_25_40": 35,
+        "proteina_acima_40": 5,
+        "acima_25g": 40
+      },
+      "cuidados": [
+        "Estimativa de nutricionista, não pesagem; parece seguir porções padrão.",
+        "Sem massa.",
+        "Sem id de pessoa: grupo = bloco de 25 ids."
+      ]
+    },
+    {
+      "id": "receitas_datahive",
+      "uso": "DENSIDADE FRACA (g de proteína por 100 g de ingredientes crus), para a cabeça de densidade; NAO COMERCIAL",
+      "licenca_na_lista": "CC BY-NC 4.0 (cartão); fotos e receitas dos sites de origem",
+      "uso_declarado": "nao_comercial",
+      "o_que_e": "39.447 receitas de sites americanos e britânicos no formato Edamam (gramas por ingrediente, peso total e nutrientes), com foto do prato pronto; 21.859 passam na limpeza.",
+      "onde": "https://huggingface.co/datasets/datahiveai/recipes-with-nutrition (CSV de 450 MB); fotos no bucket S3 datahive-prod-dataset-products (coluna url_imagem)",
+      "alcance_do_kaggle": "Sim (HF e S3 público)",
+      "licenca": "CC BY-NC 4.0 (cartão do HF)",
+      "citar": "DataHive, Recipes Dataset (amostra), https://huggingface.co/datasets/datahiveai/recipes-with-nutrition",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_receitas_datahive.csv (fora do git), montada por eval/dados_ext/receitas_datahive_monta.py",
+      "contagens": {
+        "receitas": 21859,
+        "densidade_mediana_g100": 6.9,
+        "porcao_acima_25g": 6443,
+        "com_porcao_valida": 21121
+      },
+      "cuidados": [
+        "Densidade do peso cru.",
+        "Foto de site de receita (panela, travessa, ângulo), não de uma porção pesada.",
+        "Sem massa por foto."
+      ]
+    },
+    {
+      "id": "receitas_povarenok",
+      "uso": "DENSIDADE FRACA (g de proteína por 100 g do prato, calculada pelo site); SEM LICENCA do titular",
+      "licenca_na_lista": "sem licença do titular (raspagem do povarenok.ru)",
+      "uso_declarado": "sem_licenca",
+      "o_que_e": "154 mil receitas russas do povarenok.ru com foto do prato pronto e tabela nutricional do site (por 100 g, prato inteiro e porção); 58.498 pratos quentes, saladas, entradas e sopas passam na limpeza.",
+      "onde": "https://huggingface.co/datasets/d0rj/povarenok_recipes_detail (dois parquet, 200 MB); fotos em www.povarenok.ru (coluna url_imagem)",
+      "alcance_do_kaggle": "Rótulos sim; as fotos dependem de www.povarenok.ru, bloqueado nesta sessão e não testado do Kaggle",
+      "licenca": "Cartão do HF: Apache-2.0 (só a raspagem); pelas regras do site os direitos são do Povarenok e dos autores",
+      "citar": "d0rj/povarenok_recipes_detail (Hugging Face), raspagem de https://www.povarenok.ru",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_receitas_povarenok.csv (fora do git), montada por eval/dados_ext/receitas_povarenok_monta.py",
+      "contagens": {
+        "receitas": 58498,
+        "densidade_mediana_g100": 7.8,
+        "porcao_acima_25g": 14872,
+        "com_porcao_valida": 35999
+      },
+      "cuidados": [
+        "Fotos não abertas (host bloqueado).",
+        "Ingrediente sem quantidade não entra na conta do site.",
+        "Foto de receita, não de uma porção."
+      ]
     }
   ],
   "_procedencia": "Toda lista externa leva as colunas `licenca` (texto exato da licença) e `uso_declarado` (comercial_ok | nao_comercial | sem_licenca | autores_pedem_nao_treinar), por decisão da fundadora de 12/11/2026 de não restringir o treino a bases de licença comercial. Bases atrás de formulário ou de acesso restrito (MetaFood3D oficial, ClinicPlate) esperam o pedido da fundadora; cópias de terceiros que contornam esse controle não são usadas.",
@@ -254,6 +326,22 @@
     {
       "id": "acetada",
       "motivo": "CC BY-NC 4.0, publicado em skynet.ecn.purdue.edu/~coburn6/ACETADA/, host que o proxy desta sessão recusa (403 no CONNECT); sem lista"
+    },
+    {
+      "id": "recipe1m",
+      "motivo": "cadastro em im2recipe.csail.mit.edu (host bloqueado aqui); subconjunto com nutrição, cerca de 51 mil receitas com gramas por ingrediente; cópias no HF não usadas"
+    },
+    {
+      "id": "aihub",
+      "motivo": "AI Hub (Coreia): cadastro com verificação de identidade; aihub.or.kr bloqueado aqui; não confirmado se há peso por foto"
+    },
+    {
+      "id": "madima23",
+      "motivo": "HF lubnaa25/Madima23: gated, aceitar termos com conta do HF"
+    },
+    {
+      "id": "foodlogathl",
+      "motivo": "HF FoodLog/FoodLogAthl-218: gated, só acadêmico; sem nutrição no cartão"
     }
   ]
 }

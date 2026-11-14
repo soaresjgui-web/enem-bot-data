@@ -6,6 +6,10 @@ __pycache__/
 eval/treino/kaggle/listas/externo_omnifood.csv
 eval/treino/kaggle/listas/externo_fpb.csv
 eval/treino/kaggle/listas/externo_snapme.csv
+# Terceira varredura: receitas com licença não comercial ou sem licença do titular (refeitas por
+# receitas_datahive_monta.py e receitas_povarenok_monta.py)
+eval/treino/kaggle/listas/externo_receitas_datahive.csv
+eval/treino/kaggle/listas/externo_receitas_povarenok.csv
 eval/treino/kaggle/listas/divisao_r4_omnifood.csv
 eval/treino/kaggle/listas/divisao_r4_fpb.csv
 eval/treino/kaggle/listas/divisao_r4_snapme.csv

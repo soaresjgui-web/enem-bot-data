@@ -12,6 +12,8 @@
 
 **Segunda varredura (12/11/2026), seção 10:** com Zenodo, Figshare, Dataverse, arXiv e Mendeley liberados, não apareceu nenhum conjunto novo de pratos compostos pesados com licença comercial. Saíram duas listas a mais (LeFood-Set, com peso medido de itens isolados; SNAPMe, com rótulo fraco e uso pendente de decisão) e um pedido de acesso que vale fazer (ClinicPlate).
 
+**Terceira varredura (14/11/2026), seção 12:** nenhuma base nova com proteína medida em foto de prato. Saíram três listas: densidade de receita em escala (DataHive, 21.859; Povarenok, 58.498, fotos ainda bloqueadas) e estimativa de nutricionista em 1.828 pratos caseiros de cima (FoodBD, CC BY 4.0, só 40 acima de 25 g).
+
 **Mudança de escopo (12/11/2026), seção 11:** a fundadora decidiu não restringir o treino a bases de licença comercial. Saíram as listas do OmniFood8K (8.017 cenas de cima, com proteína recalculada; 405 acima de 25 g) e do Food Portion Benchmark (2.503 fotos de cima com massa medida), a do SNAPMe voltou, e toda lista externa leva agora `licenca` e `uso_declarado` em cada linha. ACETADA segue bloqueado; MetaFood3D e ClinicPlate esperam o pedido da fundadora.
 
 Este documento não repete `datasets_internacionais.md` (09/11) nem `fontes.md` (08/11). O que mudou desde então: acesso à API do Kaggle e a possibilidade de anexar datasets ou baixar da internet dentro do notebook de treino.
@@ -468,6 +470,115 @@ Não há lista. O dataset está em `skynet.ecn.purdue.edu/~coburn6/ACETADA/`, e 
 
 Nenhuma destas bases traz proteína **medida** acima de 25 g em prato brasileiro; o que entra é massa medida, identidade do item e proteína de tabela.
 
+## 12. Terceira varredura (14/11/2026): bases nacionais, Hugging Face, Kaggle e receitas
+
+Pedido: procurar qualquer base pública com rótulo real, ou derivado de forma razoável, para fotos de refeição, com prioridade para pratos ricos em proteína; licença não é restrição (decisão da fundadora, com `licenca` e `uso_declarado` em cada linha); controle de acesso não se contorna.
+
+### 12.1 O que foi buscado
+
+- **Hugging Face:** API do Hub com 18 palavras (food, nutrition, calorie, portion, protein, macro, meal, dish, recipe, diet, plate, cuisine...), com e sem o filtro de imagem: 4.274 repositórios; mais 50 buscas por nome (MM-Food, nutrition5k, foodlog, madima, recipe1m, korean, japanese, thali...). Abri o cartão de 40 e os arquivos de 12.
+- **Kaggle:** 80 buscas novas (protein, macro, calorie image, meal weight, plate, dietitian, hospital tray, school meal, bento, thali, comidas nacionais, receitas, povarenok, edamam, recipe1m, foodbd...). Li o metadado de 20.
+- **Zenodo e Figshare:** 32 e 12 buscas novas (diário fotográfico com nutricionista, registro pesado com foto, cozinhas nacionais, receitas com foto, Stance4Health, AI4Food, MADiMa). **Dryad e OSF não respondem daqui** (proxy recusa `datadryad.org` e `api.osf.io`).
+- **arXiv** (artigos de 2025 e 2026 com base nova) e três buscas na web (AI Hub, ChinaMartFood-109, bases brasileiras).
+
+### 12.2 Resultado, em ordem de valor para o objetivo
+
+| # | Base | Linhas | Rótulo | Acima de 25 g | `licenca` / `uso_declarado` | Host | Lista |
+|---|---|---|---|---|---|---|---|
+| 1 | **Receitas DataHive** (Edamam) | 21.859 receitas com foto | **Densidade**: g de proteína por 100 g de ingredientes crus, pesados pela análise da Edamam | 6.443 de 21.121 por porção declarada | CC BY-NC 4.0 / `nao_comercial` | HF + bucket S3 do DataHive: **abertos** | `externo_receitas_datahive.csv` (fora do git) |
+| 2 | **Receitas Povarenok.ru** | 58.498 receitas com foto | **Densidade** por 100 g do prato, calculada pelo site a partir das quantidades | 14.872 de 35.999 por porção declarada | sem licença do titular / `sem_licenca` | rótulos no HF (aberto); **fotos em `www.povarenok.ru`: bloqueado** | `externo_receitas_povarenok.csv` (fora do git) |
+| 3 | **FoodBD** (Bangladesh) | 1.828 pratos, uma foto cada | **Proteína, kcal, gordura, carboidrato e fibra do prato, estimados por nutricionista**; sem massa | 40 | CC BY 4.0 / `comercial_ok` | Mendeley Data: **aberto** | `externo_foodbd.csv` |
+| — | MM-Food-100K / CalorieBench-80K | 100.000 fotos de celular | Gerado por GPT-4o e Qwen, revisado por usuários de uma campanha; porções redondas (200 g, 300 g) | não conta | OpenRAIL-M | fotos em `file.b18a.io`: bloqueado | **sem lista**: não é rótulo real (12.5) |
+
+As três listas novas têm as colunas de treino_v2 **vazias** (fora `dish_id`, `cadeia = -1`, `fold = -1`): o rótulo vai em colunas `*_fraca`, com `natureza_rotulo`, como no SNAPMe. Nenhuma traz massa medida de uma porção fotografada.
+
+### 12.3 As receitas: dá para treinar a cabeça de densidade em escala?
+
+**Sim, como alvo fraco, e só a densidade.** A ideia é a do pedido: a receita dá proteína por grama, que é metade do nosso erro, e há dezenas de milhares com foto do prato pronto.
+
+- **Receitas DataHive** (`eval/dados_ext/receitas_datahive_monta.py`). *Citar:* DataHive, "Recipes Dataset" (amostra de 39.447 receitas), https://huggingface.co/datasets/datahiveai/recipes-with-nutrition, CC BY-NC 4.0.
+  - **Origem das receitas:** Food Network, food.com, Allrecipes, Food52, BBC Good Food, Epicurious e outros sites. Cada linha de ingrediente vem convertida em gramas no formato da API Edamam, com o peso total e os nutrientes da receita inteira.
+  - **Rótulo:** `densidade_proteina_fraca_g100` = 100 × proteína / soma dos gramas crus.
+  - **Limpeza (contagens no script):**
+    - saem 15.279 receitas que não são prato de comida (sobremesa, bebida, molho, pão...);
+    - saem 1.349 com água ou caldo acima de 30% do peso cru, fora as sopas (a água do cozimento derruba a densidade);
+    - saem 349 com fonte de proteína sem peso, 113 com kcal incoerente com 4P + 4C + 9G, 91 com mais de 20% dos ingredientes sem peso e 405 com foto repetida.
+  - **Fotos:** abri 24 pratos principais sorteados. São fotos de site de receita, 300×300 ou 600×600: panela e travessa, muitas em ângulo e algumas montadas; nenhuma é uma porção pesada. As densidades batiam com o que se via (risoto 3,4 g/100 g; frango 9,5; carne de caça 20,6).
+  - **Números:** densidade crua mediana de 6,9 g/100 g (p10 1,7; p90 15,1). Há 3.447 receitas com frango acima de 20% do peso, 1.807 com carne bovina e 1.772 com peixe.
+- **Receitas Povarenok** (`eval/dados_ext/receitas_povarenok_monta.py`). *Fonte:* d0rj/povarenok_recipes_detail no HF, raspagem de povarenok.ru.
+  - **Licença:** o cartão diz Apache-2.0, mas pelas regras do site os direitos são dele e dos autores; por isso `uso_declarado = sem_licenca`.
+  - **Rótulo:** a densidade é a do próprio site ("por 100 g do prato"), calculada pelas quantidades. O peso do prato sai da razão kcal do prato / kcal por 100 g.
+  - **Limpeza:** de 154.158 receitas, ficam 58.498 pratos quentes, saladas, entradas e sopas.
+    - saem 11.664 com mais de 25% dos ingredientes sem quantidade;
+    - saem 2.448 com uma fonte de proteína sem quantidade. A conta do site a ignora: "frango a gosto" dava 0,7 g/100 g;
+    - saem 6.685 com kcal incoerente e 2.041 com foto repetida ou ausente.
+  - **Números:** densidade mediana de 7,8 g/100 g (p10 2,3; p90 14,9).
+  - **Ruído que fica:** receita de queijo feito em casa com 10 litros de leite (a densidade é a do leite, não do queijo); medidas caseiras convertidas pelo site.
+  - **As fotos não foram abertas** (host bloqueado), então nem a vista nem a qualidade foram conferidas.
+- **O que limita as duas:**
+  1. a densidade é do peso **cru**: carne assada fica abaixo da real, e arroz e massa cozidos ficam acima;
+  2. a foto é da panela ou da travessa, quase nunca de um prato de cima;
+  3. a porção declarada não é a porção da foto, então massa por foto não existe.
+  - Para a cabeça de densidade isso é rótulo fraco de verdade: ensina "frango grelhado tem mais proteína por grama que risoto", não o número exato.
+- **Fora da lista, e por quê:**
+  - Food.com com fotos (Kaggle `behnamrahdari/foodcom-enhanced-recipes-with-images`, HF `tiptoghosh/food-recipes-15k`): só nutrientes por porção, sem peso;
+  - BBC Good Food (Kaggle `crispen5gar/recipe-images-with-nutritional-information`): por porção, sem peso;
+  - Epicurious (`pes12017000148`, `hugodarwood/epirecipes`): por porção, sem peso;
+  - FoodR² (Zenodo 20637862, chinês, CC BY 4.0, 218 mil receitas): sem quantidades;
+  - IndicRecipeNutri (Zenodo 22729969): nutrientes estimados, sem fotos na parte aberta.
+  - **Recipe1M (subconjunto com nutrição, cerca de 51 mil receitas com gramas por ingrediente):** exige cadastro em `im2recipe.csail.mit.edu`, e esse host está bloqueado. Fica para a fundadora; as cópias no HF não foram usadas.
+
+### 12.4 FoodBD: o único rótulo de nutricionista em foto de prato caseiro de cima
+
+*Citar:* FoodBD: A Polygon-Annotated Meal Image Dataset of Bangladeshi Cuisine with Visual and Nutritional Labels. Mendeley Data, V2, 2025. https://doi.org/10.17632/xh3ghf3jbg.2 (CC BY 4.0; as cópias do Kaggle dizem CC BY-SA, vale o original).
+
+- **O que é:** 3.523 fotos de celular de refeições caseiras de Bangladesh, com polígonos de 67 classes. Em 1.837 delas, uma nutricionista estimou proteína, kcal, gordura, carboidrato, fibra e carga glicêmica do prato.
+- **Como conferi:** li as duas tabelas inteiras e abri 18 fotos. **São de cima ou quase, um prato por foto** (arroz com curry de peixe ou frango, dal, ovo, ruti), em casa, com toalhas variadas. A kcal bate com 4P + 4C + 9G (razão mediana de 0,97).
+- **Regras e contagens:** saem 4 linhas sem foto no registro e 5 com proteína zero ou kcal abaixo de 50; 5 ficam com o aviso `kcal_incoerente`. Restam 1.828 fotos.
+- **Números:** proteína estimada mediana de 11 g (p90 16,9 g); faixas 0–5 / 5–15 / 15–25 / 25–40 / acima de 40 g: 250 / 1.311 / 227 / 35 / 5. **Só 40 acima de 25 g.**
+- **Problemas de rótulo:**
+  - a estimativa parece seguir porções padrão: peixe com mediana de 13 g e p90 de 15 g, quase sem variação com o tamanho;
+  - os valores vêm em dois estilos (inteiros e com decimais) em blocos alternados de ids, provavelmente duas rodadas;
+  - não há massa;
+  - não há id de pessoa: o `grupo` é um bloco de 25 ids seguidos, para que fotos da mesma casa fiquem do mesmo lado.
+- **Veredito:** bom para domínio (prato caseiro, celular, de cima) e para a faixa de 5 a 25 g; quase nada para acima de 25 g.
+
+### 12.5 O que não passou
+
+- **MM-Food-100K** (Codatta, HF `Humanbased-AI/MM-Food-100K`, OpenRAIL-M) e o **CalorieBench-80K** feito com ele:
+  - 100 mil fotos reais de celular, mas a nutrição foi gerada por GPT-4o e Qwen e revisada por participantes de uma campanha de cripto;
+  - as porções são redondas ("chicken:300g", "noodles:200g");
+  - treinar com isso é destilar outro VLM, não ganhar rótulo.
+- **NutriImage v1.1** (Zenodo 21961032, cantina japonesa com nutrição calculada por nutricionista): **retirado pelos autores** em outubro de 2026, por falta de acordo com a instituição dona dos dados; os artigos foram retratados. Não usar.
+- **NutriMass-61** (HF `alisapodolska/NutriMass-61`): 261 fotos reais de lanches isolados, sem licença atribuída.
+- **ChinaMartFood-109** e **ChinaFood-100:** nutrição por classe, não por foto; sem link de download.
+- **Brazilian food images** (Mendeley 7n36jtcpv3, CC BY 4.0) e **MyFood** (Zenodo 4041488): só segmentação, sem peso.
+- **FoodNExTDB / AI4Food:** só classe (categoria, subcategoria, cozimento), sem quantidade.
+- **Smart24Food Atlas** (Argentina, Zenodo 22134022): o depósito tem só as respostas dos participantes; as fotos de porção pesada do atlas não estão lá.
+- Estudo do ChatGPT com 114 fotos de refeição pesadas (Figshare 28271003): as fotos não foram publicadas.
+- Plano de refeições do PLAN'EAT (Zenodo 20730330): não tem fotos.
+
+### 12.6 Dependem da fundadora (controle de acesso)
+
+| Base | Acesso | O que tem | Valor |
+|---|---|---|---|
+| **AI Hub (Coreia)**: "음식 이미지 및 영양정보 텍스트" e "건강관리를 위한 음식 이미지" | cadastro com verificação de identidade coreana; o download para fora da Coreia é restrito, pelo que sei (não verifiquei: `aihub.or.kr` está bloqueado daqui) | centenas de milhares de fotos de comida coreana com nutrição; não confirmei se há peso por foto | alto se houver peso por foto; a confirmar |
+| **Recipe1M (subconjunto com nutrição)** | cadastro em `im2recipe.csail.mit.edu` | cerca de 51 mil receitas com gramas por ingrediente e fotos | densidade fraca, como 12.3 |
+| **Madima23** (HF `lubnaa25/Madima23`, Apache-2.0) | gated: basta entrar com uma conta do HF e aceitar | 67 malhas 3D, cerca de 560 imagens e uma planilha de nutrição (parece ser o desafio MetaFood da MADiMa) | pequeno |
+| **FoodLogAthl-218** (HF, Univ. de Tóquio) | gated, só acadêmico | 6.925 fotos de um app de diário de atletas, com caixas e classes; o cartão não mostra nutrição | baixo |
+| MetaFood3D, ClinicPlate | como em 11.1 | | |
+
+### 12.7 Hosts a liberar, em ordem
+
+1. `www.povarenok.ru`: fotos das 58.498 receitas da lista 2 (e para conferir a vista).
+2. `aihub.or.kr`: para ler as páginas das bases coreanas (o download depende da fundadora).
+3. `im2recipe.csail.mit.edu`: Recipe1M (o download depende da fundadora).
+4. `datadryad.org` e `api.osf.io` (com `osf.io`): repositórios de estudos de nutrição que esta varredura não alcançou.
+5. `skynet.ecn.purdue.edu`: ACETADA, ainda bloqueado (11.4).
+6. Úteis, não essenciais: `datasets-server.huggingface.co` (ler esquema e amostra de base do HF sem baixar) e `img.sndimg.com` (fotos do food.com).
+
+**Conclusão honesta:** a varredura não achou nenhuma base nova com **proteína medida** em foto de prato acima de 25 g. O que existe em escala é **densidade de receita** (80 mil receitas, rótulo fraco, foto que não é a do prato), e em escala pequena é **estimativa de nutricionista** (FoodBD, 1.828 pratos, quase todos abaixo de 25 g). O ganho na faixa alta vai depender de a cabeça de densidade aproveitar o rótulo fraco, ou de dado próprio.
+
 ## Reproduzir
 
 ```
@@ -494,6 +605,11 @@ python3 -I <scratchpad>/varredura2/scripts/zipremoto.py "<URL do Drive em omnifo
 python3 -I eval/dados_ext/omnifood_monta.py monta <pasta>
 GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/datasets/issai/Food_Portion_Benchmark fpb   # 173 MB, sem as imagens
 python3 -I eval/dados_ext/fpb_monta.py monta fpb/FPB_Dataset/RGB
+# Terceira varredura (seção 12)
+curl -sS https://data.mendeley.com/public-api/datasets/xh3ghf3jbg -o ds.json   # + os dois csv pelas URLs de ds.json
+python3 -I eval/dados_ext/foodbd_monta.py monta <pasta>
+curl -sL https://huggingface.co/datasets/datahiveai/recipes-with-nutrition/resolve/main/recipes-with-nutrition.csv | python3 -I eval/dados_ext/receitas_datahive_monta.py monta -
+python3 eval/dados_ext/receitas_povarenok_monta.py monta <os dois parquet de d0rj/povarenok_recipes_detail>   # precisa de pyarrow
 # Open Images: contar fotos de comida no treino (lê ~400 MB em fluxo, não grava)
 curl -s https://storage.googleapis.com/openimages/v5/train-annotations-human-imagelabels-boxable.csv | <filtro por LabelName e Confidence=1>
 ```
