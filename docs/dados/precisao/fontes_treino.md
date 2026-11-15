@@ -486,7 +486,7 @@ Pedido: procurar qualquer base pública com rótulo real, ou derivado de forma r
 | # | Base | Linhas | Rótulo | Acima de 25 g | `licenca` / `uso_declarado` | Host | Lista |
 |---|---|---|---|---|---|---|---|
 | 1 | **Receitas DataHive** (Edamam) | 21.859 receitas com foto | **Densidade**: g de proteína por 100 g de ingredientes crus, pesados pela análise da Edamam | 6.443 de 21.121 por porção declarada | CC BY-NC 4.0 / `nao_comercial` | HF + bucket S3 do DataHive: **abertos** | `externo_receitas_datahive.csv` (fora do git) |
-| 2 | **Receitas Povarenok.ru** | 58.498 receitas com foto | **Densidade** por 100 g do prato, calculada pelo site a partir das quantidades | 14.872 de 35.999 por porção declarada | sem licença do titular / `sem_licenca` | rótulos no HF (aberto); **fotos em `www.povarenok.ru`: bloqueado** | `externo_receitas_povarenok.csv` (fora do git) |
+| 2 | **Receitas Povarenok.ru** (retirada em 12.8: o site devolve 403) | 58.498 receitas com foto | **Densidade** por 100 g do prato, calculada pelo site a partir das quantidades | 14.872 de 35.999 por porção declarada | sem licença do titular / `sem_licenca` | rótulos no HF (aberto); **fotos em `www.povarenok.ru`: bloqueado** | `externo_receitas_povarenok.csv` (fora do git) |
 | 3 | **FoodBD** (Bangladesh) | 1.828 pratos, uma foto cada | **Proteína, kcal, gordura, carboidrato e fibra do prato, estimados por nutricionista**; sem massa | 40 | CC BY 4.0 / `comercial_ok` | Mendeley Data: **aberto** | `externo_foodbd.csv` |
 | — | MM-Food-100K / CalorieBench-80K | 100.000 fotos de celular | Gerado por GPT-4o e Qwen, revisado por usuários de uma campanha; porções redondas (200 g, 300 g) | não conta | OpenRAIL-M | fotos em `file.b18a.io`: bloqueado | **sem lista**: não é rótulo real (12.5) |
 
@@ -579,6 +579,52 @@ As três listas novas têm as colunas de treino_v2 **vazias** (fora `dish_id`, `
 
 **Conclusão honesta:** a varredura não achou nenhuma base nova com **proteína medida** em foto de prato acima de 25 g. O que existe em escala é **densidade de receita** (80 mil receitas, rótulo fraco, foto que não é a do prato), e em escala pequena é **estimativa de nutricionista** (FoodBD, 1.828 pratos, quase todos abaixo de 25 g). O ganho na faixa alta vai depender de a cabeça de densidade aproveitar o rótulo fraco, ou de dado próprio.
 
+### 12.8 Depois da liberação dos hosts (15/11/2026)
+
+**ACETADA: lista montada; rótulo medido, mas a foto é oblíqua e da bandeja inteira.** *Citar:* Coburn, B.; He, J.; Rollo, M. E.; Dhaliwal, S. S.; Kerr, D. A.; Zhu, F. Evaluating Large Multimodal Models for Nutrition Analysis: A New Benchmark Enriched with Contextual Metadata. IEEE BHI 2025 (arXiv:2507.07048). https://skynet.ecn.purdue.edu/~coburn6/ACETADA/ (CC BY-NC 4.0).
+
+- **Como conferi:**
+  - Li a página e listei o zip de 4,9 GB por leitura parcial.
+  - Tirei só o `ACETADA-HF-dataset.csv` e 21 fotos; 20 abriram.
+- **Rótulo:**
+  - Cada item foi pesado antes e depois, com 0,1 g. Os pesos variam de forma contínua: 249 valores distintos em 262 saladas de fruta e 57 em 58 porções de frango assado.
+  - Os nutrientes são peso × tabela, com densidade constante por item.
+  - O CSV dá os nutrientes do **consumido**. A lista converte para o **servido**, que é o que a foto "antes" mostra: proteína do item × antes ÷ consumido.
+  - Natureza: **pesado × tabela**. Atende o item 1 de 16.1 quanto ao rótulo.
+- **Vista:** foto de celular **oblíqua** (uns 30 a 45 graus) da **bandeja inteira**, com dois ou três pratos, bebidas, sachês, um cartão de cor e o número do participante. Não é de cima nem de um prato só.
+- **Lista** (`externo_acetada.csv`, fora do git; `eval/dados_ext/acetada_monta.py`; mapa `acetada_itens.csv`, 192 itens):
+  - Uma linha por refeição: 802 refeições de 152 participantes. Saem 4 linhas porque o café e o jantar do mesmo dia apontam para a mesma foto (erro do CSV).
+  - Massa e proteína contam só a comida; as bebidas vão em colunas à parte, como no Mensa.
+  - Massa servida mediana: 500 g.
+  - Proteína por faixa (0–5 / 5–15 / 15–25 / 25–40 / acima de 40 g): 5 / 108 / 216 / 195 / 278. **473 acima de 25 g**, 283 com um único item-fonte acima de 25 g.
+  - `grupo` = participante; a regra de 12.5 deixa 639 no treino e 163 no teste.
+- **Veredito:** é a melhor fonte nova de proteína medida acima de 25 g. As refeições são de laboratório, com cardápio repetido entre participantes. Serve para treino; para teste de registro, ver abaixo.
+
+**Teste de registro (16.1): nenhuma base atende hoje, sozinha ou em composição.**
+
+- **O que o ACETADA atende:**
+  - 802 pratos (mínimo de 600);
+  - 152 participantes como unidade de independência (mínimo de 100);
+  - faixas com 60 ou mais, juntando 0–5 com 5–15 (113 / 216 / 195 / 278);
+  - proteína derivada de pesagem.
+- **O que falha:** o requisito da foto ("foto de cima, ou o enquadramento do guia"). A foto é oblíqua, e o rótulo é da bandeja inteira (vários pratos e bebidas), sem dizer qual item está em qual prato. O recorte do guia não isola a refeição rotulada.
+- **Composição:**
+  - FoodBD não entra: a proteína é estimativa de nutricionista, não pesagem.
+  - Flavoria, FPB e LeFood têm massa pesada por item, mas a proteína é de classe × tabela (rótulo fraco nas nossas listas), e as partes seguradas delas já foram lidas (15.8).
+  - OmniFood8K está excluído por 16.1.
+- **Só passaria se a regra mudar.** Seria preciso aceitar um teste "de bandeja, oblíquo", que mede outra coisa que não o app com o guia. Essa decisão é da fundadora e do coordenador, não minha.
+
+**Dryad e OSF: nada com peso e foto.**
+- Dryad: 20 consultas e 1.029 registros, quase todos de ecologia. Nenhum conjunto de fotos de refeição humana.
+- OSF: 17 consultas por título. Achei bancos de imagens de comida para estudos de apetite (CROCUFID, Restrain), estudos de tamanho de porção sem fotos de refeição e um estudo com fotografia de refeição em celular (OSF 2yxpw) que só tem o manuscrito.
+
+**AI Hub (Coreia): fechado para nós.**
+- As duas páginas ("음식 이미지 및 영양정보 텍스트", 842 mil imagens, 400 pratos; "건강관리를 위한 음식 이미지", 500 categorias) dizem "※ 내국인만 데이터 신청이 가능합니다": **só cidadãos coreanos podem pedir**.
+- O rótulo descrito é a classe do prato, a nutrição por prato tirada de tabela (base de composição coreana) e, na primeira base, uma estimativa de "quantidade" com acurácia de classificação. Não achei menção a peso por foto.
+- Mesmo para a fundadora, o pedido não é possível sem nacionalidade coreana.
+
+**Povarenok: lista retirada.** O próprio servidor (nginx do povarenok.ru, não o nosso proxy) devolve 403 para as fotos e para a página inicial. Não tentei contornar. As fotos não puderam ser vistas, e o mais provável é que o Kaggle também receba 403. Tirei `externo_receitas_povarenok.csv`. O script fica, documentado, para o caso de o acesso abrir.
+
 ## Reproduzir
 
 ```
@@ -609,6 +655,7 @@ python3 -I eval/dados_ext/fpb_monta.py monta fpb/FPB_Dataset/RGB
 curl -sS https://data.mendeley.com/public-api/datasets/xh3ghf3jbg -o ds.json   # + os dois csv pelas URLs de ds.json
 python3 -I eval/dados_ext/foodbd_monta.py monta <pasta>
 curl -sL https://huggingface.co/datasets/datahiveai/recipes-with-nutrition/resolve/main/recipes-with-nutrition.csv | python3 -I eval/dados_ext/receitas_datahive_monta.py monta -
+python3 -I eval/dados_ext/acetada_monta.py monta ACETADA-HF-dataset.csv   # o CSV sai do zip por leitura parcial (zipremoto.py)
 python3 eval/dados_ext/receitas_povarenok_monta.py monta <os dois parquet de d0rj/povarenok_recipes_detail>   # precisa de pyarrow
 # Open Images: contar fotos de comida no treino (lê ~400 MB em fluxo, não grava)
 curl -s https://storage.googleapis.com/openimages/v5/train-annotations-human-imagelabels-boxable.csv | <filtro por LabelName e Confidence=1>

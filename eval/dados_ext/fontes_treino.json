@@ -310,6 +310,34 @@
         "Fotos não abertas (host bloqueado).",
         "Ingrediente sem quantidade não entra na conta do site.",
         "Foto de receita, não de uma porção."
+      ],
+      "estado": "RETIRADA (15/11/2026): o servidor do povarenok.ru devolve 403 às fotos e à página inicial; lista apagada, script mantido"
+    },
+    {
+      "id": "acetada",
+      "uso": "treino NAO COMERCIAL (peso medido por item x tabela; proteína do servido); foto oblíqua da bandeja inteira",
+      "licenca_na_lista": "CC BY-NC 4.0",
+      "uso_declarado": "nao_comercial",
+      "o_que_e": "ACETADA: alimentação controlada em Perth, 152 adultos, 806 refeições de laboratório pesadas antes e depois (0,1 g), fotos de celular antes e depois.",
+      "onde": "https://skynet.ecn.purdue.edu/~coburn6/ACETADA/dataset/ACETADA-release.zip (4.941.836.247 bytes; aceita Range); ACETADA-release/ACETADA-HF-dataset.csv e ACETADA-release/ACETADA/<participante>/<data_hora>.jpg",
+      "alcance_do_kaggle": "Provável (servidor universitário público); o mais seguro é espelhar como dataset privado do Kaggle (a licença NC permite uso privado)",
+      "licenca": "CC BY-NC 4.0 (página oficial)",
+      "citar": "Coburn, B.; He, J.; Rollo, M. E.; Dhaliwal, S. S.; Kerr, D. A.; Zhu, F. Evaluating Large Multimodal Models for Nutrition Analysis: A New Benchmark Enriched with Contextual Metadata. IEEE BHI 2025. arXiv:2507.07048",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_acetada.csv (fora do git; 802 refeições), montada por eval/dados_ext/acetada_monta.py",
+      "contagens": {
+        "refeicoes": 802,
+        "participantes": 152,
+        "proteina_0_5": 5,
+        "proteina_5_15": 108,
+        "proteina_15_25": 216,
+        "proteina_25_40": 195,
+        "proteina_acima_40": 278,
+        "acima_25g": 473
+      },
+      "cuidados": [
+        "Foto oblíqua da bandeja inteira (vários pratos e bebidas): não atende o requisito de foto de 16.1.",
+        "Nutrientes do CSV são do consumido; a lista converte para o servido.",
+        "Cardápio de laboratório repetido entre participantes."
       ]
     }
   ],
@@ -324,16 +352,8 @@
       "motivo": "Zenodo 21626434, CC BY 4.0 com acesso restrito: pedir no próprio registro"
     },
     {
-      "id": "acetada",
-      "motivo": "CC BY-NC 4.0, publicado em skynet.ecn.purdue.edu/~coburn6/ACETADA/, host que o proxy desta sessão recusa (403 no CONNECT); sem lista"
-    },
-    {
       "id": "recipe1m",
       "motivo": "cadastro em im2recipe.csail.mit.edu (host bloqueado aqui); subconjunto com nutrição, cerca de 51 mil receitas com gramas por ingrediente; cópias no HF não usadas"
-    },
-    {
-      "id": "aihub",
-      "motivo": "AI Hub (Coreia): cadastro com verificação de identidade; aihub.or.kr bloqueado aqui; não confirmado se há peso por foto"
     },
     {
       "id": "madima23",
@@ -342,6 +362,10 @@
     {
       "id": "foodlogathl",
       "motivo": "HF FoodLog/FoodLogAthl-218: gated, só acadêmico; sem nutrição no cartão"
+    },
+    {
+      "id": "aihub",
+      "motivo": "AI Hub: 'só cidadãos coreanos podem pedir' (내국인만 데이터 신청이 가능합니다); rótulo é classe + nutrição por prato de tabela, sem peso por foto descrito; inviável"
     }
   ]
 }

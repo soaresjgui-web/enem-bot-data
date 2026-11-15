@@ -1,0 +1,193 @@
+item,refeicoes,grupo,fonte,tipo,proteina_100g
+Almond milk,3,outros,laticinio,bebida,0.60
+Anzac,1,outros,sem_proteina,,6.20
+Anzac biscuit,2,outros,sem_proteina,,6.20
+Anzacs,2,outros,sem_proteina,,6.20
+Apple Juice-,118,outros,sem_proteina,bebida,0.20
+Artificial sweetener,3,gordura_molho,sem_proteina,condimento,1.60
+Atrifical sweetener,2,gordura_molho,sem_proteina,condimento,1.61
+Avocado,99,vegetal,sem_proteina,,1.80
+Baked potato,41,amido,sem_proteina,,3.30
+Banana,55,vegetal,sem_proteina,,1.40
+Bananas,4,vegetal,sem_proteina,,1.40
+Beef lasagna,28,misto,prato_misto,,6.60
+Beef lasagne,3,misto,prato_misto,,6.60
+Beef tortellini in bolognese sauce,7,misto,prato_misto,,7.00
+Beef tortellini with bolognese sauce,2,misto,prato_misto,,7.00
+Black tea (no milk),10,outros,sem_proteina,bebida,0.10
+Blueberries,28,vegetal,sem_proteina,,0.60
+Blueberry Muffin,24,outros,sem_proteina,,5.80
+Bread roll,1,amido,sem_proteina,,9.40
+Brownie,2,outros,sem_proteina,,6.20
+Butter,70,gordura_molho,sem_proteina,condimento,1.10
+Canneloni- spinach and ricotta,19,misto,prato_misto,,7.90
+Cappuccino muffin,17,outros,sem_proteina,,5.80
+Carrot Cake,2,outros,sem_proteina,,4.30
+Cheese melt,6,misto,prato_misto,,16.10
+Chicken and corn soup,49,misto,prato_misto,,5.60
+Chicken curry and rice,1,misto,prato_misto,,10.70
+Chicken rice paper roll,71,misto,prato_misto,,7.10
+Chicken salad Thai style (add chicken),4,misto,prato_misto,,1.20
+Chicken satay,2,misto,prato_misto,,15.80
+Chicken satay with rice,9,misto,prato_misto,,15.80
+Chicken sushi,114,misto,prato_misto,,7.30
+Chicken teriyaki and rice,2,misto,prato_misto,,15.10
+Chicken teriyaki noodles,5,misto,prato_misto,,15.10
+Choc chip cookie,32,outros,sem_proteina,,5.50
+Choc milk,4,outros,laticinio,bebida,3.60
+Chocolate brownie,59,outros,sem_proteina,,6.20
+"Coffee (espresso, instant)-",16,outros,sem_proteina,bebida,3.30
+"Coffee (esspresso, instant)-",25,outros,sem_proteina,bebida,3.30
+Coffee flat white,148,outros,sem_proteina,bebida,2.70
+Coke,30,outros,sem_proteina,bebida,0.00
+Coke Zero,18,outros,sem_proteina,bebida,0.00
+Coke zero,33,outros,sem_proteina,bebida,0.00
+Coleslaw,2,vegetal,sem_proteina,,1.30
+Coleslaw dressed,2,vegetal,sem_proteina,,1.30
+Continental roll- chicken,28,misto,prato_misto,,10.40
+Continental roll-ham,4,misto,prato_misto,,7.40
+Cornflakes,18,amido,sem_proteina,,8.60
+Diet coke,15,outros,sem_proteina,bebida,0.00
+Dressing,68,gordura_molho,sem_proteina,condimento,0.20
+Dressing-blasmaic,11,gordura_molho,sem_proteina,condimento,0.18
+Eggs- Poached,123,proteina_animal,ovo,,13.10
+Eng muffin plain,1,amido,sem_proteina,,11.00
+Fruit bread,13,amido,sem_proteina,,8.30
+Fruit salad,262,vegetal,sem_proteina,,0.80
+Garden salad,3,vegetal,sem_proteina,,1.10
+Ginger beer,34,outros,sem_proteina,bebida,0.00
+Gravy,59,gordura_molho,sem_proteina,condimento,1.30
+Greek salad,50,vegetal,laticinio,,3.00
+Greek yoghurt,1,laticinio,laticinio,,5.70
+Green salad,89,vegetal,sem_proteina,,1.12
+Grilled mushroom,46,vegetal,sem_proteina,,3.30
+Grilled tomato,37,vegetal,sem_proteina,,1.20
+Ham and cheese melts,41,misto,prato_misto,,12.10
+Ham and tomato toastie,1,misto,prato_misto,,10.00
+"Ham,cheese toasted muffin",2,misto,prato_misto,,12.10
+"Ham,cheese tomato toasted sandwich",3,misto,prato_misto,,12.10
+Herbal tea,1,outros,sem_proteina,bebida,0.10
+Hoisin sauce,1,gordura_molho,sem_proteina,condimento,1.70
+Honey,16,gordura_molho,sem_proteina,condimento,0.20
+Hot Chocolate,1,outros,laticinio,bebida,3.60
+Hot Tea (tea bag) -,47,outros,sem_proteina,bebida,0.50
+Hot chocolate,3,outros,laticinio,bebida,3.60
+Ice cream stick- Drumstick,37,outros,sem_proteina,,5.40
+Ice creamstick- Magnum,56,outros,sem_proteina,,4.20
+Iced coffee,1,outros,sem_proteina,bebida,3.20
+Jam,22,gordura_molho,sem_proteina,condimento,0.20
+Lemon,31,gordura_molho,sem_proteina,condimento,0.60
+Lemon Slice,25,outros,sem_proteina,,4.90
+Lemon squash,10,outros,sem_proteina,bebida,0.00
+Lemonade,16,outros,sem_proteina,bebida,0.00
+Lemonade diet,16,outros,sem_proteina,bebida,0.00
+Lions fruit cake,18,outros,sem_proteina,,5.09
+Margarine,18,gordura_molho,sem_proteina,condimento,0.50
+Marmalade,2,gordura_molho,sem_proteina,condimento,0.10
+Milk regular,25,outros,laticinio,bebida,3.40
+Milk skim,4,outros,laticinio,bebida,3.60
+Muesli- natural,27,amido,sem_proteina,,12.20
+Nutrigrain,5,amido,sem_proteina,,6.70
+Oats,1,amido,sem_proteina,,12.70
+Orange juice,139,outros,sem_proteina,bebida,0.80
+Peaches,49,vegetal,sem_proteina,,0.60
+Peanut paste,18,gordura_molho,nozes_sementes,condimento,22.40
+Pickled ginger,87,gordura_molho,sem_proteina,condimento,0.50
+Pizza- Supreme,4,misto,prato_misto,,12.30
+Pizza-vegetarian,2,misto,prato_misto,,9.00
+Poached eggs,63,proteina_animal,ovo,,13.10
+Porridge,7,amido,sem_proteina,,5.70
+Potato salad,4,amido,sem_proteina,,1.60
+Pumpkin soup,4,misto,prato_misto,,1.30
+Quich Lorraine,1,misto,prato_misto,,9.80
+Quiche Lorraine,9,misto,prato_misto,,9.80
+Ravioli in bolognese sauce,5,misto,prato_misto,,7.00
+Roast beef,41,proteina_animal,bovina,,31.50
+Roast chicken,58,proteina_animal,frango_peru,,29.10
+Roasted potatoes,3,amido,sem_proteina,,3.30
+Satay chicken and rice,8,misto,prato_misto,,15.80
+Satay chicken curry  and rice,1,misto,prato_misto,,15.80
+Savoury muffin,36,outros,sem_proteina,,8.90
+Singapore Chicken curry,3,misto,prato_misto,,10.70
+Singapore chicken curry and rice,2,misto,prato_misto,,10.70
+Singapore curry Chicken,4,misto,prato_misto,,10.70
+Singapore curry rice,3,misto,prato_misto,,10.70
+Singaporean chicken curry,2,misto,prato_misto,,10.70
+Smoked salmon sushi,126,misto,prato_misto,,6.90
+Soup- potato and leek,2,amido,sem_proteina,,1.60
+Soy milk lite,1,outros,leguminosa_soja,bebida,3.00
+Soy milk regular,8,outros,leguminosa_soja,bebida,3.70
+Soy sauce,143,gordura_molho,sem_proteina,condimento,5.39
+Spaghetti bolognese,4,misto,prato_misto,,9.70
+Special K,5,amido,sem_proteina,,18.20
+Spinach and ricotta canneloni,4,misto,prato_misto,,7.90
+Spinach and ricotta tortellini,13,misto,prato_misto,,3.90
+Steamed veg,69,vegetal,sem_proteina,,3.10
+"Steamed veg-broccoli, carrot, peas/corn",8,vegetal,sem_proteina,,3.10
+Strawberries,36,vegetal,sem_proteina,,0.70
+Strawberry,2,vegetal,sem_proteina,,0.70
+Sugar,10,gordura_molho,sem_proteina,condimento,0.00
+Sugar-,30,gordura_molho,sem_proteina,condimento,0.00
+Tea Herbal,1,outros,sem_proteina,bebida,0.10
+Tea herbal,29,outros,sem_proteina,bebida,0.10
+Teriyaki chicken ndls,41,misto,prato_misto,,15.10
+Teriyaki chicken noodles,3,misto,prato_misto,,15.10
+Thai Basil Chicken,10,misto,prato_misto,,15.10
+Thai Basil chicken,8,misto,prato_misto,,15.10
+Thai basil chicken,3,misto,prato_misto,,15.10
+Thai basil chicken and rice,13,misto,prato_misto,,15.10
+Thai green curry,18,misto,prato_misto,,11.70
+Thai green curry and rice,1,misto,prato_misto,,11.70
+Toast ciabatta,44,amido,sem_proteina,,12.00
+Toast multigrain or white,127,amido,sem_proteina,,9.60
+Toast-fruit bread,15,amido,sem_proteina,,8.30
+Toasted English muffin - ham and cheese,6,misto,prato_misto,,12.10
+Toasted sandwich -cheese,4,misto,prato_misto,,16.10
+"Toasted sandwich,  ham, cheese & tomato",35,misto,prato_misto,,12.10
+"Toasted sandwich- ham,cheese, tomato",24,misto,prato_misto,,12.10
+Tofu rice paper roll,42,misto,prato_misto,,2.00
+Tortellini - Beef,5,misto,prato_misto,,7.00
+Tortellini in bolognese sauce,1,misto,prato_misto,,7.00
+Vegan Fried Rice,1,misto,prato_misto,,3.20
+Vegan fried rice,2,misto,prato_misto,,3.20
+Vegan ndls,1,misto,prato_misto,,3.90
+Vegan noodle stir fry in hoisin sauce,8,misto,prato_misto,,3.90
+Vegemite,3,gordura_molho,sem_proteina,condimento,24.09
+Vegetable quiche,5,misto,prato_misto,,6.50
+Vegetarian lasagna,12,misto,prato_misto,,5.10
+Vegetarian sushi,46,misto,prato_misto,,2.60
+Vermicelli noodles with beef,12,misto,prato_misto,,13.80
+Vietnamese Chicken Salad,2,misto,prato_misto,,11.70
+Vietnamese salad-chicken,22,misto,prato_misto,,11.70
+Vietnamese salad-vegan,2,misto,prato_misto,,4.60
+Vietnamese salad-vegan tofu,13,misto,prato_misto,,4.60
+Wasabi,84,gordura_molho,sem_proteina,condimento,0.61
+Water,14,outros,sem_proteina,bebida,0.00
+Water sparkling,83,outros,sem_proteina,bebida,0.00
+Water still,206,outros,sem_proteina,bebida,0.00
+Weet-bix,7,amido,sem_proteina,,12.10
+Wrap - salad with chicken,35,misto,prato_misto,,10.40
+Wrap -salad with ham,8,misto,prato_misto,,7.40
+Wrap -to add advocado only,2,misto,prato_misto,,1.80
+"Wrap salad, (add cheese,avocado)",17,misto,prato_misto,,4.50
+"Wrap salad, cheese ham",1,misto,prato_misto,,7.40
+"Wrap salad,cheese and avocado",1,misto,prato_misto,,4.50
+Yoghurt - flavoured,63,laticinio,laticinio,,4.70
+Yogurt-plain-Greek,1,laticinio,laticinio,,5.70
+Yougurt-plain-Greek,46,laticinio,laticinio,,5.70
+Zucchini slice,2,outros,sem_proteina,,8.30
+Zucchini slice (Frittata),6,misto,prato_misto,,8.30
+beef tortellini,3,misto,prato_misto,,7.00
+beef tortellini with bolognese sauce,1,misto,prato_misto,,7.00
+cheddar cheese grated,2,laticinio,laticinio,,21.20
+chicken curry and rice Singapore,2,misto,prato_misto,,10.70
+english muffin plain,1,amido,sem_proteina,,11.00
+herbal Tea,1,outros,sem_proteina,bebida,0.10
+hot chocolate,1,outros,laticinio,bebida,3.60
+lactose-free,5,outros,laticinio,bebida,3.20
+milk - Hilo,5,outros,laticinio,bebida,3.60
+milk 2%-,4,outros,laticinio,bebida,3.60
+milk HiLO-,6,outros,laticinio,bebida,3.61
+milk Hilo-,5,outros,laticinio,bebida,3.61
+veg fried rice,2,misto,prato_misto,,3.20
+water sparkling,3,outros,sem_proteina,bebida,0.00
