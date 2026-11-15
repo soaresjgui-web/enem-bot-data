@@ -111,6 +111,13 @@ Mudanças da sexta execução (seção 15); a máquina de estados das partes e a
 - **Parte `final` do P3 sem modelo:** ela treina todas as épocas e grava a média móvel de cada uma no cache; o modelo final (época = mediana das escolhidas nos folds), a HP3 final, os conjuntos de previsão e o arquivo de servir saem na parte tardia `ext`, que já roda depois de todas as outras partes. Por isso a `final` do P3 conta como pronta com as épocas gravadas, e a `ext` só com o arquivo de servir (`parte_pronta4`).
 - **Paridade:** a mesma função pura (`paridade_d1`) compara a R4c6 e a H0c6 com a quinta execução (`listas/ref_r5_prato.csv`, critério 68,34 ± 0,3); se falhar, o manifesto marca tudo como não confiável. Não muda o estado de nenhuma parte.
 
+Mudanças da sétima execução (seção 17); a máquina de estados das partes e as funções do escalonador não mudam:
+
+- **Etapa nova `deteccao`** (`gpu7 detecta foodbd`): uma parte `tudo` numa GPU, como as features; depende do download do FoodBD, e as features do recorte do FoodBD dependem dela. Ao concluir, o orquestrador relê as janelas do guia (`carrega_caixas5`, agora também com a tabela que o kernel gravou na saída), para que as partes seguintes vejam o recorte do FoodBD.
+- **Preparo das bases (`externo <base>`):** na sétima, as bases sem detecção só preparam o cache do recorte (a foto inteira não é usada); o FoodBD prepara a foto inteira, e o recorte sai da detecção. `parte_pronta4` confere o cache certo em cada caso.
+- **Prioridade = ordem da lista** (17.3: features e paridade, ACETADA, receitas, FoodBD, capacidade), sem GPU preferida; o corte por orçamento cai na de menor prioridade que não cabe, como antes.
+- **Paridade:** `paridade_d1` com a R4c7 e a semente 0 da H0c-m7 contra a sexta execução (`listas/ref_r6_prato.csv`, critério 68,12 ± 0,3).
+
 Detalhes em `eval/treino/kaggle/LEIA-ME.md`.
 
 ## 3. Próximas máquinas a modelar

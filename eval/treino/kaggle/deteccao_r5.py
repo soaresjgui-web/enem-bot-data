@@ -344,26 +344,9 @@ def trabalhador(a):
                         print(f"[{k}] {ch}: prazo esgotado", flush=True); sys.exit(3)
                     lote = list(ex.map(abre, idx[j:j + a.lote]))
                     res = det([x[1] for x in lote]) if det else [(np.zeros((0, 4)), np.zeros(0), np.zeros(0, int))] * len(lote)
-                    for (i, img, girada, sha, el), (cx_, nt, cq) in zip(lote, res):
-                        h, w = img.shape[:2]
-                        cx_box, nota, nc = caixa_refeicao(cx_, nt, w, h)
-                        brutas = brutas_de(cx_, nt, cq, w, h)
-                        so_p = caixa_refeicao(cx_[np.isin(cq, SO_PRATO)], nt[np.isin(cq, SO_PRATO)], w, h)[0]
-                        metodo = "owlv2"
-                        if cx_box is None:
-                            cx_box, metodo = el, "elipse"
-                            if cx_box is None:
-                                metodo = "sem_prato"
-                        jan = janela(cx_box, w, h)
-                        por_metodo[metodo] = por_metodo.get(metodo, 0) + 1
-                        linhas.append(dict(id=F["ids"][i], dominio=ch, arquivo=F["arquivos"][i], sha256=sha, largura=w, altura=h, girada=int(girada), metodo=metodo,
-                                           **({c: "" for c in ("x0", "y0", "x1", "y1")} if cx_box is None else dict(zip(("x0", "y0", "x1", "y1"), [round(v, 1) for v in cx_box]))),
-                                           nota=round(nota, 4), n_caixas=nc, janela_cx=round(jan[0], 1), janela_cy=round(jan[1], 1), janela_alt=round(jan[2], 1),
-                                           janela_larg=round(jan[3], 1), versao_detector=versao, _i=i,
-                                           iou_uniao_so_prato="" if cx_box is None or so_p is None or metodo != "owlv2" else round(iou(cx_box, so_p), 4),
-                                           caixa_so_prato="" if so_p is None else json.dumps([round(v, 1) for v in so_p]),
-                                           caixa_elipse="" if el is None else json.dumps([round(v, 1) for v in el]),
-                                           caixas_brutas=json.dumps(brutas, separators=(",", ":"))))
+                    for (i, img, girada, sha, el), r_ in zip(lote, res):
+                        linhas.append(linha_deteccao(F["ids"][i], ch, F["arquivos"][i], img, girada, sha, el, r_, versao, i))
+                        por_metodo[linhas[-1]["metodo"]] = por_metodo.get(linhas[-1]["metodo"], 0) + 1
             linhas.sort(key=lambda r: r["_i"])
             with open(arq + ".tmp", "w", newline="") as f:
                 wr = csv.DictWriter(f, COLS + ["_i"], lineterminator="\n"); wr.writeheader(); wr.writerows(linhas)
@@ -371,6 +354,31 @@ def trabalhador(a):
             feitas.add(ch)
             print(f"[{k}] {ch}: {len(linhas)} fotos em {time.time() - t0:.0f}s ({len(linhas) / max(1e-9, time.time() - t0):.1f}/s) {por_metodo}", flush=True)
         time.sleep(0 if len(feitas) == len(DOMINIOS) else 2)
+
+
+def linha_deteccao(id_, ch, arquivo, img, girada, sha, el, res, versao, i):
+    """A linha da tabela de uma foto (COLS + _i): a caixa da refeição pela regra da etapa 0 (união das consultas), a
+    reserva por elipse, a janela do guia e, para refazer a regra depois, a caixa só de prato e tigela e as caixas brutas.
+    res = (caixas, notas, consulta) do Detector. Função pura (a sétima execução usa a mesma, no FoodBD)."""
+    cx_, nt, cq = res
+    h, w = img.shape[:2]
+    cx_box, nota, nc = caixa_refeicao(cx_, nt, w, h)
+    brutas = brutas_de(cx_, nt, cq, w, h)
+    so_p = caixa_refeicao(cx_[np.isin(cq, SO_PRATO)], nt[np.isin(cq, SO_PRATO)], w, h)[0]
+    metodo = "owlv2"
+    if cx_box is None:
+        cx_box, metodo = el, "elipse"
+        if cx_box is None:
+            metodo = "sem_prato"
+    jan = janela(cx_box, w, h)
+    return dict(id=id_, dominio=ch, arquivo=arquivo, sha256=sha, largura=w, altura=h, girada=int(girada), metodo=metodo,
+                **({c: "" for c in ("x0", "y0", "x1", "y1")} if cx_box is None else dict(zip(("x0", "y0", "x1", "y1"), [round(v, 1) for v in cx_box]))),
+                nota=round(nota, 4), n_caixas=nc, janela_cx=round(jan[0], 1), janela_cy=round(jan[1], 1), janela_alt=round(jan[2], 1),
+                janela_larg=round(jan[3], 1), versao_detector=versao, _i=i,
+                iou_uniao_so_prato="" if cx_box is None or so_p is None or metodo != "owlv2" else round(iou(cx_box, so_p), 4),
+                caixa_so_prato="" if so_p is None else json.dumps([round(v, 1) for v in so_p]),
+                caixa_elipse="" if el is None else json.dumps([round(v, 1) for v in el]),
+                caixas_brutas=json.dumps(brutas, separators=(",", ":")))
 
 
 # ------------------------------------------------------------------ orquestrador

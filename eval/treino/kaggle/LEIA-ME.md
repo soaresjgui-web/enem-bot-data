@@ -1,8 +1,8 @@
-# Treino em GPU (Kaggle ou Colab) — seções 8, 10 a 15, uma única foto de cima
+# Treino em GPU (Kaggle ou Colab) — seções 8, 10 a 17, uma única foto de cima
 
 Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descritos em `docs/dados/precisao/resultado_modelo_treinado.md`. A inferência usa sempre **uma** foto RGB zenital. O critério é o do produto: proteína dentro de ±20% ou ±5 g.
 
-**Estado (13/11/2026):**
+**Estado (15/11/2026):**
 
 - **Execução 1 (seção 10)** rodou no Kaggle: 2× T4, 15 configurações em ~5,7 h; a paridade com a CPU conferiu (RMSE 0,2550 contra 0,2551).
 - **Execução 2 (seção 11)** rodou no Kaggle: 11 configurações em 4,5 h de relógio (torch 2.11.0+cu130, timm 1.0.30), com previsões no teste2, arquivos de servir e `servico.json`; saída de 1,27 GB.
@@ -10,9 +10,45 @@ Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descr
 - **Execução 4 (seção 13)** rodou no Kaggle: as seis bases baixaram, a paridade com o D1 saiu exata e nada foi cortado; resultados em 13.11.
 - **Execução 5 (seção 14), etapa 0 (14.3):** kernel separado, `nutrelle-deteccao-r5` (`deteccao_r5/`), enviado em 13/11/2026; descrito logo abaixo.
 - **Execução 5, principal (14.4 a 14.6)** rodou no Kaggle de ponta a ponta, sem cortes; resultados em 14.10.
-- **Execução 6 (seção 15): pronta para o push e ainda não rodou em GPU.** Kernel `nutrelle-treino-gpu-r6` (`nutrelle_treino_gpu.ipynb`), descrito logo abaixo. O notebook da quinta execução fica no histórico do git (`monta_pacote.py notebook --kernel r5` o refaz como `nutrelle_treino_gpu_r5.ipynb`).
+- **Execução 6 (seção 15)** rodou no Kaggle de ponta a ponta (paridade exata, nada cortado); resultados em 15.8.
+- **Execução 7 (seção 17): pronta para o push e ainda não rodou em GPU.** Kernel `nutrelle-treino-gpu-r7` (`nutrelle_treino_gpu.ipynb`), descrito logo abaixo. Os notebooks da quinta e da sexta ficam no histórico do git (`monta_pacote.py notebook --kernel r5|r6` os refaz como `nutrelle_treino_gpu_r5.ipynb` e `_r6.ipynb`).
 
 Para baixar a saída é preciso acesso a `www.kaggleusercontent.com`.
+
+## Sétima execução: a faixa acima de 25 g e a densidade (17.2 e 17.3)
+
+`treino_gpu.py --rodada 7`, no kernel `nutrelle-treino-gpu-r7`. **Só cabeças sobre features congeladas do So400m no recorte; nenhum ajuste fino, nenhuma previsão do teste2, nenhuma parte segurada pontuada.** A regra R17 (17.4) roda depois, na CPU. `ORCAMENTO_H = 3.0`.
+
+| Prioridade (17.3) | Apelido | Configuração | O que é |
+|---|---|---|---|
+| 1 | | `gpu7 feat so400m prato n5k` e `… prato <base>` | features do recorte do Nutrition5k (8 vistas) e das cinco bases da seção 13, **guardadas na saída** |
+| 1 | R0c7, R1c7, R4c7, H0c7, H0c-m7 | `gpu7 ridge so400m prato`, `+ok`, `+tudo`, `gpu7 fracoes so400m prato`, `… +massa` | refeitas; R4c7 e H0c-m7 (semente 0) conferem a paridade com a sexta execução; R1c7 e H0c7 para o "melhor só com dados liberados" |
+| 2 | | `gpu7 feat so400m prato acetada` | ACETADA: a foto oblíqua inteira, encaixada em 4:3, 2 orientações |
+| 2 | H-A, R4c+A | `… +massa +acetada`, `gpu7 ridge so400m prato +tudo +acetada` | H0c-m + ACETADA (log-densidade sem viés, frações 0,5, proteína direta com viés; soma 0,28); R4c + massa do ACETADA (com viés) |
+| 3 | | `gpu7 feat so400m prato receitas_datahive` | receitas: foto do site encaixada em 4:3, 1 orientação |
+| 3 | H-R, H-AR | `… +massa +receitas`, `… +massa +acetada+receitas` | só a log-densidade das receitas (rótulo fraco, soma 0,15) |
+| 4 | | `gpu7 detecta foodbd`, `gpu7 feat so400m prato foodbd`, `gpu7 feat so400m inteira foodbd` | o detector da etapa 0 no FoodBD, as folhas de contato, e as features **do recorte e da foto inteira** |
+| 4 | H-B, H-Bi, H-ARB, H-ARBi, H0c+B, H0c+Bi | `… +massa +foodbd [inteira]`, `… +massa +acetada+receitas+foodbd [inteira]`, `gpu7 fracoes so400m prato +foodbd [inteira]` | só a proteína direta do FoodBD (rótulo fraco, com viés, soma 0,15); `i` = FoodBD pela foto inteira; H0c+B = H0c + FoodBD, para o "melhor só com dados liberados" (R1c × {H0c, H-B} de 17.4: a H-B tem a massa da R4c como entrada, que herda FPB e OmniFood8K) |
+| 5 | H-cap | `… +massa cap` | H0c-m com duas camadas ocultas de 1.024 |
+
+- **Entradas:** a saída da etapa 0 (`kernel_sources` = `<usuário>/nutrelle-deteccao-r5`), `listas/conferencia_r5.json`, `listas/ref_r6_prato.csv` (R4c e H0c-m fora-do-fold da sexta execução) e as listas das bases novas com as divisões de `eval/treino/externo_r7_divide.py` (`divisao_r4_<base>.csv`; as do ACETADA e das receitas são ignoradas pelo git, como as listas). O SNAPMe não entra.
+- **Fotos:** ACETADA lido do zip de 4,9 GB em `skynet.ecn.purdue.edu` **por intervalo de bytes** (só as 802 fotos "antes", ~2,7 GB, oito leituras em paralelo; o zipfile confere o CRC de cada uma); receitas do bucket S3 público, foto a foto (21.858; a receita sem foto, `dhv_00247`, fica `fora`); FoodBD do Mendeley, foto a foto.
+- **Divisão das bases novas:** `treino_ext` → treino, `teste_ext` → registro (as partes seguradas de 17.2: ACETADA 163, receitas 4.365, FoodBD 384). **Os rótulos do registro são apagados duas vezes:** na lista enxuta embutida no notebook e no kernel (`fecha_rotulos4`); os rótulos fracos (`densidade_proteina_fraca_g100`, `proteina_fraca_g`) só passam nas linhas de treino. As partes seguradas só recebem previsões (`extreg__`), nunca pontuadas.
+- **Leitura de 17.2 que difere do texto:** 17.2 diz que as bases novas entram em todos os folds de treino ("fold −1"). Aqui cada linha de treino fica fora do modelo de **um** fold (o do grupo dela: participante, nome da receita, bloco do FoodBD), como as bases da seção 13. É o que permite a previsão fora-do-fold nas partes de treino que 17.4 pede ("acerto acima de 25 g ... nas partes de treino do ACETADA"); o Nutrition5k continua sem nenhuma linha delas na validação.
+- **FoodBD: recorte e foto inteira, a escolha depois.** A conferência a olho do recorte (14.3: 36 certas em 40, no máximo 1 errada) tem de acontecer antes da escolha, mas a execução é um kernel só. Por isso o kernel roda o detector (OWLv2, as mesmas consultas; as janelas pela regra de prato e tigela da conferência), grava `caixas_r5_foodbd.csv` e as folhas `folha_r5_foodbd_so_prato_<1|2>.jpg` (com `folha_r5_foodbd_so_prato.csv`, coluna `veredito` vazia), e treina **as duas versões** de cada cabeça com FoodBD (recorte e `i` = foto inteira), com as features das duas guardadas. **A regra da CPU escolhe depois da conferência a olho:** se o recorte passar, valem H-B, H-ARB e H0c+B; se não, H-Bi, H-ARBi e H0c+Bi, e o relato do FoodBD usa a foto inteira.
+- **Cabeças de densidade com 3 sementes (17.3):** cada uma treina com as sementes 0, 1 e 2 e prevê pela média (em log nas 22 saídas e nas frações); o arquivo da cabeça traz os pesos das três empilhados. Cada semente também sai sozinha (`oof_s<k>*`), e `sementes` no `parte__` traz, por semente e da média, o RMSE da log-densidade e o acerto da densidade com a massa real, com o desvio entre sementes. A semente 0 é a conta da sexta execução: é ela que confere a paridade da H0c-m.
+- **Coluna de massa das bases novas nas cabeças H-…:** a previsão da R4c (do mesmo fold) na própria foto; no Nutrition5k, a aninhada de 15.4, como na H0c-m.
+- **Paridade (17.3):** R4c7 e H0c-m7 (semente 0) × sexta execução (`listas/ref_r6_prato.csv`): correlação ≥ 0,999 na massa (1 e 8 orientações) e nas duas densidades, critério R4c × H0c-m (rota r1, 1 orientação) em 68,12 ± 0,3. Se falhar, nada desta execução deve ser lido.
+- **Features guardadas (17.2):** `feat7__<base>__<recorte|inteira>.npy` (float16, [linhas, vistas, 2304]), `feat7__<base>__<entrada>__ids.csv` e `feat7__indice.json` (backbone, vistas, sha256 dos ids, hash do recorte, sha256 do arquivo). ~0,35 GB. Para virar dataset privado: `kaggle datasets create` na pasta baixada, só com esses arquivos.
+- **O que mais grava:** o mesmo da sexta para as cabeças (oof 1/4/8, `extcv__`/`extreg__` crus de todas as bases, procedência por cabeça com `treinado_com` e `so_comercial_ok`; a H0c-m e as H-… herdam as bases da R4c pela entrada de massa), arquivos de servir com remontagem conferida de todas as cabeças (inclusive a H-cap e as de 3 sementes) e `servico.json` com o S6 (R4c × H0c-m de 3 sementes) com 1 e 4 orientações. As cabeças de densidade não são medidas uma a uma: são MLPs pequenas sobre o mesmo backbone.
+
+**Tempo e tamanho (estimativa, 2 × T4, fila simulada):** ~2,0 h de relógio com as bases chegando como na sexta e as receitas em ~25 min; ~2,3 h se as receitas levarem 1 h; com 60% a mais de tempo, saem a H0c+Bi e a H-cap. Saída: ~1,6 GB (as partes das cabeças com os pesos de 6 modelos × 3 sementes, ~90 MB cada; as features, ~0,35 GB).
+
+**Push:** `python3 monta_pacote.py notebook`; `NUTRELLE_SCRATCH=<scratchpad> python3 monta_pacote.py push <pasta fora do repositório> --usuario <você>`; `python3 monta_pacote.py confere <pasta>`; `kaggle kernels push -p <pasta>`. **O notebook do push tem ~2,5 MB**: a lista das receitas tem 21 mil URLs com 32 bytes aleatórios cada, que não comprimem. Se o Kaggle recusar o tamanho, monte com `--receitas-dataset <você>/nutrelle-listas-receitas-r7`: as duas listas das receitas vão para `<pasta>_receitas/` (com `dataset-metadata.json`, privado), o notebook cai para ~0,9 MB e passa a anexar o dataset (`dataset_sources`); crie o dataset (`kaggle datasets create -p <pasta>_receitas`) antes do push. O kernel copia as duas listas de `/kaggle/input` para a pasta das listas, e o `confere` exige que os arquivos ao lado da pasta batam com o sha256 gravado no notebook.
+
+**O que olhar no registro:** `nutrelle-treino-gpu/7 | rodada 7: 35 configurações | treino 2281 pratos, avaliação remontagem 8 | … orçamento 3.0 h`; as linhas `base externa acetada/receitas_datahive/foodbd (13.3)`; `base externa acetada: 802 fotos tiradas do zip remoto em … (… GB lidos por intervalo)`; `== PARIDADE com a R4c e a H0c-m da sexta execução (17.3): OK`; `[gpu7 detecta foodbd] 1828 fotos … | métodos (regra [0, 1, 5, 6]): {…}`; `features guardadas na saída: … MB`.
+
+**Trazer:** `python3 ingere_kaggle.py <pasta baixada> [--so-confere]`: as conferências da sexta, as sementes de cada cabeça, a tabela do FoodBD (contra a própria saída) e a paridade refeita aqui; grava em `zen_banco_r7`.
 
 ## Sexta execução: protocolo no recorte (15.4 a 15.6)
 
@@ -246,6 +282,8 @@ O ajuste fino em GPU não repete bit a bit; o ridge sobre backbone congelado dev
 | `listas/ref_d1_r3.csv` | Previsões fora-do-fold das duas cabeças do D1 na execução 3, para a conferência de paridade (13.7). |
 | `listas/caixas_profundidade_n5k.csv` | Caixas do prato tiradas da profundidade em 8.7 (1.874 pratos de treino_v2), para o IoU da etapa 0. |
 | `listas/conferencia_r5.json` | Resultado da conferência a olho das folhas da etapa 0: regra, consultas, bases reprovadas e `conferida`. A execução principal não começa sem `"conferida": true`. |
+| `listas/ref_r6_prato.csv` | Previsões fora-do-fold da R4c e da H0c-m da sexta execução, para a paridade da sétima (17.3). |
+| `listas/divisao_r4_{acetada,receitas_datahive,foodbd}.csv` | Divisão das bases novas da sétima execução (`eval/treino/externo_r7_divide.py`); as do ACETADA e das receitas ficam fora do git. |
 | `listas/ref_r5_prato.csv` | Previsões fora-do-fold da R4c (log-massa, 1 e 8 orientações) e da H0c (as duas densidades, 1 orientação) da quinta execução, para a paridade da sexta (15.4). |
 | `monta_pacote.py` | Regrava as listas e o notebook; `confere` verifica se o notebook está em dia, se o teste2 é o mesmo da execução 2 (conteúdo fixado) e não cruza com nenhum treino, e se a lista externa não traz prato do Nutrition5k nem alvo fora do pré-registro. |
 | `conjuntos_gpu.json` | Conjuntos (médias) declarados antes de qualquer resultado de GPU. |
@@ -378,6 +416,7 @@ Duas pseudo-configurações usam a mesma máquina de estados, sem ocupar GPU: `e
 python3 treino_gpu.py --autoteste             # inclui o fechamento dos rótulos de registro, pesos por base, procedência, paridade, filas das execuções 4 a 6, F4 = U0 bit a bit, coluna aninhada sem vazamento
 python3 treino_gpu.py --rodada 5 --smoke --listas <listas> --externo-imagens <fotos por base> --caixas <saída da etapa 0 (ou de deteccao_r5.py --smoke)> --saida <pasta> --cache <pasta_cache>
 python3 treino_gpu.py --rodada 6 --smoke …     # as mesmas entradas, mais ref_r5_prato.csv nas listas; ~2 min em CPU
+python3 treino_gpu.py --rodada 7 --smoke --sem-detector …     # mais ref_r6_prato.csv e as listas e divisões das bases novas; fotos em <imagens>/<base>/; ~2 min em CPU
 python3 treino_gpu.py --smoke --listas <pasta com todas as listas e tabelas> --externo-imagens <pasta com uma subpasta de fotos por base> --saida <pasta> --cache <pasta_cache>
 python3 treino_gpu.py --rodada 3 --smoke --saida <pasta> --cache <pasta_cache>     # execução 3: ~3 min, 40 pratos + 4 do teste2, ViT-Ti
 python3 treino_gpu.py --rodada 2 --smoke --saida <pasta2> --cache <pasta_cache2>   # execução 2

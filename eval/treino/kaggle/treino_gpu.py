@@ -65,10 +65,12 @@ from enum import Enum
 from types import SimpleNamespace
 import numpy as np
 
-FORMATO = "nutrelle-treino-gpu/6"          # /2 = /1 + teste2, arquivos de servir e servico.json; /3 = /2 + rodada 3 (seção 12); /4 = /3 + rodada 4 (seção 13);
+FORMATO = "nutrelle-treino-gpu/7"          # /2 = /1 + teste2, arquivos de servir e servico.json; /3 = /2 + rodada 3 (seção 12); /4 = /3 + rodada 4 (seção 13);
                                             # /5 = /4 + rodada 5 (seção 14: recorte pelo prato, cabeça sem gradiente, conjunto 'remontagem');
-                                            # /6 = /5 + rodada 6 (seção 15: P3 com a HP3 e a escolha da parada interna, H0c-m)
-FORMATOS_ACEITOS = ("nutrelle-treino-gpu/1", "nutrelle-treino-gpu/2", "nutrelle-treino-gpu/3", "nutrelle-treino-gpu/4", "nutrelle-treino-gpu/5", FORMATO)
+                                            # /6 = /5 + rodada 6 (seção 15: P3 com a HP3 e a escolha da parada interna, H0c-m);
+                                            # /7 = /6 + rodada 7 (seção 17: cabeças com 3 sementes, bases novas, detecção do FoodBD, features guardadas)
+FORMATOS_ACEITOS = ("nutrelle-treino-gpu/1", "nutrelle-treino-gpu/2", "nutrelle-treino-gpu/3", "nutrelle-treino-gpu/4", "nutrelle-treino-gpu/5",
+                    "nutrelle-treino-gpu/6", FORMATO)
 AQUI = os.path.dirname(os.path.abspath(__file__))
 BUCKET = "https://storage.googleapis.com/nutrition5k_dataset/nutrition5k_dataset/imagery/realsense_overhead"
 SPLITS = ["calib", "teste", "n5k_v1"]
@@ -237,10 +239,13 @@ def partes_de(cfg):
 def todas_as_configs():
     return (CONFIGS + CONFIGS3 + CONFIGS_SMOKE + CONFIGS_SMOKE3 + CONFIGS4 + [c for c in CONFIGS_SMOKE4 if c["tipo"] != "externo"]
             + [c for c in CONFIGS5 if c["tipo"] != "externo"] + [c for c in CONFIGS_SMOKE5 if c["tipo"] != "externo"]
-            + [c for c in CONFIGS6 if c["tipo"] != "externo"] + [c for c in CONFIGS_SMOKE6 if c["tipo"] != "externo"])
+            + [c for c in CONFIGS6 if c["tipo"] != "externo"] + [c for c in CONFIGS_SMOKE6 if c["tipo"] != "externo"]
+            + [c for c in CONFIGS7 if c["tipo"] != "externo"] + [c for c in CONFIGS_SMOKE7 if c["tipo"] != "externo"])
 
 
 def configs_da_rodada(rodada, smoke=False):
+    if rodada == "7":
+        return list(CONFIGS_SMOKE7 if smoke else CONFIGS7)
     if rodada == "6":
         return list(CONFIGS_SMOKE6 if smoke else CONFIGS6)
     if rodada == "5":
@@ -563,7 +568,7 @@ def autoteste():
     u4, u3, u0 = CONFIGS3[-3:]
     assert (u4["lr"], u4["lld"], u4["epocas"], u3["lr"], u3["lld"], u3["epocas"], u3["bs"], u3["acum"]) == (6e-5, 0.65, 25, 3e-5, 0.75, 12, 16, 2)
     assert not u0.get("fracoes") and not u0.get("peso_faixa") and not u0.get("professor") and (u0["lr"], u0["epocas"]) == (6e-5, 25)
-    nomes = {c["nome"] for c in CONFIGS + CONFIGS3 + CONFIGS4 + CONFIGS5 + CONFIGS6}
+    nomes = {c["nome"] for c in CONFIGS + CONFIGS3 + CONFIGS4 + CONFIGS5 + CONFIGS6 + CONFIGS7}
     assert all(set(v) <= nomes and len(set(v)) == len(v) for v in list(RODADAS.values()) + list(PIPELINES.values()) + list(PIPELINES3.values()))
     assert len(RODADAS["2"]) == 11 and all(set(v) <= set(RODADAS["2"]) for v in PIPELINES.values())
     assert [c["nome"] for c in configs_da_rodada("2")][0] == "gpu ridge siglip2_b16_224 o8"      # a paridade roda primeiro
@@ -606,6 +611,7 @@ def autoteste():
     teste_rodada4()
     teste_rodada5()
     teste_rodada6()
+    teste_rodada7()
     try:
         import torch  # noqa: F401
     except ImportError:
@@ -799,7 +805,7 @@ class Dados:
     aval = calib/teste/n5k_v1 (aval_ids.csv); conj = aval + os conjuntos de aval2_ids.csv (teste2), se o arquivo existir."""
 
     def __init__(self, pasta, smoke=0, rodada="2", externo=None, externo_imagens=None, externo_pesos=None, dominios=None):
-        self.rodada, v3 = rodada, rodada in ("3", "4", "5", "6")   # rodadas 3 a 6: treino_v2 (com frações por fonte); 3 e 4 preveem o teste2
+        self.rodada, v3 = rodada, rodada in ("3", "4", "5", "6", "7")   # rodadas 3 a 7: treino_v2 (com frações por fonte); 3 e 4 preveem o teste2
         arq_tr, arq_av = os.path.join(pasta, "treino_v2.csv" if v3 else "treino.csv"), os.path.join(pasta, "aval_ids.csv")
         with open(arq_tr) as f:
             rows = list(csv.DictReader(f))
@@ -868,7 +874,7 @@ class Dados:
         # blocos de extração de features: treino (+ 450) | pratos só de previsão (teste2), cada um em lotes próprios
         self.segmentos = [(i, f) for i, f in ((0, self.n_base), (self.n_base, len(self.todos))) if f > i]
         self.chave = hashlib.sha256("\n".join(self.todos).encode()).hexdigest()[:10]
-        if rodada in ("5", "6"):    # 14.1/15.1: o teste2 está encerrado e não é previsto. O único "conjunto" é o de remontagem: os 8 primeiros
+        if rodada in ("5", "6", "7"):    # 14.1/15.1: o teste2 está encerrado e não é previsto. O único "conjunto" é o de remontagem: os 8 primeiros
             # pratos de treino, previstos pelo modelo final só para conferir que os arquivos de servir repetem as previsões (nunca pontuado)
             assert not self.hash2, "a quinta e a sexta execuções não levam o teste2 (14.1, 15.1): tire aval2_ids.csv do pacote"
             prim = [d for d, u in zip(self.ids, self.usa_tr) if u][:8]
@@ -877,8 +883,9 @@ class Dados:
         self.ext = le_externo(externo, externo_imagens, self, smoke, externo_pesos) if externo else None
         # rodada 4 (seção 13): um domínio externo por lista + tabela de divisão presentes na pasta; os outros ficam de fora
         self.dom, self.dom_fora = {}, {}
-        if rodada in ("4", "5", "6"):
-            for chave in DOMINIOS4:
+        self.chaves_dom = list(DOMINIOS_TREINO4) + list(DOMINIOS7) if rodada == "7" else list(DOMINIOS4)     # 17: sem o SNAPMe, com as três novas
+        if rodada in ("4", "5", "6", "7"):
+            for chave in self.chaves_dom:
                 if dominios is not None and chave not in dominios:
                     self.dom_fora[chave] = "fora desta execução por --dominios"
                     continue
@@ -1287,8 +1294,12 @@ def treina_cabeca(X, T, FF, w, dc, cfg, dev, alvos_prof=None, semente=0, ext=Non
     Xt, Y, Fr, W = (torch.from_numpy(v).to(dev) for v in (Xn, Yn_, Fn, Wn))
     dct = torch.from_numpy(dc.astype(np.float32)).to(dev)
     Pn = None if Pnn is None else torch.from_numpy(Pnn).to(dev)
-    net = torch.nn.Sequential(torch.nn.Dropout(cfg["drop"]), torch.nn.Linear(Dm, cfg["oculto"]), torch.nn.GELU(), torch.nn.Dropout(cfg["drop"]),
-                              torch.nn.Linear(cfg["oculto"], nt + K)).to(dev)
+    ocultas = list(cfg.get("camadas") or [cfg["oculto"]])       # rodada 7 (H-cap): duas camadas ocultas de 1.024
+    camadas, ant = [torch.nn.Dropout(cfg["drop"])], Dm
+    for h_ in ocultas:
+        camadas += [torch.nn.Linear(ant, h_), torch.nn.GELU(), torch.nn.Dropout(cfg["drop"])]
+        ant = h_
+    net = torch.nn.Sequential(*camadas, torch.nn.Linear(ant, nt + K)).to(dev)
     opt = torch.optim.AdamW(net.parameters(), lr=cfg["lr"], weight_decay=cfg["wd"])
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, cfg["lr"], total_steps=cfg["epocas"] * (len(Xt) // cfg["lote"] + 1), pct_start=0.1)
     g = torch.Generator().manual_seed(semente)
@@ -1322,9 +1333,9 @@ def treina_cabeca(X, T, FF, w, dc, cfg, dev, alvos_prof=None, semente=0, ext=Non
             z = net(torch.from_numpy(((Xv - mu) / sd).reshape(-1, Dm).astype(np.float32)).to(dev))
             return ((z[:, :nt] * ts_t + tm_t).reshape(Xv.shape[0], Xv.shape[1], nt).cpu().numpy(),
                     torch.softmax(z[:, nt:], 1).reshape(Xv.shape[0], Xv.shape[1], K).cpu().numpy())
-    est = {k: v.detach().cpu().numpy() for k, v in net.state_dict().items()}
-    pesos = dict(mu=mu.astype(np.float32), sd=sd.astype(np.float32), tm=tm.astype(np.float32), ts=ts.astype(np.float32),
-                 W1=est["1.weight"], b1=est["1.bias"], W2=est["4.weight"], b2=est["4.bias"], dens_fonte=dc.astype(np.float32))
+    lin_ = [m_ for m_ in net if isinstance(m_, torch.nn.Linear)]
+    pesos = dict(mu=mu.astype(np.float32), sd=sd.astype(np.float32), tm=tm.astype(np.float32), ts=ts.astype(np.float32), dens_fonte=dc.astype(np.float32),
+                 **{f"{c}{i + 1}": (l_.weight if c == "W" else l_.bias).detach().cpu().numpy() for i, l_ in enumerate(lin_) for c in ("W", "b")})
     return pesos, prev
 
 
@@ -2294,7 +2305,7 @@ def roda_parte(a, cfg, parte, cfgs=()):
     destila = cfg["tipo"] == "destila-rgbd"
     C = Cache(a.cache, D)
     if cfg.get("v5"):           # rodada 5: as janelas do guia vêm da etapa 0; as configurações sobre o recorte abrem os recortes
-        P = carrega_caixas5(a.listas, [a.caixas], D, a.smoke)
+        P = carrega_caixas5(a.listas, [a.caixas], D, a.smoke, extras=[a.saida])
         C.P5 = P
         ab = abre_prato5(C, D, P) if cfg.get("prato") else abre_dominios4(C, D)
         return roda_parte4(a, cfg, parte, cfgs, D, C, ab, dev, a.prazo or float("inf"), f"[{cfg['nome']} | {parte}]", t0)
@@ -2617,13 +2628,30 @@ DOMINIOS4 = {       # chave = nome usado nas listas (externo_<chave>.csv, divisa
                    url="https://ndownloader.figshare.com/files/44532971", de="Figshare 44532971 (Ag Data Commons)"),
 }
 DOMINIOS_TREINO4 = ["flavoria", "lefood", "mensa", "fpb", "omnifood"]      # o SNAPMe nunca treina (13.5): só previsões gravadas
+# Sétima execução (seção 17): três bases novas, com a divisão de eval/treino/externo_r7_divide.py (mesmo formato da 13.3)
+DOMINIOS7 = {
+    "acetada": dict(dominio="acetada", orient=2, origem="zip_http", de="Purdue (skynet.ecn.purdue.edu), membros lidos do zip de 4,9 GB por intervalo de bytes"),
+    "receitas_datahive": dict(dominio="receitas_datahive", orient=1, origem="url", de="bucket S3 público do DataHive, foto a foto"),
+    "foodbd": dict(dominio="foodbd", orient=2, origem="url", de="Mendeley Data xh3ghf3jbg, foto a foto"),
+}
+INFO_DOM = dict(DOMINIOS4, **DOMINIOS7)
+DOMINIOS_TREINO7 = list(DOMINIOS7)
+FRAC7 = dict(acetada=0.28, receitas_datahive=0.15, foodbd=0.15)      # 17.2: soma dos pesos de cada base nova, em fração do Nutrition5k
+# 17.2: o que cada base nova supervisiona. dens/prot/ff = peso do alvo; vies = viés por domínio nos alvos extensivos (proteína direta)
+ALVOS7 = dict(acetada=dict(cabeca=dict(dens=1.0, prot=1.0, ff=0.5), massa=1.0, vies=True),
+              receitas_datahive=dict(cabeca=dict(dens=1.0), vies=False),
+              foodbd=dict(cabeca=dict(prot=1.0), vies=True))
+# rótulos fracos que podem sair da lista, SÓ nas linhas de treino destas bases (a parte segurada nunca passa)
+FRACAS7 = dict(receitas_datahive=("densidade_proteina_fraca_g100",), foodbd=("proteina_fraca_g",))
+DETECTA7 = ("foodbd",)          # 17.2: recorte pelo detector da etapa 0 (regra só de prato e tigela), feito no próprio kernel
 PAPEIS_REGISTRO4 = ("registro", "registro_misto", "avaliacao_fraca")       # nunca treinam; o kernel só grava as previsões
 PRAZO_DOWNLOAD4 = 40 * 60        # segundos, desde o início, para cada base externa ficar pronta
 TETO_DOMINIO4 = 0.5              # soma dos pesos de um domínio = min(0,5; grupos de treino ÷ pratos do treino_v2) × a do Nutrition5k
 # colunas que o kernel pode ler de uma linha que NÃO é de treino (ids, onde está a foto, procedência e a divisão): nenhuma de rótulo
-COLUNAS_ABERTAS4 = ("dish_id", "dominio", "grupo", "vista", "arquivo", "arquivo_base", "quadros", "url", "sha256", "bytes", "licenca", "uso_declarado",
+COLUNAS_ABERTAS4 = ("dish_id", "dominio", "grupo", "vista", "arquivo", "arquivo_base", "quadros", "url", "url_imagem", "url_zip", "sha256", "bytes", "licenca", "uso_declarado",
                     "papel", "fold_ext", "folds_proibidos", "quadro_metrica", "quadro_metrica_nome", "quadros_treino", "grupo_metrica")
 COLUNAS_ALVO4 = ("massa", "proteina", "kcal", "gordura", "carbo")           # + m_*, p_*, ff_* (o esquema de treino_v2.csv)
+REF_R6, REF_R6_CV = "ref_r6_prato.csv", 68.12      # rodada 7: R4c e H0c-m fora-do-fold da sexta execução; critério da R4c×H0c-m (rota r1, 1 orientação)
 REF_R5, REF_R5_CV = "ref_r5_prato.csv", 68.34      # rodada 6: R4c e H0c fora-do-fold da quinta execução; critério da REF (15.1)
 REF_D1 = "ref_d1_r3.csv"         # previsões fora-do-fold das duas cabeças do D1 na execução 3 (conferência de paridade de 13.7)
 D1_CV, D1_TOL, D1_CORR = 71.3, 0.3, 0.999
@@ -2684,7 +2712,7 @@ def fracoes_dominio4(grupos_treino, n_n5k, presentes):
     return {d: (v / s if s > 1.0 else v) for d, v in f.items()}
 
 
-def fecha_rotulos4(lista, divisao):
+def fecha_rotulos4(lista, divisao, fracas=()):
     """Junta cada linha de uma lista externa com a sua linha da tabela de divisão e FECHA os rótulos (13.8): de toda linha
     que não é de treino só sobram as colunas de COLUNAS_ABERTAS4 (ids, onde está a foto, procedência e divisão); as colunas
     de alvo (massa, proteína, kcal, gordura, carboidrato, m_*, p_*, ff_*) e qualquer outra são apagadas antes de alguém
@@ -2697,7 +2725,7 @@ def fecha_rotulos4(lista, divisao):
             continue
         assert v["papel"] == "treino" or v["papel"] in PAPEIS_REGISTRO4, f"papel desconhecido: {v['papel']}"
         j = dict(r, **v)
-        alvo = lambda c: v["papel"] == "treino" and (c in COLUNAS_ALVO4 or c.startswith(("m_", "p_", "ff_")) or c == "peso_nutricao") and "fraca" not in c
+        alvo = lambda c: v["papel"] == "treino" and ((c in COLUNAS_ALVO4 or c.startswith(("m_", "p_", "ff_")) or c == "peso_nutricao") and "fraca" not in c or c in fracas)
         out.append({c: x for c, x in j.items() if c in COLUNAS_ABERTAS4 or alvo(c)})
     return out
 
@@ -2708,7 +2736,7 @@ def le_dominio4(pasta, chave, D, smoke=0, raiz=None):
     treino de uma cena do OmniFood8K), com papel, fold em que valida, folds proibidos, grupo (a unidade que pesa igual:
     cena, prato, bandeja) e alvos em log só nas fotos de treino. raiz: pasta com as fotos já em disco (teste); no --smoke
     ficam só algumas fotos que existem nela."""
-    info = DOMINIOS4[chave]
+    info = INFO_DOM[chave]
     arq_l, arq_d = os.path.join(pasta, f"externo_{chave}.csv"), os.path.join(pasta, f"divisao_r4_{chave}.csv")
     with open(arq_l, newline="") as f:
         L = list(csv.DictReader(f))
@@ -2719,11 +2747,14 @@ def le_dominio4(pasta, chave, D, smoke=0, raiz=None):
     assert len(lic) == 1 and len(uso) == 1 and "" not in lic | uso, "licença ou uso declarado ausente ou misturado"
     n_lista = len(L)
     grupos_treino = len({v["grupo_metrica"] for v in V if v["papel"] == "treino"})
-    R = fecha_rotulos4(L, V)
+    R = fecha_rotulos4(L, V, FRACAS7.get(chave, ()))
     del L, V
     conhecidos = set(D.ids) | {d for v in D.conj.values() for d in v} | set(getattr(D, "antigo", {}))
     assert not [r["dish_id"] for r in R if r["dish_id"] in conhecidos or r["dish_id"].startswith("dish_")], "prato do Nutrition5k numa lista externa"
-    assert chave in DOMINIOS_TREINO4 or not any(r["papel"] == "treino" for r in R), f"{chave} não treina"
+    assert chave in DOMINIOS_TREINO4 + DOMINIOS_TREINO7 or not any(r["papel"] == "treino" for r in R), f"{chave} não treina"
+    for r in R:         # rodada 7: as receitas não têm `arquivo` (a foto vem da URL); o nome no disco sai do id
+        if not r.get("arquivo") and not r.get("arquivo_base"):
+            r["arquivo"] = f"{r['dish_id']}{os.path.splitext(r.get('url_imagem') or r.get('url') or '.jpg')[1][:5] or '.jpg'}"
     fotos = []          # (linha, arquivo, id da foto)
     for i, r in enumerate(R):
         if "arquivo_base" in r:     # uma linha por cena, vários quadros
@@ -2748,6 +2779,12 @@ def le_dominio4(pasta, chave, D, smoke=0, raiz=None):
     for j, i in enumerate(lin):
         r = R[i]
         if r["papel"] != "treino":      # parte de registro: nenhum rótulo é lido (as colunas nem existem mais)
+            continue
+        if chave in FRACAS7:        # rodada 7: só o rótulo fraco que a base supervisiona (17.2); o resto fica NaN
+            if chave == "receitas_datahive":
+                T[j, I_D] = np.log(num(r, "densidade_proteina_fraca_g100") / 100 + EPS_D)
+            else:
+                T[j, I_P] = np.log1p(num(r, "proteina_fraca_g"))
             continue
         m, p = num(r, "massa"), num(r, "proteina")
         assert np.isfinite(m) and m > 0, f"{r['dish_id']}: linha de treino sem massa"
@@ -2774,7 +2811,8 @@ def le_dominio4(pasta, chave, D, smoke=0, raiz=None):
     cont = lambda p: int((papel == p).sum())
     return dict(chave=chave, dominio=info["dominio"], licenca=lic.pop(), uso_declarado=uso.pop(), n_lista=n_lista,
                 sha256_lista=proc.get("sha256_lista") or sha(arq_l), sha256_divisao=proc.get("sha256_divisao") or sha(arq_d),
-                lista_enxuta=bool(proc), ids=ids, arquivos=[f[1] for f in fotos], url=[R[i].get("url") or None for i in lin],
+                lista_enxuta=bool(proc), ids=ids, arquivos=[f[1] for f in fotos], url=[R[i].get("url") or R[i].get("url_imagem") or None for i in lin],
+                url_zip=[R[i].get("url_zip") or None for i in lin],
                 sha256=[R[i].get("sha256") or None for i in lin], bytes=[int(R[i]["bytes"]) if R[i].get("bytes") else None for i in lin],
                 papel=papel, treina=treina, reg=~treina, fold_ext=np.array([int(R[i]["fold_ext"]) for i in lin]), proib=proib,
                 grupo=np.array([R[i]["grupo_metrica"] for i in lin]), metrica=np.array([R[i]["quadro_metrica"] == "1" for i in lin]),
@@ -2817,6 +2855,16 @@ def alvos_dominio4(d, D, cfg):
     ou casca; 0 sem nutrição); massa e proteína por grupo e frações 0,5. Função pura."""
     P = np.zeros((len(d["ids"]), D.N), np.float32); pf = np.zeros(len(d["ids"]), np.float32)
     ch = d["chave"]
+    if ch in ALVOS7:            # rodada 7 (17.2): cada base nova supervisiona só o que a tabela de 17.2 diz
+        if ch not in (cfg.get("treina_com") or cfg.get("externo4") or ()):
+            return P, pf
+        a7 = ALVOS7[ch]
+        if cfg["tipo"] == "ridge4":
+            P[:, I_M] = a7.get("massa", 0.0)
+            return P, pf
+        P[:, I_D], P[:, I_P] = a7["cabeca"].get("dens", 0.0), a7["cabeca"].get("prot", 0.0)
+        pf[:] = a7["cabeca"].get("ff", 0.0)
+        return P, pf
     if ch in cfg.get("ff_de", ()):                  # H2: só as frações por fonte
         pf[:] = 0.5
         return P, pf
@@ -2969,7 +3017,7 @@ def baixa_fotos4(d, raiz, ate, threads=16):
     retomada, e confere cada uma (tamanho e sha256 quando a lista traz; senão, que é uma imagem íntegra). Uma foto que
     falha derruba o domínio: treinar com a lista furada mudaria o conjunto pré-registrado sem aviso."""
     import urllib.parse
-    info = DOMINIOS4[d["chave"]]
+    info = INFO_DOM[d["chave"]]
 
     def um(j):
         dest = os.path.join(raiz, d["arquivos"][j])
@@ -2998,6 +3046,69 @@ def baixa_fotos4(d, raiz, ate, threads=16):
         raise IOError(f"{len(falhas)} de {len(res)} fotos não baixaram ou não conferem (ex.: {falhas[0]})")
 
 
+class ArquivoHTTP:
+    """Arquivo remoto lido por intervalo de bytes (HTTP Range), com a interface que zipfile precisa (seek, tell, read).
+    Rodada 7: tira do zip de 4,9 GB do ACETADA só as fotos da lista, sem baixar o zip inteiro. Cada leitura pede um
+    bloco de pelo menos `bloco` bytes e guarda o último; novas tentativas em erro de rede."""
+
+    def __init__(self, url, bloco=1 << 20, tentativas=6):
+        import urllib.request
+        self.url, self.bloco, self.tentativas, self.pos = url, bloco, tentativas, 0
+        self.buf, self.buf_ini = b"", 0
+        self.lidos = 0
+        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "python-urllib"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            self.tamanho = int(r.headers["Content-Length"])
+
+    def _pede(self, ini, fim):
+        import urllib.request
+        erro = None
+        for t in range(self.tentativas):
+            try:
+                req = urllib.request.Request(self.url, headers={"User-Agent": "python-urllib", "Range": f"bytes={ini}-{fim - 1}"})
+                with urllib.request.urlopen(req, timeout=120) as r:
+                    if r.status != 206:
+                        raise IOError(f"o servidor não respondeu ao Range (status {r.status})")
+                    b = r.read()
+                if len(b) != fim - ini:
+                    raise IOError(f"intervalo incompleto: {len(b)} de {fim - ini} bytes")
+                self.lidos += len(b)
+                return b
+            except Exception as e:      # noqa: BLE001 — rede: tenta de novo
+                erro = e
+                time.sleep(min(30, 2 ** t))
+        raise IOError(f"{self.url}: bytes {ini}-{fim}: {erro}")
+
+    def seekable(self):
+        return True
+
+    def readable(self):
+        return True
+
+    def tell(self):
+        return self.pos
+
+    def seek(self, off, de=0):
+        self.pos = off if de == 0 else self.pos + off if de == 1 else self.tamanho + off
+        return self.pos
+
+    def read(self, n=-1):
+        if n is None or n < 0:
+            n = self.tamanho - self.pos
+        n = max(0, min(n, self.tamanho - self.pos))
+        if not n:
+            return b""
+        if not (self.buf_ini <= self.pos and self.pos + n <= self.buf_ini + len(self.buf)):
+            fim = min(self.tamanho, self.pos + max(n, self.bloco))
+            self.buf, self.buf_ini = self._pede(self.pos, fim), self.pos
+        i = self.pos - self.buf_ini
+        self.pos += n
+        return self.buf[i:i + n]
+
+    def close(self):
+        self.buf = b""
+
+
 def baixa_dominio4(a, d):
     """Deixa em disco as fotos que a lista de um domínio cita e devolve a pasta. Tudo com novas tentativas, retomada,
     conferência e prazo (a.externo_ate). O que falhar levanta erro: a execução segue sem o domínio.
@@ -3006,7 +3117,7 @@ def baixa_dominio4(a, d):
                     ou em --espelho); senão o Google Drive, com a confirmação de arquivo grande;
       url           uma foto por pedido (Mendeley, GitHub, Hugging Face)."""
     import zipfile
-    ch, info, ate = d["chave"], DOMINIOS4[d["chave"]], getattr(a, "externo_ate", None)
+    ch, info, ate = d["chave"], INFO_DOM[d["chave"]], getattr(a, "externo_ate", None)
     base = os.path.join(a.cache, "ext4", ch)
     raiz = os.path.join(base, "img")
     os.makedirs(raiz, exist_ok=True)
@@ -3027,6 +3138,38 @@ def baixa_dominio4(a, d):
         with open(dest + ".parte", "wb") as fd:
             shutil.copyfileobj(fo, fd, 1 << 22)
         os.replace(dest + ".parte", dest)
+    if info["origem"] == "zip_http":            # rodada 7 (ACETADA): só os membros da lista, lidos do zip remoto por intervalo
+        achado = acha_no_espelho4(espelhos, d["arquivos"][0])
+        if achado:
+            pasta, corte = achado
+            d["raiz_espelho"] = (pasta, corte)
+            diz(f"base externa {ch}: fotos achadas no espelho {pasta} (sem download)")
+            return pasta
+        url = next(u for u in d["url_zip"] if u)
+        faltam = sorted(falta())
+        n_thr = 8
+        lidos = [0] * n_thr
+
+        def fatia(k):
+            fz = ArquivoHTTP(url)
+            with zipfile.ZipFile(fz) as z:      # a leitura confere o CRC de cada membro
+                nomes = set(z.namelist())
+                sem = [f for f in faltam[k::n_thr] if f not in nomes]
+                if sem:
+                    raise IOError(f"o zip não tem {len(sem)} fotos da lista (ex.: {sem[0]})")
+                for f in faltam[k::n_thr]:
+                    if ate and time.time() > ate:
+                        raise TimeoutError(f"download de {ch} passou do prazo")
+                    if not os.path.exists(os.path.join(raiz, f)):
+                        with z.open(f) as fo:
+                            grava(f, fo)
+            lidos[k] = fz.lidos
+        with ThreadPoolExecutor(n_thr) as ex:
+            list(ex.map(fatia, range(n_thr)))
+        if falta():
+            raise IOError(f"{len(falta())} fotos da lista de {ch} não saíram do zip (ex.: {falta()[0]})")
+        diz(f"base externa {ch}: {len(faltam)} fotos tiradas do zip remoto em {time.time() - t0:.0f}s ({sum(lidos) / 2 ** 30:.2f} GB lidos por intervalo; {info['de']})")
+        return raiz
     if info["origem"] == "zip":
         achado = acha_no_espelho4(espelhos, d["arquivos"][0])
         if achado:                              # árvore já extraída num dataset anexado: usa no lugar, sem copiar
@@ -3155,7 +3298,7 @@ def feats_dom4(bb, D, C, ch, dev, bs, prazo):
     arq = os.path.join(pasta_dom4(C, d), f"feat__{bb}.npy")
     with Trava(arq + ".trava"):
         if not os.path.exists(arq):
-            _extrai_feats(arq, bb, D, C, dev, bs, prazo, [(d["pos0"], d["pos0"] + len(d["ids"]))], base=d["pos0"], n_or=DOMINIOS4[ch]["orient"])
+            _extrai_feats(arq, bb, D, C, dev, bs, prazo, [(d["pos0"], d["pos0"] + len(d["ids"]))], base=d["pos0"], n_or=INFO_DOM[ch]["orient"])
     return np.load(arq)
 
 
@@ -3194,7 +3337,7 @@ class RidgeMulti(RidgeSub):
                 wj = t.from_numpy(w[j] / oe).to(self.dev)
                 te = t.from_numpy(np.ascontiguousarray(e["t"][j], np.float64)).to(self.dev)
                 delta = (te * wj[:, None]).sum(0) / wj.sum() - self.T[i].mean(0)
-                if self.sem_vies:       # rodada 5, recorte: sem viés por domínio (14.3)
+                if self.sem_vies and not e.get("com_vies"):       # rodada 5, recorte: sem viés por domínio (14.3); rodada 7: o ACETADA leva (17.2)
                     delta = delta * 0
                 deltas[e["chave"]] = delta.cpu().numpy()
                 Xs.append(e["Xt"][t.from_numpy(j).to(self.dev)].reshape(-1, Dm)); Ts.append((te - delta).repeat_interleave(oe, 0)); ws.append(wj.repeat_interleave(oe))
@@ -3233,7 +3376,7 @@ def ext_cabeca4(D, cfg, feats, fracs, k, T_n5k):
         with np.errstate(invalid="ignore"):
             m = np.nansum(T[:, ext_cols] * w[j, None], 0) / np.maximum((np.isfinite(T[:, ext_cols]) * w[j, None]).sum(0), 1e-12)
         tem = np.isfinite(T[:, ext_cols]).any(0)
-        if not cfg.get("sem_vies"):     # rodada 5, recorte: sem viés por domínio (14.3)
+        if not cfg.get("sem_vies") or ALVOS7.get(ch, {}).get("vies"):     # rodada 5, recorte: sem viés por domínio (14.3); rodada 7: ACETADA e FoodBD levam (17.2)
             delta[np.array(ext_cols)[tem]] = (m - T_n5k[:, ext_cols].mean(0))[tem]
         vies[ch] = delta
         oe = feats[ch].shape[1]
@@ -3730,6 +3873,98 @@ def colunas_aninhadas6(prev, Xtr, fold_tr, todos_f):
     return M
 
 
+def feats_dom7(cfg, D, C, ch, dev, prazo):
+    """Features congeladas de uma base externa para uma cabeça. Rodada 7: com `foodbd_inteira`, o FoodBD entra pela foto
+    inteira (as features do cache da foto inteira, feitas pela etapa `feat … inteira foodbd`), e não pelo recorte."""
+    if ch in DETECTA7 and cfg.get("foodbd_inteira"):
+        return np.load(os.path.join(C.raiz, f"ext4_{ch}_{D.dom[ch]['hash']}", f"feat__{cfg['bb']}.npy"))
+    return feats_dom4(cfg["bb"], D, C, ch, dev, 32, prazo)
+
+
+def fracoes7(D, usados):
+    """Fração do peso de cada base externa (13.4) com as bases novas da rodada 7 em FRAC7 (17.2: 0,28 / 0,15 / 0,15); se a
+    soma passa de 1, todas são reescaladas pelo mesmo fator (13.4). Sem base nova, é fracoes_dominio4. Função pura."""
+    velhas = [ch for ch in usados if ch not in FRAC7]
+    fr = fracoes_dominio4({ch: D.dom[ch]["grupos_treino_lista"] for ch in velhas}, len(D.ids), velhas) if velhas else {}
+    fr.update({ch: FRAC7[ch] for ch in usados if ch in FRAC7})
+    s_ = sum(fr.values())
+    return {ch: v / s_ if s_ > 1.0 else v for ch, v in fr.items()}
+
+
+def junta_sementes7(membros):
+    """Cabeças de frações treinadas com sementes diferentes -> (pesos com W*, b* empilhados no eixo 0, previsão = média
+    das sementes, em log e nas frações). Com uma semente só, é a cabeça dela. Função pura."""
+    if len(membros) == 1:
+        return membros[0]
+    p0 = membros[0][0]
+    pesos = {c: (np.stack([m_[0][c] for m_ in membros]) if c[0] in "Wb" and c[1:].isdigit() else v) for c, v in p0.items()}
+
+    def prev(X):
+        out = [pv(X) for _, pv in membros]
+        return np.mean([o[0] for o in out], 0), np.mean([o[1] for o in out], 0)
+    return pesos, prev
+
+
+def espalhamento_sementes7(D, saida, tr, n_sem):
+    """Variância entre sementes (17.3): RMSE de log-massa e de log-densidade e acerto da densidade com a massa real, por
+    semente e da média, fora-do-fold, 1 orientação. Só usa rótulos do treino."""
+    T = D.T[tr]
+    lg = lambda P: P[tr]
+    r = {}
+    for nome, chave in [(f"s{k}", f"oof_s{k}_o1") for k in range(n_sem)] + [("media", "oof_o1")]:
+        P = saida[chave][tr]
+        dens = 0.5 * (P[:, I_D] + np.log(np.clip(saida[chave.replace("_o1", "_dens_ff_o1")][tr], 0, None) + EPS_D))
+        p_dens = D.massa[tr] * np.clip(np.exp(dens) - EPS_D, 0, None)
+        w = D.w_cv[tr]
+        r[nome] = dict(rmse_log_dens_regressao=float(np.sqrt(np.mean((P[:, I_D] - T[:, I_D]) ** 2))),
+                       criterio_dens_com_massa_real=float(100 * (acerto(D.proteina[tr], p_dens) * w).sum() / w.sum()))
+    vals = [r[f"s{k}"]["criterio_dens_com_massa_real"] for k in range(n_sem)]
+    r["desvio_entre_sementes_criterio_dens_com_massa_real"] = float(np.std(vals, ddof=1))
+    return r
+
+
+def detecta7(a, cfg, D, dev, prazo):
+    """17.2: o detector da etapa 0 (OWLv2, as mesmas consultas, a mesma reserva por elipse) nas fotos do FoodBD, dentro do
+    kernel. Grava na saída caixas_r5_foodbd.csv (formato da etapa 0, com as caixas brutas: a regra só de prato e tigela é
+    aplicada por carrega_caixas5, como nas outras bases) e as folhas de contato (40 fotos, semente 0) com a janela da regra
+    para a conferência a olho, que é feita DEPOIS da execução e antes da escolha. Depois prepara os recortes no cache."""
+    import deteccao_r5 as E
+    ch = cfg["chave"]
+    d = D.dom[ch]
+    raiz = d["raiz"] if d["raiz"] and os.path.isdir(d["raiz"]) else baixa_dominio4(a, d)
+    F = dict(ids=list(d["ids"]), arquivos=list(d["arquivos"]), raiz=raiz, corte=d.get("raiz_espelho", (None, 0))[1])
+    det = None if a.sem_detector else E.Detector(dev, os.path.join(a.cache, "hf"))
+    versao = det.versao if det else "sem detector (só a reserva por elipse; teste)"
+    t0, linhas = time.time(), []
+
+    def abre(i):
+        img, girada = E.abre_canonica(E.caminho(F, i))
+        return i, img, girada, E.sha256(E.caminho(F, i)), E.elipse(img)
+    with ThreadPoolExecutor(4) as ex:
+        for j in range(0, len(F["ids"]), 8):
+            if time.time() > prazo:
+                raise SemOrcamento()
+            lote = list(ex.map(abre, range(j, min(j + 8, len(F["ids"])))))
+            res = det([x[1] for x in lote]) if det else [(np.zeros((0, 4)), np.zeros(0), np.zeros(0, int))] * len(lote)
+            linhas += [E.linha_deteccao(F["ids"][i], ch, F["arquivos"][i], img, girada, sha, el, r_, versao, i) for (i, img, girada, sha, el), r_ in zip(lote, res)]
+    arq = os.path.join(a.saida, f"caixas_r5_{ch}.csv")
+    with open(arq + ".tmp", "w", newline="") as f:
+        wr = csv.DictWriter(f, E.COLS, lineterminator="\n", extrasaction="ignore"); wr.writeheader(); wr.writerows(linhas)
+    os.replace(arq + ".tmp", arq)
+    conf = json.load(open(os.path.join(a.listas, CONFERENCIA5)))
+    consultas = set(conf.get("consultas", CONSULTAS5))
+    regra = [dict(E.refaz_linha(r, consultas), _i=r["_i"]) for r in linhas]       # as folhas mostram a janela da regra de prato e tigela
+    E.folhas(SimpleNamespace(saida=a.saida), ch, regra, F, "_so_prato")
+    met = {}
+    for r in regra:
+        met[r["metodo"]] = met.get(r["metodo"], 0) + 1
+    P = carrega_caixas5(a.listas, [a.caixas], D, a.smoke, extras=[a.saida])
+    rec = prepara_prato5(a, D, ch, P)
+    print(f"[{cfg['nome']}] {len(linhas)} fotos em {time.time() - t0:.0f}s | métodos (regra {sorted(consultas)}): {met} | {versao} | recortes: {rec}", flush=True)
+    return dict(n=len(linhas), metodos=met, versao_detector=versao, sha256_tabela=E.sha256(arq), consultas=sorted(consultas),
+                folhas=sorted(x for x in os.listdir(a.saida) if x.startswith(f"folha_r5_{ch}")), recortes=rec)
+
+
 def particao_interna6(cadeia):
     """A cadeia fica na validação interna do P3 (15.4)? sha1(cadeia) mod 10 == 0. Função pura."""
     return int(hashlib.sha1(str(cadeia).encode()).hexdigest(), 16) % 10 == 0
@@ -3776,12 +4011,21 @@ def aplica_cabeca4(z, X):
     (22 saídas em log [n, o, 22], frações por fonte [n, o, K]). É a fórmula de servir__*.json, em float32."""
     import torch
     nt = len(z["tm"])
+    n_cam = max(int(k[1:]) for k in (z.files if hasattr(z, "files") else z) if k.startswith("W") and k[1:].isdigit())
+    W1 = np.asarray(z["W1"])
+    sementes = W1.shape[0] if W1.ndim == 3 else 0      # rodada 7: várias sementes empilhadas no eixo 0; a previsão é a média
+    Ps, Fs = [], []
     with torch.inference_mode():
-        h = torch.nn.functional.gelu(torch.from_numpy(((X - z["mu"]) / z["sd"]).reshape(-1, X.shape[-1]).astype(np.float32)) @ torch.from_numpy(np.asarray(z["W1"])).T + torch.from_numpy(np.asarray(z["b1"])))
-        o = h @ torch.from_numpy(np.asarray(z["W2"])).T + torch.from_numpy(np.asarray(z["b2"]))
-        fr = torch.softmax(o[:, nt:], 1).numpy()
-        o = o.numpy()
-    return (o[:, :nt] * z["ts"] + z["tm"]).reshape(X.shape[0], X.shape[1], nt), fr.reshape(X.shape[0], X.shape[1], -1)
+        x0 = torch.from_numpy(((X - z["mu"]) / z["sd"]).reshape(-1, X.shape[-1]).astype(np.float32))
+        for s_ in range(max(1, sementes)):
+            pega = lambda c: torch.from_numpy(np.ascontiguousarray(np.asarray(z[c])[s_] if sementes else np.asarray(z[c]), np.float32))
+            h = x0
+            for i in range(1, n_cam):
+                h = torch.nn.functional.gelu(h @ pega(f"W{i}").T + pega(f"b{i}"))
+            o = h @ pega(f"W{n_cam}").T + pega(f"b{n_cam}")
+            Fs.append(torch.softmax(o[:, nt:], 1).numpy()); Ps.append(o[:, :nt].numpy())
+    o, fr = np.mean(Ps, 0), np.mean(Fs, 0)
+    return (o * z["ts"] + z["tm"]).reshape(X.shape[0], X.shape[1], nt), fr.reshape(X.shape[0], X.shape[1], -1)
 
 
 def _e_topo4(nome, L, n):
@@ -3899,9 +4143,11 @@ def roda_parte4(a, cfg, parte, cfgs, D, C, abertos, dev, prazo, rot, t0):
 
     def fecha_ext(feitos):
         saida["dominios"] = np.array(sorted(feitos))
-        saida["dominios_fora"] = np.array(sorted(set(DOMINIOS4) - set(feitos)))
+        saida["dominios_fora"] = np.array(sorted(set(getattr(D, "chaves_dom", DOMINIOS4)) - set(feitos)))
 
-    if cfg["tipo"] == "feat":
+    if cfg["tipo"] == "deteccao":       # rodada 7: o detector da etapa 0 no FoodBD (17.2)
+        saida.update(deteccao=json.dumps(detecta7(a, cfg, D, dev, prazo)))
+    elif cfg["tipo"] == "feat":
         if cfg["chave"] == "n5k":
             X = feats_congeladas(cfg["bb"], D, C, dev, cfg["bs"], prazo)
         else:
@@ -3936,8 +4182,9 @@ def roda_parte4(a, cfg, parte, cfgs, D, C, abertos, dev, prazo, rot, t0):
                 if c.startswith(tuple(["oof"] + list(D.conj))):
                     saida[c] = pl[c].copy()
             A, b = pl["afim_A"].copy(), pl["afim_b"].copy()
-            fr = fracoes_dominio4({ch: D.dom[ch]["grupos_treino_lista"] for ch in usados}, len(D.ids), usados)
-            doms = [dict(chave=ch, X=feats_dom4(cfg["bb"], D, C, ch, dev, cfg["bs"], prazo), t=D.dom[ch]["T"][:, [I_M]], d=D.dom[ch], frac=fr[ch]) for ch in usados]
+            fr = fracoes7(D, usados)
+            doms = [dict(chave=ch, X=feats_dom7(cfg, D, C, ch, dev, prazo), t=D.dom[ch]["T"][:, [I_M]], d=D.dom[ch], frac=fr[ch],
+                         com_vies=bool(ALVOS7.get(ch, {}).get("vies"))) for ch in usados]     # rodada 7 (R4c+A): a massa do ACETADA com viés por domínio
             tempo()
             R = RidgeMulti(Xtr, D.T[tr][:, [I_M]], fold_tr, doms, dev, sem_vies=bool(cfg.get("sem_vies")))
             alfa = R.alfa_cv(todos_f)
@@ -3973,9 +4220,18 @@ def roda_parte4(a, cfg, parte, cfgs, D, C, abertos, dev, prazo, rot, t0):
     elif cfg["tipo"] == "fracoes4" and parte == "tudo":
         X = feats_congeladas(cfg["bb"], D, C, dev, 32, prazo).astype(np.float32)
         Xtr, Ttr, FFtr, mtr, ptr, Dm = X[[C.pos[D.ids[i]] for i in tr]], D.T[tr], D.FF[tr], D.massa[tr], D.proteina[tr], X.shape[-1]
-        fts = {ch: feats_dom4(cfg["bb"], D, C, ch, dev, 32, prazo) for ch in usados}
-        fr = fracoes_dominio4({ch: D.dom[ch]["grupos_treino_lista"] for ch in usados}, len(D.ids), usados) if usados else {}
+        fts = {ch: feats_dom7(cfg, D, C, ch, dev, prazo) for ch in usados}
+        fr = fracoes7(D, usados) if usados else {}
         dens_fonte = np.zeros((6, K), np.float32)
+        n_sem = int(cfg.get("sementes") or 1)      # rodada 7 (17.3): cada cabeça de densidade com 3 sementes, pela média
+        pm4 = parte_de(cfg["massa_aninhada"]) if cfg.get("massa_aninhada") else None
+
+        def fts_q(q):       # H0c-m com bases externas (rodada 7): a coluna de massa das fotos externas é a R4c do modelo q, na própria foto
+            if pm4 is None:
+                return fts
+            return {ch: np.concatenate([Fx.astype(np.float32), (Fx.astype(np.float64) @ pm4["afim_A"][q][:, I_M] + pm4["afim_b"][q][I_M])[..., None].astype(np.float32)], -1)
+                    for ch, Fx in fts.items()}
+        resumo_sem = []
         vies = {ch: np.zeros((6, N), np.float32) for ch in usados}
         P, F = np.zeros((len(tr), 8, N), np.float32), np.zeros((len(tr), 8, K), np.float32)
         Xconj = {s: X[lin[s]] for s in D.conj}
@@ -3985,10 +4241,16 @@ def roda_parte4(a, cfg, parte, cfgs, D, C, abertos, dev, prazo, rot, t0):
             saida.update(massa_aninhada=json.dumps(info_m))
         for q, m in [(q, fold_tr != q) for q in sorted(todos_f)] + [(5, np.ones(len(tr), bool))]:
             tempo()
-            ed, vq = ext_cabeca4(D, cfg, fts, fr, q if q < 5 else None, Ttr[m]) if usados else (None, {})
+            ed, vq = ext_cabeca4(D, cfg, fts_q(q), fr, q if q < 5 else None, Ttr[m]) if usados else (None, {})
             dc = dens_por_fonte(FFtr[m], mtr[m], ptr[m])
             Xq = np.concatenate([Xtr, Mq[q][..., None]], -1) if cfg.get("massa_aninhada") else Xtr      # H0c-m: a coluna de massa do modelo q
-            pesos, prev = treina_cabeca(Xq[m], Ttr[m], FFtr[m], peso_faixa(ptr[m]), dc, cfg, dev, None, ext=ed)
+            membros = [treina_cabeca(Xq[m], Ttr[m], FFtr[m], peso_faixa(ptr[m]), dc, cfg, dev, None, semente=k_, ext=ed) for k_ in range(n_sem)]
+            pesos, prev = junta_sementes7(membros)
+            if n_sem > 1:       # cada semente também sai sozinha (a variância entre sementes, 17.3; a semente 0 é a conta da sexta execução)
+                for k_, (_, pv_) in enumerate(membros):
+                    if q < 5:
+                        Pk, Fk = pv_(Xq[~m])
+                        guarda(f"oof_s{k_}", tr[fold_tr == q], n, Pk, Fk, dc)
             dens_fonte[q] = dc
             for ch, dl in vq.items():
                 vies[ch][q] = dl
@@ -4000,6 +4262,8 @@ def roda_parte4(a, cfg, parte, cfgs, D, C, abertos, dev, prazo, rot, t0):
                 for s in D.conj:
                     guarda(s, usa[s], len(D.conj[s]), *prev(Xconj[s]), dc)
         saida.update(dens_fonte=dens_fonte, fontes=np.array(D.fontes), pesos_dominio=json.dumps(fr), **{f"vies__{ch}": v for ch, v in vies.items()})
+        if n_sem > 1:
+            saida["sementes"] = json.dumps(espalhamento_sementes7(D, saida, tr, n_sem))
         arq_c = arq_de(a.saida, cfg, "cabeca")
         np.savez(arq_c + ".tmp.npz", nome=cfg["nome"], listas_hash=D.hash, fontes=np.array(D.fontes), **pesos)
         os.replace(arq_c + ".tmp.npz", arq_c)
@@ -4028,7 +4292,9 @@ def roda_parte4(a, cfg, parte, cfgs, D, C, abertos, dev, prazo, rot, t0):
         feitos = []
         for ch in [c for c in abertos if tem_feat(c)]:
             tempo()
-            d, F0 = D.dom[ch], np.load(os.path.join(pasta_dom4(C, D.dom[ch]), f"feat__{cfg['bb']}.npy"))[:, :1].astype(np.float32)
+            d = D.dom[ch]
+            F0 = (feats_dom7(cfg, D, C, ch, dev, prazo) if ch in DETECTA7 and cfg.get("foodbd_inteira")       # rodada 7: o FoodBD pela foto inteira
+                  else np.load(os.path.join(pasta_dom4(C, d), f"feat__{cfg['bb']}.npy")))[:, :1].astype(np.float32)
             com_m = lambda q, Fx: np.concatenate([Fx, (Fx.astype(np.float64) @ pm["afim_A"][q][:, I_M] + pm["afim_b"][q][I_M])[..., None].astype(np.float32)], -1) if pm is not None else Fx
             for de_treino in (True, False):
                 j = ext_ids(ch, de_treino)
@@ -4041,7 +4307,7 @@ def roda_parte4(a, cfg, parte, cfgs, D, C, abertos, dev, prazo, rot, t0):
                     if cfg["tipo"] == "ridge4":
                         Pj[s_] = F0[j[s_], 0].astype(np.float64) @ pt["afim_A"][q] + pt["afim_b"][q]
                     else:
-                        Pq, Fq = aplica_cabeca4({c: pt[f"cab{q}_{c}"] for c in ("mu", "sd", "W1", "b1", "W2", "b2", "tm", "ts")}, com_m(q, F0[j[s_]]))
+                        Pq, Fq = aplica_cabeca4({c[len(f"cab{q}_"):]: pt[c] for c in pt.files if c.startswith(f"cab{q}_")}, com_m(q, F0[j[s_]]))
                         Pj[s_], Fj[s_], Dj[s_] = Pq[:, 0], Fq[:, 0], Fq[:, 0] @ pt["dens_fonte"][q]
                 saida[f"{pre}__{ch}"] = Pj
                 if cfg["tipo"] == "fracoes4":
@@ -4166,6 +4432,13 @@ def parte_pronta4(a, cfg, parte, D):
     C = Cache(a.cache, D)
     P = getattr(D, "P5", None)
     if cfg["tipo"] == "externo":
+        if cfg.get("v7"):       # rodada 7: o FoodBD só com a foto inteira (o recorte sai da detecção); as outras, só com o recorte
+            if cfg["chave"] not in D.dom:
+                return False
+            if cfg["chave"] in DETECTA7:
+                return os.path.exists(os.path.join(pasta_dom4(C, D.dom[cfg["chave"]]), "pronto.json"))
+            C.prato_hash = {c: v["hash"] for c, v in P["por_base"].items()}
+            return os.path.exists(os.path.join(pasta_prato5(C, D.dom[cfg["chave"]]), "pronto.json"))
         ok = cfg["chave"] in D.dom and os.path.exists(os.path.join(pasta_dom4(C, D.dom[cfg["chave"]]), "pronto.json"))
         if ok and cfg.get("v5"):        # rodada 5: também os recortes da base
             C.prato_hash = {c: v["hash"] for c, v in P["por_base"].items()}
@@ -4173,6 +4446,10 @@ def parte_pronta4(a, cfg, parte, D):
         return ok
     if cfg.get("prato"):
         C.prato, C.prato_hash = True, {c: v["hash"] for c, v in P["por_base"].items()}
+    if cfg["tipo"] == "deteccao":       # rodada 7: a tabela do FoodBD e os recortes dele
+        P7 = carrega_caixas5(a.listas, [a.caixas], D, a.smoke, extras=[a.saida])
+        C.prato_hash = {c: v["hash"] for c, v in P7["por_base"].items()}
+        return os.path.exists(arq_parte(a.saida, cfg, parte)) and os.path.exists(os.path.join(pasta_prato5(C, D.dom[cfg["chave"]]), "pronto.json"))
     if cfg["tipo"] == "feat":
         if cfg["chave"] == "n5k":
             return os.path.exists(os.path.join(C.pasta, f"feat__{cfg['bb']}__prato_{C.prato_hash['n5k']}.npy" if cfg.get("prato") else f"feat__{cfg['bb']}.npy"))
@@ -4262,8 +4539,9 @@ def junta4(a, cfg, D):
     for ch in [str(x) for x in pred["dominios"]]:
         d = D.dom[ch]
         j = np.where(d["treina"])[0]
-        if len(j):
-            e = pred[f"extcv__{ch}"][:, I_M] - d["T"][j, I_M]
+        tem_m = np.isfinite(d["T"][j, I_M]) if len(j) else np.zeros(0, bool)     # rodada 7: receitas e FoodBD não têm massa
+        if tem_m.any():
+            e = (pred[f"extcv__{ch}"][:, I_M] - d["T"][j, I_M])[tem_m]
             cv["ext_cv_massa"][ch] = dict(fotos=int(len(j)), vies_mediano_cru_pct=round(float(100 * (np.exp(np.median(e)) - 1)), 1),
                                           a_20pct_com_constante=round(float(100 * np.mean(np.abs(np.exp(e - np.median(e)) - 1) <= 0.2)), 1))
     if cfg["tipo"] in ("ft", "ftparcial"):      # critério de aceitação de 13.7: a massa não pode piorar entre a época 0 e a última
@@ -4643,7 +4921,7 @@ def acha_caixas5(pastas):
     return None
 
 
-def carrega_caixas5(pasta_listas, pastas, D, smoke=False):
+def carrega_caixas5(pasta_listas, pastas, D, smoke=False, extras=()):
     """As janelas do guia de cada foto (14.3), refeitas aqui das caixas brutas da etapa 0 com a regra da conferência
     (conferencia_r5.json: `consultas`, bases `reprovados` na conferência a olho, `conferida`). Assim a execução não
     depende de qual regra a etapa 0 usou na tabela principal. Base reprovada, sem tabela ou com foto faltando: fica com a
@@ -4660,6 +4938,8 @@ def carrega_caixas5(pasta_listas, pastas, D, smoke=False):
     for ch, ids in ids_de.items():
         b = dict(jan={}, sha={}, situacao=None)
         arq = os.path.join(pasta, f"caixas_r5_{ch}.csv") if pasta else None
+        if ch in DETECTA7:      # rodada 7: o FoodBD não passou pela etapa 0; a tabela dele sai do próprio kernel (detecta7), na pasta de saída
+            arq = next((os.path.join(x, f"caixas_r5_{ch}.csv") for x in extras if x and os.path.exists(os.path.join(x, f"caixas_r5_{ch}.csv"))), None)
         if ch in reprov:
             b["situacao"] = "reprovada na conferência a olho: foto inteira"
         elif not arq or not os.path.exists(arq):
@@ -5213,6 +5493,239 @@ def teste_rodada6_torch():
 
 # >>>>> RODADA 6: fim
 
+# <<<<< RODADA 7: início
+# Seção 17 de docs/dados/precisao/resultado_modelo_treinado.md: só cabeças sobre features congeladas do So400m no recorte.
+# Bases novas: ACETADA (foto oblíqua inteira; densidade, frações e proteína direta), receitas DataHive (só a densidade,
+# rótulo fraco) e FoodBD (recorte pelo detector da etapa 0, feito aqui, e a foto inteira; só a proteína direta, rótulo
+# fraco). As partes seguradas das três têm os rótulos apagados (no pacote e no kernel) e só recebem previsões.
+def configs7(smoke=False):
+    """As configurações da sétima execução (17.3), em ordem de prioridade; o corte é a ordem inversa (5, depois 4, depois
+    3; a 1 e a 2 ficam). Cada cabeça de densidade com 3 sementes (pela média). O FoodBD entra de dois jeitos, recorte e
+    foto inteira, e a escolha entre eles é feita na CPU depois da conferência a olho das folhas de contato."""
+    pre, so = ("smoke7", "vit_tiny_96x128") if smoke else ("gpu7", _SO4)
+    ap = "tiny96" if smoke else "so400m"
+    mlp = dict(MLP3, epocas=3, sementes=3) if smoke else dict(MLP3, sementes=3)
+    ext = lambda d: f"externo {d}"
+    feat = lambda d, v="prato": f"{pre} feat {ap} {v} {d}"
+    base = dict(v4=True, v5=True, v7=True)
+    velhas, novas = list(DOMINIOS_TREINO4), list(DOMINIOS7)
+    todos_feat = [feat(d) for d in velhas + novas] + [feat("foodbd", "inteira")]
+    est_feat = dict(flavoria=5, lefood=3, mensa=2, fpb=6, omnifood=18, acetada=3, receitas_datahive=27, foodbd=5)
+    cs = [dict(nome=ext(d), tipo="externo", chave=d, bb=None, est_min=0, livre=True, servico=False, partes=["tudo"], **base) for d in velhas + novas]
+    cs.append(dict(nome=feat("n5k"), tipo="feat", chave="n5k", bb=so, bs=32, est_min=1 if smoke else 22, prato=True, livre=True, servico=False, partes=["tudo"], prioridade7=1, **base))
+
+    def cabeca(nome, tipo, apelido, est, doms=(), prio=1, **kw):
+        return dict(dict(nome=f"{pre} {tipo} {ap} prato{nome}", tipo=tipo + "4", apelido=apelido, bb=so, bs=32, est_min=est, prato=True, sem_vies=True, livre=True,
+                         servico=False, treina_com=list(doms), ff_de=[], partes=["tudo", "ext"], depende=[feat("n5k")] + [feat(d) for d in velhas] + [feat(d) for d in doms if d not in velhas],
+                         tardia=dict(parte="ext", terminal=todos_feat), prioridade7=prio, **base), **kw)
+    # prioridade 1: features do recorte do Nutrition5k e das cinco bases da seção 13, R0c/R4c/H0c/H0c-m refeitas (paridade com a sexta)
+    cs += [dict(nome=feat(d), tipo="feat", chave=d, bb=so, bs=32, est_min=1 if smoke else est_feat[d], prato=True, livre=True, servico=False,
+                partes=["tudo"], depende=[ext(d)], prioridade7=1, **base) for d in velhas]
+    r0 = cabeca("", "ridge", "R0c7", 1)
+    r1 = cabeca(" +ok", "ridge", "R1c7", 2, ["flavoria", "lefood", "mensa"]); r1["depende"].append(r0["nome"]); r1["plano"] = r0["nome"]
+    r4 = cabeca(" +tudo", "ridge", "R4c7", 2, velhas, servico=None); r4["depende"].append(r0["nome"]); r4["plano"] = r0["nome"]
+    h0 = cabeca("", "fracoes", "H0c7", 6, **mlp)
+    hm = lambda nome, apelido, est, doms=(), prio=1, **kw: cabeca(" +massa" + nome, "fracoes", apelido, est, doms, prio, massa_aninhada=r4["nome"],
+                                                                  herda_massa_de=list(velhas), **dict(mlp, **kw))
+    hm0 = hm("", "H0c-m7", 8)
+    for c in (hm0,):
+        c["depende"].append(r4["nome"])
+    cs += [r0, r1, r4, h0, hm0]
+    # prioridade 2: ACETADA
+    cs.append(dict(nome=feat("acetada"), tipo="feat", chave="acetada", bb=so, bs=32, est_min=1 if smoke else est_feat["acetada"], prato=True, livre=True,
+                   servico=False, partes=["tudo"], depende=[ext("acetada")], prioridade7=2, **base))
+    ha = hm(" +acetada", "H-A", 8, ["acetada"], 2)
+    r4a = cabeca(" +tudo +acetada", "ridge", "R4c+A", 2, velhas + ["acetada"], 2); r4a["depende"].append(r0["nome"]); r4a["plano"] = r0["nome"]
+    # prioridade 3: receitas
+    feat_r = dict(nome=feat("receitas_datahive"), tipo="feat", chave="receitas_datahive", bb=so, bs=32, est_min=1 if smoke else est_feat["receitas_datahive"], prato=True,
+                  livre=True, servico=False, partes=["tudo"], depende=[ext("receitas_datahive")], prioridade7=3, **base)
+    hr = hm(" +receitas", "H-R", 10, ["receitas_datahive"], 3)
+    har = hm(" +acetada+receitas", "H-AR", 12, ["acetada", "receitas_datahive"], 3)
+    # prioridade 4: FoodBD (detector, recorte e foto inteira)
+    det = dict(nome=f"{pre} detecta foodbd", tipo="deteccao", chave="foodbd", bb=None, est_min=1 if smoke else 4, livre=True, servico=False, partes=["tudo"],
+               depende=[ext("foodbd")], prioridade7=4, **base)
+    feat_b = dict(nome=feat("foodbd"), tipo="feat", chave="foodbd", bb=so, bs=32, est_min=1 if smoke else est_feat["foodbd"], prato=True, livre=True,
+                  servico=False, partes=["tudo"], depende=[det["nome"]], prioridade7=4, **base)
+    feat_bi = dict(nome=feat("foodbd", "inteira"), tipo="feat", chave="foodbd", bb=so, bs=32, est_min=1 if smoke else est_feat["foodbd"], prato=False, livre=True,
+                   servico=False, partes=["tudo"], depende=[ext("foodbd")], prioridade7=4, **base)
+    hb = hm(" +foodbd", "H-B", 8, ["foodbd"], 4)
+    hbi = hm(" +foodbd inteira", "H-Bi", 8, ["foodbd"], 4, foodbd_inteira=True)
+    harb = hm(" +acetada+receitas+foodbd", "H-ARB", 13, ["acetada", "receitas_datahive", "foodbd"], 4)
+    harbi = hm(" +acetada+receitas+foodbd inteira", "H-ARBi", 13, ["acetada", "receitas_datahive", "foodbd"], 4, foodbd_inteira=True)
+    hbl = cabeca(" +foodbd", "fracoes", "H0c+B", 7, ["foodbd"], 4, **mlp)                     # 17.4: o melhor só com dados liberados, R1c × {H0c, H-B}
+    hbli = cabeca(" +foodbd inteira", "fracoes", "H0c+Bi", 7, ["foodbd"], 4, foodbd_inteira=True, **mlp)
+    for c in (hbi, harbi, hbli):
+        c["depende"] = [x if x != feat("foodbd") else feat("foodbd", "inteira") for x in c["depende"]]
+    # prioridade 5: capacidade da cabeça
+    hcap = hm("", "H-cap", 12, (), 5, camadas=[64, 64] if smoke else [1024, 1024])
+    hcap["nome"] = f"{pre} fracoes {ap} prato +massa cap"
+    for c in (ha, hr, har, hb, hbi, harb, harbi, hcap):
+        c["depende"].append(r4["nome"])
+    return cs + [ha, r4a, feat_r, hr, har, det, feat_b, feat_bi, hb, hbi, harb, harbi, hbl, hbli, hcap]
+
+
+CONFIGS7, CONFIGS_SMOKE7 = configs7(), configs7(True)
+RODADAS["7"] = [c["nome"] for c in CONFIGS7]
+
+
+def pipelines7(cfgs):
+    """Totais de serviço da sétima execução: o S6 (R4c × H0c-m, 3 sementes), com 1 e 4 orientações. As outras cabeças de
+    densidade têm o mesmo custo (a H-cap, um pouco mais: as MLPs não são medidas à parte; ver conferencias_cabecas)."""
+    ap = {c.get("apelido"): c["nome"] for c in cfgs if c.get("apelido")}
+    return {"S6_R4c_H0c-m_recorte": [ap["R4c7"]]} if "R4c7" in ap else {}
+
+
+def exporta_feats7(a, D, cfgs, estado):
+    """17.2: copia para a saída as features congeladas (meia precisão) de cada etapa `feat` completa, com o índice das
+    linhas (ids na ordem), as orientações e os hashes que as amarram ao recorte e às listas. Nada de foto."""
+    import deteccao_r5 as E
+    P = carrega_caixas5(a.listas, [a.caixas], D, a.smoke, extras=[a.saida])
+    C = Cache(a.cache, D)
+    C.prato_hash = {c: v["hash"] for c, v in P["por_base"].items()}
+    out, total = {}, 0
+    for c in cfgs:
+        if c["tipo"] != "feat" or estado_config(estado[slug(c["nome"])]) != "completa":
+            continue
+        ch, var = c["chave"], ("recorte" if c.get("prato") else "inteira")
+        if ch == "n5k":
+            orig, ids, orient = os.path.join(C.pasta, f"feat__{c['bb']}__prato_{C.prato_hash['n5k']}.npy"), list(D.todos), "8 vistas: diedral, a vista 0 exata e 7 com erro de enquadramento"
+        else:
+            d = D.dom[ch]
+            C.prato = bool(c.get("prato"))
+            orig, ids, orient = os.path.join(pasta_dom4(C, d), f"feat__{c['bb']}.npy"), list(d["ids"]), f"{INFO_DOM[ch]['orient']} (original" + (" e 180°)" if INFO_DOM[ch]["orient"] == 2 else ")")
+            C.prato = False
+        nome = f"feat7__{ch}__{var}.npy"
+        X = np.load(orig, mmap_mode="r")
+        assert len(X) == len(ids) and X.dtype == np.float16, f"{orig}: {X.shape} {X.dtype}"
+        shutil.copyfile(orig, os.path.join(a.saida, nome + ".tmp")); os.replace(os.path.join(a.saida, nome + ".tmp"), os.path.join(a.saida, nome))
+        with open(os.path.join(a.saida, f"feat7__{ch}__{var}__ids.csv"), "w", newline="") as f:
+            wr = csv.writer(f, lineterminator="\n"); wr.writerow(["linha", "id"]); wr.writerows(enumerate(ids))
+        total += os.path.getsize(os.path.join(a.saida, nome))
+        out[nome] = dict(base=ch, entrada=var, backbone=c["bb"], timm=BACKBONES[c["bb"]]["timm"], forma=list(X.shape), orientacoes=orient,
+                         sha256_ids=hashlib.sha256("\n".join(ids).encode()).hexdigest(), hash_recorte=P["por_base"].get(ch, {}).get("hash") if var == "recorte" else None,
+                         situacao_recorte=P["por_base"].get(ch, {}).get("situacao") if var == "recorte" else None,
+                         listas_hash=D.hash if ch == "n5k" else D.dom[ch]["hash"], sha256_arquivo=E.sha256(os.path.join(a.saida, nome)))
+    grava_json(os.path.join(a.saida, "feat7__indice.json"), dict(arquivos=out, nota="features [linhas, vistas, 2·dim] em float16; linha i = o id da linha i de feat7__<base>__<entrada>__ids.csv"))
+    return dict(arquivos=sorted(out), total_mb=round(total / 2 ** 20, 1))
+
+
+def teste_rodada7():
+    """Seção 17, sem torch: a fila e as prioridades, o que cada base nova supervisiona e com que peso, os rótulos fracos
+    que passam (só nas linhas de treino), a divisão das bases novas, a procedência e a média das sementes."""
+    import tempfile as tf
+    ap = {c["apelido"]: c for c in CONFIGS7 if c.get("apelido")}
+    for lista in (CONFIGS7, CONFIGS_SMOKE7):
+        ns = [c["nome"] for c in lista]
+        assert len(set(ns)) == len(ns)
+        for i, c in enumerate(lista):
+            assert all(d in ns[:i] for d in c.get("depende", [])), c["nome"]
+            assert c.get("gpu") is None and c.get("v7") and not c.get("v6"), c["nome"]
+    assert not any(c["tipo"] in ("ft", "ftparcial") for c in CONFIGS7)                         # nada de ajuste fino (17.3)
+    pr = [c.get("prioridade7") for c in CONFIGS7 if c["tipo"] != "externo"]
+    assert pr == sorted(pr), pr                                                                # a ordem da lista é a de 17.3: o corte cai na 5, depois na 4, depois na 3
+    dens = [x for x in ap if ap[x]["tipo"] == "fracoes4"]
+    assert all(ap[x]["sementes"] == 3 for x in dens) and ap["H-cap"]["camadas"] == [1024, 1024]
+    assert all(ap[x]["massa_aninhada"] == ap["R4c7"]["nome"] for x in dens if x.startswith("H-") or x == "H0c-m7")
+    assert ap["H-A"]["treina_com"] == ["acetada"] and ap["H-AR"]["treina_com"] == ["acetada", "receitas_datahive"] and ap["R4c+A"]["treina_com"] == DOMINIOS_TREINO4 + ["acetada"]
+    assert ap["H-Bi"]["foodbd_inteira"] and not ap["H-B"].get("foodbd_inteira") and ap["H-ARBi"]["foodbd_inteira"]
+    nomes = [c["nome"] for c in CONFIGS7]
+    assert nomes.index(ap["H-B"]["nome"]) > nomes.index("gpu7 detecta foodbd") and "gpu7 feat so400m inteira foodbd" in ap["H-Bi"]["depende"]
+    # pesos e alvos (17.2)
+    D = _dados_falsos_dom()
+    for ch in DOMINIOS7:
+        D.dom[ch] = dict(chave=ch, dominio=ch, ids=["a", "b"], peso_nut=np.zeros(2), sha256_lista="s", sha256_divisao="s", resumo=dict(grupos_treino=1, treino=1),
+                         licenca="CC BY 4.0" if ch == "foodbd" else "CC BY-NC 4.0", uso_declarado="comercial_ok" if ch == "foodbd" else "nao_comercial", grupos_treino_lista=1)
+    for ch in DOMINIOS_TREINO4:
+        D.dom[ch]["grupos_treino_lista"] = 200
+    D.ids = ["x"] * 2281
+    fr = fracoes7(D, DOMINIOS_TREINO4 + ["acetada"])
+    assert fr["acetada"] == 0.28 and abs(fr["flavoria"] - 200 / 2281) < 1e-12           # soma abaixo de 1: nada muda
+    for ch in DOMINIOS_TREINO4:
+        D.dom[ch]["grupos_treino_lista"] = 1000
+    fr = fracoes7(D, DOMINIOS_TREINO4 + ["acetada"])
+    assert abs(sum(fr.values()) - 1) < 1e-9 and abs(fr["acetada"] / fr["flavoria"] - 0.28 / (1.0 / 5)) < 1e-9     # soma acima de 1: todas pelo mesmo fator (13.4)
+    assert fracoes7(D, ["acetada", "receitas_datahive", "foodbd"]) == dict(acetada=0.28, receitas_datahive=0.15, foodbd=0.15)
+    c_ = lambda x: ap[x]
+    P, pf = alvos_dominio4(D.dom["acetada"], D, c_("H-A"))
+    assert P[0, I_D] == 1 and P[0, I_P] == 1 and P[0, I_M] == 0 and P[0, I_K] == 0 and pf[0] == 0.5
+    P, pf = alvos_dominio4(D.dom["acetada"], D, c_("R4c+A"))
+    assert P[0, I_M] == 1 and not P[0, 1:].any() and not pf.any()
+    P, pf = alvos_dominio4(D.dom["receitas_datahive"], D, c_("H-R"))
+    assert P[0, I_D] == 1 and P[0].sum() == 1 and not pf.any()
+    P, pf = alvos_dominio4(D.dom["foodbd"], D, c_("H-B"))
+    assert P[0, I_P] == 1 and P[0].sum() == 1 and not pf.any()
+    assert not alvos_dominio4(D.dom["foodbd"], D, c_("H-A"))[0].any()                      # base que a cabeça não usa: nada
+    assert ALVOS7["acetada"]["vies"] and ALVOS7["foodbd"]["vies"] and not ALVOS7["receitas_datahive"]["vies"]
+    # procedência: só R0c, R1c, H0c e H0c+B são só comerciais (a H0c-m herda as bases da R4c pela entrada de massa)
+    assert sorted(x for x in ap if procedencia4(ap[x], D)["so_comercial_ok"]) == ["H0c+B", "H0c+Bi", "H0c7", "R0c7", "R1c7"]
+    # rótulos fracos: só na linha de treino, só a coluna da base
+    lista = [dict(dish_id="a", dominio="foodbd", proteina_fraca_g="9", kcal_fraca="300", arquivo="a.jpg"), dict(dish_id="b", dominio="foodbd", proteina_fraca_g="7", arquivo="b.jpg")]
+    div = [dict(dish_id="a", papel="treino", fold_ext="1"), dict(dish_id="b", papel="registro", fold_ext="-1")]
+    R = fecha_rotulos4(lista, div, FRACAS7["foodbd"])
+    assert R[0]["proteina_fraca_g"] == "9" and "kcal_fraca" not in R[0] and "proteina_fraca_g" not in R[1]
+    assert "proteina_fraca_g" not in fecha_rotulos4(lista, div)[0]                          # sem a lista de fracas, nada passa (rodadas anteriores)
+    # média das sementes
+    um = lambda k: ({"W1": np.full((2, 3), k), "b1": np.zeros(2), "W2": np.full((4, 2), k), "b2": np.zeros(4), "mu": np.zeros(3), "sd": np.ones(3),
+                     "tm": np.zeros(2), "ts": np.ones(2), "dens_fonte": np.ones(2)}, lambda X: (np.full((len(X), 1, 2), k), np.full((len(X), 1, 2), k)))
+    pesos, prev = junta_sementes7([um(1.0), um(2.0), um(3.0)])
+    assert pesos["W1"].shape == (3, 2, 3) and pesos["mu"].shape == (3,) and prev(np.zeros((4, 1, 3)))[0].mean() == 2.0
+    Pa, Fa = aplica_cabeca4(pesos, np.ones((1, 1, 3), np.float32))
+    Pm = np.mean([aplica_cabeca4({k: (v[s_] if k[0] in "Wb" and k[1:].isdigit() else v) for k, v in pesos.items()}, np.ones((1, 1, 3), np.float32))[0] for s_ in range(3)], 0)
+    assert np.allclose(Pa, Pm)
+    # a divisão das bases novas (eval/treino/externo_r7_divide.py): partes seguradas = teste_ext, folds por grupo
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+    try:
+        import externo_r7_divide as R7
+    except ImportError:         # no pacote do Kaggle o construtor da divisão não vai junto
+        R7 = None
+    L = [] if R7 is None else R7.divide([dict(dish_id=f"x{i}", dominio="acetada", grupo=f"g{i % 7}", split_ext="teste_ext" if i % 7 == 0 else "treino_ext", arquivo=f"x{i}.jpg")
+                                         for i in range(70)] + [dict(dish_id="y", dominio="acetada", grupo="g1", split_ext="treino_ext", arquivo="")])
+    assert R7 is None or L[-1]["papel"] == "fora"          # linha sem foto: fora
+    assert R7 is None or (all((l["papel"] != "treino") == (l["fold_ext"] == -1) for l in L) and len({l["fold_ext"] for l in L if l["papel"] == "treino"}) == 5)
+    assert all(len({l["fold_ext"] for l in L if l["grupo"] == g and l["papel"] == "treino"}) <= 1 for g in {l["grupo"] for l in L})
+    # o zip remoto: ArquivoHTTP lê por intervalo (servidor local)
+    import http.server, zipfile, io as io_
+    with tf.TemporaryDirectory() as t:
+        with zipfile.ZipFile(os.path.join(t, "z.zip"), "w") as z:
+            z.writestr("A/1.jpg", b"um" * 1000); z.writestr("A/2.jpg", b"dois" * 3000)
+
+        class H(http.server.SimpleHTTPRequestHandler):
+            def __init__(self, *x, **k):
+                super().__init__(*x, directory=t, **k)
+
+            def log_message(self, *x):
+                pass
+
+            def send_head(self):
+                rg = self.headers.get("Range")
+                caminho = self.translate_path(self.path)
+                dados = open(caminho, "rb").read()
+                if rg:
+                    i0, i1 = [int(v) for v in rg.split("=")[1].split("-")]
+                    corpo = dados[i0:i1 + 1]
+                    self.send_response(206); self.send_header("Content-Length", str(len(corpo))); self.end_headers()
+                    return io_.BytesIO(corpo)
+                self.send_response(200); self.send_header("Content-Length", str(len(dados))); self.end_headers()
+                return io_.BytesIO(dados if self.command == "GET" else b"")
+        srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), H)
+        th = threading.Thread(target=srv.serve_forever, daemon=True); th.start()
+        try:
+            antes = os.environ.pop("NO_PROXY", None), os.environ.pop("no_proxy", None)
+            os.environ["NO_PROXY"] = os.environ["no_proxy"] = "127.0.0.1"
+            f = ArquivoHTTP(f"http://127.0.0.1:{srv.server_address[1]}/z.zip", bloco=512)
+            with zipfile.ZipFile(f) as z:
+                assert z.read("A/2.jpg") == b"dois" * 3000 and z.read("A/1.jpg") == b"um" * 1000
+            assert f.lidos < os.path.getsize(os.path.join(t, "z.zip")) * 3
+        finally:
+            srv.shutdown()
+            for k_, v_ in zip(("NO_PROXY", "no_proxy"), antes):
+                if v_ is None:
+                    os.environ.pop(k_, None)
+                else:
+                    os.environ[k_] = v_
+
+# >>>>> RODADA 7: fim
+
 
 
 # ------------------------------------------------------------------ fase de serviço (processo filho, um modelo por vez)
@@ -5240,23 +5753,40 @@ def mede_servico(a, cfg, cfgs=()):
     congelado = cfg["tipo"] in ("ridge", "fracoes", "unico", "ridge4", "fracoes4")       # backbone público + cabeça gravada, em float32 fora do autocast
     v4 = bool(cfg.get("v4"))          # rodada 4: cabeças sempre em float32; medidas só com 1 orientação (13.8)
     v5, prato = bool(cfg.get("v5")), bool(cfg.get("prato"))     # rodada 5: remontagem com 1 orientação; sobre o recorte, a entrada é a janela do guia
-    P5 = carrega_caixas5(a.listas, [a.caixas], D, a.smoke) if v5 else None
+    P5 = carrega_caixas5(a.listas, [a.caixas], D, a.smoke, extras=[a.saida]) if v5 else None
     zsg = None
     spec = json.load(open(arq_de(a.saida, cfg, "servir")))
     K = 0
     extra = None                      # R0 da rodada 4: a cabeça de frações H0 roda junto, sobre as mesmas features (o D1)
 
     class MLP(torch.nn.Module):
+        """Cabeça de frações gravada: uma ou mais camadas ocultas (rodada 7: H-cap) e uma ou mais sementes empilhadas no
+        eixo 0 (rodada 7: a média das três); a saída é a média das saídas das sementes."""
         def __init__(self, z):
             super().__init__()
             self.register_buffer("mu", torch.from_numpy(z["mu"])); self.register_buffer("sd", torch.from_numpy(z["sd"]))
-            self.l1 = torch.nn.Linear(z["W1"].shape[1], z["W1"].shape[0]); self.l2 = torch.nn.Linear(z["W2"].shape[1], z["W2"].shape[0])
-            with torch.no_grad():
-                self.l1.weight.copy_(torch.from_numpy(z["W1"])); self.l1.bias.copy_(torch.from_numpy(z["b1"]))
-                self.l2.weight.copy_(torch.from_numpy(z["W2"])); self.l2.bias.copy_(torch.from_numpy(z["b2"]))
+            n_cam = max(int(k[1:]) for k in z.files if k.startswith("W") and k[1:].isdigit())
+            W1 = np.asarray(z["W1"])
+            sems = range(W1.shape[0]) if W1.ndim == 3 else [None]
+            self.membros = torch.nn.ModuleList()
+            for s_ in sems:
+                ls = torch.nn.ModuleList()
+                for i in range(1, n_cam + 1):
+                    W, b = (np.asarray(z[f"W{i}"]), np.asarray(z[f"b{i}"])) if s_ is None else (np.asarray(z[f"W{i}"])[s_], np.asarray(z[f"b{i}"])[s_])
+                    l_ = torch.nn.Linear(W.shape[1], W.shape[0])
+                    with torch.no_grad():
+                        l_.weight.copy_(torch.from_numpy(W)); l_.bias.copy_(torch.from_numpy(b))
+                    ls.append(l_)
+                self.membros.append(ls)
 
         def forward(self, f):
-            return self.l2(F.gelu(self.l1((f - self.mu) / self.sd)))
+            x0, outs = (f - self.mu) / self.sd, []
+            for ls in self.membros:
+                h = x0
+                for l_ in ls[:-1]:
+                    h = F.gelu(l_(h))
+                outs.append(ls[-1](h))
+            return torch.stack(outs).mean(0)
     if congelado:
         rede = cria_rede(cfg["bb"], N)
         z = np.load(arq_de(a.saida, cfg, "cabeca"), allow_pickle=False)
@@ -5265,13 +5795,15 @@ def mede_servico(a, cfg, cfgs=()):
                 rede.head.weight.copy_(torch.from_numpy((z["W"] / z["sd"][:, None]).T.astype(np.float32)))
                 rede.head.bias.copy_(torch.from_numpy((z["mt"] - (z["mu"] / z["sd"]) @ z["W"]).astype(np.float32)))
             tm, ts = np.zeros(N, np.float32), np.ones(N, np.float32)
-            par_h = {"R0": "H0", "R0c": "H0c", "R4c6": "H0c6"}.get(cfg.get("apelido"))
+            par_h = {"R0": "H0", "R0c": "H0c", "R4c6": "H0c6", "R4c7": "H0c-m7"}.get(cfg.get("apelido"))
             h0 = next((c for c in cfgs if c.get("apelido") == par_h and os.path.exists(arq_de(a.saida, c, "cabeca"))), None) if par_h else None
             if h0 is not None:
                 extra = MLP(np.load(arq_de(a.saida, h0, "cabeca"), allow_pickle=False))
+                extra.com_massa = bool(h0.get("massa_aninhada"))
         else:
             rede.head = MLP(z)
-            tm, ts, K = z["tm"], z["ts"], z["W2"].shape[0] - N
+            n_cam_ = max(int(k[1:]) for k in z.files if k.startswith("W") and k[1:].isdigit())
+            tm, ts, K = z["tm"], z["ts"], np.asarray(z[f"W{n_cam_}"]).shape[-2] - N
         arquivos = [dict(arquivo=spec["backbone"]["arquivo"], bytes=spec["backbone"]["bytes"], publico=True, url=spec["backbone"]["url"],
                          hf_id=spec["backbone"]["hf_id"], fonte=spec["backbone"]["fonte"], sha256=spec["backbone"]["sha256"]),
                     dict(arquivo=os.path.basename(arq_de(a.saida, cfg, "cabeca")), bytes=os.path.getsize(arq_de(a.saida, cfg, "cabeca")), publico=False)]
@@ -5316,8 +5848,8 @@ def mede_servico(a, cfg, cfgs=()):
                 o = rede.head(f)
                 if hasattr(rede, "head_ff"):
                     o = torch.cat([o, rede.head_ff(f)], 1)
-                if extra is not None:      # a segunda cabeça do D1 entra no tempo medido
-                    rede.extra(f)
+                if extra is not None:      # a segunda cabeça do D1 entra no tempo medido (rodada 7: com a log-massa da ridge como entrada a mais)
+                    rede.extra(torch.cat([f, o[:, I_M:I_M + 1]], 1) if getattr(rede.extra, "com_massa", False) else f)
             if zsg is not None:
                 fr_g = aplica_sg_torch(zsg, f.float())[1].reshape(len(g), len(x), -1)
             o = o.float().reshape(len(g), len(x), -1)
@@ -5392,7 +5924,7 @@ def mede_servico(a, cfg, cfgs=()):
                gpu=None, cpu=None)
     print(f"[{cfg['nome']} | servico] {n_par / 1e6:.1f} M parâmetros; remontado × gravado ({conj}): diferença máxima {dif.max():.4f} em log"
           + (f", {conf['max_dif_fracao']:.4f} nas frações" if K else ""), flush=True)
-    if v4 and cfg.get("apelido") in ("R0", "R0c", "R4c6"):      # 13.8: remontagem, a partir da FOTO, de todas as cabeças sobre este backbone, inclusive as de frações
+    if v4 and cfg.get("apelido") in ("R0", "R0c", "R4c6", "R4c7"):      # 13.8: remontagem, a partir da FOTO, de todas as cabeças sobre este backbone, inclusive as de frações
         with torch.inference_mode():
             x = entrada(u8([D.conj[conj][i] for i in u], dev))
             fts = []
@@ -5420,6 +5952,9 @@ def mede_servico(a, cfg, cfgs=()):
                 res["conferencias_cabecas"][c["nome"]] = r_
         res["pipeline"] = (("backbone + cabeça ridge (R4c) + cabeça de frações (H0c) sobre as mesmas features, com a janela do guia: a REF da sexta execução (15.1)"
                             if cfg.get("apelido") == "R4c6" else
+                            "backbone + cabeça ridge (R4c) + cabeça de densidade H0c-m (3 sementes, com a massa da R4c como entrada), com a janela do guia: o S6 (17.1); "
+                            "as outras cabeças de densidade da sétima execução são do mesmo tamanho (a H-cap, maior, sai em conferencias_cabecas)"
+                            if cfg.get("apelido") == "R4c7" else
                             "backbone + cabeça ridge (R0c) + cabeça de frações (H0c) sobre as mesmas features, com a janela do guia: o A0c" if prato else
                             "backbone + cabeça ridge (R0) + cabeça de frações (H0) sobre as mesmas features: o D1/A0") if extra is not None
                            else "backbone + cabeça ridge (a cabeça de frações H0 não estava pronta)")
@@ -5432,7 +5967,7 @@ def mede_servico(a, cfg, cfgs=()):
         med = {}
         medidas = dict(lote1_o1=(1, 1, False, 30, 5), lote1_o4=(1, 4, False, 10, 2), lote1_o8=(1, 8, False, 10, 2),
                        lote1_o4_em_lote=(1, 4, True, 10, 2), lote1_o8_em_lote=(1, 8, True, 10, 2), lote8_o1=(8, 1, False, 10, 2), lote8_o8=(8, 8, False, 5, 1))
-        v6 = bool(cfg.get("v6"))      # rodada 6 (15.6): também 4 orientações
+        v6 = bool(cfg.get("v6") or cfg.get("v7"))      # rodadas 6 e 7 (15.6, 17.3): também 4 orientações
         for nome, (lote, n_or, agr, reps, aq) in ({k_: v_ for k_, v_ in medidas.items() if k_.endswith("_o1") or (v6 and k_.startswith("lote1_o4"))} if v4 else medidas).items():
             if time.time() + 60 > prazo:
                 raise SemOrcamento()
@@ -5449,7 +5984,7 @@ def mede_servico(a, cfg, cfgs=()):
         modelo_cpu = None
     med = dict(lote1_o1=cronometra(cpu, fatia(x8, 0, 1), 1, False, 2 if a.smoke else 3, 1))
     rapido = med["lote1_o1"]["ms_por_imagem"] < 500
-    for nome, n_or in ((("lote1_o4", 4),) if cfg.get("v6") else () if v4 else (("lote1_o4", 4), ("lote1_o8", 8))):
+    for nome, n_or in ((("lote1_o4", 4),) if cfg.get("v6") or cfg.get("v7") else () if v4 else (("lote1_o4", 4), ("lote1_o8", 8))):
         if time.time() + 1.3 * n_or * med["lote1_o1"]["ms_por_imagem"] / 1000 + 30 < prazo:
             med[nome] = cronometra(cpu, fatia(x8, 1, 2), n_or, False, 3 if rapido and not a.smoke else 1, 0)
     res["cpu"] = dict(threads=n_thr, nucleos=os.cpu_count(), modelo=modelo_cpu, precisao="float32", medidas=med)
@@ -5721,7 +6256,7 @@ def orquestra(a, cfgs):
     trava = threading.Lock()
     for ch, d in D.dom.items():
         diz(f"base externa {ch} (13.3): {d['resumo']} | {d['licenca']}, {d['uso_declarado']} | lista {d['sha256_lista'][:16]}"
-            f"{' (versão enxuta no pacote)' if d['lista_enxuta'] else ''}, divisão {d['sha256_divisao'][:16]} | fotos: {DOMINIOS4[ch]['de']}")
+            f"{' (versão enxuta no pacote)' if d['lista_enxuta'] else ''}, divisão {d['sha256_divisao'][:16]} | fotos: {INFO_DOM[ch]['de']}")
     for ch, motivo in D.dom_fora.items():
         diz(f"ATENÇÃO: a base externa {ch} fica de FORA desta execução: {motivo}")
     if D.ext:
@@ -5735,8 +6270,8 @@ def orquestra(a, cfgs):
                 n_treino=int(D.usa_tr.sum()), conjuntos={s: int(D.usa_av[s].sum()) for s in D.conj}, inicio=time.strftime("%Y-%m-%d %H:%M:%S"),
                 orcamento_h=a.orcamento_h, gpus=gpus, torch=torch.__version__, timm=v_timm, python=sys.version.split()[0], guarda_pesos=a.guarda_pesos,
                 disco_livre_gb_inicio=dict(saida=livre(a.saida), cache=livre(a.cache)), argv=sys.argv[1:], configs={}, melhor_modelo=None)
-    if a.rodada in ("5", "6"):     # 14.3: as janelas do guia, refeitas das caixas brutas da etapa 0 com a regra da conferência
-        D.P5 = carrega_caixas5(a.listas, [a.caixas], D, a.smoke)
+    if a.rodada in ("5", "6", "7"):     # 14.3: as janelas do guia, refeitas das caixas brutas da etapa 0 com a regra da conferência
+        D.P5 = carrega_caixas5(a.listas, [a.caixas], D, a.smoke, extras=[a.saida])
         P = D.P5
         info["prato"] = dict({k: v for k, v in P.items() if k != "por_base"}, por_base={ch: {k: v for k, v in b.items() if k not in ("jan", "sha")} for ch, b in P["por_base"].items()})
         info["detector"] = dict(licenca=P["detector_licenca"], nota="o detector só preparou os dados de treino (etapa 0); não faz parte de nenhum modelo servido")
@@ -5746,15 +6281,18 @@ def orquestra(a, cfgs):
             diz(f"   {ch:9s} {b['situacao']} | {len(b['jan'])} janelas | métodos {b.get('metodos')} | tabela {str(b.get('sha256_tabela'))[:16]}")
         if not P["conferida"] and not a.smoke and not a.sem_conferencia:
             raise SystemExit("A conferência a olho da etapa 0 (14.3) ainda não foi feita: conferencia_r5.json tem 'conferida': false. A execução principal só começa depois dela.")
-    if a.rodada in ("4", "5", "6"):     # 13.8: procedência por base; conferência de paridade com o D1 (13.7, só na rodada 4); nada é decidido no kernel
+    if a.rodada in ("4", "5", "6", "7"):     # 13.8: procedência por base; conferência de paridade com o D1 (13.7, só na rodada 4); nada é decidido no kernel
         info["dominios"] = {ch: dict(situacao="aguardando as fotos", dominio=d["dominio"], licenca=d["licenca"], uso_declarado=d["uso_declarado"], sha256_lista=d["sha256_lista"],
-                                     sha256_divisao=d["sha256_divisao"], lista_enxuta=d["lista_enxuta"], resumo=d["resumo"], fotos_de=DOMINIOS4[ch]["de"]) for ch, d in D.dom.items()}
+                                     sha256_divisao=d["sha256_divisao"], lista_enxuta=d["lista_enxuta"], resumo=d["resumo"], fotos_de=INFO_DOM[ch]["de"]) for ch, d in D.dom.items()}
         info["dominios"].update({ch: dict(situacao=f"FORA desta execução: {m}") for ch, m in D.dom_fora.items()})
         info["paridade_d1"] = dict(situacao="ainda não conferida") if a.rodada == "4" else dict(situacao="não se aplica: a quinta execução não refaz o R0 nem o H0 (14.5)")
         info["confianca"] = "a conferir: a paridade de R0 e H0 com o D1 da execução 3 ainda não saiu" if a.rodada == "4" else "sem conferência de paridade nesta execução (14.5)"
         if a.rodada == "6":     # 15.4: R4c e H0c refeitas × as da quinta execução
             info["paridade_d1"] = dict(situacao="ainda não conferida", contra="R4c e H0c da quinta execução (listas/" + REF_R5 + ")")
             info["confianca"] = "a conferir: a paridade da R4c e da H0c refeitas com as da quinta execução ainda não saiu"
+        if a.rodada == "7":     # 17.3: R4c e H0c-m (semente 0) refeitas × as da sexta execução
+            info["paridade_d1"] = dict(situacao="ainda não conferida", contra="R4c e H0c-m da sexta execução (listas/" + REF_R6 + ")")
+            info["confianca"] = "a conferir: a paridade da R4c e da H0c-m refeitas com as da sexta execução ainda não saiu"
         info["decisoes_no_kernel"] = "nenhuma: toda escolha é feita depois, na CPU (13.9); o teste2 e as partes de registro externas não são pontuados aqui"
 
     def evento(cfg, parte, **ev):     # único lugar em que o estado muda (sempre com a trava)
@@ -5777,32 +6315,36 @@ def orquestra(a, cfgs):
     def confere_paridade(fim=False):
         """13.7: R0 e H0 repetem as duas cabeças do D1 da execução 3? Sai assim que as duas estão prontas; se falhar (ou
         não puder ser conferida), o manifesto marca todo o resto como não confiável."""
-        if a.rodada not in ("4", "6") or "passou" in info["paridade_d1"]:
+        if a.rodada not in ("4", "6", "7") or "passou" in info["paridade_d1"]:
             return
-        r0, h0 = (next((c for c in cfgs if c.get("apelido") == x), None) for x in (("R0", "H0") if a.rodada == "4" else ("R4c6", "H0c6")))
+        r0, h0 = (next((c for c in cfgs if c.get("apelido") == x), None) for x in {"4": ("R0", "H0"), "6": ("R4c6", "H0c6"), "7": ("R4c7", "H0c-m7")}[a.rodada])
         arqs = [arq_parte(a.saida, c, "tudo") if c else "" for c in (r0, h0)]      # sai assim que as duas cabeças terminam (antes das previsões externas)
         if not all(os.path.exists(x) for x in arqs):
             if fim:
                 info["paridade_d1"] = dict(passou=False, motivo="R0 ou H0 não ficaram prontas: a paridade com o D1 não pôde ser conferida")
         else:
             try:
-                with open(os.path.join(a.listas, REF_D1 if a.rodada == "4" else REF_R5), newline="") as f:
+                with open(os.path.join(a.listas, {"4": REF_D1, "6": REF_R5, "7": REF_R6}[a.rodada]), newline="") as f:
                     ref = {r["dish_id"]: [float(r[c]) for c in ("log_massa_o1", "log_massa_o8", "log_dens_regressao_o1", "log_dens_fracoes_o1")] for r in csv.DictReader(f)}
-                info["paridade_d1"] = paridade_d1(D, np.load(arqs[0], allow_pickle=False), np.load(arqs[1], allow_pickle=False), ref,
-                                                  **({} if a.rodada == "4" else dict(esperado=REF_R5_CV, contra="quinta execução: R4c e H0c")))
+                zh = np.load(arqs[1], allow_pickle=False)
+                if a.rodada == "7":     # a semente 0 da H0c-m é a conta da sexta execução; a média das três não é
+                    zh = {"oof_o1": zh["oof_s0_o1"], "oof_dens_ff_o1": zh["oof_s0_dens_ff_o1"]}
+                info["paridade_d1"] = paridade_d1(D, np.load(arqs[0], allow_pickle=False), zh, ref,
+                                                  **({} if a.rodada == "4" else dict(esperado=REF_R5_CV, contra="quinta execução: R4c e H0c") if a.rodada == "6"
+                                                     else dict(esperado=REF_R6_CV, contra="sexta execução: R4c e H0c-m (semente 0)")))
             except Exception as ex:
                 info["paridade_d1"] = dict(passou=False, motivo=f"não foi possível conferir ({type(ex).__name__}: {ex})")
         p = info["paridade_d1"]
         if "passou" not in p:
             return
-        ref_txt = "o D1 da execução 3" if a.rodada == "4" else "a R4c e a H0c da quinta execução"
+        ref_txt = {"4": "o D1 da execução 3", "6": "a R4c e a H0c da quinta execução", "7": "a R4c e a H0c-m da sexta execução"}[a.rodada]
         if p["passou"]:
             info["confianca"] = f"paridade com {ref_txt} conferida"
         else:
             info["confianca"] = f"NÃO CONFIÁVEL: a paridade com {ref_txt} falhou ({p.get('motivo')}); nenhuma configuração desta execução deve ser lida"
         for ic in info["configs"].values():
             ic["confiavel"] = bool(p["passou"])
-        diz(f"== PARIDADE com {'o D1 da execução 3 (13.7)' if a.rodada == '4' else 'a R4c e a H0c da quinta execução (15.4)'}: {'OK' if p['passou'] else 'FALHOU: ' + str(p.get('motivo'))}" + (
+        diz(f"== PARIDADE com {dict([('4', 'o D1 da execução 3 (13.7)'), ('6', 'a R4c e a H0c da quinta execução (15.4)'), ('7', 'a R4c e a H0c-m da sexta execução (17.3)')])[a.rodada]}: {'OK' if p['passou'] else 'FALHOU: ' + str(p.get('motivo'))}" + (
             f" | correlação fora-do-fold: massa {p['corr']['log_massa_o1']:.5f} (1 orientação) e {p['corr']['log_massa_o8']:.5f} (8); densidade da regressão "
             f"{p['corr']['log_dens_regressao_o1']:.5f}, pelas frações {p['corr']['log_dens_fracoes_o1']:.5f} (mínimo {D1_CORR}) | critério de CV "
             f"{p['criterio_cv_d1']:.2f}% (esperado {p['esperado']} ± {p['tolerancia']}) | {p['n']} pratos" if "corr" in p else ""))
@@ -5812,7 +6354,7 @@ def orquestra(a, cfgs):
     def fecha_config(c):
         """Configuração completa: junta as partes, calcula a CV no treino e, com --guarda-pesos melhor, mantém só os pesos do melhor modelo."""
         s = slug(c["nome"])
-        if c["tipo"] in ("externo", "decisao", "feat"):
+        if c["tipo"] in ("externo", "decisao", "feat", "deteccao"):
             return
         cv = junta4(a, c, D) if c.get("v4") else junta3(a, c, D) if c.get("v3") else junta(a, c, D)
         ic = info["configs"][c["nome"]]
@@ -5854,9 +6396,9 @@ def orquestra(a, cfgs):
             cmd += ["--smoke", str(a.smoke)]
         if a.externo:
             cmd += ["--externo", a.externo, "--externo-lista", a.externo_lista] + (["--externo-imagens", a.externo_imagens] if a.externo_imagens else [])
-        if a.rodada in ("4", "5", "6"):
+        if a.rodada in ("4", "5", "6", "7"):
             cmd += (["--dominios", ",".join(a.dominios) or "nenhum"] if a.dominios is not None else []) + (["--externo-imagens", a.externo_imagens] if a.externo_imagens else []) \
-                + (["--espelho", a.espelho] if a.espelho else []) + (["--caixas", a.caixas] if a.caixas else [])
+                + (["--espelho", a.espelho] if a.espelho else []) + (["--caixas", a.caixas] if a.caixas else []) + (["--sem-detector"] if a.sem_detector else [])
         if dev.startswith("cuda"):
             env["CUDA_VISIBLE_DEVICES"] = dev.split(":")[1]; cmd += ["--dispositivo", "cuda:0"]
         else:
@@ -5879,7 +6421,7 @@ def orquestra(a, cfgs):
         for c in cfgs:      # rodada 4: base sem lista neste pacote (ou fora por --dominios): a etapa dela não roda, e quem depende dela cai por dependência
             if c.get("v4") and c["tipo"] == "externo" and c["chave"] not in D.dom and estado[slug(c["nome"])]["tudo"]["estado"] == Estado.PENDENTE.value:
                 evento(c, "tudo", tipo="cancelou", motivo=D.dom_fora.get(c["chave"], "sem lista"))
-        if a.rodada in ("5", "6") and not D.P5["n5k_ok"]:     # 14.3: sem o recorte do Nutrition5k, a alavanca 1 é cancelada
+        if a.rodada in ("5", "6", "7") and not D.P5["n5k_ok"]:     # 14.3: sem o recorte do Nutrition5k, a alavanca 1 é cancelada
             motivo = "recorte do Nutrition5k indisponível (" + D.P5["por_base"]["n5k"]["situacao"] + "): alavanca 1 cancelada (14.3)"
             diz(f"ATENÇÃO: {motivo}")
             for c in cfgs:
@@ -5901,7 +6443,7 @@ def orquestra(a, cfgs):
                             evento(c, q, tipo="cancelou", motivo=f"dependência fora desta execução e sem arquivo: {d}")
         manifesto()
     pendentes = [c for c in cfgs if estado_config(estado[slug(c["nome"])]) != "completa"]
-    a.externo_ate = t_ini + (PRAZO_DOWNLOAD4 if a.rodada in ("4", "5", "6") else 45 * 60)   # prazo para cada base externa chegar; depois disso a execução segue sem ela
+    a.externo_ate = t_ini + (PRAZO_DOWNLOAD4 if a.rodada in ("4", "5", "6", "7") else 45 * 60)   # prazo para cada base externa chegar; depois disso a execução segue sem ela
 
     def linha_externa(c):
         """Baixa e prepara a base externa numa linha à parte (rede e CPU), desde o começo: as GPUs seguem com o
@@ -5913,8 +6455,13 @@ def orquestra(a, cfgs):
             nome_b = c.get("chave") or a.externo
             onde = info["dominios"][c["chave"]] if c.get("v4") else info["externo"]
             try:
-                prepara_dominio4(a, D, c["chave"]) if c.get("v4") else prepara_externo(a, D)
-                if c.get("v5"):         # rodada 5: os recortes da base também (14.3)
+                if c.get("v7") and c["chave"] not in DETECTA7:      # rodada 7: só o cache do recorte (baixa as fotos, se preciso)
+                    onde["recortes"] = prepara_prato5(a, D, c["chave"], D.P5)
+                elif c.get("v7"):       # FoodBD: a foto inteira agora; o recorte depois da detecção (17.2)
+                    prepara_dominio4(a, D, c["chave"])
+                else:
+                    prepara_dominio4(a, D, c["chave"]) if c.get("v4") else prepara_externo(a, D)
+                if c.get("v5") and not c.get("v7"):         # rodada 5: os recortes da base também (14.3)
                     onde["recortes"] = prepara_prato5(a, D, c["chave"], D.P5)
                 with trava:
                     evento(c, "tudo", tipo="concluiu", seg=time.time() - t0)
@@ -5930,7 +6477,7 @@ def orquestra(a, cfgs):
 
     if D.ext and any(c["tipo"] == "externo" and estado_config(estado[slug(c["nome"])]) == "completa" for c in cfgs):
         info["externo"]["situacao"] = "fotos prontas"
-    if a.rodada in ("4", "5", "6"):
+    if a.rodada in ("4", "5", "6", "7"):
         for c in cfgs:
             if c["tipo"] == "externo" and estado_config(estado[slug(c["nome"])]) == "completa":
                 info["dominios"][c["chave"]]["situacao"] = "fotos prontas"
@@ -5984,7 +6531,7 @@ def orquestra(a, cfgs):
         tenta_decisao(); manifesto()
 
     rodando = {}        # processo -> (configuração, início) da parte em execução
-    reserva = 0 if a.sem_servico else 900 if a.rodada == "6" else 720 if a.rodada in ("4", "5") else 330    # tempo guardado para a fase de serviço (rodada 4: dois So400m e três ajustes finos)
+    reserva = 0 if a.sem_servico else 900 if a.rodada == "6" else 600 if a.rodada == "7" else 720 if a.rodada in ("4", "5") else 330    # tempo guardado para a fase de serviço (rodada 4: dois So400m e três ajustes finos)
 
     seg = lambda c: seg_parte(c, cfgs, estado)
 
@@ -5994,7 +6541,7 @@ def orquestra(a, cfgs):
             agora = time.time()
             tenta_decisao()
             livres = [agora if j not in rodando else max(agora, rodando[j][1] + seg(rodando[j][0])) for j in range(len(disp))]
-            acao, c, x = proxima_acao(cfgs, estado, simula_orcamento(cfgs, estado, livres, seg, prazo - reserva), gpu=i if a.rodada in ("4", "5", "6") else None)
+            acao, c, x = proxima_acao(cfgs, estado, simula_orcamento(cfgs, estado, livres, seg, prazo - reserva), gpu=i if a.rodada in ("4", "5", "6", "7") else None)
             if acao == "cancela":
                 diz(f"{c['nome']} cancelada: {x}"); cancela(c, x)
             elif acao == "sem_orcamento":
@@ -6028,7 +6575,11 @@ def orquestra(a, cfgs):
             with trava:
                 if rc == SAI_OK and parte_pronta(a, c, p, D):
                     evento(c, p, tipo="concluiu", seg=seg)
-                    if c.get("apelido") in ("R0", "H0", "R4c6", "H0c6") and p == "tudo":
+                    if c["tipo"] == "deteccao":     # rodada 7: as janelas do FoodBD passam a valer para as próximas partes
+                        D.P5 = carrega_caixas5(a.listas, [a.caixas], D, a.smoke, extras=[a.saida])
+                        info["prato"]["por_base"] = {ch: {k: v for k, v in b.items() if k not in ("jan", "sha")} for ch, b in D.P5["por_base"].items()}
+                        info["deteccao_" + c["chave"]] = json.loads(str(np.load(arq_parte(a.saida, c, p))["deteccao"]))
+                    if c.get("apelido") in ("R0", "H0", "R4c6", "H0c6", "R4c7", "H0c-m7") and p == "tudo":
                         confere_paridade()
                     if c.get("v4") and p == "ext":      # os pesos de cada fold só serviam para prever as fotos externas
                         for arq_m in glob.glob(os.path.join(a.saida, f"modelo__{slug(c['nome'])}__fold*.pt")):
@@ -6083,6 +6634,14 @@ def orquestra(a, cfgs):
 
     with trava:
         tenta_decisao()
+        if a.rodada == "7":     # 17.2: todas as features ficam na saída, em meia precisão, para as próximas execuções sem GPU
+            try:
+                info["features_guardadas"] = exporta_feats7(a, D, cfgs, estado)
+                diz(f"features guardadas na saída: {info['features_guardadas']['total_mb']} MB em {len(info['features_guardadas']['arquivos'])} arquivos")
+            except Exception as ex:      # noqa: BLE001
+                info["features_guardadas"] = dict(erro=f"{type(ex).__name__}: {ex}")
+                diz(f"ERRO ao guardar as features: {ex}")
+            manifesto()
         if not a.sem_servico:
             # na rodada 3, primeiro os candidatos a modelo único (a regra de 12.3 usa o tempo deles); depois os congelados
             # na rodada 4: os ajustes finos pequenos, depois o So400m com as duas cabeças (D1) e, por último, o ajuste fino parcial
@@ -6091,9 +6650,9 @@ def orquestra(a, cfgs):
             adot = bool((info.get("decisao_externo") or {}).get("adotado"))      # nos totais entra a versão adotada de cada candidato
             troca = lambda nome: next((c["nome"] for c in cfgs if adot and c.get("plano") == nome and c["tipo"] in ("unico", "ft")), nome)
             sv = monta_servico(a, cfgs, {"smoke_todos": [c["nome"] for c in cfgs if est_serv[slug(c["nome"])]["servico"]["estado"] == Estado.FEITA.value]} if a.smoke
-                               else pipelines6(cfgs) if a.rodada == "6"
+                               else pipelines6(cfgs) if a.rodada == "6" else pipelines7(cfgs) if a.rodada == "7"
                                else {(c["apelido"] if c["apelido"] not in ("R0", "R0c") else ("D1_so400m_duas_cabecas" if c["apelido"] == "R0" else "A0c_so400m_recorte_duas_cabecas")): [c["nome"]]
-                                     for c in cfgs if c.get("apelido") and c.get("servico") is not False} if a.rodada in ("4", "5", "6")
+                                     for c in cfgs if c.get("apelido") and c.get("servico") is not False} if a.rodada in ("4", "5", "6", "7")
                                else ({k: [troca(x) for x in v] for k, v in PIPELINES3.items()} if a.rodada == "3" else PIPELINES))
             for k, v in sv["pipelines"].items():
                 diz(f"serviço, {k}: {'completo' if v['completo'] else 'FALTAM ' + str(v['faltam'])} | {v['parametros'] / 1e6:.0f} M parâmetros | "
@@ -6120,7 +6679,7 @@ def orquestra(a, cfgs):
         manifesto()
     diz("\n" + "\n".join(f"  {ic['estado']:14s} {n:44s} " + (f"RMSE {ic['cv_treino']['rmse_logm']:.4f} crit {ic['cv_treino']['crit_direto']:.1f}/{ic['cv_treino']['crit_mxd']:.1f}/{ic['cv_treino']['crit_geo']:.1f}% {ic['min']} min"
                                                                   if ic["cv_treino"] else "") + f" | serviço: {ic['servico']['estado']}" for n, ic in info["configs"].items()))
-    if a.rodada in ("4", "5", "6"):
+    if a.rodada in ("4", "5", "6", "7"):
         diz("bases externas: " + " | ".join(f"{ch}: {v['situacao']}" for ch, v in info["dominios"].items()))
         diz(f"confiança: {info['confianca']}. Nada foi escolhido nem pontuado fora da validação cruzada do treino.")
     else:
@@ -6157,6 +6716,7 @@ def main():
     ap.add_argument("--dominios", help="rodada 4: bases externas a usar, separadas por vírgula (padrão: todas as que têm lista e tabela de divisão em --listas; 'nenhum' = nenhuma)")
     ap.add_argument("--espelho", help="rodada 4: pasta onde procurar, antes de baixar, um espelho dos arquivos das bases externas (além de /kaggle/input)")
     ap.add_argument("--caixas", help="rodada 5: pasta com as tabelas da etapa 0 (caixas_r5_<base>.csv); padrão: a saída do kernel da etapa 0 em /kaggle/input")
+    ap.add_argument("--sem-detector", action="store_true", help="rodada 7: o FoodBD só com a reserva por elipse (teste em CPU, sem baixar o OWLv2)")
     ap.add_argument("--sem-conferencia", action="store_true", help="rodada 5: roda mesmo sem a conferência a olho da etapa 0 (só para teste)")
     ap.add_argument("--externo", choices=sorted(EXTERNOS), help="base externa de treino (12.4 e 12.5; desligada por padrão): entra como ablação com decisão de adoção")
     ap.add_argument("--externo-lista", help="lista da base externa (padrão: a de listas/ indicada em EXTERNOS)")
@@ -6179,8 +6739,15 @@ def main():
     a.dominios = None if a.dominios is None else [d for d in a.dominios.split(",") if d and d != "nenhum"]
     assert a.dominios is None or all(d in DOMINIOS4 for d in a.dominios), f"--dominios: escolha entre {list(DOMINIOS4)}"
     a.espelho = os.path.abspath(a.espelho) if a.espelho else None
-    imagens4 = os.path.abspath(a.externo_imagens) if a.externo_imagens and a.rodada in ("4", "5", "6") else None
+    imagens4 = os.path.abspath(a.externo_imagens) if a.externo_imagens and a.rodada in ("4", "5", "6", "7") else None
     a.caixas = os.path.abspath(a.caixas) if a.caixas else None
+    if a.rodada == "7" and not a.job:       # listas das receitas num dataset anexado (push --receitas-dataset): para a pasta das listas
+        for nome in ("externo_receitas_datahive.csv", "divisao_r4_receitas_datahive.csv"):
+            if not os.path.exists(os.path.join(a.listas, nome)) and os.path.isdir("/kaggle/input"):
+                achado = next((os.path.join(b_, nome) for b_, _, fs in os.walk("/kaggle/input") if nome in fs and b_.count(os.sep) <= 7), None)
+                if achado:
+                    shutil.copyfile(achado, os.path.join(a.listas, nome))
+                    print(f"lista das receitas tirada de {achado}", flush=True)
     if a.externo:
         assert a.rodada == "3", "--externo só existe na rodada 3"
         a.externo_lista = os.path.abspath(a.externo_lista or os.path.join(a.listas, EXTERNOS[a.externo]["lista"]))
@@ -6195,11 +6762,11 @@ def main():
             a.externo = None
     if not a.externo:
         a.externo_lista = a.externo_imagens = a.externo_pesos = None
-    if a.rodada in ("4", "5", "6"):
+    if a.rodada in ("4", "5", "6", "7"):
         a.externo_imagens = imagens4        # na rodada 4: pasta com uma subpasta por base (fotos já em disco; teste)
     gemeas = lambda cs: com_externo(cs, a.externo) if a.externo else cs
     if a.job:       # processo filho: procura a configuração entre todas as declaradas para a rodada
-        return principal_parte(a, gemeas(configs_da_rodada(a.rodada, a.smoke)) if a.rodada in ("3", "4", "5", "6") else (CONFIGS_SMOKE if a.smoke else CONFIGS))
+        return principal_parte(a, gemeas(configs_da_rodada(a.rodada, a.smoke)) if a.rodada in ("3", "4", "5", "6", "7") else (CONFIGS_SMOKE if a.smoke else CONFIGS))
     cfgs = a._todas = gemeas(configs_da_rodada(a.rodada, a.smoke))
     if a.so:
         cfgs = [c for c in cfgs if any(t in c["nome"] for t in a.so)]
@@ -6210,7 +6777,7 @@ def main():
                   + (f"| lr {c['lr']:g} lld {c['lld']} épocas {c['epocas']} lote {c['bs']}×{c['acum']} escala {c['escala']}" if "lld" in c else "")
                   + "".join(f" | {k}" for k in ("fracoes", "peso_faixa", "professor", "externo") if c.get(k)))
         return print(f"rodada {a.rodada}: {len(cfgs)} configurações, {sum(c['est_min'] for c in cfgs) / 60:.1f} h de GPU "
-                     + ("estimadas com os tempos das execuções 2 a 4" if a.rodada in ("3", "4", "5", "6") else "medidas na execução 1")
+                     + ("estimadas com os tempos das execuções 2 a 4" if a.rodada in ("3", "4", "5", "6", "7") else "medidas na execução 1")
                      + " (2 × T4: perto de metade disso em relógio), mais a fase de serviço")
     orquestra(a, cfgs)
 
