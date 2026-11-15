@@ -514,7 +514,8 @@ def rodada4(a, M, raiz, rod="4"):
               + (", ".join(str(x) for x in entradas[nome]["dominios"]) if nome in entradas else ""))
     for p_ in problemas:
         print("  RECUSADA:", p_)
-    faltam = [x for x in (G.RODADAS[rod] if not parcial else []) if cfgs[x]["tipo"] not in ("externo", "feat") and x not in entradas]
+    cr = {c["nome"]: c for c in G.configs_da_rodada(rod)}         # as da própria rodada (a 7 tem etapas que as outras não têm: bases novas, detecção)
+    faltam = [x for x in (G.RODADAS[rod] if not parcial else []) if cr[x]["tipo"] not in ("externo", "feat", "deteccao") and x not in entradas]
     if faltam:
         print("  não vieram (orçamento, falha, base ausente):", faltam)
     # paridade refeita aqui: execução 4, com o D1 da execução 3; execução 6, R4c e H0c refeitas com as da quinta (15.4); a 5 não tem (14.5)
