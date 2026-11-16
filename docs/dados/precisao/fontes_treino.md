@@ -730,8 +730,17 @@ Nada de novo nas plataformas chinesas, japonesas e coreanas: não deu para olhar
 - (a) **Faixa acima de 25 g ou escala:** o DFood-TJ (pesado, de cima, identidade por item) e o FLIC (pesado, de cima, câmera fixa) são os dois candidatos reais. Os dois esperam: o DFood-TJ, o host `www.scidb.cn`; o FLIC, o link da fundadora. Os dois devem ter poucas refeições acima de 25 g (dieta de diabético; porção infantil). Melhoram a escala e o domínio "prato de cima com peso"; a faixa alta, pouco.
 - (b) **Teste de registro (16):** nenhum hoje. O DFood-TJ (91 pacientes) e o FLIC (21 dias) ficam abaixo de 100 unidades cada. Somados a uma terceira base de cima com peso, chegariam perto, se as faixas altas tiverem 60 pratos, o que é improvável.
 
+**Atualização (16/11/2026, noite), com `www.scidb.cn` e `search.scielo.org` liberados:**
+- **Licença:** o depósito do DFood-TJ (versão V3, 26,2 GB no total) declara **CC0 1.0**, com acesso público (metadado Croissant da página). Para nós, `uso_declarado = comercial_ok`. Vale o depósito, não a licença CC BY-NC-ND do artigo.
+- **Arquivos** (API pública da árvore de arquivos e prévia do conteúdo do zip, sem login):
+  - `DFoodTJ-F-Nutr.zip` tem 4.247.942.139 bytes: `img/` com 3.280 PNG (cerca de 0,8 MB cada) e `truth/` com `truth.xls` (414 kB) e `truth_raw.xlsx` (570 kB);
+  - `DFoodTJ-Nutr.zip` (50 kB) traz a tabela de densidades;
+  - `DFoodTJ-Rec.zip` tem 19,2 GB.
+- **O download sai por outro host, `china.scidb.cn`, que o proxy recusa (403).** Sem ele não dá para ler as planilhas nem abrir as fotos, e a lista não foi montada. Esse host aceita leitura por partes? Ainda não sei. Se aceitar, tiro só as duas planilhas e umas 30 fotos do zip, sem baixar os 4,2 GB.
+- **SciELO:** `search.scielo.org` devolve um desafio anti-robô (Bunny Shield). Não tentei contornar.
+
 **Hosts a liberar:**
-1. `www.scidb.cn` (DFood-TJ);
+1. `china.scidb.cn` (download do DFood-TJ; `www.scidb.cn` só lista);
 2. `search.scielo.org`;
 3. `repositorio.usp.br` continua sem responder (de novo).
 
