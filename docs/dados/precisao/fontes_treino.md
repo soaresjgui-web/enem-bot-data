@@ -625,6 +625,53 @@ As três listas novas têm as colunas de treino_v2 **vazias** (fora `dish_id`, `
 
 **Povarenok: lista retirada.** O próprio servidor (nginx do povarenok.ru, não o nosso proxy) devolve 403 para as fotos e para a página inicial. Não tentei contornar. As fotos não puderam ser vistas, e o mais provável é que o Kaggle também receba 403. Tirei `externo_receitas_povarenok.csv`. O script fica, documentado, para o caso de o acesso abrir.
 
+## 13. Quarta varredura (16/11/2026): plataformas chinesas, portais da Ásia, GitHub, 3D e estudos de desperdício
+
+Pedido: o que dá mais valor agora (17.8 de `resultado_modelo_treinado.md`):
+- (a) foto de cima com peso medido e identidade de cada componente, sobretudo de prato rico em proteína;
+- (b) escala absoluta (prato, marcador, profundidade) com comida pesada;
+- (c) conjuntos grandes com nutrição por foto, pesada ou conferida por nutricionista.
+
+### 13.1 O que foi buscado, e o que não deu para abrir
+
+- **Hosts bloqueados nesta sessão** (resposta 000 do proxy):
+  - China: `opendatalab.com`, `openxlab.org.cn`, `aistudio.baidu.com`, `tianchi.aliyun.com`, `modelscope.cn`, `pan.baidu.com`;
+  - Coreia e Japão: `www.data.go.kr`, `www.nii.ac.jp` (IDR);
+  - suplementos de artigo: `ncbi.nlm.nih.gov` (PMC), `europepmc.org`, `frontiersin.org`, `bmcnutr.biomedcentral.com`, `jmir.org`;
+  - Brasil: `scielo.br`, `ibge.gov.br`, `bvsms.saude.gov.br`, `repositorio.usp.br`.
+  - **A `www.mdpi.com` continua respondendo 403** (proteção da Akamai; não tentei contornar).
+- **GitHub:** 30 buscas de repositórios pela API: 193 repositórios, e li os README dos 12 que pareciam ter dados.
+- **Kaggle:** buscas novas por conjuntos 3D, de profundidade e sintéticos, mais as competições MetaFood.
+- **Zenodo:** 15 buscas novas (álbuns fotográficos, atlas de porções, desperdício em hospital e escola com foto, RGB-D com peso, 膳食 图像), sem nada novo.
+- **Web:** três buscas, em inglês e em chinês.
+
+### 13.2 O que apareceu
+
+| # | Base | O que tem | Rótulo | Acima de 25 g | Acesso / host | Ação |
+|---|---|---|---|---|---|---|
+| 1 | **FLIC** (Piccoli et al., Applied Sciences 2026, 16, 5465; colônia de férias infantil na Itália, 22 dias, CC BY 4.0) | 401 bandejas antes e depois, **foto de cima a 65 cm com câmera fixa** (640×480); um prato por prato fundo; máscaras de 36 classes; **cada prato (primeiro, segundo, acompanhamento, pão) pesado antes e depois**; cardápio do dia em `FLIC_menu.csv` | Massa **medida** por prato e identidade pelo cardápio (o acompanhamento não tem nome) | Provavelmente poucas (porções infantis); a contar | Arquivos `FLIC_grams.csv`, `FLIC_menu.csv` e quatro zips, ligados na seção de disponibilidade do artigo; **o link está na página da MDPI, que bloqueia acesso automatizado**. Dois projetos de terceiros já baixaram (um diz CC BY 4.0) | **Preciso do link do artigo** (alguém abre a página no navegador). É o melhor candidato desta varredura para (a) e (b) |
+| 2 | **CC-FOOD-100** (Gao et al., Food Chemistry 2024; cantina universitária na China) | RGB + profundidade (`.npy`), rótulos em JSON e VOC | Desconhecido: o README fala em "nutrient calculation" e o artigo em volume; não sei se há peso por foto | — | `pan.baidu.com` (senha no README), provavelmente com login do Baidu | Liberar o host; se o Baidu Pan exigir conta, é pedido da fundadora (conta chinesa) |
+| 3 | **NIAD** (hospital universitário de Berna; Lu et al. 2020, arXiv 2003.08273) | 153 bandejas em RGB-D, com o peso de cada prato | Massa medida por prato | — | Sob pedido aos autores | Pedido da fundadora |
+| 4 | **NutritionVerse-Synth** (Kaggle `nutritionverse/*`, conta dos autores, CC BY-NC-SA 4.0) | Cerca de 85 mil imagens **renderizadas** de cenas montadas com 105 alimentos reais escaneados e pesados (NutritionVerse-3D), com profundidade e máscaras; 56 GB por parte | Massa e nutrientes dos objetos 3D; cena sintética | — | Aberto (Kaggle) | **Não montei**: não achei o arquivo de metadados por nome e não abri arquivo nenhum. Domínio sintético; só valeria para pré-treino de escala. Prioridade baixa |
+| 5 | Competições MetaFood (Kaggle 2024, 2025, 2026) | 14 a 20 combinações ou objetos por desafio, vídeo e profundidade | Volume e peso de poucos objetos | — | Aceitar as regras da competição com a conta da fundadora | Pequeno demais |
+| 6 | Sensors 2024 e 2025 (Gonzalez et al., bandejas de restaurante com RGB-D, arroz e frango) | — | — | — | Sem declaração de dados aberta encontrada | Nada a fazer |
+
+Nada de novo nas plataformas chinesas, japonesas e coreanas: não deu para olhar, porque os hosts estão bloqueados. Também nada nos álbuns fotográficos brasileiros e ibero-americanos (os hosts estão bloqueados, e 5.3 já cobre o que é sabido).
+
+### 13.3 Respostas diretas
+
+- **(a) Melhora a faixa acima de 25 g ou a escala?** Só o **FLIC**, e só se o link sair do artigo. É foto de cima com câmera fixa a 65 cm (escala conhecida), um prato por prato fundo, massa medida por prato e identidade pelo cardápio. Mas são porções de criança: a faixa acima de 25 g deve ser pequena. Para a escala vale bastante: a mesma geometria em 802 fotos.
+- **(b) Teste de registro (16)?** Ainda não. O FLIC atende a foto (de cima, um prato) e a pesagem. Com a proteína do segundo prato pela tabela do cardápio, chegaria a uns 1.200 pratos, mas a unidade de independência é o **dia** (21 dias, abaixo de 100), e as faixas altas devem ficar abaixo de 60 pratos. Sozinho, não passa em 16.1 (3); em composição, depende de bases que ainda não existem.
+
+### 13.4 Hosts a liberar
+
+1. O **link de dados do FLIC** que está no artigo (passar o URL; a MDPI bloqueia acesso automatizado).
+2. `pan.baidu.com`: CC-FOOD-100.
+3. `opendatalab.com`, `openxlab.org.cn`, `aistudio.baidu.com`, `tianchi.aliyun.com`, `modelscope.cn`: para buscar conjuntos chineses com peso.
+4. `pmc.ncbi.nlm.nih.gov` (com `www.ncbi.nlm.nih.gov`) e `europepmc.org`: suplementos de artigos de desperdício em hospital e escola com foto.
+5. `www.frontiersin.org`, `bmcnutr.biomedcentral.com`, `www.jmir.org`: idem.
+6. `www.scielo.br`, `repositorio.usp.br`, `www.data.go.kr`, `www.nii.ac.jp`: portais nacionais.
+
 ## Reproduzir
 
 ```
