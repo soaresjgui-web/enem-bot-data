@@ -749,6 +749,76 @@ Nada de novo nas plataformas chinesas, japonesas e coreanas: não deu para olhar
 - Recipe1M (cadastro; não usar a cópia da OpenDataLab);
 - autores de NIAD, AFINI-T e do estudo japonês de pesagem com foto (PMC13028871).
 
+#### 13.5.1 DFood-TJ conferido e montado (16/11/2026, noite, com `china.scidb.cn` liberado)
+
+*Citar:* "Chinese Food Images for Full-cycle Nutrition Analysis Towards Diabetes Management", Scientific Data 2026 (PMC13333986). Dados: Science Data Bank, doi 10.57760/sciencedb.28012, versão V3, **CC0 1.0** (licença do depósito). Lista: `eval/treino/kaggle/listas/externo_dfoodtj.csv` (pode ir para o git: CC0, só rótulos); script `eval/dados_ext/dfoodtj_monta.py`; mapa `eval/dados_ext/dfoodtj_alimentos.csv`; vistas `eval/dados_ext/dfoodtj_vistas.csv`.
+
+- **Como conferi:**
+  - A árvore de arquivos sai sem login de `POST https://www.scidb.cn/api/gin-sdb-filetree/public/file/childrenFileListByPath` (`{"dataSetId":"d2f2d7cccecb49739b7428066741fb39","version":"V3","path":"/V3"}`). Cada arquivo baixa de `https://china.scidb.cn/download?fileId=<id>`, sem login: `DFoodTJ-F-Nutr.zip` é `cb2751a22a516c057913e15b7d3cc5c4` (md5 `b67cc4116e2c734296fbd6cd99cd50bc`), `DFoodTJ-Nutr.zip` é `c308bb046a736249b8223b8baa0de335`. O md5 dos dois arquivos pequenos (o zip da tabela e o `Nutr.py` dos autores) bate com o da API.
+  - **`china.scidb.cn` aceita Range:** responde 206 com `content-range: bytes 0-99/4247942139`. Li o diretório central do zip (3.285 entradas: 3.280 PNG e as duas planilhas, como na prévia) e tirei só `truth.xls`, `truth_raw.xlsx` e 30 fotos. A tabela (`density.xlsx`) veio do zip de 50 kB.
+  - **É lento por conexão:** uns 36 kB/s numa conexão só, e a velocidade de cada uma cai quando há várias. Com 14 conexões em paralelo, as 1.806 fotos de prato (1,85 GB) vieram em 34 min, cerca de 0,9 MB/s no total. Guardei só miniaturas de 384 px, fora do repositório.
+  - **Para o kernel:** não precisa baixar o zip inteiro. A essa velocidade, os 4,2 GB levariam 1h20 com 14 conexões e mais de 30 h com uma (não medi do Kaggle). Melhor ler por Range, em paralelo, só as fotos da lista: as 920 zenitais somam 0,93 GB (uns 20 min), e as de prato, 1,85 GB. As 1.473 fotos de item somam 2,4 GB e não precisam vir.
+- **O que há em `DFoodTJ-F-Nutr`:**
+  - 3.280 fotos de celular (PNG, de 800×370 a 1920×1080) de **91 pacientes**, de nov/2020 a jun/2025.
+  - **Não é só Tianjin.** Duas fotos de 2024 (1009 e 1010) têm a marca d'água de um app de câmera: "2024.08.17 09:18, 上海市虹口区·同济大学附属上海市第四人民医院", isto é, o Quarto Hospital Popular de Xangai (Tongji). A cozinha, o prato e a balança mudam em 2024. A leitura do artigo acima fala em Tianjin; pelo menos parte das fotos de 2024 é de Xangai. Não reli o artigo para conferir quantos hospitais são.
+  - `truth_raw.xlsx`: uma linha por alimento de cada foto, com paciente, data e refeição ("2021/8/10Dinner"), nome em inglês, `Food ID` e **peso em gramas inteiros**. `truth.xls`: os nutrientes por foto (carboidrato, gordura, proteína, fibra, kcal) e a lista de `Food ID`.
+  - `density.xlsx`: 351 pratos chineses prontos, com densidade (g/ml) e nutrientes por grama. As fotos usam 101 deles.
+  - **Dois tipos de foto, não um:**
+    - **Prato inteiro:** 1.807 fotos. Os alimentos vão juntos num prato branco raso grande (sempre o mesmo modelo, pelas fotos), fotografado duas vezes: uma de cima ou quase, outra oblíqua (de uns 30 a 60 graus). 845 refeições têm o par, 113 só uma foto e uma tem quatro: **959 refeições**.
+    - **Alimento sozinho na balança:** 1.473 fotos (2024 e 2025, 403 refeições). Cada alimento, num pratinho de inox em cima da balança de cozinha, **com o peso no visor**. Na lista ficam como `vista = item_balanca`: o rótulo está escrito na foto.
+  - Por ano, fotos de prato: 2020, 27; 2021, 789; 2022, 149; 2023, 38; 2024, 411; 2025, 394.
+- **Rótulo:**
+  - **Peso medido por alimento.** As fotos de item mostram o visor com 0,1 g, e a planilha arredonda: 76,2 → 76; 154,3 → 154; 58,6 → 59. Só 10% dos pesos são múltiplos de 10 g (o esperado ao acaso), fora os pacientes 0 e 6 (2020 e 2021), em que 19 fotos têm todos os pesos redondos.
+  - **Nutrientes = peso × tabela dos autores**, por prato pronto (não por ingrediente). A soma de `truth_raw` bate com `truth.xls` em todas as fotos, e o peso × `density.xlsx` bate com cada linha, exceto o **fígado de porco** (12 fotos): a planilha usa 10,73% de proteína, e a tabela, 18,2%. A lista recalcula pela tabela e guarda o valor dos autores em `proteina_autores_g`.
+  - O visor da balança, quando aparece na foto do prato, mostra o peso líquido (com tara): 658,0 g para 651 g na planilha; 603,5 para 617; 306,0 para 293; 270,0 para 301; 571,0 para 597; 590,5 para 605. A diferença entre a pesagem do prato e a soma dos itens chega a 10%: é uma medida do ruído da massa.
+  - Natureza: **pesado × tabela** (`natureza_rotulo = pesado_x_tabela`), com a identidade de cada prato pronto. Atende o item 1 de 16.1 quanto ao rótulo.
+- **Problemas nos rótulos** (todos com aviso na coluna `avisos`; nenhum some da lista):
+  - **Nome diferente do `Food ID`** em 29 linhas (12 refeições): por exemplo `Food ID` 84 (pera) com o nome "Braised pork in brown sauce", 85 (salada de frutas) com "Fried meat with onion", 63 (amaranto) com "Chinese cabbage meatballs". Não dá para saber qual dos dois está certo. Nessas fotos, todos os alvos, menos a massa, ficam vazios (`nome_difere_do_id`).
+  - **As duas fotos da mesma refeição com rótulos diferentes** em 13 refeições: pesos trocados entre itens, ou entre o almoço e o jantar do mesmo dia (`rotulo_difere_no_par`).
+  - **Ovo cozido pesado com casca** (visto nas fotos de item: o ovo inteiro está na balança). A tabela é da parte comestível, e a proteína do ovo sai uns 12% alta. São 404 fotos de prato, quase todo café da manhã (`ovo_com_casca`).
+  - **Tabela de prato pronto, não de ingrediente.** A proteína de pratos mistos (por exemplo, "tiras de porco com pimentão", 6,6%) depende da receita do hospital, que não conhecemos. Em pelo menos um prato a tabela não combina com a foto: `Food ID` 41, "camarão refogado" (18,9% de proteína e 28,7% de carboidrato), aparece como milho e ervilha com poucos camarões. E a kcal da tabela não fecha com 4P + 4C + 9G em 21 pratos (por exemplo, `Food ID` 11 e 83); só uma foto de prato passa de 25% de diferença (`kcal_incoerente`).
+  - **O mesmo `Food ID` duas vezes na foto** (3 refeições, `food_id_repetido`). Num caso, a foto do item na balança (1688, 139,6 g no visor) mostra que o segundo "18" é o 42 (acelga). A proteína quase não muda.
+  - **Datas:** uma linha diz "021/6/20Lunch" (lida como 2021). Tudo bem, porque a data não entra no rótulo.
+  - **Uma refeição separada em duas fotos:** a foto 1 é só o arroz (100 g, numa tigela), e o prato do mesmo jantar (2 e 3) não tem arroz.
+- **Vista (conferida olhando as fotos):**
+  - A ordem do par não diz qual é a foto de cima: nas 30 fotos abertas inteiras, a primeira do par era a de cima em umas e a oblíqua em outras.
+  - Olhei as 1.807 fotos de prato em miniatura, em 45 folhas de até 20 pares lado a lado, mais 4 folhas das fotos sem par. Em cada par, a foto de cima é `zenital` (a mais redonda, ou a que mostra o prato inteiro mais de cima), e a outra é `obliqua_45`. As 117 fotos sem par (113 refeições de uma foto e uma de quatro) foram julgadas sozinhas. A tabela fica em `eval/dados_ext/dfoodtj_vistas.csv`.
+  - **Em 172 pares (20%) as duas fotos estavam quase iguais** (`conferencia_vista = olhada_em_par_incerta`), quase todos de 2024 e 2025. Nesses anos as duas fotos são altas (de 60 a 90 graus), e o prato parece oval, então a "redondeza" quase não ajuda. Um par julgado errado ainda é uma foto quase de cima.
+  - A "de cima" nem sempre é a 90 graus: varia de uns 65 a 90 graus. A "oblíqua" vai de uns 30 a 60.
+  - Resultado: 920 zenitais e 887 oblíquas. Das 959 refeições, 919 têm foto zenital (uma tem duas), e 40 só têm a oblíqua.
+- **Escala:**
+  - Em cada período o prato é sempre o mesmo modelo: um redondo de 2020 a 2023 e outro, que parece oval, em 2024 e 2025. O diâmetro é desconhecido, mas dá para medir uma vez pela balança, que aparece ao lado.
+  - A balança de cozinha aparece em muitas fotos de prato. Em 2020 e 2021 é uma plataforma azul embaixo do prato, quase sempre sem o visor legível. **Em 2024 e 2025, o visor aceso aparece na maioria das fotos de prato**, sobretudo na zenital. **É um vazamento do rótulo** (a massa escrita na foto): para treinar a massa, o mais seguro é tapar o visor (ele fica sempre na borda de baixo ou do lado) ou não usar essas fotos para a massa. Não marquei foto a foto.
+  - Em 2021 algumas fotos têm um cartão de visita ao lado, e no fundo há a bancada de inox da cozinha. O domínio é estreito: uma ou duas cozinhas de hospital, o mesmo prato e a mesma bancada.
+- **Contagens** (`python3 -I eval/dados_ext/dfoodtj_monta.py monta <pasta>`):
+  - 3.280 linhas: 920 `zenital`, 887 `obliqua_45` e 1.473 `item_balanca`.
+  - 959 refeições de 91 pacientes. Massa mediana da foto de prato: 527 g (café, 303 g; almoço, 557 g; jantar, 571 g).
+  - **Proteína por refeição**, 947 refeições com rótulo (0–5 / 5–15 / 15–25 / 25–40 / acima de 40 g): **1 / 88 / 554 / 275 / 29**. Mediana de 22,1 g. **304 acima de 25 g.**
+  - **Refeições com foto zenital e proteína: 907**, por faixa: **1 / 84 / 526 / 267 / 29**. Só com a vista conferida sem dúvida: 1 / 78 / 425 / 207 / 22. São 90 pacientes.
+  - Pacientes com ao menos uma refeição em cada faixa: 1 / 33 / 86 / 79 / 25.
+  - Fontes presentes nas fotos de prato: porco em 1.006, ovo em 427, aves em 220, peixe e camarão em 192, castanhas em 47, carne bovina em 25 e soja em 5.
+  - `grupo` = paciente; a regra de reserva de 12.5 põe 16 pacientes (301 fotos de prato) em `teste_ext` e 75 no treino. Proteína por faixa no `teste_ext`: 1 / 16 / 93 / 42 / 8.
+- **Mapa de alimentos** (`dfoodtj_alimentos.csv`, 101 linhas): nome chinês, inglês dos autores, inglês corrigido e português, grupo, fonte e `fonte_principal`.
+  - Pratos de carne ou peixe sem muito legume são `proteina_animal` com a fonte.
+  - Refogados de carne com legume ("tiras de porco com pimentão", "pepino com porco") são `misto` / `prato_misto`, como o frango agridoce do Flavoria. A carne que está dentro vai em `fonte_principal`, e a lista junta essas fontes em `fontes_presentes`.
+  - Traduções corrigidas: "Sirloin tomatoes" é fatia de porco com tomate (番茄烩肉片); "Shepherd" é almôndega com bolsa-de-pastor (荠菜肉圆); "Steamed Perch" (53) é só filé de peixe (清蒸鱼片); "Stewed sirloin potatoes" é peito bovino (牛腩) com batata.
+- **Veredito para o treino:** é a primeira base com foto de cima de **um prato só**, massa medida por item e identidade de cada prato pronto, com **304 refeições acima de 25 g**. Serve para treino (CC0, comercial) e para a cabeça de densidade por fonte. Os limites: domínio estreito (um ou dois modelos de prato, uma ou duas cozinhas); tabela por prato pronto; ovo com casca; o visor da balança na foto.
+
+**Teste de registro (16.1) com o DFood-TJ: não passa, nem sozinho nem com o FLIC.**
+
+- **O que atende:**
+  - proteína derivada de pesagem (prato pesado × tabela);
+  - foto de cima de um prato só (a `zenital`);
+  - 959 refeições, 907 com foto zenital e proteína (mínimo de 600).
+- **O que falha:**
+  - **Unidades de independência:** 91 pacientes, abaixo de 100. Usar paciente-dia (425) como unidade seria otimista, porque é a mesma cozinha, o mesmo cardápio e o mesmo prato para todos.
+  - **Faixas:** 0–5 g tem 1 refeição, e acima de 40 g, 29. Juntando cada faixa pequena à vizinha de baixo, como 16.1 (4) manda, sobram três faixas (até 15, 15–25, acima de 25), e o teste deixa de medir separado o que mais importa (acima de 40 g).
+- **Com o FLIC:**
+  - o FLIC tem 401 bandejas de 21 dias, com porções de criança. O dia é a unidade (21), e as faixas de cima quase certamente ficam vazias;
+  - somados, seriam uns 1.300 pratos e 91 + 21 = 112 unidades. Isso passa os 100 só no total, e cada base teria de ser analisada com a sua própria unidade (o bootstrap de 16.1 (5) é por base);
+  - o FLIC pesa cada prato da bandeja em separado (primeiro, segundo, acompanhamento, pão), então pode encher a faixa de 0 a 5 g. **A faixa acima de 40 g continuaria com uns 29 pratos**: porção de criança não chega lá.
+  - **Conclusão:** nem o DFood-TJ sozinho nem com o FLIC cumpre 16.1 (3). Faltaria uma base com muitos pratos pesados acima de 40 g, de mais pessoas.
+
 ## Reproduzir
 
 ```
@@ -781,6 +851,11 @@ python3 -I eval/dados_ext/foodbd_monta.py monta <pasta>
 curl -sL https://huggingface.co/datasets/datahiveai/recipes-with-nutrition/resolve/main/recipes-with-nutrition.csv | python3 -I eval/dados_ext/receitas_datahive_monta.py monta -
 python3 -I eval/dados_ext/acetada_monta.py monta ACETADA-HF-dataset.csv   # o CSV sai do zip por leitura parcial (zipremoto.py)
 python3 eval/dados_ext/receitas_povarenok_monta.py monta <os dois parquet de d0rj/povarenok_recipes_detail>   # precisa de pyarrow
+# Quarta varredura: DFood-TJ (seção 13.5.1). Árvore de arquivos: POST https://www.scidb.cn/api/gin-sdb-filetree/public/file/childrenFileListByPath
+U=https://china.scidb.cn/download?fileId
+python3 -I <scratchpad>/varredura2/scripts/zipremoto.py "$U=cb2751a22a516c057913e15b7d3cc5c4" extrai <pasta> DFoodTJ-F-Nutr/truth/truth.xls DFoodTJ-F-Nutr/truth/truth_raw.xlsx
+curl -sL "$U=c308bb046a736249b8223b8baa0de335" -o DFoodTJ-Nutr.zip   # tirar DFoodTJ-Nutr/density.xlsx para <pasta>
+python3 -I eval/dados_ext/dfoodtj_monta.py monta <pasta>   # usa dfoodtj_alimentos.csv e dfoodtj_vistas.csv
 # Open Images: contar fotos de comida no treino (lê ~400 MB em fluxo, não grava)
 curl -s https://storage.googleapis.com/openimages/v5/train-annotations-human-imagelabels-boxable.csv | <filtro por LabelName e Confidence=1>
 ```

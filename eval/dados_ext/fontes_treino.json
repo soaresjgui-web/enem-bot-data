@@ -339,6 +339,42 @@
         "Nutrientes do CSV são do consumido; a lista converte para o servido.",
         "Cardápio de laboratório repetido entre participantes."
       ]
+    },
+    {
+      "id": "dfoodtj",
+      "uso": "treino_comercial (peso medido por alimento x tabela de prato pronto; foto de cima e oblíqua de um prato só)",
+      "licenca_na_lista": "CC0 1.0",
+      "uso_declarado": "comercial_ok",
+      "o_que_e": "DFood-TJ (DFoodTJ-F-Nutr): 91 pacientes diabéticos internados (Tianjin pelo artigo; parte das fotos de 2024 tem marca d'água de um hospital de Xangai), 2020 a 2025; cada alimento pesado e todos juntos num prato branco, fotografado de cima e oblíquo (1.807 fotos de prato, 959 refeições); em 2024-2025 também cada alimento sozinho na balança com o visor (1.473 fotos).",
+      "onde": "https://china.scidb.cn/download?fileId=cb2751a22a516c057913e15b7d3cc5c4 (DFoodTJ-F-Nutr.zip, 4.247.942.139 bytes, md5 b67cc4116e2c734296fbd6cd99cd50bc; aceita Range, ~36 kB/s por conexão); tabela em https://china.scidb.cn/download?fileId=c308bb046a736249b8223b8baa0de335 (DFoodTJ-Nutr.zip, density.xlsx)",
+      "alcance_do_kaggle": "Não medido. Daqui: ~36 kB/s por conexão, ~0,9 MB/s com 14 conexões; ler por Range só as fotos da lista (920 zenitais = 0,93 GB)",
+      "licenca": "CC0 1.0 (metadado do depósito V3 no Science Data Bank; o artigo é CC BY-NC-ND 4.0)",
+      "citar": "Chinese Food Images for Full-cycle Nutrition Analysis Towards Diabetes Management. Scientific Data 2026 (PMC13333986). Dados: doi 10.57760/sciencedb.28012",
+      "lista_pronta": "eval/treino/kaggle/listas/externo_dfoodtj.csv (no git, CC0; 3.280 fotos), montada por eval/dados_ext/dfoodtj_monta.py com dfoodtj_alimentos.csv e dfoodtj_vistas.csv",
+      "contagens": {
+        "fotos": 3280,
+        "fotos_prato": 1807,
+        "fotos_zenital": 920,
+        "fotos_obliqua_45": 887,
+        "fotos_item_balanca": 1473,
+        "refeicoes": 959,
+        "pacientes": 91,
+        "proteina_0_5": 1,
+        "proteina_5_15": 88,
+        "proteina_15_25": 554,
+        "proteina_25_40": 275,
+        "proteina_acima_40": 29,
+        "acima_25g": 304,
+        "refeicoes_zenital_com_proteina": 907,
+        "pares_vista_incerta": 172
+      },
+      "cuidados": [
+        "Visor da balança visível em parte das fotos (massa escrita na foto); item_balanca sempre.",
+        "Ovo cozido pesado com casca; tabela da parte comestível (+12% na proteína do ovo).",
+        "Tabela por prato pronto do hospital; 29 linhas com nome diferente do Food ID (alvos vazios).",
+        "91 pacientes: abaixo das 100 unidades de 16.1; faixas 0-5 e >40 g com menos de 60 refeições.",
+        "Domínio estreito: uma cozinha, o mesmo prato e a mesma bancada."
+      ]
     }
   ],
   "_procedencia": "Toda lista externa leva as colunas `licenca` (texto exato da licença) e `uso_declarado` (comercial_ok | nao_comercial | sem_licenca | autores_pedem_nao_treinar), por decisão da fundadora de 12/11/2026 de não restringir o treino a bases de licença comercial. Bases atrás de formulário ou de acesso restrito (MetaFood3D oficial, ClinicPlate) esperam o pedido da fundadora; cópias de terceiros que contornam esse controle não são usadas.",
