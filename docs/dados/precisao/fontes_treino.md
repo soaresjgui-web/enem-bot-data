@@ -672,6 +672,74 @@ Nada de novo nas plataformas chinesas, japonesas e coreanas: não deu para olhar
 5. `www.frontiersin.org`, `bmcnutr.biomedcentral.com`, `www.jmir.org`: idem.
 6. `www.scielo.br`, `repositorio.usp.br`, `www.data.go.kr`, `www.nii.ac.jp`: portais nacionais.
 
+### 13.5 Depois da liberação dos hosts (16/11/2026, tarde)
+
+**Conjunto novo que vale: DFood-TJ (Tianjin, China).** *Citar:* "Chinese Food Images for Full-cycle Nutrition Analysis Towards Diabetes Management", Scientific Data 2026 (PMC13333986). Os dados estão no Science Databank, doi 10.57760/sciencedb.28012.
+
+- **O que diz o artigo** (lido inteiro pela Europe PMC):
+  - `DFoodTJ-F-Nutr` tem **3.280 fotos de celular** das refeições de **91 pacientes diabéticos internados**.
+  - **A comida de cada refeição foi pesada.** Todos os itens vão juntos num prato grande e são fotografados **duas vezes, uma de cima e outra a 45 graus**, de 30 a 40 cm.
+  - `truth_raw.xlsx` traz paciente, data, nome chinês e **peso de cada alimento**; `truth.xls` traz carboidrato, gordura, **proteína**, fibra e kcal por foto, calculados pelo peso × tabela (`density.xlsx`, 351 alimentos).
+  - Há ainda 3.932 fotos com polígonos e 285 mil fotos de classificação.
+- **Natureza do rótulo:** pesado × tabela, com identidade por item. É o tipo (a) do pedido, de cima.
+- **Licença:** o artigo é CC BY-NC-ND 4.0; a licença do depósito não está no texto.
+- **O que falta:**
+  - `www.scidb.cn` responde 403 do proxy, então nada foi baixado nem conferido: nem fotos, nem planilhas, nem quantas refeições passam de 25 g (dieta de diabético, provavelmente poucas).
+  - **Teste de registro (16.1):** cerca de 1.640 refeições; 91 pacientes, abaixo dos 100 exigidos; faixas desconhecidas. Sozinho, não passaria no mínimo de unidades. Em composição com o FLIC (dias) e outra base, talvez.
+- **Ação:** liberar `www.scidb.cn`. Depois: conferir as planilhas e montar a lista (`dftj_monta.py`), com `uso_declarado` provavelmente `nao_comercial`.
+
+**CC-FOOD-100 (Baidu Pan).**
+- **Acesso:**
+  - Abri o compartilhamento com o código de extração publicado no README; é o acesso previsto, sem contornar nada.
+  - Dentro há um arquivo só: `cc_food_100.zip`, 2.696.886.988 bytes.
+  - Baixar pelo Baidu Pan pede conta do Baidu (normalmente com telefone chinês), e não dá para ler o zip por partes. **É pedido da fundadora.**
+- **O que se sabe do rótulo:** o resumo do artigo (Food Chemistry 2024) fala em RGB-D, em "receitas com a massa dos ingredientes" e em volume estimado pela profundidade. Não diz que cada foto tem peso medido. Valor incerto.
+
+**Plataformas chinesas.**
+- **ModelScope** (busca pela API, 20 consultas em chinês e inglês): só classificação (Food101, Food170, ChineseFoodNet, cantina sem peso) e o **DiningBench** (Meituan, ACL 2026, CC BY-NC-ND 4.0, também no HF):
+  - 1.650 pratos com fotos de usuários de delivery (7.206 fotos);
+  - proteína por porção com mediana de 30 g, e **1.039 acima de 25 g**;
+  - porém o artigo diz que a nutrição foi **inferida por Gemini-3 a partir dos dados do comerciante, com revisão humana**. Não é rótulo medido; equivale a destilar um VLM. Sem lista.
+- **OpenDataLab:** tem uma cópia do **Recipe1M+**. É cópia de base com cadastro (`im2recipe`), então não uso; continua pedido da fundadora.
+- **Tianchi e AI Studio:** a busca é por aplicação web sem API pública conhecida. A busca na web restrita a esses domínios só achou tabelas de nutrientes e classificação (Food2K, Food-101).
+- **Outros:**
+  - CFNet-34 (PMC9324181, Baidu Pan): classificação, sem peso.
+  - Base de 1,15 milhão de imagens com peso (Wei Sheng Yan Jiu, 2024): sem link de download.
+
+**Suplementos de artigos (Europe PMC: 7 consultas, 274 artigos; disponibilidade de dados lida em 15).**
+- **CGMacros** (Sci Data 2025, Figshare 29733005, CC BY 4.0, 657 MB):
+  - 45 participantes, 10 dias, fotos de cada refeição;
+  - o café da manhã é shake de proteína, o almoço é bowl da Chipotle com macros **de cardápio** (projetados, não pesados), e o jantar é livre e autorrelatado;
+  - rótulo nominal, como o NutritionVerse-Real; poderia servir de sinal fraco acima de 25 g (bowls), com umas 450 fotos;
+  - não abri (zip dentro de zip). Prioridade baixa.
+- **Pesagem com foto em hospital, escola, creche, cuidados de longo prazo e Japão** (PMC13028871, PMC9716425/AFINI-T, PMC13118341, PMC13160742, PMC10537234): **todos "dados sob pedido"**. Nenhum publica as fotos.
+- **Atlas fotográficos de porção:**
+  - China (PMC8246756): só figuras suplementares;
+  - Bálcãs, Singapura e Turquia: livro ou PDF;
+  - Ásia Central: o GitHub do ISSAI tem o atlas, mas é de referência visual, não conjunto de treino.
+  - Ensinam pouca coisa além do que 5.3 já diz.
+
+**Brasil, Coreia e Japão.**
+- `search.scielo.org` está bloqueado; `www.scielo.br` responde, mas não tem API de busca, e a Europe PMC indexa a SciELO.
+- A busca "álbum/atlas/manual fotográfico" só achou artigos de atlas, sem conjunto de imagens.
+- `repositorio.usp.br` continua sem resposta.
+- `www.data.go.kr`: a busca é carregada por script, e o portal guarda tabelas de nutrientes; as imagens coreanas ficam na AI Hub (fechada a estrangeiros, 12.8).
+- **NII IDR:** a lista atual não tem nenhum conjunto de comida (Cookpad e Rakuten saíram; restaram vídeos de cozinha, COM Kitchens).
+
+**Respostas.**
+- (a) **Faixa acima de 25 g ou escala:** o DFood-TJ (pesado, de cima, identidade por item) e o FLIC (pesado, de cima, câmera fixa) são os dois candidatos reais. Os dois esperam: o DFood-TJ, o host `www.scidb.cn`; o FLIC, o link da fundadora. Os dois devem ter poucas refeições acima de 25 g (dieta de diabético; porção infantil). Melhoram a escala e o domínio "prato de cima com peso"; a faixa alta, pouco.
+- (b) **Teste de registro (16):** nenhum hoje. O DFood-TJ (91 pacientes) e o FLIC (21 dias) ficam abaixo de 100 unidades cada. Somados a uma terceira base de cima com peso, chegariam perto, se as faixas altas tiverem 60 pratos, o que é improvável.
+
+**Hosts a liberar:**
+1. `www.scidb.cn` (DFood-TJ);
+2. `search.scielo.org`;
+3. `repositorio.usp.br` continua sem responder (de novo).
+
+**Pedidos da fundadora:**
+- CC-FOOD-100 (conta do Baidu);
+- Recipe1M (cadastro; não usar a cópia da OpenDataLab);
+- autores de NIAD, AFINI-T e do estudo japonês de pesagem com foto (PMC13028871).
+
 ## Reproduzir
 
 ```
