@@ -262,11 +262,20 @@ class Detector:
         tok = AutoTokenizer.from_pretrained(local)
         e = tok(CONSULTAS, padding="max_length", max_length=16, return_tensors="pt")
         self.ids, self.mascara = e["input_ids"].to(dev), e["attention_mask"].to(dev)
+        self.tok, self.consultas = tok, list(CONSULTAS)
         self.dtype = torch.float16 if meio else torch.float32
         self.media = torch.tensor(MEDIA_OWL, device=dev).view(1, 3, 1, 1)
         self.desvio = torch.tensor(DESVIO_OWL, device=dev).view(1, 3, 1, 1)
         import transformers
         self.versao = f"{DETECTOR}@{REVISAO[:12]} (transformers {transformers.__version__}, {'fp16' if meio else 'fp32'}, {LADO} px)"
+
+    def com_consultas(self, consultas):
+        """O mesmo detector (os mesmos pesos, na mesma memória) com outras consultas de texto (rodada 8: o visor da balança)."""
+        import copy
+        o = copy.copy(self)
+        e = self.tok(list(consultas), padding="max_length", max_length=16, return_tensors="pt")
+        o.ids, o.mascara, o.consultas = e["input_ids"].to(self.dev), e["attention_mask"].to(self.dev), list(consultas)
+        return o
 
     def prepara(self, a):
         F = self.t.nn.functional
@@ -282,7 +291,7 @@ class Detector:
         t = self.t
         prep = [self.prepara(a) for a in imagens]
         x = t.cat([p[0] for p in prep]).to(self.dtype)
-        B, Q = len(imagens), len(CONSULTAS)
+        B = len(imagens)
         with t.inference_mode():
             o = self.m(input_ids=self.ids.repeat(B, 1), attention_mask=self.mascara.repeat(B, 1), pixel_values=x)
         notas, consulta = t.sigmoid(o.logits.float()).max(-1)       # [B, caixas]: a melhor das consultas e qual

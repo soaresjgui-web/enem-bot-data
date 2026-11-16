@@ -3056,9 +3056,14 @@ class ArquivoHTTP:
         self.url, self.bloco, self.tentativas, self.pos = url, bloco, tentativas, 0
         self.buf, self.buf_ini = b"", 0
         self.lidos = 0
-        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "python-urllib"})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            self.tamanho = int(r.headers["Content-Length"])
+        try:
+            req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "python-urllib"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                self.tamanho = int(r.headers["Content-Length"])
+        except Exception:       # noqa: BLE001 — servidor sem HEAD (rodada 8, scidb.cn): o tamanho sai do Content-Range de um pedido de 1 byte
+            req = urllib.request.Request(url, headers={"User-Agent": "python-urllib", "Range": "bytes=0-0"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                self.tamanho = int(r.headers["Content-Range"].split("/")[-1])
 
     def _pede(self, ini, fim):
         import urllib.request

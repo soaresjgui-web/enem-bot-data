@@ -63,8 +63,14 @@ KERNELS = {
     "r7": dict(nome="sétima execução (seção 17): cabeças sobre features congeladas com ACETADA, receitas e FoodBD", pasta=AQUI, notebook="nutrelle_treino_gpu.ipynb",
                slug="nutrelle-treino-gpu-r7", script="treino_gpu.py",
                basicos=["treino_gpu.py", "deteccao_r5.py", "listas/treino_v2.csv", "listas/conferencia_r5.json", "listas/ref_r6_prato.csv"],
-               args="['--rodada', '7']", orcamento=3.0, manifesto="manifesto.json", fontes_kernel=["nutrelle-deteccao-r5"]),     # sem o teste2 nem o SNAPMe
+               args="['--rodada', '7']", orcamento=3.0, manifesto="manifesto.json", fontes_kernel=["nutrelle-deteccao-r5"],     # sem o teste2 nem o SNAPMe
+               congelado="rodou em 15/11/2026; o notebook do repositório fica como rodou (os scripts embutidos são os daquele dia)"),
+    "r8": dict(nome="oitava execução (16.6 f): teste de registro DFood-TJ, só previsões cruas", pasta=os.path.join(AQUI, "teste_r8"),
+               notebook="nutrelle_teste_dfoodtj_r8.ipynb", slug="nutrelle-teste-dfoodtj-r8", script="teste_r8.py",
+               basicos=["teste_r8.py", "treino_gpu.py", "deteccao_r5.py"], args="[]", orcamento=1.5, manifesto="manifesto_r8.json",
+               fontes_kernel=["nutrelle-deteccao-r5", "nutrelle-treino-gpu-r5", "nutrelle-treino-gpu-r6", "nutrelle-treino-gpu-r7"]),
 }
+TESTE8, GABARITO8 = "teste_r8_dfoodtj.csv", "gabarito_r8_dfoodtj.csv"      # a tabela SEM rótulo vai só no notebook do push; o gabarito, nunca
 KERNEL = "r7"           # mudado por --kernel
 NOTEBOOK = os.path.join(AQUI, "nutrelle_treino_gpu.ipynb")
 SLUG = "nutrelle-treino-gpu-r7"
@@ -91,7 +97,7 @@ COLS_LISTA = ["dominio", "grupo", "vista", "arquivo", "arquivo_base", "quadros",
 
 def bases(k=None):
     """(liberadas, fechadas) do kernel: as liberadas vão no notebook do repositório; as fechadas, só no do push."""
-    return BASES7 if (k or KERNEL) == "r7" else (LIBERADAS, FECHADAS)
+    return BASES7 if (k or KERNEL) == "r7" else ([], []) if (k or KERNEL) == "r8" else (LIBERADAS, FECHADAS)
 COLS_DIV = ["dish_id", "dominio", "grupo", "papel", "fold_ext", "folds_proibidos", "quadro_metrica", "quadro_metrica_nome", "quadros_treino",
             "grupo_metrica", "peso_nutricao"]
 ASPAS3 = "'" * 3
@@ -181,6 +187,11 @@ def enxuta(arq_lista, arq_div, fracas=()):
 def conteudo(variante):
     """{nome do arquivo no pacote: bytes} da variante 'repo' (só bases liberadas) ou 'push' (as seis)."""
     arqs = {n: open(os.path.join(AQUI, n), "rb").read() for n in BASICOS}
+    if KERNEL == "r8":      # 16.6 f: só o código; no push, a tabela do teste sem rótulo (fora do repositório: NUTRELLE_SCRATCH/dftj/teste_r8)
+        if variante == "push":
+            sc = os.environ.get("NUTRELLE_SCRATCH", "")
+            arqs[f"listas/{TESTE8}"] = open(acha(TESTE8, extras() + ([os.path.join(sc, "dftj", "teste_r8")] if sc else [])), "rb").read()
+        return arqs
     proc, pastas = {}, ([] if variante == "repo" else extras())
     lib, fec = bases()
     for ch in lib + (fec if variante == "push" else []):
@@ -208,6 +219,8 @@ def _celula_arquivo(n, dados):
 def monta(variante):
     if KERNEL == "r5a":
         return monta_deteccao(variante)
+    if KERNEL == "r8":
+        return monta_teste8(variante)
     arqs = conteudo(variante)
     doms = bases()[0] + (bases()[1] if variante == "push" else [])
     md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
@@ -351,6 +364,102 @@ def monta_deteccao(variante):
                               nutrelle=dict(kernel=KERNEL, variante=variante, sha256=_hash(arqs), embutidos=sorted(arqs), dominios=doms)))
 
 
+def monta_teste8(variante):
+    """Notebook da oitava execução (16.6 f): lê os PNG do teste do zip remoto, mascara o visor, recorta pelo prato, grava as
+    folhas de contato e as previsões cruas das cabeças servidas. Nada é pontuado. O do repositório não traz a tabela."""
+    arqs = conteudo(variante)
+    md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
+    code = lambda t: dict(cell_type="code", metadata={}, execution_count=None, outputs=[], source=t)
+    aviso = ("**Versão do repositório: sem a tabela do teste** (ela fica fora do git). Para rodar, monte a versão do push com "
+             "`python3 monta_pacote.py push <pasta> --kernel r8` ou passe `--teste <tabela>` em EXTRA." if variante == "repo" else
+             "**Versão do push, montada fora do repositório:** traz `teste_r8_dfoodtj.csv` (sem rótulo; o kernel confere o sha256). O gabarito nunca entra.")
+    cells = [
+        md("# Nutrelle — oitava execução: o teste de registro DFood-TJ (seção 16.6 f)\n\n"
+           "Notebook gerado por `eval/treino/kaggle/monta_pacote.py --kernel r8`; **não edite à mão**. Lê do zip do DFood-TJ (china.scidb.cn) só os "
+           "711 PNG da tabela, por intervalo de bytes; mascara o visor da balança com o OWLv2; recorta pelo prato (regra só de prato e tigela da etapa 0); "
+           "grava as folhas de contato e as previsões cruas da R4c, da H0c-m e da H-cap (So400m, 1/4/8 orientações) e do F5c (1 orientação), no recorte e "
+           "na foto inteira. **Nada é pontuado aqui:** a conferência a olho e a leitura são da CPU (16.6 g).\n\n" + aviso
+           + "\n\nAnexe como *Input* as saídas de `nutrelle-deteccao-r5`, `nutrelle-treino-gpu-r5`, `-r6` e `-r7`. Kaggle: *GPU T4* e *Internet → On*."),
+        code("# Parâmetros\n"
+             "import json, os, subprocess, sys\n"
+             f"ORCAMENTO_H = {KERNELS['r8']['orcamento']}\n"
+             "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_teste_r8'\n"
+             "EXTRA = []           # ex.: ['--fontes', '<pasta com as saídas das execuções 5 a 7>']\n"
+             "SAIDA = os.environ.get('NUTRELLE_SAIDA') or SAIDA\n"
+             "EXTRA = json.loads(os.environ.get('NUTRELLE_EXTRA') or 'null') or EXTRA\n"
+             "for mod, pacote in (('transformers', 'transformers'), ('cv2', 'opencv-python-headless'), ('huggingface_hub', 'huggingface_hub')):\n"
+             "    try:\n"
+             "        __import__(mod)\n"
+             "    except ImportError:\n"
+             "        subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', pacote], check=False)\n"
+             f"os.makedirs('{DESTINO}/listas', exist_ok=True)"),
+    ]
+    for n in sorted(arqs, key=lambda n: (not n.endswith(".py"), n)):
+        cells.append(code(_celula_arquivo(n, arqs[n])))
+    cells.append(code(
+        "import subprocess, sys\n"
+        f"cmd = [sys.executable, '-u', '{DESTINO}/teste_r8.py', '--saida', SAIDA, '--orcamento-h', str(ORCAMENTO_H)] + EXTRA\n"
+        "p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)\n"
+        "for linha in p.stdout:\n"
+        "    print(linha, end='')\n"
+        "print('código de saída:', p.wait())"))
+    cells.append(code(
+        "import json, os\n"
+        "m = os.path.join(SAIDA, 'manifesto_r8.json')\n"
+        "if os.path.exists(m):\n"
+        "    m = json.load(open(m))\n"
+        "    print({k: m.get(k) for k in ('teste', 'download', 'tempos_seg', 'duracao_min')})\n"
+        "    print('detecção:', {k: v for k, v in (m.get('deteccao') or {}).items() if k != 'por_periodo'})\n"
+        "    print('remontagem confere:', (m.get('remontagem') or {}).get('confere'))\n"
+        "print(sorted(os.listdir(SAIDA)))"))
+    for i, c in enumerate(cells):
+        c["id"] = f"celula-{i}"
+    return dict(cells=cells, nbformat=4, nbformat_minor=5,
+                metadata=dict(kernelspec=dict(display_name="Python 3", language="python", name="python3"), language_info=dict(name="python"),
+                              nutrelle=dict(kernel=KERNEL, variante=variante, sha256=_hash(arqs), embutidos=sorted(arqs), dominios=[])))
+
+
+def confere_r8(pasta):
+    """Oitava execução: o notebook do repositório está em dia e não traz tabela nenhuma do teste; o do push traz só a tabela
+    sem rótulo (sha256 de 16.6, colunas sem alvo) e nunca o gabarito; kernel_sources com as quatro saídas."""
+    sys.dont_write_bytecode = True
+    sys.path.insert(0, AQUI)
+    import teste_r8 as T8
+
+    def sem_gabarito(nb, emb):
+        texto = json.dumps(nb)
+        assert GABARITO8 not in texto and not any("gabarito" in n for n in emb), "o gabarito não pode entrar no pacote"
+        for n, b in emb.items():
+            if n.endswith(".csv"):
+                cab = next(csv.reader(io.StringIO(b.decode())))
+                assert not set(cab) & {"proteina", "massa", "kcal", "gordura", "carbo"} and not any("fraca" in c or c.startswith(("m_", "p_", "ff_")) for c in cab), f"{n}: coluna de rótulo"
+    nb = json.load(open(NOTEBOOK))
+    emb = _embutidos(nb)
+    esp = conteudo("repo")
+    assert emb == esp and nb["metadata"]["nutrelle"]["sha256"] == _hash(esp), "o notebook do repositório está desatualizado (rode `monta_pacote.py notebook --kernel r8`)"
+    assert not any(TESTE8 in n for n in emb), "a tabela do teste não vai no notebook do repositório"
+    sem_gabarito(nb, emb)
+    meta = json.load(open(os.path.join(os.path.dirname(NOTEBOOK), "kernel-metadata.json")))
+    assert meta["code_file"] == os.path.basename(NOTEBOOK) and meta["enable_gpu"] and meta["enable_internet"] and meta["id"].endswith("/" + SLUG)
+    print(f"notebook do repositório: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB, só código; nenhuma tabela do teste, nenhum gabarito")
+    if pasta:
+        pasta = os.path.abspath(pasta)
+        assert not dentro_do_repo(pasta), "a pasta do push está dentro do repositório"
+        nbp = json.load(open(os.path.join(pasta, os.path.basename(NOTEBOOK))))
+        embp = _embutidos(nbp)
+        assert embp == conteudo("push") and nbp["metadata"]["nutrelle"]["variante"] == "push", "o notebook do push está desatualizado"
+        bruto = embp[f"listas/{TESTE8}"]
+        assert hashlib.sha256(bruto).hexdigest() == T8.SHA_TESTE, "a tabela do teste no push não é a de 16.6"
+        assert next(csv.reader(io.StringIO(bruto.decode()))) == T8.COLS_TESTE
+        sem_gabarito(nbp, embp)
+        assert os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) < 1_000_000, "notebook do push com mais de 1 MB"
+        mp = json.load(open(os.path.join(pasta, "kernel-metadata.json")))
+        dono = mp["id"].split("/")[0]
+        assert mp["id"].endswith("/" + SLUG) and sorted(mp.get("kernel_sources", [])) == sorted(f"{dono}/{k}" for k in KERNELS["r8"]["fontes_kernel"]), "kernel_sources do push"
+        print(f"notebook do push em {pasta}: em dia, tabela do teste sem rótulo (sha256 {T8.SHA_TESTE[:16]}…), sem gabarito, "
+              f"{os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) / 1e6:.2f} MB; id {mp['id']}, kernel_sources {mp['kernel_sources']}")
+
+
 def grava_nb(nb, arq):
     with open(arq, "w") as f:
         json.dump(nb, f, indent=1, ensure_ascii=False)
@@ -452,6 +561,8 @@ def confere_nb(nb, variante):
     """Um notebook (do repositório ou do push) corresponde aos arquivos desta pasta e não vaza nada que não devia."""
     meta = nb["metadata"]["nutrelle"]
     assert meta["variante"] == variante, f"variante {meta['variante']} no lugar de {variante}"
+    if KERNEL == "r8":      # a oitava tem a conferência própria (confere_r8)
+        return _embutidos(nb)
     emb = _embutidos(nb)
     if variante == "repo":      # antes de tudo: nada das bases sem licença comercial no notebook do repositório
         texto_nb = "\n".join(c["source"] if isinstance(c["source"], str) else "".join(c["source"]) for c in nb["cells"]
@@ -512,6 +623,8 @@ def confere():
 
 
 def confere_kernel(pasta):
+    if KERNEL == "r8":
+        return confere_r8(pasta)
     import tempfile
     import numpy as np
     nb = json.load(open(NOTEBOOK))

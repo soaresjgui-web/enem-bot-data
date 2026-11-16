@@ -1,8 +1,8 @@
-# Treino em GPU (Kaggle ou Colab) — seções 8, 10 a 17, uma única foto de cima
+# Treino em GPU (Kaggle ou Colab) — seções 8, 10 a 17 e o teste de 16.6, uma única foto de cima
 
 Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descritos em `docs/dados/precisao/resultado_modelo_treinado.md`. A inferência usa sempre **uma** foto RGB zenital. O critério é o do produto: proteína dentro de ±20% ou ±5 g.
 
-**Estado (15/11/2026):**
+**Estado (16/11/2026):**
 
 - **Execução 1 (seção 10)** rodou no Kaggle: 2× T4, 15 configurações em ~5,7 h; a paridade com a CPU conferiu (RMSE 0,2550 contra 0,2551).
 - **Execução 2 (seção 11)** rodou no Kaggle: 11 configurações em 4,5 h de relógio (torch 2.11.0+cu130, timm 1.0.30), com previsões no teste2, arquivos de servir e `servico.json`; saída de 1,27 GB.
@@ -11,9 +11,27 @@ Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descr
 - **Execução 5 (seção 14), etapa 0 (14.3):** kernel separado, `nutrelle-deteccao-r5` (`deteccao_r5/`), enviado em 13/11/2026; descrito logo abaixo.
 - **Execução 5, principal (14.4 a 14.6)** rodou no Kaggle de ponta a ponta, sem cortes; resultados em 14.10.
 - **Execução 6 (seção 15)** rodou no Kaggle de ponta a ponta (paridade exata, nada cortado); resultados em 15.8.
-- **Execução 7 (seção 17): pronta para o push e ainda não rodou em GPU.** Kernel `nutrelle-treino-gpu-r7` (`nutrelle_treino_gpu.ipynb`), descrito logo abaixo. Os notebooks da quinta e da sexta ficam no histórico do git (`monta_pacote.py notebook --kernel r5|r6` os refaz como `nutrelle_treino_gpu_r5.ipynb` e `_r6.ipynb`).
+- **Execução 7 (seção 17)** rodou no Kaggle (paridade com a sexta conferida, todas as cabeças completas).
+- **Execução 8 (16.6 f), o teste de registro DFood-TJ: pronta para o push e ainda não rodou.** Kernel próprio, `nutrelle-teste-dfoodtj-r8` (`teste_r8.py`, notebook em `teste_r8/`), descrito logo abaixo. Só previsões cruas; a leitura é da CPU.
 
 Para baixar a saída é preciso acesso a `www.kaggleusercontent.com`.
+
+## Oitava execução: o teste de registro DFood-TJ (16.6 f)
+
+`teste_r8.py`, num kernel próprio (`teste_r8/nutrelle_teste_dfoodtj_r8.ipynb`, slug `nutrelle-teste-dfoodtj-r8`; não é uma `--rodada` do `treino_gpu.py`: não treina nada, só usa dele e do `deteccao_r5.py` as funções). **Nada é pontuado no kernel; nenhum rótulo entra.**
+
+- **Entrada:** `teste_r8_dfoodtj.csv` (`dish_id, arquivo, periodo, paciente`; 711 fotos, 89 pacientes; sha256 `534a4627…dce5ef5d`, conferido pelo kernel; colunas de rótulo recusadas). **As duas tabelas do teste ficam fora do git** (`.gitignore`) e no scratchpad (`dftj/teste_r8/`); a sem rótulo vai **só no notebook do push**; o gabarito nunca entra em pacote nenhum (o `confere` procura o nome e colunas de alvo). O notebook do repositório é só código.
+- **Fontes anexadas (`kernel_sources`):** `nutrelle-treino-gpu-r5` (`cabeca__gpu5_ridge_so400m_prato__tudo.npz`, a R4c servida), `nutrelle-treino-gpu-r6` (`pesos__gpu6_ft_siglip2_b16_224_r2_fracoes_sg_prato__tudo.pt` e a `cabecasg__…`, o F5c), `nutrelle-treino-gpu-r7` (`cabeca__gpu7_fracoes_so400m_prato__massa.npz` e `…__massa_cap.npz`, H0c-m e H-cap com 3 sementes; e `feat7__n5k__recorte.npy`, para a remontagem), `nutrelle-deteccao-r5` (`caixas_r5_n5k.csv`, para a remontagem). O kernel acha cada arquivo pelo nome em `/kaggle/input` e grava o sha256 de cada um.
+- **Fotos:** só os 711 PNG da tabela, tirados do zip de 4.247.942.139 bytes do DFood-TJ (`china.scidb.cn`) por intervalo de bytes, em 14 conexões (cada uma lê o diretório central, ~0,3 MB). Cada PNG: CRC do zip, assinatura e bloco `IEND`, sha256 gravado. No teste local, 2 fotos saíram em 38 s; as 711 (~0,6 GB) devem levar 15–25 min.
+- **Visor e prato:** orientação do EXIF e retrato girado, como no treino; o OWLv2 da etapa 0 (mesma revisão e pesos conferidos) procura o visor ("a digital display", "an LCD screen", "a kitchen scale display", nota ≥ 0,15), e cada caixa é pintada com a cor mediana da borda **antes** do prato; depois o prato pela regra só de prato e tigela (960 px, nota 0,15, área 2%, NMS 0,5; elipse e `sem_prato` de reserva) e a janela do guia. `caixas_r8_dfoodtj.csv` traz tudo (caixas do visor com nota e consulta, caixa do prato, método, janela, caixas brutas).
+- **Folhas de contato:** `folha_r8_janelas_<k>.jpg`, todas as 711 janelas já mascaradas, 30 por folha a 400×300 (para ler um visor), com `folha_r8_janelas.csv` (número → `dish_id`, período, método, `veredito` vazio); `folha_r8_conferencia_<período>_<k>.jpg`, 40 por período com o visor (ciano), o prato (vermelho), a janela (amarelo) e o recorte, com `folha_r8_conferencia_<período>.csv`.
+- **Previsões (`pred8__dfoodtj.npz`), na janela e na foto inteira mascarada (relato):** So400m com 8 orientações (`feat8__dfoodtj__<recorte|inteira>.npy`, float16); `<variante>__r4c` [n, 8, 22]; `<variante>__hm__…` e `<variante>__hcap__…` (22 saídas, frações e densidade pelas frações por orientação, a média das 3 sementes e cada semente), com a log-massa da R4c servida como entrada, na mesma orientação; `<variante>__f5c__…` (22 saídas, cabeça sem gradiente, frações; 1 orientação). As rotas (r2, r4) e as orientações (1/4/8) são aplicadas na CPU.
+- **Remontagem de cada cabeça (no manifesto):** (a) sem GPU, as cabeças relidas sobre as features do recorte do Nutrition5k gravadas pela sétima execução, contra as previsões gravadas no conjunto `remontagem` (8 pratos); a H0c-m e a H-cap com a massa da R4c da sétima (a do treino delas) e com a da quinta (a servida aqui); (b) da foto: os mesmos 8 pratos baixados e recortados como no treino (no dispositivo), e também pelo caminho deste teste (recorte na CPU e redimensionamento), contra as previsões gravadas; e o F5c contra as da sexta. `remontagem.confere` = toda diferença do caminho do treino até 0,05 em log; a do caminho deste teste sai à parte (é a diferença de interpolação, não um erro).
+- **Registro:** `manifesto_r8.json` (versões, sha256 da tabela, das cabeças, dos pesos e de cada foto, tempos, contagem de recorte/elipse/`sem_prato` e de fotos com visor mascarado, por período) e `teste_r8.log`.
+- **Tempo:** ~20 min de download, ~5 min de detecção, ~15 min de features (So400m, 711 × 8 orientações × 2 variantes), poucos minutos do resto: **~45 min**, com `ORCAMENTO_H = 1.5`.
+- **Teste:** `python3 teste_r8.py --autoteste`; em CPU, com fontes falsas coerentes (um backbone minúsculo), `teste_r8.py --smoke 6 --sem-detector --backbone vit_tiny_96x128 --cpu --fontes <pasta> --imagens <PNG em disco> --teste <tabela>`.
+- **Push:** `python3 monta_pacote.py notebook --kernel r8`; `NUTRELLE_SCRATCH=<scratchpad> python3 monta_pacote.py push <pasta fora do repositório> --kernel r8 --usuario <você>`; `python3 monta_pacote.py confere <pasta>`; `kaggle kernels push -p <pasta>`.
+- **Depois (16.6 g):** a conferência a olho das folhas (visor e recorte) é escrita em 16.6 antes da leitura única na CPU.
 
 ## Sétima execução: a faixa acima de 25 g e a densidade (17.2 e 17.3)
 
