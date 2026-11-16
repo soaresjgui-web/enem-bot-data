@@ -103,58 +103,133 @@ def png_ok(dados):
     return dados[:8] == ASSINATURA_PNG and dados[-12:] == FIM_PNG
 
 
+def pede(url, ini, fim, tentativas=8):
+    """Bytes [ini, fim) por HTTP Range, com novas tentativas e espera crescente; resposta curta ou sem 206 é pedida de
+    novo inteira (nunca se completa um pedaço com outro)."""
+    import urllib.request
+    erro = None
+    for t in range(tentativas):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "python-urllib", "Range": f"bytes={ini}-{fim - 1}"})
+            with urllib.request.urlopen(req, timeout=180) as r:
+                if r.status != 206:
+                    raise IOError(f"sem 206 (status {r.status})")
+                b = r.read()
+            if len(b) == fim - ini:
+                return b, t
+            erro = IOError(f"resposta curta: {len(b)} de {fim - ini} bytes")
+        except Exception as e:      # noqa: BLE001 — rede: tenta de novo
+            erro = e
+        time.sleep(min(60, 2 ** t))
+    raise IOError(f"bytes {ini}-{fim}: {type(erro).__name__}: {erro}")
+
+
+def membro(url, info, tentativas_crc=3):
+    """Um membro do zip remoto, pelo diretório central (info: ZipInfo): cabeçalho local + dados num pedido só,
+    descomprimido aqui e conferido pelo CRC-32 e pelo tamanho do diretório central (a conferência que vale). Devolve
+    (bytes, novas tentativas de rede, novas tentativas por CRC)."""
+    import struct, zlib
+    rede = 0
+    for t in range(tentativas_crc):
+        b, r_ = pede(url, info.header_offset, min(BYTES_ZIP, info.header_offset + 30 + len(info.filename.encode()) + 1024 + info.compress_size))
+        rede += r_
+        assert b[:4] == b"PK\x03\x04", "cabeçalho local do zip"
+        nl, el = struct.unpack("<HH", b[26:30])
+        comp = b[30 + nl + el:30 + nl + el + info.compress_size]
+        if len(comp) != info.compress_size:
+            continue
+        dados = zlib.decompressobj(-15).decompress(comp) if info.compress_type == 8 else comp
+        if len(dados) == info.file_size and (zlib.crc32(dados) & 0xFFFFFFFF) == info.CRC:
+            return dados, rede, t
+    raise IOError(f"CRC ou tamanho diferente do diretório central em {tentativas_crc} leituras (o membro guardado ou a transferência)")
+
+
+def classifica(dados):
+    """O que o membro é, conferido o CRC (função pura): 'png' (assinatura e IEND no fim), ou, se o PIL abre a imagem
+    inteira, 'png_sem_iend_no_fim' / 'nao_png_decodificavel' (aceitas, marcadas); senão 'indecodificavel' (excluída)."""
+    from PIL import Image
+    if png_ok(dados):
+        return "png", None
+    try:
+        im = Image.open(io.BytesIO(dados))
+        fmt = im.format
+        im.load()
+        return ("png_sem_iend_no_fim" if dados[:8] == ASSINATURA_PNG else "nao_png_decodificavel"), dict(formato=fmt, tamanho=list(im.size), modo=im.mode,
+                                                                                                       sobra_depois_do_iend=(len(dados) - dados.rfind(b"IEND") - 8) if b"IEND" in dados else None)
+    except Exception as e:      # noqa: BLE001
+        return "indecodificavel", dict(erro=f"{type(e).__name__}: {e}")
+
+
 def baixa_pngs(a, L):
-    """{dish_id: dict(caminho, sha256, bytes)}: os PNG da tabela, do zip remoto (ou de --imagens)."""
+    """(L aceitas, {dish_id: dict(caminho, sha256, bytes, classe)}, informações): as fotos da tabela, do zip remoto (ou de
+    --imagens). A conferência que vale é a do CRC-32 do diretório central; um membro que não confere depois das novas
+    tentativas, ou que o PIL não decodifica, sai da execução e é listado (exclusão sem olhar rótulo); acima de 5% de
+    excluídas, a execução para."""
     pasta = os.path.join(a.cache, "img8")
     os.makedirs(pasta, exist_ok=True)
-    out, t0, lidos = {}, time.time(), [0] * CONEXOES
+    out, t0, excl, cont = {}, time.time(), {}, {}
     dest = lambda r: os.path.join(pasta, os.path.basename(r["arquivo"]))
     if a.imagens:
         for r in L:
             p = os.path.join(a.imagens, os.path.basename(r["arquivo"]))
             assert os.path.exists(p), f"{p} não existe"
             dados = open(p, "rb").read()
-            assert png_ok(dados), f"{p}: não é um PNG íntegro"
-            out[r["dish_id"]] = dict(caminho=p, sha256=hashlib.sha256(dados).hexdigest(), bytes=len(dados))
-        diz(f"fotos: {len(out)} de {a.imagens} (sem download)")
-        return out, dict(origem=a.imagens, seg=round(time.time() - t0, 1))
-    faltam = [r for r in L if not (os.path.exists(dest(r)) and png_ok(open(dest(r), "rb").read()))]
-    erros = []
-
-    def fatia(k):
-        if not faltam[k::CONEXOES]:
-            return
+            classe, det = classifica(dados)
+            if classe == "indecodificavel":
+                excl[r["dish_id"]] = dict(arquivo=r["arquivo"], motivo=classe, **det)
+                continue
+            out[r["dish_id"]] = dict(caminho=p, sha256=hashlib.sha256(dados).hexdigest(), bytes=len(dados), classe=classe, **({"detalhe": det} if det else {}))
+        info = dict(origem=a.imagens, seg=round(time.time() - t0, 1))
+    else:
         fz = G.ArquivoHTTP(URL_ZIP)
         assert fz.tamanho == BYTES_ZIP, f"o zip remoto tem {fz.tamanho} bytes, não {BYTES_ZIP}"
-        with zipfile.ZipFile(fz) as z:
-            for r in faltam[k::CONEXOES]:
-                for tentativa in range(3):
-                    try:
-                        if time.time() > a.prazo:
-                            raise TimeoutError("prazo")
-                        dados = z.read(r["arquivo"])            # confere o CRC
-                        if not png_ok(dados):
-                            raise IOError("PNG sem assinatura ou sem IEND")
-                        with open(dest(r) + ".parte", "wb") as f:
-                            f.write(dados)
-                        os.replace(dest(r) + ".parte", dest(r))
-                        break
-                    except TimeoutError:
-                        raise
-                    except Exception as e:      # noqa: BLE001 — rede ou dado ruim: tenta de novo
-                        if tentativa == 2:
-                            erros.append(f"{r['arquivo']}: {type(e).__name__}: {e}")
-        lidos[k] = fz.lidos
-    with ThreadPoolExecutor(CONEXOES) as ex:
-        list(ex.map(fatia, range(CONEXOES)))
-    if erros:
-        raise IOError(f"{len(erros)} fotos não vieram (ex.: {erros[0]})")
-    for r in L:
-        dados = open(dest(r), "rb").read()
-        out[r["dish_id"]] = dict(caminho=dest(r), sha256=hashlib.sha256(dados).hexdigest(), bytes=len(dados))
-    seg = time.time() - t0
-    diz(f"fotos: {len(faltam)} PNG lidos do zip remoto em {seg:.0f}s ({sum(lidos) / 2 ** 20:.0f} MB por intervalo, {CONEXOES} conexões); {len(L) - len(faltam)} já no cache")
-    return out, dict(origem=URL_ZIP, bytes_zip=BYTES_ZIP, md5_zip_registrado=MD5_ZIP, lidos_mb=round(sum(lidos) / 2 ** 20, 1), seg=round(seg, 1), baixados=len(faltam))
+        infos = {i.filename: i for i in zipfile.ZipFile(fz).infolist()}
+        faltam_no_zip = [r["arquivo"] for r in L if r["arquivo"] not in infos]
+        assert not faltam_no_zip, f"{len(faltam_no_zip)} fotos da tabela não estão no zip (ex.: {faltam_no_zip[0]})"
+        tent, trava = dict(rede=0, crc=0), __import__("threading").Lock()
+
+        def um(r):
+            d = dest(r)
+            if os.path.exists(d) and os.path.exists(d + ".ok"):        # já baixada e conferida (retomada)
+                return r, open(d, "rb").read(), None
+            if time.time() > a.prazo:
+                return r, None, "prazo esgotado antes do download"
+            try:
+                dados, nr, nc = membro(URL_ZIP, infos[r["arquivo"]])
+            except Exception as e:      # noqa: BLE001
+                return r, None, f"{type(e).__name__}: {e}"
+            with trava:
+                tent["rede"] += nr; tent["crc"] += nc
+            with open(d + ".parte", "wb") as f:
+                f.write(dados)
+            os.replace(d + ".parte", d)
+            open(d + ".ok", "w").write(hex(infos[r["arquivo"]].CRC))
+            return r, dados, None
+        with ThreadPoolExecutor(CONEXOES) as ex:
+            res = list(ex.map(um, L))
+        lidos = 0
+        for r, dados, erro in res:
+            if erro:
+                excl[r["dish_id"]] = dict(arquivo=r["arquivo"], motivo="nao_veio_ou_crc_nao_confere", erro=erro)
+                continue
+            lidos += len(dados)
+            classe, det = classifica(dados)
+            if classe == "indecodificavel":
+                excl[r["dish_id"]] = dict(arquivo=r["arquivo"], motivo=classe, crc_confere=True, **det)
+                continue
+            out[r["dish_id"]] = dict(caminho=dest(r), sha256=hashlib.sha256(dados).hexdigest(), bytes=len(dados), classe=classe, crc=hex(infos[r["arquivo"]].CRC),
+                                     **({"detalhe": det} if det else {}))
+        info = dict(origem=URL_ZIP, bytes_zip=BYTES_ZIP, md5_zip_registrado=MD5_ZIP, mb=round(lidos / 2 ** 20, 1), novas_tentativas_rede=tent["rede"],
+                    releituras_por_crc=tent["crc"], conexoes=CONEXOES, seg=round(time.time() - t0, 1))
+    for v in out.values():
+        cont[v["classe"]] = cont.get(v["classe"], 0) + 1
+    info.update(classes=cont, excluidas=excl, n_excluidas=len(excl), aceitas=len(out))
+    diz(f"fotos: {len(out)} aceitas {cont}, {len(excl)} excluídas em {time.time() - t0:.0f}s"
+        + (f" (ex.: {next(iter(excl))}: {next(iter(excl.values()))['motivo']})" if excl else "")
+        + (f" | {info['mb']} MB, {info['novas_tentativas_rede']} novas tentativas de rede, {info['releituras_por_crc']} releituras por CRC" if "mb" in info else ""))
+    if len(excl) > 0.05 * len(L):
+        raise SystemExit(f"{len(excl)} de {len(L)} fotos excluídas (mais de 5%): a execução para. Ver manifesto_r8.json (download.excluidas).")
+    return [r for r in L if r["dish_id"] in out], out, info
 
 
 # ------------------------------------------------------------------ 3. visor, prato e janela
@@ -492,9 +567,10 @@ def principal(a):
     diz("cabeças e pesos servidos: " + " | ".join(f"{k} {v['arquivo']} ({v['sha256'][:12]})" for k, v in info_c.items()))
     grava()
     t = time.time()
-    fotos, man["download"] = baixa_pngs(a, L)
+    L, fotos, man["download"] = baixa_pngs(a, L)
+    man["teste"]["fotos_usadas"] = len(L)
     tempos["download"] = round(time.time() - t, 1)
-    man["fotos"] = {d: dict(sha256=v["sha256"], bytes=v["bytes"]) for d, v in fotos.items()}
+    man["fotos"] = {d: {k: v[k] for k in v if k != "caminho"} for d, v in fotos.items()}
     grava()
     t = time.time()
     linhas, man["deteccao"] = processa(a, L, fotos, dev)
@@ -580,6 +656,12 @@ def autoteste():
         except AssertionError:
             pass
     assert png_ok(ASSINATURA_PNG + b"x" * 20 + FIM_PNG) and not png_ok(ASSINATURA_PNG + b"x" * 20)
+    from PIL import Image
+    bio = io.BytesIO(); Image.new("RGB", (40, 30), (200, 10, 10)).save(bio, "PNG"); png = bio.getvalue()
+    bio = io.BytesIO(); Image.new("RGB", (40, 30), (200, 10, 10)).save(bio, "JPEG"); jpg = bio.getvalue()
+    assert classifica(png)[0] == "png" and classifica(png + b"lixo")[0] == "png_sem_iend_no_fim" and classifica(png[:-12])[0] == "png_sem_iend_no_fim"
+    assert classifica(jpg)[0] == "nao_png_decodificavel" and classifica(jpg)[1]["formato"] == "JPEG"
+    assert classifica(png[:60])[0] == "indecodificavel" and classifica(b"nada")[0] == "indecodificavel"
     img = np.zeros((10, 10, 3), np.uint8)
     m = mascara(img, [(2.4, 2.6, 5.1, 4.0)], np.array([9, 9, 9], np.uint8))
     assert m[2:4, 2:6].min() == 9 and m[:2].max() == 0 and img.max() == 0
