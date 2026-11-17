@@ -3870,6 +3870,7 @@ Nas refeições de 2020–2023, o S7 erra a **massa em −42%** (cerca de 500 g 
 - recorte pela máscara do prato;
 - um pixel em duas máscaras fica com a de maior nota;
 - **`resto`** = máscara do prato − itens − branco do prato. O branco do prato é S < 0,15 e V > 0,75 em HSV, limiar fixo; os componentes de `resto` com menos de 0,5% da área do prato são descartados;
+  - **Emenda (17/11/2026, antes de o kernel rodar e sem nenhum rótulo):** no ensaio em CPU com 9 fotos (3 por base), o prato vazio tem S ≈ 0,05 mas V de só 0,64–0,74 sob a luz das cenas, e com V > 0,75 o `resto` cobria 75–87% do prato no Nutrition5k e 37–46% no DFood-TJ, contando o prato vazio como comida. **O limiar passa a ser S < 0,15 e V > 0,55.** O arroz branco não é afetado, porque o `resto` só existe fora das máscaras dos itens. O kernel grava a mediana de S e V do prato livre e a fração de `resto` por foto (`livre_s_mediano`, `livre_v_mediano`, `resto_fracao_prato`), para que a escolha possa ser conferida a olho nas folhas antes de qualquer leitura.
 - **nada de máscara densa em disco.**
 - **Ovos:** a consulta "a boiled egg in shell" também roda nas fotos do DFood-TJ.
 
