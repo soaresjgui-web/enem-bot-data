@@ -22,9 +22,10 @@ Em cada foto (orientação do EXIF e retrato girado, como na oitava e na nona):
     é essa elipse. Recipientes sobrepostos: o pixel fica com o menor;
  3. o SETR-MLA dá a classe de cada pixel (104 = fundo + 103 do FoodSeg103), só dentro do prato;
  4. o branco do prato, foto a foto (18.12 b): anel de 0,88 a 0,98 dos semieixos da elipse, menos o que o segmentador
-    marcou como comida; mediana e MAD de cada canal em Lab; um pixel do prato é prato (e não comida) se a distância dele
-    à mediana for no máximo max(8, 3 × 1,4826 × |MAD|). Com menos de 500 pixels no anel, o limiar fixo (S < 0,15 e
-    V > 0,55) e a foto marcada (`branco_reserva`);
+    marcou como comida; mediana e MAD de cada canal em Lab; um pixel do prato que o segmentador NÃO chama de comida é prato
+    se a distância dele à mediana for no máximo max(8, 3 × 1,4826 × |MAD|), com teto de ΔE 20 (emenda de 18.12 b; o que o
+    segmentador chama de comida fica comida). Com menos de 500 pixels no anel, o limiar fixo (S < 0,15 e V > 0,55) e a foto
+    marcada (`branco_reserva`);
  5. um item por componente conexo de cada classe (`termo = fs103:<classe>`), sem os de menos de 0,3% do prato; regra de
     sanidade: componente com mais de 60% do prato só vale se for a única classe de comida no prato, senão sai e a foto é
     marcada (`sanidade_falhou`); `resto` = prato − comida − pixels de prato, sem componentes de menos de 0,5% do prato;
@@ -65,18 +66,19 @@ RESERVA_S, RESERVA_V = 0.15, 0.55
 CONSULTAS_RECIP = ["a plate", "a bowl", "a food container", "a cup"]
 RECIP_MAX = 0.60
 RECIP_DENTRO = 0.90     # recipiente com 90% ou mais da caixa dentro da caixa de outro recipiente é a comida dele, não um recipiente (do agente; 18.12 c não diz)
-DE_MAX = dict(v=None)   # --de-max: teto da tolerância do branco (18.12 b não tem teto; None = como pré-registrado)
+DE_MAX_PADRAO = 20.0    # teto da tolerância do branco (emenda de 18.12 b, 18/11/2026); --de-max muda
+DE_MAX = dict(v=DE_MAX_PADRAO)
 CONSULTA_XADREZ = "a checkerboard"
 PADROES = [(3, 4), (4, 3), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (4, 5), (5, 4), (5, 6), (6, 5), (6, 7), (7, 6), (7, 8), (8, 7)]
 SB_DISPERSAO_MAX = 0.05
 SEMENTE = 20261118
 BASES = ["n5k", "dfoodtj", "fpb"]
 COLS_FOTOS = G9.COLS_FOTOS[:G9.COLS_FOTOS.index("versoes") + 1] + [
-    "n_recipientes", "sanidade_falhou", "branco_reserva", "branco_tolerancia_de", "comida_virou_prato_fracao", "resto_fracao_prato",
+    "n_recipientes", "sanidade_falhou", "branco_reserva", "branco_tolerancia_de", "comida_cor_de_prato_fracao", "resto_fracao_prato",
     "xadrez_metodo", "xadrez_dispersao", "amostra"]
 COLS_ITENS = G9.COLS_ITENS + ["recipiente", "classe"]
 COLS_RECIP = ["base", "id", "recipiente", "consulta", "nota", "caixa", "elipse", "rle", "mascara_largura", "mascara_altura", "area_px",
-              "branco_metodo", "branco_tolerancia_de", "anel_px", "comida_virou_prato_fracao", "sanidade_falhou", "n_itens"]
+              "branco_metodo", "branco_tolerancia_de", "anel_px", "comida_cor_de_prato_fracao", "sanidade_falhou", "n_itens"]
 COLS_POP = ["dish_id"]
 CORES = dict(G9.CORES, bebida=(0, 200, 200))      # as 6 bebidas do FoodSeg103 (fora da massa de comida, 18.12 a)
 REGISTRO = []
@@ -269,12 +271,13 @@ def branco_do_prato(img, prato, raio, comida):
     return prato & (d <= tol), "anel_lab", tol, n
 
 
-def itens_do_prato(classe, prob, prato, eh_prato):
-    """Componentes de cada classe de comida dentro do prato (fora os pixels de prato), sem os de menos de 0,3% do prato;
+def itens_do_prato(classe, prob, prato):
+    """Componentes de cada classe de comida dentro do prato (o que o segmentador chama de comida fica comida, mesmo com a
+    cor do prato: emenda de 18.12 b), sem os de menos de 0,3% do prato;
     regra de sanidade de 60%. -> (lista de (classe, máscara, nota média), sanidade_falhou, máscara da comida mantida)."""
     import cv2
     area = max(1, int(prato.sum()))
-    comida = prato & (classe > 0) & ~eh_prato
+    comida = prato & (classe > 0)
     comps = []
     for c in np.unique(classe[comida]):
         n, rot = cv2.connectedComponents((comida & (classe == c)).astype(np.uint8), connectivity=8)
@@ -385,9 +388,9 @@ def processa_foto(md, setr, f, img, girada, det_out, grupo, qs, tarefas_xadrez):
             continue
         comida_setr = pm & (classe > 0)
         eh_prato, bmet, tol, n_anel = branco_do_prato(work, pm, raio, comida_setr)
-        fica, falhou, mant = itens_do_prato(classe, prob, pm, eh_prato)
-        vir = float((comida_setr & eh_prato).sum()) / max(1, int(comida_setr.sum()))
-        resto = G9.sem_pequenos(pm & ~mant & ~eh_prato, RESTO_MIN * pm.sum())
+        fica, falhou, mant = itens_do_prato(classe, prob, pm)
+        vir = float((comida_setr & eh_prato).sum()) / max(1, int(comida_setr.sum()))     # diagnóstico: comida com a cor do prato (fica comida)
+        resto = G9.sem_pequenos(pm & ~mant & ~(eh_prato & ~comida_setr), RESTO_MIN * pm.sum())     # o teste de cor só vale fora da comida
         falhou_foto |= falhou
         reserva_foto |= bmet == "reserva_hsv"
         virou.append(vir)
@@ -404,7 +407,7 @@ def processa_foto(md, setr, f, img, girada, det_out, grupo, qs, tarefas_xadrez):
         linhas_r.append(dict(base=f["base"], id=f["id"], recipiente=k, consulta=consulta, nota=f"{nota:.4f}", caixa=G9.fmt_caixa(caixa),
                              elipse=fmt_elipse_caixa(caixa), rle=G9.rle_codifica(pm), mascara_largura=mw, mascara_altura=mh,
                              area_px=f"{int(pm.sum()) * (w / mw) ** 2:.1f}", branco_metodo=bmet, branco_tolerancia_de="" if tol is None else f"{tol:.2f}",
-                             anel_px=n_anel, comida_virou_prato_fracao=f"{vir:.4f}", sanidade_falhou=int(falhou), n_itens=len(itens) - n0))
+                             anel_px=n_anel, comida_cor_de_prato_fracao=f"{vir:.4f}", sanidade_falhou=int(falhou), n_itens=len(itens) - n0))
         folha_rec.append((pm, eh_prato))
     for j, x in enumerate(itens):
         x["item"] = j
@@ -417,7 +420,7 @@ def processa_foto(md, setr, f, img, girada, det_out, grupo, qs, tarefas_xadrez):
                  xadrez_detectado="", xadrez_passo_px="", xadrez_padrao="", n_itens=len(itens), livre_s_mediano="", livre_v_mediano="",
                  resto_fracao_prato=f"{np.mean(resto_fr):.4f}" if resto_fr else "", n_recipientes=len(linhas_r), sanidade_falhou=int(falhou_foto),
                  branco_reserva=int(reserva_foto), branco_tolerancia_de="" if main is None else main["branco_tolerancia_de"],
-                 comida_virou_prato_fracao=f"{np.mean(virou):.4f}" if virou else "", xadrez_metodo="", xadrez_dispersao="", amostra=f.get("amostra", ""))
+                 comida_cor_de_prato_fracao=f"{np.mean(virou):.4f}" if virou else "", xadrez_metodo="", xadrez_dispersao="", amostra=f.get("amostra", ""))
     if f["base"] == "fpb":
         sx = nt[:, qs["xadrez"]] if len(nt) else np.zeros(0)
         cxz = tuple(float(v) for v in cx_[int(sx.argmax())]) if len(sx) and sx.max() >= E.NOTA_MIN else None
@@ -531,7 +534,8 @@ def principal(a):
                            reserva_hsv=dict(S_menor=RESERVA_S, V_maior=RESERVA_V), recipientes=CONSULTAS_RECIP, recipiente_max=RECIP_MAX,
                            xadrez=dict(padroes=[f"{x}x{y}" for x, y in PADROES], sb_dispersao_max=SB_DISPERSAO_MAX), semente_amostras=SEMENTE,
                            prato="elipse inscrita na caixa do OWLv2 (regra só de prato e tigela; no FPB, cada recipiente)",
-                           recipiente_dentro_de_outro=RECIP_DENTRO, de_max=DE_MAX["v"], de_max_pre_registrado=DE_MAX["v"] is None))
+                           recipiente_dentro_de_outro=RECIP_DENTRO, de_max=DE_MAX["v"], de_max_da_emenda=DE_MAX["v"] == DE_MAX_PADRAO,
+                           comida_fica_comida="o teste de cor do prato só vale fora do que o segmentador chama de comida (emenda de 18.12 b)"))
     tempos, bases = {}, {}
 
     def grava():
@@ -695,7 +699,7 @@ def principal(a):
         its = [x for i in ii if i in itens for x in itens[i]]
         n_it = np.array([l["n_itens"] for l in ln]) if ln else np.zeros(0)
         cont = lambda chave, L: {str(k): sum(1 for x in L if x[chave] == k) for k in sorted({x[chave] for x in L}, key=str)}
-        vir = np.array([float(l["comida_virou_prato_fracao"]) for l in ln if l["comida_virou_prato_fracao"] != ""])
+        vir = np.array([float(l["comida_cor_de_prato_fracao"]) for l in ln if l["comida_cor_de_prato_fracao"] != ""])
         rf = np.array([float(l["resto_fracao_prato"]) for l in ln if l["resto_fracao_prato"] != ""])
         tl = np.array([float(r["branco_tolerancia_de"]) for i in ii if i in recs for r in recs[i] if r["branco_tolerancia_de"] != ""])
         bases[b].update(processadas=len(ln), falhas={fotos[i]["id"]: falhas[i] for i in ii if i in falhas},
@@ -704,7 +708,7 @@ def principal(a):
                         resto=sum(1 for x in its if x["termo"] == "resto"), sanidade_falhou=sum(l["sanidade_falhou"] for l in ln),
                         branco_reserva=sum(l["branco_reserva"] for l in ln), n_recipientes=cont("n_recipientes", ln),
                         itens_por_foto=dict(media=round(float(n_it.mean()), 2), p50=float(np.median(n_it)), p90=float(np.percentile(n_it, 90))) if len(n_it) else None,
-                        comida_virou_prato=dict(p50=round(float(np.median(vir)), 3), p90=round(float(np.percentile(vir, 90)), 3)) if len(vir) else None,
+                        comida_cor_de_prato=dict(p50=round(float(np.median(vir)), 3), p90=round(float(np.percentile(vir, 90)), 3)) if len(vir) else None,
                         resto_fracao_prato=dict(p50=round(float(np.median(rf)), 3), p90=round(float(np.percentile(rf, 90)), 3)) if len(rf) else None,
                         tolerancia_de=dict(p50=round(float(np.median(tl)), 1), p90=round(float(np.percentile(tl, 90)), 1), acima_de_20=int((tl > 20).sum()), n=len(tl)) if len(tl) else None,
                         folhas={tipo: len(tiles.get((b, tipo), [])) for tipo in ("nova", "r9")},
@@ -714,7 +718,7 @@ def principal(a):
                                       por_padrao=cont("xadrez_padrao", [l for l in ln if l["xadrez_detectado"] == 1]),
                                       por_metodo=cont("xadrez_metodo", [l for l in ln if l["xadrez_detectado"] == 1]))
         diz(f"{b}: {len(ln)} fotos, {len(its)} itens, prato {bases[b]['prato_metodo']}, itens/foto {bases[b]['itens_por_foto']}, sanidade {bases[b]['sanidade_falhou']}, "
-            f"branco reserva {bases[b]['branco_reserva']}, tolerância ΔE {bases[b]['tolerancia_de']}, comida→prato {bases[b]['comida_virou_prato']}, resto/prato {bases[b]['resto_fracao_prato']}, "
+            f"branco reserva {bases[b]['branco_reserva']}, tolerância ΔE {bases[b]['tolerancia_de']}, comida com cor de prato {bases[b]['comida_cor_de_prato']}, resto/prato {bases[b]['resto_fracao_prato']}, "
             f"falhas {len(bases[b]['falhas'])}, sem tempo {bases[b]['sem_tempo']}" + (f", xadrez {bases[b]['xadrez']}" if b == "fpb" else ""))
     man["seg_por_foto_por_dispositivo"] = round(float(np.mean(t_setr)), 3) if t_setr else None
     man["saidas"] = {n: dict(bytes=os.path.getsize(os.path.join(a.saida, n)), sha256=G9.sha256(os.path.join(a.saida, n)))
@@ -744,18 +748,22 @@ def autoteste():
     prob = np.full((100, 120), 0.9, np.float32)
     eh, met, tol, n = branco_do_prato(img, pm, raio, pm & (classe > 0))
     assert met == "anel_lab" and tol == DE_MIN and n >= ANEL_MIN and eh[25, 60] and not eh[50, 60] and not eh[33, 33]
-    fica, falhou, mant = itens_do_prato(classe, prob, pm, eh)
-    assert len(fica) == 1 and fica[0][0] == 66 and not falhou and mant.sum() == 400
-    resto = G9.sem_pequenos(pm & ~mant & ~eh, RESTO_MIN * pm.sum())
+    classe[20:26, 60:66] = 66                                   # arroz com a cor do prato: continua comida (emenda de 18.12 b)
+    assert eh[22, 62]
+    fica, falhou, mant = itens_do_prato(classe, prob, pm)
+    assert sorted(int(m.sum()) for _, m, _ in fica) == [36, 400] and not falhou and mant[22, 62]
+    resto = G9.sem_pequenos(pm & ~mant & ~(eh & ~(pm & (classe > 0))), RESTO_MIN * pm.sum())
     assert resto[33, 33] and resto.sum() == 36
+    ruido = img.copy(); ruido[(raio >= ANEL[0]) & (raio <= ANEL[1]) & (np.indices(raio.shape).sum(0) % 2 == 0)] = (20, 20, 200)
+    assert branco_do_prato(ruido, pm, raio, np.zeros_like(pm))[2] == DE_MAX_PADRAO      # anel misturado: a tolerância para no teto
     # sanidade: um componente com mais de 60% do prato e outra classe presente -> sai e marca
     cl2 = np.where(pm, 66, 0).astype(np.uint8); cl2[45:55, 20:30] = 47
-    f2, falhou2, _ = itens_do_prato(cl2, prob, pm, np.zeros_like(pm))
+    f2, falhou2, _ = itens_do_prato(cl2, prob, pm)
     assert falhou2 and [c for c, _, _ in f2] == [47]
-    f3, falhou3, _ = itens_do_prato(np.where(pm, 66, 0).astype(np.uint8), prob, pm, np.zeros_like(pm))
+    f3, falhou3, _ = itens_do_prato(np.where(pm, 66, 0).astype(np.uint8), prob, pm)
     assert not falhou3 and len(f3) == 1                         # a única classe: vale
     tiny = np.zeros_like(classe); tiny[50, 60] = 66
-    assert itens_do_prato(tiny, prob, pm, np.zeros_like(pm))[0] == []        # menos de 0,3% do prato
+    assert itens_do_prato(tiny, prob, pm)[0] == []        # menos de 0,3% do prato
     # anel pequeno -> reserva HSV
     pp, rr = elipse_da_caixa((50, 40, 60, 50), 100, 120)
     assert branco_do_prato(img, pp, rr, np.zeros_like(pp))[1] == "reserva_hsv"
@@ -811,7 +819,7 @@ def main():
     ap.add_argument("--orcamento-h", type=float, default=2.5)
     ap.add_argument("--smoke", type=int, default=0)
     ap.add_argument("--cpu", action="store_true")
-    ap.add_argument("--de-max", type=float, default=None, help="teto da tolerância ΔE do branco do prato (18.12 b não tem; padrão: sem teto)")
+    ap.add_argument("--de-max", type=float, default=DE_MAX_PADRAO, help="teto da tolerância ΔE do branco do prato (emenda de 18.12 b: 20)")
     ap.add_argument("--autoteste", action="store_true")
     a = ap.parse_args()
     if a.autoteste:

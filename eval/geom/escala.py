@@ -112,7 +112,7 @@ def n5k(td, ids=None, campo=None, fotos=None):
 
 
 # ------------------------------------------------------------------ DFood-TJ
-OVO = ("egg", "boiled_egg_in_shell")
+OVO = ("egg", "boiled_egg_in_shell", "fs103:egg")      # fs103:egg: a classe de ovo do SETR-MLA (décima execução, 18.12)
 
 
 def dfoodtj(fotos, itens, ovo_cm=None, nota_min=0.30, razao=(1.15, 1.50)):
