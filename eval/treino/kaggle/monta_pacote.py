@@ -9,6 +9,7 @@ Uso:
                                      LeFood, Mensa; na r7 também o FoodBD: uso comercial permitido). K = r7 (padrão: a sétima
                                      execução, nutrelle_treino_gpu.ipynb), r5a (a etapa 0 da quinta, deteccao_r5/), r6, r5 ou r4
   python3 monta_pacote.py push <pasta fora do repositório> [--kernel K] [--usuario U] [--espelho-omnifood U/slug] [--divisoes PASTA]
+                                     [--espelho-dfoodtj U/slug]  (r8: o dataset privado com as fotos do teste, em dataset_sources)
                                      monta o notebook COMPLETO (as seis bases) e o kernel-metadata.json numa pasta fora do
                                      repositório, pronta para `kaggle kernels push -p <pasta>`; no r5, `kernel_sources`
                                      aponta para U/nutrelle-deteccao-r5 (a saída da etapa 0)
@@ -71,6 +72,8 @@ KERNELS = {
                fontes_kernel=["nutrelle-deteccao-r5", "nutrelle-treino-gpu-r5", "nutrelle-treino-gpu-r6", "nutrelle-treino-gpu-r7"]),
 }
 TESTE8, GABARITO8 = "teste_r8_dfoodtj.csv", "gabarito_r8_dfoodtj.csv"      # a tabela SEM rótulo vai só no notebook do push; o gabarito, nunca
+ESPELHO8 = "nutrelle-dfoodtj-fotos-teste"      # slug do dataset privado com as fotos do teste (CC0, como o depósito)
+FOTOS8 = "fotos_r8_dfoodtj.csv"     # nome do membro, CRC-32, tamanho e sha256 de cada foto do teste (sem rótulo): só no notebook do push
 KERNEL = "r7"           # mudado por --kernel
 NOTEBOOK = os.path.join(AQUI, "nutrelle_treino_gpu.ipynb")
 SLUG = "nutrelle-treino-gpu-r7"
@@ -190,7 +193,8 @@ def conteudo(variante):
     if KERNEL == "r8":      # 16.6 f: só o código; no push, a tabela do teste sem rótulo (fora do repositório: NUTRELLE_SCRATCH/dftj/teste_r8)
         if variante == "push":
             sc = os.environ.get("NUTRELLE_SCRATCH", "")
-            arqs[f"listas/{TESTE8}"] = open(acha(TESTE8, extras() + ([os.path.join(sc, "dftj", "teste_r8")] if sc else [])), "rb").read()
+            for n in (TESTE8, FOTOS8):
+                arqs[f"listas/{n}"] = open(acha(n, extras() + ([os.path.join(sc, "dftj", "teste_r8")] if sc else [])), "rb").read()
         return arqs
     proc, pastas = {}, ([] if variante == "repo" else extras())
     lib, fec = bases()
@@ -372,19 +376,22 @@ def monta_teste8(variante):
     code = lambda t: dict(cell_type="code", metadata={}, execution_count=None, outputs=[], source=t)
     aviso = ("**Versão do repositório: sem a tabela do teste** (ela fica fora do git). Para rodar, monte a versão do push com "
              "`python3 monta_pacote.py push <pasta> --kernel r8` ou passe `--teste <tabela>` em EXTRA." if variante == "repo" else
-             "**Versão do push, montada fora do repositório:** traz `teste_r8_dfoodtj.csv` (sem rótulo; o kernel confere o sha256). O gabarito nunca entra.")
+             "**Versão do push, montada fora do repositório:** traz `teste_r8_dfoodtj.csv` e `fotos_r8_dfoodtj.csv` (sem rótulo; o kernel confere "
+             "os sha256). O gabarito nunca entra.")
     cells = [
         md("# Nutrelle — oitava execução: o teste de registro DFood-TJ (seção 16.6 f)\n\n"
            "Notebook gerado por `eval/treino/kaggle/monta_pacote.py --kernel r8`; **não edite à mão**. Lê do zip do DFood-TJ (china.scidb.cn) só os "
            "711 PNG da tabela, por intervalo de bytes; mascara o visor da balança com o OWLv2; recorta pelo prato (regra só de prato e tigela da etapa 0); "
-           "grava as folhas de contato e as previsões cruas da R4c, da H0c-m e da H-cap (So400m, 1/4/8 orientações) e do F5c (1 orientação), no recorte e "
+           "com as fotos tiradas do espelho anexado (dataset privado `nutrelle-dfoodtj-fotos-teste`, cada uma conferida pelo tamanho, CRC-32 e sha256 da "
+           "tabela das fotos) e só as que faltarem pela rede; grava as folhas de contato e as previsões cruas da R4c, da H0c-m e da H-cap (So400m, 1/4/8 orientações) e do F5c (1 orientação), no recorte e "
            "na foto inteira. **Nada é pontuado aqui:** a conferência a olho e a leitura são da CPU (16.6 g).\n\n" + aviso
-           + "\n\nAnexe como *Input* as saídas de `nutrelle-deteccao-r5`, `nutrelle-treino-gpu-r5`, `-r6` e `-r7`. Kaggle: *GPU T4* e *Internet → On*."),
+           + "\n\nAnexe como *Input* as saídas de `nutrelle-deteccao-r5`, `nutrelle-treino-gpu-r5`, `-r6` e `-r7` e o dataset do espelho das fotos. "
+           "Kaggle: *GPU T4* e *Internet → On* (modelos do Hugging Face e as fotos que faltarem no espelho)."),
         code("# Parâmetros\n"
              "import json, os, subprocess, sys\n"
              f"ORCAMENTO_H = {KERNELS['r8']['orcamento']}\n"
              "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_teste_r8'\n"
-             "EXTRA = []           # ex.: ['--fontes', '<pasta com as saídas das execuções 5 a 7>']\n"
+             "EXTRA = []           # ex.: ['--fontes', '<pasta com as saídas das execuções 5 a 7>']; ['--espelho-fotos', '<pasta com as fotos>']\n"
              "SAIDA = os.environ.get('NUTRELLE_SAIDA') or SAIDA\n"
              "EXTRA = json.loads(os.environ.get('NUTRELLE_EXTRA') or 'null') or EXTRA\n"
              "for mod, pacote in (('transformers', 'transformers'), ('cv2', 'opencv-python-headless'), ('huggingface_hub', 'huggingface_hub')):\n"
@@ -421,7 +428,8 @@ def monta_teste8(variante):
 
 def confere_r8(pasta):
     """Oitava execução: o notebook do repositório está em dia e não traz tabela nenhuma do teste; o do push traz só a tabela
-    sem rótulo (sha256 de 16.6, colunas sem alvo) e nunca o gabarito; kernel_sources com as quatro saídas."""
+    sem rótulo (sha256 de 16.6, colunas sem alvo) e a tabela das fotos do espelho (sha256 registrado no script, colunas sem
+    alvo, as mesmas fotos), nunca o gabarito; kernel_sources com as quatro saídas; dataset_sources só o espelho."""
     sys.dont_write_bytecode = True
     sys.path.insert(0, AQUI)
     import teste_r8 as T8
@@ -437,7 +445,7 @@ def confere_r8(pasta):
     emb = _embutidos(nb)
     esp = conteudo("repo")
     assert emb == esp and nb["metadata"]["nutrelle"]["sha256"] == _hash(esp), "o notebook do repositório está desatualizado (rode `monta_pacote.py notebook --kernel r8`)"
-    assert not any(TESTE8 in n for n in emb), "a tabela do teste não vai no notebook do repositório"
+    assert not any(TESTE8 in n or FOTOS8 in n for n in emb), "as tabelas do teste não vão no notebook do repositório"
     sem_gabarito(nb, emb)
     meta = json.load(open(os.path.join(os.path.dirname(NOTEBOOK), "kernel-metadata.json")))
     assert meta["code_file"] == os.path.basename(NOTEBOOK) and meta["enable_gpu"] and meta["enable_internet"] and meta["id"].endswith("/" + SLUG)
@@ -451,13 +459,24 @@ def confere_r8(pasta):
         bruto = embp[f"listas/{TESTE8}"]
         assert hashlib.sha256(bruto).hexdigest() == T8.SHA_TESTE, "a tabela do teste no push não é a de 16.6"
         assert next(csv.reader(io.StringIO(bruto.decode()))) == T8.COLS_TESTE
+        fotos = embp[f"listas/{FOTOS8}"]
+        assert hashlib.sha256(fotos).hexdigest() == T8.SHA_FOTOS, "a tabela das fotos no push não é a registrada em teste_r8.SHA_FOTOS"
+        F = list(csv.DictReader(io.StringIO(fotos.decode())))
+        assert list(F[0]) == T8.COLS_FOTOS, "colunas da tabela das fotos"
+        ids_t = [(r["dish_id"], r["arquivo"]) for r in csv.DictReader(io.StringIO(bruto.decode()))]
+        assert sorted(ids_t) == sorted((r["dish_id"], r["arquivo"]) for r in F), "a tabela das fotos não tem exatamente as fotos do teste"
         sem_gabarito(nbp, embp)
         assert os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) < 1_000_000, "notebook do push com mais de 1 MB"
         mp = json.load(open(os.path.join(pasta, "kernel-metadata.json")))
         dono = mp["id"].split("/")[0]
         assert mp["id"].endswith("/" + SLUG) and sorted(mp.get("kernel_sources", [])) == sorted(f"{dono}/{k}" for k in KERNELS["r8"]["fontes_kernel"]), "kernel_sources do push"
-        print(f"notebook do push em {pasta}: em dia, tabela do teste sem rótulo (sha256 {T8.SHA_TESTE[:16]}…), sem gabarito, "
-              f"{os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) / 1e6:.2f} MB; id {mp['id']}, kernel_sources {mp['kernel_sources']}")
+        ds = mp.get("dataset_sources", [])
+        assert all(d.endswith("/" + ESPELHO8) for d in ds), f"dataset_sources do push: só o espelho das fotos ({ds})"
+        print(f"notebook do push em {pasta}: em dia, tabela do teste sem rótulo (sha256 {T8.SHA_TESTE[:16]}…), tabela das fotos sem rótulo "
+              f"({len(F)} fotos, sha256 {T8.SHA_FOTOS[:16]}…), sem gabarito, {os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) / 1e6:.2f} MB; "
+              f"id {mp['id']}, kernel_sources {mp['kernel_sources']}, dataset_sources {ds}")
+        if not ds:
+            print("AVISO: sem --espelho-dfoodtj, o kernel baixa as 711 fotos pela rede (a v2 parou assim)")
 
 
 def grava_nb(nb, arq):
@@ -505,6 +524,9 @@ def push():
     meta.update(id=f"{usuario}/{SLUG}", title=SLUG, kernel_sources=[f"{usuario}/{k}" for k in KERNELS[KERNEL].get("fontes_kernel", [])])
     if _opcao("--espelho-omnifood"):
         meta["dataset_sources"] = [_opcao("--espelho-omnifood")]
+    if _opcao("--espelho-dfoodtj"):      # r8: as fotos do teste num dataset privado (a rede Kaggle→china.scidb.cn falha)
+        assert KERNEL == "r8" and _opcao("--espelho-dfoodtj").endswith("/" + ESPELHO8), f"--espelho-dfoodtj U/{ESPELHO8}, só no r8"
+        meta["dataset_sources"] = [_opcao("--espelho-dfoodtj")]
     fora = fora_do_notebook("push")
     if fora:        # o dataset das listas das receitas, pronto para `kaggle datasets create -p <pasta>_receitas`
         arqs, ds = conteudo("push"), _opcao("--receitas-dataset")

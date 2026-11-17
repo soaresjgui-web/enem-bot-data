@@ -22,3 +22,4 @@ eval/treino/kaggle/listas/divisao_r4_receitas_datahive.csv
 # Oitava execução (16.6): as tabelas do teste DFood-TJ ficam fora do git (a sem rótulo só no notebook do push; o gabarito, nunca)
 **/teste_r8_dfoodtj.csv
 **/gabarito_r8_dfoodtj.csv
+**/fotos_r8_dfoodtj.csv

@@ -41,6 +41,10 @@ URL_ZIP = "https://china.scidb.cn/download?fileId=cb2751a22a516c057913e15b7d3cc5
 BYTES_ZIP, MD5_ZIP = 4247942139, "b67cc4116e2c734296fbd6cd99cd50bc"      # o md5 é o do depósito; o zip inteiro nunca é baixado
 SHA_TESTE = "534a462746d8a55bfac9527eafe91550140d848acb66db7246dfcc41dce5ef5d"
 COLS_TESTE = ["dish_id", "arquivo", "periodo", "paciente"]
+# a tabela das fotos (sem rótulo): o CRC-32 e o tamanho do diretório central do zip e o sha256 de cada membro, como baixados
+# e conferidos fora do Kaggle; confere as fotos do espelho anexado (dataset privado) e as que vierem pela rede
+COLS_FOTOS = ["dish_id", "arquivo", "nome", "crc32", "bytes", "sha256", "classe"]
+SHA_FOTOS = "29c7b453d1eaaac27c93968595efe7f874ffac6074e3866051d5391364a7aafb"
 CONSULTAS_VISOR = ["a digital display", "an LCD screen", "a kitchen scale display"]
 NOTA_VISOR = 0.15
 CONEXOES = 14
@@ -160,6 +164,34 @@ def classifica(dados):
         return "indecodificavel", dict(erro=f"{type(e).__name__}: {e}")
 
 
+def le_fotos(arq, L):
+    """{dish_id: linha} da tabela das fotos, conferida: sha256 registrado, colunas sem rótulo, as mesmas fotos e membros da
+    tabela do teste."""
+    bruto = open(arq, "rb").read()
+    sha = hashlib.sha256(bruto).hexdigest()
+    F = list(csv.DictReader(io.StringIO(bruto.decode("utf-8"))))
+    assert F and list(F[0]) == COLS_FOTOS, f"colunas da tabela das fotos: {list(F[0]) if F else None}"
+    assert SHA_FOTOS is None or sha == SHA_FOTOS, f"tabela das fotos diferente da registrada (sha256 {sha})"
+    F = {r["dish_id"]: r for r in F}
+    assert all(r["dish_id"] in F and F[r["dish_id"]]["arquivo"] == r["arquivo"] for r in L), "a tabela das fotos não cobre a tabela do teste"
+    return F, sha
+
+
+def acha_espelho(a, F):
+    """A pasta do espelho das fotos: --espelho-fotos, ou a primeira pasta em /kaggle/input que tem a foto da primeira linha."""
+    if a.espelho_fotos:
+        return a.espelho_fotos
+    nome = next(iter(F.values()))["nome"]
+    p = acha(nome, [], prof=5)
+    return os.path.dirname(p) if p else None
+
+
+def confere_arquivo(dados, f):
+    """O arquivo é o membro do zip registrado? Tamanho, CRC-32 e sha256 da tabela das fotos. Função pura."""
+    import zlib
+    return len(dados) == int(f["bytes"]) and f"{zlib.crc32(dados) & 0xFFFFFFFF:08x}" == f["crc32"] and hashlib.sha256(dados).hexdigest() == f["sha256"]
+
+
 def baixa_pngs(a, L):
     """(L aceitas, {dish_id: dict(caminho, sha256, bytes, classe)}, informações): as fotos da tabela, do zip remoto (ou de
     --imagens). A conferência que vale é a do CRC-32 do diretório central; um membro que não confere depois das novas
@@ -181,14 +213,33 @@ def baixa_pngs(a, L):
             out[r["dish_id"]] = dict(caminho=p, sha256=hashlib.sha256(dados).hexdigest(), bytes=len(dados), classe=classe, **({"detalhe": det} if det else {}))
         info = dict(origem=a.imagens, seg=round(time.time() - t0, 1))
     else:
-        fz = G.ArquivoHTTP(URL_ZIP)
-        assert fz.tamanho == BYTES_ZIP, f"o zip remoto tem {fz.tamanho} bytes, não {BYTES_ZIP}"
-        infos = {i.filename: i for i in zipfile.ZipFile(fz).infolist()}
-        faltam_no_zip = [r["arquivo"] for r in L if r["arquivo"] not in infos]
-        assert not faltam_no_zip, f"{len(faltam_no_zip)} fotos da tabela não estão no zip (ex.: {faltam_no_zip[0]})"
+        arq_f = a.fotos or os.path.join(AQUI, "listas", "fotos_r8_dfoodtj.csv")
+        F, sha_f = le_fotos(arq_f, L) if os.path.exists(arq_f) else (None, None)
+        esp = acha_espelho(a, F) if F else None
+        do_espelho, da_rede = {}, []
+        for r in L:         # 1. o espelho (dataset anexado): cada arquivo conferido contra a tabela das fotos
+            p = os.path.join(esp, F[r["dish_id"]]["nome"]) if esp else None
+            if p and os.path.exists(p):
+                dados = open(p, "rb").read()
+                if confere_arquivo(dados, F[r["dish_id"]]):
+                    do_espelho[r["dish_id"]] = (p, dados)
+                    continue
+                diz(f"espelho: {p} não confere com a tabela das fotos; vai pela rede")
+            da_rede.append(r)
+        if esp:
+            diz(f"espelho das fotos em {esp}: {len(do_espelho)} de {len(L)} conferidas (tamanho, CRC-32, sha256); {len(da_rede)} pela rede")
+        infos = {}
+        if da_rede:         # 2. só o que faltar vai pela rede, pelo zip remoto
+            fz = G.ArquivoHTTP(URL_ZIP)
+            assert fz.tamanho == BYTES_ZIP, f"o zip remoto tem {fz.tamanho} bytes, não {BYTES_ZIP}"
+            infos = {i.filename: i for i in zipfile.ZipFile(fz).infolist()}
+            faltam_no_zip = [r["arquivo"] for r in da_rede if r["arquivo"] not in infos]
+            assert not faltam_no_zip, f"{len(faltam_no_zip)} fotos da tabela não estão no zip (ex.: {faltam_no_zip[0]})"
         tent, trava = dict(rede=0, crc=0), __import__("threading").Lock()
 
         def um(r):
+            if r["dish_id"] in do_espelho:
+                return r, do_espelho[r["dish_id"]][1], None
             d = dest(r)
             if os.path.exists(d) and os.path.exists(d + ".ok"):        # já baixada e conferida (retomada)
                 return r, open(d, "rb").read(), None
@@ -196,6 +247,8 @@ def baixa_pngs(a, L):
                 return r, None, "prazo esgotado antes do download"
             try:
                 dados, nr, nc = membro(URL_ZIP, infos[r["arquivo"]])
+                if F and not confere_arquivo(dados, F[r["dish_id"]]):
+                    raise IOError("o membro baixado não é o da tabela das fotos (sha256)")
             except Exception as e:      # noqa: BLE001
                 return r, None, f"{type(e).__name__}: {e}"
             with trava:
@@ -217,15 +270,17 @@ def baixa_pngs(a, L):
             if classe == "indecodificavel":
                 excl[r["dish_id"]] = dict(arquivo=r["arquivo"], motivo=classe, crc_confere=True, **det)
                 continue
-            out[r["dish_id"]] = dict(caminho=dest(r), sha256=hashlib.sha256(dados).hexdigest(), bytes=len(dados), classe=classe, crc=hex(infos[r["arquivo"]].CRC),
-                                     **({"detalhe": det} if det else {}))
-        info = dict(origem=URL_ZIP, bytes_zip=BYTES_ZIP, md5_zip_registrado=MD5_ZIP, mb=round(lidos / 2 ** 20, 1), novas_tentativas_rede=tent["rede"],
-                    releituras_por_crc=tent["crc"], conexoes=CONEXOES, seg=round(time.time() - t0, 1))
+            out[r["dish_id"]] = dict(caminho=do_espelho[r["dish_id"]][0] if r["dish_id"] in do_espelho else dest(r), sha256=hashlib.sha256(dados).hexdigest(),
+                                     bytes=len(dados), classe=classe, origem="espelho" if r["dish_id"] in do_espelho else "rede",
+                                     crc=F[r["dish_id"]]["crc32"] if F else f"{infos[r['arquivo']].CRC:08x}", **({"detalhe": det} if det else {}))
+        info = dict(espelho=esp, tabela_fotos=dict(arquivo=os.path.basename(arq_f), sha256=sha_f) if F else None, do_espelho=len(do_espelho), pela_rede=len(da_rede),
+                    origem=URL_ZIP, bytes_zip=BYTES_ZIP, md5_zip_registrado=MD5_ZIP, mb=round(lidos / 2 ** 20, 1), novas_tentativas_rede=tent["rede"], releituras_por_crc=tent["crc"], conexoes=CONEXOES, seg=round(time.time() - t0, 1))
     for v in out.values():
         cont[v["classe"]] = cont.get(v["classe"], 0) + 1
     info.update(classes=cont, excluidas=excl, n_excluidas=len(excl), aceitas=len(out))
     diz(f"fotos: {len(out)} aceitas {cont}, {len(excl)} excluídas em {time.time() - t0:.0f}s"
         + (f" (ex.: {next(iter(excl))}: {next(iter(excl.values()))['motivo']})" if excl else "")
+        + (f" | {info['do_espelho']} do espelho, {info['pela_rede']} pela rede" if "do_espelho" in info else "")
         + (f" | {info['mb']} MB, {info['novas_tentativas_rede']} novas tentativas de rede, {info['releituras_por_crc']} releituras por CRC" if "mb" in info else ""))
     if len(excl) > 0.05 * len(L):
         raise SystemExit(f"{len(excl)} de {len(L)} fotos excluídas (mais de 5%): a execução para. Ver manifesto_r8.json (download.excluidas).")
@@ -662,6 +717,38 @@ def autoteste():
     assert classifica(png)[0] == "png" and classifica(png + b"lixo")[0] == "png_sem_iend_no_fim" and classifica(png[:-12])[0] == "png_sem_iend_no_fim"
     assert classifica(jpg)[0] == "nao_png_decodificavel" and classifica(jpg)[1]["formato"] == "JPEG"
     assert classifica(png[:60])[0] == "indecodificavel" and classifica(b"nada")[0] == "indecodificavel"
+    import zlib
+    f = dict(bytes=str(len(png)), crc32=f"{zlib.crc32(png) & 0xFFFFFFFF:08x}", sha256=hashlib.sha256(png).hexdigest())
+    assert confere_arquivo(png, f) and not confere_arquivo(png + b"x", f) and not confere_arquivo(png[:-1] + b"\0", f)
+    with tempfile.TemporaryDirectory() as t:     # a tabela das fotos: colunas sem rótulo, cobre a tabela do teste
+        arq = os.path.join(t, "f.csv")
+        open(arq, "w").write(",".join(COLS_FOTOS) + "\nd1,a/1.png,1.png,00000000,1,x,png\n")
+        Lf = [dict(dish_id="d1", arquivo="a/1.png")]
+        global SHA_FOTOS
+        guarda, SHA_FOTOS = SHA_FOTOS, None
+        try:
+            assert le_fotos(arq, Lf)[0]["d1"]["nome"] == "1.png"
+            for ruim in (Lf + [dict(dish_id="d2", arquivo="a/2.png")], [dict(dish_id="d1", arquivo="b/1.png")]):
+                try:
+                    le_fotos(arq, ruim)
+                    raise SystemExit("tabela das fotos incompleta passou")
+                except AssertionError:
+                    pass
+            open(arq, "w").write(",".join(COLS_FOTOS + ["proteina"]) + "\nd1,a/1.png,1.png,00000000,1,x,png,3\n")
+            try:
+                le_fotos(arq, Lf)
+                raise SystemExit("tabela das fotos com rótulo passou")
+            except AssertionError:
+                pass
+        finally:
+            SHA_FOTOS = guarda
+        if SHA_FOTOS:
+            open(arq, "w").write(",".join(COLS_FOTOS) + "\nd1,a/1.png,1.png,00000000,1,x,png\n")
+            try:
+                le_fotos(arq, Lf)
+                raise SystemExit("tabela das fotos diferente da registrada passou")
+            except AssertionError as e:
+                assert "diferente" in str(e)
     img = np.zeros((10, 10, 3), np.uint8)
     m = mascara(img, [(2.4, 2.6, 5.1, 4.0)], np.array([9, 9, 9], np.uint8))
     assert m[2:4, 2:6].min() == 9 and m[:2].max() == 0 and img.max() == 0
@@ -685,7 +772,9 @@ def main():
     ap.add_argument("--cache", default="/kaggle/temp/nutrelle_r8" if os.path.isdir("/kaggle") else os.path.join(os.path.expanduser("~"), ".cache", "nutrelle_r8"))
     ap.add_argument("--teste", help="tabela do teste (padrão: listas/teste_r8_dfoodtj.csv ao lado do script)")
     ap.add_argument("--fontes", action="append", help="pasta com as saídas das execuções 5, 6 e 7 e da etapa 0 (além de /kaggle/input)")
-    ap.add_argument("--imagens", help="pasta com os PNG já em disco (teste; sem download)")
+    ap.add_argument("--imagens", help="pasta com os PNG já em disco (teste; sem download e sem conferência pela tabela das fotos)")
+    ap.add_argument("--espelho-fotos", help="pasta com as fotos do teste (o dataset privado do espelho); padrão: procurada em /kaggle/input")
+    ap.add_argument("--fotos", help="tabela das fotos (padrão: listas/fotos_r8_dfoodtj.csv ao lado do script)")
     ap.add_argument("--orcamento-h", type=float, default=1.5)
     ap.add_argument("--smoke", type=int, default=0, help="só as N primeiras fotos (não confere o sha256 da tabela)")
     ap.add_argument("--sem-detector", action="store_true", help="só a reserva por elipse e nenhum visor (teste em CPU)")
