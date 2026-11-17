@@ -9,7 +9,7 @@ Uso:
                                      LeFood, Mensa; na r7 também o FoodBD: uso comercial permitido). K = r7 (padrão: a sétima
                                      execução, nutrelle_treino_gpu.ipynb), r5a (a etapa 0 da quinta, deteccao_r5/), r6, r5 ou r4
   python3 monta_pacote.py push <pasta fora do repositório> [--kernel K] [--usuario U] [--espelho-omnifood U/slug] [--divisoes PASTA]
-                                     [--espelho-dfoodtj U/slug]  (r8 e r9: o dataset privado com as fotos do teste, em dataset_sources)
+                                     [--espelho-dfoodtj U/slug]  (r8, r9 e r10: o dataset privado com as fotos do teste, em dataset_sources)
                                      monta o notebook COMPLETO (as seis bases) e o kernel-metadata.json numa pasta fora do
                                      repositório, pronta para `kaggle kernels push -p <pasta>`; no r5, `kernel_sources`
                                      aponta para U/nutrelle-deteccao-r5 (a saída da etapa 0)
@@ -72,11 +72,20 @@ KERNELS = {
                fontes_kernel=["nutrelle-deteccao-r5", "nutrelle-treino-gpu-r5", "nutrelle-treino-gpu-r6", "nutrelle-treino-gpu-r7"]),
     "r9": dict(nome="nona execução (18.10 d): máscaras do pipeline geométrico (OWLv2 + SAM 2.1), sem rótulo", pasta=os.path.join(AQUI, "geom_r9"),
                notebook="nutrelle_geom_r9.ipynb", slug="nutrelle-geom-r9", script="geom_r9.py",
-               basicos=["geom_r9.py", "teste_r8.py", "treino_gpu.py", "deteccao_r5.py"], args="[]", orcamento=1.5, manifesto="geom_r9.json", fontes_kernel=[]),
+               basicos=["geom_r9.py", "teste_r8.py", "treino_gpu.py", "deteccao_r5.py"], args="[]", orcamento=1.5, manifesto="geom_r9.json", fontes_kernel=[],
+               congelado="rodou em 17/11/2026; o notebook do repositório fica como rodou (o vocabulário de eval/geom ganhou depois as classes do FoodSeg103)"),
+    "r10": dict(nome="décima execução (18.12): só segmentação, SETR-MLA do FoodSeg103, sem rótulo", pasta=os.path.join(AQUI, "geom_r10"),
+                notebook="nutrelle_geom_r10.ipynb", slug="nutrelle-geom-r10", script="geom_r10.py",
+                basicos=["geom_r10.py", "geom_r9.py", "teste_r8.py", "treino_gpu.py", "deteccao_r5.py"], args="[]", orcamento=2.5, manifesto="geom_r10.json",
+                fontes_kernel=[]),
 }
+GEOM = {"r9": dict(voc="listas/vocabulario_r9.csv", push=["TESTE8", "FOTOS8", "FPB9"]),
+        "r10": dict(voc="listas/vocabulario_r10.csv", push=["TESTE8", "FOTOS8", "FPB9", "POP10"])}
 TESTE8, GABARITO8 = "teste_r8_dfoodtj.csv", "gabarito_r8_dfoodtj.csv"      # a tabela SEM rótulo vai só no notebook do push; o gabarito, nunca
 ESPELHO8 = "nutrelle-dfoodtj-fotos-teste"      # slug do dataset privado com as fotos do teste (CC0, como o depósito)
 VOC9 = os.path.join(AQUI, "..", "..", "geom", "vocabulario.csv")     # r9: embutido byte a byte como listas/vocabulario_r9.csv
+POP10 = "dftj_populacao_r10.csv"      # r10, só no push: os 457 dish_id da população da leitura 2 (16.8; conferencia_r9.json), sem rótulo
+CONF_R9, SHA_CONF_R9 = "conferencia_r9.json", "59916f6921cb0a32fc7b2381588c420f62c9cba352e47dbb41be394a58bdc881"      # 18.7
 FPB9 = "fpb_r9.csv"     # r9, só no push: dish_id, arquivo, sha256, bytes da parte de registro do FPB (CC BY-NC 4.0; sem rótulo)
 FOTOS8 = "fotos_r8_dfoodtj.csv"     # nome do membro, CRC-32, tamanho e sha256 de cada foto do teste (sem rótulo): só no notebook do push
 KERNEL = "r7"           # mudado por --kernel
@@ -105,7 +114,7 @@ COLS_LISTA = ["dominio", "grupo", "vista", "arquivo", "arquivo_base", "quadros",
 
 def bases(k=None):
     """(liberadas, fechadas) do kernel: as liberadas vão no notebook do repositório; as fechadas, só no do push."""
-    return BASES7 if (k or KERNEL) == "r7" else ([], []) if (k or KERNEL) in ("r8", "r9") else (LIBERADAS, FECHADAS)
+    return BASES7 if (k or KERNEL) == "r7" else ([], []) if (k or KERNEL) in ("r8", "r9", "r10") else (LIBERADAS, FECHADAS)
 COLS_DIV = ["dish_id", "dominio", "grupo", "papel", "fold_ext", "folds_proibidos", "quadro_metrica", "quadro_metrica_nome", "quadros_treino",
             "grupo_metrica", "peso_nutricao"]
 ASPAS3 = "'" * 3
@@ -195,14 +204,16 @@ def enxuta(arq_lista, arq_div, fracas=()):
 def conteudo(variante):
     """{nome do arquivo no pacote: bytes} da variante 'repo' (só bases liberadas) ou 'push' (as seis)."""
     arqs = {n: open(os.path.join(AQUI, n), "rb").read() for n in BASICOS}
-    if KERNEL == "r9":      # 18.10 d: código, vocabulário e os ids do treino do Nutrition5k; no push, as tabelas do DFood-TJ e a lista do FPB
-        arqs["listas/vocabulario_r9.csv"] = open(VOC9, "rb").read()
+    if KERNEL in GEOM:      # 18.10 d e 18.12: código, vocabulário e os ids do treino do Nutrition5k; no push, as tabelas do DFood-TJ, a lista do FPB (e a população)
+        arqs[GEOM[KERNEL]["voc"]] = open(VOC9, "rb").read()
         arqs["listas/n5k_r9.csv"] = _bytes_csv(["dish_id"], [dict(dish_id=r["dish_id"]) for r in csv.DictReader(open(os.path.join(LISTAS, "treino_v2.csv")))])
         if variante == "push":
             sc = os.environ.get("NUTRELLE_SCRATCH", "")
             for n in (TESTE8, FOTOS8):
                 arqs[f"listas/{n}"] = open(acha(n, extras() + ([os.path.join(sc, "dftj", "teste_r8")] if sc else [])), "rb").read()
             arqs[f"listas/{FPB9}"] = lista_fpb9()
+            if KERNEL == "r10":
+                arqs[f"listas/{POP10}"] = lista_pop10()
         return arqs
     if KERNEL == "r8":      # 16.6 f: só o código; no push, a tabela do teste sem rótulo (fora do repositório: NUTRELLE_SCRATCH/dftj/teste_r8)
         if variante == "push":
@@ -224,6 +235,21 @@ def lista_fpb9():
     div = {r["dish_id"]: r for r in csv.DictReader(open(acha("divisao_r4_fpb.csv", extras())))}
     reg = [r for r in csv.DictReader(open(acha("externo_fpb.csv", extras()))) if div[r["dish_id"]]["papel"] == "registro" and div[r["dish_id"]]["quadro_metrica"] == "1"]
     return _bytes_csv(["dish_id", "arquivo", "sha256", "bytes"], reg)
+
+
+def lista_pop10():
+    """A população da leitura 2 do DFood-TJ (16.8), sem rótulo: as refeições de 2020–2023 (2024–2025 sai inteiro, pela regra
+    dos 10% com dígito) menos as de dígito legível e as de recorte reprovado de conferencia_r9.json (sha256 de 18.7)."""
+    sc = os.environ.get("NUTRELLE_SCRATCH", "")
+    arq = acha(CONF_R9, extras() + ([os.path.join(sc, "conferencia8b")] if sc else []))
+    assert hashlib.sha256(open(arq, "rb").read()).hexdigest() == SHA_CONF_R9, f"{arq} não é a conferência registrada em 18.7"
+    c = json.load(open(arq))
+    assert c["n_2024_com_digito"] / c["n_2024"] > 0.10, "a regra dos 10% não tira 2024–2025"
+    excl = set(c["digitos_legiveis"]) | set(c["recorte_reprovado"])
+    T = csv.DictReader(open(acha(TESTE8, extras() + ([os.path.join(sc, "dftj", "teste_r8")] if sc else []))))
+    ids = sorted(r["dish_id"] for r in T if r["periodo"] == "2020-2023" and r["dish_id"] not in excl)
+    assert len(ids) == 457, f"população da leitura 2 com {len(ids)} refeições (esperado 457)"
+    return _bytes_csv(["dish_id"], [dict(dish_id=i) for i in ids])
 
 
 def _hash(arqs):
@@ -248,6 +274,8 @@ def monta(variante):
         return monta_teste8(variante)
     if KERNEL == "r9":
         return monta_geom9(variante)
+    if KERNEL == "r10":
+        return monta_geom10(variante)
     arqs = conteudo(variante)
     doms = bases()[0] + (bases()[1] if variante == "push" else [])
     md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
@@ -511,6 +539,64 @@ def monta_geom9(variante):
                               nutrelle=dict(kernel=KERNEL, variante=variante, sha256=_hash(arqs), embutidos=sorted(arqs), dominios=[])))
 
 
+def monta_geom10(variante):
+    """Notebook da décima execução (18.12): só segmentação, SETR-MLA do FoodSeg103. Nada é pontuado; nenhum rótulo entra."""
+    arqs = conteudo(variante)
+    md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
+    code = lambda t: dict(cell_type="code", metadata={}, execution_count=None, outputs=[], source=t)
+    aviso = ("**Versão do repositório: só o Nutrition5k** (a lista do FPB não tem licença comercial e as tabelas do DFood-TJ ficam fora do git). Para as três bases, "
+             "monte a versão do push com `python3 monta_pacote.py push <pasta> --kernel r10 --espelho-dfoodtj <você>/nutrelle-dfoodtj-fotos-teste`." if variante == "repo" else
+             "**Versão do push, montada fora do repositório:** traz `teste_r8_dfoodtj.csv`, `fotos_r8_dfoodtj.csv`, `dftj_populacao_r10.csv` (os 457 ids da "
+             "leitura 2; nenhum rótulo) e `fpb_r9.csv` (dish_id, arquivo, sha256 e tamanho; CC BY-NC 4.0). **Não commitar, não publicar.** O gabarito nunca entra.")
+    cells = [
+        md("# Nutrelle — décima execução: só segmentação, com o SETR-MLA do FoodSeg103 (seção 18.12)\n\n"
+           "Notebook gerado por `eval/treino/kaggle/monta_pacote.py --kernel r10`; **não edite à mão**. Nas mesmas fotos da nona (treino do Nutrition5k, as 711 do "
+           "DFood-TJ do espelho anexado, a parte de registro do FPB): o prato pela regra só de prato e tigela do OWLv2 (no FPB, cada recipiente), como a elipse "
+           "inscrita na caixa; a classe de cada pixel pelo SETR-MLA ViT-B/16 do FoodSeg103-Benchmark-v1 (pesos do espelho no Hugging Face, revisão e sha256 "
+           "fixados; reimplementação em PyTorch puro, fp16 na GPU; **SAM desligado**); o branco do prato pelo anel em Lab; um item por componente de cada classe "
+           "(`fs103:<classe>`), a regra de sanidade de 60% e o `resto`; no FPB, o xadrez (3×4 primeiro). Grava `fotos_geom.csv`, `itens_geom.csv.gz`, "
+           "`recipientes_geom.csv`, as folhas das amostras novas (semente 20261118) e, como relato, das amostras da nona, e `geom_r10.json`. "
+           "**Nada é pontuado; nenhum rótulo é lido.**\n\n" + aviso
+           + "\n\nAnexe como *Input* o dataset do espelho das fotos do DFood-TJ. Kaggle: *GPU T4 x2* e *Internet → On* (pesos do Hugging Face, Nutrition5k e FPB)."),
+        code("# Parâmetros\n"
+             "import json, os, subprocess, sys\n"
+             f"ORCAMENTO_H = {KERNELS['r10']['orcamento']}\n"
+             "SAIDA = '/kaggle/working' if os.path.isdir('/kaggle/working') else '/content/nutrelle_geom_r10'\n"
+             "EXTRA = []           # ex.: ['--bases', 'n5k,fpb']; ['--espelho-fotos', '<pasta com as fotos do DFood-TJ>']\n"
+             "SAIDA = os.environ.get('NUTRELLE_SAIDA') or SAIDA\n"
+             "EXTRA = json.loads(os.environ.get('NUTRELLE_EXTRA') or 'null') or EXTRA\n"
+             "for mod, pacote in (('cv2', 'opencv-python-headless'), ('huggingface_hub', 'huggingface_hub'), ('timm', 'timm'), ('transformers', 'transformers')):\n"
+             "    try:\n"
+             "        __import__(mod)\n"
+             "    except ImportError:\n"
+             "        subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', pacote], check=False)\n"
+             f"os.makedirs('{DESTINO}/listas', exist_ok=True)"),
+    ]
+    for n in sorted(arqs, key=lambda n: (not n.endswith(".py"), n)):
+        cells.append(code(_celula_arquivo(n, arqs[n])))
+    cells.append(code(
+        "import subprocess, sys\n"
+        f"cmd = [sys.executable, '-u', '{DESTINO}/geom_r10.py', '--saida', SAIDA, '--orcamento-h', str(ORCAMENTO_H)] + EXTRA\n"
+        "p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)\n"
+        "for linha in p.stdout:\n"
+        "    print(linha, end='')\n"
+        "print('código de saída:', p.wait())"))
+    cells.append(code(
+        "import json, os\n"
+        "m = os.path.join(SAIDA, 'geom_r10.json')\n"
+        "if os.path.exists(m):\n"
+        "    m = json.load(open(m))\n"
+        "    print({k: m.get(k) for k in ('versoes', 'setr', 'seg_por_foto_por_dispositivo', 'saidas', 'completo', 'tempos_seg', 'duracao_min')})\n"
+        "    for b, v in (m.get('bases') or {}).items():\n"
+        "        print(b, {k: v.get(k) for k in ('situacao', 'fotos', 'processadas', 'prato_metodo', 'itens_por_foto', 'sanidade_falhou', 'branco_reserva', 'folhas', 'xadrez', 'sem_tempo')}, 'falhas:', len(v.get('falhas') or {}))\n"
+        "print(sorted(os.listdir(SAIDA)))"))
+    for i, c in enumerate(cells):
+        c["id"] = f"celula-{i}"
+    return dict(cells=cells, nbformat=4, nbformat_minor=5,
+                metadata=dict(kernelspec=dict(display_name="Python 3", language="python", name="python3"), language_info=dict(name="python"),
+                              nutrelle=dict(kernel=KERNEL, variante=variante, sha256=_hash(arqs), embutidos=sorted(arqs), dominios=[])))
+
+
 def confere_r9(pasta):
     """Nona execução: o notebook do repositório está em dia, traz só código, o vocabulário de eval/geom e os ids do treino do
     Nutrition5k (nada de base fechada, nenhuma tabela do DFood-TJ); o do push traz também as tabelas do DFood-TJ (sha256
@@ -531,9 +617,14 @@ def confere_r9(pasta):
     nb = json.load(open(NOTEBOOK))
     emb = _embutidos(nb)
     esp = conteudo("repo")
-    assert emb == esp and nb["metadata"]["nutrelle"]["sha256"] == _hash(esp), "o notebook do repositório está desatualizado (rode `monta_pacote.py notebook --kernel r9`)"
-    assert sorted(emb) == sorted(BASICOS + ["listas/vocabulario_r9.csv", "listas/n5k_r9.csv"]), f"o notebook do repositório embute {sorted(emb)}"
-    assert emb["listas/vocabulario_r9.csv"] == open(VOC9, "rb").read()
+    voc = GEOM[KERNEL]["voc"]
+    congelado = KERNELS[KERNEL].get("congelado")
+    if congelado:       # já rodou: o notebook fica como rodou; confere só que não vaza nada
+        print(f"  {KERNEL}: notebook congelado ({congelado}); embutidos que mudaram desde então: {[n for n in esp if emb.get(n) != esp[n]] or 'nenhum'}")
+    else:
+        assert emb == esp and nb["metadata"]["nutrelle"]["sha256"] == _hash(esp), f"o notebook do repositório está desatualizado (rode `monta_pacote.py notebook --kernel {KERNEL}`)"
+        assert emb[voc] == open(VOC9, "rb").read()
+    assert sorted(emb) == sorted(BASICOS + [voc, "listas/n5k_r9.csv"]), f"o notebook do repositório embute {sorted(emb)}"
     n5k = list(csv.DictReader(io.StringIO(emb["listas/n5k_r9.csv"].decode())))
     assert list(n5k[0]) == G9.COLS_N5K and [r["dish_id"] for r in n5k] == [r["dish_id"] for r in csv.DictReader(open(os.path.join(LISTAS, "treino_v2.csv")))] and len(n5k) == 2281
     texto_md = "\n".join(c["source"] for c in nb["cells"] if c["cell_type"] == "markdown")
@@ -544,7 +635,7 @@ def confere_r9(pasta):
     meta = json.load(open(os.path.join(os.path.dirname(NOTEBOOK), "kernel-metadata.json")))
     assert meta["code_file"] == os.path.basename(NOTEBOOK) and meta["enable_gpu"] and meta["enable_internet"] and meta["id"].endswith("/" + SLUG)
     assert not meta.get("kernel_sources") and not meta.get("dataset_sources"), "o kernel-metadata.json do repositório não anexa nada"
-    print(f"notebook do repositório: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB; código, vocabulário (sha256 {hashlib.sha256(emb['listas/vocabulario_r9.csv']).hexdigest()[:12]}) "
+    print(f"notebook do repositório: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB; código, vocabulário (sha256 {hashlib.sha256(emb[voc]).hexdigest()[:12]}) "
           f"e {len(n5k)} ids do treino do Nutrition5k; nada do DFood-TJ nem do FPB; nenhum rótulo")
     if pasta:
         pasta = os.path.abspath(pasta)
@@ -552,7 +643,12 @@ def confere_r9(pasta):
         nbp = json.load(open(os.path.join(pasta, os.path.basename(NOTEBOOK))))
         embp = _embutidos(nbp)
         assert embp == conteudo("push") and nbp["metadata"]["nutrelle"]["variante"] == "push", "o notebook do push está desatualizado"
-        assert sorted(embp) == sorted(list(esp) + [f"listas/{TESTE8}", f"listas/{FOTOS8}", f"listas/{FPB9}"]), f"o notebook do push embute {sorted(embp)}"
+        assert sorted(embp) == sorted(list(esp) + [f"listas/{globals()[n]}" for n in GEOM[KERNEL]["push"]]), f"o notebook do push embute {sorted(embp)}"
+        if KERNEL == "r10":
+            P = list(csv.DictReader(io.StringIO(embp[f"listas/{POP10}"].decode())))
+            T = {r["dish_id"]: r for r in csv.DictReader(io.StringIO(embp[f"listas/{TESTE8}"].decode()))}
+            assert list(P[0]) == ["dish_id"] and len(P) == 457 and all(T[r["dish_id"]]["periodo"] == "2020-2023" for r in P), "população da leitura 2"
+            assert embp[f"listas/{POP10}"] == lista_pop10(), "população diferente da derivada de conferencia_r9.json"
         bruto, fotos = embp[f"listas/{TESTE8}"], embp[f"listas/{FOTOS8}"]
         assert hashlib.sha256(bruto).hexdigest() == T8.SHA_TESTE and next(csv.reader(io.StringIO(bruto.decode()))) == T8.COLS_TESTE, "tabela do teste"
         assert hashlib.sha256(fotos).hexdigest() == T8.SHA_FOTOS and next(csv.reader(io.StringIO(fotos.decode()))) == T8.COLS_FOTOS, "tabela das fotos"
@@ -669,7 +765,7 @@ def push():
     if _opcao("--espelho-omnifood"):
         meta["dataset_sources"] = [_opcao("--espelho-omnifood")]
     if _opcao("--espelho-dfoodtj"):      # r8: as fotos do teste num dataset privado (a rede Kaggle→china.scidb.cn falha)
-        assert KERNEL in ("r8", "r9") and _opcao("--espelho-dfoodtj").endswith("/" + ESPELHO8), f"--espelho-dfoodtj U/{ESPELHO8}, só no r8 e no r9"
+        assert KERNEL in ("r8", "r9", "r10") and _opcao("--espelho-dfoodtj").endswith("/" + ESPELHO8), f"--espelho-dfoodtj U/{ESPELHO8}, só no r8, r9 e r10"
         meta["dataset_sources"] = [_opcao("--espelho-dfoodtj")]
     fora = fora_do_notebook("push")
     if fora:        # o dataset das listas das receitas, pronto para `kaggle datasets create -p <pasta>_receitas`
@@ -727,7 +823,7 @@ def confere_nb(nb, variante):
     """Um notebook (do repositório ou do push) corresponde aos arquivos desta pasta e não vaza nada que não devia."""
     meta = nb["metadata"]["nutrelle"]
     assert meta["variante"] == variante, f"variante {meta['variante']} no lugar de {variante}"
-    if KERNEL in ("r8", "r9"):      # a oitava e a nona têm a conferência própria (confere_r8, confere_r9)
+    if KERNEL in ("r8", "r9", "r10"):      # a oitava, a nona e a décima têm a conferência própria (confere_r8, confere_r9)
         return _embutidos(nb)
     emb = _embutidos(nb)
     if variante == "repo":      # antes de tudo: nada das bases sem licença comercial no notebook do repositório
@@ -791,7 +887,7 @@ def confere():
 def confere_kernel(pasta):
     if KERNEL == "r8":
         return confere_r8(pasta)
-    if KERNEL == "r9":
+    if KERNEL in GEOM:
         return confere_r9(pasta)
     import tempfile
     import numpy as np

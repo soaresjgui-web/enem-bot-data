@@ -675,7 +675,7 @@ def autoteste():
     assert m[30, 30] and not m[0, 0]
     if os.path.exists(arq_vocabulario()):
         V = le_vocabulario(arq_vocabulario())
-        assert set(V[2].values()) <= set(CORES) and "boiled_egg_in_shell" in V[0], "vocabulário: grupo sem cor ou sem o ovo da escala"
+        assert {V[2][t] for t in V[0]} <= set(CORES) and "boiled_egg_in_shell" in V[0], "vocabulário: grupo sem cor ou sem o ovo da escala"   # só os 27 termos do OWLv2 (as classes fs103 são da décima)
     print("autoteste da nona execução: ok")
 
 
