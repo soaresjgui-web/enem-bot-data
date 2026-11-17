@@ -147,6 +147,8 @@ def le(p8, z, G, ids, destino, caixas="caixas_r8_dfoodtj.csv", entrada=None, man
 
     def linha(rot, real, est, idx=None):
         i = np.arange(len(real)) if idx is None else np.where(idx)[0]
+        if len(i) == 0:                                  # grupo vazio (ex.: sem janela com cinza na máscara nova)
+            R[rot] = dict(n=0); print("%-58s n=  0 (grupo vazio)" % rot); return
         v = b2(pac[i], lambda j: crit3(real[i], est[i], j))
         pf, vies = por_faixa(real[i], est[i])
         R[rot] = dict(n=len(i), pacientes=len(set(pac[i])), valor=v[0], ic95=v[1:3], ic975=v[3:5], por_faixa=pf, vies_por_faixa=vies,
@@ -183,14 +185,15 @@ def le(p8, z, G, ids, destino, caixas="caixas_r8_dfoodtj.csv", entrada=None, man
     for var in ("inteira", "recorte"):
         m = E[var]["massa"]
         R["massa_" + var] = dict(dentro20=dentro20(massa, m), vies=100 * float(np.median(m / massa - 1)),
-                                 por_periodo={p: dentro20(massa[per == p], m[per == p]) for p in ("2020-2023", "2024-2025")})
+                                 por_periodo={p: dentro20(massa[per == p], m[per == p]) for p in PERIODOS if (per == p).any()})
         print("Massa (R4c) %-8s a ±20%%: %.1f%% | viés mediano %+.0f%% | por período %s" % (var, R["massa_" + var]["dentro20"], R["massa_" + var]["vies"],
               " / ".join("%.1f" % x for x in R["massa_" + var]["por_periodo"].values())))
     for nut in ("kcal", "carbo", "gordura"):
-        real, est = col(nut), E[var_macro if nivel != "ic95" else "inteira"][nut]
+        vm = var_macro if nivel != "ic95" else "inteira"
+        real, est = col(nut), E[vm][nut]
         v = b2(pac, lambda j: crit_macro(real, est, nut, j))
         R["macro_" + nut] = dict(valor=v[0], ic95=v[1:3], vies=100 * float(np.median(est / np.maximum(real, 0.5) - 1)))
-        print("%-8s (S7, foto inteira; critério de 12.8): %.1f%% (IC95 %.1f a %.1f) | viés mediano %+.0f%%" % (nut, v[0], v[1], v[2], R["macro_" + nut]["vies"]))
+        print("%-8s (S7, %s; critério de 12.8): %.1f%% (IC95 %.1f a %.1f) | viés mediano %+.0f%%" % (nut, vm, v[0], v[1], v[2], R["macro_" + nut]["vies"]))
     R["quando"] = time.strftime("%Y-%m-%d %H:%M:%S")
     if destino:
         json.dump(R, open(destino, "w"), indent=1, default=float, ensure_ascii=False)
