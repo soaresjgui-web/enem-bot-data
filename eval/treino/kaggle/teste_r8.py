@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Oitava execução (16.6 f): o teste de registro DFood-TJ. Só previsões cruas; NADA é pontuado aqui.
+"""Oitava execução (16.6 f; versão 8b, a emenda da máscara do visor): o teste de registro DFood-TJ. Só previsões cruas;
+NADA é pontuado aqui.
 
     python3 teste_r8.py --saida <pasta> [--teste <teste_r8_dfoodtj.csv>] [--fontes <pasta> ...] [--cache <pasta>]
-                        [--imagens <pasta com os PNG>] [--smoke N --sem-detector --backbone <bb>] [--autoteste]
+                        [--espelho-fotos <pasta>] [--imagens <pasta com os PNG>] [--smoke N --sem-detector --backbone <bb>]
+                        [--so-deteccao] [--autoteste]
 
 Entrada: `teste_r8_dfoodtj.csv` (dish_id, arquivo, periodo, paciente; SEM rótulo; o sha256 é conferido). O gabarito
 nunca entra no pacote nem é lido aqui. As cabeças e os pesos servidos vêm das saídas das execuções anteriores, anexadas
@@ -13,10 +15,13 @@ Passos (16.6 f):
  1. confere a tabela (sha256, colunas sem rótulo);
  2. lê do zip do DFood-TJ (china.scidb.cn, 4.247.942.139 bytes) só os 711 PNG da tabela, por intervalo de bytes, em até 14
     conexões; confere o CRC (zipfile), a assinatura PNG e o bloco IEND, e grava o sha256 de cada foto;
- 3. em cada foto (orientação do EXIF, retrato girado como no treino): (a) o OWLv2 procura o visor da balança ("a digital
-    display", "an LCD screen", "a kitchen scale display"; nota >= 0,15) e cada caixa é pintada com a cor mediana da borda;
-    (b) na foto mascarada, o prato pela regra só de prato e tigela da etapa 0 (mesmo detector e revisão, 960 px, nota
-    0,15, área 2%, NMS 0,5; elipse e `sem_prato` de reserva); (c) a janela do guia (4:3, maior lado da caixa a 80%);
+ 3. em cada foto (orientação do EXIF, retrato girado como no treino), na ordem da 8b: (a) na foto SEM máscara, o prato pela
+    regra só de prato e tigela da etapa 0 (mesmo detector e revisão, 960 px, nota 0,15, área 2%, NMS 0,5; elipse e
+    `sem_prato` de reserva) e a janela do guia (4:3, maior lado da caixa a 80%); (b) o OWLv2 procura só o mostrador do visor
+    ("a digital display", "an LCD screen"; nota >= 0,15); descarta a caixa com mais de 5% da área da foto ou com mais de
+    10% da própria área dentro da caixa do prato; (c) pinta as caixas que ficam com a cor mediana da borda, nunca dentro
+    da caixa do prato; (d) recorta a janela e a foto inteira dessa mesma foto mascarada. Na 8 (v3), a consulta "a kitchen
+    scale display" pegava a balança inteira, sob o prato, e o prato era procurado depois da máscara (16.6 h–k e 16.7);
  4. folhas de contato na saída: todas as janelas mascaradas (30 por folha, num tamanho em que se lê um visor) e 40 por
     período com as caixas desenhadas; CSVs com a posição -> dish_id e `veredito` vazio;
  5. features do So400m (o mesmo checkpoint) nas janelas, 8 orientações; saídas da R4c, da H0c-m e da H-cap (3 sementes,
@@ -36,7 +41,7 @@ sys.path.insert(0, AQUI)
 import treino_gpu as G  # noqa: E402
 import deteccao_r5 as E  # noqa: E402
 
-FORMATO = "nutrelle-teste-dfoodtj/8"
+FORMATO = "nutrelle-teste-dfoodtj/8b"
 URL_ZIP = "https://china.scidb.cn/download?fileId=cb2751a22a516c057913e15b7d3cc5c4"
 BYTES_ZIP, MD5_ZIP = 4247942139, "b67cc4116e2c734296fbd6cd99cd50bc"      # o md5 é o do depósito; o zip inteiro nunca é baixado
 SHA_TESTE = "534a462746d8a55bfac9527eafe91550140d848acb66db7246dfcc41dce5ef5d"
@@ -45,8 +50,10 @@ COLS_TESTE = ["dish_id", "arquivo", "periodo", "paciente"]
 # e conferidos fora do Kaggle; confere as fotos do espelho anexado (dataset privado) e as que vierem pela rede
 COLS_FOTOS = ["dish_id", "arquivo", "nome", "crc32", "bytes", "sha256", "classe"]
 SHA_FOTOS = "29c7b453d1eaaac27c93968595efe7f874ffac6074e3866051d5391364a7aafb"
-CONSULTAS_VISOR = ["a digital display", "an LCD screen", "a kitchen scale display"]
+CONSULTAS_VISOR = ["a digital display", "an LCD screen"]   # 8b: só o mostrador ("a kitchen scale display" pegava a balança inteira)
 NOTA_VISOR = 0.15
+AREA_MAX_VISOR = 0.05           # 8b: caixa do visor com mais de 5% da área da foto é descartada
+SOBREPOSICAO_MAX_PRATO = 0.10   # 8b: ... e a com mais de 10% da própria área dentro da caixa do prato
 CONEXOES = 14
 ASSINATURA_PNG, FIM_PNG = b"\x89PNG\r\n\x1a\n", b"\x00\x00\x00\x00IEND\xaeB`\x82"
 ARQS = dict(r4c="cabeca__gpu5_ridge_so400m_prato__tudo.npz", r4c7="cabeca__gpu7_ridge_so400m_prato__tudo.npz",
@@ -288,20 +295,80 @@ def baixa_pngs(a, L):
 
 
 # ------------------------------------------------------------------ 3. visor, prato e janela
-def mascara(img, caixas, cor):
-    """A foto com cada caixa do visor pintada com a cor dada (uint8 [3]). Função pura."""
-    m = img.copy()
-    h, w = m.shape[:2]
+def _area(c):
+    return max(0.0, c[2] - c[0]) * max(0.0, c[3] - c[1])
+
+
+def filtra_visor(caixas, notas, consultas, w, h, prato):
+    """As caixas do visor com nota >= NOTA_VISOR, cada uma com o destino: `mascarada`, `descartada_area` (mais de
+    AREA_MAX_VISOR da foto) ou `descartada_prato` (mais de SOBREPOSICAO_MAX_PRATO da própria área dentro da caixa do prato;
+    sem caixa do prato, só a regra da área). As contas usam a caixa recortada à foto. Função pura."""
+    out = []
+    for c, s, q in zip(caixas, notas, consultas):
+        if float(s) < NOTA_VISOR:
+            continue
+        cc = (max(0.0, float(c[0])), max(0.0, float(c[1])), min(float(w), float(c[2])), min(float(h), float(c[3])))
+        a = _area(cc)
+        fa = a / float(w * h)
+        sp = 0.0
+        if prato is not None and a > 0:
+            sp = _area((max(cc[0], prato[0]), max(cc[1], prato[1]), min(cc[2], prato[2]), min(cc[3], prato[3]))) / a
+        destino = ("descartada_area" if fa > AREA_MAX_VISOR or a <= 0 else "descartada_prato" if sp > SOBREPOSICAO_MAX_PRATO else "mascarada")
+        out.append(dict(caixa=[round(float(v), 1) for v in c], nota=round(float(s), 4), consulta=CONSULTAS_VISOR[int(q)], area_foto=round(fa, 4),
+                        dentro_do_prato=round(sp, 4), destino=destino))
+    return out
+
+
+def mascara_fora_do_prato(img, caixas, cor, prato):
+    """(foto mascarada, mapa bool do que foi pintado): cada caixa pintada com a cor dada, menos os pixels dentro da caixa do
+    prato (que nunca são pintados). Função pura."""
+    h, w = img.shape[:2]
+    pint = np.zeros((h, w), bool)
     for x0, y0, x1, y1 in caixas:
         x0, y0 = max(0, int(math.floor(x0))), max(0, int(math.floor(y0)))
         x1, y1 = min(w, int(math.ceil(x1))), min(h, int(math.ceil(y1)))
         if x1 > x0 and y1 > y0:
-            m[y0:y1, x0:x1] = cor
-    return m
+            pint[y0:y1, x0:x1] = True
+    if prato is not None:
+        x0, y0 = max(0, int(math.floor(prato[0]))), max(0, int(math.floor(prato[1])))
+        x1, y1 = min(w, int(math.ceil(prato[2]))), min(h, int(math.ceil(prato[3])))
+        pint[y0:y1, x0:x1] = False
+    m = img.copy()
+    m[pint] = cor
+    return m, pint
+
+
+def fracao_cinza(pint, jan):
+    """(fração da janela dentro da foto que foi pintada, fração da janela fora da foto). A janela em pixels como no
+    E.recorta. Função pura."""
+    h, w = pint.shape
+    cx, cy, alt, larg = jan
+    x0, y0 = int(math.floor(cx - larg / 2)), int(math.floor(cy - alt / 2))
+    x1, y1 = int(math.ceil(cx + larg / 2)), int(math.ceil(cy + alt / 2))
+    sx0, sy0, sx1, sy1 = max(0, x0), max(0, y0), min(w, x1), min(h, y1)
+    dentro = max(0, sx1 - sx0) * max(0, sy1 - sy0)
+    total = max(1, (x1 - x0) * (y1 - y0))
+    return (float(pint[sy0:sy1, sx0:sx1].sum()) / dentro if dentro else 0.0), 1.0 - dentro / total
+
+
+def resumo_cinza(v):
+    """Distribuição da fração de cinza nas janelas. Função pura."""
+    v = np.asarray(v, float)
+    if not len(v):
+        return dict(n=0)
+    q = lambda p: round(float(np.quantile(v, p)), 4)
+    return dict(n=int(len(v)), media=round(float(v.mean()), 4), p50=q(0.5), p90=q(0.9), p99=q(0.99), max=round(float(v.max()), 4),
+                acima_0=int((v > 0).sum()), acima_5pct=int((v > 0.05).sum()), acima_10pct=int((v > 0.10).sum()), acima_25pct=int((v > 0.25).sum()))
+
+
+def caixa_prato(l):
+    """A caixa do prato de uma linha da tabela (OWLv2 ou elipse), ou None (sem_prato)."""
+    return None if l["x0"] == "" else tuple(float(l[c]) for c in ("x0", "y0", "x1", "y1"))
 
 
 def processa(a, L, fotos, dev):
-    """Visor, prato, janela e os dois recortes (janela do guia e foto inteira) de cada foto; grava a tabela de caixas."""
+    """Prato e janela na foto sem máscara; visor (só o mostrador, filtrado) pintado fora do prato; os dois recortes (janela
+    do guia e foto inteira) da foto mascarada; grava a tabela de caixas."""
     det = None if a.sem_detector else E.Detector(dev, os.path.join(a.cache, "hf"))
     dv = det.com_consultas(CONSULTAS_VISOR) if det else None
     versao = det.versao if det else "sem detector (só a reserva por elipse; teste)"
@@ -316,39 +383,48 @@ def processa(a, L, fotos, dev):
     with ThreadPoolExecutor(4) as ex:
         for j in range(0, n, 8):
             lote = list(ex.map(abre, range(j, min(j + 8, n))))
-            visor = dv([x[1] for x in lote]) if dv else [(np.zeros((0, 4)), np.zeros(0), np.zeros(0, int))] * len(lote)
-            masc = []
-            for (i, img, girada), (cx_, nt, cq) in zip(lote, visor):
-                cb = (E.cor_borda(img)).astype(np.uint8)
-                k = nt >= NOTA_VISOR
-                masc.append((i, mascara(img, cx_[k], cb), girada, [dict(caixa=[round(float(v), 1) for v in c], nota=round(float(s), 4), consulta=CONSULTAS_VISOR[int(q)])
-                                                                    for c, s, q in zip(cx_[k], nt[k], cq[k])]))
-            prato = det([m for _, m, _, _ in masc]) if det else [(np.zeros((0, 4)), np.zeros(0), np.zeros(0, int))] * len(masc)
-            for (i, m, girada, cv), r_ in zip(masc, prato):
+            vazio = [(np.zeros((0, 4)), np.zeros(0), np.zeros(0, int))] * len(lote)
+            prato = det([x[1] for x in lote]) if det else vazio        # 1. o prato, na foto SEM máscara
+            visor = dv([x[1] for x in lote]) if dv else vazio          # 2. o mostrador do visor
+            for (i, img, girada), r_, (cx_, nt, cq) in zip(lote, prato, visor):
                 r = L[i]
-                l0 = E.linha_deteccao(r["dish_id"], "dfoodtj", r["arquivo"], m, girada, fotos[r["dish_id"]]["sha256"], E.elipse(m), r_, versao, i)
+                l0 = E.linha_deteccao(r["dish_id"], "dfoodtj", r["arquivo"], img, girada, fotos[r["dish_id"]]["sha256"], E.elipse(img), r_, versao, i)
                 lr = E.refaz_linha(l0, set(E.SO_PRATO))        # a regra só de prato e tigela (emenda a 14.3)
-                h, w = m.shape[:2]
+                h, w = img.shape[:2]
+                cp = caixa_prato(lr)
+                cv = filtra_visor(cx_, nt, cq, w, h, cp)
+                fica = [c for c in cv if c["destino"] == "mascarada"]
+                m, pint = mascara_fora_do_prato(img, [c["caixa"] for c in fica], E.cor_borda(img).astype(np.uint8), cp)     # 3. pinta fora do prato
                 jan = (float(lr["janela_cx"]), float(lr["janela_cy"]), float(lr["janela_alt"]), float(lr["janela_larg"]))
                 cm = E.cor_borda(m)
-                rec[i] = E.recorta(m, jan, (640, 480), cm)
+                rec[i] = E.recorta(m, jan, (640, 480), cm)                 # 4. a janela e a foto inteira, da mesma foto mascarada
                 inteira[i] = E.recorta(m, E.janela(None, w, h), (640, 480), cm)
-                linhas.append(dict(lr, periodo=r["periodo"], paciente=r["paciente"], n_visor=len(cv), caixas_visor=json.dumps(cv, separators=(",", ":")),
-                                   metodo_uniao=l0["metodo"], _i=i))
+                fc, ff = fracao_cinza(pint, jan)
+                linhas.append(dict(lr, periodo=r["periodo"], paciente=r["paciente"], n_visor=len(fica), caixas_visor=json.dumps(fica, separators=(",", ":")),
+                                   n_visor_descartadas=len(cv) - len(fica), caixas_visor_descartadas=json.dumps([c for c in cv if c["destino"] != "mascarada"], separators=(",", ":")),
+                                   fracao_cinza_janela=round(fc, 4), fracao_fora_da_foto_janela=round(ff, 4), metodo_uniao=l0["metodo"], _i=i))
             if time.time() > a.prazo:
                 raise TimeoutError("prazo na detecção")
     rec.flush(); inteira.flush()
-    cols = list(E.COLS) + ["periodo", "paciente", "n_visor", "caixas_visor", "metodo_uniao"]
+    cols = list(E.COLS) + ["periodo", "paciente", "n_visor", "caixas_visor", "n_visor_descartadas", "caixas_visor_descartadas", "fracao_cinza_janela",
+                           "fracao_fora_da_foto_janela", "metodo_uniao"]
     with open(os.path.join(a.saida, "caixas_r8_dfoodtj.csv"), "w", newline="") as f:
         wr = csv.DictWriter(f, cols, lineterminator="\n", extrasaction="ignore"); wr.writeheader(); wr.writerows(linhas)
     met = {}
     for l in linhas:
         met[l["metodo"]] = met.get(l["metodo"], 0) + 1
     por_per = {p: dict(fotos=sum(1 for l in linhas if l["periodo"] == p), com_visor_mascarado=sum(1 for l in linhas if l["periodo"] == p and l["n_visor"]),
-                       metodos={m: sum(1 for l in linhas if l["periodo"] == p and l["metodo"] == m) for m in met}) for p in sorted({l["periodo"] for l in linhas})}
-    diz(f"detecção: {n} fotos em {time.time() - t0:.0f}s | prato (regra só de prato e tigela): {met} | visor mascarado em "
-        f"{sum(1 for l in linhas if l['n_visor'])} fotos | {versao}")
-    return linhas, dict(versao_detector=versao, consultas_visor=CONSULTAS_VISOR, nota_visor=NOTA_VISOR, consultas_prato=[E.CONSULTAS[k] for k in E.SO_PRATO],
+                       metodos={m: sum(1 for l in linhas if l["periodo"] == p and l["metodo"] == m) for m in met},
+                       fracao_cinza_janela=resumo_cinza([l["fracao_cinza_janela"] for l in linhas if l["periodo"] == p]))
+               for p in sorted({l["periodo"] for l in linhas})}
+    todas = [c for l in linhas for c in json.loads(l["caixas_visor"]) + json.loads(l["caixas_visor_descartadas"])]
+    caixas = {d: sum(1 for c in todas if c["destino"] == d) for d in ("mascarada", "descartada_area", "descartada_prato")}
+    cinza = resumo_cinza([l["fracao_cinza_janela"] for l in linhas])
+    diz(f"detecção: {n} fotos em {time.time() - t0:.0f}s | prato (regra só de prato e tigela, na foto sem máscara): {met} | caixas do visor {caixas}; "
+        f"visor mascarado em {sum(1 for l in linhas if l['n_visor'])} fotos | cinza na janela: {cinza} | {versao}")
+    return linhas, dict(versao_detector=versao, ordem="8b: prato na foto sem máscara -> visor filtrado, pintado fora da caixa do prato -> janela e foto inteira da foto mascarada",
+                        consultas_visor=CONSULTAS_VISOR, nota_visor=NOTA_VISOR, area_max_visor=AREA_MAX_VISOR, sobreposicao_max_prato=SOBREPOSICAO_MAX_PRATO,
+                        caixas_visor=caixas, fracao_cinza_janela=cinza, consultas_prato=[E.CONSULTAS[k] for k in E.SO_PRATO],
                         metodos=met, com_visor_mascarado=sum(1 for l in linhas if l["n_visor"]), por_periodo=por_per, seg=round(time.time() - t0, 1),
                         sha256_tabela=sha256(os.path.join(a.saida, "caixas_r8_dfoodtj.csv")))
 
@@ -367,11 +443,13 @@ def folhas(a, L, linhas, fotos):
             x, y = (p % col) * (W + 6), (p // col) * (H + 20)
             folha.paste(Image.fromarray(np.asarray(rec[i])).resize((W, H), Image.BICUBIC), (x, y))
             num = i + 1
-            dr.text((x + 2, y + H + 3), f"{num}. {linhas[i]['id']} {linhas[i]['periodo']} {linhas[i]['metodo']}{' visor' if linhas[i]['n_visor'] else ''}", fill=(0, 0, 0))
-            tab.append(dict(numero=num, folha=f0 // por + 1, dish_id=linhas[i]["id"], periodo=linhas[i]["periodo"], metodo=linhas[i]["metodo"], n_visor=linhas[i]["n_visor"]))
+            dr.text((x + 2, y + H + 3), f"{num}. {linhas[i]['id']} {linhas[i]['periodo']} {linhas[i]['metodo']}"
+                    f"{' visor' if linhas[i]['n_visor'] else ''} cinza {100 * linhas[i]['fracao_cinza_janela']:.0f}%", fill=(0, 0, 0))
+            tab.append(dict(numero=num, folha=f0 // por + 1, dish_id=linhas[i]["id"], periodo=linhas[i]["periodo"], metodo=linhas[i]["metodo"], n_visor=linhas[i]["n_visor"],
+                            fracao_cinza_janela=linhas[i]["fracao_cinza_janela"]))
         folha.save(os.path.join(a.saida, f"folha_r8_janelas_{f0 // por + 1:02d}.jpg"), quality=85)
     with open(os.path.join(a.saida, "folha_r8_janelas.csv"), "w", newline="") as f:
-        wr = csv.DictWriter(f, ["numero", "folha", "dish_id", "periodo", "metodo", "n_visor", "veredito"], lineterminator="\n")
+        wr = csv.DictWriter(f, ["numero", "folha", "dish_id", "periodo", "metodo", "n_visor", "fracao_cinza_janela", "veredito"], lineterminator="\n")
         wr.writeheader(); wr.writerows(dict(t, veredito="") for t in tab)
     rng = np.random.default_rng(0)                   # 40 por período, com as caixas (a conferência de 14.9)
     for per in sorted({l["periodo"] for l in linhas}):
@@ -385,13 +463,15 @@ def folhas(a, L, linhas, fotos):
             for p, i in enumerate(parte):
                 l = linhas[i]
                 img, _ = E.abre_canonica(fotos[l["id"]]["caminho"])
-                cv = json.loads(l["caixas_visor"])
-                m = mascara(img, [c["caixa"] for c in cv], E.cor_borda(img).astype(np.uint8))
+                cv, cd = json.loads(l["caixas_visor"]), json.loads(l["caixas_visor_descartadas"])
+                m = mascara_fora_do_prato(img, [c["caixa"] for c in cv], E.cor_borda(img).astype(np.uint8), caixa_prato(l))[0]
                 h, w = m.shape[:2]
                 esc = min(w2 / w, h2 / h)
                 mini = Image.fromarray(m).resize((max(1, round(w * esc)), max(1, round(h * esc))))
                 d2 = ImageDraw.Draw(mini)
-                for c in cv:
+                for c in cd:            # descartadas (área ou prato): magenta, fina
+                    d2.rectangle([v * esc for v in c["caixa"]], outline=(255, 0, 255), width=1)
+                for c in cv:            # pintadas: ciano
                     d2.rectangle([v * esc for v in c["caixa"]], outline=(0, 200, 255), width=2)
                 if l["x0"] != "":
                     d2.rectangle([float(l[c]) * esc for c in ("x0", "y0", "x1", "y1")], outline=(255, 0, 0), width=3)
@@ -400,13 +480,14 @@ def folhas(a, L, linhas, fotos):
                 x, y = (p % 4) * (2 * w2 + 8), (p // 4) * (h2 + 20)
                 folha.paste(mini, (x, y)); folha.paste(Image.fromarray(np.asarray(rec[i])).resize((w2, h2)), (x + w2, y))
                 num = f0 + p + 1
-                dr.text((x + 2, y + h2 + 3), f"{num}. {l['metodo']} {float(l['nota']):.2f} {l['id']}", fill=(0, 0, 0))
-                tab2.append(dict(numero=num, folha=f0 // 20 + 1, dish_id=l["id"], metodo=l["metodo"], nota=l["nota"]))
+                dr.text((x + 2, y + h2 + 3), f"{num}. {l['metodo']} {float(l['nota']):.2f} {l['id']} cinza {100 * l['fracao_cinza_janela']:.0f}%", fill=(0, 0, 0))
+                tab2.append(dict(numero=num, folha=f0 // 20 + 1, dish_id=l["id"], metodo=l["metodo"], nota=l["nota"], fracao_cinza_janela=l["fracao_cinza_janela"]))
             folha.save(os.path.join(a.saida, f"folha_r8_conferencia_{per}_{f0 // 20 + 1}.jpg"), quality=85)
         with open(os.path.join(a.saida, f"folha_r8_conferencia_{per}.csv"), "w", newline="") as f:
-            wr = csv.DictWriter(f, ["numero", "folha", "dish_id", "metodo", "nota", "veredito"], lineterminator="\n")
+            wr = csv.DictWriter(f, ["numero", "folha", "dish_id", "metodo", "nota", "fracao_cinza_janela", "veredito"], lineterminator="\n")
             wr.writeheader(); wr.writerows(dict(t, veredito="") for t in tab2)
-    diz(f"folhas de contato: {math.ceil(len(linhas) / por)} folhas com todas as janelas mascaradas; 40 por período com as caixas")
+    diz(f"folhas de contato: {math.ceil(len(linhas) / por)} folhas com todas as janelas mascaradas; 40 por período com as caixas "
+        "(visor pintado em ciano, descartado em magenta, prato em vermelho, janela em amarelo)")
 
 
 # ------------------------------------------------------------------ 5. features e cabeças
@@ -617,9 +698,10 @@ def principal(a):
                         pacientes=len({r["paciente"] for r in L}))
     diz(f"{FORMATO} | {len(L)} fotos de {man['teste']['pacientes']} pacientes {man['teste']['por_periodo']} | tabela sha256 {sha[:16]}… "
         f"({'confere com 16.6' if sha == SHA_TESTE else 'DIFERENTE da de 16.6 (smoke)'}) | dispositivo {dev} | torch {torch.__version__}, timm {timm.__version__}, transformers {v_tr}")
-    Z, achados, info_c = carrega_cabecas(a)
-    man["cabecas"] = info_c
-    diz("cabeças e pesos servidos: " + " | ".join(f"{k} {v['arquivo']} ({v['sha256'][:12]})" for k, v in info_c.items()))
+    if not a.so_deteccao:
+        Z, achados, info_c = carrega_cabecas(a)
+        man["cabecas"] = info_c
+        diz("cabeças e pesos servidos: " + " | ".join(f"{k} {v['arquivo']} ({v['sha256'][:12]})" for k, v in info_c.items()))
     grava()
     t = time.time()
     L, fotos, man["download"] = baixa_pngs(a, L)
@@ -634,6 +716,9 @@ def principal(a):
     folhas(a, L, linhas, fotos)
     tempos["folhas"] = round(time.time() - t, 1)
     grava()
+    if a.so_deteccao:           # teste do caminho detector -> máscara -> recorte, sem cabeças
+        diz(f"fim (--so-deteccao): {(time.time() - t_ini) / 60:.1f} min; sem features nem cabeças.")
+        return grava()
     bb = a.backbone or G._SO4
     pred = dict(ids=np.array([r["dish_id"] for r in L]), periodo=np.array([r["periodo"] for r in L]), paciente=np.array([r["paciente"] for r in L]))
     rede_so = None
@@ -750,8 +835,18 @@ def autoteste():
             except AssertionError as e:
                 assert "diferente" in str(e)
     img = np.zeros((10, 10, 3), np.uint8)
-    m = mascara(img, [(2.4, 2.6, 5.1, 4.0)], np.array([9, 9, 9], np.uint8))
-    assert m[2:4, 2:6].min() == 9 and m[:2].max() == 0 and img.max() == 0
+    m, pint = mascara_fora_do_prato(img, [(2.4, 2.6, 5.1, 4.0)], np.array([9, 9, 9], np.uint8), None)
+    assert m[2:4, 2:6].min() == 9 and m[:2].max() == 0 and img.max() == 0 and pint.sum() == 8
+    m, pint = mascara_fora_do_prato(img, [(0, 0, 10, 10)], np.array([9, 9, 9], np.uint8), (4.2, 4.2, 6.0, 6.0))    # o prato nunca é pintado
+    assert m[4:6, 4:6].max() == 0 and m[0, 0].min() == 9 and pint.sum() == 96
+    assert fracao_cinza(pint, (5, 5, 10, 10)) == (0.96, 0.0) and fracao_cinza(pint, (0, 0, 10, 10)) == (0.96, 0.75) and fracao_cinza(pint, (50, 50, 10, 10)) == (0.0, 1.0)
+    cx_ = np.array([[0, 0, 50, 50], [10, 10, 20, 20], [60, 60, 70, 70], [79, 79, 99, 99], [1, 1, 5, 5]], float)
+    fv = filtra_visor(cx_, np.array([0.5, 0.5, 0.5, 0.5, 0.1]), np.array([0, 1, 0, 1, 0]), 100, 100, (15, 15, 65, 65))
+    assert [c["destino"] for c in fv] == ["descartada_area", "descartada_prato", "descartada_prato", "mascarada"], fv   # a de nota 0,1 nem entra
+    assert fv[2]["dentro_do_prato"] == 0.25 and fv[3]["area_foto"] == 0.04 and fv[1]["consulta"] == "an LCD screen"
+    assert filtra_visor(cx_[1:2], np.array([0.5]), np.array([0]), 100, 100, None)[0]["destino"] == "mascarada"     # sem prato: só a área
+    assert resumo_cinza([0, 0.06, 0.3])["acima_25pct"] == 1 and resumo_cinza([])["n"] == 0
+    assert caixa_prato(dict(x0="")) is None and caixa_prato(dict(x0="1", y0="2", x1="3", y1="4")) == (1.0, 2.0, 3.0, 4.0)
     rng = np.random.default_rng(0)
     D_, K = 6, 10
     z = dict(mu=np.zeros(D_ + 1, np.float32), sd=np.ones(D_ + 1, np.float32), tm=np.zeros(22, np.float32), ts=np.ones(22, np.float32), dens_fonte=np.ones(K, np.float32),
@@ -776,6 +871,7 @@ def main():
     ap.add_argument("--espelho-fotos", help="pasta com as fotos do teste (o dataset privado do espelho); padrão: procurada em /kaggle/input")
     ap.add_argument("--fotos", help="tabela das fotos (padrão: listas/fotos_r8_dfoodtj.csv ao lado do script)")
     ap.add_argument("--orcamento-h", type=float, default=1.5)
+    ap.add_argument("--so-deteccao", action="store_true", help="para depois da detecção, da máscara, dos recortes e das folhas (sem features nem cabeças)")
     ap.add_argument("--smoke", type=int, default=0, help="só as N primeiras fotos (não confere o sha256 da tabela)")
     ap.add_argument("--sem-detector", action="store_true", help="só a reserva por elipse e nenhum visor (teste em CPU)")
     ap.add_argument("--backbone", help="backbone das cabeças (teste; padrão: o So400m do treino)")
