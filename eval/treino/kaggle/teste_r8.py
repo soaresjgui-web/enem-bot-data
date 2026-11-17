@@ -422,6 +422,10 @@ def processa(a, L, fotos, dev):
     cinza = resumo_cinza([l["fracao_cinza_janela"] for l in linhas])
     diz(f"detecção: {n} fotos em {time.time() - t0:.0f}s | prato (regra só de prato e tigela, na foto sem máscara): {met} | caixas do visor {caixas}; "
         f"visor mascarado em {sum(1 for l in linhas if l['n_visor'])} fotos | cinza na janela: {cinza} | {versao}")
+    for p, v in por_per.items():
+        diz(f"  {p}: {v['fotos']} fotos | prato {v['metodos']} | visor mascarado em {v['com_visor_mascarado']} | caixas do visor "
+            f"{ {d: sum(1 for l in linhas if l['periodo'] == p for c in json.loads(l['caixas_visor']) + json.loads(l['caixas_visor_descartadas']) if c['destino'] == d) for d in caixas} } "
+            f"| cinza na janela {v['fracao_cinza_janela']}")
     return linhas, dict(versao_detector=versao, ordem="8b: prato na foto sem máscara -> visor filtrado, pintado fora da caixa do prato -> janela e foto inteira da foto mascarada",
                         consultas_visor=CONSULTAS_VISOR, nota_visor=NOTA_VISOR, area_max_visor=AREA_MAX_VISOR, sobreposicao_max_prato=SOBREPOSICAO_MAX_PRATO,
                         caixas_visor=caixas, fracao_cinza_janela=cinza, consultas_prato=[E.CONSULTAS[k] for k in E.SO_PRATO],

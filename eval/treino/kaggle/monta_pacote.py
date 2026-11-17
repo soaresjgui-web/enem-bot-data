@@ -369,7 +369,7 @@ def monta_deteccao(variante):
 
 
 def monta_teste8(variante):
-    """Notebook da oitava execução (16.6 f): lê os PNG do teste do zip remoto, mascara o visor, recorta pelo prato, grava as
+    """Notebook da oitava execução (16.6 f): lê os PNG do teste (espelho ou zip remoto), acha o prato na foto sem máscara, mascara o visor fora do prato (8b), grava as
     folhas de contato e as previsões cruas das cabeças servidas. Nada é pontuado. O do repositório não traz a tabela."""
     arqs = conteudo(variante)
     md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
@@ -379,11 +379,12 @@ def monta_teste8(variante):
              "**Versão do push, montada fora do repositório:** traz `teste_r8_dfoodtj.csv` e `fotos_r8_dfoodtj.csv` (sem rótulo; o kernel confere "
              "os sha256). O gabarito nunca entra.")
     cells = [
-        md("# Nutrelle — oitava execução: o teste de registro DFood-TJ (seção 16.6 f)\n\n"
-           "Notebook gerado por `eval/treino/kaggle/monta_pacote.py --kernel r8`; **não edite à mão**. Lê do zip do DFood-TJ (china.scidb.cn) só os "
-           "711 PNG da tabela, por intervalo de bytes; mascara o visor da balança com o OWLv2; recorta pelo prato (regra só de prato e tigela da etapa 0); "
-           "com as fotos tiradas do espelho anexado (dataset privado `nutrelle-dfoodtj-fotos-teste`, cada uma conferida pelo tamanho, CRC-32 e sha256 da "
-           "tabela das fotos) e só as que faltarem pela rede; grava as folhas de contato e as previsões cruas da R4c, da H0c-m e da H-cap (So400m, 1/4/8 orientações) e do F5c (1 orientação), no recorte e "
+        md("# Nutrelle — oitava execução (8b): o teste de registro DFood-TJ (seção 16.6 f, com a emenda da máscara do visor)\n\n"
+           "Notebook gerado por `eval/treino/kaggle/monta_pacote.py --kernel r8`; **não edite à mão**. Lê os 711 PNG da tabela do espelho anexado (dataset "
+           "privado `nutrelle-dfoodtj-fotos-teste`, cada um conferido pelo tamanho, CRC-32 e sha256 da tabela das fotos) e só os que faltarem do zip do DFood-TJ "
+           "(china.scidb.cn), por intervalo de bytes; acha o prato na foto SEM máscara (regra só de prato e tigela da etapa 0); com o OWLv2, procura só o mostrador "
+           "do visor (\"a digital display\", \"an LCD screen\"; caixa com mais de 5% da foto ou mais de 10% dentro do prato descartada) e o pinta fora da caixa do prato; "
+           "recorta a janela do guia e a foto inteira dessa foto mascarada; grava as folhas de contato e as previsões cruas da R4c, da H0c-m e da H-cap (So400m, 1/4/8 orientações) e do F5c (1 orientação), no recorte e "
            "na foto inteira. **Nada é pontuado aqui:** a conferência a olho e a leitura são da CPU (16.6 g).\n\n" + aviso
            + "\n\nAnexe como *Input* as saídas de `nutrelle-deteccao-r5`, `nutrelle-treino-gpu-r5`, `-r6` e `-r7` e o dataset do espelho das fotos. "
            "Kaggle: *GPU T4* e *Internet → On* (modelos do Hugging Face e as fotos que faltarem no espelho)."),
