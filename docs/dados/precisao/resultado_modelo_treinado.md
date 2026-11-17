@@ -3799,7 +3799,93 @@ Nas refeições de 2020–2023, o S7 erra a **massa em −42%** (cerca de 500 g 
   6. FPB, se a escala do xadrez estiver documentada;
   7. as condições de 18.7;
   8. a leitura 3 ou o registro de que ela não aconteceu;
-  9. o resultado em 18.10.
+  9. o resultado em 18.11.
+
+### 18.10 O lado da CPU, pronto antes do kernel (17/11/2026), e o formato que o kernel deve gravar
+
+**a) O que já está em `eval/geom/`.** Nenhum rótulo de teste foi aberto.
+
+| Arquivo | O que faz | Estado |
+|---|---|---|
+| `vocabulario.csv` | 27 termos do OWLv2 → grupo de massa (8) e fonte de proteína (10), mais `resto` (comida que nenhuma caixa cobriu) | Pronto. Inclui "a boiled egg in shell", que serve à escala do DFood-TJ |
+| `priors.csv` | Densidade aparente de 24 alimentos, com a fonte linha a linha; altura por grupo; eixo menor do ovo (4,3 cm); campo de visão do Nutrition5k (54,8°) | Densidades prontas. **As alturas ficam vazias até o kernel** (ver b) |
+| `escala.py` | `n5k`: profundidade + campo de visão. `dfoodtj`: diâmetro do prato por período pelos ovos, mais a condição 18.7 (2). `fpb`: xadrez | Pronto. O `n5k` já rodou (ver c) |
+| `calibra.py` | Áreas por grupo; k por grupo (mínimos quadrados não negativos, por fold); ρ por grupo; alturas e volumes pela profundidade local; G1, G2, G3, G-prof e a mistura G4 | Pronto |
+| `avalia_geom.py` | `--cv` (escolha de 18.6, congela o candidato com sha256); `--condicoes` (18.7); `--fpb` (última leitura, só ordem, com marca); `--leitura3` (marca própria; exige as quatro condições, as marcas das leituras 1 e 2 e o sha do gabarito); `--ensaio` (tabelas sintéticas e rótulos sorteados) | Pronto. **O ensaio passou de ponta a ponta** sem gravar seleção nem marca |
+
+**b) Decisões e limites que surgiram ao construir.**
+- **Densidades: não consegui a tabela da FAO/INFOODS.** O site da FAO e o do USDA estão bloqueados nesta sessão.
+  - Usei os pesos por xícara do USDA FoodData Central, compilados pelo aqua-calc e publicados em `huggingface.co/datasets/arunapb/food-density-nutrition` (CC BY 4.0), linha a linha com o `class_id`. As colunas de nutrientes dessa compilação têm erros visíveis (por exemplo, 18,8 g de proteína por 100 g de vagem), e por isso **só a densidade é usada**. A proteína vem do treino do Nutrition5k.
+  - Várias linhas são aproximações fracas, marcadas no `vocabulario.csv`: pão de vapor, queijo (a linha é manteiga), ensopado e refogado misto.
+  - A G1 não depende dessas densidades: o k sai do treino. A G2 depende.
+- **Altura por grupo:** sai da profundidade do Nutrition5k (que está no scratchpad) dentro das máscaras de cada grupo. As máscaras só existem depois do kernel.
+  - Depois do kernel, `calibra.py --alturas` calcula as alturas, e elas são copiadas para `priors.csv` **antes de qualquer validação cruzada**. Não usa grama nenhuma.
+  - O kernel não precisa mexer na profundidade.
+- **Escala do FPB: o tamanho do quadrado do xadrez não está documentado** no cartão do Hugging Face nem no README dos autores. O artigo (IEEE Access, 2025) não está no arXiv nem na Europe PMC, e o IEEE está bloqueado. **Pela regra de 18.2, o FPB entra só como relato de ordem:** a correlação de postos entre a massa geométrica relativa (área em pixels × k) e a massa pesada, na última leitura.
+- **Ovo:** os 4,3 cm são um valor de referência para o ovo de galinha médio a grande. Não consegui conferi-lo numa tabela online. Um erro de 5% nele vira 10% na área e na massa, para o período inteiro.
+- **Ajuste do k:** na primeira versão, um grupo identificado errado (com área, mas sem massa no rótulo) puxava o k para zero. As linhas por grupo agora usam a massa do prato como escala e entram com peso 0,5. A mudança foi feita no ensaio sintético, antes de qualquer número real.
+
+**c) Escala do Nutrition5k (sem rótulo; `escala.py n5k`, 2,5 minutos de CPU).**
+- Nos 2.281 pratos do treino, o plano do prato fica a **35,0 cm** da câmera (p10 34,4; p90 35,4), e o pixel vale 0,0567 cm.
+- **O diâmetro do prato sai com mediana de 25,6 cm** (p10 20,0; p90 26,8): **passa** na conferência de 18 a 30 cm. Com o campo da câmera de cor em 16:9 (69,4°), daria uns 34 cm, que não é plausível.
+- 2 pratos ficaram sem caixa e usam a distância mediana, marcados.
+
+**d) O que o kernel deve gravar** (para o agente do Kaggle; nada aqui é pontuado). São duas tabelas CSV, mais as folhas de conferência. Bases: o treino do Nutrition5k (2.281 fotos de cima), as 711 do DFood-TJ (as mesmas da leitura 2, mas sem a máscara de visor) e a parte de registro do FPB (312 fotos).
+
+`fotos_geom.csv`: uma linha por foto.
+
+| Coluna | Conteúdo |
+|---|---|
+| `base` | `n5k`, `dfoodtj` ou `fpb` |
+| `id` | `dish_id` do Nutrition5k, `dftj_…` ou o `dish_id` da lista do FPB |
+| `arquivo`, `sha256` | Arquivo de origem e o hash dos bytes |
+| `largura`, `altura`, `girada` | Tamanho da foto depois da orientação do EXIF (e do giro de retrato), como no kernel da oitava |
+| `periodo`, `paciente` | Só do DFood-TJ, copiados de `teste_r8_dfoodtj.csv` (sem rótulo) |
+| `prato_metodo` | `owlv2`, `elipse` ou `sem_prato`, pela regra só de prato e tigela de 14.3 |
+| `prato_caixa` | `x0 y0 x1 y1`, em pixels da foto orientada |
+| `prato_elipse` | `cx cy eixo_maior eixo_menor angulo_graus`, com eixos **inteiros** (não semieixos), em pixels da foto orientada, ajustada por `cv2.fitEllipse` no contorno da máscara do SAM do prato |
+| `prato_rle`, `mascara_largura`, `mascara_altura` | Máscara do prato em RLE, na resolução de trabalho |
+| `xadrez_detectado`, `xadrez_passo_px` | Só do FPB: 1 se `cv2.findChessboardCorners` achar o padrão; passo mediano entre cantos vizinhos, em pixels da foto orientada |
+| `n_itens`, `versoes` | Quantos itens; versões do OWLv2, do SAM e das bibliotecas |
+
+`itens_geom.csv.gz`: uma linha por item.
+
+| Coluna | Conteúdo |
+|---|---|
+| `base`, `id` | Como em `fotos_geom.csv` |
+| `item` | Inteiro, a partir de 0, na foto |
+| `termo`, `consulta` | `termo` do `vocabulario.csv` e o texto exato da consulta. O item `resto` não tem consulta |
+| `nota` | A nota do OWLv2 (0 no `resto`) |
+| `caixa` | `x0 y0 x1 y1` da caixa do OWLv2, em pixels da foto orientada |
+| `rle` | **RLE do COCO sem compressão:** contagens separadas por espaço, em ordem de coluna (Fortran), começando pela contagem de zeros, na resolução de trabalho `mascara_largura × mascara_altura` (lado maior de até 1.024 px; o Nutrition5k fica em 640 × 480, alinhado à profundidade) |
+| `mascara_largura`, `mascara_altura` | Tamanho da máscara |
+| `area_px` | Pixels da máscara **em unidades da foto orientada** (contagem × (largura / mascara_largura)²) |
+| `elipse` | `cx cy eixo_maior eixo_menor angulo_graus` da máscara, eixos inteiros, em pixels da foto orientada (`cv2.fitEllipse`) |
+| `origem_mascara` | `sam2` ou `caixa_elipse` (reserva) |
+| `dentro_prato` | Fração da máscara dentro da máscara do prato, antes do recorte |
+
+**Regras do kernel para as máscaras:**
+- consultas, com nota de 0,15 ou mais e NMS de 0,5 por termo;
+- SAM 2.1 (`facebook/sam2.1-hiera-large`), com a caixa como prompt;
+- recorte pela máscara do prato;
+- um pixel em duas máscaras fica com a de maior nota;
+- **`resto`** = máscara do prato − itens − branco do prato. O branco do prato é S < 0,15 e V > 0,75 em HSV, limiar fixo; os componentes de `resto` com menos de 0,5% da área do prato são descartados;
+- **nada de máscara densa em disco.**
+- **Ovos:** a consulta "a boiled egg in shell" também roda nas fotos do DFood-TJ.
+
+**Folhas de conferência:** 40 fotos por base, a foto com as máscaras coloridas por grupo e o nome do termo, para a régua de 18.3.
+
+**Tamanho esperado:** de 20 a 50 MB, com 4 a 8 itens por foto.
+
+**e) Ordem a partir daqui (como em 18.9).**
+1. Kernel.
+2. Conferência das máscaras: o resultado vai para `conferencia_mascaras.json`, com `{"dfoodtj": {"certas": n, "proteina_errada": n}}` e o mesmo para o Nutrition5k e o FPB.
+3. `calibra.py --alturas` e as alturas copiadas para `priors.csv`, com a data.
+4. `avalia_geom.py --cv`, que congela o candidato.
+5. `--fpb`.
+6. `--condicoes`.
+7. `--leitura3`, se as condições passarem.
+8. Resultado em 18.11.
 
 
 ## Reproduzir
@@ -3906,6 +3992,8 @@ Seção 12.8: `cd eval/treino; python3 macros_cv.py <pasta_kaggle_3>` (só previ
 Seção 16.6: `python3 eval/treino/dfoodtj_teste_divide.py <pasta>` grava a população do teste de registro DFood-TJ (tabela sem rótulo para o kernel e gabarito para a CPU, com os sha256).
 
 Seção 16.7: `python3 -I eval/treino/r8_avalia.py <pasta_kaggle_8> <gabarito_r8_dfoodtj.csv>` faz a leitura única do DFood-TJ (marca em `resultados/dens/r8/`; não roda duas vezes). `--ensaio` no lugar do gabarito roda os mesmos cálculos com rótulos sorteados. Seção 16.8: `--leitura2 <pasta_kaggle_9> <gabarito> <conferencia_r9.json> <pasta_kaggle_8>` (marca própria), `--ensaio2` (sem gabarito) e `--pos-hoc` (só depois da leitura 2).
+
+Seção 18: `python3 -I eval/geom/escala.py n5k <scratchpad>/treino <DENS>/geom/escala_n5k.csv` (escala do Nutrition5k, sem rótulo); `python3 -I eval/geom/avalia_geom.py --ensaio <scratchpad>/treino <kaggle_out7> <kaggle_out8b> <conferencia_r9.json>` (ensaio com tabelas sintéticas); os modos `--cv`, `--condicoes`, `--fpb` e `--leitura3` esperam as tabelas do kernel (18.10 d).
 
 Seção 17.8: `cd eval/treino; python3 r7_avalia.py <pasta_kaggle_7> <pasta_divisoes> --so-cv` (R17, sementes e 17.5), depois `--relatos` (partes seguradas de ACETADA, receitas e FoodBD) e `--omnifood` (terceira e última leitura do OmniFood8K, só do S7); resultados em `$TD/resultados/dens/r7/`.
 

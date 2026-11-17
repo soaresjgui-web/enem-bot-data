@@ -1,0 +1,29 @@
+termo,consulta_owlv2,grupo,fonte,chave_densidade,nota
+rice,rice,amido,sem_proteina,rice,
+noodles,noodles,amido,sem_proteina,pasta,massa cozida (a linha 'noodles' da tabela é seca)
+bread,bread,amido,sem_proteina,bread,pão fatiado; densidade aparente baixa
+steamed_bun,steamed bun,amido,sem_proteina,hanamaki baozi,linha da tabela é aproximação fraca (pão boston brown)
+potato,potato,amido,sem_proteina,potato,cru em cubos na tabela
+corn,corn,amido,sem_proteina,corn,
+meat,meat,proteina_animal,suina_embutido,fried meat,termo genérico; fonte descritiva
+pork,pork,proteina_animal,suina_embutido,pork,
+beef,beef,proteina_animal,bovina,steak,linha da tabela usa carne moída crua como aproximação
+chicken,chicken,proteina_animal,frango_peru,chicken duck,
+fish,fish,proteina_animal,peixe_marisco,fish,
+shrimp,shrimp,proteina_animal,peixe_marisco,shrimp,
+egg,egg,proteina_animal,ovo,egg,ovo inteiro cru na tabela; o cozido é sólido de densidade parecida
+boiled_egg_in_shell,a boiled egg in shell,proteina_animal,ovo,egg,consulta extra; também serve à escala do DFood-TJ (18.4)
+tofu,tofu,leguminosa,leguminosa_soja,tofu,
+beans,beans,leguminosa,leguminosa_soja,red beans,
+cheese,cheese,laticinio,laticinio,cheese butter,a linha da tabela é manteiga; aproximação
+leafy_vegetables,leafy vegetables,vegetal,sem_proteina,lettuce,folha crua na tabela; folha refogada é mais densa
+cucumber,cucumber,vegetal,sem_proteina,cucumber,
+carrot,carrot,vegetal,sem_proteina,carrot,
+cabbage,cabbage,vegetal,sem_proteina,cabbage,
+broccoli,broccoli,vegetal,sem_proteina,broccoli,
+mushroom,mushroom,vegetal,sem_proteina,white button mushroom,
+sauce,sauce,gordura_molho,sem_proteina,sauce,
+soup,soup,misto,prato_misto,soup,o peso inclui o caldo
+stew,stew,misto,prato_misto,soup,sem linha direta; aproximação pela sopa
+mixed_stir_fry,mixed stir-fry,misto,prato_misto,fried meat,sem linha direta; aproximação pela carne frita
+resto,,misto,prato_misto,mediana,comida dentro do prato que nenhuma caixa cobriu (máscara do prato − itens − branco do prato); calculada no kernel; densidade = mediana das densidades da tabela
