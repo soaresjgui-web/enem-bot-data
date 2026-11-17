@@ -45,7 +45,7 @@ def le_escala_n5k(caminho):
 def itens_por_foto(itens, base):
     out = {}
     for it in itens:
-        if it["base"] == base and it["termo"] in VOC:
+        if it["base"] == base and it["termo"] in VOC and VOC[it["termo"]]["grupo"] in GRUPOS:     # bebida fica fora (18.12)
             out.setdefault(it["id"], []).append(it)
     return out
 
