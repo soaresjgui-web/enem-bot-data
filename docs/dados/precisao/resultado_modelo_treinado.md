@@ -4242,6 +4242,17 @@ Tudo sobre features congeladas do So400m no recorte, como na sétima. Nenhum aju
 - **Por que não apliquei:** 19.2 d diz que, reprovado, o FLIC não entra nesta execução. Mudar a regra depois de ver a folha é uma emenda, e emenda de pré-registro é decisão do coordenador (como 16.8 e 18.12).
 - **O que já está pronto, se a emenda for aceita:** o espelho no Kaggle; o kernel `treino_gpu.py --rodada 11` (autoteste com `teste_rodada11`, paridade com a sétima em `listas/ref_r7_prato.csv`, critério de 68,21); o pacote `monta_pacote.py --kernel r11` (notebook do repositório e do push conferidos); `ingere_kaggle.py` para a rodada 11; `eval/treino/r11_avalia.py` com a R11, a leitura dos dias de teste e as condições da leitura 3. Falta só refazer a tabela, a divisão e a conferência.
 
+### 19.9 Emenda aprovada: pureza de 0,85 na união (18/11/2026)
+
+**Escrita antes de recalcular qualquer coisa e antes de sortear a folha nova.** O coordenador (a fundadora delegou as decisões de treino) aceitou a proposta de 19.8 (d).
+- **Motivo:** a falha de 19.8 foi uma só, nas 4 erradas: uma caixa que cobre dois pratos vizinhos entrava na união com pureza de 0,63 a 0,71, e a janela ficava com dois cursos e o rótulo de um.
+- **Regra nova (substitui só o limiar de pureza de 19.2 c):** cada caixa que entra na união **e** a própria união precisam de **pureza ≥ 0,85**; `cobre` ≥ 0,60 continua. Nenhuma caixa tocando o curso com pureza ≥ 0,85: `sem_prato`. União com `cobre` < 0,60 ou pureza < 0,85: `impuro`. As duas saem da divisão (`fora`), contadas, sem conserto.
+- **Recalculada das caixas brutas já gravadas na tabela** (`caixas_brutas`: as até 40 caixas de maior nota que passam na nota e na área da etapa 0), sem rodar o detector de novo. A divisão é refeita pela mesma regra (`externo_r11_divide.py`, com `impuro` também fora).
+- **Folha nova:** 40 linhas aceitas sorteadas com **`default_rng(20261120)`** (a de 19.8 era 20261119), mesma régua de 19.2 d: **36 certas ou mais e no máximo 1 errada.**
+- **Todo o resto de 19.2 a 19.7 fica igual:** R11, leituras, condições da leitura 3, expectativas.
+- **Se a folha nova reprovar, a execução 11 termina aí,** sem terceira tentativa: o resultado fica escrito como o desfecho da execução.
+
+
 
 ## Reproduzir
 
