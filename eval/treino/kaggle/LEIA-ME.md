@@ -18,7 +18,7 @@ Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descr
 
 - **Execução 10 (18.12), só segmentação com o SETR-MLA do FoodSeg103: pronta para o push e ainda não rodou.** Kernel próprio, `nutrelle-geom-r10` (`geom_r10.py`, notebook em `geom_r10/`), descrito logo abaixo. O notebook da nona fica congelado como rodou.
 
-- **Execução 11 (seção 19), o FLIC por curso no treino do modelo de servidor.** `treino_gpu.py --rodada 11`, kernel `nutrelle-treino-gpu-r11` (notebook em `treino_r11/`), descrito logo abaixo. **Pronta e não rodou:** a conferência a olho do recorte do FLIC reprovou (19.8); depende de uma emenda do coordenador.
+- **Execução 11 (seção 19), o FLIC por curso no treino do modelo de servidor.** `treino_gpu.py --rodada 11`, kernel `nutrelle-treino-gpu-r11` (notebook em `treino_r11/`), descrito logo abaixo. Rodou em 18/11/2026 (50 min, paridade exata com a sétima), com a tabela da emenda de 19.9; resultados em 19.11 e 19.12.
 
 Para baixar a saída é preciso acesso a `www.kaggleusercontent.com`.
 
