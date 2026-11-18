@@ -4994,7 +4994,7 @@ def carrega_caixas5(pasta_listas, pastas, D, smoke=False, extras=()):
                     if x not in L:
                         continue
                     r = L[x] if ch in TABELA_PRONTA11 else E.refaz_linha(L[x], consultas)
-                    assert r["metodo"] != "sem_prato" or ch not in TABELA_PRONTA11, f"{x}: linha sem prato na tabela pronta (a divisão a põe como 'fora')"
+                    assert r["metodo"] == "owlv2_curso" or ch not in TABELA_PRONTA11, f"{x}: linha sem janela aceita na tabela pronta (sem_prato/impuro: a divisão a põe como 'fora')"
                     b["jan"][x] = (float(r["janela_cx"]), float(r["janela_cy"]), float(r["janela_alt"]), float(r["janela_larg"]))
                     b["sha"][x] = r["sha256"]
                     met[r["metodo"]] = met.get(r["metodo"], 0) + 1

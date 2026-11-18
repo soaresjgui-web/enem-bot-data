@@ -5,7 +5,7 @@
 
 Lê `externo_flic_curso.csv` e `caixas_r5_flic_curso.csv` (padrão: eval/treino/kaggle/listas/) e grava, na mesma pasta,
 `divisao_r4_flic_curso.csv` no formato de externo_r4_divide.py:
-  papel            fora (sem janela pela regra de 19.2 c: `sem_prato` na tabela) | treino (split_ext = treino_ext) |
+  papel            fora (sem janela aceita: `sem_prato` ou, desde 19.9, `impuro` na tabela) | treino (split_ext = treino_ext) |
                    registro (split_ext = teste_ext: os 2 dias de teste da lista por bandeja; nunca treina, o kernel
                    apaga os rótulos e só grava as previsões)
   fold_ext         0–4 nas linhas de treino, por DIA (folds_balanceados sobre os dias): a validação cruzada do FLIC
@@ -26,7 +26,7 @@ CHAVE = "flic_curso"
 def divide(R, metodo):
     """Linhas da divisão (função pura). R: linhas da lista; metodo: {id da foto no kernel: método da tabela de janelas}."""
     assert all(r["split_ext"] in ("treino_ext", "teste_ext") for r in R), "split_ext desconhecido"
-    sem = lambda r: metodo.get(f"ext:{CHAVE}:{r['dish_id']}", "sem_prato") == "sem_prato"
+    sem = lambda r: metodo.get(f"ext:{CHAVE}:{r['dish_id']}", "sem_prato") != "owlv2_curso"      # sem_prato e, desde 19.9, impuro
     tr = [r for r in R if r["split_ext"] == "treino_ext" and not sem(r)]
     fold = folds_balanceados(collections.Counter(r["grupo"] for r in tr))
     out = []

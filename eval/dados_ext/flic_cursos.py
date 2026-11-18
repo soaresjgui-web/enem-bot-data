@@ -15,7 +15,12 @@ limiares de deteccao_r5.py), só as de prato e tigela (SO_PRATO), NMS 0,5, sem a
 bandeja). Para cada linha da lista por curso, M = pixels da cor do curso na máscara; `cobre` = fração de M dentro da
 caixa; `pureza` = fração dos pixels de máscara (qualquer curso, pão incluído) dentro da caixa que são do curso. Fica a
 união das caixas que tocam a comida do curso e têm pureza >= 0,50 (emenda de 19.2 c: a regra da etapa 0, restrita às
-caixas do curso), aceita com cobre >= 0,60 e pureza >= 0,50; senão `sem_prato` (a linha sai na divisão). A janela é a do guia (deteccao_r5.janela). Massa, proteína e previsões não entram em nada aqui."""
+caixas do curso), aceita com cobre >= 0,60 e pureza >= 0,50; senão `sem_prato` (a linha sai na divisão).
+Emenda de 19.9: pureza >= 0,85 em cada caixa da união e na união; `refaz` recalcula a tabela das caixas brutas gravadas
+(sem detector): nenhuma caixa -> `sem_prato`; união com cobre < 0,60 ou pureza < 0,85 -> `impuro`. As duas saem da divisão.
+
+    python3 flic_cursos.py refaz <pasta_dados> [--tabela <csv>] [--saida <csv>]      # 19.9
+    python3 flic_cursos.py folha <pasta_dados> <saida.jpg> --semente 20261120         # 19.9 A janela é a do guia (deteccao_r5.janela). Massa, proteína e previsões não entram em nada aqui."""
 import csv, hashlib, json, os, sys
 import numpy as np
 
@@ -29,7 +34,9 @@ PASTAS = ("full_images", "full_masks", "left_images", "left_masks")
 CHAVE = "flic_curso"
 AREA_MAX_PRATO = 0.40
 COBRE_MIN, PUREZA_MIN = 0.60, 0.50
-SEMENTE_FOLHA, N_FOLHA = 20261119, 40
+PUREZA_MIN_19_9 = 0.85          # emenda de 19.9
+SEMENTE_FOLHA, N_FOLHA = 20261119, 40      # 19.2 d; a folha da emenda (19.9) usa --semente 20261120
+ACEITA = "owlv2_curso"
 EXTRA = ["curso", "cobre", "pureza", "area_caixa"]
 
 
@@ -106,7 +113,7 @@ def medidas(caixa, curso, qualquer):
     return dentro / max(1, int(curso.sum())), dentro / max(1, todos)
 
 
-def escolhe(caixas, curso, qualquer):
+def escolhe(caixas, curso, qualquer, pureza_min=PUREZA_MIN):
     """Emenda 19.2 c (antes de qualquer conferência): a caixa do curso é a UNIÃO das caixas de prato e tigela que tocam a
     comida do curso e têm pureza >= 0,50 (a regra da etapa 0, a união, restrita às caixas do curso), aceita se a união
     tiver cobre >= 0,60 e pureza >= 0,50. caixas [k, 4]; curso, qualquer: máscaras booleanas [h, w].
@@ -114,14 +121,14 @@ def escolhe(caixas, curso, qualquer):
     usa = []
     for cx in caixas:
         cobre, pureza = medidas(cx, curso, qualquer)
-        if cobre > 0 and pureza >= PUREZA_MIN:
+        if cobre > 0 and pureza >= pureza_min:
             usa.append(cx)
     if not usa:
         return None, 0.0, 0.0, 0
     u = np.asarray(usa)
     uniao = (float(u[:, 0].min()), float(u[:, 1].min()), float(u[:, 2].max()), float(u[:, 3].max()))
     cobre, pureza = medidas(uniao, curso, qualquer)
-    if cobre < COBRE_MIN or pureza < PUREZA_MIN:
+    if cobre < COBRE_MIN or pureza < pureza_min:
         return None, cobre, pureza, len(usa)
     return uniao, cobre, pureza, len(usa)
 
@@ -179,17 +186,47 @@ def cmd_detecta(dados, saida, cache, limite=None):
     print(f"{len(out)} linhas, {len(fotos)} fotos em {time.time() - t0:.0f}s: {cont} -> {saida}")
 
 
-def cmd_folha(dados, saida, tabela):
+def cmd_refaz(dados, tabela, saida):
+    """19.9: a tabela refeita das caixas brutas gravadas (sem detector), com pureza >= 0,85 nas caixas e na união."""
+    import deteccao_r5 as E
+    with open(tabela, encoding="utf-8", newline="") as f:
+        T = list(csv.DictReader(f))
+    with open(LISTA, encoding="utf-8", newline="") as f:
+        L = {f"ext:{CHAVE}:{r['dish_id']}": r for r in csv.DictReader(f)}
+    cont, cheias = {}, 0
+    for r in T:
+        l = L[r["id"]]
+        w, h = float(r["largura"]), float(r["altura"])
+        b = json.loads(r["caixas_brutas"] or "[]")
+        cheias += len(b) >= 40
+        cp, _ = caixas_prato([x[:4] for x in b], [x[4] for x in b], [x[5] for x in b], w, h) if b else (np.zeros((0, 4)), None)
+        cur, qualquer = mascaras(os.path.join(dados, l["mascara"].replace("__", "/", 1)), tuple(int(v) for v in l["cor_mascara"].split(",")))
+        caixa, cobre, pureza, nu = escolhe(cp, cur, qualquer, PUREZA_MIN_19_9)
+        metodo = ACEITA if caixa else ("sem_prato" if nu == 0 else "impuro")
+        cont[metodo] = cont.get(metodo, 0) + 1
+        jan = E.janela(caixa, w, h)
+        r.update(metodo=metodo, n_caixas=nu, cobre=round(cobre, 4), pureza=round(pureza, 4), janela_cx=round(jan[0], 1), janela_cy=round(jan[1], 1),
+                 janela_alt=round(jan[2], 1), janela_larg=round(jan[3], 1),
+                 versao_detector=r["versao_detector"].split(" | ")[0] + " | regra por curso de 19.2 c com a emenda de 19.9 (pureza >= 0,85), refeita das caixas brutas",
+                 area_caixa="" if caixa is None else round((caixa[2] - caixa[0]) * (caixa[3] - caixa[1]) / (w * h), 4),
+                 **({c: "" for c in ("x0", "y0", "x1", "y1")} if caixa is None else dict(zip(("x0", "y0", "x1", "y1"), [round(v, 1) for v in caixa]))))
+    with open(saida + ".tmp", "w", encoding="utf-8", newline="") as f:
+        wr = csv.DictWriter(f, list(T[0]), lineterminator="\n"); wr.writeheader(); wr.writerows(T)
+    os.replace(saida + ".tmp", saida)
+    print(f"{len(T)} linhas refeitas: {cont} | linhas com 40 caixas brutas (o teto gravado): {cheias} -> {saida}")
+
+
+def cmd_folha(dados, saida, tabela, semente=SEMENTE_FOLHA):
     """Folha de contato de 19.2 d: 40 linhas aceitas sorteadas (default_rng(20261119), sobre a lista ordenada por id), a
     janela que o modelo recebe, com o contorno da máscara do curso (magenta) e a caixa (vermelho). CSV ao lado, com o
     `veredito` vazio."""
     import deteccao_r5 as E
     from PIL import Image, ImageDraw
     with open(tabela, encoding="utf-8", newline="") as f:
-        T = sorted((r for r in csv.DictReader(f) if r["metodo"] != "sem_prato"), key=lambda r: r["id"])
+        T = sorted((r for r in csv.DictReader(f) if r["metodo"] == ACEITA), key=lambda r: r["id"])
     with open(LISTA, encoding="utf-8", newline="") as f:
         L = {f"ext:{CHAVE}:{r['dish_id']}": r for r in csv.DictReader(f)}
-    esc = sorted(np.random.default_rng(SEMENTE_FOLHA).choice(len(T), N_FOLHA, replace=False))
+    esc = sorted(np.random.default_rng(semente).choice(len(T), N_FOLHA, replace=False))
     lado, cols = (400, 300), 5
     folha = Image.new("RGB", (cols * lado[0], (N_FOLHA // cols) * (lado[1] + 18)), "white")
     d = ImageDraw.Draw(folha)
@@ -226,6 +263,9 @@ def autoteste():
     assert cx == (0, 0, 100, 100) and abs(pureza - 0.5) < 1e-9          # pureza 0,5: aceita no limite (a bandeja já sai pela área)
     assert escolhe(np.array([vizinho], float), cur, qualquer)[0] is None             # só o prato vizinho: sem_prato
     assert escolhe(np.array([[18, 18, 31, 42]], float), cur, qualquer)[0] is None     # cobre 0,5 < 0,6
+    cx, _, _, n = escolhe(np.array([prato, dois], float), cur, qualquer, PUREZA_MIN_19_9)
+    assert cx == (10, 10, 50, 50) and n == 1                            # 19.9: a caixa de dois pratos (pureza 0,5) não entra na união
+    assert escolhe(np.array([dois], float), cur, qualquer, PUREZA_MIN_19_9)[3] == 0        # só ela: nenhuma caixa -> sem_prato
     import deteccao_r5 as E
     cp, _ = caixas_prato([[0, 0, 640, 480], [10, 10, 200, 200], [12, 12, 198, 199], [300, 300, 400, 400]], [0.9, 0.5, 0.4, 0.3], [5, 5, 6, 2], 640, 480)
     assert len(cp) == 1 and tuple(cp[0]) == (10, 10, 200, 200)       # a bandeja sai (área), o NMS junta as duas, "a food tray" (2) não é prato
@@ -245,6 +285,8 @@ if __name__ == "__main__":
     elif a[:1] == ["detecta"] and len(a) >= 2:
         cmd_detecta(a[1], op("--saida", TABELA), op("--cache", os.path.join(os.path.expanduser("~"), ".cache", "nutrelle_hf")), int(op("--limite", 0)) or None)
     elif a[:1] == ["folha"] and len(a) >= 3:
-        cmd_folha(a[1], a[2], op("--tabela", TABELA))
+        cmd_folha(a[1], a[2], op("--tabela", TABELA), int(op("--semente", SEMENTE_FOLHA)))
+    elif a[:1] == ["refaz"] and len(a) >= 2:
+        cmd_refaz(a[1], op("--tabela", TABELA), op("--saida", TABELA))
     else:
         sys.exit(__doc__)

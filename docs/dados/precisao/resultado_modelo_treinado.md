@@ -4252,6 +4252,17 @@ Tudo sobre features congeladas do So400m no recorte, como na sétima. Nenhum aju
 - **Todo o resto de 19.2 a 19.7 fica igual:** R11, leituras, condições da leitura 3, expectativas.
 - **Se a folha nova reprovar, a execução 11 termina aí,** sem terceira tentativa: o resultado fica escrito como o desfecho da execução.
 
+### 19.10 A tabela refeita e a segunda conferência: aprovada (18/11/2026)
+
+**Escrito antes do kernel e de qualquer leitura. Nenhum rótulo foi aberto.**
+- **Conferência do caminho:** refeita das caixas brutas com a pureza antiga (0,50), a tabela sai **idêntica** à de 19.8 (0 diferenças em método e caixa; nenhuma linha tinha batido no teto de 40 caixas brutas). O recálculo só muda o limiar.
+- **Tabela com a emenda** (`flic_cursos.py refaz`; sha256 `04d3a0cf…`): **1.168 linhas com janela**, 142 `sem_prato`, 16 `impuro` (eram 1.212 e 114). Saem 44 linhas a mais: 31 do segundo prato e 13 dos outros dois.
+- **Divisão refeita:** 1.078 linhas de treino (5 folds de 4 dias), 90 de teste (os mesmos 2 dias), 158 fora.
+- **Folha nova** (`default_rng(20261120)`; `folha_r11b_flic.jpg`, sha256 `8959605c…`; vereditos em `folha_r11b_flic_veredito.csv`, sha256 `f129f73d…`; no scratchpad):
+  - **39 certas, 0 erradas, 1 folgada** (14, `2024-07-09_1202_left_second`: a caixa pega o prato e um copo ao lado, sem outra comida);
+  - a 15 (pizza maior que o prato, `cobre` 0,86) está certa: a fatia inteira fica na janela.
+- **Pela régua de 19.2 d: aprovada** (36 certas ou mais, no máximo 1 errada). O kernel pode rodar.
+
 
 
 ## Reproduzir
