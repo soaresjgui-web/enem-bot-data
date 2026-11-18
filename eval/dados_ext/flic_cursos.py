@@ -66,9 +66,10 @@ def cmd_confere(dados):
 
 
 def cmd_espelho(dados, pasta, usuario):
-    """Pasta plana para `kaggle datasets create`: um link físico por PNG (não ocupa disco), com o nome do espelho."""
+    """Pasta plana para `kaggle datasets create`: um link físico por foto (não ocupa disco), com o nome do espelho. Só as
+    fotos: o kernel não usa as máscaras (e o Kaggle recusou criar o dataset com os 1.604 arquivos de uma vez)."""
     with open(FOTOS, encoding="utf-8", newline="") as f:
-        F = list(csv.DictReader(f))
+        F = [r for r in csv.DictReader(f) if r["arquivo"].split("/")[0].endswith("_images")]
     os.makedirs(pasta, exist_ok=True)
     for r in F:
         dest = os.path.join(pasta, r["espelho"])
@@ -76,7 +77,7 @@ def cmd_espelho(dados, pasta, usuario):
             os.link(os.path.join(dados, r["arquivo"]), dest)
         assert os.path.getsize(dest) == int(r["bytes"])
     meta = dict(title="nutrelle-flic-fotos", id=f"{usuario}/nutrelle-flic-fotos", licenses=[dict(name="CC-BY-4.0")], isPrivate=True,
-                description="Espelho das fotos e máscaras do FLIC (Piccoli et al., Applied Sciences 2026, 16(11), 5465, "
+                description="Espelho das fotos do FLIC (sem as máscaras) (Piccoli et al., Applied Sciences 2026, 16(11), 5465, "
                             "https://doi.org/10.3390/app16115465), CC BY 4.0, para o treino da seção 19. Pasta plana: "
                             "<pasta>__<arquivo>.png. Atribuição obrigatória.")
     json.dump(meta, open(os.path.join(pasta, "dataset-metadata.json"), "w"), indent=1, ensure_ascii=False)

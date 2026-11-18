@@ -4212,7 +4212,7 @@ Tudo sobre features congeladas do So400m no recorte, como na sétima. Nenhum aju
 
 **a) O que foi feito, sem rótulo.**
 - **Fotos:** as 1.604 PNG da pasta do Drive (401 em cada pasta), todas conferidas (assinatura, decodificação inteira, tamanho e sha256) em `eval/dados_ext/flic_fotos.csv`; 287,6 MB, todas 640 × 480.
-- **Espelho privado** `nutrelle-flic-fotos` (CC-BY-4.0, pasta plana `<pasta>__<arquivo>.png`, `flic_cursos.py espelho`): enviado ao Kaggle; o kernel confere cada foto pelo tamanho e sha256 da lista.
+- **Espelho privado** `nutrelle-flic-fotos` (CC BY 4.0, privado, pasta plana `<pasta>__<arquivo>.png`, `flic_cursos.py espelho`): as 802 fotos, sem as máscaras, que o kernel não usa (com os 1.604 arquivos, a criação do dataset falhou duas vezes no servidor do Kaggle). A listagem da API confere os 802 nomes e tamanhos com `flic_fotos.csv`; o kernel confere o sha256 de cada foto antes de usar.
 - **Lista por curso** (`externo_flic_curso.csv`): 1.326 linhas (foto × curso; 1.006 antes da refeição e 320 sobras), 1.007 pratos, 400 bandejas, 22 dias; 102 linhas nos 2 dias de teste. Ficaram fora 1.026 cursos com menos de 10 g e 54 pesados mas invisíveis na máscara.
 - **Detector na CPU** (OWLv2 da etapa 0, 617 fotos, 31 min), regra de 19.2 c com a emenda (união das caixas do curso): **1.212 linhas com janela e 114 `sem_prato`** (105 delas são o segundo prato, quase sempre dividindo o prato com o acompanhamento, o que derruba a pureza). Tabela: `listas/caixas_r5_flic_curso.csv`.
 - **Divisão** (`externo_r11_divide.py`): 1.122 linhas de treino em 5 folds de 4 dias, 90 de teste (dias `2024-07-11` e `2024-07-16`), 114 fora.
