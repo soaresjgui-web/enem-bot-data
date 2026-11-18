@@ -4264,6 +4264,38 @@ Tudo sobre features congeladas do So400m no recorte, como na sétima. Nenhum aju
 - **Pela régua de 19.2 d: aprovada** (36 certas ou mais, no máximo 1 errada). O kernel pode rodar.
 - **Ensaio de ponta a ponta na CPU, antes da GPU** (`--rodada 11 --smoke`, backbone minúsculo, fotos sintéticas nas cinco bases antigas e fotos reais do FLIC): as 21 etapas completas; previsões do FLIC no treino e na parte segurada, finitas; pesos por base como em 19.2 e (FLIC 0,15/1,15 = 0,130; as outras pelo mesmo fator); sem viés por domínio no FLIC; `feat11__flic_curso__recorte.npy` gravado; `ingere_kaggle.py --so-confere` aceita as 8 configurações. A paridade falha, como devia com outro backbone, e o kernel marca tudo como não confiável. O caminho do espelho (tamanho e sha256 conferidos; foto diferente cai para a rede) foi testado à parte.
 
+### 19.11 O kernel e a regra R11 (18/11/2026)
+
+**Escrito antes de ler os dias de teste do FLIC e antes das condições da leitura 3.**
+
+**a) O kernel** `nutrelle-treino-gpu-r11` (versão 1, 2 × T4, **50 min**, nada cortado).
+- As 582 fotos do FLIC que a lista usa vieram do espelho, todas conferidas por tamanho e sha256, sem download.
+- **Paridade com a sétima: exata.** Correlação de 1,00000 na massa (1 e 8 orientações) e nas duas densidades; critério r1 de 68,21% (esperado 68,21 ± 0,3).
+- `ingere_kaggle.py --so-confere`: as 8 configurações aceitas, nenhuma recusada; a paridade refeita aqui também passa.
+- O S7′ (R4c11 × H-cap11) repete os números registrados do S7: N_c 71,36, > 25 g 55,63, O cru 59,63, M cru 59,23.
+
+**b) A R11 (`r11_avalia.py --so-cv`, só validação cruzada).** Rota r4, 4 orientações. F_m e F_p nas 1.078 linhas de treino do FLIC, cada uma prevista pelo modelo do fold em que o dia dela valida.
+
+| | N_c | > 25 g | O cru | M cru | F_m (massa ±20%) | viés da massa | F_p (fraca) |
+|---|---|---|---|---|---|---|---|
+| **S7′** | 71,36 | 55,63 | 59,63 | 59,23 | 30,1% | +39% | 51,7% |
+| S11a (FLIC só na massa) | 71,33 | 55,39 | 59,10 | 58,86 | 50,0% | +1% | 52,4% |
+| **S11b** (FLIC na massa e na densidade fraca) | 71,34 | 56,13 | 59,18 | 58,86 | 50,0% | +1% | **60,4%** |
+
+- **Contra o S7′:**
+  - S11a: N_c −0,03 (IC −0,99 a +0,86); > 25 g −0,24 (IC −2,16 a +1,54); F_m **+19,9** (IC por dia +13,2 a +25,7); F_p fraca +0,8 (IC −3,5 a +4,6).
+  - S11b: N_c −0,02 (IC −1,00 a +0,90); > 25 g +0,49 (IC −1,26 a +2,27); F_m **+19,9** (IC por dia +13,2 a +25,7); F_p fraca +8,7 (IC +3,2 a +13,7).
+- **A guarda passa nos dois:** N_c, > 25 g, O cru (−0,5 e −0,4) e M cru (−0,4) dentro das margens.
+- **O ganho passa nos dois:** F_m +19,9, com o limite inferior acima de zero.
+- **S11b contra S11a:** F_p fraca +7,9 (IC por dia +3,0 a +13,2), N_c 0,01 acima.
+- **Pela regra 19.4 (3): o S11b substitui o S11a. Adotado: S11b** (R4c+F × H-cap+F, rota r4, 4 orientações).
+- **Sementes** (N_c, r4, 4 orientações): H-cap11 70,45 / 71,43 / 70,89; H-cap/F 70,87 / 71,46 / 71,14; H-cap+F 71,72 / 71,08 / 71,31.
+- **Massa só com dados liberados:** R1c11 → R1c+F: M cru 51,68 → 50,32; F_m 28,8% → 50,8% (viés +32% → +2%).
+- **Leitura honesta:**
+  - na Nutrition5k e nas outras bases, o S11b é o S7: todas as diferenças estão dentro do ruído das sementes;
+  - **o ganho é só no cenário do FLIC:** o S7 lia os pratos de refeitório com porção de criança 39% acima do pesado, e o S11 acerta a mediana;
+  - o ganho de proteína do S11b é em rótulo **fraco** (prato do cardápio → tabela): ele aprende a tabela de 22 cardápios, não a densidade medida.
+
 
 
 ## Reproduzir
