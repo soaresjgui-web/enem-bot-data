@@ -4262,6 +4262,7 @@ Tudo sobre features congeladas do So400m no recorte, como na sétima. Nenhum aju
   - **39 certas, 0 erradas, 1 folgada** (14, `2024-07-09_1202_left_second`: a caixa pega o prato e um copo ao lado, sem outra comida);
   - a 15 (pizza maior que o prato, `cobre` 0,86) está certa: a fatia inteira fica na janela.
 - **Pela régua de 19.2 d: aprovada** (36 certas ou mais, no máximo 1 errada). O kernel pode rodar.
+- **Ensaio de ponta a ponta na CPU, antes da GPU** (`--rodada 11 --smoke`, backbone minúsculo, fotos sintéticas nas cinco bases antigas e fotos reais do FLIC): as 21 etapas completas; previsões do FLIC no treino e na parte segurada, finitas; pesos por base como em 19.2 e (FLIC 0,15/1,15 = 0,130; as outras pelo mesmo fator); sem viés por domínio no FLIC; `feat11__flic_curso__recorte.npy` gravado; `ingere_kaggle.py --so-confere` aceita as 8 configurações. A paridade falha, como devia com outro backbone, e o kernel marca tudo como não confiável. O caminho do espelho (tamanho e sha256 conferidos; foto diferente cai para a rede) foi testado à parte.
 
 
 
