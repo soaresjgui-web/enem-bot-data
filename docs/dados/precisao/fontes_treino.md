@@ -861,3 +861,18 @@ curl -s https://storage.googleapis.com/openimages/v5/train-annotations-human-ima
 ```
 
 Scripts de apoio, amostras e listagens desta sessão ficaram em `<scratchpad>/fontes_treino/` (fora do repositório).
+
+## 14. FLIC aberto (18/11/2026)
+
+A fundadora abriu o artigo no navegador e passou o link da pasta: `https://drive.google.com/drive/folders/1IGCjr7y-_zsZfHTsL4CyxdkspTp8Uhnt`. Daqui, o Google Drive agora abre (a listagem completa vem de `embeddedfolderview`, e os arquivos de `drive.usercontent.google.com`).
+
+| Item | O que há |
+|---|---|
+| Licença | **CC BY 4.0** (`LICENSE.txt`; `README.txt`: "2026-10-05 [v1.1] - Licensing and data available"). **Uso comercial permitido**, com atribuição. É a segunda base pesada com licença comercial, depois da Nutrition5k (a GT Mensa também é CC BY, mas tem 200 fotos) |
+| Arquivos | `FLIC_grams.csv` (401 bandejas: gramas e pixels de cada curso, antes e depois), `FLIC_menu.csv` (22 dias: primeiro e segundo prato em italiano e inglês), e quatro pastas de PNG soltos (não zips): `full_images`, `full_masks`, `left_images`, `left_masks`, 401 cada. Identificadores em `eval/dados_ext/flic_arquivos.csv` |
+| Fotos | 640 × 480, câmera fixa **de cima**, bandeja inteira com pratos de papel; ~365 KB cada. A máscara é por curso (primeiro, segundo, acompanhamento, pão), em cores |
+| Cabeçalhos com erro no original | No cardápio, as colunas 3 e 4 são o primeiro e o segundo prato **em inglês** (o cabeçalho diz `First_ita,Second_eng`); nos gramas, o segundo prato cheio é `Second_gull_*`. O montador lê por posição e confere |
+| Lista | `eval/dados_ext/flic_monta.py` → `listas/externo_flic.csv`: **680 fotos** (401 cheias e 279 sobras com 10 g ou mais; 122 sobras quase vazias ficam de fora), 22 dias, massa mediana de 312 g, **proteína fraca acima de 25 g em 294 fotos**. Divisão por dia (hash, como as outras): 2 dias de teste (51 fotos) |
+| Proteína | **Fraca**: prato do cardápio → tabela (mapa no próprio montador, confiança A a C). A **massa é medida**. Segundos pratos: porco assado, presunto, sobrecoxa de frango, frango e peru em pedaços, bacalhau, linguado, sépia, omeletes, parmesão, bolinhos de leguminosa, flan de lentilha, torta de acelga. O acompanhamento não tem nome no cardápio (vai como legume) |
+| Ressalvas | Colônia de férias: porções de criança e adolescente. Sobrecoxa com osso (densidade por grama pesado superestimada; confiança C). Comida italiana, não brasileira |
+
