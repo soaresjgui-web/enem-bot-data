@@ -1,0 +1,2871 @@
+prato_id,componente,gramas,proteina_g,grupo,origem,confianca
+b001,Bife bovino,93.0,30.13,proteina_animal,ufpr,B
+b002,Filé de peixe,64.0,17.02,proteina_animal,ufpr,B
+b003,Baião de dois,163.0,10.11,misto,ufpr,A
+b004,Baião de dois,252.0,15.62,misto,ufpr,A
+b005,Salame,35.0,9.03,proteina_animal,ufpr,A
+b006,Filé de frango,76.0,24.32,proteina_animal,ufpr,B
+b007,Salame,92.0,23.74,proteina_animal,ufpr,A
+b008,Macarronada,70.0,3.43,amido,ufpr,B
+b009,Filé mignon em pedaços,137.0,44.94,proteina_animal,ufpr,A
+b010,Vaca atolada,527.0,26.88,misto,ufpr,A
+b011,Camarão médio sem casca,59.0,11.21,proteina_animal,ufpr,A
+b012,Bife bovino,153.0,49.57,proteina_animal,ufpr,B
+b013,Arroz branco cozido,403.0,10.07,amido,ufpr,A
+b014,Filé mignon em pedaços,285.0,93.48,proteina_animal,ufpr,A
+b015,Arroz branco cozido,239.0,5.97,amido,ufpr,A
+b016,Presunto em fatias,158.0,22.59,proteina_animal,ufpr,A
+b017,Lentilha cozida,75.0,4.72,leguminosa,ufpr,A
+b018,Vaca atolada,136.0,6.94,misto,ufpr,A
+b019,Torresmo,83.0,22.66,proteina_animal,ufpr,C
+b020,Feijoada,402.0,34.97,misto,ufpr,C
+b021,Presunto em fatias,59.0,8.44,proteina_animal,ufpr,A
+b022,Feijoada,734.0,63.86,misto,ufpr,C
+b023,Filé de frango,158.0,50.56,proteina_animal,ufpr,B
+b024,Bife bovino,55.0,17.82,proteina_animal,ufpr,B
+b026,Torresmo,62.0,16.93,proteina_animal,ufpr,C
+b027,Estrogonofe,100.0,17.6,misto,ufpr,C
+b028,Baião de dois,37.0,2.29,misto,ufpr,A
+b029,Presunto em fatias,97.0,13.87,proteina_animal,ufpr,A
+b031,Camarão pequeno,91.0,17.29,proteina_animal,ufpr,A
+b032,Filé de frango,102.0,32.64,proteina_animal,ufpr,B
+b033,Feijão (sem caldo),210.0,10.08,leguminosa,ufpr,A
+b034,Filé de peixe,199.0,52.93,proteina_animal,ufpr,B
+b035,Bife bovino,310.0,100.44,proteina_animal,ufpr,B
+b036,Camarão pequeno,223.0,42.37,proteina_animal,ufpr,A
+b037,Feijão (sem caldo),360.0,17.28,leguminosa,ufpr,A
+b038,Baião de dois,68.0,4.22,misto,ufpr,A
+b039,Torresmo,33.0,9.01,proteina_animal,ufpr,C
+b040,Baião de dois,115.0,7.13,misto,ufpr,A
+b041,Salame,23.0,5.93,proteina_animal,ufpr,A
+b042,Macarronada,310.0,15.19,amido,ufpr,B
+b043,Salame,149.0,38.44,proteina_animal,ufpr,A
+b044,Filé de frango,34.0,10.88,proteina_animal,ufpr,B
+b045,Filé de frango,22.0,7.04,proteina_animal,ufpr,B
+b046,Carne seca,150.0,40.35,proteina_animal,ufpr,A
+b047,Arroz branco cozido,318.0,7.95,amido,ufpr,A
+b048,Macarronada,140.0,6.86,amido,ufpr,B
+b049,Filé mignon em pedaços,216.0,70.85,proteina_animal,ufpr,A
+b050,Carne de porco em fatias,172.0,55.21,proteina_animal,ufpr,B
+b051,Filé de peixe,151.0,40.17,proteina_animal,ufpr,B
+b052,Filé de peixe,285.0,75.81,proteina_animal,ufpr,B
+b053,Feijão (sem caldo),80.0,3.84,leguminosa,ufpr,A
+b054,Filé de peixe,97.0,25.8,proteina_animal,ufpr,B
+b055,Camarão médio sem casca,120.0,22.8,proteina_animal,ufpr,A
+b056,Feijoada,236.0,20.53,misto,ufpr,C
+b057,Camarão pequeno,157.0,29.83,proteina_animal,ufpr,A
+b058,Presunto em fatias,34.0,4.86,proteina_animal,ufpr,A
+b059,Carne de porco em fatias,89.0,28.57,proteina_animal,ufpr,B
+b060,Brócolis,182.0,3.82,vegetal,ufpr,A
+b061,Bife bovino,180.0,58.32,proteina_animal,ufpr,B
+b062,Feijoada,568.0,49.42,misto,ufpr,C
+b063,Arroz branco cozido,112.0,2.8,amido,ufpr,A
+b064,Estrogonofe,260.0,45.76,misto,ufpr,C
+b065,Feijão (com caldo),105.0,4.72,leguminosa,ufpr,B
+b066,Camarão médio sem casca,273.0,51.87,proteina_animal,ufpr,A
+b067,Presunto em fatias,18.0,2.57,proteina_animal,ufpr,A
+b069,Feijão (sem caldo),140.0,6.72,leguminosa,ufpr,A
+b070,Salame,118.0,30.44,proteina_animal,ufpr,A
+b071,Carne seca,102.0,27.44,proteina_animal,ufpr,A
+b073,Feijão (com caldo),174.0,7.83,leguminosa,ufpr,B
+b074,Torresmo,48.0,13.1,proteina_animal,ufpr,C
+b075,Camarão médio sem casca,187.0,35.53,proteina_animal,ufpr,A
+b077,Baião de dois,380.0,23.56,misto,ufpr,A
+b078,Torresmo,106.0,28.94,proteina_animal,ufpr,C
+b079,Carne de porco em fatias,111.0,35.63,proteina_animal,ufpr,B
+b080,Carne seca,63.0,16.95,proteina_animal,ufpr,A
+b081,Lentilha cozida,189.0,11.91,leguminosa,ufpr,A
+b082,Filé mignon em pedaços,163.0,53.46,proteina_animal,ufpr,A
+b083,Salame,56.0,14.45,proteina_animal,ufpr,A
+b084,Camarão médio sem casca,366.0,69.54,proteina_animal,ufpr,A
+b085,Macarronada,400.0,19.6,amido,ufpr,B
+b086,Mandioca cozida,149.0,0.89,amido,ufpr,A
+b087,Macarronada,220.0,10.78,amido,ufpr,B
+b088,Filé de frango,49.0,15.68,proteina_animal,ufpr,B
+b089,Batata frita,184.0,9.2,amido,ufpr,A
+b090,Carne seca,229.0,61.6,proteina_animal,ufpr,A
+b091,Carne de porco em fatias,225.0,72.22,proteina_animal,ufpr,B
+b092,"Batata inglesa cozida, pedaços grandes",228.0,2.74,amido,ufpr,A
+b094,Vaca atolada,288.0,14.69,misto,ufpr,A
+b095,Arroz branco cozido,60.0,1.5,amido,ufpr,A
+b096,Feijoada,70.0,6.09,misto,ufpr,C
+b097,Camarão médio sem casca,86.0,16.34,proteina_animal,ufpr,A
+b098,Batata-doce cozida,198.0,1.19,amido,ufpr,A
+b099,Feijão (sem caldo),280.0,13.44,leguminosa,ufpr,A
+b100,Carne seca,22.0,5.92,proteina_animal,ufpr,A
+b101,Camarão pequeno,289.0,54.91,proteina_animal,ufpr,A
+b102,Batata frita,97.0,4.85,amido,ufpr,A
+b104,Arroz branco cozido,171.0,4.28,amido,ufpr,A
+b105,Presunto em fatias,200.0,28.6,proteina_animal,ufpr,A
+b106,Carne de porco em fatias,53.0,17.01,proteina_animal,ufpr,B
+b107,Filé mignon em pedaços,48.0,15.74,proteina_animal,ufpr,A
+b108,Bife bovino,235.0,76.14,proteina_animal,ufpr,B
+b109,Carne seca,37.0,9.95,proteina_animal,ufpr,A
+b110,Filé mignon em pedaços,82.0,26.9,proteina_animal,ufpr,A
+d0001,cantaloupe,70.0,0.56,vegetal,n5k_v2,A
+d0001,sweet potato,80.0,0.8,amido,n5k_v2,A
+d0001,eggs,111.0,13.875,proteina_animal,n5k_v2,A
+d0001,cauliflower,64.0,1.152,vegetal,n5k_v2,A
+d0002,kale,28.9,0.955,vegetal,n5k_v2,A
+d0002,croutons,0.2,0.027,outros,n5k_v2,A
+d0002,caesar dressing,4.8,0.154,gordura_molho,n5k_v2,A
+d0002,roasted potatoes,114.0,2.394,amido,n5k_v2,A
+d0002,parmesan cheese,3.0,1.157,laticinio,n5k_v2,A
+d0003,bell peppers,10.2,0.204,vegetal,n5k_v2,A
+d0003,cauliflower,89.0,1.602,vegetal,n5k_v2,A
+d0003,beef,58.0,15.089,proteina_animal,n5k_v2,A
+d0003,jalapenos,4.1,0.037,vegetal,n5k_v2,A
+d0003,spinach (raw),4.1,0.118,vegetal,n5k_v2,A
+d0003,brussels sprouts,86.6,2.944,vegetal,n5k_v2,A
+d0003,onions,6.0,0.066,vegetal,n5k_v2,A
+d0003,olive oil,5.3,0.0,gordura_molho,n5k_v2,A
+d0003,pepper,0.5,0.01,gordura_molho,n5k_v2,A
+d0003,garlic,2.0,0.13,vegetal,n5k_v2,A
+d0003,salt,2.5,0.0,gordura_molho,n5k_v2,A
+d0003,shallots,3.9,0.058,vegetal,n5k_v2,A
+d0003,spinach (cooked),1.9,0.058,vegetal,n5k_v2,A
+d0003,chicken,81.5,25.264,proteina_animal,n5k_v2,A
+d0003,bok choy,1.9,0.029,vegetal,n5k_v2,A
+d0003,millet,28.1,0.984,amido,n5k_v2,A
+d0003,vinegar,0.1,0.0,gordura_molho,n5k_v2,A
+d0003,cheese pizza,89.0,9.968,misto,n5k_v2,A
+d0003,tomatoes,10.2,0.071,vegetal,n5k_v2,A
+d0003,fried rice,90.0,4.23,misto,n5k_v2,A
+d0004,salt,0.8,0.0,gordura_molho,n5k_v2,A
+d0004,pepper,0.1,0.001,gordura_molho,n5k_v2,A
+d0004,brussels sprouts,46.2,1.572,vegetal,n5k_v2,A
+d0004,olive oil,1.9,0.0,gordura_molho,n5k_v2,A
+d0004,squash,139.1,1.252,vegetal,n5k_v2,A
+d0004,pineapple,91.0,0.455,vegetal,n5k_v2,A
+d0004,cheese pizza,55.0,6.16,misto,n5k_v2,A
+d0005,scrambled eggs,192.5,19.25,proteina_animal,n5k_v2,B
+d0005,salsa,38.5,0.578,gordura_molho,n5k_v2,B
+d0006,chicken,137.0,42.47,proteina_animal,n5k_v2,A
+d0006,mixed greens,54.0,1.188,vegetal,n5k_v2,A
+d0007,couscous,67.0,2.546,amido,n5k_v2,A
+d0007,pepper,0.1,0.002,gordura_molho,n5k_v2,A
+d0007,squash,22.0,0.198,vegetal,n5k_v2,A
+d0007,olive oil,0.7,0.0,gordura_molho,n5k_v2,A
+d0007,zucchini,22.0,0.242,vegetal,n5k_v2,A
+d0007,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0007,broccoli,22.0,0.528,vegetal,n5k_v2,A
+d0007,turnips,67.9,0.475,outros,n5k_v2,A
+d0008,grapes,94.0,0.658,vegetal,n5k_v2,A
+d0008,sausage,126.0,24.318,proteina_animal,n5k_v2,A
+d0008,potatoes,111.0,2.22,amido,n5k_v2,A
+d0009,almonds,119.0,26.656,outros,n5k_v2,A
+d0010,scrambled eggs,131.0,13.1,proteina_animal,n5k_v2,A
+d0011,olive oil,11.4,0.0,gordura_molho,n5k_v2,A
+d0011,mustard,0.8,0.03,gordura_molho,n5k_v2,A
+d0011,salt,1.3,0.0,gordura_molho,n5k_v2,A
+d0011,lettuce,13.2,0.184,vegetal,n5k_v2,A
+d0011,pumpkin seeds,5.3,1.001,outros,n5k_v2,A
+d0011,mixed greens,26.4,0.58,vegetal,n5k_v2,A
+d0011,carrot,10.5,0.095,vegetal,n5k_v2,A
+d0011,asparagus,30.0,0.66,vegetal,n5k_v2,A
+d0011,eggplant,81.4,0.814,vegetal,n5k_v2,A
+d0011,arugula,39.5,1.028,vegetal,n5k_v2,A
+d0011,vinegar,5.3,0.0,gordura_molho,n5k_v2,A
+d0012,brown rice,29.9,0.777,amido,n5k_v2,A
+d0012,arugula,6.0,0.155,vegetal,n5k_v2,A
+d0012,wheat berry,81.0,3.402,amido,n5k_v2,A
+d0012,pepper,7.5,0.149,gordura_molho,n5k_v2,A
+d0012,salmon,149.4,35.863,proteina_animal,n5k_v2,A
+d0012,salt,0.7,0.0,gordura_molho,n5k_v2,A
+d0012,thyme,0.2,0.011,vegetal,n5k_v2,A
+d0012,olive oil,6.6,0.0,gordura_molho,n5k_v2,A
+d0012,squash,92.7,0.835,vegetal,n5k_v2,A
+d0013,corn on the cob,67.0,2.077,amido,n5k_v2,A
+d0013,apple,154.0,0.462,vegetal,n5k_v2,A
+d0013,cauliflower,49.0,0.882,vegetal,n5k_v2,A
+d0013,grapes,123.0,0.861,vegetal,n5k_v2,A
+d0014,lettuce,83.8,1.174,vegetal,n5k_v2,A
+d0014,bell peppers,8.4,0.168,vegetal,n5k_v2,A
+d0014,cherry tomatoes,21.0,0.189,vegetal,n5k_v2,A
+d0014,onions,8.4,0.092,vegetal,n5k_v2,A
+d0014,cucumbers,41.9,0.419,vegetal,n5k_v2,A
+d0014,feta cheese,8.4,1.157,laticinio,n5k_v2,A
+d0014,vinaigrette,16.8,0.0,gordura_molho,n5k_v2,A
+d0014,olives,8.4,0.067,vegetal,n5k_v2,A
+d0014,cheese pizza,152.0,17.024,misto,n5k_v2,A
+d0015,cauliflower,92.0,1.656,vegetal,n5k_v2,A
+d0016,strawberries,91.0,0.637,vegetal,n5k_v2,A
+d0016,watermelon,79.0,0.474,vegetal,n5k_v2,A
+d0016,hash browns,55.0,1.43,amido,n5k_v2,A
+d0016,olive oil,4.1,0.0,gordura_molho,n5k_v2,A
+d0016,grapes,75.0,0.525,vegetal,n5k_v2,A
+d0016,sweet potato,34.0,0.34,amido,n5k_v2,A
+d0016,egg whites,107.0,10.7,proteina_animal,n5k_v2,A
+d0016,yam,34.0,0.543,amido,n5k_v2,A
+d0016,pineapple,83.0,0.415,vegetal,n5k_v2,A
+d0017,olive oil,2.8,0.0,gordura_molho,n5k_v2,B
+d0017,mozzarella cheese,11.2,3.135,laticinio,n5k_v2,B
+d0017,basil,2.8,0.112,vegetal,n5k_v2,B
+d0017,pizza dough,14.8,0.8,misto,n5k_v2,B
+d0017,pizza sauce,8.4,0.109,misto,n5k_v2,B
+d0018,olive oil,4.6,0.0,gordura_molho,n5k_v2,B
+d0018,mozzarella cheese,18.5,5.172,laticinio,n5k_v2,B
+d0018,basil,4.6,0.185,vegetal,n5k_v2,B
+d0018,pizza dough,24.4,1.32,misto,n5k_v2,B
+d0018,pizza sauce,13.9,0.18,misto,n5k_v2,B
+d0019,onions,57.0,0.627,vegetal,n5k_v2,A
+d0019,caesar dressing,45.0,1.44,gordura_molho,n5k_v2,A
+d0019,bell peppers,54.0,1.08,vegetal,n5k_v2,A
+d0019,carrot,34.0,0.306,vegetal,n5k_v2,A
+d0019,cherry tomatoes,74.0,0.666,vegetal,n5k_v2,A
+d0019,olives,35.0,0.28,vegetal,n5k_v2,A
+d0019,chicken,190.0,58.9,proteina_animal,n5k_v2,A
+d0019,parmesan cheese,19.0,7.296,laticinio,n5k_v2,A
+d0020,olive oil,1.1,0.0,gordura_molho,n5k_v2,B
+d0020,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0020,eggplant,119.6,1.196,vegetal,n5k_v2,B
+d0020,pesto,2.2,0.271,gordura_molho,n5k_v2,B
+d0021,olives,27.0,0.216,vegetal,n5k_v2,A
+d0021,cherry tomatoes,32.0,0.288,vegetal,n5k_v2,A
+d0022,broccoli,45.9,1.102,vegetal,n5k_v2,B
+d0022,brisket,161.9,34.0,proteina_animal,n5k_v2,B
+d0022,olive oil,0.9,0.0,gordura_molho,n5k_v2,B
+d0022,bread crumbs,0.6,0.084,amido,n5k_v2,B
+d0022,mashed potatoes,161.9,2.752,amido,n5k_v2,B
+d0022,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0022,butter,16.2,0.13,gordura_molho,n5k_v2,B
+d0022,jalapenos,0.6,0.005,vegetal,n5k_v2,B
+d0023,squash,119.3,1.073,vegetal,n5k_v2,B
+d0023,olive oil,2.2,0.0,gordura_molho,n5k_v2,B
+d0023,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0023,dates,1.5,0.037,vegetal,n5k_v2,B
+d0024,chard,21.0,0.378,vegetal,n5k_v2,A
+d0024,avocado,32.0,0.64,vegetal,n5k_v2,A
+d0024,kale,21.0,0.693,vegetal,n5k_v2,A
+d0025,honeydew melons,96.0,0.48,vegetal,n5k_v2,A
+d0025,yam,87.0,1.392,amido,n5k_v2,A
+d0025,bacon,37.0,13.69,proteina_animal,n5k_v2,A
+d0025,scrambled eggs,104.0,10.4,proteina_animal,n5k_v2,A
+d0026,cauliflower,77.0,1.386,vegetal,n5k_v2,A
+d0026,steak,118.0,29.5,proteina_animal,n5k_v2,A
+d0026,chicken,63.0,19.53,proteina_animal,n5k_v2,A
+d0027,bacon,36.0,13.32,proteina_animal,n5k_v2,B
+d0027,scrambled eggs,269.0,26.9,proteina_animal,n5k_v2,B
+d0027,broccoli,45.9,1.1,vegetal,n5k_v2,B
+d0027,olive oil,1.1,0.0,gordura_molho,n5k_v2,B
+d0028,mixed greens,9.0,0.198,vegetal,n5k_v2,A
+d0028,broccoli,68.0,1.632,vegetal,n5k_v2,A
+d0028,parmesan cheese,22.0,8.448,laticinio,n5k_v2,A
+d0029,cheese pizza,58.0,6.496,misto,n5k_v2,A
+d0029,bell peppers,1.6,0.033,vegetal,n5k_v2,A
+d0029,tomatoes,1.6,0.011,vegetal,n5k_v2,A
+d0029,zucchini,41.0,0.451,vegetal,n5k_v2,A
+d0029,lemon juice,1.7,0.007,vegetal,n5k_v2,A
+d0029,olive oil,1.0,0.0,gordura_molho,n5k_v2,A
+d0029,chayote squash,41.0,0.246,vegetal,n5k_v2,A
+d0029,jalapenos,0.7,0.006,vegetal,n5k_v2,A
+d0029,spinach (raw),0.7,0.019,vegetal,n5k_v2,A
+d0029,millet,3.3,0.115,amido,n5k_v2,A
+d0029,caesar salad,109.0,3.488,vegetal,n5k_v2,A
+d0029,garlic,0.5,0.035,vegetal,n5k_v2,A
+d0029,brussels sprouts,32.5,1.104,vegetal,n5k_v2,A
+d0029,onions,0.7,0.007,vegetal,n5k_v2,A
+d0029,salt,0.6,0.0,gordura_molho,n5k_v2,A
+d0029,parsley,0.2,0.005,vegetal,n5k_v2,A
+d0029,cucumbers,4.3,0.043,vegetal,n5k_v2,A
+d0029,tatsoi,17.4,0.382,outros,n5k_v2,A
+d0029,kale,4.3,0.143,vegetal,n5k_v2,A
+d0029,pepper,1.8,0.037,gordura_molho,n5k_v2,A
+d0029,chicken,13.1,4.063,proteina_animal,n5k_v2,A
+d0030,soy sauce,3.4,0.275,gordura_molho,n5k_v2,A
+d0030,garlic,2.1,0.136,vegetal,n5k_v2,A
+d0030,white rice,8.5,0.229,amido,n5k_v2,A
+d0030,parsley,0.2,0.006,vegetal,n5k_v2,A
+d0030,onions,1.7,0.019,vegetal,n5k_v2,A
+d0030,brown rice,68.0,1.768,amido,n5k_v2,A
+d0030,vinegar,0.9,0.0,gordura_molho,n5k_v2,A
+d0030,apple,4.3,0.013,vegetal,n5k_v2,A
+d0030,mixed greens,21.3,0.469,vegetal,n5k_v2,A
+d0030,sugar,6.4,0.0,gordura_molho,n5k_v2,A
+d0030,salt,0.5,0.0,gordura_molho,n5k_v2,A
+d0030,lemon juice,0.9,0.003,vegetal,n5k_v2,A
+d0030,olive oil,3.2,0.0,gordura_molho,n5k_v2,A
+d0030,pork,59.5,15.463,proteina_animal,n5k_v2,A
+d0030,bok choy,8.5,0.127,vegetal,n5k_v2,A
+d0030,pepper,0.2,0.004,gordura_molho,n5k_v2,A
+d0030,millet,3.4,0.12,amido,n5k_v2,A
+d0031,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0031,lettuce,3.4,0.048,vegetal,n5k_v2,A
+d0031,carrot,2.7,0.025,vegetal,n5k_v2,A
+d0031,olive oil,2.7,0.0,gordura_molho,n5k_v2,A
+d0031,mustard,0.2,0.008,gordura_molho,n5k_v2,A
+d0031,tofu,124.0,9.92,leguminosa,n5k_v2,A
+d0031,vinegar,1.4,0.0,gordura_molho,n5k_v2,A
+d0031,arugula,10.2,0.266,vegetal,n5k_v2,A
+d0031,mixed greens,6.8,0.15,vegetal,n5k_v2,A
+d0031,pumpkin seeds,1.4,0.259,outros,n5k_v2,A
+d0032,chicken,205.0,63.55,proteina_animal,n5k_v2,A
+d0032,spinach (raw),20.0,0.58,vegetal,n5k_v2,A
+d0033,tofu,41.0,3.28,leguminosa,n5k_v2,A
+d0033,cheese pizza,37.0,4.144,misto,n5k_v2,A
+d0034,garlic,2.7,0.176,vegetal,n5k_v2,A
+d0034,salt,0.5,0.0,gordura_molho,n5k_v2,A
+d0034,soy sauce,4.4,0.356,gordura_molho,n5k_v2,A
+d0034,sugar,8.2,0.0,gordura_molho,n5k_v2,A
+d0034,cucumbers,51.0,0.51,vegetal,n5k_v2,A
+d0034,pork,76.8,19.981,proteina_animal,n5k_v2,A
+d0034,pepper,0.3,0.005,gordura_molho,n5k_v2,A
+d0034,bok choy,11.0,0.165,vegetal,n5k_v2,A
+d0034,white rice,113.0,3.05,amido,n5k_v2,A
+d0035,egg whites,570.0,57.0,proteina_animal,n5k_v2,A
+d0036,apple,117.0,0.351,vegetal,n5k_v2,A
+d0037,ice cream cones,6.0,0.474,gordura_molho,n5k_v2,A
+d0037,frozen yogurt,93.0,3.813,laticinio,n5k_v2,A
+d0038,white rice,69.0,1.863,amido,n5k_v2,B
+d0038,tomatoes,31.0,0.217,vegetal,n5k_v2,B
+d0038,onions,11.3,0.124,vegetal,n5k_v2,B
+d0038,garlic,2.3,0.15,vegetal,n5k_v2,B
+d0038,chicken thighs,84.5,20.19,proteina_animal,n5k_v2,B
+d0038,chili,0.1,0.001,misto,n5k_v2,B
+d0038,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0038,water,45.7,0.0,outros,n5k_v2,B
+d0038,cream,17.1,0.48,gordura_molho,n5k_v2,B
+d0038,lemon juice,0.2,0.001,vegetal,n5k_v2,B
+d0038,cilantro,1.9,0.041,vegetal,n5k_v2,B
+d0038,ginger,1.4,0.025,vegetal,n5k_v2,B
+d0038,greek yogurt,6.3,0.634,laticinio,n5k_v2,B
+d0038,oil,0.1,0.0,gordura_molho,n5k_v2,B
+d0039,cheese,12.6,3.143,laticinio,n5k_v2,A
+d0039,scrambled eggs,251.4,25.143,proteina_animal,n5k_v2,A
+d0040,cheese pizza,38.0,4.256,misto,n5k_v2,A
+d0041,bacon,36.0,13.32,proteina_animal,n5k_v2,B
+d0041,broccoli,45.9,1.1,vegetal,n5k_v2,B
+d0041,olive oil,1.1,0.0,gordura_molho,n5k_v2,B
+d0042,cherry tomatoes,23.0,0.207,vegetal,n5k_v2,A
+d0042,apple,116.0,0.348,vegetal,n5k_v2,A
+d0042,cantaloupe,95.0,0.76,vegetal,n5k_v2,A
+d0043,sausage,69.0,13.317,proteina_animal,n5k_v2,A
+d0043,roasted potatoes,59.0,1.239,amido,n5k_v2,A
+d0043,watermelon,48.0,0.288,vegetal,n5k_v2,A
+d0044,cauliflower,26.6,0.478,vegetal,n5k_v2,B
+d0044,pickles,4.5,0.014,outros,n5k_v2,B
+d0044,coleslaw,9.1,0.091,vegetal,n5k_v2,B
+d0044,barbecue sauce,2.3,0.018,gordura_molho,n5k_v2,B
+d0044,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0044,flatbread,48.0,4.371,amido,n5k_v2,B
+d0044,oil,0.5,0.0,gordura_molho,n5k_v2,B
+d0045,raspberries,51.0,0.612,vegetal,n5k_v2,A
+d0045,cantaloupe,60.0,0.48,vegetal,n5k_v2,A
+d0045,scrambled eggs,127.0,12.7,proteina_animal,n5k_v2,A
+d0045,bacon,19.0,7.03,proteina_animal,n5k_v2,A
+d0046,caesar salad,58.0,1.856,vegetal,n5k_v2,A
+d0046,cheese pizza,122.0,13.664,misto,n5k_v2,A
+d0047,banana,14.3,0.157,vegetal,n5k_v2,B
+d0047,oats,16.0,2.701,amido,n5k_v2,B
+d0047,almond milk,59.6,0.238,laticinio,n5k_v2,B
+d0047,chia seeds,1.1,0.195,outros,n5k_v2,B
+d0048,chickpeas,20.9,1.877,leguminosa,n5k_v2,A
+d0048,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0048,garlic,0.5,0.033,vegetal,n5k_v2,A
+d0048,blueberries,7.1,0.05,vegetal,n5k_v2,A
+d0048,pepper,6.3,0.125,gordura_molho,n5k_v2,A
+d0048,pears,10.4,0.042,vegetal,n5k_v2,A
+d0048,arugula,52.1,1.355,vegetal,n5k_v2,A
+d0048,mustard,0.4,0.013,gordura_molho,n5k_v2,A
+d0048,olive oil,14.0,0.0,gordura_molho,n5k_v2,A
+d0048,parsley,1.4,0.041,vegetal,n5k_v2,A
+d0048,almonds,1.4,0.319,outros,n5k_v2,A
+d0048,vinegar,1.4,0.0,gordura_molho,n5k_v2,A
+d0048,spinach (raw),35.6,1.032,vegetal,n5k_v2,A
+d0048,lemon juice,4.2,0.017,vegetal,n5k_v2,A
+d0048,carrot,2.8,0.026,vegetal,n5k_v2,A
+d0049,bacon,22.0,8.14,proteina_animal,n5k_v2,A
+d0049,olive oil,0.9,0.0,gordura_molho,n5k_v2,A
+d0049,scrambled eggs,110.0,11.0,proteina_animal,n5k_v2,A
+d0049,broccoli,36.1,0.866,vegetal,n5k_v2,A
+d0050,fish,268.0,49.303,proteina_animal,n5k_v2,A
+d0050,cherry tomatoes,10.7,0.096,vegetal,n5k_v2,A
+d0050,salt,0.7,0.0,gordura_molho,n5k_v2,A
+d0050,wheat berry,53.6,2.251,amido,n5k_v2,A
+d0050,chard,10.7,0.193,vegetal,n5k_v2,A
+d0050,kale,13.4,0.442,vegetal,n5k_v2,A
+d0050,lemon juice,5.4,0.021,vegetal,n5k_v2,A
+d0050,parsley,2.7,0.078,vegetal,n5k_v2,A
+d0050,garlic,0.2,0.011,vegetal,n5k_v2,A
+d0050,shallots,5.4,0.08,vegetal,n5k_v2,A
+d0050,olive oil,10.7,0.0,gordura_molho,n5k_v2,A
+d0050,chive,0.7,0.022,vegetal,n5k_v2,A
+d0051,croutons,0.1,0.01,outros,n5k_v2,A
+d0051,apple,3.2,0.01,vegetal,n5k_v2,A
+d0051,mushroom,30.0,0.93,vegetal,n5k_v2,A
+d0051,vinegar,3.2,0.0,gordura_molho,n5k_v2,A
+d0051,spinach (raw),39.8,1.155,vegetal,n5k_v2,A
+d0051,parmesan cheese,1.1,0.438,laticinio,n5k_v2,A
+d0051,mustard,0.8,0.029,gordura_molho,n5k_v2,A
+d0051,onions,6.4,0.07,vegetal,n5k_v2,A
+d0051,cranberries,3.2,0.016,vegetal,n5k_v2,A
+d0051,caesar dressing,1.8,0.058,gordura_molho,n5k_v2,A
+d0051,olive oil,6.4,0.0,gordura_molho,n5k_v2,A
+d0051,kale,10.9,0.361,vegetal,n5k_v2,A
+d0051,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0052,white rice,106.0,2.862,amido,n5k_v2,A
+d0052,broccoli,99.0,2.376,vegetal,n5k_v2,A
+d0053,bacon,22.0,8.14,proteina_animal,n5k_v2,A
+d0053,scrambled eggs,84.0,8.4,proteina_animal,n5k_v2,A
+d0053,pineapple,69.0,0.345,vegetal,n5k_v2,A
+d0053,hash browns,73.0,1.898,amido,n5k_v2,A
+d0054,bacon,92.0,34.04,proteina_animal,n5k_v2,A
+d0055,sweet potato,145.4,1.454,amido,n5k_v2,A
+d0055,olive oil,3.6,0.0,gordura_molho,n5k_v2,A
+d0055,egg whites,557.0,55.7,proteina_animal,n5k_v2,A
+d0056,scrambled eggs,70.0,7.0,proteina_animal,n5k_v2,B
+d0056,roasted potatoes,34.0,0.714,amido,n5k_v2,B
+d0057,yam,46.2,0.74,amido,n5k_v2,A
+d0057,sweet potato,46.2,0.462,amido,n5k_v2,A
+d0057,cottage cheese,83.0,9.13,laticinio,n5k_v2,A
+d0057,pineapple,107.0,0.535,vegetal,n5k_v2,A
+d0057,watermelon,132.0,0.792,vegetal,n5k_v2,A
+d0057,olive oil,5.5,0.0,gordura_molho,n5k_v2,A
+d0057,berries,63.0,0.441,vegetal,n5k_v2,A
+d0058,chicken,167.0,51.77,proteina_animal,n5k_v2,A
+d0059,olives,129.0,1.032,vegetal,n5k_v2,A
+d0059,chicken,116.0,35.96,proteina_animal,n5k_v2,A
+d0059,cucumbers,101.0,1.01,vegetal,n5k_v2,A
+d0059,spinach (raw),57.0,1.653,vegetal,n5k_v2,A
+d0060,apple,6.6,0.02,vegetal,n5k_v2,A
+d0060,shallots,1.3,0.02,vegetal,n5k_v2,A
+d0060,bulgur,6.6,0.798,amido,n5k_v2,A
+d0060,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0060,lemon juice,0.7,0.003,vegetal,n5k_v2,A
+d0060,cranberries,1.3,0.007,vegetal,n5k_v2,A
+d0060,mustard greens,19.9,0.578,gordura_molho,n5k_v2,A
+d0060,olive oil,5.8,0.0,gordura_molho,n5k_v2,A
+d0060,parsley,1.3,0.039,vegetal,n5k_v2,A
+d0060,arugula,13.3,0.346,vegetal,n5k_v2,A
+d0060,broccoli,105.0,2.52,vegetal,n5k_v2,A
+d0060,squash,44.4,0.4,vegetal,n5k_v2,A
+d0060,garlic,0.3,0.021,vegetal,n5k_v2,A
+d0061,strawberries,232.0,1.624,vegetal,n5k_v2,B
+d0062,olives,67.0,0.536,vegetal,n5k_v2,A
+d0063,almonds,71.0,15.904,outros,n5k_v2,A
+d0064,squash,117.2,1.055,vegetal,n5k_v2,B
+d0064,celery,3.5,0.024,vegetal,n5k_v2,B
+d0064,carrot,3.5,0.031,vegetal,n5k_v2,B
+d0064,onions,3.5,0.038,vegetal,n5k_v2,B
+d0064,apple cider,27.9,0.028,vegetal,n5k_v2,B
+d0064,olive oil,2.2,0.0,gordura_molho,n5k_v2,B
+d0064,vinegar,1.8,0.0,gordura_molho,n5k_v2,B
+d0064,seeds,3.1,0.95,outros,n5k_v2,B
+d0064,broth,10.7,1.76,gordura_molho,n5k_v2,B
+d0064,salt,0.2,0.0,gordura_molho,n5k_v2,B
+d0064,honey,1.5,0.004,gordura_molho,n5k_v2,B
+d0064,pork,174.1,45.272,proteina_animal,n5k_v2,B
+d0065,lasagna,128.0,9.216,misto,n5k_v2,B
+d0066,pineapple,83.0,0.415,vegetal,n5k_v2,A
+d0066,watermelon,79.0,0.474,vegetal,n5k_v2,A
+d0066,grapes,75.0,0.525,vegetal,n5k_v2,A
+d0067,broccoli,71.0,1.704,vegetal,n5k_v2,A
+d0067,chicken,334.0,103.54,proteina_animal,n5k_v2,A
+d0067,mixed greens,42.0,0.924,vegetal,n5k_v2,A
+d0068,mashed potatoes,100.5,1.708,amido,n5k_v2,B
+d0068,butter,10.0,0.08,gordura_molho,n5k_v2,B
+d0068,chard,50.2,0.904,vegetal,n5k_v2,B
+d0068,celery root,50.2,0.754,vegetal,n5k_v2,B
+d0069,chicken,61.5,19.08,proteina_animal,n5k_v2,B
+d0069,tomatoes,7.7,0.054,vegetal,n5k_v2,B
+d0069,bell peppers,7.7,0.154,vegetal,n5k_v2,B
+d0069,spinach (raw),3.1,0.089,vegetal,n5k_v2,B
+d0069,onions,3.1,0.034,vegetal,n5k_v2,B
+d0069,garlic,1.5,0.098,vegetal,n5k_v2,B
+d0069,olive oil,3.1,0.0,gordura_molho,n5k_v2,B
+d0069,salt,1.5,0.0,gordura_molho,n5k_v2,B
+d0069,pepper,0.3,0.006,gordura_molho,n5k_v2,B
+d0069,jalapenos,3.1,0.028,vegetal,n5k_v2,B
+d0069,millet,15.4,0.539,amido,n5k_v2,B
+d0070,roasted potatoes,17.0,0.357,amido,n5k_v2,A
+d0070,chicken apple sausage,71.0,9.94,proteina_animal,n5k_v2,A
+d0070,grapes,81.0,0.567,vegetal,n5k_v2,A
+d0071,bagels,45.6,4.606,amido,n5k_v2,A
+d0071,cream cheese,11.4,0.707,laticinio,n5k_v2,A
+d0071,scrambled eggs,122.0,12.2,proteina_animal,n5k_v2,A
+d0072,scrambled eggs,177.0,17.7,proteina_animal,n5k_v2,B
+d0072,sausage,100.0,19.3,proteina_animal,n5k_v2,B
+d0073,garlic,0.9,0.059,vegetal,n5k_v2,A
+d0073,salmon,92.9,22.302,proteina_animal,n5k_v2,A
+d0073,pickles,0.9,0.003,outros,n5k_v2,A
+d0073,pepper,1.9,0.037,gordura_molho,n5k_v2,A
+d0073,arugula,4.6,0.121,vegetal,n5k_v2,A
+d0073,mayonnaise,14.9,0.149,gordura_molho,n5k_v2,A
+d0073,lentils,18.6,1.673,leguminosa,n5k_v2,A
+d0073,olive oil,7.1,0.0,gordura_molho,n5k_v2,A
+d0073,onions,1.6,0.018,vegetal,n5k_v2,A
+d0073,lemon juice,0.9,0.004,vegetal,n5k_v2,A
+d0073,chive,0.2,0.008,vegetal,n5k_v2,A
+d0073,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0073,broccoli,122.9,2.95,vegetal,n5k_v2,A
+d0073,spinach (cooked),1.6,0.048,vegetal,n5k_v2,A
+d0073,bok choy,1.6,0.024,vegetal,n5k_v2,A
+d0073,cherry tomatoes,4.6,0.042,vegetal,n5k_v2,A
+d0073,beef,48.1,12.508,proteina_animal,n5k_v2,A
+d0073,kale,4.6,0.153,vegetal,n5k_v2,A
+d0073,parsley,0.9,0.027,vegetal,n5k_v2,A
+d0073,vinegar,0.1,0.0,gordura_molho,n5k_v2,A
+d0073,millet,6.4,0.224,amido,n5k_v2,A
+d0073,shallots,4.1,0.062,vegetal,n5k_v2,A
+d0074,grapes,134.0,0.938,vegetal,n5k_v2,A
+d0074,almonds,68.0,15.232,outros,n5k_v2,A
+d0074,sausage,113.0,21.809,proteina_animal,n5k_v2,A
+d0075,caesar salad,120.0,3.84,vegetal,n5k_v2,A
+d0075,jalapenos,0.3,0.003,vegetal,n5k_v2,A
+d0075,pork,206.8,53.767,proteina_animal,n5k_v2,A
+d0075,pepper,0.8,0.016,gordura_molho,n5k_v2,A
+d0075,wheat berry,27.6,1.158,amido,n5k_v2,A
+d0075,mayonnaise,5.5,0.055,gordura_molho,n5k_v2,A
+d0075,brussels sprouts,71.8,2.442,vegetal,n5k_v2,A
+d0075,carrot,6.9,0.062,vegetal,n5k_v2,A
+d0075,garlic,2.8,0.176,vegetal,n5k_v2,A
+d0075,cabbage,27.6,0.358,vegetal,n5k_v2,A
+d0075,salt,0.7,0.0,gordura_molho,n5k_v2,A
+d0075,parsley,1.4,0.04,vegetal,n5k_v2,A
+d0075,lemon juice,2.8,0.011,vegetal,n5k_v2,A
+d0075,olive oil,2.1,0.0,gordura_molho,n5k_v2,A
+d0076,corn on the cob,55.0,1.705,amido,n5k_v2,A
+d0076,vinegar,3.1,0.0,gordura_molho,n5k_v2,A
+d0076,parsley,0.0,0.001,vegetal,n5k_v2,A
+d0076,sun dried tomatoes,3.1,0.431,vegetal,n5k_v2,A
+d0076,rosemary,0.0,0.001,vegetal,n5k_v2,A
+d0076,carrot,3.2,0.028,vegetal,n5k_v2,A
+d0076,salt,1.1,0.0,gordura_molho,n5k_v2,A
+d0076,garlic,4.3,0.273,vegetal,n5k_v2,A
+d0076,mustard,0.4,0.014,gordura_molho,n5k_v2,A
+d0076,cucumbers,7.7,0.077,vegetal,n5k_v2,A
+d0076,lemon juice,0.1,0.0,vegetal,n5k_v2,A
+d0076,olive oil,6.8,0.0,gordura_molho,n5k_v2,A
+d0076,chive,0.0,0.001,vegetal,n5k_v2,A
+d0076,pork,104.2,27.105,proteina_animal,n5k_v2,A
+d0076,chicken,31.7,9.812,proteina_animal,n5k_v2,A
+d0076,spinach (raw),38.4,1.115,vegetal,n5k_v2,A
+d0076,pepper,0.4,0.007,gordura_molho,n5k_v2,A
+d0076,bok choy,14.9,0.223,vegetal,n5k_v2,A
+d0076,white rice,14.9,0.402,amido,n5k_v2,A
+d0076,brown rice,3.2,0.082,amido,n5k_v2,A
+d0076,soy sauce,6.0,0.483,gordura_molho,n5k_v2,A
+d0076,chard,0.8,0.014,vegetal,n5k_v2,A
+d0076,sugar,11.2,0.0,gordura_molho,n5k_v2,A
+d0076,onions,4.6,0.051,vegetal,n5k_v2,A
+d0076,basil,0.0,0.002,vegetal,n5k_v2,A
+d0077,chicken,50.0,15.5,proteina_animal,n5k_v2,A
+d0077,kimchi,44.0,0.704,outros,n5k_v2,A
+d0077,olives,40.0,0.32,vegetal,n5k_v2,A
+d0078,broccoli,93.0,2.232,vegetal,n5k_v2,A
+d0078,scrambled eggs,210.0,21.0,proteina_animal,n5k_v2,A
+d0079,potatoes,86.0,1.72,amido,n5k_v2,A
+d0079,mandarin oranges,53.0,0.424,outros,n5k_v2,A
+d0080,pineapple,3.0,0.015,vegetal,n5k_v2,A
+d0080,chicken thighs,117.3,28.035,proteina_animal,n5k_v2,A
+d0080,vinegar,1.8,0.0,gordura_molho,n5k_v2,A
+d0080,mushroom,82.0,2.542,vegetal,n5k_v2,A
+d0080,onions,7.1,0.078,vegetal,n5k_v2,A
+d0080,lemon juice,0.7,0.003,vegetal,n5k_v2,A
+d0080,basil,0.6,0.023,vegetal,n5k_v2,A
+d0080,olive oil,1.2,0.0,gordura_molho,n5k_v2,A
+d0080,jalapenos,0.3,0.003,vegetal,n5k_v2,A
+d0080,kale,3.0,0.098,vegetal,n5k_v2,A
+d0080,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0080,radishes,2.3,0.016,vegetal,n5k_v2,A
+d0080,white rice,11.8,0.319,amido,n5k_v2,A
+d0080,brown rice,11.7,0.305,amido,n5k_v2,A
+d0080,arugula,2.9,0.076,vegetal,n5k_v2,A
+d0080,parsley,0.6,0.017,vegetal,n5k_v2,A
+d0080,steak,88.7,22.166,proteina_animal,n5k_v2,A
+d0080,thyme,0.6,0.035,vegetal,n5k_v2,A
+d0080,cilantro,0.3,0.007,vegetal,n5k_v2,A
+d0080,garlic,0.9,0.057,vegetal,n5k_v2,A
+d0080,broccoli,148.0,3.552,vegetal,n5k_v2,A
+d0081,garlic,0.1,0.005,vegetal,n5k_v2,A
+d0081,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0081,mustard,0.1,0.005,gordura_molho,n5k_v2,A
+d0081,blueberries,2.3,0.016,vegetal,n5k_v2,A
+d0081,olive oil,2.3,0.0,gordura_molho,n5k_v2,A
+d0081,tofu,156.0,12.48,leguminosa,n5k_v2,A
+d0081,spinach (raw),14.6,0.422,vegetal,n5k_v2,A
+d0081,vinegar,1.2,0.0,gordura_molho,n5k_v2,A
+d0081,radishes,2.3,0.016,vegetal,n5k_v2,A
+d0082,cherry tomatoes,2.8,0.025,vegetal,n5k_v2,A
+d0082,onions,1.1,0.012,vegetal,n5k_v2,A
+d0082,pilaf,18.0,0.45,outros,n5k_v2,A
+d0082,brown rice,11.1,0.289,amido,n5k_v2,A
+d0082,lemon juice,1.2,0.005,vegetal,n5k_v2,A
+d0082,parsley,1.6,0.047,vegetal,n5k_v2,A
+d0082,cranberries,1.4,0.007,vegetal,n5k_v2,A
+d0082,garlic,1.5,0.093,vegetal,n5k_v2,A
+d0082,basil,0.3,0.011,vegetal,n5k_v2,A
+d0082,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0082,pepper,1.1,0.022,gordura_molho,n5k_v2,A
+d0082,apple,6.8,0.02,vegetal,n5k_v2,A
+d0082,pork,83.4,21.683,proteina_animal,n5k_v2,A
+d0082,vinegar,0.6,0.0,gordura_molho,n5k_v2,A
+d0082,arugula,13.5,0.352,vegetal,n5k_v2,A
+d0082,mustard greens,20.3,0.588,gordura_molho,n5k_v2,A
+d0082,olive oil,7.6,0.0,gordura_molho,n5k_v2,A
+d0082,corn on the cob,64.0,1.984,amido,n5k_v2,A
+d0082,broccoli,2.8,0.067,vegetal,n5k_v2,A
+d0082,shallots,1.9,0.029,vegetal,n5k_v2,A
+d0082,bulgur,6.8,0.812,amido,n5k_v2,A
+d0083,egg whites,563.0,56.3,proteina_animal,n5k_v2,A
+d0083,olive oil,3.0,0.0,gordura_molho,n5k_v2,A
+d0083,sweet potato,119.0,1.19,amido,n5k_v2,A
+d0084,pineapple,145.0,0.725,vegetal,n5k_v2,A
+d0085,sausage,45.0,8.685,proteina_animal,n5k_v2,B
+d0086,brownies,23.0,1.426,outros,n5k_v2,A
+d0087,curries,277.0,33.24,misto,n5k_v2,B
+d0088,pasta salad,114.0,6.726,amido,n5k_v2,A
+d0089,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0089,arugula,40.5,1.053,vegetal,n5k_v2,A
+d0089,salt,0.9,0.0,gordura_molho,n5k_v2,A
+d0089,garlic,1.2,0.079,vegetal,n5k_v2,A
+d0089,walnuts,1.4,0.218,outros,n5k_v2,A
+d0089,cauliflower,12.4,0.223,vegetal,n5k_v2,A
+d0089,vinegar,1.4,0.0,gordura_molho,n5k_v2,A
+d0089,steak,92.8,23.203,proteina_animal,n5k_v2,A
+d0089,chard,35.7,0.643,vegetal,n5k_v2,A
+d0089,blueberries,2.9,0.02,vegetal,n5k_v2,A
+d0089,wheat berry,18.6,0.78,amido,n5k_v2,A
+d0089,olive oil,5.9,0.0,gordura_molho,n5k_v2,A
+d0089,kale,28.5,0.941,vegetal,n5k_v2,A
+d0089,mustard,0.5,0.017,gordura_molho,n5k_v2,A
+d0089,lime,1.2,0.009,vegetal,n5k_v2,A
+d0090,cauliflower,57.0,1.026,vegetal,n5k_v2,A
+d0090,orange,127.0,1.143,vegetal,n5k_v2,A
+d0090,berries,107.0,0.749,vegetal,n5k_v2,A
+d0090,pears,203.0,0.812,vegetal,n5k_v2,A
+d0091,garlic,0.3,0.022,vegetal,n5k_v2,A
+d0091,cilantro,0.7,0.015,vegetal,n5k_v2,A
+d0091,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0091,pizza,79.0,8.69,misto,n5k_v2,A
+d0091,onions,2.8,0.03,vegetal,n5k_v2,A
+d0091,lemon juice,1.4,0.006,vegetal,n5k_v2,A
+d0091,olive oil,2.8,0.0,gordura_molho,n5k_v2,A
+d0091,jalapenos,0.2,0.002,vegetal,n5k_v2,A
+d0091,pepper,2.8,0.055,gordura_molho,n5k_v2,A
+d0091,fish,68.9,12.673,proteina_animal,n5k_v2,A
+d0091,arugula,3.4,0.09,vegetal,n5k_v2,A
+d0091,quinoa,13.8,0.606,amido,n5k_v2,A
+d0091,tomatillo,6.9,0.069,vegetal,n5k_v2,A
+d0091,roasted potatoes,33.0,0.693,amido,n5k_v2,A
+d0092,yam,70.0,1.12,amido,n5k_v2,A
+d0092,scrambled eggs,94.0,9.4,proteina_animal,n5k_v2,A
+d0093,almonds,51.0,11.424,outros,n5k_v2,A
+d0094,broccoli,112.0,2.688,vegetal,n5k_v2,A
+d0095,celery,3.5,0.024,vegetal,n5k_v2,B
+d0095,carrot,3.5,0.031,vegetal,n5k_v2,B
+d0095,onions,3.5,0.038,vegetal,n5k_v2,B
+d0095,apple cider,27.9,0.028,vegetal,n5k_v2,B
+d0095,vinegar,1.8,0.0,gordura_molho,n5k_v2,B
+d0095,broth,10.7,1.76,gordura_molho,n5k_v2,B
+d0095,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0095,pork,174.1,45.272,proteina_animal,n5k_v2,B
+d0096,turkey bacon,21.0,6.111,proteina_animal,n5k_v2,A
+d0096,egg whites,105.0,10.5,proteina_animal,n5k_v2,A
+d0096,fried rice,97.0,4.559,misto,n5k_v2,A
+d0096,honeydew melons,113.0,0.565,vegetal,n5k_v2,A
+d0097,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0097,sausage,18.0,3.474,proteina_animal,n5k_v2,A
+d0097,pineapple,56.0,0.28,vegetal,n5k_v2,A
+d0097,blueberries,6.6,0.046,vegetal,n5k_v2,A
+d0097,spinach (raw),42.9,1.245,vegetal,n5k_v2,A
+d0097,parsley,0.3,0.01,vegetal,n5k_v2,A
+d0097,mustard greens,2.5,0.072,gordura_molho,n5k_v2,A
+d0097,potatoes,54.0,1.08,amido,n5k_v2,A
+d0097,berries,44.0,0.308,vegetal,n5k_v2,A
+d0097,tomatoes,1.2,0.009,vegetal,n5k_v2,A
+d0097,scrambled eggs,77.0,7.7,proteina_animal,n5k_v2,A
+d0097,vinegar,2.3,0.0,gordura_molho,n5k_v2,A
+d0097,mustard,0.5,0.017,gordura_molho,n5k_v2,A
+d0097,cucumbers,2.0,0.02,vegetal,n5k_v2,A
+d0097,almonds,1.3,0.296,outros,n5k_v2,A
+d0097,olive oil,7.3,0.0,gordura_molho,n5k_v2,A
+d0097,garlic,0.2,0.012,vegetal,n5k_v2,A
+d0097,carrot,2.6,0.024,vegetal,n5k_v2,A
+d0098,almonds,133.0,29.792,outros,n5k_v2,A
+d0099,bacon,33.0,12.21,proteina_animal,n5k_v2,A
+d0099,egg whites,275.0,27.5,proteina_animal,n5k_v2,A
+d0100,broccoli,67.0,1.608,vegetal,n5k_v2,A
+d0100,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0100,olive oil,8.9,0.0,gordura_molho,n5k_v2,A
+d0100,mustard,1.1,0.041,gordura_molho,n5k_v2,A
+d0100,onions,8.9,0.098,vegetal,n5k_v2,A
+d0100,cranberries,4.4,0.022,vegetal,n5k_v2,A
+d0100,vinegar,4.4,0.0,gordura_molho,n5k_v2,A
+d0100,spinach (raw),55.6,1.613,vegetal,n5k_v2,A
+d0100,apple,4.4,0.013,vegetal,n5k_v2,A
+d0101,broccoli,46.9,1.125,vegetal,n5k_v2,B
+d0101,brisket,79.5,16.7,proteina_animal,n5k_v2,B
+d0101,olive oil,0.9,0.0,gordura_molho,n5k_v2,B
+d0101,bread crumbs,0.6,0.085,amido,n5k_v2,B
+d0101,mashed potatoes,79.5,1.352,amido,n5k_v2,B
+d0101,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0101,butter,8.0,0.064,gordura_molho,n5k_v2,B
+d0101,jalapenos,0.6,0.005,vegetal,n5k_v2,B
+d0102,tofu,71.0,5.68,leguminosa,n5k_v2,A
+d0102,waffles,73.0,5.767,amido,n5k_v2,A
+d0103,almonds,80.0,17.92,outros,n5k_v2,A
+d0103,broccoli,31.0,0.744,vegetal,n5k_v2,A
+d0103,grapes,81.0,0.567,vegetal,n5k_v2,A
+d0104,spinach (raw),28.2,0.819,vegetal,n5k_v2,A
+d0104,vinegar,2.8,0.0,gordura_molho,n5k_v2,A
+d0104,tomatoes,3.5,0.025,vegetal,n5k_v2,A
+d0104,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0104,mustard,0.4,0.013,gordura_molho,n5k_v2,A
+d0104,garlic,0.5,0.034,vegetal,n5k_v2,A
+d0104,olive oil,5.6,0.0,gordura_molho,n5k_v2,A
+d0104,mustard greens,7.1,0.205,gordura_molho,n5k_v2,A
+d0104,cucumbers,5.6,0.056,vegetal,n5k_v2,A
+d0105,sausage,117.0,22.581,proteina_animal,n5k_v2,A
+d0106,bacon,66.0,24.42,proteina_animal,n5k_v2,A
+d0107,egg whites,433.0,43.3,proteina_animal,n5k_v2,A
+d0108,omelets,146.0,15.184,proteina_animal,n5k_v2,B
+d0109,cheese pizza,47.0,5.264,misto,n5k_v2,A
+d0110,cheese pizza,31.0,3.472,misto,n5k_v2,A
+d0111,greek yogurt,289.0,28.9,laticinio,n5k_v2,B
+d0112,almonds,116.0,25.984,outros,n5k_v2,A
+d0113,bacon,22.0,8.14,proteina_animal,n5k_v2,A
+d0113,scrambled eggs,74.0,7.4,proteina_animal,n5k_v2,A
+d0113,olive oil,2.1,0.0,gordura_molho,n5k_v2,A
+d0113,broccoli,82.9,1.99,vegetal,n5k_v2,A
+d0114,almonds,114.0,25.536,outros,n5k_v2,A
+d0115,cheese pizza,147.0,16.464,misto,n5k_v2,A
+d0116,garlic,0.2,0.013,vegetal,n5k_v2,A
+d0116,arugula,2.0,0.051,vegetal,n5k_v2,A
+d0116,quinoa,7.8,0.344,amido,n5k_v2,A
+d0116,pepper,1.6,0.031,gordura_molho,n5k_v2,A
+d0116,jalapenos,0.1,0.001,vegetal,n5k_v2,A
+d0116,squash,39.7,0.357,vegetal,n5k_v2,A
+d0116,lemon juice,0.8,0.003,vegetal,n5k_v2,A
+d0116,broccoli,39.7,0.952,vegetal,n5k_v2,A
+d0116,fish,39.1,7.189,proteina_animal,n5k_v2,A
+d0116,tomatillo,3.9,0.039,vegetal,n5k_v2,A
+d0116,olive oil,1.6,0.0,gordura_molho,n5k_v2,A
+d0116,zucchini,39.7,0.436,vegetal,n5k_v2,A
+d0116,onions,1.6,0.017,vegetal,n5k_v2,A
+d0116,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0116,cilantro,0.4,0.009,vegetal,n5k_v2,A
+d0117,grapes,28.0,0.196,vegetal,n5k_v2,A
+d0118,mixed greens,270.0,5.94,vegetal,n5k_v2,A
+d0118,grilled chicken,153.0,34.578,proteina_animal,n5k_v2,A
+d0119,scrambled eggs,103.0,10.3,proteina_animal,n5k_v2,B
+d0119,sausage,45.0,8.685,proteina_animal,n5k_v2,B
+d0119,roasted potatoes,72.0,1.512,amido,n5k_v2,B
+d0120,olive oil,1.2,0.0,gordura_molho,n5k_v2,A
+d0120,wheat berry,12.6,0.528,amido,n5k_v2,A
+d0120,thyme,0.3,0.019,vegetal,n5k_v2,A
+d0120,broccoli,46.0,1.104,vegetal,n5k_v2,A
+d0120,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0120,garlic,1.3,0.08,vegetal,n5k_v2,A
+d0120,brown rice,36.0,0.936,amido,n5k_v2,A
+d0120,parmesan cheese,3.1,1.206,laticinio,n5k_v2,A
+d0120,cherry tomatoes,6.3,0.057,vegetal,n5k_v2,A
+d0120,chicken breast,125.7,39.083,proteina_animal,n5k_v2,A
+d0120,spinach (raw),3.1,0.091,vegetal,n5k_v2,A
+d0120,pepperoni pizza,52.0,6.24,misto,n5k_v2,A
+d0120,squash,75.0,0.675,vegetal,n5k_v2,A
+d0121,mixed greens,115.0,2.53,vegetal,n5k_v2,A
+d0121,steak,182.0,45.5,proteina_animal,n5k_v2,A
+d0122,tuna salad,228.0,36.936,proteina_animal,n5k_v2,A
+d0123,brussels sprouts,78.7,2.677,vegetal,n5k_v2,A
+d0123,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0123,pepper,0.1,0.002,gordura_molho,n5k_v2,A
+d0123,olive oil,0.8,0.0,gordura_molho,n5k_v2,A
+d0124,sweet potato,128.8,1.288,amido,n5k_v2,A
+d0124,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0124,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0124,olive oil,3.8,0.0,gordura_molho,n5k_v2,A
+d0124,carrot,57.2,0.515,vegetal,n5k_v2,A
+d0124,egg whites,378.0,37.8,proteina_animal,n5k_v2,A
+d0125,pepperoni,78.0,18.018,proteina_animal,n5k_v2,A
+d0125,sandwiches,86.0,9.46,misto,n5k_v2,A
+d0126,blackberries,5.0,0.07,vegetal,n5k_v2,A
+d0126,vinaigrette,5.0,0.0,gordura_molho,n5k_v2,A
+d0126,bacon,33.0,12.21,proteina_animal,n5k_v2,A
+d0126,granola,12.4,1.242,amido,n5k_v2,A
+d0126,mixed greens,49.7,1.093,vegetal,n5k_v2,A
+d0126,egg whites,275.0,27.5,proteina_animal,n5k_v2,A
+d0126,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0126,raspberries,5.0,0.06,vegetal,n5k_v2,A
+d0126,pepper,0.1,0.002,gordura_molho,n5k_v2,A
+d0126,brussels sprouts,74.8,2.543,vegetal,n5k_v2,A
+d0126,olive oil,0.7,0.0,gordura_molho,n5k_v2,A
+d0127,onions,2.8,0.031,vegetal,n5k_v2,A
+d0127,cucumbers,7.0,0.07,vegetal,n5k_v2,A
+d0127,olive oil,5.6,0.0,gordura_molho,n5k_v2,A
+d0127,mixed greens,21.0,0.462,vegetal,n5k_v2,A
+d0127,cherry tomatoes,5.6,0.05,vegetal,n5k_v2,A
+d0127,lime,0.7,0.005,vegetal,n5k_v2,A
+d0127,lettuce,14.0,0.196,vegetal,n5k_v2,A
+d0127,eggs,152.0,19.0,proteina_animal,n5k_v2,A
+d0127,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0127,pepper,0.2,0.003,gordura_molho,n5k_v2,A
+d0127,sausage,78.0,15.054,proteina_animal,n5k_v2,A
+d0127,broccoli,60.0,1.44,vegetal,n5k_v2,A
+d0127,vinegar,2.8,0.0,gordura_molho,n5k_v2,A
+d0127,bacon,22.0,8.14,proteina_animal,n5k_v2,A
+d0128,wheat berry,19.3,0.811,amido,n5k_v2,A
+d0128,lemon juice,1.9,0.008,vegetal,n5k_v2,A
+d0128,jalapenos,0.2,0.002,vegetal,n5k_v2,A
+d0128,mayonnaise,3.9,0.039,gordura_molho,n5k_v2,A
+d0128,pepper,0.6,0.011,gordura_molho,n5k_v2,A
+d0128,brussels sprouts,64.0,2.175,vegetal,n5k_v2,A
+d0128,garlic,1.9,0.124,vegetal,n5k_v2,A
+d0128,salt,0.6,0.0,gordura_molho,n5k_v2,A
+d0128,carrot,4.8,0.043,vegetal,n5k_v2,A
+d0128,cabbage,19.3,0.251,vegetal,n5k_v2,A
+d0128,olive oil,1.6,0.0,gordura_molho,n5k_v2,A
+d0128,parsley,1.0,0.028,vegetal,n5k_v2,A
+d0128,pork,144.9,37.675,proteina_animal,n5k_v2,A
+d0129,olives,21.0,0.168,vegetal,n5k_v2,A
+d0129,chicken salad,47.0,7.99,proteina_animal,n5k_v2,A
+d0130,almonds,22.0,4.928,outros,n5k_v2,A
+d0130,grapes,42.0,0.294,vegetal,n5k_v2,A
+d0130,apple,142.0,0.426,vegetal,n5k_v2,A
+d0131,scrambled eggs,71.7,7.167,proteina_animal,n5k_v2,B
+d0131,berries,47.0,0.329,vegetal,n5k_v2,B
+d0131,grapes,3.0,0.021,vegetal,n5k_v2,B
+d0131,salsa,14.3,0.215,gordura_molho,n5k_v2,B
+d0132,vinegar,1.1,0.0,gordura_molho,n5k_v2,A
+d0132,chicken thighs,9.9,2.367,proteina_animal,n5k_v2,A
+d0132,white rice,21.1,0.57,amido,n5k_v2,A
+d0132,pineapple,5.3,0.026,vegetal,n5k_v2,A
+d0132,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0132,cilantro,0.5,0.012,vegetal,n5k_v2,A
+d0132,garlic,1.1,0.068,vegetal,n5k_v2,A
+d0132,kale,5.3,0.174,vegetal,n5k_v2,A
+d0132,olive oil,1.1,0.0,gordura_molho,n5k_v2,A
+d0132,onions,7.4,0.081,vegetal,n5k_v2,A
+d0132,lemon juice,1.1,0.004,vegetal,n5k_v2,A
+d0133,pepperoni pizza,63.0,7.56,misto,n5k_v2,A
+d0134,beef,89.3,23.23,proteina_animal,n5k_v2,A
+d0134,orange juice,0.6,0.004,vegetal,n5k_v2,A
+d0134,white rice,11.9,0.322,amido,n5k_v2,A
+d0134,soy sauce,0.6,0.048,gordura_molho,n5k_v2,A
+d0134,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0134,vinegar,0.6,0.0,gordura_molho,n5k_v2,A
+d0134,kale,3.0,0.098,vegetal,n5k_v2,A
+d0134,olive oil,0.9,0.0,gordura_molho,n5k_v2,A
+d0134,onions,1.2,0.013,vegetal,n5k_v2,A
+d0134,caesar salad,99.0,3.168,vegetal,n5k_v2,A
+d0134,garlic,0.6,0.038,vegetal,n5k_v2,A
+d0134,chili,0.6,0.011,misto,n5k_v2,A
+d0134,broccoli,6.0,0.143,vegetal,n5k_v2,A
+d0134,green onions,0.6,0.011,vegetal,n5k_v2,A
+d0135,squash,1.8,0.016,vegetal,n5k_v2,B
+d0135,avocado,31.2,0.623,vegetal,n5k_v2,B
+d0135,cheese,0.4,0.11,laticinio,n5k_v2,B
+d0135,apple,1.7,0.005,vegetal,n5k_v2,B
+d0135,radishes,5.2,0.036,vegetal,n5k_v2,B
+d0135,coleslaw,3.4,0.034,vegetal,n5k_v2,B
+d0135,onions,0.7,0.008,vegetal,n5k_v2,B
+d0135,multigrain bread,0.8,0.033,amido,n5k_v2,B
+d0135,olive oil,5.2,0.0,gordura_molho,n5k_v2,B
+d0135,bread crumbs,0.7,0.088,amido,n5k_v2,B
+d0135,eggs,0.4,0.049,proteina_animal,n5k_v2,B
+d0135,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0135,water,1.2,0.0,outros,n5k_v2,B
+d0135,jalapenos,20.8,0.187,vegetal,n5k_v2,B
+d0135,pistachios,5.2,1.09,outros,n5k_v2,B
+d0135,flatbread,17.8,1.618,amido,n5k_v2,B
+d0135,arugula,6.9,0.18,vegetal,n5k_v2,B
+d0135,lemon juice,1.7,0.007,vegetal,n5k_v2,B
+d0136,caesar salad,31.0,0.992,vegetal,n5k_v2,A
+d0136,green onions,0.5,0.009,vegetal,n5k_v2,A
+d0136,fried rice,15.0,0.705,misto,n5k_v2,A
+d0136,country rice,9.7,0.375,amido,n5k_v2,A
+d0136,olive oil,1.2,0.0,gordura_molho,n5k_v2,A
+d0136,onions,1.9,0.021,vegetal,n5k_v2,A
+d0136,squash,25.6,0.231,vegetal,n5k_v2,A
+d0136,fish,48.5,8.93,proteina_animal,n5k_v2,A
+d0136,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0136,garlic,0.2,0.016,vegetal,n5k_v2,A
+d0137,bacon,92.0,34.04,proteina_animal,n5k_v2,A
+d0138,mustard,0.2,0.008,gordura_molho,n5k_v2,A
+d0138,arugula,22.8,0.594,vegetal,n5k_v2,A
+d0138,orange,9.1,0.082,vegetal,n5k_v2,A
+d0138,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0138,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0138,lime,0.7,0.005,vegetal,n5k_v2,A
+d0138,raisins,4.6,0.142,vegetal,n5k_v2,A
+d0138,olive oil,3.7,0.0,gordura_molho,n5k_v2,A
+d0138,broccoli,74.0,1.776,vegetal,n5k_v2,A
+d0138,pecans,2.7,0.247,outros,n5k_v2,A
+d0138,wheat berry,77.0,3.234,amido,n5k_v2,A
+d0139,bacon,14.0,5.18,proteina_animal,n5k_v2,A
+d0139,olive oil,1.2,0.0,gordura_molho,n5k_v2,A
+d0139,sweet potato,46.8,0.468,amido,n5k_v2,A
+d0140,scrambled eggs,177.0,17.7,proteina_animal,n5k_v2,B
+d0141,olive oil,12.4,0.0,gordura_molho,n5k_v2,A
+d0141,bacon,19.0,7.03,proteina_animal,n5k_v2,A
+d0141,radishes,12.4,0.087,vegetal,n5k_v2,A
+d0141,vinegar,6.2,0.0,gordura_molho,n5k_v2,A
+d0141,bell peppers,15.5,0.31,vegetal,n5k_v2,A
+d0141,garlic,0.8,0.05,vegetal,n5k_v2,A
+d0141,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0141,cucumbers,15.5,0.155,vegetal,n5k_v2,A
+d0141,mustard,0.8,0.029,gordura_molho,n5k_v2,A
+d0142,chicken,64.0,19.84,proteina_animal,n5k_v2,A
+d0143,shallots,0.6,0.009,vegetal,n5k_v2,A
+d0143,fish,28.8,5.292,proteina_animal,n5k_v2,A
+d0143,corn on the cob,88.0,2.728,amido,n5k_v2,A
+d0143,mushroom,5.9,0.182,vegetal,n5k_v2,A
+d0143,ground turkey,44.0,11.009,proteina_animal,n5k_v2,A
+d0143,cream,1.2,0.033,gordura_molho,n5k_v2,A
+d0143,olive oil,1.7,0.0,gordura_molho,n5k_v2,A
+d0143,thyme,0.0,0.002,vegetal,n5k_v2,A
+d0143,onions,1.5,0.016,vegetal,n5k_v2,A
+d0143,lemon juice,0.6,0.002,vegetal,n5k_v2,A
+d0143,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0143,parsley,0.3,0.008,vegetal,n5k_v2,A
+d0143,carrot,0.7,0.007,vegetal,n5k_v2,A
+d0143,white rice,5.9,0.159,amido,n5k_v2,A
+d0143,cherry tomatoes,1.2,0.01,vegetal,n5k_v2,A
+d0143,eggs,1.7,0.206,proteina_animal,n5k_v2,A
+d0143,chard,1.2,0.021,vegetal,n5k_v2,A
+d0143,wheat berry,5.8,0.242,amido,n5k_v2,A
+d0143,kale,2.9,0.096,vegetal,n5k_v2,A
+d0143,celery,0.7,0.005,vegetal,n5k_v2,A
+d0143,chive,0.2,0.007,vegetal,n5k_v2,A
+d0143,garlic,0.1,0.006,vegetal,n5k_v2,A
+d0144,onions,6.1,0.067,vegetal,n5k_v2,A
+d0144,lime,2.4,0.017,vegetal,n5k_v2,A
+d0144,bell peppers,2.4,0.049,vegetal,n5k_v2,A
+d0144,salt,0.7,0.0,gordura_molho,n5k_v2,A
+d0144,arugula,3.6,0.095,vegetal,n5k_v2,A
+d0144,wheat berry,111.7,4.689,amido,n5k_v2,A
+d0144,olive oil,9.2,0.0,gordura_molho,n5k_v2,A
+d0144,parsley,0.3,0.009,vegetal,n5k_v2,A
+d0144,snow peas,4.9,0.243,leguminosa,n5k_v2,A
+d0144,carrot,101.5,0.914,vegetal,n5k_v2,A
+d0144,artichokes,6.1,0.201,vegetal,n5k_v2,A
+d0144,chive,0.3,0.01,vegetal,n5k_v2,A
+d0144,garlic,0.6,0.039,vegetal,n5k_v2,A
+d0144,fish,121.6,22.375,proteina_animal,n5k_v2,A
+d0144,pepper,0.2,0.004,gordura_molho,n5k_v2,A
+d0144,white beans,24.3,2.359,leguminosa,n5k_v2,A
+d0145,cucumbers,0.1,0.001,vegetal,n5k_v2,B
+d0145,corn,1.8,0.06,amido,n5k_v2,B
+d0145,coleslaw,2.7,0.027,vegetal,n5k_v2,B
+d0145,onions,0.2,0.003,vegetal,n5k_v2,B
+d0145,garlic,0.0,0.002,vegetal,n5k_v2,B
+d0145,eggs,0.3,0.036,proteina_animal,n5k_v2,B
+d0145,cornmeal,0.7,0.052,amido,n5k_v2,B
+d0145,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0145,pepper,0.0,0.0,gordura_molho,n5k_v2,B
+d0145,mangos,2.7,0.022,vegetal,n5k_v2,B
+d0145,flatbread,28.6,2.6,amido,n5k_v2,B
+d0145,zucchini,1.3,0.014,vegetal,n5k_v2,B
+d0145,milk,0.7,0.024,laticinio,n5k_v2,B
+d0145,cilantro,0.0,0.001,vegetal,n5k_v2,B
+d0145,parsley,0.1,0.002,vegetal,n5k_v2,B
+d0145,greek yogurt,2.6,0.257,laticinio,n5k_v2,B
+d0145,oil,0.2,0.0,gordura_molho,n5k_v2,B
+d0146,olive oil,1.0,0.0,gordura_molho,n5k_v2,A
+d0146,olives,54.0,0.432,vegetal,n5k_v2,A
+d0146,wild rice,118.0,5.9,amido,n5k_v2,A
+d0146,wheat berry,33.0,1.386,amido,n5k_v2,A
+d0147,sausage,75.0,14.475,proteina_animal,n5k_v2,A
+d0148,cottage cheese,176.0,19.36,laticinio,n5k_v2,A
+d0149,pears,18.7,0.075,vegetal,n5k_v2,B
+d0149,honey,6.2,0.019,gordura_molho,n5k_v2,B
+d0149,quinoa,24.9,1.095,amido,n5k_v2,B
+d0149,parsley,1.0,0.03,vegetal,n5k_v2,B
+d0149,ginger,1.6,0.028,vegetal,n5k_v2,B
+d0149,greek yogurt,18.7,1.866,laticinio,n5k_v2,B
+d0150,pineapple,78.0,0.39,vegetal,n5k_v2,A
+d0150,honeydew melons,98.0,0.49,vegetal,n5k_v2,A
+d0150,cauliflower,75.0,1.35,vegetal,n5k_v2,A
+d0151,tomatoes,95.0,0.665,vegetal,n5k_v2,A
+d0151,caesar salad,77.0,2.464,vegetal,n5k_v2,A
+d0152,turkey,130.0,37.7,proteina_animal,n5k_v2,B
+d0152,squash,97.4,0.877,vegetal,n5k_v2,B
+d0152,cucumbers,20.0,0.2,vegetal,n5k_v2,B
+d0152,olive oil,1.8,0.0,gordura_molho,n5k_v2,B
+d0152,seeds,2.6,0.79,outros,n5k_v2,B
+d0152,pita bread,30.0,2.64,amido,n5k_v2,B
+d0152,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0152,honey,1.2,0.004,gordura_molho,n5k_v2,B
+d0153,olive oil,5.6,0.0,gordura_molho,n5k_v2,B
+d0153,mozzarella cheese,22.4,6.27,laticinio,n5k_v2,B
+d0153,basil,5.6,0.224,vegetal,n5k_v2,B
+d0153,pizza dough,29.6,1.599,misto,n5k_v2,B
+d0153,pizza sauce,16.8,0.218,misto,n5k_v2,B
+d0154,chicken,100.8,31.259,proteina_animal,n5k_v2,A
+d0154,green beans,30.2,0.544,leguminosa,n5k_v2,A
+d0154,squash,5.0,0.045,vegetal,n5k_v2,A
+d0154,spinach (raw),2.5,0.073,vegetal,n5k_v2,A
+d0154,lemon juice,0.5,0.002,vegetal,n5k_v2,A
+d0154,garlic,0.5,0.032,vegetal,n5k_v2,A
+d0154,caesar salad,49.0,1.568,vegetal,n5k_v2,A
+d0154,thyme,0.3,0.015,vegetal,n5k_v2,A
+d0154,olive oil,2.8,0.0,gordura_molho,n5k_v2,A
+d0154,country rice,71.0,2.741,amido,n5k_v2,A
+d0154,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0154,pepper,0.1,0.001,gordura_molho,n5k_v2,A
+d0154,wheat berry,10.1,0.424,amido,n5k_v2,A
+d0154,parsley,0.5,0.015,vegetal,n5k_v2,A
+d0154,basil,0.3,0.01,vegetal,n5k_v2,A
+d0154,pizza,98.0,10.78,misto,n5k_v2,A
+d0154,zucchini,5.0,0.055,vegetal,n5k_v2,A
+d0154,rosemary,0.3,0.007,vegetal,n5k_v2,A
+d0155,scrambled eggs,263.8,26.381,proteina_animal,n5k_v2,A
+d0155,cheese,13.2,3.298,laticinio,n5k_v2,A
+d0156,raspberries,2.1,0.025,vegetal,n5k_v2,A
+d0156,vinaigrette,2.1,0.0,gordura_molho,n5k_v2,A
+d0156,berries,68.0,0.476,vegetal,n5k_v2,A
+d0156,granola,5.2,0.516,amido,n5k_v2,A
+d0156,blackberries,2.1,0.029,vegetal,n5k_v2,A
+d0156,mixed greens,20.6,0.454,vegetal,n5k_v2,A
+d0156,honeydew melons,41.0,0.205,vegetal,n5k_v2,A
+d0157,egg whites,398.0,39.8,proteina_animal,n5k_v2,A
+d0158,dumplings,132.0,8.184,outros,n5k_v2,B
+d0159,cheese pizza,228.0,25.536,misto,n5k_v2,A
+d0160,cheese pizza,155.0,17.36,misto,n5k_v2,A
+d0161,olive oil,3.5,0.0,gordura_molho,n5k_v2,A
+d0161,cucumbers,4.4,0.044,vegetal,n5k_v2,A
+d0161,fried rice,35.0,1.645,misto,n5k_v2,A
+d0161,caesar salad,119.0,3.808,vegetal,n5k_v2,A
+d0161,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0161,cheese pizza,68.0,7.616,misto,n5k_v2,A
+d0161,figs,4.4,0.111,vegetal,n5k_v2,A
+d0161,cherry tomatoes,4.4,0.04,vegetal,n5k_v2,A
+d0161,mustard,0.2,0.008,gordura_molho,n5k_v2,A
+d0161,chard,8.8,0.159,vegetal,n5k_v2,A
+d0161,vinegar,1.8,0.0,gordura_molho,n5k_v2,A
+d0161,spinach (raw),13.3,0.385,vegetal,n5k_v2,A
+d0162,eggs,126.0,15.75,proteina_animal,n5k_v2,A
+d0163,sausage,109.0,21.037,proteina_animal,n5k_v2,A
+d0163,scrambled eggs,383.0,38.3,proteina_animal,n5k_v2,A
+d0164,bacon,35.0,12.95,proteina_animal,n5k_v2,B
+d0165,scrambled eggs,150.0,15.0,proteina_animal,n5k_v2,A
+d0165,garden salad,61.0,3.721,vegetal,n5k_v2,A
+d0165,hash browns,89.0,2.314,amido,n5k_v2,A
+d0166,mustard,0.7,0.026,gordura_molho,n5k_v2,A
+d0166,spinach (raw),69.9,2.027,vegetal,n5k_v2,A
+d0166,olive oil,11.2,0.0,gordura_molho,n5k_v2,A
+d0166,almonds,2.8,0.626,outros,n5k_v2,A
+d0166,carrot,5.6,0.05,vegetal,n5k_v2,A
+d0166,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0166,parsley,0.7,0.02,vegetal,n5k_v2,A
+d0166,blueberries,14.0,0.098,vegetal,n5k_v2,A
+d0166,vinegar,2.8,0.0,gordura_molho,n5k_v2,A
+d0167,cheese pizza,90.0,10.08,misto,n5k_v2,A
+d0168,olive oil,2.9,0.0,gordura_molho,n5k_v2,B
+d0168,mozzarella cheese,11.5,3.213,laticinio,n5k_v2,B
+d0168,basil,2.9,0.115,vegetal,n5k_v2,B
+d0168,pizza dough,15.2,0.82,misto,n5k_v2,B
+d0168,pizza sauce,8.6,0.112,misto,n5k_v2,B
+d0169,salt,0.7,0.0,gordura_molho,n5k_v2,A
+d0169,lime,1.1,0.008,vegetal,n5k_v2,A
+d0169,broccoli,73.0,1.752,vegetal,n5k_v2,A
+d0169,squash,91.7,0.826,vegetal,n5k_v2,A
+d0169,wheat berry,7.3,0.307,amido,n5k_v2,A
+d0169,jalapenos,0.7,0.007,vegetal,n5k_v2,A
+d0169,rosemary,0.5,0.015,vegetal,n5k_v2,A
+d0169,zucchini,5.0,0.055,vegetal,n5k_v2,A
+d0169,onions,5.0,0.055,vegetal,n5k_v2,A
+d0169,spinach (raw),1.8,0.053,vegetal,n5k_v2,A
+d0169,mustard greens,14.9,0.431,gordura_molho,n5k_v2,A
+d0169,cilantro,0.7,0.016,vegetal,n5k_v2,A
+d0169,parmesan cheese,1.8,0.702,laticinio,n5k_v2,A
+d0169,thyme,0.2,0.011,vegetal,n5k_v2,A
+d0169,mangos,7.4,0.06,vegetal,n5k_v2,A
+d0169,cherry tomatoes,11.1,0.1,vegetal,n5k_v2,A
+d0169,arugula,24.8,0.645,vegetal,n5k_v2,A
+d0169,pork,75.1,19.525,proteina_animal,n5k_v2,A
+d0169,chicken breast,73.1,22.734,proteina_animal,n5k_v2,A
+d0169,cucumbers,7.4,0.074,vegetal,n5k_v2,A
+d0169,lemon juice,1.1,0.004,vegetal,n5k_v2,A
+d0169,parsley,0.3,0.007,vegetal,n5k_v2,A
+d0169,olive oil,2.4,0.0,gordura_molho,n5k_v2,A
+d0169,garlic,1.2,0.079,vegetal,n5k_v2,A
+d0169,tomatoes,7.4,0.052,vegetal,n5k_v2,A
+d0169,white rice,10.0,0.27,amido,n5k_v2,A
+d0170,bacon,29.0,10.73,proteina_animal,n5k_v2,B
+d0170,hash browns,114.0,2.964,amido,n5k_v2,B
+d0171,berries,108.0,0.756,vegetal,n5k_v2,A
+d0172,cherry tomatoes,53.0,0.477,vegetal,n5k_v2,A
+d0172,carrot,49.0,0.441,vegetal,n5k_v2,A
+d0172,bell peppers,43.0,0.86,vegetal,n5k_v2,A
+d0172,olives,36.0,0.288,vegetal,n5k_v2,A
+d0172,grilled chicken,163.0,36.838,proteina_animal,n5k_v2,A
+d0172,onions,43.0,0.473,vegetal,n5k_v2,A
+d0173,brussels sprouts,118.0,4.012,vegetal,n5k_v2,A
+d0173,honeydew melons,152.0,0.76,vegetal,n5k_v2,A
+d0173,broccoli,94.0,2.256,vegetal,n5k_v2,A
+d0174,white rice,10.3,0.279,amido,n5k_v2,A
+d0174,cauliflower,20.3,0.365,vegetal,n5k_v2,A
+d0174,soy sauce,0.5,0.042,gordura_molho,n5k_v2,A
+d0174,caesar salad,69.0,2.208,vegetal,n5k_v2,A
+d0174,steak,152.0,38.002,proteina_animal,n5k_v2,A
+d0174,spinach (raw),2.6,0.075,vegetal,n5k_v2,A
+d0174,tofu,39.0,3.12,leguminosa,n5k_v2,A
+d0174,garlic,3.1,0.196,vegetal,n5k_v2,A
+d0174,green onions,0.5,0.009,vegetal,n5k_v2,A
+d0174,broccoli,2.6,0.062,vegetal,n5k_v2,A
+d0174,salt,1.1,0.0,gordura_molho,n5k_v2,A
+d0174,chicken,103.5,32.074,proteina_animal,n5k_v2,A
+d0174,ginger,0.5,0.009,vegetal,n5k_v2,A
+d0174,green beans,2.6,0.047,leguminosa,n5k_v2,A
+d0174,wheat berry,30.4,1.277,amido,n5k_v2,A
+d0174,vinegar,0.5,0.0,gordura_molho,n5k_v2,A
+d0174,olive oil,0.5,0.0,gordura_molho,n5k_v2,A
+d0174,lime,2.0,0.014,vegetal,n5k_v2,A
+d0175,scrambled eggs,121.0,12.1,proteina_animal,n5k_v2,A
+d0175,bacon,92.0,34.04,proteina_animal,n5k_v2,A
+d0175,sausage,88.0,16.984,proteina_animal,n5k_v2,A
+d0176,scrambled eggs,149.0,14.9,proteina_animal,n5k_v2,A
+d0176,chicken apple sausage,172.0,24.08,proteina_animal,n5k_v2,A
+d0177,tuna,102.0,29.58,proteina_animal,n5k_v2,A
+d0177,chicken breast,133.0,41.363,proteina_animal,n5k_v2,A
+d0177,bell peppers,69.0,1.38,vegetal,n5k_v2,A
+d0177,cheese pizza,76.0,8.512,misto,n5k_v2,A
+d0178,olive oil,1.4,0.0,gordura_molho,n5k_v2,A
+d0178,mayonnaise,5.5,0.055,gordura_molho,n5k_v2,A
+d0178,wheat berry,27.6,1.158,amido,n5k_v2,A
+d0178,pork,206.8,53.767,proteina_animal,n5k_v2,A
+d0178,pepper,0.7,0.014,gordura_molho,n5k_v2,A
+d0178,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0178,cabbage,27.6,0.358,vegetal,n5k_v2,A
+d0178,carrot,6.9,0.062,vegetal,n5k_v2,A
+d0178,garlic,2.8,0.176,vegetal,n5k_v2,A
+d0178,lemon juice,2.8,0.011,vegetal,n5k_v2,A
+d0178,parsley,1.4,0.04,vegetal,n5k_v2,A
+d0178,jalapenos,0.3,0.003,vegetal,n5k_v2,A
+d0179,bacon,61.0,22.57,proteina_animal,n5k_v2,B
+d0180,strawberries,77.0,0.539,vegetal,n5k_v2,A
+d0180,pears,200.0,0.8,vegetal,n5k_v2,A
+d0181,mustard,0.4,0.015,gordura_molho,n5k_v2,A
+d0181,vinegar,2.6,0.0,gordura_molho,n5k_v2,A
+d0181,mixed greens,32.5,0.715,vegetal,n5k_v2,A
+d0181,celery root,2.6,0.039,vegetal,n5k_v2,A
+d0181,olive oil,5.2,0.0,gordura_molho,n5k_v2,A
+d0181,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0181,cherry tomatoes,2.6,0.023,vegetal,n5k_v2,A
+d0182,egg whites,472.0,47.2,proteina_animal,n5k_v2,A
+d0182,cantaloupe,136.0,1.088,vegetal,n5k_v2,A
+d0182,pineapple,62.0,0.31,vegetal,n5k_v2,A
+d0183,olives,21.0,0.168,vegetal,n5k_v2,A
+d0184,bacon,23.0,8.51,proteina_animal,n5k_v2,A
+d0185,mushroom,54.0,1.674,vegetal,n5k_v2,A
+d0185,asparagus,22.0,0.484,vegetal,n5k_v2,A
+d0185,pizza,103.0,11.33,misto,n5k_v2,A
+d0186,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0186,broccoli,130.7,3.138,vegetal,n5k_v2,A
+d0186,chickpeas,54.6,4.914,leguminosa,n5k_v2,A
+d0186,parsley,5.5,0.158,vegetal,n5k_v2,A
+d0186,mustard greens,13.7,0.396,gordura_molho,n5k_v2,A
+d0186,olive oil,13.6,0.0,gordura_molho,n5k_v2,A
+d0186,arugula,13.7,0.355,vegetal,n5k_v2,A
+d0186,vinegar,5.5,0.0,gordura_molho,n5k_v2,A
+d0186,pepper,5.5,0.109,gordura_molho,n5k_v2,A
+d0187,sweet potato,99.5,0.995,amido,n5k_v2,A
+d0187,egg whites,398.0,39.8,proteina_animal,n5k_v2,A
+d0187,honeydew melons,75.0,0.375,vegetal,n5k_v2,A
+d0187,olive oil,2.5,0.0,gordura_molho,n5k_v2,A
+d0188,lemon juice,0.1,0.001,vegetal,n5k_v2,A
+d0188,basil,0.3,0.012,vegetal,n5k_v2,A
+d0188,mushroom,2.9,0.091,vegetal,n5k_v2,A
+d0188,vinegar,0.1,0.0,gordura_molho,n5k_v2,A
+d0188,beef,67.2,17.471,proteina_animal,n5k_v2,A
+d0188,chicken,58.4,18.102,proteina_animal,n5k_v2,A
+d0188,millet,9.0,0.314,amido,n5k_v2,A
+d0188,spinach (cooked),2.2,0.067,vegetal,n5k_v2,A
+d0188,olives,54.0,0.432,vegetal,n5k_v2,A
+d0188,rosemary,0.2,0.005,vegetal,n5k_v2,A
+d0188,onions,2.2,0.025,vegetal,n5k_v2,A
+d0188,olive oil,1.0,0.0,gordura_molho,n5k_v2,A
+d0188,oregano,0.2,0.016,outros,n5k_v2,A
+d0188,cream,2.3,0.065,gordura_molho,n5k_v2,A
+d0188,arugula,1.5,0.038,vegetal,n5k_v2,A
+d0188,wheat berry,5.8,0.245,amido,n5k_v2,A
+d0188,pepper,0.3,0.006,gordura_molho,n5k_v2,A
+d0188,bok choy,2.2,0.034,vegetal,n5k_v2,A
+d0188,garlic,0.6,0.037,vegetal,n5k_v2,A
+d0188,shallots,4.8,0.072,vegetal,n5k_v2,A
+d0188,salt,0.7,0.0,gordura_molho,n5k_v2,A
+d0188,butter,0.6,0.005,gordura_molho,n5k_v2,A
+d0188,white wine,0.1,0.0,outros,n5k_v2,A
+d0188,thyme,0.2,0.011,vegetal,n5k_v2,A
+d0189,raspberries,57.0,0.684,vegetal,n5k_v2,A
+d0189,chicken apple sausage,39.0,5.46,proteina_animal,n5k_v2,A
+d0190,cucumbers,21.0,0.21,vegetal,n5k_v2,B
+d0190,celery,2.3,0.016,vegetal,n5k_v2,B
+d0190,carrot,2.3,0.02,vegetal,n5k_v2,B
+d0190,onions,2.3,0.025,vegetal,n5k_v2,B
+d0190,apple cider,18.2,0.018,vegetal,n5k_v2,B
+d0190,vinegar,1.2,0.0,gordura_molho,n5k_v2,B
+d0190,broth,7.0,1.15,gordura_molho,n5k_v2,B
+d0190,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0190,pork,113.8,29.578,proteina_animal,n5k_v2,B
+d0191,olive oil,2.3,0.0,gordura_molho,n5k_v2,A
+d0191,sweet potato,91.7,0.917,amido,n5k_v2,A
+d0192,hash browns,129.0,3.354,amido,n5k_v2,B
+d0193,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0193,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0193,carrot,52.2,0.47,vegetal,n5k_v2,A
+d0193,olive oil,0.5,0.0,gordura_molho,n5k_v2,A
+d0194,turkey bacon,53.0,15.423,proteina_animal,n5k_v2,A
+d0194,olive oil,1.3,0.0,gordura_molho,n5k_v2,A
+d0194,scrambled eggs,179.0,17.9,proteina_animal,n5k_v2,A
+d0194,broccoli,53.7,1.288,vegetal,n5k_v2,A
+d0195,turkey,130.0,37.7,proteina_animal,n5k_v2,B
+d0195,squash,97.4,0.877,vegetal,n5k_v2,B
+d0195,cucumbers,20.0,0.2,vegetal,n5k_v2,B
+d0195,olive oil,1.8,0.0,gordura_molho,n5k_v2,B
+d0195,seeds,2.6,0.79,outros,n5k_v2,B
+d0195,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0195,honey,1.2,0.004,gordura_molho,n5k_v2,B
+d0196,chicken,60.7,18.827,proteina_animal,n5k_v2,A
+d0196,orange juice,0.5,0.004,vegetal,n5k_v2,A
+d0196,green onions,0.5,0.009,vegetal,n5k_v2,A
+d0196,white rice,10.4,0.28,amido,n5k_v2,A
+d0196,mushroom,30.0,0.93,vegetal,n5k_v2,A
+d0196,shallots,0.0,0.0,vegetal,n5k_v2,A
+d0196,lemon juice,0.3,0.001,vegetal,n5k_v2,A
+d0196,garlic,0.8,0.053,vegetal,n5k_v2,A
+d0196,cranberries,3.2,0.016,vegetal,n5k_v2,A
+d0196,caesar dressing,1.8,0.058,gordura_molho,n5k_v2,A
+d0196,olive oil,8.4,0.0,gordura_molho,n5k_v2,A
+d0196,thyme,0.2,0.009,vegetal,n5k_v2,A
+d0196,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0196,parsley,0.6,0.018,vegetal,n5k_v2,A
+d0196,roasted potatoes,47.0,0.987,amido,n5k_v2,A
+d0196,croutons,0.1,0.01,outros,n5k_v2,A
+d0196,apple,3.2,0.01,vegetal,n5k_v2,A
+d0196,wheat berry,6.1,0.255,amido,n5k_v2,A
+d0196,spinach (raw),41.3,1.199,vegetal,n5k_v2,A
+d0196,parmesan cheese,1.1,0.438,laticinio,n5k_v2,A
+d0196,vinegar,3.7,0.0,gordura_molho,n5k_v2,A
+d0196,kale,13.5,0.447,vegetal,n5k_v2,A
+d0196,mustard,0.8,0.029,gordura_molho,n5k_v2,A
+d0196,onions,7.4,0.081,vegetal,n5k_v2,A
+d0196,beef,77.8,20.226,proteina_animal,n5k_v2,A
+d0196,broccoli,5.2,0.124,vegetal,n5k_v2,A
+d0196,soy sauce,0.5,0.042,gordura_molho,n5k_v2,A
+d0196,chili,0.5,0.009,misto,n5k_v2,A
+d0197,scrambled eggs,182.0,18.2,proteina_animal,n5k_v2,A
+d0197,bacon,33.0,12.21,proteina_animal,n5k_v2,A
+d0198,parsley,0.3,0.008,vegetal,n5k_v2,A
+d0198,cheese pizza,43.0,4.816,misto,n5k_v2,A
+d0198,garlic,0.3,0.017,vegetal,n5k_v2,A
+d0198,rosemary,0.1,0.004,vegetal,n5k_v2,A
+d0198,zucchini,2.7,0.03,vegetal,n5k_v2,A
+d0198,thyme,0.1,0.008,vegetal,n5k_v2,A
+d0198,olive oil,1.8,0.0,gordura_molho,n5k_v2,A
+d0198,caesar salad,105.0,3.36,vegetal,n5k_v2,A
+d0198,spinach (raw),1.4,0.039,vegetal,n5k_v2,A
+d0198,green beans,28.3,0.509,leguminosa,n5k_v2,A
+d0198,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0198,basil,0.1,0.005,vegetal,n5k_v2,A
+d0198,lemon juice,0.3,0.001,vegetal,n5k_v2,A
+d0198,country rice,45.0,1.737,amido,n5k_v2,A
+d0198,squash,2.7,0.024,vegetal,n5k_v2,A
+d0198,wheat berry,5.4,0.228,amido,n5k_v2,A
+d0198,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0198,chicken,54.4,16.851,proteina_animal,n5k_v2,A
+d0199,berries,61.0,0.427,vegetal,n5k_v2,A
+d0199,yam,29.0,0.464,amido,n5k_v2,A
+d0199,bagels,54.4,5.494,amido,n5k_v2,A
+d0199,bacon,7.0,2.59,proteina_animal,n5k_v2,A
+d0199,cream cheese,13.6,0.843,laticinio,n5k_v2,A
+d0200,egg whites,177.0,17.7,proteina_animal,n5k_v2,A
+d0201,pizza,122.0,13.42,misto,n5k_v2,A
+d0202,green beans,83.8,1.509,leguminosa,n5k_v2,A
+d0202,olive oil,2.1,0.0,gordura_molho,n5k_v2,A
+d0203,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0203,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0203,olive oil,0.4,0.0,gordura_molho,n5k_v2,A
+d0203,cauliflower,58.0,1.044,vegetal,n5k_v2,A
+d0203,strawberries,59.0,0.413,vegetal,n5k_v2,A
+d0203,carrot,41.4,0.373,vegetal,n5k_v2,A
+d0203,broccoli,54.0,1.296,vegetal,n5k_v2,A
+d0204,corn on the cob,110.0,3.41,amido,n5k_v2,A
+d0205,celery,1.6,0.011,vegetal,n5k_v2,B
+d0205,carrot,1.6,0.014,vegetal,n5k_v2,B
+d0205,onions,10.5,0.116,vegetal,n5k_v2,B
+d0205,apple cider,12.8,0.013,vegetal,n5k_v2,B
+d0205,olive oil,4.5,0.0,gordura_molho,n5k_v2,B
+d0205,vinegar,0.8,0.0,gordura_molho,n5k_v2,B
+d0205,mozzarella cheese,17.8,4.988,laticinio,n5k_v2,B
+d0205,broth,4.9,0.806,gordura_molho,n5k_v2,B
+d0205,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0205,eggplant,17.8,0.178,vegetal,n5k_v2,B
+d0205,pork,79.7,20.725,proteina_animal,n5k_v2,B
+d0205,pizza dough,23.6,1.273,misto,n5k_v2,B
+d0205,pizza sauce,13.4,0.174,misto,n5k_v2,B
+d0206,broccoli,60.0,1.44,vegetal,n5k_v2,A
+d0207,bacon,35.0,12.95,proteina_animal,n5k_v2,B
+d0207,scrambled eggs,110.8,11.083,proteina_animal,n5k_v2,B
+d0207,hash browns,99.0,2.574,amido,n5k_v2,B
+d0207,salsa,22.2,0.333,gordura_molho,n5k_v2,B
+d0208,chicken breast,133.0,41.363,proteina_animal,n5k_v2,A
+d0208,bell peppers,69.0,1.38,vegetal,n5k_v2,A
+d0208,tuna,102.0,29.58,proteina_animal,n5k_v2,A
+d0209,scrambled eggs,158.3,15.833,proteina_animal,n5k_v2,B
+d0209,roasted potatoes,98.0,2.058,amido,n5k_v2,B
+d0209,salsa,31.7,0.475,gordura_molho,n5k_v2,B
+d0210,sausage,85.0,16.405,proteina_animal,n5k_v2,B
+d0210,egg whites,80.0,8.0,proteina_animal,n5k_v2,B
+d0210,roasted potatoes,66.0,1.386,amido,n5k_v2,B
+d0211,scrambled eggs,68.0,6.8,proteina_animal,n5k_v2,A
+d0211,yam,50.0,0.8,amido,n5k_v2,A
+d0211,grapes,30.0,0.21,vegetal,n5k_v2,A
+d0211,egg whites,67.0,6.7,proteina_animal,n5k_v2,A
+d0211,olive oil,6.0,0.0,gordura_molho,n5k_v2,A
+d0211,sweet potato,50.0,0.5,amido,n5k_v2,A
+d0212,carrot,147.9,1.331,vegetal,n5k_v2,A
+d0212,pineapple,188.0,0.94,vegetal,n5k_v2,A
+d0212,salt,1.0,0.0,gordura_molho,n5k_v2,A
+d0212,thyme,0.2,0.013,vegetal,n5k_v2,A
+d0212,olive oil,7.9,0.0,gordura_molho,n5k_v2,A
+d0212,arugula,6.7,0.175,vegetal,n5k_v2,A
+d0212,brown rice,33.6,0.875,amido,n5k_v2,A
+d0212,pepper,8.5,0.17,gordura_molho,n5k_v2,A
+d0212,salmon,168.2,40.368,proteina_animal,n5k_v2,A
+d0213,chicken breast,10.7,3.321,proteina_animal,n5k_v2,A
+d0213,cherry tomatoes,0.5,0.005,vegetal,n5k_v2,A
+d0213,vinegar,2.4,0.0,gordura_molho,n5k_v2,A
+d0213,white rice,11.2,0.303,amido,n5k_v2,A
+d0213,pork,84.3,21.916,proteina_animal,n5k_v2,A
+d0213,wheat berry,1.1,0.045,amido,n5k_v2,A
+d0213,spinach (raw),30.0,0.869,vegetal,n5k_v2,A
+d0213,onions,8.7,0.096,vegetal,n5k_v2,A
+d0213,zucchini,5.6,0.062,vegetal,n5k_v2,A
+d0213,parsley,0.3,0.008,vegetal,n5k_v2,A
+d0213,rosemary,0.6,0.016,vegetal,n5k_v2,A
+d0213,olive oil,5.4,0.0,gordura_molho,n5k_v2,A
+d0213,parmesan cheese,0.3,0.103,laticinio,n5k_v2,A
+d0213,thyme,0.0,0.002,vegetal,n5k_v2,A
+d0213,mustard,0.6,0.022,gordura_molho,n5k_v2,A
+d0213,arugula,2.8,0.073,vegetal,n5k_v2,A
+d0213,cranberries,2.4,0.012,vegetal,n5k_v2,A
+d0213,garlic,0.7,0.043,vegetal,n5k_v2,A
+d0213,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0213,apple,2.4,0.007,vegetal,n5k_v2,A
+d0214,shallots,10.1,0.152,vegetal,n5k_v2,A
+d0214,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0214,kale,24.5,0.808,vegetal,n5k_v2,A
+d0214,onions,5.1,0.056,vegetal,n5k_v2,A
+d0214,olive oil,1.0,0.0,gordura_molho,n5k_v2,A
+d0214,chard,24.5,0.441,vegetal,n5k_v2,A
+d0214,vinegar,0.3,0.0,gordura_molho,n5k_v2,A
+d0214,beef,152.0,39.509,proteina_animal,n5k_v2,A
+d0214,spinach (cooked),5.1,0.152,vegetal,n5k_v2,A
+d0214,millet,20.3,0.709,amido,n5k_v2,A
+d0214,bok choy,5.1,0.076,vegetal,n5k_v2,A
+d0215,bacon,42.0,15.54,proteina_animal,n5k_v2,A
+d0216,almonds,119.0,26.656,outros,n5k_v2,A
+d0217,sausage,73.0,14.089,proteina_animal,n5k_v2,A
+d0218,egg whites,446.0,44.6,proteina_animal,n5k_v2,A
+d0219,spinach (raw),64.0,1.856,vegetal,n5k_v2,A
+d0219,chicken,149.0,46.19,proteina_animal,n5k_v2,A
+d0219,cucumbers,75.0,0.75,vegetal,n5k_v2,A
+d0220,quinoa,11.9,0.525,amido,n5k_v2,A
+d0220,squash,6.0,0.054,vegetal,n5k_v2,A
+d0220,eggplant,6.0,0.06,vegetal,n5k_v2,A
+d0220,mushroom,6.0,0.185,vegetal,n5k_v2,A
+d0220,spinach (cooked),3.0,0.089,vegetal,n5k_v2,A
+d0220,shallots,1.2,0.018,vegetal,n5k_v2,A
+d0220,garlic,0.6,0.038,vegetal,n5k_v2,A
+d0220,wine,0.6,0.001,outros,n5k_v2,A
+d0220,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0220,lemon juice,0.1,0.001,vegetal,n5k_v2,A
+d0220,olive oil,0.3,0.0,gordura_molho,n5k_v2,A
+d0220,chicken thighs,119.2,28.496,proteina_animal,n5k_v2,A
+d0221,squash,117.3,1.056,vegetal,n5k_v2,B
+d0221,olive oil,2.2,0.0,gordura_molho,n5k_v2,B
+d0221,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0221,dates,1.5,0.037,vegetal,n5k_v2,B
+d0222,strawberries,65.0,0.455,vegetal,n5k_v2,A
+d0222,sausage,51.0,9.843,proteina_animal,n5k_v2,A
+d0222,scrambled eggs,126.0,12.6,proteina_animal,n5k_v2,A
+d0222,broccoli,33.0,0.792,vegetal,n5k_v2,A
+d0223,egg whites,87.0,8.7,proteina_animal,n5k_v2,A
+d0223,yam,29.5,0.472,amido,n5k_v2,A
+d0223,berries,171.0,1.197,vegetal,n5k_v2,A
+d0223,chicken apple sausage,35.0,4.9,proteina_animal,n5k_v2,A
+d0223,sweet potato,29.5,0.295,amido,n5k_v2,A
+d0223,pineapple,117.0,0.585,vegetal,n5k_v2,A
+d0224,sweet potato,79.0,0.79,amido,n5k_v2,A
+d0224,scrambled eggs,146.0,14.6,proteina_animal,n5k_v2,A
+d0225,sausage,108.0,20.844,proteina_animal,n5k_v2,A
+d0226,scrambled eggs,104.0,10.4,proteina_animal,n5k_v2,A
+d0226,bacon,37.0,13.69,proteina_animal,n5k_v2,A
+d0226,yam,87.0,1.392,amido,n5k_v2,A
+d0227,carrot,50.3,0.452,vegetal,n5k_v2,A
+d0227,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0227,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0227,olive oil,0.5,0.0,gordura_molho,n5k_v2,A
+d0228,arugula,19.4,0.505,vegetal,n5k_v2,A
+d0228,mustard,0.4,0.015,gordura_molho,n5k_v2,A
+d0228,vinegar,2.6,0.0,gordura_molho,n5k_v2,A
+d0228,mixed greens,12.9,0.285,vegetal,n5k_v2,A
+d0228,carrot,5.2,0.047,vegetal,n5k_v2,A
+d0228,pumpkin seeds,2.6,0.492,outros,n5k_v2,A
+d0228,lettuce,6.5,0.091,vegetal,n5k_v2,A
+d0228,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0228,honeydew melons,95.0,0.475,vegetal,n5k_v2,A
+d0228,green beans,38.0,0.684,leguminosa,n5k_v2,A
+d0228,wild rice,56.0,2.8,amido,n5k_v2,A
+d0228,olive oil,5.2,0.0,gordura_molho,n5k_v2,A
+d0229,turkey,130.0,37.7,proteina_animal,n5k_v2,B
+d0229,cucumbers,20.0,0.2,vegetal,n5k_v2,B
+d0230,brussels sprouts,118.0,4.012,vegetal,n5k_v2,A
+d0230,carrot,75.0,0.675,vegetal,n5k_v2,A
+d0230,almonds,72.0,16.128,outros,n5k_v2,A
+d0230,apple,161.0,0.483,vegetal,n5k_v2,A
+d0231,vinegar,0.1,0.0,gordura_molho,n5k_v2,A
+d0231,bok choy,1.6,0.024,vegetal,n5k_v2,A
+d0231,millet,6.4,0.224,amido,n5k_v2,A
+d0231,cauliflower,308.0,5.544,vegetal,n5k_v2,A
+d0231,beef,48.1,12.508,proteina_animal,n5k_v2,A
+d0231,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0231,shallots,3.2,0.048,vegetal,n5k_v2,A
+d0231,spinach (cooked),1.6,0.048,vegetal,n5k_v2,A
+d0231,olive oil,0.3,0.0,gordura_molho,n5k_v2,A
+d0231,onions,1.6,0.018,vegetal,n5k_v2,A
+d0232,squash,81.9,0.737,vegetal,n5k_v2,A
+d0232,olive oil,0.8,0.0,gordura_molho,n5k_v2,A
+d0232,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0233,grapes,81.0,0.567,vegetal,n5k_v2,A
+d0233,roasted potatoes,17.0,0.357,amido,n5k_v2,A
+d0233,watermelon,73.0,0.438,vegetal,n5k_v2,A
+d0233,strawberries,62.0,0.434,vegetal,n5k_v2,A
+d0233,chicken apple sausage,71.0,9.94,proteina_animal,n5k_v2,A
+d0234,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0234,broccoli,3.2,0.078,vegetal,n5k_v2,A
+d0234,basil,0.3,0.013,vegetal,n5k_v2,A
+d0234,lemon juice,0.6,0.003,vegetal,n5k_v2,A
+d0234,parsley,0.3,0.009,vegetal,n5k_v2,A
+d0234,onions,2.9,0.032,vegetal,n5k_v2,A
+d0234,white rice,103.0,2.781,amido,n5k_v2,A
+d0234,vinegar,0.6,0.0,gordura_molho,n5k_v2,A
+d0234,pork,97.3,25.297,proteina_animal,n5k_v2,A
+d0234,brown rice,13.0,0.337,amido,n5k_v2,A
+d0234,pepper,1.3,0.026,gordura_molho,n5k_v2,A
+d0234,country rice,8.1,0.314,amido,n5k_v2,A
+d0234,shallots,0.6,0.01,vegetal,n5k_v2,A
+d0234,cherry tomatoes,3.2,0.029,vegetal,n5k_v2,A
+d0234,olive oil,3.4,0.0,gordura_molho,n5k_v2,A
+d0234,garlic,1.5,0.096,vegetal,n5k_v2,A
+d0234,fish,40.7,7.49,proteina_animal,n5k_v2,A
+d0234,green onions,0.4,0.007,vegetal,n5k_v2,A
+d0235,cauliflower,96.0,1.728,vegetal,n5k_v2,A
+d0236,avocado,64.0,1.28,vegetal,n5k_v2,A
+d0236,mixed greens,61.0,1.342,vegetal,n5k_v2,A
+d0236,onions,36.0,0.396,vegetal,n5k_v2,A
+d0236,chicken,198.0,61.38,proteina_animal,n5k_v2,A
+d0237,tofu,69.0,5.52,leguminosa,n5k_v2,A
+d0238,chicken,103.0,31.93,proteina_animal,n5k_v2,A
+d0238,avocado,49.0,0.98,vegetal,n5k_v2,A
+d0238,olives,80.0,0.64,vegetal,n5k_v2,A
+d0238,parmesan cheese,19.0,7.296,laticinio,n5k_v2,A
+d0238,spinach (raw),61.0,1.769,vegetal,n5k_v2,A
+d0238,broccoli,67.0,1.608,vegetal,n5k_v2,A
+d0239,pepperoni pizza,170.0,20.4,misto,n5k_v2,A
+d0240,salt,0.0,0.0,gordura_molho,n5k_v2,A
+d0240,onions,1.3,0.014,vegetal,n5k_v2,A
+d0240,cheese pizza,40.0,4.48,misto,n5k_v2,A
+d0240,spinach (cooked),1.3,0.039,vegetal,n5k_v2,A
+d0240,beef,38.9,10.125,proteina_animal,n5k_v2,A
+d0240,millet,5.2,0.182,amido,n5k_v2,A
+d0240,bok choy,1.3,0.019,vegetal,n5k_v2,A
+d0240,shallots,2.6,0.039,vegetal,n5k_v2,A
+d0240,vinegar,0.1,0.0,gordura_molho,n5k_v2,A
+d0240,olive oil,0.3,0.0,gordura_molho,n5k_v2,A
+d0241,chia seeds,163.0,27.71,outros,n5k_v2,A
+d0242,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0242,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0242,brussels sprouts,37.4,1.271,vegetal,n5k_v2,A
+d0242,olive oil,0.4,0.0,gordura_molho,n5k_v2,A
+d0242,bacon,38.0,14.06,proteina_animal,n5k_v2,A
+d0243,scrambled eggs,383.0,38.3,proteina_animal,n5k_v2,A
+d0244,grapes,52.0,0.364,vegetal,n5k_v2,A
+d0244,almonds,48.0,10.752,outros,n5k_v2,A
+d0244,sausage,112.0,21.616,proteina_animal,n5k_v2,A
+d0245,brown rice,0.0,0.0,amido,n5k_v2,B
+d0245,white rice,0.0,0.0,amido,n5k_v2,B
+d0245,broccoli,3.8,0.092,vegetal,n5k_v2,B
+d0245,chicken,153.7,47.662,proteina_animal,n5k_v2,B
+d0245,spinach (raw),0.2,0.007,vegetal,n5k_v2,B
+d0245,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0245,teriyaki sauce,0.2,0.014,gordura_molho,n5k_v2,B
+d0245,green onions,1.1,0.02,vegetal,n5k_v2,B
+d0245,oil,1.8,0.0,gordura_molho,n5k_v2,B
+d0246,carrot,66.0,0.594,vegetal,n5k_v2,A
+d0246,bell peppers,80.0,1.6,vegetal,n5k_v2,A
+d0246,chicken,187.0,57.97,proteina_animal,n5k_v2,A
+d0246,parmesan cheese,21.0,8.064,laticinio,n5k_v2,A
+d0246,onions,56.0,0.616,vegetal,n5k_v2,A
+d0246,cherry tomatoes,67.0,0.603,vegetal,n5k_v2,A
+d0246,olives,44.0,0.352,vegetal,n5k_v2,A
+d0247,cauliflower,56.9,1.024,vegetal,n5k_v2,B
+d0247,squash,119.3,1.073,vegetal,n5k_v2,B
+d0247,pickles,9.7,0.029,outros,n5k_v2,B
+d0247,coleslaw,19.5,0.195,vegetal,n5k_v2,B
+d0247,barbecue sauce,4.9,0.039,gordura_molho,n5k_v2,B
+d0247,olive oil,2.2,0.0,gordura_molho,n5k_v2,B
+d0247,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0247,dates,1.5,0.037,vegetal,n5k_v2,B
+d0247,flatbread,102.9,9.367,amido,n5k_v2,B
+d0247,oil,1.1,0.0,gordura_molho,n5k_v2,B
+d0248,almonds,68.0,15.232,outros,n5k_v2,A
+d0249,grapefruit juice,241.0,1.205,outros,n5k_v2,A
+d0250,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0250,olive oil,0.5,0.0,gordura_molho,n5k_v2,A
+d0250,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0250,pears,202.0,0.808,vegetal,n5k_v2,A
+d0250,garden salad,35.0,2.135,vegetal,n5k_v2,A
+d0250,carrot,51.3,0.461,vegetal,n5k_v2,A
+d0251,apple,116.0,0.348,vegetal,n5k_v2,A
+d0252,brown rice,5.8,0.151,amido,n5k_v2,B
+d0252,spinach (raw),1.5,0.042,vegetal,n5k_v2,B
+d0252,onions,0.6,0.006,vegetal,n5k_v2,B
+d0252,garlic,0.9,0.056,vegetal,n5k_v2,B
+d0252,shallots,0.9,0.013,vegetal,n5k_v2,B
+d0252,olive oil,0.2,0.0,gordura_molho,n5k_v2,B
+d0252,chili,0.1,0.001,misto,n5k_v2,B
+d0252,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0252,salmon,29.0,6.963,proteina_animal,n5k_v2,B
+d0252,lime,0.0,0.0,vegetal,n5k_v2,B
+d0252,jalapenos,0.3,0.003,vegetal,n5k_v2,B
+d0252,lemon juice,0.3,0.001,vegetal,n5k_v2,B
+d0252,cilantro,0.3,0.006,vegetal,n5k_v2,B
+d0252,ginger,0.1,0.003,vegetal,n5k_v2,B
+d0253,egg whites,408.0,40.8,proteina_animal,n5k_v2,A
+d0254,brisket,202.4,42.5,proteina_animal,n5k_v2,B
+d0254,olive oil,3.6,0.0,gordura_molho,n5k_v2,B
+d0254,mozzarella cheese,14.6,4.075,laticinio,n5k_v2,B
+d0254,mashed potatoes,202.4,3.44,amido,n5k_v2,B
+d0254,butter,20.2,0.162,gordura_molho,n5k_v2,B
+d0254,basil,3.6,0.146,vegetal,n5k_v2,B
+d0254,pizza dough,19.3,1.04,misto,n5k_v2,B
+d0254,pizza sauce,10.9,0.142,misto,n5k_v2,B
+d0255,granola,5.2,0.516,amido,n5k_v2,A
+d0255,mixed greens,20.6,0.454,vegetal,n5k_v2,A
+d0255,blackberries,2.1,0.029,vegetal,n5k_v2,A
+d0255,raspberries,2.1,0.025,vegetal,n5k_v2,A
+d0255,vinaigrette,2.1,0.0,gordura_molho,n5k_v2,A
+d0255,scrambled eggs,228.0,22.8,proteina_animal,n5k_v2,A
+d0255,bacon,48.0,17.76,proteina_animal,n5k_v2,A
+d0256,egg whites,472.0,47.2,proteina_animal,n5k_v2,A
+d0257,egg whites,433.0,43.3,proteina_animal,n5k_v2,A
+d0257,watermelon,100.0,0.6,vegetal,n5k_v2,A
+d0257,yam,50.0,0.8,amido,n5k_v2,A
+d0257,sweet potato,50.0,0.5,amido,n5k_v2,A
+d0257,olive oil,6.0,0.0,gordura_molho,n5k_v2,A
+d0258,eggs,181.0,22.625,proteina_animal,n5k_v2,A
+d0259,pineapple,56.0,0.28,vegetal,n5k_v2,A
+d0259,watermelon,84.0,0.504,vegetal,n5k_v2,A
+d0259,berries,93.0,0.651,vegetal,n5k_v2,A
+d0259,cantaloupe,78.0,0.624,vegetal,n5k_v2,A
+d0259,sweet potato,118.0,1.18,amido,n5k_v2,A
+d0259,olive oil,3.0,0.0,gordura_molho,n5k_v2,A
+d0260,bok choy,3.7,0.055,vegetal,n5k_v2,A
+d0260,spinach (cooked),3.7,0.111,vegetal,n5k_v2,A
+d0260,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0260,onions,3.7,0.041,vegetal,n5k_v2,A
+d0260,olive oil,0.7,0.0,gordura_molho,n5k_v2,A
+d0260,vinegar,0.2,0.0,gordura_molho,n5k_v2,A
+d0260,mushroom,110.0,3.41,vegetal,n5k_v2,A
+d0260,beef,110.7,28.788,proteina_animal,n5k_v2,A
+d0260,shallots,7.4,0.111,vegetal,n5k_v2,A
+d0260,millet,14.8,0.517,amido,n5k_v2,A
+d0261,cilantro,0.7,0.016,vegetal,n5k_v2,A
+d0261,garlic,0.7,0.047,vegetal,n5k_v2,A
+d0261,chili,0.6,0.011,misto,n5k_v2,A
+d0261,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0261,tortilla,29.2,1.749,amido,n5k_v2,A
+d0261,onions,0.2,0.002,vegetal,n5k_v2,A
+d0261,tomatoes,7.3,0.051,vegetal,n5k_v2,A
+d0261,olive oil,2.1,0.0,gordura_molho,n5k_v2,A
+d0261,chicken thighs,72.9,17.417,proteina_animal,n5k_v2,A
+d0261,squash,34.5,0.311,vegetal,n5k_v2,A
+d0261,caesar salad,83.0,2.656,vegetal,n5k_v2,A
+d0261,turnips,53.7,0.376,outros,n5k_v2,A
+d0261,cheese,21.9,5.466,laticinio,n5k_v2,A
+d0262,white rice,16.1,0.436,amido,n5k_v2,A
+d0262,arugula,48.7,1.265,vegetal,n5k_v2,A
+d0262,parsley,0.4,0.012,vegetal,n5k_v2,A
+d0262,zucchini,8.1,0.089,vegetal,n5k_v2,A
+d0262,olive oil,2.3,0.0,gordura_molho,n5k_v2,A
+d0262,cherry tomatoes,14.9,0.134,vegetal,n5k_v2,A
+d0262,lime,2.2,0.016,vegetal,n5k_v2,A
+d0262,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0262,mangos,14.9,0.119,vegetal,n5k_v2,A
+d0262,pork,121.1,31.479,proteina_animal,n5k_v2,A
+d0262,jalapenos,1.5,0.013,vegetal,n5k_v2,A
+d0262,rosemary,0.8,0.023,vegetal,n5k_v2,A
+d0262,cucumbers,14.9,0.149,vegetal,n5k_v2,A
+d0262,lemon juice,2.2,0.009,vegetal,n5k_v2,A
+d0262,onions,8.6,0.095,vegetal,n5k_v2,A
+d0262,mustard greens,29.8,0.863,gordura_molho,n5k_v2,A
+d0262,cilantro,1.5,0.033,vegetal,n5k_v2,A
+d0262,garlic,0.8,0.052,vegetal,n5k_v2,A
+d0262,tomatoes,14.9,0.104,vegetal,n5k_v2,A
+d0263,steak,182.0,45.5,proteina_animal,n5k_v2,A
+d0263,mixed greens,115.0,2.53,vegetal,n5k_v2,A
+d0263,broccoli,44.0,1.056,vegetal,n5k_v2,A
+d0264,broccoli,45.9,1.1,vegetal,n5k_v2,B
+d0264,sausage,38.0,7.334,proteina_animal,n5k_v2,B
+d0264,olive oil,1.1,0.0,gordura_molho,n5k_v2,B
+d0265,turkey,130.0,37.7,proteina_animal,n5k_v2,B
+d0266,chicken,167.0,51.77,proteina_animal,n5k_v2,A
+d0266,cherry tomatoes,36.0,0.324,vegetal,n5k_v2,A
+d0267,cream cheese,10.8,0.67,laticinio,n5k_v2,A
+d0267,bagels,43.2,4.363,amido,n5k_v2,A
+d0267,strawberries,103.0,0.721,vegetal,n5k_v2,A
+d0267,eggs,111.0,13.875,proteina_animal,n5k_v2,A
+d0268,sweet potato,76.1,0.761,amido,n5k_v2,A
+d0268,olive oil,1.9,0.0,gordura_molho,n5k_v2,A
+d0268,egg whites,318.0,31.8,proteina_animal,n5k_v2,A
+d0269,brussels sprouts,89.5,3.045,vegetal,n5k_v2,A
+d0269,olive oil,0.9,0.0,gordura_molho,n5k_v2,A
+d0269,pepper,0.1,0.002,gordura_molho,n5k_v2,A
+d0269,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0270,white rice,18.4,0.496,amido,n5k_v2,A
+d0270,garlic,0.9,0.059,vegetal,n5k_v2,A
+d0270,cilantro,0.5,0.01,vegetal,n5k_v2,A
+d0270,cheese pizza,98.0,10.976,misto,n5k_v2,A
+d0270,olive oil,0.9,0.0,gordura_molho,n5k_v2,A
+d0270,onions,6.4,0.071,vegetal,n5k_v2,A
+d0270,chicken thighs,8.6,2.06,proteina_animal,n5k_v2,A
+d0270,vinegar,0.9,0.0,gordura_molho,n5k_v2,A
+d0270,kale,4.6,0.152,vegetal,n5k_v2,A
+d0270,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0270,lemon juice,0.9,0.004,vegetal,n5k_v2,A
+d0270,pineapple,4.6,0.023,vegetal,n5k_v2,A
+d0271,egg whites,378.0,37.8,proteina_animal,n5k_v2,A
+d0272,almonds,73.0,16.352,outros,n5k_v2,A
+d0273,olive oil,0.3,0.0,gordura_molho,n5k_v2,A
+d0273,chicken thighs,56.0,13.388,proteina_animal,n5k_v2,A
+d0273,cheese,16.8,4.201,laticinio,n5k_v2,A
+d0273,tomatoes,5.6,0.039,vegetal,n5k_v2,A
+d0273,garlic,0.6,0.036,vegetal,n5k_v2,A
+d0273,chili,0.5,0.009,misto,n5k_v2,A
+d0273,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0273,cilantro,0.6,0.012,vegetal,n5k_v2,A
+d0273,tortilla,22.4,1.344,amido,n5k_v2,A
+d0273,onions,0.1,0.002,vegetal,n5k_v2,A
+d0274,garlic,0.5,0.034,vegetal,n5k_v2,A
+d0274,cilantro,1.1,0.024,vegetal,n5k_v2,A
+d0274,lemon juice,2.1,0.009,vegetal,n5k_v2,A
+d0274,onions,4.3,0.047,vegetal,n5k_v2,A
+d0274,olive oil,4.3,0.0,gordura_molho,n5k_v2,A
+d0274,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0274,arugula,5.4,0.139,vegetal,n5k_v2,A
+d0274,quinoa,21.5,0.944,amido,n5k_v2,A
+d0274,fish,107.3,19.74,proteina_animal,n5k_v2,A
+d0274,tomatillo,10.7,0.107,vegetal,n5k_v2,A
+d0274,pepper,4.3,0.086,gordura_molho,n5k_v2,A
+d0274,jalapenos,0.3,0.002,vegetal,n5k_v2,A
+d0275,figs,8.9,0.223,vegetal,n5k_v2,A
+d0275,apple,8.9,0.027,vegetal,n5k_v2,A
+d0275,arugula,8.9,0.232,vegetal,n5k_v2,A
+d0275,lemon juice,3.6,0.014,vegetal,n5k_v2,A
+d0275,olive oil,7.1,0.0,gordura_molho,n5k_v2,A
+d0275,mustard greens,44.6,1.292,gordura_molho,n5k_v2,A
+d0275,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0275,goat cheese,1.8,0.339,laticinio,n5k_v2,A
+d0276,garlic,2.9,0.187,vegetal,n5k_v2,A
+d0276,bell peppers,3.1,0.063,vegetal,n5k_v2,A
+d0276,beef,177.2,46.06,proteina_animal,n5k_v2,A
+d0276,cherry tomatoes,7.9,0.071,vegetal,n5k_v2,A
+d0276,brown rice,19.4,0.505,amido,n5k_v2,A
+d0276,ginger,0.5,0.009,vegetal,n5k_v2,A
+d0276,olive oil,3.4,0.0,gordura_molho,n5k_v2,A
+d0276,vinegar,0.3,0.0,gordura_molho,n5k_v2,A
+d0276,spinach (cooked),5.9,0.177,vegetal,n5k_v2,A
+d0276,lime,0.1,0.001,vegetal,n5k_v2,A
+d0276,shallots,14.7,0.221,vegetal,n5k_v2,A
+d0276,bok choy,5.9,0.089,vegetal,n5k_v2,A
+d0276,salmon,97.2,23.325,proteina_animal,n5k_v2,A
+d0276,millet,23.6,0.827,amido,n5k_v2,A
+d0276,vinaigrette,6.3,0.0,gordura_molho,n5k_v2,A
+d0276,jalapenos,1.0,0.009,vegetal,n5k_v2,A
+d0276,spinach (raw),4.9,0.141,vegetal,n5k_v2,A
+d0276,green beans,58.5,1.053,leguminosa,n5k_v2,A
+d0276,feta cheese,3.1,0.435,laticinio,n5k_v2,A
+d0276,cucumbers,15.7,0.157,vegetal,n5k_v2,A
+d0276,lettuce,31.5,0.441,vegetal,n5k_v2,A
+d0276,cilantro,1.0,0.021,vegetal,n5k_v2,A
+d0276,lemon juice,1.0,0.004,vegetal,n5k_v2,A
+d0276,onions,11.0,0.121,vegetal,n5k_v2,A
+d0276,salt,0.5,0.0,gordura_molho,n5k_v2,A
+d0276,chili,0.2,0.004,misto,n5k_v2,A
+d0276,olives,3.1,0.025,vegetal,n5k_v2,A
+d0277,bacon,26.0,9.62,proteina_animal,n5k_v2,A
+d0278,cucumbers,60.0,0.6,vegetal,n5k_v2,B
+d0279,toast,84.0,10.92,amido,n5k_v2,A
+d0280,garlic,0.9,0.056,vegetal,n5k_v2,A
+d0280,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0280,pasta salad,114.0,6.726,amido,n5k_v2,A
+d0280,rosemary,0.9,0.025,vegetal,n5k_v2,A
+d0280,zucchini,8.8,0.097,vegetal,n5k_v2,A
+d0280,onions,6.2,0.068,vegetal,n5k_v2,A
+d0280,parsley,0.4,0.013,vegetal,n5k_v2,A
+d0280,olive oil,0.9,0.0,gordura_molho,n5k_v2,A
+d0280,pork,131.8,34.268,proteina_animal,n5k_v2,A
+d0280,arugula,4.4,0.114,vegetal,n5k_v2,A
+d0280,white rice,17.6,0.474,amido,n5k_v2,A
+d0281,almonds,133.0,29.792,outros,n5k_v2,A
+d0282,scrambled eggs,111.0,11.1,proteina_animal,n5k_v2,B
+d0282,roasted potatoes,118.0,2.478,amido,n5k_v2,B
+d0282,crepes,100.0,5.9,amido,n5k_v2,B
+d0283,green onions,0.4,0.007,vegetal,n5k_v2,A
+d0283,vinegar,0.6,0.0,gordura_molho,n5k_v2,A
+d0283,pork,97.3,25.297,proteina_animal,n5k_v2,A
+d0283,brown rice,13.0,0.337,amido,n5k_v2,A
+d0283,lemon juice,0.6,0.003,vegetal,n5k_v2,A
+d0283,olive oil,3.4,0.0,gordura_molho,n5k_v2,A
+d0283,garlic,1.5,0.096,vegetal,n5k_v2,A
+d0283,fish,40.7,7.49,proteina_animal,n5k_v2,A
+d0283,pepper,1.3,0.026,gordura_molho,n5k_v2,A
+d0283,cherry tomatoes,3.2,0.029,vegetal,n5k_v2,A
+d0283,basil,0.3,0.013,vegetal,n5k_v2,A
+d0283,country rice,8.1,0.314,amido,n5k_v2,A
+d0283,parsley,0.3,0.009,vegetal,n5k_v2,A
+d0283,onions,2.9,0.032,vegetal,n5k_v2,A
+d0283,broccoli,3.2,0.078,vegetal,n5k_v2,A
+d0283,shallots,0.6,0.01,vegetal,n5k_v2,A
+d0283,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0284,scrambled eggs,93.0,9.3,proteina_animal,n5k_v2,A
+d0284,bacon,20.0,7.4,proteina_animal,n5k_v2,A
+d0285,bacon,36.0,13.32,proteina_animal,n5k_v2,B
+d0285,scrambled eggs,269.0,26.9,proteina_animal,n5k_v2,B
+d0285,broccoli,45.9,1.1,vegetal,n5k_v2,B
+d0285,olive oil,1.1,0.0,gordura_molho,n5k_v2,B
+d0285,fried rice,122.0,5.734,misto,n5k_v2,B
+d0286,bacon,11.0,4.07,proteina_animal,n5k_v2,A
+d0286,berries,72.0,0.504,vegetal,n5k_v2,A
+d0286,bagels,60.0,6.06,amido,n5k_v2,A
+d0286,cream cheese,15.0,0.93,laticinio,n5k_v2,A
+d0286,yam,62.0,0.992,amido,n5k_v2,A
+d0287,pizza,98.0,10.78,misto,n5k_v2,A
+d0288,bacon,91.0,33.67,proteina_animal,n5k_v2,A
+d0289,omelets,122.0,12.688,proteina_animal,n5k_v2,B
+d0290,cherry tomatoes,58.0,0.522,vegetal,n5k_v2,A
+d0290,cantaloupe,64.0,0.512,vegetal,n5k_v2,A
+d0290,almonds,90.0,20.16,outros,n5k_v2,A
+d0291,cream cheese,14.2,0.88,laticinio,n5k_v2,A
+d0291,bagels,56.8,5.737,amido,n5k_v2,A
+d0292,almonds,118.0,26.432,outros,n5k_v2,A
+d0293,hummus,56.0,4.424,leguminosa,n5k_v2,B
+d0294,fish,212.5,39.094,proteina_animal,n5k_v2,A
+d0294,white beans,42.5,4.122,leguminosa,n5k_v2,A
+d0294,cauliflower,34.0,0.612,vegetal,n5k_v2,A
+d0294,garlic,1.1,0.068,vegetal,n5k_v2,A
+d0294,parsley,0.5,0.015,vegetal,n5k_v2,A
+d0294,olive oil,10.3,0.0,gordura_molho,n5k_v2,A
+d0294,bell peppers,4.2,0.085,vegetal,n5k_v2,A
+d0294,chive,0.5,0.018,vegetal,n5k_v2,A
+d0294,lime,4.2,0.03,vegetal,n5k_v2,A
+d0294,pepper,0.3,0.005,gordura_molho,n5k_v2,A
+d0294,bok choy,71.2,1.068,vegetal,n5k_v2,A
+d0294,cookies,17.0,0.867,outros,n5k_v2,A
+d0294,arugula,6.4,0.166,vegetal,n5k_v2,A
+d0294,snow peas,8.5,0.425,leguminosa,n5k_v2,A
+d0294,onions,10.6,0.117,vegetal,n5k_v2,A
+d0294,artichokes,10.6,0.351,vegetal,n5k_v2,A
+d0294,salt,0.5,0.0,gordura_molho,n5k_v2,A
+d0294,cheese pizza,33.0,3.696,misto,n5k_v2,A
+d0295,bok choy,1.9,0.029,vegetal,n5k_v2,A
+d0295,shallots,3.9,0.058,vegetal,n5k_v2,A
+d0295,beef,58.0,15.089,proteina_animal,n5k_v2,A
+d0295,vinegar,0.1,0.0,gordura_molho,n5k_v2,A
+d0295,jalapenos,4.1,0.037,vegetal,n5k_v2,A
+d0295,bell peppers,10.2,0.204,vegetal,n5k_v2,A
+d0295,spinach (raw),4.1,0.118,vegetal,n5k_v2,A
+d0295,pepper,0.4,0.008,gordura_molho,n5k_v2,A
+d0295,onions,6.0,0.066,vegetal,n5k_v2,A
+d0295,olive oil,4.5,0.0,gordura_molho,n5k_v2,A
+d0295,tomatoes,10.2,0.071,vegetal,n5k_v2,A
+d0295,garlic,2.0,0.13,vegetal,n5k_v2,A
+d0295,fried rice,90.0,4.23,misto,n5k_v2,A
+d0295,chicken,81.5,25.264,proteina_animal,n5k_v2,A
+d0295,cheese pizza,89.0,9.968,misto,n5k_v2,A
+d0295,salt,2.1,0.0,gordura_molho,n5k_v2,A
+d0295,spinach (cooked),1.9,0.058,vegetal,n5k_v2,A
+d0295,millet,28.1,0.984,amido,n5k_v2,A
+d0296,fish,43.5,8.002,proteina_animal,n5k_v2,A
+d0296,pepper,0.0,0.001,gordura_molho,n5k_v2,A
+d0296,kale,2.2,0.072,vegetal,n5k_v2,A
+d0296,parsley,0.4,0.013,vegetal,n5k_v2,A
+d0296,olive oil,6.2,0.0,gordura_molho,n5k_v2,A
+d0296,chive,0.1,0.004,vegetal,n5k_v2,A
+d0296,broccoli,163.9,3.934,vegetal,n5k_v2,A
+d0296,cherry tomatoes,1.7,0.016,vegetal,n5k_v2,A
+d0296,wheat berry,8.7,0.365,amido,n5k_v2,A
+d0296,chard,1.7,0.031,vegetal,n5k_v2,A
+d0296,lemon juice,0.9,0.003,vegetal,n5k_v2,A
+d0296,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0296,shallots,0.9,0.013,vegetal,n5k_v2,A
+d0296,garlic,0.0,0.002,vegetal,n5k_v2,A
+d0296,brussels sprouts,34.4,1.171,vegetal,n5k_v2,A
+d0297,eggplant,53.0,0.53,vegetal,n5k_v2,A
+d0297,caesar salad,31.0,0.992,vegetal,n5k_v2,A
+d0297,fish,39.0,7.176,proteina_animal,n5k_v2,A
+d0298,mixed greens,32.0,0.704,vegetal,n5k_v2,A
+d0298,cod,96.0,18.144,proteina_animal,n5k_v2,A
+d0299,celery,2.2,0.016,vegetal,n5k_v2,B
+d0299,carrot,2.2,0.02,vegetal,n5k_v2,B
+d0299,onions,2.2,0.025,vegetal,n5k_v2,B
+d0299,apple cider,18.0,0.018,vegetal,n5k_v2,B
+d0299,vinegar,1.1,0.0,gordura_molho,n5k_v2,B
+d0299,broth,6.9,1.134,gordura_molho,n5k_v2,B
+d0299,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0299,pork,112.2,29.175,proteina_animal,n5k_v2,B
+d0300,chicken,113.0,35.03,proteina_animal,n5k_v2,A
+d0300,asparagus,39.0,0.858,vegetal,n5k_v2,A
+d0300,caesar salad,82.0,2.624,vegetal,n5k_v2,A
+d0301,vinegar,6.2,0.0,gordura_molho,n5k_v2,A
+d0301,radishes,12.4,0.087,vegetal,n5k_v2,A
+d0301,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0301,bell peppers,15.5,0.31,vegetal,n5k_v2,A
+d0301,olive oil,12.4,0.0,gordura_molho,n5k_v2,A
+d0301,garlic,0.8,0.05,vegetal,n5k_v2,A
+d0301,cucumbers,15.5,0.155,vegetal,n5k_v2,A
+d0301,mustard,0.8,0.029,gordura_molho,n5k_v2,A
+d0302,chicken,61.5,19.08,proteina_animal,n5k_v2,B
+d0302,cucumbers,73.0,0.73,vegetal,n5k_v2,B
+d0302,tomatoes,7.7,0.054,vegetal,n5k_v2,B
+d0302,bell peppers,7.7,0.154,vegetal,n5k_v2,B
+d0302,spinach (raw),3.1,0.089,vegetal,n5k_v2,B
+d0302,onions,3.1,0.034,vegetal,n5k_v2,B
+d0302,garlic,1.5,0.098,vegetal,n5k_v2,B
+d0302,olive oil,3.1,0.0,gordura_molho,n5k_v2,B
+d0302,salt,1.5,0.0,gordura_molho,n5k_v2,B
+d0302,pepper,0.3,0.006,gordura_molho,n5k_v2,B
+d0302,hummus,64.0,5.056,leguminosa,n5k_v2,B
+d0302,jalapenos,3.1,0.028,vegetal,n5k_v2,B
+d0302,millet,15.4,0.539,amido,n5k_v2,B
+d0303,brisket,79.5,16.7,proteina_animal,n5k_v2,B
+d0303,mashed potatoes,79.5,1.352,amido,n5k_v2,B
+d0303,butter,8.0,0.064,gordura_molho,n5k_v2,B
+d0304,mixed greens,17.5,0.386,vegetal,n5k_v2,A
+d0304,caesar salad,104.0,3.328,vegetal,n5k_v2,A
+d0304,carrot,8.8,0.079,vegetal,n5k_v2,A
+d0304,cabbage,17.5,0.228,vegetal,n5k_v2,A
+d0304,pizza,52.0,5.72,misto,n5k_v2,A
+d0304,rice noodles,35.1,0.316,amido,n5k_v2,A
+d0304,garlic,0.7,0.042,vegetal,n5k_v2,A
+d0304,soy sauce,0.9,0.071,gordura_molho,n5k_v2,A
+d0304,olive oil,1.8,0.0,gordura_molho,n5k_v2,A
+d0304,green onions,1.8,0.032,vegetal,n5k_v2,A
+d0304,vinegar,3.5,0.0,gordura_molho,n5k_v2,A
+d0304,radishes,3.5,0.025,vegetal,n5k_v2,A
+d0305,salt,0.5,0.0,gordura_molho,n5k_v2,A
+d0305,pepper,0.1,0.002,gordura_molho,n5k_v2,A
+d0305,brussels sprouts,93.5,3.178,vegetal,n5k_v2,A
+d0305,scrambled eggs,134.0,13.4,proteina_animal,n5k_v2,A
+d0305,olive oil,0.9,0.0,gordura_molho,n5k_v2,A
+d0305,hash browns,73.0,1.898,amido,n5k_v2,A
+d0305,bacon,22.0,8.14,proteina_animal,n5k_v2,A
+d0306,yam,62.0,0.992,amido,n5k_v2,A
+d0306,bacon,26.0,9.62,proteina_animal,n5k_v2,A
+d0306,cantaloupe,92.0,0.736,vegetal,n5k_v2,A
+d0307,tempeh,202.0,37.976,leguminosa,n5k_v2,A
+d0308,brisket,202.4,42.5,proteina_animal,n5k_v2,B
+d0308,mashed potatoes,202.4,3.44,amido,n5k_v2,B
+d0308,butter,20.2,0.162,gordura_molho,n5k_v2,B
+d0309,almonds,72.0,16.128,outros,n5k_v2,A
+d0310,bok choy,33.0,0.495,vegetal,n5k_v2,A
+d0310,salmon,60.2,14.448,proteina_animal,n5k_v2,A
+d0310,pineapple,64.0,0.32,vegetal,n5k_v2,A
+d0310,jalapenos,0.6,0.005,vegetal,n5k_v2,A
+d0310,olive oil,0.5,0.0,gordura_molho,n5k_v2,A
+d0310,chili,0.2,0.003,misto,n5k_v2,A
+d0310,cilantro,0.6,0.013,vegetal,n5k_v2,A
+d0310,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0310,cheese pizza,41.0,4.592,misto,n5k_v2,A
+d0310,ginger,0.3,0.005,vegetal,n5k_v2,A
+d0310,tofu,44.0,3.52,leguminosa,n5k_v2,A
+d0310,spinach (raw),3.0,0.087,vegetal,n5k_v2,A
+d0310,brown rice,12.0,0.313,amido,n5k_v2,A
+d0310,lemon juice,0.6,0.002,vegetal,n5k_v2,A
+d0310,onions,1.2,0.013,vegetal,n5k_v2,A
+d0310,lime,0.1,0.001,vegetal,n5k_v2,A
+d0310,brussels sprouts,39.0,1.326,vegetal,n5k_v2,A
+d0310,shallots,1.8,0.027,vegetal,n5k_v2,A
+d0310,garlic,1.8,0.116,vegetal,n5k_v2,A
+d0311,carrot,5.2,0.047,vegetal,n5k_v2,A
+d0311,honeydew melons,95.0,0.475,vegetal,n5k_v2,A
+d0311,pumpkin seeds,2.6,0.492,outros,n5k_v2,A
+d0311,lettuce,6.5,0.091,vegetal,n5k_v2,A
+d0311,mustard,0.4,0.015,gordura_molho,n5k_v2,A
+d0311,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0311,olive oil,5.2,0.0,gordura_molho,n5k_v2,A
+d0311,arugula,19.4,0.505,vegetal,n5k_v2,A
+d0311,vinegar,2.6,0.0,gordura_molho,n5k_v2,A
+d0311,mixed greens,12.9,0.285,vegetal,n5k_v2,A
+d0312,figs,36.1,0.903,vegetal,n5k_v2,B
+d0312,granola,18.1,1.806,amido,n5k_v2,B
+d0312,grapes,24.1,0.169,vegetal,n5k_v2,B
+d0312,chia seeds,1.5,0.256,outros,n5k_v2,B
+d0312,greek yogurt,72.2,7.224,laticinio,n5k_v2,B
+d0313,omelets,174.0,18.096,proteina_animal,n5k_v2,B
+d0314,chicken,103.0,31.93,proteina_animal,n5k_v2,A
+d0314,spinach (raw),61.0,1.769,vegetal,n5k_v2,A
+d0314,broccoli,67.0,1.608,vegetal,n5k_v2,A
+d0315,broccoli,55.0,1.32,vegetal,n5k_v2,A
+d0315,scrambled eggs,146.0,14.6,proteina_animal,n5k_v2,A
+d0315,sweet potato,79.0,0.79,amido,n5k_v2,A
+d0316,bacon,31.0,11.47,proteina_animal,n5k_v2,A
+d0316,olive oil,2.6,0.0,gordura_molho,n5k_v2,A
+d0316,scrambled eggs,236.0,23.6,proteina_animal,n5k_v2,A
+d0316,green beans,100.4,1.808,leguminosa,n5k_v2,A
+d0317,spinach (raw),65.0,1.885,vegetal,n5k_v2,A
+d0317,cucumbers,98.0,0.98,vegetal,n5k_v2,A
+d0317,olives,112.0,0.896,vegetal,n5k_v2,A
+d0317,chicken,150.0,46.5,proteina_animal,n5k_v2,A
+d0318,apple,142.0,0.426,vegetal,n5k_v2,A
+d0318,almonds,27.0,6.048,outros,n5k_v2,A
+d0318,grapes,75.0,0.525,vegetal,n5k_v2,A
+d0318,cauliflower,51.0,0.918,vegetal,n5k_v2,A
+d0319,yam,70.0,1.12,amido,n5k_v2,A
+d0320,mixed greens,23.8,0.523,vegetal,n5k_v2,A
+d0320,onions,3.2,0.035,vegetal,n5k_v2,A
+d0320,lettuce,15.9,0.222,vegetal,n5k_v2,A
+d0320,lime,0.8,0.006,vegetal,n5k_v2,A
+d0320,cucumbers,7.9,0.079,vegetal,n5k_v2,A
+d0320,olive oil,6.3,0.0,gordura_molho,n5k_v2,A
+d0320,vinegar,3.2,0.0,gordura_molho,n5k_v2,A
+d0320,pepper,0.2,0.004,gordura_molho,n5k_v2,A
+d0320,cherry tomatoes,6.3,0.057,vegetal,n5k_v2,A
+d0320,bacon,36.0,13.32,proteina_animal,n5k_v2,A
+d0320,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0321,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0321,quinoa,35.0,1.538,amido,n5k_v2,A
+d0321,ginger,0.4,0.008,vegetal,n5k_v2,A
+d0321,mushroom,39.0,1.209,vegetal,n5k_v2,A
+d0321,green beans,16.6,0.298,leguminosa,n5k_v2,A
+d0321,olive oil,2.5,0.0,gordura_molho,n5k_v2,A
+d0321,olives,23.0,0.184,vegetal,n5k_v2,A
+d0321,shallots,6.3,0.094,vegetal,n5k_v2,A
+d0321,lime,0.1,0.001,vegetal,n5k_v2,A
+d0321,tomatoes,44.0,0.308,vegetal,n5k_v2,A
+d0321,beef,55.0,14.295,proteina_animal,n5k_v2,A
+d0321,millet,7.3,0.257,amido,n5k_v2,A
+d0321,bok choy,1.8,0.027,vegetal,n5k_v2,A
+d0321,salmon,86.3,20.714,proteina_animal,n5k_v2,A
+d0321,avocado,90.0,1.8,vegetal,n5k_v2,A
+d0321,vinegar,0.1,0.0,gordura_molho,n5k_v2,A
+d0321,onions,3.6,0.039,vegetal,n5k_v2,A
+d0321,spinach (raw),4.3,0.125,vegetal,n5k_v2,A
+d0321,brown rice,17.3,0.449,amido,n5k_v2,A
+d0321,jalapenos,0.9,0.008,vegetal,n5k_v2,A
+d0321,lemon juice,0.9,0.003,vegetal,n5k_v2,A
+d0321,chili,0.2,0.004,misto,n5k_v2,A
+d0321,garlic,2.6,0.166,vegetal,n5k_v2,A
+d0321,spinach (cooked),1.8,0.055,vegetal,n5k_v2,A
+d0321,cilantro,0.9,0.019,vegetal,n5k_v2,A
+d0322,cheese pizza,175.0,19.6,misto,n5k_v2,A
+d0323,brown rice,44.5,1.158,amido,n5k_v2,B
+d0323,spinach (raw),11.1,0.323,vegetal,n5k_v2,B
+d0323,onions,4.5,0.049,vegetal,n5k_v2,B
+d0323,garlic,6.7,0.428,vegetal,n5k_v2,B
+d0323,shallots,6.7,0.1,vegetal,n5k_v2,B
+d0323,olive oil,1.7,0.0,gordura_molho,n5k_v2,B
+d0323,chili,0.6,0.01,misto,n5k_v2,B
+d0323,salt,0.6,0.0,gordura_molho,n5k_v2,B
+d0323,salmon,222.7,53.44,proteina_animal,n5k_v2,B
+d0323,lime,0.3,0.002,vegetal,n5k_v2,B
+d0323,jalapenos,2.2,0.02,vegetal,n5k_v2,B
+d0323,lemon juice,2.2,0.009,vegetal,n5k_v2,B
+d0323,cilantro,2.2,0.049,vegetal,n5k_v2,B
+d0323,ginger,1.1,0.02,vegetal,n5k_v2,B
+d0324,berries,50.0,0.35,vegetal,n5k_v2,A
+d0324,cantaloupe,38.0,0.304,vegetal,n5k_v2,A
+d0325,brown rice,20.7,0.539,amido,n5k_v2,A
+d0325,arugula,4.1,0.108,vegetal,n5k_v2,A
+d0325,salmon,103.6,24.87,proteina_animal,n5k_v2,A
+d0325,thyme,0.1,0.008,vegetal,n5k_v2,A
+d0325,olive oil,3.9,0.0,gordura_molho,n5k_v2,A
+d0325,pepper,5.2,0.104,gordura_molho,n5k_v2,A
+d0325,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0326,sausage,112.0,21.616,proteina_animal,n5k_v2,A
+d0327,mixed greens,91.0,2.002,vegetal,n5k_v2,A
+d0327,olives,91.0,0.728,vegetal,n5k_v2,A
+d0327,chicken,136.0,42.16,proteina_animal,n5k_v2,A
+d0327,avocado,72.0,1.44,vegetal,n5k_v2,A
+d0327,broccoli,71.0,1.704,vegetal,n5k_v2,A
+d0327,parmesan cheese,27.0,10.368,laticinio,n5k_v2,A
+d0328,bacon,61.0,22.57,proteina_animal,n5k_v2,B
+d0328,scrambled eggs,35.0,3.5,proteina_animal,n5k_v2,B
+d0328,spinach (cooked),85.0,2.55,vegetal,n5k_v2,B
+d0329,arugula,2.1,0.056,vegetal,n5k_v2,A
+d0329,chicken breast,43.5,13.538,proteina_animal,n5k_v2,A
+d0329,cherry tomatoes,2.2,0.02,vegetal,n5k_v2,A
+d0329,spinach (raw),1.1,0.032,vegetal,n5k_v2,A
+d0329,squash,41.4,0.373,vegetal,n5k_v2,A
+d0329,wheat berry,4.4,0.183,amido,n5k_v2,A
+d0329,parmesan cheese,1.1,0.418,laticinio,n5k_v2,A
+d0329,garlic,0.9,0.055,vegetal,n5k_v2,A
+d0329,rosemary,0.4,0.012,vegetal,n5k_v2,A
+d0329,zucchini,4.3,0.047,vegetal,n5k_v2,A
+d0329,parsley,0.2,0.006,vegetal,n5k_v2,A
+d0329,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0329,cauliflower,54.0,0.972,vegetal,n5k_v2,A
+d0329,white rice,8.6,0.232,amido,n5k_v2,A
+d0329,thyme,0.1,0.007,vegetal,n5k_v2,A
+d0329,pepperoni pizza,82.0,9.84,misto,n5k_v2,A
+d0329,pork,64.4,16.736,proteina_animal,n5k_v2,A
+d0329,olive oil,1.0,0.0,gordura_molho,n5k_v2,A
+d0329,onions,3.0,0.033,vegetal,n5k_v2,A
+d0330,almonds,76.0,17.024,outros,n5k_v2,A
+d0331,egg whites,145.0,14.5,proteina_animal,n5k_v2,A
+d0331,sausage,117.0,22.581,proteina_animal,n5k_v2,A
+d0332,bacon,12.1,4.474,proteina_animal,n5k_v2,B
+d0332,tomatoes,36.3,0.254,vegetal,n5k_v2,B
+d0332,avocado,18.1,0.363,vegetal,n5k_v2,B
+d0332,multigrain bread,0.4,0.017,amido,n5k_v2,B
+d0332,olive oil,10.1,0.0,gordura_molho,n5k_v2,B
+d0332,eggs,18.8,2.346,proteina_animal,n5k_v2,B
+d0332,mozzarella cheese,40.6,11.364,laticinio,n5k_v2,B
+d0332,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0332,lemon juice,2.3,0.009,vegetal,n5k_v2,B
+d0332,basil,10.1,0.406,vegetal,n5k_v2,B
+d0332,pizza dough,53.7,2.899,misto,n5k_v2,B
+d0332,pizza sauce,30.4,0.396,misto,n5k_v2,B
+d0333,almonds,132.0,29.568,outros,n5k_v2,A
+d0334,pepper,4.2,0.084,gordura_molho,n5k_v2,A
+d0334,garlic,0.5,0.033,vegetal,n5k_v2,A
+d0334,cilantro,1.0,0.023,vegetal,n5k_v2,A
+d0334,olive oil,4.2,0.0,gordura_molho,n5k_v2,A
+d0334,caesar salad,70.0,2.24,vegetal,n5k_v2,A
+d0334,onions,4.2,0.046,vegetal,n5k_v2,A
+d0334,lemon juice,2.1,0.008,vegetal,n5k_v2,A
+d0334,arugula,5.2,0.136,vegetal,n5k_v2,A
+d0334,jalapenos,0.3,0.002,vegetal,n5k_v2,A
+d0334,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0334,tomatillo,10.5,0.105,vegetal,n5k_v2,A
+d0334,quinoa,20.9,0.921,amido,n5k_v2,A
+d0334,fish,104.6,19.253,proteina_animal,n5k_v2,A
+d0335,garlic,1.6,0.105,vegetal,n5k_v2,A
+d0335,tomatoes,16.4,0.115,vegetal,n5k_v2,A
+d0335,onions,0.4,0.005,vegetal,n5k_v2,A
+d0335,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0335,tortilla,65.5,3.929,amido,n5k_v2,A
+d0335,chili,1.4,0.026,misto,n5k_v2,A
+d0335,olive oil,0.8,0.0,gordura_molho,n5k_v2,A
+d0335,chicken thighs,163.7,39.124,proteina_animal,n5k_v2,A
+d0335,cilantro,1.6,0.036,vegetal,n5k_v2,A
+d0335,cheese,49.1,12.277,laticinio,n5k_v2,A
+d0336,cauliflower,104.0,1.872,vegetal,n5k_v2,A
+d0336,eggplant,95.1,0.951,vegetal,n5k_v2,A
+d0336,salt,1.0,0.0,gordura_molho,n5k_v2,A
+d0336,olive oil,1.0,0.0,gordura_molho,n5k_v2,A
+d0337,egg whites,342.0,34.2,proteina_animal,n5k_v2,A
+d0337,olive oil,2.1,0.0,gordura_molho,n5k_v2,A
+d0337,sweet potato,83.9,0.839,amido,n5k_v2,A
+d0337,cantaloupe,61.0,0.488,vegetal,n5k_v2,A
+d0338,sweet potato,115.1,1.151,amido,n5k_v2,A
+d0338,scrambled eggs,86.0,8.6,proteina_animal,n5k_v2,A
+d0338,olive oil,2.9,0.0,gordura_molho,n5k_v2,A
+d0338,egg whites,358.0,35.8,proteina_animal,n5k_v2,A
+d0339,sweet potato,100.5,1.005,amido,n5k_v2,A
+d0339,olive oil,2.5,0.0,gordura_molho,n5k_v2,A
+d0340,broccoli,49.0,1.176,vegetal,n5k_v2,A
+d0341,almonds,61.0,13.664,outros,n5k_v2,A
+d0342,sweet potato,56.5,0.565,amido,n5k_v2,A
+d0342,olive oil,2.2,0.0,gordura_molho,n5k_v2,A
+d0342,broccoli,88.8,2.131,vegetal,n5k_v2,A
+d0342,egg whites,96.0,9.6,proteina_animal,n5k_v2,A
+d0342,yam,56.5,0.904,amido,n5k_v2,A
+d0342,greek yogurt,38.8,3.877,laticinio,n5k_v2,A
+d0342,chia seeds,9.7,1.653,outros,n5k_v2,A
+d0342,chicken apple sausage,45.0,6.3,proteina_animal,n5k_v2,A
+d0342,milk,41.5,1.453,laticinio,n5k_v2,A
+d0343,yam,123.0,1.968,amido,n5k_v2,A
+d0344,cantaloupe,40.0,0.32,vegetal,n5k_v2,A
+d0344,almonds,72.0,16.128,outros,n5k_v2,A
+d0344,sausage,113.0,21.809,proteina_animal,n5k_v2,A
+d0344,grapes,100.0,0.7,vegetal,n5k_v2,A
+d0345,beef,110.7,28.788,proteina_animal,n5k_v2,A
+d0345,cauliflower,163.0,2.934,vegetal,n5k_v2,A
+d0345,shallots,7.4,0.111,vegetal,n5k_v2,A
+d0345,spinach (cooked),3.7,0.111,vegetal,n5k_v2,A
+d0345,olive oil,0.7,0.0,gordura_molho,n5k_v2,A
+d0345,onions,3.7,0.041,vegetal,n5k_v2,A
+d0345,vinegar,0.2,0.0,gordura_molho,n5k_v2,A
+d0345,mushroom,110.0,3.41,vegetal,n5k_v2,A
+d0345,millet,14.8,0.517,amido,n5k_v2,A
+d0345,bok choy,3.7,0.055,vegetal,n5k_v2,A
+d0345,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0346,carrot,6.3,0.056,vegetal,n5k_v2,B
+d0346,fish,15.0,2.768,proteina_animal,n5k_v2,B
+d0346,onions,0.5,0.006,vegetal,n5k_v2,B
+d0346,leeks,2.5,0.038,vegetal,n5k_v2,B
+d0346,snow peas,57.0,2.85,leguminosa,n5k_v2,B
+d0346,garlic,0.3,0.018,vegetal,n5k_v2,B
+d0346,cabbage,0.8,0.01,vegetal,n5k_v2,B
+d0346,olive oil,4.2,0.0,gordura_molho,n5k_v2,B
+d0346,mozzarella cheese,16.8,4.702,laticinio,n5k_v2,B
+d0346,salt,0.4,0.0,gordura_molho,n5k_v2,B
+d0346,butter,0.0,0.0,gordura_molho,n5k_v2,B
+d0346,barley,79.0,1.817,amido,n5k_v2,B
+d0346,milk,173.3,6.066,laticinio,n5k_v2,B
+d0346,lemon juice,0.0,0.0,vegetal,n5k_v2,B
+d0346,basil,4.2,0.168,vegetal,n5k_v2,B
+d0346,cilantro,0.1,0.003,vegetal,n5k_v2,B
+d0346,endive,0.5,0.006,outros,n5k_v2,B
+d0346,pizza dough,22.2,1.2,misto,n5k_v2,B
+d0346,pizza sauce,12.6,0.164,misto,n5k_v2,B
+d0346,oil,0.2,0.0,gordura_molho,n5k_v2,B
+d0347,cheese pizza,163.0,18.256,misto,n5k_v2,A
+d0348,grilled chicken,156.0,35.256,proteina_animal,n5k_v2,A
+d0349,scrambled eggs,131.0,13.1,proteina_animal,n5k_v2,A
+d0350,almonds,36.0,8.064,outros,n5k_v2,A
+d0351,chive,0.0,0.001,vegetal,n5k_v2,A
+d0351,bok choy,14.9,0.223,vegetal,n5k_v2,A
+d0351,chicken,31.7,9.812,proteina_animal,n5k_v2,A
+d0351,white rice,14.9,0.402,amido,n5k_v2,A
+d0351,pork,104.2,27.105,proteina_animal,n5k_v2,A
+d0351,arugula,21.5,0.56,vegetal,n5k_v2,A
+d0351,spinach (raw),38.4,1.115,vegetal,n5k_v2,A
+d0351,brown rice,3.2,0.082,amido,n5k_v2,A
+d0351,chard,0.8,0.014,vegetal,n5k_v2,A
+d0351,mustard,0.4,0.014,gordura_molho,n5k_v2,A
+d0351,olive oil,23.2,0.0,gordura_molho,n5k_v2,A
+d0351,garlic,4.3,0.273,vegetal,n5k_v2,A
+d0351,cucumbers,7.7,0.077,vegetal,n5k_v2,A
+d0351,sugar,11.2,0.0,gordura_molho,n5k_v2,A
+d0351,rosemary,0.0,0.001,vegetal,n5k_v2,A
+d0351,pepper,9.0,0.18,gordura_molho,n5k_v2,A
+d0351,sun dried tomatoes,3.1,0.431,vegetal,n5k_v2,A
+d0351,lemon juice,0.1,0.0,vegetal,n5k_v2,A
+d0351,mustard greens,21.5,0.625,gordura_molho,n5k_v2,A
+d0351,parsley,8.7,0.251,vegetal,n5k_v2,A
+d0351,vinegar,11.7,0.0,gordura_molho,n5k_v2,A
+d0351,corn on the cob,55.0,1.705,amido,n5k_v2,A
+d0351,basil,0.0,0.002,vegetal,n5k_v2,A
+d0351,onions,4.6,0.051,vegetal,n5k_v2,A
+d0351,carrot,3.2,0.028,vegetal,n5k_v2,A
+d0351,soy sauce,6.0,0.483,gordura_molho,n5k_v2,A
+d0351,salt,1.6,0.0,gordura_molho,n5k_v2,A
+d0351,chickpeas,86.2,7.755,leguminosa,n5k_v2,A
+d0352,squash,60.3,0.543,vegetal,n5k_v2,B
+d0352,fish,60.3,11.098,proteina_animal,n5k_v2,B
+d0352,olive oil,2.0,0.0,gordura_molho,n5k_v2,B
+d0352,collards,116.0,3.48,vegetal,n5k_v2,B
+d0352,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0352,cream,2.0,0.056,gordura_molho,n5k_v2,B
+d0352,curries,60.3,7.237,misto,n5k_v2,B
+d0352,sweet potato,107.0,1.07,amido,n5k_v2,B
+d0352,oil,12.1,0.0,gordura_molho,n5k_v2,B
+d0353,pineapple,56.0,0.28,vegetal,n5k_v2,A
+d0353,parmesan cheese,1.4,0.52,laticinio,n5k_v2,A
+d0353,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0353,thyme,0.1,0.008,vegetal,n5k_v2,A
+d0353,olive oil,1.5,0.0,gordura_molho,n5k_v2,A
+d0353,wheat berry,5.4,0.228,amido,n5k_v2,A
+d0353,garlic,0.5,0.035,vegetal,n5k_v2,A
+d0353,spinach (raw),1.4,0.039,vegetal,n5k_v2,A
+d0353,cherry tomatoes,2.7,0.024,vegetal,n5k_v2,A
+d0353,quinoa,44.7,1.965,amido,n5k_v2,A
+d0353,chicken breast,54.2,16.859,proteina_animal,n5k_v2,A
+d0354,egg whites,290.0,29.0,proteina_animal,n5k_v2,A
+d0354,roasted potatoes,80.0,1.68,amido,n5k_v2,A
+d0354,bacon,87.0,32.19,proteina_animal,n5k_v2,A
+d0355,bok choy,1.4,0.021,vegetal,n5k_v2,A
+d0355,vinegar,0.1,0.0,gordura_molho,n5k_v2,A
+d0355,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0355,onions,1.4,0.016,vegetal,n5k_v2,A
+d0355,kale,66.0,2.178,vegetal,n5k_v2,A
+d0355,olive oil,5.6,0.0,gordura_molho,n5k_v2,A
+d0355,quinoa,94.2,4.144,amido,n5k_v2,A
+d0355,shallots,2.9,0.043,vegetal,n5k_v2,A
+d0355,spinach (cooked),1.4,0.043,vegetal,n5k_v2,A
+d0355,chard,66.0,1.188,vegetal,n5k_v2,A
+d0355,green beans,96.5,1.737,leguminosa,n5k_v2,A
+d0355,beef,42.8,11.118,proteina_animal,n5k_v2,A
+d0355,millet,5.7,0.2,amido,n5k_v2,A
+d0356,egg whites,446.0,44.6,proteina_animal,n5k_v2,A
+d0356,watermelon,80.0,0.48,vegetal,n5k_v2,A
+d0356,yam,61.8,0.989,amido,n5k_v2,A
+d0356,berries,39.0,0.273,vegetal,n5k_v2,A
+d0356,cantaloupe,40.0,0.32,vegetal,n5k_v2,A
+d0356,sweet potato,61.8,0.618,amido,n5k_v2,A
+d0356,olive oil,7.4,0.0,gordura_molho,n5k_v2,A
+d0357,lemon juice,0.3,0.001,vegetal,n5k_v2,A
+d0357,wheat berry,6.2,0.262,amido,n5k_v2,A
+d0357,parsley,0.6,0.018,vegetal,n5k_v2,A
+d0357,chicken,62.4,19.357,proteina_animal,n5k_v2,A
+d0357,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0357,olive oil,1.2,0.0,gordura_molho,n5k_v2,A
+d0357,roasted potatoes,34.0,0.714,amido,n5k_v2,A
+d0357,garlic,0.3,0.02,vegetal,n5k_v2,A
+d0357,thyme,0.2,0.009,vegetal,n5k_v2,A
+d0357,shallots,0.0,0.0,vegetal,n5k_v2,A
+d0357,spinach (raw),1.6,0.045,vegetal,n5k_v2,A
+d0358,watermelon,55.0,0.33,vegetal,n5k_v2,A
+d0358,egg whites,408.0,40.8,proteina_animal,n5k_v2,A
+d0359,mixed greens,12.9,0.285,vegetal,n5k_v2,A
+d0359,carrot,5.2,0.047,vegetal,n5k_v2,A
+d0359,lettuce,6.5,0.091,vegetal,n5k_v2,A
+d0359,pumpkin seeds,2.6,0.492,outros,n5k_v2,A
+d0359,mustard,0.4,0.015,gordura_molho,n5k_v2,A
+d0359,olive oil,5.2,0.0,gordura_molho,n5k_v2,A
+d0359,vinegar,2.6,0.0,gordura_molho,n5k_v2,A
+d0359,arugula,19.4,0.505,vegetal,n5k_v2,A
+d0359,green beans,38.0,0.684,leguminosa,n5k_v2,A
+d0359,honeydew melons,95.0,0.475,vegetal,n5k_v2,A
+d0359,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0360,sausage,106.0,20.458,proteina_animal,n5k_v2,A
+d0361,turkey,130.0,37.7,proteina_animal,n5k_v2,B
+d0361,squash,97.4,0.877,vegetal,n5k_v2,B
+d0361,cucumbers,20.0,0.2,vegetal,n5k_v2,B
+d0361,olive oil,1.8,0.0,gordura_molho,n5k_v2,B
+d0361,seeds,2.6,0.79,outros,n5k_v2,B
+d0361,pita bread,30.0,2.64,amido,n5k_v2,B
+d0361,salt,0.0,0.0,gordura_molho,n5k_v2,B
+d0361,honey,1.2,0.004,gordura_molho,n5k_v2,B
+d0361,hummus,61.0,4.819,leguminosa,n5k_v2,B
+d0362,bacon,17.0,6.29,proteina_animal,n5k_v2,A
+d0362,berries,86.0,0.602,vegetal,n5k_v2,A
+d0363,chili,124.0,2.232,misto,n5k_v2,B
+d0364,broccoli,13.0,0.312,vegetal,n5k_v2,A
+d0364,hominy,4.8,0.072,amido,n5k_v2,A
+d0364,parsley,0.2,0.005,vegetal,n5k_v2,A
+d0364,salt,0.0,0.0,gordura_molho,n5k_v2,A
+d0364,chicken thighs,70.6,16.884,proteina_animal,n5k_v2,A
+d0364,olive oil,0.3,0.0,gordura_molho,n5k_v2,A
+d0364,chili,3.9,0.07,misto,n5k_v2,A
+d0364,jalapenos,0.2,0.002,vegetal,n5k_v2,A
+d0364,wheat berry,60.0,2.52,amido,n5k_v2,A
+d0364,cabbage,7.1,0.092,vegetal,n5k_v2,A
+d0364,garlic,0.4,0.023,vegetal,n5k_v2,A
+d0364,tomatoes,4.8,0.034,vegetal,n5k_v2,A
+d0364,lemon juice,0.3,0.001,vegetal,n5k_v2,A
+d0364,caesar salad,86.0,2.752,vegetal,n5k_v2,A
+d0364,lime,0.1,0.001,vegetal,n5k_v2,A
+d0364,bell peppers,1.4,0.028,vegetal,n5k_v2,A
+d0365,salmon,121.6,29.195,proteina_animal,n5k_v2,A
+d0365,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0365,thyme,0.2,0.009,vegetal,n5k_v2,A
+d0365,olive oil,4.6,0.0,gordura_molho,n5k_v2,A
+d0365,arugula,4.9,0.127,vegetal,n5k_v2,A
+d0365,brown rice,24.3,0.633,amido,n5k_v2,A
+d0365,cherry tomatoes,66.0,0.594,vegetal,n5k_v2,A
+d0365,pepper,6.1,0.122,gordura_molho,n5k_v2,A
+d0366,almonds,53.0,11.872,outros,n5k_v2,A
+d0367,salt,1.8,0.0,gordura_molho,n5k_v2,A
+d0367,broccoli,3.2,0.076,vegetal,n5k_v2,A
+d0367,parsley,3.8,0.111,vegetal,n5k_v2,A
+d0367,lemon juice,1.9,0.008,vegetal,n5k_v2,A
+d0367,kale,1.6,0.053,vegetal,n5k_v2,A
+d0367,green onions,0.3,0.006,vegetal,n5k_v2,A
+d0367,orange juice,0.3,0.002,vegetal,n5k_v2,A
+d0367,wheat berry,38.2,1.602,amido,n5k_v2,A
+d0367,eggplant,84.3,0.843,vegetal,n5k_v2,A
+d0367,tofu,106.0,8.48,leguminosa,n5k_v2,A
+d0367,pepper,0.1,0.001,gordura_molho,n5k_v2,A
+d0367,beef,47.8,12.416,proteina_animal,n5k_v2,A
+d0367,soy sauce,0.3,0.026,gordura_molho,n5k_v2,A
+d0367,garlic,2.2,0.142,vegetal,n5k_v2,A
+d0367,shallots,0.1,0.002,vegetal,n5k_v2,A
+d0367,chili,0.3,0.006,misto,n5k_v2,A
+d0367,onions,0.6,0.007,vegetal,n5k_v2,A
+d0367,thyme,1.0,0.057,vegetal,n5k_v2,A
+d0367,olive oil,10.0,0.0,gordura_molho,n5k_v2,A
+d0367,vinegar,0.3,0.0,gordura_molho,n5k_v2,A
+d0367,spinach (raw),9.5,0.277,vegetal,n5k_v2,A
+d0367,carrot,104.5,0.94,vegetal,n5k_v2,A
+d0367,chicken,381.5,118.266,proteina_animal,n5k_v2,A
+d0367,white rice,6.4,0.172,amido,n5k_v2,A
+d0368,fish,57.1,10.514,proteina_animal,n5k_v2,B
+d0368,garlic,0.6,0.037,vegetal,n5k_v2,B
+d0368,shallots,1.1,0.017,vegetal,n5k_v2,B
+d0368,olive oil,2.3,0.0,gordura_molho,n5k_v2,B
+d0368,salt,0.1,0.0,gordura_molho,n5k_v2,B
+d0368,cherry tomatoes,2.3,0.021,vegetal,n5k_v2,B
+d0368,wheat berry,11.4,0.48,amido,n5k_v2,B
+d0368,chard,5.1,0.093,vegetal,n5k_v2,B
+d0368,lemon juice,1.1,0.005,vegetal,n5k_v2,B
+d0368,parsley,0.6,0.017,vegetal,n5k_v2,B
+d0368,chive,0.1,0.005,vegetal,n5k_v2,B
+d0369,bacon,42.0,15.54,proteina_animal,n5k_v2,B
+d0370,chicken apple sausage,71.0,9.94,proteina_animal,n5k_v2,A
+d0370,grapes,81.0,0.567,vegetal,n5k_v2,A
+d0370,roasted potatoes,17.0,0.357,amido,n5k_v2,A
+d0370,watermelon,73.0,0.438,vegetal,n5k_v2,A
+d0371,bread,46.0,6.21,amido,n5k_v2,A
+d0372,scrambled eggs,65.0,6.5,proteina_animal,n5k_v2,A
+d0372,watermelon,139.0,0.834,vegetal,n5k_v2,A
+d0372,berries,133.0,0.931,vegetal,n5k_v2,A
+d0372,pineapple,145.0,0.725,vegetal,n5k_v2,A
+d0373,garlic,1.4,0.087,vegetal,n5k_v2,A
+d0373,lime,1.4,0.009,vegetal,n5k_v2,A
+d0373,salt,0.7,0.0,gordura_molho,n5k_v2,A
+d0373,brownies,51.0,3.162,outros,n5k_v2,A
+d0373,olive oil,0.2,0.0,gordura_molho,n5k_v2,A
+d0373,wheat berry,20.3,0.853,amido,n5k_v2,A
+d0373,steak,101.6,25.396,proteina_animal,n5k_v2,A
+d0373,pepperoni pizza,122.0,14.64,misto,n5k_v2,A
+d0373,cauliflower,13.5,0.244,vegetal,n5k_v2,A
+d0374,sausage,51.0,9.843,proteina_animal,n5k_v2,A
+d0374,egg whites,156.0,15.6,proteina_animal,n5k_v2,A
+d0375,cucumbers,8.3,0.083,vegetal,n5k_v2,A
+d0375,vinegar,3.3,0.0,gordura_molho,n5k_v2,A
+d0375,zucchini,27.0,0.297,vegetal,n5k_v2,A
+d0375,carrot,45.3,0.408,vegetal,n5k_v2,A
+d0375,spinach (cooked),1.1,0.032,vegetal,n5k_v2,A
+d0375,mixed greens,24.8,0.546,vegetal,n5k_v2,A
+d0375,lettuce,16.6,0.232,vegetal,n5k_v2,A
+d0375,quinoa,4.2,0.186,amido,n5k_v2,A
+d0375,eggplant,2.1,0.021,vegetal,n5k_v2,A
+d0375,wine,0.2,0.0,outros,n5k_v2,A
+d0375,squash,29.1,0.262,vegetal,n5k_v2,A
+d0375,mushroom,2.1,0.066,vegetal,n5k_v2,A
+d0375,broccoli,27.0,0.648,vegetal,n5k_v2,A
+d0375,lime,0.8,0.006,vegetal,n5k_v2,A
+d0375,lemon juice,0.1,0.0,vegetal,n5k_v2,A
+d0375,onions,3.3,0.036,vegetal,n5k_v2,A
+d0375,olive oil,7.2,0.0,gordura_molho,n5k_v2,A
+d0375,salt,0.6,0.0,gordura_molho,n5k_v2,A
+d0375,cheese pizza,62.0,6.944,misto,n5k_v2,A
+d0375,shallots,0.4,0.006,vegetal,n5k_v2,A
+d0375,garlic,0.2,0.014,vegetal,n5k_v2,A
+d0375,pepper,0.2,0.005,gordura_molho,n5k_v2,A
+d0375,cherry tomatoes,6.6,0.06,vegetal,n5k_v2,A
+d0375,chicken thighs,42.3,10.112,proteina_animal,n5k_v2,A
+d0376,fish,68.9,12.673,proteina_animal,n5k_v2,A
+d0376,pepper,2.8,0.055,gordura_molho,n5k_v2,A
+d0376,blueberries,8.8,0.061,vegetal,n5k_v2,A
+d0376,chard,17.6,0.316,vegetal,n5k_v2,A
+d0376,mustard,0.4,0.016,gordura_molho,n5k_v2,A
+d0376,olive oil,9.8,0.0,gordura_molho,n5k_v2,A
+d0376,garlic,0.3,0.022,vegetal,n5k_v2,A
+d0376,raspberries,8.8,0.105,vegetal,n5k_v2,A
+d0376,roasted potatoes,33.0,0.693,amido,n5k_v2,A
+d0376,carrot,8.8,0.079,vegetal,n5k_v2,A
+d0376,quinoa,13.8,0.606,amido,n5k_v2,A
+d0376,tomatillo,6.9,0.069,vegetal,n5k_v2,A
+d0376,almonds,3.5,0.787,outros,n5k_v2,A
+d0376,lemon juice,1.4,0.006,vegetal,n5k_v2,A
+d0376,jalapenos,0.2,0.002,vegetal,n5k_v2,A
+d0376,pizza,79.0,8.69,misto,n5k_v2,A
+d0376,arugula,29.8,0.775,vegetal,n5k_v2,A
+d0376,onions,2.8,0.03,vegetal,n5k_v2,A
+d0376,artichokes,38.0,1.254,vegetal,n5k_v2,A
+d0376,parsnips,39.0,0.468,outros,n5k_v2,A
+d0376,cilantro,0.7,0.015,vegetal,n5k_v2,A
+d0376,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0376,vinegar,3.5,0.0,gordura_molho,n5k_v2,A
+d0377,soy sauce,0.3,0.027,gordura_molho,n5k_v2,A
+d0377,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0377,vinegar,0.3,0.0,gordura_molho,n5k_v2,A
+d0377,olive oil,0.5,0.0,gordura_molho,n5k_v2,A
+d0377,beef,49.3,12.816,proteina_animal,n5k_v2,A
+d0377,white rice,6.6,0.177,amido,n5k_v2,A
+d0377,orange juice,0.3,0.002,vegetal,n5k_v2,A
+d0377,chili,0.3,0.006,misto,n5k_v2,A
+d0377,green onions,0.3,0.006,vegetal,n5k_v2,A
+d0377,broccoli,3.3,0.079,vegetal,n5k_v2,A
+d0377,garlic,0.3,0.021,vegetal,n5k_v2,A
+d0377,kale,1.6,0.054,vegetal,n5k_v2,A
+d0377,cheese pizza,70.0,7.84,misto,n5k_v2,A
+d0377,onions,0.7,0.007,vegetal,n5k_v2,A
+d0378,scrambled eggs,40.0,4.0,proteina_animal,n5k_v2,A
+d0378,olive oil,1.3,0.0,gordura_molho,n5k_v2,A
+d0378,sweet potato,50.7,0.507,amido,n5k_v2,A
+d0378,egg whites,203.0,20.3,proteina_animal,n5k_v2,A
+d0379,cherry tomatoes,7.0,0.063,vegetal,n5k_v2,A
+d0379,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0379,pepper,0.2,0.004,gordura_molho,n5k_v2,A
+d0379,green beans,57.5,1.035,leguminosa,n5k_v2,A
+d0379,vinegar,3.5,0.0,gordura_molho,n5k_v2,A
+d0379,cucumbers,8.7,0.087,vegetal,n5k_v2,A
+d0379,onions,3.5,0.038,vegetal,n5k_v2,A
+d0379,olive oil,8.5,0.0,gordura_molho,n5k_v2,A
+d0379,mixed greens,26.2,0.577,vegetal,n5k_v2,A
+d0379,lime,0.9,0.006,vegetal,n5k_v2,A
+d0379,lettuce,17.5,0.245,vegetal,n5k_v2,A
+d0380,spinach (raw),3.1,0.091,vegetal,n5k_v2,A
+d0380,pepperoni pizza,52.0,6.24,misto,n5k_v2,A
+d0380,wheat berry,12.6,0.528,amido,n5k_v2,A
+d0380,parmesan cheese,3.1,1.206,laticinio,n5k_v2,A
+d0380,cherry tomatoes,6.3,0.057,vegetal,n5k_v2,A
+d0380,chicken breast,125.7,39.083,proteina_animal,n5k_v2,A
+d0380,broccoli,46.0,1.104,vegetal,n5k_v2,A
+d0380,salt,0.4,0.0,gordura_molho,n5k_v2,A
+d0380,garlic,1.3,0.08,vegetal,n5k_v2,A
+d0380,thyme,0.3,0.019,vegetal,n5k_v2,A
+d0380,squash,75.0,0.675,vegetal,n5k_v2,A
+d0380,olive oil,1.2,0.0,gordura_molho,n5k_v2,A
+d0381,squash,38.5,0.346,vegetal,n5k_v2,A
+d0381,olive oil,0.4,0.0,gordura_molho,n5k_v2,A
+d0381,salt,0.1,0.0,gordura_molho,n5k_v2,A
+d0381,parmesan cheese,3.6,1.376,laticinio,n5k_v2,A
+d0381,croutons,0.3,0.032,outros,n5k_v2,A
+d0381,kale,34.4,1.136,vegetal,n5k_v2,A
+d0381,caesar dressing,5.7,0.184,gordura_molho,n5k_v2,A
+d0382,tuna,102.0,29.58,proteina_animal,n5k_v2,A
+d0383,berries,103.0,0.721,vegetal,n5k_v2,A
+d0383,brussels sprouts,58.1,1.974,vegetal,n5k_v2,A
+d0383,roasted potatoes,63.0,1.323,amido,n5k_v2,A
+d0383,egg whites,125.0,12.5,proteina_animal,n5k_v2,A
+d0383,olive oil,0.6,0.0,gordura_molho,n5k_v2,A
+d0383,pepper,0.1,0.001,gordura_molho,n5k_v2,A
+d0383,pineapple,140.0,0.7,vegetal,n5k_v2,A
+d0383,salt,0.3,0.0,gordura_molho,n5k_v2,A
+d0384,corn on the cob,68.0,2.108,amido,n5k_v2,A
+d0385,cauliflower,308.0,5.544,vegetal,n5k_v2,A
+d0386,cheese pizza,98.0,10.976,misto,n5k_v2,A
+d0387,vinegar,3.3,0.0,gordura_molho,n5k_v2,A
+d0387,lemon juice,3.3,0.013,vegetal,n5k_v2,A
+d0387,chicken thighs,31.0,7.407,proteina_animal,n5k_v2,A
+d0387,white rice,66.1,1.785,amido,n5k_v2,A
+d0387,pineapple,16.5,0.083,vegetal,n5k_v2,A
+d0387,kale,16.5,0.545,vegetal,n5k_v2,A
+d0387,pepper,0.1,0.002,gordura_molho,n5k_v2,A
+d0387,salt,1.2,0.0,gordura_molho,n5k_v2,A
+d0387,cilantro,1.7,0.036,vegetal,n5k_v2,A
+d0387,garlic,3.3,0.212,vegetal,n5k_v2,A
+d0387,olive oil,4.1,0.0,gordura_molho,n5k_v2,A
+d0387,onions,23.1,0.255,vegetal,n5k_v2,A
+d0387,brussels sprouts,82.7,2.81,vegetal,n5k_v2,A
+d0388,bell peppers,6.8,0.136,vegetal,n5k_v2,A
+d0388,garlic,0.3,0.022,vegetal,n5k_v2,A
+d0388,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0388,olive oil,5.4,0.0,gordura_molho,n5k_v2,A
+d0388,cucumbers,6.8,0.068,vegetal,n5k_v2,A
+d0388,mustard,0.3,0.013,gordura_molho,n5k_v2,A
+d0388,vinegar,2.7,0.0,gordura_molho,n5k_v2,A
+d0388,radishes,5.4,0.038,vegetal,n5k_v2,A
+d0389,fish,68.9,12.673,proteina_animal,n5k_v2,A
+d0389,garlic,0.3,0.022,vegetal,n5k_v2,A
+d0389,salt,0.2,0.0,gordura_molho,n5k_v2,A
+d0389,pizza,79.0,8.69,misto,n5k_v2,A
+d0389,onions,2.8,0.03,vegetal,n5k_v2,A
+d0389,pepper,2.8,0.055,gordura_molho,n5k_v2,A
+d0389,quinoa,13.8,0.606,amido,n5k_v2,A
+d0389,artichokes,38.0,1.254,vegetal,n5k_v2,A
+d0389,lemon juice,1.4,0.006,vegetal,n5k_v2,A
+d0389,olive oil,2.8,0.0,gordura_molho,n5k_v2,A
+d0389,arugula,3.4,0.09,vegetal,n5k_v2,A
+d0389,jalapenos,0.2,0.002,vegetal,n5k_v2,A
+d0389,tomatillo,6.9,0.069,vegetal,n5k_v2,A
+d0389,parsnips,39.0,0.468,outros,n5k_v2,A
+d0389,cilantro,0.7,0.015,vegetal,n5k_v2,A
+d0389,roasted potatoes,33.0,0.693,amido,n5k_v2,A
+d0390,pepper,0.0,0.0,gordura_molho,n5k_v2,A
+d0390,chicken,20.5,6.35,proteina_animal,n5k_v2,A
+d0390,wheat berry,2.0,0.086,amido,n5k_v2,A
+d0390,lemon juice,0.1,0.0,vegetal,n5k_v2,A
+d0390,basil,0.1,0.002,vegetal,n5k_v2,A
+d0390,parsley,0.1,0.003,vegetal,n5k_v2,A
+d0390,garlic,0.1,0.007,vegetal,n5k_v2,A
+d0390,squash,1.0,0.009,vegetal,n5k_v2,A
+d0390,spinach (raw),0.5,0.015,vegetal,n5k_v2,A
+d0390,zucchini,1.0,0.011,vegetal,n5k_v2,A
+d0390,rosemary,0.1,0.001,vegetal,n5k_v2,A
+d0390,olive oil,0.4,0.0,gordura_molho,n5k_v2,A
+d0390,thyme,0.1,0.003,vegetal,n5k_v2,A
+d0390,caesar salad,59.0,1.888,vegetal,n5k_v2,A
+d0390,salt,0.0,0.0,gordura_molho,n5k_v2,A
+d0391,grapes,46.0,0.322,vegetal,n5k_v2,A
+d0391,watermelon,77.0,0.462,vegetal,n5k_v2,A
+d0391,egg whites,519.0,51.9,proteina_animal,n5k_v2,A
+d0391,sweet potato,157.1,1.571,amido,n5k_v2,A
+d0391,olive oil,3.9,0.0,gordura_molho,n5k_v2,A
+d0392,chicken,149.0,46.19,proteina_animal,n5k_v2,A
+d0392,olives,109.0,0.872,vegetal,n5k_v2,A
+d0392,spinach (raw),64.0,1.856,vegetal,n5k_v2,A
+d0392,cucumbers,75.0,0.75,vegetal,n5k_v2,A
+d0393,cherry tomatoes,70.0,0.63,vegetal,n5k_v2,A
+d0393,carrot,119.0,1.071,vegetal,n5k_v2,A
+d0393,grilled chicken,194.0,43.844,proteina_animal,n5k_v2,A
+d0393,bell peppers,99.0,1.98,vegetal,n5k_v2,A
+d0393,olive oil,8.0,0.0,gordura_molho,n5k_v2,A
+d0393,onions,74.0,0.814,vegetal,n5k_v2,A
+d0394,thyme,0.3,0.015,vegetal,n5k_v2,A
+d0394,salmon,203.5,48.838,proteina_animal,n5k_v2,A
+d0394,olive oil,7.7,0.0,gordura_molho,n5k_v2,A
+d0394,pepper,10.2,0.203,gordura_molho,n5k_v2,A
+d0394,brown rice,40.7,1.058,amido,n5k_v2,A
+d0394,arugula,8.1,0.212,vegetal,n5k_v2,A
+d0394,salt,0.5,0.0,gordura_molho,n5k_v2,A
+d0395,egg whites,557.0,55.7,proteina_animal,n5k_v2,A
+d0396,caesar salad,90.0,2.88,vegetal,n5k_v2,A
+d0397,bacon,85.0,31.45,proteina_animal,n5k_v2,A
+d0398,almonds,128.0,28.672,outros,n5k_v2,A
+d0399,olives,91.0,0.728,vegetal,n5k_v2,A
+d0399,mixed greens,91.0,2.002,vegetal,n5k_v2,A
+d0399,chicken,136.0,42.16,proteina_animal,n5k_v2,A
+d0399,broccoli,71.0,1.704,vegetal,n5k_v2,A
+d0400,grilled chicken,135.0,30.51,proteina_animal,n5k_v2,A
+n001,apple,2.4,0.007,vegetal,n5k_v1,A
+n001,vinegar,0.5,0.0,gordura_molho,n5k_v1,A
+n001,parsley,0.3,0.008,vegetal,n5k_v1,A
+n001,onions,0.9,0.01,vegetal,n5k_v1,A
+n001,carrot,12.0,0.108,vegetal,n5k_v1,A
+n001,salt,0.7,0.0,gordura_molho,n5k_v1,A
+n001,chive,0.2,0.005,vegetal,n5k_v1,A
+n001,chicken,120.3,37.286,proteina_animal,n5k_v1,A
+n001,millet,1.9,0.066,amido,n5k_v1,A
+n001,garlic,0.6,0.038,vegetal,n5k_v1,A
+n001,chard,3.0,0.054,vegetal,n5k_v1,A
+n001,brown rice,12.0,0.313,amido,n5k_v1,A
+n001,lemon juice,0.9,0.004,vegetal,n5k_v1,A
+n001,rosemary,0.2,0.004,vegetal,n5k_v1,A
+n001,olive oil,4.2,0.0,gordura_molho,n5k_v1,A
+n001,basil,0.2,0.006,vegetal,n5k_v1,A
+n001,mixed greens,11.9,0.261,vegetal,n5k_v1,A
+n002,grilled chicken,194.0,43.844,proteina_animal,n5k_v1,A
+n003,lemon juice,2.8,0.011,vegetal,n5k_v1,A
+n003,wheat berry,28.4,1.194,amido,n5k_v1,A
+n003,parsley,1.4,0.041,vegetal,n5k_v1,A
+n003,cherry tomatoes,5.7,0.051,vegetal,n5k_v1,A
+n003,fish,142.2,26.157,proteina_animal,n5k_v1,A
+n003,salt,0.4,0.0,gordura_molho,n5k_v1,A
+n003,garlic,1.4,0.091,vegetal,n5k_v1,A
+n003,shallots,2.8,0.043,vegetal,n5k_v1,A
+n003,chive,0.4,0.012,vegetal,n5k_v1,A
+n003,olive oil,5.7,0.0,gordura_molho,n5k_v1,A
+n003,chard,12.8,0.23,vegetal,n5k_v1,A
+n004,white rice,7.6,0.206,amido,n5k_v1,A
+n004,mushroom,7.6,0.236,vegetal,n5k_v1,A
+n004,ground turkey,57.1,14.278,proteina_animal,n5k_v1,A
+n004,chard,12.8,0.23,vegetal,n5k_v1,A
+n004,celery,1.0,0.007,vegetal,n5k_v1,A
+n004,wheat berry,28.4,1.194,amido,n5k_v1,A
+n004,onions,1.9,0.021,vegetal,n5k_v1,A
+n004,olive oil,6.4,0.0,gordura_molho,n5k_v1,A
+n004,cream,1.5,0.043,gordura_molho,n5k_v1,A
+n004,chive,0.5,0.018,vegetal,n5k_v1,A
+n004,garlic,1.5,0.097,vegetal,n5k_v1,A
+n004,salt,0.5,0.0,gordura_molho,n5k_v1,A
+n004,shallots,2.8,0.043,vegetal,n5k_v1,A
+n004,carrot,1.0,0.009,vegetal,n5k_v1,A
+n004,cherry tomatoes,5.7,0.051,vegetal,n5k_v1,A
+n004,fish,142.2,26.157,proteina_animal,n5k_v1,A
+n004,eggs,2.1,0.268,proteina_animal,n5k_v1,A
+n004,thyme,0.0,0.003,vegetal,n5k_v1,A
+n004,kale,1.9,0.063,vegetal,n5k_v1,A
+n004,parsley,1.4,0.041,vegetal,n5k_v1,A
+n004,lemon juice,2.8,0.011,vegetal,n5k_v1,A
+n005,olive oil,1.8,0.0,gordura_molho,n5k_v1,A
+n005,salt,0.1,0.0,gordura_molho,n5k_v1,A
+n005,lemon juice,0.5,0.002,vegetal,n5k_v1,A
+n005,onions,0.9,0.01,vegetal,n5k_v1,A
+n005,parsley,0.1,0.003,vegetal,n5k_v1,A
+n005,mixed greens,11.9,0.261,vegetal,n5k_v1,A
+n005,apple,2.4,0.007,vegetal,n5k_v1,A
+n005,millet,1.9,0.066,amido,n5k_v1,A
+n005,vinegar,0.5,0.0,gordura_molho,n5k_v1,A
+n006,brownies,109.0,6.758,outros,n5k_v1,A
+n007,walnuts,1.4,0.211,outros,n5k_v1,A
+n007,pepper,0.2,0.004,gordura_molho,n5k_v1,A
+n007,chard,7.0,0.126,vegetal,n5k_v1,A
+n007,blueberries,2.8,0.02,vegetal,n5k_v1,A
+n007,cucumbers,6.1,0.061,vegetal,n5k_v1,A
+n007,lime,0.6,0.004,vegetal,n5k_v1,A
+n007,salt,0.6,0.0,gordura_molho,n5k_v1,A
+n007,lettuce,12.1,0.17,vegetal,n5k_v1,A
+n007,mustard,0.4,0.016,gordura_molho,n5k_v1,A
+n007,cheese pizza,36.0,4.032,misto,n5k_v1,A
+n007,cherry tomatoes,4.9,0.044,vegetal,n5k_v1,A
+n007,vinegar,3.7,0.0,gordura_molho,n5k_v1,A
+n007,arugula,39.2,1.018,vegetal,n5k_v1,A
+n007,olive oil,10.4,0.0,gordura_molho,n5k_v1,A
+n007,pizza,39.0,4.29,misto,n5k_v1,A
+n007,onions,2.4,0.027,vegetal,n5k_v1,A
+n007,mixed greens,18.2,0.4,vegetal,n5k_v1,A
+n008,carrot,47.0,0.423,vegetal,n5k_v1,A
+n008,goat cheese,47.0,8.93,laticinio,n5k_v1,A
+n008,olive oil,45.0,0.0,gordura_molho,n5k_v1,A
+n008,broccoli,52.0,1.248,vegetal,n5k_v1,A
+n008,spinach (raw),20.0,0.58,vegetal,n5k_v1,A
+n008,chicken,205.0,63.55,proteina_animal,n5k_v1,A
+n009,blueberries,6.6,0.046,vegetal,n5k_v1,A
+n009,parsley,0.3,0.01,vegetal,n5k_v1,A
+n009,mustard,0.3,0.012,gordura_molho,n5k_v1,A
+n009,salt,0.2,0.0,gordura_molho,n5k_v1,A
+n009,carrot,2.6,0.024,vegetal,n5k_v1,A
+n009,almonds,1.3,0.296,outros,n5k_v1,A
+n009,spinach (raw),33.0,0.957,vegetal,n5k_v1,A
+n009,vinegar,1.3,0.0,gordura_molho,n5k_v1,A
+n009,olive oil,5.3,0.0,gordura_molho,n5k_v1,A
+n010,quinoa,144.0,6.335,amido,n5k_v1,A
+n010,mixed greens,50.2,1.105,vegetal,n5k_v1,A
+n010,garlic,4.1,0.263,vegetal,n5k_v1,A
+n010,parsley,2.9,0.084,vegetal,n5k_v1,A
+n010,mustard,1.0,0.037,gordura_molho,n5k_v1,A
+n010,lemon juice,0.4,0.001,vegetal,n5k_v1,A
+n010,brown rice,108.0,2.808,amido,n5k_v1,A
+n010,arugula,14.4,0.374,vegetal,n5k_v1,A
+n010,vinegar,4.0,0.0,gordura_molho,n5k_v1,A
+n010,olives,10.0,0.08,vegetal,n5k_v1,A
+n010,shallots,0.7,0.011,vegetal,n5k_v1,A
+n010,pears,10.0,0.04,vegetal,n5k_v1,A
+n010,salt,1.7,0.0,gordura_molho,n5k_v1,A
+n010,goat cheese,8.0,1.526,laticinio,n5k_v1,A
+n010,thyme,0.7,0.043,vegetal,n5k_v1,A
+n010,olive oil,8.8,0.0,gordura_molho,n5k_v1,A
+n011,almonds,1.4,0.319,outros,n5k_v1,A
+n011,olive oil,5.7,0.0,gordura_molho,n5k_v1,A
+n011,mustard,0.4,0.013,gordura_molho,n5k_v1,A
+n011,parsley,0.4,0.01,vegetal,n5k_v1,A
+n011,carrot,2.8,0.026,vegetal,n5k_v1,A
+n011,salt,0.2,0.0,gordura_molho,n5k_v1,A
+n011,blueberries,7.1,0.05,vegetal,n5k_v1,A
+n011,spinach (raw),35.6,1.032,vegetal,n5k_v1,A
+n011,vinegar,1.4,0.0,gordura_molho,n5k_v1,A
+n012,caesar salad,314.0,10.048,vegetal,n5k_v1,A
+n012,olive oil,0.4,0.0,gordura_molho,n5k_v1,A
+n012,onions,1.9,0.021,vegetal,n5k_v1,A
+n012,cheese pizza,35.0,3.92,misto,n5k_v1,A
+n012,zucchini,45.5,0.5,vegetal,n5k_v1,A
+n012,spinach (cooked),1.9,0.057,vegetal,n5k_v1,A
+n012,millet,7.6,0.267,amido,n5k_v1,A
+n012,shallots,3.8,0.057,vegetal,n5k_v1,A
+n012,bok choy,1.9,0.029,vegetal,n5k_v1,A
+n012,salt,0.1,0.0,gordura_molho,n5k_v1,A
+n012,beef,57.3,14.89,proteina_animal,n5k_v1,A
+n012,chayote squash,45.5,0.273,vegetal,n5k_v1,A
+n012,vinegar,0.1,0.0,gordura_molho,n5k_v1,A
+n013,brown rice,19.4,0.505,amido,n5k_v1,A
+n013,jalapenos,1.0,0.009,vegetal,n5k_v1,A
+n013,green beans,58.5,1.053,leguminosa,n5k_v1,A
+n013,salmon,97.2,23.325,proteina_animal,n5k_v1,A
+n013,vinaigrette,6.3,0.0,gordura_molho,n5k_v1,A
+n013,olives,3.1,0.025,vegetal,n5k_v1,A
+n013,cilantro,1.0,0.021,vegetal,n5k_v1,A
+n013,lime,0.1,0.001,vegetal,n5k_v1,A
+n013,garlic,2.9,0.187,vegetal,n5k_v1,A
+n013,lemon juice,1.0,0.004,vegetal,n5k_v1,A
+n013,bell peppers,3.1,0.063,vegetal,n5k_v1,A
+n013,olive oil,2.2,0.0,gordura_molho,n5k_v1,A
+n013,feta cheese,3.1,0.435,laticinio,n5k_v1,A
+n013,spinach (raw),4.9,0.141,vegetal,n5k_v1,A
+n013,ginger,0.5,0.009,vegetal,n5k_v1,A
+n013,cherry tomatoes,7.9,0.071,vegetal,n5k_v1,A
+n013,shallots,2.9,0.044,vegetal,n5k_v1,A
+n013,chili,0.2,0.004,misto,n5k_v1,A
+n013,salt,0.2,0.0,gordura_molho,n5k_v1,A
+n013,lettuce,31.5,0.441,vegetal,n5k_v1,A
+n013,onions,5.1,0.056,vegetal,n5k_v1,A
+n013,cucumbers,15.7,0.157,vegetal,n5k_v1,A
+n014,almonds,58.0,12.992,outros,n5k_v1,A
+n014,deprecated,143.0,20.02,outros,n5k_v1,A
+n014,sausage,60.0,11.58,proteina_animal,n5k_v1,A
+n014,mixed greens,15.0,0.33,vegetal,n5k_v1,A
+n014,grapes,74.0,0.518,vegetal,n5k_v1,A
+n015,caesar salad,86.0,2.752,vegetal,n5k_v1,A
+n015,wheat berry,60.0,2.52,amido,n5k_v1,A
+n015,broccoli,13.0,0.312,vegetal,n5k_v1,A
+n016,quinoa,40.9,1.799,amido,n5k_v1,A
+n016,broccoli,25.4,0.609,vegetal,n5k_v1,A
+n016,salt,0.5,0.0,gordura_molho,n5k_v1,A
+n016,arugula,4.1,0.106,vegetal,n5k_v1,A
+n016,parsley,0.8,0.024,vegetal,n5k_v1,A
+n016,lemon juice,0.1,0.0,vegetal,n5k_v1,A
+n016,garlic,1.0,0.065,vegetal,n5k_v1,A
+n016,olive oil,0.8,0.0,gordura_molho,n5k_v1,A
+n016,caesar salad,137.0,4.384,vegetal,n5k_v1,A
+n016,thyme,0.2,0.012,vegetal,n5k_v1,A
+n016,shallots,0.2,0.003,vegetal,n5k_v1,A
+n016,cheese pizza,85.0,9.52,misto,n5k_v1,A
+n017,almonds,58.0,12.992,outros,n5k_v1,A
+n018,pizza,58.0,6.38,misto,n5k_v1,A
+n019,salt,0.5,0.0,gordura_molho,n5k_v1,A
+n019,garlic,0.5,0.031,vegetal,n5k_v1,A
+n019,olive oil,10.3,0.0,gordura_molho,n5k_v1,A
+n019,mustard,0.8,0.03,gordura_molho,n5k_v1,A
+n019,pecans,2.6,0.231,outros,n5k_v1,A
+n019,chard,12.9,0.231,vegetal,n5k_v1,A
+n019,arugula,72.0,1.871,vegetal,n5k_v1,A
+n019,vinegar,2.4,0.0,gordura_molho,n5k_v1,A
+n019,blueberries,5.1,0.036,vegetal,n5k_v1,A
+n020,egg whites,570.0,57.0,proteina_animal,n5k_v1,A
+n020,sweet potato,156.1,1.561,amido,n5k_v1,A
+n020,olive oil,3.9,0.0,gordura_molho,n5k_v1,A
+n021,apple,160.0,0.48,vegetal,n5k_v1,A
+n022,egg whites,156.0,15.6,proteina_animal,n5k_v1,A
+n022,blueberries,89.0,0.623,vegetal,n5k_v1,A
+n022,greek yogurt,43.5,4.35,laticinio,n5k_v1,A
+n022,chia seeds,10.9,1.855,outros,n5k_v1,A
+n022,milk,46.6,1.63,laticinio,n5k_v1,A
+n023,berries,45.0,0.315,vegetal,n5k_v1,A
+n023,cantaloupe,42.0,0.336,vegetal,n5k_v1,A
+n024,egg whites,156.0,15.6,proteina_animal,n5k_v1,A
+n024,greek yogurt,43.5,4.35,laticinio,n5k_v1,A
+n024,milk,46.6,1.63,laticinio,n5k_v1,A
+n024,chia seeds,10.9,1.855,outros,n5k_v1,A
+n025,garlic,0.2,0.01,vegetal,n5k_v1,A
+n025,pilaf,82.0,2.05,outros,n5k_v1,A
+n025,green onions,0.3,0.006,vegetal,n5k_v1,A
+n025,onions,1.3,0.014,vegetal,n5k_v1,A
+n025,country rice,6.3,0.242,amido,n5k_v1,A
+n025,olive oil,0.6,0.0,gordura_molho,n5k_v1,A
+n025,salt,0.1,0.0,gordura_molho,n5k_v1,A
+n025,corn on the cob,108.0,3.348,amido,n5k_v1,A
+n025,fish,31.3,5.761,proteina_animal,n5k_v1,A
+n026,honeydew melons,39.0,0.195,vegetal,n5k_v1,A
+n027,garlic,0.9,0.061,vegetal,n5k_v1,A
+n027,mushroom,4.7,0.147,vegetal,n5k_v1,A
+n027,wheat berry,9.5,0.399,amido,n5k_v1,A
+n027,olive oil,0.9,0.0,gordura_molho,n5k_v1,A
+n027,butter,0.9,0.008,gordura_molho,n5k_v1,A
+n027,salt,0.9,0.0,gordura_molho,n5k_v1,A
+n027,shallots,0.5,0.007,vegetal,n5k_v1,A
+n027,white wine,0.2,0.0,outros,n5k_v1,A
+n027,pepper,0.5,0.009,gordura_molho,n5k_v1,A
+n027,arugula,2.4,0.062,vegetal,n5k_v1,A
+n027,cream,3.8,0.106,gordura_molho,n5k_v1,A
+n027,oregano,0.3,0.027,outros,n5k_v1,A
+n027,thyme,0.3,0.018,vegetal,n5k_v1,A
+n027,basil,0.5,0.019,vegetal,n5k_v1,A
+n027,rosemary,0.3,0.009,vegetal,n5k_v1,A
+n027,lemon juice,0.2,0.001,vegetal,n5k_v1,A
+n027,chicken,95.0,29.446,proteina_animal,n5k_v1,A
+n028,berries,85.0,0.595,vegetal,n5k_v1,A
+n028,olive oil,0.9,0.0,gordura_molho,n5k_v1,A
+n028,pineapple,80.0,0.4,vegetal,n5k_v1,A
+n028,scrambled eggs,147.0,14.7,proteina_animal,n5k_v1,A
+n028,roasted potatoes,66.0,1.386,amido,n5k_v1,A
+n028,broccoli,36.1,0.866,vegetal,n5k_v1,A
+n029,chicken,167.0,51.77,proteina_animal,n5k_v1,A
+n029,cherry tomatoes,36.0,0.324,vegetal,n5k_v1,A
+n029,pizza,233.0,25.63,misto,n5k_v1,A
+n030,strawberries,36.0,0.252,vegetal,n5k_v1,A
+n031,almonds,119.0,26.656,outros,n5k_v1,A
+n032,quinoa,40.9,1.799,amido,n5k_v1,A
+n032,cabbage,5.0,0.066,vegetal,n5k_v1,A
+n032,pork,37.9,9.845,proteina_animal,n5k_v1,A
+n032,lemon juice,0.6,0.002,vegetal,n5k_v1,A
+n032,thyme,0.2,0.012,vegetal,n5k_v1,A
+n032,broccoli,25.4,0.609,vegetal,n5k_v1,A
+n032,cheese pizza,85.0,9.52,misto,n5k_v1,A
+n032,pepper,0.1,0.003,gordura_molho,n5k_v1,A
+n032,wheat berry,5.0,0.212,amido,n5k_v1,A
+n032,mayonnaise,1.0,0.01,gordura_molho,n5k_v1,A
+n032,jalapenos,0.1,0.001,vegetal,n5k_v1,A
+n032,arugula,4.1,0.106,vegetal,n5k_v1,A
+n032,parsley,1.1,0.031,vegetal,n5k_v1,A
+n032,olive oil,1.1,0.0,gordura_molho,n5k_v1,A
+n032,carrot,1.3,0.011,vegetal,n5k_v1,A
+n032,salt,0.5,0.0,gordura_molho,n5k_v1,A
+n032,garlic,1.5,0.098,vegetal,n5k_v1,A
+n032,caesar salad,137.0,4.384,vegetal,n5k_v1,A
+n032,shallots,0.2,0.003,vegetal,n5k_v1,A
+n033,olive oil,2.8,0.0,gordura_molho,n5k_v1,A
+n033,brown rice,14.2,0.369,amido,n5k_v1,A
+n033,vinegar,0.7,0.0,gordura_molho,n5k_v1,A
+n033,cherry tomatoes,3.6,0.032,vegetal,n5k_v1,A
+n033,honeydew melons,137.0,0.685,vegetal,n5k_v1,A
+n033,shallots,0.7,0.011,vegetal,n5k_v1,A
+n033,parsley,0.4,0.01,vegetal,n5k_v1,A
+n033,basil,0.4,0.014,vegetal,n5k_v1,A
+n033,lemon juice,0.7,0.003,vegetal,n5k_v1,A
+n033,onions,1.4,0.016,vegetal,n5k_v1,A
+n033,pork,106.6,27.707,proteina_animal,n5k_v1,A
+n033,pepper,1.4,0.028,gordura_molho,n5k_v1,A
+n033,garlic,1.4,0.091,vegetal,n5k_v1,A
+n033,broccoli,3.6,0.085,vegetal,n5k_v1,A
+n033,salt,0.2,0.0,gordura_molho,n5k_v1,A
+n034,mustard greens,8.4,0.243,gordura_molho,n5k_v1,A
+n034,cucumbers,6.7,0.067,vegetal,n5k_v1,A
+n034,tomatoes,4.2,0.029,vegetal,n5k_v1,A
+n034,salt,0.2,0.0,gordura_molho,n5k_v1,A
+n034,mustard,0.4,0.015,gordura_molho,n5k_v1,A
+n034,garlic,0.6,0.04,vegetal,n5k_v1,A
+n034,fried rice,122.0,5.734,misto,n5k_v1,A
+n034,cheese pizza,88.0,9.856,misto,n5k_v1,A
+n034,vinegar,3.3,0.0,gordura_molho,n5k_v1,A
+n034,spinach (raw),33.5,0.97,vegetal,n5k_v1,A
+n034,green beans,84.8,1.527,leguminosa,n5k_v1,A
+n034,olive oil,8.9,0.0,gordura_molho,n5k_v1,A
+n035,cilantro,1.0,0.021,vegetal,n5k_v1,A
+n035,ginger,0.5,0.009,vegetal,n5k_v1,A
+n035,spinach (raw),4.9,0.141,vegetal,n5k_v1,A
+n035,jalapenos,1.0,0.009,vegetal,n5k_v1,A
+n035,lemon juice,1.0,0.004,vegetal,n5k_v1,A
+n035,lime,0.1,0.001,vegetal,n5k_v1,A
+n035,salt,0.2,0.0,gordura_molho,n5k_v1,A
+n035,onions,1.9,0.021,vegetal,n5k_v1,A
+n035,shallots,2.9,0.044,vegetal,n5k_v1,A
+n035,garlic,2.9,0.187,vegetal,n5k_v1,A
+n035,salmon,97.2,23.325,proteina_animal,n5k_v1,A
+n035,green beans,58.5,1.053,leguminosa,n5k_v1,A
+n035,brown rice,19.4,0.505,amido,n5k_v1,A
+n035,olive oil,2.2,0.0,gordura_molho,n5k_v1,A
+n035,chili,0.2,0.004,misto,n5k_v1,A
+n036,almonds,44.0,9.856,outros,n5k_v1,A
+n037,almonds,80.0,17.92,outros,n5k_v1,A
+n038,scrambled eggs,128.0,12.8,proteina_animal,n5k_v1,A
+n038,bacon,10.0,3.7,proteina_animal,n5k_v1,A
+n039,egg whites,71.0,7.1,proteina_animal,n5k_v1,A
+n039,hash browns,43.0,1.118,amido,n5k_v1,A
+n039,berries,61.0,0.427,vegetal,n5k_v1,A
+n039,sweet potato,82.0,0.82,amido,n5k_v1,A
+n040,chicken,154.3,47.834,proteina_animal,n5k_v1,A
+n040,chard,3.9,0.069,vegetal,n5k_v1,A
+n040,brown rice,127.4,3.313,amido,n5k_v1,A
+n040,salt,0.8,0.0,gordura_molho,n5k_v1,A
+n040,parsley,0.2,0.006,vegetal,n5k_v1,A
+n040,olive oil,3.1,0.0,gordura_molho,n5k_v1,A
+n040,rosemary,0.2,0.006,vegetal,n5k_v1,A
+n040,basil,0.2,0.008,vegetal,n5k_v1,A
+n040,lemon juice,0.6,0.002,vegetal,n5k_v1,A
+n040,chive,0.2,0.006,vegetal,n5k_v1,A
+n040,garlic,0.8,0.049,vegetal,n5k_v1,A
+n040,carrot,15.4,0.139,vegetal,n5k_v1,A
+n041,apple,143.0,0.429,vegetal,n5k_v1,A
+n041,carrot,74.0,0.666,vegetal,n5k_v1,A
+n041,cauliflower,57.0,1.026,vegetal,n5k_v1,A
+n041,almonds,133.0,29.792,outros,n5k_v1,A
+n042,egg whites,472.0,47.2,proteina_animal,n5k_v1,A
+n042,cantaloupe,136.0,1.088,vegetal,n5k_v1,A
+n043,chicken,63.0,19.53,proteina_animal,n5k_v1,A
+n044,walnuts,0.8,0.117,outros,n5k_v1,A
+n044,caesar salad,50.0,1.6,vegetal,n5k_v1,A
+n044,mustard,0.2,0.009,gordura_molho,n5k_v1,A
+n044,olive oil,3.1,0.0,gordura_molho,n5k_v1,A
+n044,vinegar,0.7,0.0,gordura_molho,n5k_v1,A
+n044,blueberries,1.5,0.011,vegetal,n5k_v1,A
+n044,chard,3.9,0.069,vegetal,n5k_v1,A
+n044,arugula,21.6,0.562,vegetal,n5k_v1,A
+n044,pepper,0.0,0.0,gordura_molho,n5k_v1,A
+n044,salt,0.1,0.0,gordura_molho,n5k_v1,A
+n045,bagels,57.6,5.818,amido,n5k_v1,A
+n045,sweet potato,94.6,0.946,amido,n5k_v1,A
+n045,olive oil,2.4,0.0,gordura_molho,n5k_v1,A
+n045,egg whites,101.0,10.1,proteina_animal,n5k_v1,A
+n045,cream cheese,14.4,0.893,laticinio,n5k_v1,A
+n046,cherry tomatoes,36.0,0.324,vegetal,n5k_v1,A
+n046,pizza,233.0,25.63,misto,n5k_v1,A
+n046,chicken,167.0,51.77,proteina_animal,n5k_v1,A
+n046,pineapple,52.0,0.26,vegetal,n5k_v1,A
+n047,garlic,0.8,0.049,vegetal,n5k_v1,A
+n047,carrot,15.4,0.139,vegetal,n5k_v1,A
+n047,parsley,0.2,0.006,vegetal,n5k_v1,A
+n047,olive oil,3.1,0.0,gordura_molho,n5k_v1,A
+n047,basil,0.2,0.008,vegetal,n5k_v1,A
+n047,rosemary,0.2,0.006,vegetal,n5k_v1,A
+n047,lemon juice,0.6,0.002,vegetal,n5k_v1,A
+n047,brown rice,127.4,3.313,amido,n5k_v1,A
+n047,chard,3.9,0.069,vegetal,n5k_v1,A
+n047,salt,0.8,0.0,gordura_molho,n5k_v1,A
+n047,corn on the cob,40.0,1.24,amido,n5k_v1,A
+n047,chicken,154.3,47.834,proteina_animal,n5k_v1,A
+n047,chive,0.2,0.006,vegetal,n5k_v1,A
+n048,olive oil,0.2,0.0,gordura_molho,n5k_v1,A
+n048,pepper,0.0,0.0,gordura_molho,n5k_v1,A
+n048,cheese pizza,37.0,4.144,misto,n5k_v1,A
+n048,salt,0.1,0.0,gordura_molho,n5k_v1,A
+n048,carrot,23.7,0.213,vegetal,n5k_v1,A
+n049,blackberries,3.0,0.042,vegetal,n5k_v1,A
+n049,mixed greens,29.7,0.653,vegetal,n5k_v1,A
+n049,raspberries,3.0,0.036,vegetal,n5k_v1,A
+n049,scrambled eggs,167.0,16.7,proteina_animal,n5k_v1,A
+n049,brussels sprouts,37.4,1.271,vegetal,n5k_v1,A
+n049,olive oil,0.4,0.0,gordura_molho,n5k_v1,A
+n049,pepper,0.0,0.001,gordura_molho,n5k_v1,A
+n049,salt,0.2,0.0,gordura_molho,n5k_v1,A
+n049,vinaigrette,3.0,0.0,gordura_molho,n5k_v1,A
+n049,granola,7.4,0.742,amido,n5k_v1,A
+n050,eggs,96.0,12.0,proteina_animal,n5k_v1,A

@@ -1,0 +1,2 @@
+prato_id,refeicao_id,data,categoria,recipiente,diametro_cm,foto_principal,fotos_extras,aparelho,tem_profundidade,quem_coletou,observacoes
+br0001,r0001,2026-11-15,almoco_pf,prato raso branco,26,br0001.jpg,br0001_perto.jpg;br0001_longe.jpg,iPhone 15 Pro,sim,A,exemplo fictício

@@ -1,0 +1,146 @@
+ingrediente,grupo,fonte,kj_100g,proteina_100g,gordura_100g,carbo_100g,osso_ou_casca,comestivel_suposto
+apple,vegetal,sem_proteina,240,0.2,0.2,13.5,0,1.0
+baby napa cabbage,vegetal,sem_proteina,52,1.9,0.0,2.4,0,1.0
+bamboo shoots,vegetal,sem_proteina,113,2.6,0.2,3.6,0,1.0
+banana,vegetal,sem_proteina,405,1.4,0.2,22.0,0,1.0
+beef,proteina_animal,bovina,449,20.2,2.3,1.2,0,1.0
+bitter melon,vegetal,sem_proteina,104,1.0,0.1,4.9,0,1.0
+black fungus,vegetal,sem_proteina,135,1.5,0.2,6.0,0,1.0
+blueberry,vegetal,sem_proteina,238,0.7,0.3,14.5,0,1.0
+bok choy,vegetal,sem_proteina,114,1.8,0.5,3.8,0,1.0
+bracken,vegetal,sem_proteina,195,1.6,0.4,9.0,0,1.0
+broccoli,vegetal,sem_proteina,165,4.1,0.6,4.3,0,1.0
+cabbage,vegetal,sem_proteina,111,1.5,0.2,4.6,0,1.0
+carrot,vegetal,sem_proteina,174,1.0,0.2,8.8,0,1.0
+cauliflower,vegetal,sem_proteina,107,0.0,0.0,6.3,0,1.0
+celery,vegetal,sem_proteina,62,1.4,0.2,1.8,0,1.0
+celtuce,vegetal,sem_proteina,68,1.0,0.1,2.8,0,1.0
+century egg,proteina_animal,ovo,714,14.2,10.7,4.5,0,1.0
+cherry tomato,vegetal,sem_proteina,107,1.0,0.2,5.8,0,1.0
+chicken breast,proteina_animal,frango_peru,494,24.6,1.9,0.6,0,1.0
+chicken feet,proteina_animal,frango_peru,1059,23.9,16.4,2.7,1,0.6
+chicken leg,proteina_animal,frango_peru,753,16.0,13.0,0.0,1,0.69
+chicken mid wing,proteina_animal,frango_peru,811,17.4,11.8,4.6,1,0.65
+chicken wing tip,proteina_animal,frango_peru,552,16.4,7.3,0.0,1,0.6
+chinese chives,vegetal,sem_proteina,134,2.4,0.4,4.6,0,1.0
+chinese toon,vegetal,sem_proteina,229,1.7,0.4,10.9,0,1.0
+chinese yam,amido,sem_proteina,251,1.9,0.2,12.4,0,1.0
+clams in shell,proteina_animal,peixe_marisco,260,10.1,1.1,2.8,1,0.4
+cooked rice,amido,sem_proteina,496,2.6,0.3,25.9,0,1.0
+cooking oil,gordura_molho,sem_proteina,3696,0.0,99.9,0.0,0,1.0
+cooking wine,gordura_molho,sem_proteina,5,0.3,0.0,0.0,0,1.0
+corn cob,amido,sem_proteina,500,4.0,1.2,22.8,1,0.46
+corn kernels,amido,sem_proteina,548,3.2,0.2,28.6,0,1.0
+crispy pork,proteina_animal,suina_embutido,1185,26.4,18.9,0.0,0,1.0
+crucian carp,proteina_animal,peixe_marisco,455,17.1,2.7,3.8,1,0.54
+cucumber,vegetal,sem_proteina,70,0.8,0.2,2.9,0,1.0
+dark soy sauce,gordura_molho,sem_proteina,550,7.9,0.3,23.8,0,1.0
+daylily,vegetal,sem_proteina,975,19.4,1.4,34.9,0,1.0
+diced lotus root,amido,sem_proteina,319,1.9,0.2,16.4,0,1.0
+doubanjiang,gordura_molho,sem_proteina,774,13.6,6.8,17.1,0,1.0
+dragon fruit,vegetal,sem_proteina,234,1.1,0.2,13.3,0,1.0
+dried bean curd sticks,leguminosa,leguminosa_soja,1940,44.6,21.7,22.3,0,1.0
+dried laver,vegetal,sem_proteina,1244,26.7,1.1,44.1,0,1.0
+dried tofu,leguminosa,leguminosa_soja,604,16.2,3.6,11.5,0,1.0
+egg,proteina_animal,ovo,574,12.7,9.0,1.5,0,1.0
+eggplant,vegetal,sem_proteina,113,1.0,0.1,5.4,0,1.0
+endive,vegetal,sem_proteina,134,3.1,0.6,4.5,0,1.0
+enoki mushroom,vegetal,sem_proteina,158,2.4,0.4,6.0,0,1.0
+fennel,vegetal,sem_proteina,129,2.5,0.4,4.2,0,1.0
+fig,vegetal,sem_proteina,301,1.5,0.1,16.0,0,1.0
+firm tofu,leguminosa,leguminosa_soja,636,15.8,7.8,5.1,0,1.0
+fish mint,vegetal,sem_proteina,261,2.1,0.0,19.5,0,1.0
+fresh shiitake mushroom,vegetal,sem_proteina,137,2.2,0.3,5.2,0,1.0
+fried pork rind,proteina_animal,suina_embutido,2040,70.6,22.4,0.9,0,1.0
+fried tofu puff,leguminosa,leguminosa_soja,1024,17.0,17.6,4.9,0,1.0
+garlic,vegetal,sem_proteina,553,4.5,0.2,27.6,0,1.0
+garlic scapes,vegetal,sem_proteina,300,2.0,0.1,15.4,0,1.0
+garlic sprouts,vegetal,sem_proteina,186,2.1,0.4,8.0,0,1.0
+ginger,vegetal,sem_proteina,219,1.3,0.6,10.3,0,1.0
+grape,vegetal,sem_proteina,191,0.5,0.2,10.3,0,1.0
+green beans,vegetal,sem_proteina,146,2.0,0.4,5.7,0,1.0
+green pepper,vegetal,sem_proteina,133,1.4,0.3,5.8,0,1.0
+jujube,vegetal,sem_proteina,548,1.1,0.3,30.5,0,1.0
+kale,vegetal,sem_proteina,163,5.0,0.4,5.7,0,1.0
+kelp knots,vegetal,sem_proteina,60,1.2,0.1,2.1,0,1.0
+king oyster mushroom,vegetal,sem_proteina,167,1.3,0.1,8.3,0,1.0
+kiwifruit,vegetal,sem_proteina,282,0.8,0.6,14.5,0,1.0
+konjac,vegetal,sem_proteina,431,0.0,0.0,25.6,0,1.0
+lettuce,vegetal,sem_proteina,67,1.3,0.3,2.0,0,1.0
+light soy sauce,gordura_molho,sem_proteina,85,4.8,0.1,0.0,0,1.0
+lily bulb,amido,sem_proteina,718,3.2,0.1,38.8,0,1.0
+long beans,vegetal,sem_proteina,164,2.5,0.2,6.7,0,1.0
+longan,vegetal,sem_proteina,306,1.2,0.1,16.6,0,1.0
+lotus root slices,amido,sem_proteina,319,1.9,0.2,16.4,0,1.0
+lychee,vegetal,sem_proteina,305,0.9,0.2,16.6,0,1.0
+mandarin,vegetal,sem_proteina,184,0.8,0.1,10.2,0,1.0
+mango,vegetal,sem_proteina,280,0.5,0.9,13.3,0,1.0
+mangosteen,vegetal,sem_proteina,301,0.4,0.2,18.0,0,1.0
+meat,proteina_animal,suina_embutido,1634,13.2,37.0,2.4,0,1.0
+mung bean sprouts,vegetal,sem_proteina,89,2.1,0.1,2.9,0,1.0
+mushroom,vegetal,sem_proteina,424,4.6,0.2,19.9,0,1.0
+nectarine,vegetal,sem_proteina,184,1.1,0.3,10.6,0,1.0
+noodles,amido,sem_proteina,1219,8.3,0.7,61.9,0,1.0
+okra,vegetal,sem_proteina,104,1.8,0.2,6.2,0,1.0
+onion,vegetal,sem_proteina,179,1.1,0.2,9.0,0,1.0
+orange,vegetal,sem_proteina,210,0.8,0.2,11.1,0,1.0
+oyster mushroom,vegetal,sem_proteina,122,1.9,0.3,4.6,0,1.0
+oyster sauce,gordura_molho,sem_proteina,335,3.3,0.0,14.6,0,1.0
+passion fruit,vegetal,sem_proteina,97,2.2,0.7,23.4,0,1.0
+pea pods,vegetal,sem_proteina,497,7.4,0.3,21.2,0,1.0
+pea shoots,vegetal,sem_proteina,176,4.0,0.8,4.6,0,1.0
+peach,vegetal,sem_proteina,226,0.9,0.1,12.2,0,1.0
+peanut,outros,nozes_sementes,2430,24.8,44.3,21.7,0,1.0
+peanuts in shell,outros,nozes_sementes,1365,12.0,25.4,13.0,1,0.7
+pear,vegetal,sem_proteina,240,0.4,0.2,13.3,0,1.0
+peas,leguminosa,leguminosa_soja,464,7.4,0.3,21.2,0,1.0
+pig blood curd,proteina_animal,suina_embutido,234,12.2,0.3,0.9,0,1.0
+plum,vegetal,sem_proteina,167,0.7,0.2,8.7,0,1.0
+pork ribs,proteina_animal,suina_embutido,1095,18.3,20.4,1.7,1,0.72
+potato,amido,sem_proteina,334,2.0,0.2,17.2,0,1.0
+prawn,proteina_animal,peixe_marisco,427,18.2,1.4,3.9,1,0.6
+pumpkin,vegetal,sem_proteina,106,0.7,0.1,5.3,0,1.0
+pumpkin flower,vegetal,sem_proteina,63,1.0,0.1,3.3,0,1.0
+pumpkin shoots,vegetal,sem_proteina,17,1.7,0.0,3.2,0,1.0
+purple cabbage,vegetal,sem_proteina,105,1.2,0.2,6.2,0,1.0
+quail egg,proteina_animal,ovo,664,12.8,11.1,2.1,0,1.0
+rapeseed sprouts,vegetal,sem_proteina,120,3.2,0.4,3.0,0,1.0
+red pepper,vegetal,sem_proteina,109,1.3,0.2,6.4,0,1.0
+red plum,vegetal,sem_proteina,165,0.6,0.3,9.6,0,1.0
+red sausage,proteina_animal,suina_embutido,1172,11.8,23.2,6.0,0,1.0
+sapphire grape,vegetal,sem_proteina,251,0.4,0.1,15.4,0,1.0
+sausage,proteina_animal,suina_embutido,888,14.0,10.4,15.6,0,1.0
+scallion,vegetal,sem_proteina,125,1.6,0.4,4.9,0,1.0
+sea lettuce,vegetal,sem_proteina,46,2.2,0.2,3.0,0,1.0
+seafood mushroom,vegetal,sem_proteina,177,3.0,0.1,7.4,0,1.0
+shanghai bok choy,vegetal,sem_proteina,59,1.3,0.5,2.0,0,1.0
+shelled edamame,leguminosa,leguminosa_soja,548,13.1,5.0,10.5,0,1.0
+shepherd’s purse,vegetal,sem_proteina,144,2.9,0.4,4.7,0,1.0
+shredded kelp,vegetal,sem_proteina,60,1.2,0.1,2.1,0,1.0
+shredded pork,proteina_animal,suina_embutido,1634,13.2,37.0,2.4,0,1.0
+shrimp meat,proteina_animal,peixe_marisco,839,43.7,2.6,0.0,0,1.0
+small mango,vegetal,sem_proteina,159,0.6,0.2,8.3,0,1.0
+small pumpkin,vegetal,sem_proteina,80,1.2,0.9,2.0,0,1.0
+soybean sprouts,vegetal,sem_proteina,212,4.5,1.6,4.5,0,1.0
+spinach,vegetal,sem_proteina,132,2.6,0.3,4.5,0,1.0
+sponge gourd,vegetal,sem_proteina,96,1.0,0.2,4.2,0,1.0
+squash,vegetal,sem_proteina,96,0.7,0.1,5.3,0,1.0
+taro,amido,sem_proteina,353,2.2,0.2,18.1,0,1.0
+thousand-layer tofu,leguminosa,leguminosa_soja,372,11.0,3.6,3.0,0,1.0
+tofu,leguminosa,leguminosa_soja,346,8.1,3.7,4.2,0,1.0
+tofu in fermented sauce,leguminosa,leguminosa_soja,452,9.7,7.4,0.8,0,1.0
+tofu sheets,leguminosa,leguminosa_soja,1102,24.5,16.0,5.5,0,1.0
+tofu skin,leguminosa,leguminosa_soja,1722,44.6,17.4,18.8,0,1.0
+tomato,vegetal,sem_proteina,91,0.9,0.2,4.0,0,1.0
+vegetarian chicken,leguminosa,leguminosa_soja,812,16.5,12.5,4.2,0,1.0
+vermicelli,amido,sem_proteina,1444,0.8,0.2,83.7,0,1.0
+vinegar,gordura_molho,sem_proteina,482,9.8,0.3,17.9,0,1.0
+water bamboo,vegetal,sem_proteina,128,1.2,0.2,5.9,0,1.0
+water spinach,vegetal,sem_proteina,110,2.2,0.3,3.6,0,1.0
+watermelon,vegetal,sem_proteina,113,0.6,0.1,5.8,0,1.0
+wax gourd,vegetal,sem_proteina,58,0.4,0.2,2.6,0,1.0
+white beans,leguminosa,leguminosa_soja,171,2.2,0.2,7.4,0,1.0
+white fish,proteina_animal,peixe_marisco,432,16.6,3.3,1.6,1,0.6
+white radish,vegetal,sem_proteina,104,0.9,0.1,5.0,0,1.0
+yellow chives,vegetal,sem_proteina,113,2.3,0.2,3.9,0,1.0
+zucchini,vegetal,sem_proteina,86,0.8,0.2,3.8,0,1.0

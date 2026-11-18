@@ -1,0 +1,18 @@
+{
+  "_nota": "Conjuntos (média em log das previsões) declarados em 10/11/2026, ANTES de qualquer resultado de GPU. ingere_kaggle.py soma esta lista a zen_avalia.CONJUNTOS; um conjunto só entra se todos os membros existirem no banco. Não acrescente conjuntos depois de ver o teste.",
+  "conjuntos": {
+    "média gpu: ft 224 r1 + ft 384x512 r1": ["gpu ft siglip2_b16_224 r1", "gpu ft siglip2_b16_384x512 r1"],
+    "média gpu: ft 384x512 r1 + ft dinov2_b14 r1": ["gpu ft siglip2_b16_384x512 r1", "gpu ft dinov2_b14_336x448 r1"],
+    "média gpu: ft 224 r1 + ft 384x512 r1 + ft dinov2_b14 r1": ["gpu ft siglip2_b16_224 r1", "gpu ft siglip2_b16_384x512 r1", "gpu ft dinov2_b14_336x448 r1"],
+    "média gpu: ft 224 r1 + r2 + r3": ["gpu ft siglip2_b16_224 r1", "gpu ft siglip2_b16_224 r2", "gpu ft siglip2_b16_224 r3"],
+    "média gpu: ft 384x512 r1 + r2": ["gpu ft siglip2_b16_384x512 r1", "gpu ft siglip2_b16_384x512 r2"],
+    "média gpu: ft 224 r1 + destila-rgbd 224 r1": ["gpu ft siglip2_b16_224 r1", "gpu destila-rgbd siglip2_b16_224 r1"],
+    "média gpu: ridge 384x512 o8 + ridge dinov2_b14 o8": ["gpu ridge siglip2_b16_384x512 o8", "gpu ridge dinov2_b14_336x448 o8"],
+    "média gpu: ridge congelados de alta resolução (5 backbones)": ["gpu ridge siglip2_b16_384x512 o8", "gpu ridge dinov2_b14_336x448 o8", "gpu ridge dinov2_l14_336x448 o8", "gpu ridge siglip2_l16_384x512 o8", "gpu ridge siglip2_so400m16_384x512 o8"],
+    "média gpu: ft 384x512 r1 + ft dinov2_b14 r1 + ridge so400m o8 + ridge dinov2_l14 o8": ["gpu ft siglip2_b16_384x512 r1", "gpu ft dinov2_b14_336x448 r1", "gpu ridge siglip2_so400m16_384x512 o8", "gpu ridge dinov2_l14_336x448 o8"],
+    "média gpu: ft 224 r1 + ft 384x512 r1 + ft dinov2_b14 r1 + ft dinov2_l14 r1": ["gpu ft siglip2_b16_224 r1", "gpu ft siglip2_b16_384x512 r1", "gpu ft dinov2_b14_336x448 r1", "gpu ft dinov2_l14_224x308 r1"],
+    "média gpu+cpu: conjunto de massa da seção 8 + ft 384x512 r1": ["ft cv", "mlp siglip2_b16 o8", "ridge siglip2_b16 o8 + quadros laterais no treino", "ridge siglip2_b16_512 o2", "gpu ft siglip2_b16_384x512 r1"],
+    "média gpu+cpu: conjunto de massa da seção 8 + ft 384x512 r1 + ft dinov2_b14 r1": ["ft cv", "mlp siglip2_b16 o8", "ridge siglip2_b16 o8 + quadros laterais no treino", "ridge siglip2_b16_512 o2", "gpu ft siglip2_b16_384x512 r1", "gpu ft dinov2_b14_336x448 r1"],
+    "média gpu+cpu: só imagem da seção 8 + ft 224 r1 + ft 384x512 r1": ["ft cv", "ridge siglip2_b16_512 o2", "gpu ft siglip2_b16_224 r1", "gpu ft siglip2_b16_384x512 r1"]
+  }
+}

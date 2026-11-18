@@ -1,0 +1,401 @@
+prato_id,dish_id,split,cafe,faixa_proteina,faixa_ingredientes,n_ingredientes,massa_g,proteina_g,kcal,confianca,ingredientes
+d0001,dish_1558457665,calib,cafe1,15-25,2-4,4,325.0,16.39,273.2,A,cantaloupe 70 g; sweet potato 80 g; eggs 111 g; cauliflower 64 g
+d0002,dish_1563304301,teste,cafe1,0-5,5+,5,151.0,4.69,191.0,A,kale 29 g; croutons 0 g; caesar dressing 5 g; roasted potatoes 114 g; parmesan cheese 3 g
+d0003,dish_1566329049,teste,cafe1,>40,5+,20,575.0,60.86,814.9,A,bell peppers 10 g; cauliflower 89 g; beef 58 g; jalapenos 4 g; spinach (raw) 4 g; brussels sprouts 87 g; onions 6 g; olive oil 5 g; pepper 0 g; garlic 2 g; salt 3 g; shallots 4 g; spinach (cooked) 2 g; chicken 81 g; bok choy 2 g; millet 28 g; vinegar 0 g; cheese pizza 89 g; tomatoes 10 g; fried rice 90 g
+d0004,dish_1568061202,calib,cafe1,5-15,5+,7,334.0,9.44,256.6,A,salt 1 g; pepper 0 g; brussels sprouts 46 g; olive oil 2 g; squash 139 g; pineapple 91 g; cheese pizza 55 g
+d0005,dish_1572627130,teste,cafe2,15-25,2-4,2,231.0,19.83,296.1,B,scrambled eggs 192 g; salsa 38 g
+d0006,dish_1565640772,calib,cafe1,>40,2-4,2,191.0,43.66,241.2,A,chicken 137 g; mixed greens 54 g
+d0007,dish_1563824130,teste,cafe1,0-5,5+,8,202.0,3.99,111.3,A,couscous 67 g; pepper 0 g; squash 22 g; olive oil 1 g; zucchini 22 g; salt 0 g; broccoli 22 g; turnips 68 g
+d0008,dish_1558115641,calib,cafe1,25-40,2-4,3,331.0,27.2,584.5,A,grapes 94 g; sausage 126 g; potatoes 111 g
+d0009,dish_1558375667,calib,cafe1,25-40,1,1,119.0,26.66,687.9,A,almonds 119 g
+d0010,dish_1563555510,teste,cafe1,5-15,1,1,131.0,13.1,193.9,A,scrambled eggs 131 g
+d0011,dish_1560368738,teste,cafe1,0-5,5+,11,225.0,4.39,174.2,A,olive oil 11 g; mustard 1 g; salt 1 g; lettuce 13 g; pumpkin seeds 5 g; mixed greens 26 g; carrot 11 g; asparagus 30 g; eggplant 81 g; arugula 40 g; vinegar 5 g
+d0012,dish_1561752035,teste,cafe1,>40,5+,9,374.0,41.19,454.9,A,brown rice 30 g; arugula 6 g; wheat berry 81 g; pepper 7 g; salmon 149 g; salt 1 g; thyme 0 g; olive oil 7 g; squash 93 g
+d0013,dish_1558637932,calib,cafe1,0-5,2-4,4,393.0,4.28,248.3,A,corn on the cob 67 g; apple 154 g; cauliflower 49 g; grapes 123 g
+d0014,dish_1564605328,teste,cafe1,15-25,5+,9,349.0,20.29,541.2,A,lettuce 84 g; bell peppers 8 g; cherry tomatoes 21 g; onions 8 g; cucumbers 42 g; feta cheese 8 g; vinaigrette 17 g; olives 8 g; cheese pizza 152 g
+d0015,dish_1558642458,teste,cafe1,0-5,1,1,92.0,1.66,23.0,A,cauliflower 92 g
+d0016,dish_1563294575,calib,cafe1,15-25,5+,9,562.0,15.06,485.9,A,strawberries 91 g; watermelon 79 g; hash browns 55 g; olive oil 4 g; grapes 75 g; sweet potato 34 g; egg whites 107 g; yam 34 g; pineapple 83 g
+d0017,dish_1572029300,teste,cafe2,0-5,5+,5,40.0,4.16,93.8,B,olive oil 3 g; mozzarella cheese 11 g; basil 3 g; pizza dough 15 g; pizza sauce 8 g
+d0018,dish_1573159868,teste,cafe2,5-15,5+,5,66.0,6.86,154.8,B,olive oil 5 g; mozzarella cheese 18 g; basil 5 g; pizza dough 24 g; pizza sauce 14 g
+d0019,dish_1567022383,teste,cafe1,>40,5+,8,508.0,70.6,527.1,A,onions 57 g; caesar dressing 45 g; bell peppers 54 g; carrot 34 g; cherry tomatoes 74 g; olives 35 g; chicken 190 g; parmesan cheese 19 g
+d0020,dish_1576100046,teste,cafe2,0-5,2-4,4,123.0,1.47,52.2,B,olive oil 1 g; salt 0 g; eggplant 120 g; pesto 2 g
+d0021,dish_1564516397,calib,cafe1,0-5,2-4,2,59.0,0.5,36.8,A,olives 27 g; cherry tomatoes 32 g
+d0022,dish_1573760187,teste,cafe2,25-40,5+,8,388.0,38.07,540.6,B,broccoli 46 g; brisket 162 g; olive oil 1 g; bread crumbs 1 g; mashed potatoes 162 g; salt 0 g; butter 16 g; jalapenos 1 g
+d0023,dish_1573156908,calib,cafe2,0-5,2-4,4,123.0,1.11,48.4,B,squash 119 g; olive oil 2 g; salt 0 g; dates 1 g
+d0024,dish_1567625343,teste,cafe1,0-5,2-4,3,74.0,1.71,65.5,A,chard 21 g; avocado 32 g; kale 21 g
+d0025,dish_1561481673,calib,cafe1,25-40,2-4,4,324.0,25.96,496.6,A,honeydew melons 96 g; yam 87 g; bacon 37 g; scrambled eggs 104 g
+d0026,dish_1557862783,calib,cafe1,>40,2-4,3,258.0,50.42,443.0,A,cauliflower 77 g; steak 118 g; chicken 63 g
+d0027,dish_1573232461,teste,cafe2,>40,2-4,4,352.0,41.32,619.1,B,bacon 36 g; scrambled eggs 269 g; broccoli 46 g; olive oil 1 g
+d0028,dish_1565727791,teste,cafe1,5-15,2-4,3,99.0,10.28,121.1,A,mixed greens 9 g; broccoli 68 g; parmesan cheese 22 g
+d0029,dish_1568666089,teste,cafe1,15-25,5+,21,335.0,16.69,276.4,A,cheese pizza 58 g; bell peppers 2 g; tomatoes 2 g; zucchini 41 g; lemon juice 2 g; olive oil 1 g; chayote squash 41 g; jalapenos 1 g; spinach (raw) 1 g; millet 3 g; caesar salad 109 g; garlic 1 g; brussels sprouts 32 g; onions 1 g; salt 1 g; parsley 0 g; cucumbers 4 g; tatsoi 17 g; kale 4 g; pepper 2 g; chicken 13 g
+d0030,dish_1561662216,calib,cafe1,15-25,5+,17,193.0,18.63,300.8,A,soy sauce 3 g; garlic 2 g; white rice 8 g; parsley 0 g; onions 2 g; brown rice 68 g; vinegar 1 g; apple 4 g; mixed greens 21 g; sugar 6 g; salt 1 g; lemon juice 1 g; olive oil 3 g; pork 59 g; bok choy 8 g; pepper 0 g; millet 3 g
+d0031,dish_1565810205,teste,cafe1,5-15,5+,10,153.0,10.68,127.0,A,salt 0 g; lettuce 3 g; carrot 3 g; olive oil 3 g; mustard 0 g; tofu 124 g; vinegar 1 g; arugula 10 g; mixed greens 7 g; pumpkin seeds 1 g
+d0032,dish_1565811000,teste,cafe1,>40,2-4,2,225.0,64.13,342.9,A,chicken 205 g; spinach (raw) 20 g
+d0033,dish_1561577119,teste,cafe1,5-15,2-4,2,78.0,7.42,128.3,A,tofu 41 g; cheese pizza 37 g
+d0034,dish_1561661500,calib,cafe1,15-25,5+,9,268.0,24.24,374.8,A,garlic 3 g; salt 1 g; soy sauce 4 g; sugar 8 g; cucumbers 51 g; pork 77 g; pepper 0 g; bok choy 11 g; white rice 113 g
+d0035,dish_1566920304,calib,cafe1,>40,1,1,570.0,57.0,296.4,A,egg whites 570 g
+d0036,dish_1558640604,teste,cafe1,0-5,1,1,117.0,0.35,60.8,A,apple 117 g
+d0037,dish_1560370833,calib,cafe1,0-5,2-4,2,99.0,4.29,177.0,A,ice cream cones 6 g; frozen yogurt 93 g
+d0038,dish_1572034012,calib,cafe2,15-25,5+,14,271.0,23.73,322.2,B,white rice 69 g; tomatoes 31 g; onions 11 g; garlic 2 g; chicken thighs 84 g; chili 0 g; salt 0 g; water 46 g; cream 17 g; lemon juice 0 g; cilantro 2 g; ginger 1 g; greek yogurt 6 g; oil 0 g
+d0039,dish_1562774346,teste,cafe1,25-40,2-4,2,264.0,28.29,422.7,A,cheese 13 g; scrambled eggs 251 g
+d0040,dish_1567801716,calib,cafe1,0-5,1,1,38.0,4.26,101.0,A,cheese pizza 38 g
+d0041,dish_1573232434,calib,cafe2,5-15,2-4,3,83.0,14.42,220.9,B,bacon 36 g; broccoli 46 g; olive oil 1 g
+d0042,dish_1558640705,teste,cafe1,0-5,2-4,3,234.0,1.31,96.8,A,cherry tomatoes 23 g; apple 116 g; cantaloupe 95 g
+d0043,dish_1562774504,teste,cafe1,5-15,2-4,3,176.0,14.84,335.4,A,sausage 69 g; roasted potatoes 59 g; watermelon 48 g
+d0044,dish_1573161475,teste,cafe2,0-5,5+,7,91.0,4.97,161.3,B,cauliflower 27 g; pickles 5 g; coleslaw 9 g; barbecue sauce 2 g; salt 0 g; flatbread 48 g; oil 0 g
+d0045,dish_1561049435,calib,cafe1,15-25,2-4,4,257.0,20.82,338.2,A,raspberries 51 g; cantaloupe 60 g; scrambled eggs 127 g; bacon 19 g
+d0046,dish_1562963289,teste,cafe1,15-25,2-4,2,180.0,15.52,349.9,A,caesar salad 58 g; cheese pizza 122 g
+d0047,dish_1574443421,calib,cafe2,0-5,2-4,4,91.0,3.29,94.2,B,banana 14 g; oats 16 g; almond milk 60 g; chia seeds 1 g
+d0048,dish_1564689108,teste,cafe1,0-5,5+,15,159.0,4.93,203.7,A,chickpeas 21 g; salt 0 g; garlic 1 g; blueberries 7 g; pepper 6 g; pears 10 g; arugula 52 g; mustard 0 g; olive oil 14 g; parsley 1 g; almonds 1 g; vinegar 1 g; spinach (raw) 36 g; lemon juice 4 g; carrot 3 g
+d0049,dish_1562689645,teste,cafe1,15-25,2-4,4,169.0,20.01,302.4,A,bacon 22 g; olive oil 1 g; scrambled eggs 110 g; broccoli 36 g
+d0050,dish_1563567319,teste,cafe1,>40,5+,12,382.0,52.5,398.6,A,fish 268 g; cherry tomatoes 11 g; salt 1 g; wheat berry 54 g; chard 11 g; kale 13 g; lemon juice 5 g; parsley 3 g; garlic 0 g; shallots 5 g; olive oil 11 g; chive 1 g
+d0051,dish_1563305913,teste,cafe1,0-5,5+,13,107.0,3.08,89.7,A,croutons 0 g; apple 3 g; mushroom 30 g; vinegar 3 g; spinach (raw) 40 g; parmesan cheese 1 g; mustard 1 g; onions 6 g; cranberries 3 g; caesar dressing 2 g; olive oil 6 g; kale 11 g; salt 0 g
+d0052,dish_1563216412,teste,cafe1,5-15,2-4,2,205.0,5.24,172.4,A,white rice 106 g; broccoli 99 g
+d0053,dish_1566923060,teste,cafe1,15-25,2-4,4,248.0,18.78,515.8,A,bacon 22 g; scrambled eggs 84 g; pineapple 69 g; hash browns 73 g
+d0054,dish_1560356523,teste,cafe1,25-40,1,1,92.0,34.04,497.7,A,bacon 92 g
+d0055,dish_1565972384,teste,cafe1,>40,2-4,3,706.0,57.15,432.2,A,sweet potato 145 g; olive oil 4 g; egg whites 557 g
+d0056,dish_1571931782,teste,cafe2,5-15,2-4,2,104.0,7.71,151.5,B,scrambled eggs 70 g; roasted potatoes 34 g
+d0057,dish_1563468327,teste,cafe1,5-15,5+,7,483.0,12.1,351.9,A,yam 46 g; sweet potato 46 g; cottage cheese 83 g; pineapple 107 g; watermelon 132 g; olive oil 6 g; berries 63 g
+d0058,dish_1566328724,calib,cafe1,>40,1,1,167.0,51.77,275.5,A,chicken 167 g
+d0059,dish_1565383062,teste,cafe1,25-40,2-4,4,403.0,39.65,363.0,A,olives 129 g; chicken 116 g; cucumbers 101 g; spinach (raw) 57 g
+d0060,dish_1562613918,calib,cafe1,0-5,5+,13,207.0,4.75,133.7,A,apple 7 g; shallots 1 g; bulgur 7 g; salt 0 g; lemon juice 1 g; cranberries 1 g; mustard greens 20 g; olive oil 6 g; parsley 1 g; arugula 13 g; broccoli 105 g; squash 44 g; garlic 0 g
+d0061,dish_1571934465,teste,cafe2,0-5,1,1,232.0,1.62,76.6,B,strawberries 232 g
+d0062,dish_1566849862,teste,cafe1,0-5,1,1,67.0,0.54,77.0,A,olives 67 g
+d0063,dish_1558636544,teste,cafe1,15-25,1,1,71.0,15.9,410.5,A,almonds 71 g
+d0064,dish_1571944238,calib,cafe2,>40,5+,12,349.0,49.16,523.9,B,squash 117 g; celery 3 g; carrot 3 g; onions 3 g; apple cider 28 g; olive oil 2 g; vinegar 2 g; seeds 3 g; broth 11 g; salt 0 g; honey 1 g; pork 174 g
+d0065,dish_1573503054,calib,cafe2,5-15,1,1,128.0,9.22,172.8,B,lasagna 128 g
+d0066,dish_1563294465,teste,cafe1,0-5,2-4,3,237.0,1.41,116.9,A,pineapple 83 g; watermelon 79 g; grapes 75 g
+d0067,dish_1568401018,calib,cafe1,>40,2-4,3,447.0,106.17,587.7,A,broccoli 71 g; chicken 334 g; mixed greens 42 g
+d0068,dish_1573764136,teste,cafe2,0-5,2-4,4,211.0,3.45,193.8,B,mashed potatoes 100 g; butter 10 g; chard 50 g; celery root 50 g
+d0069,dish_1572291671,teste,cafe2,15-25,5+,11,108.0,20.08,158.0,B,chicken 62 g; tomatoes 8 g; bell peppers 8 g; spinach (raw) 3 g; onions 3 g; garlic 2 g; olive oil 3 g; salt 2 g; pepper 0 g; jalapenos 3 g; millet 15 g
+d0070,dish_1562688482,calib,cafe1,5-15,2-4,3,169.0,10.86,193.5,A,roasted potatoes 17 g; chicken apple sausage 71 g; grapes 81 g
+d0071,dish_1559667973,calib,cafe1,15-25,2-4,3,179.0,17.51,334.5,A,bagels 46 g; cream cheese 11 g; scrambled eggs 122 g
+d0072,dish_1573665056,teste,cafe2,25-40,2-4,2,277.0,37.0,606.6,B,scrambled eggs 177 g; sausage 100 g
+d0073,dish_1564775216,calib,cafe1,>40,5+,22,340.0,40.41,530.6,A,garlic 1 g; salmon 93 g; pickles 1 g; pepper 2 g; arugula 5 g; mayonnaise 15 g; lentils 19 g; olive oil 7 g; onions 2 g; lemon juice 1 g; chive 0 g; salt 0 g; broccoli 123 g; spinach (cooked) 2 g; bok choy 2 g; cherry tomatoes 5 g; beef 48 g; kale 5 g; parsley 1 g; vinegar 0 g; millet 6 g; shallots 4 g
+d0074,dish_1558378634,teste,cafe1,25-40,2-4,3,315.0,37.98,875.0,A,grapes 134 g; almonds 68 g; sausage 113 g
+d0075,dish_1562010315,teste,cafe1,>40,5+,14,477.0,61.93,671.1,A,caesar salad 120 g; jalapenos 0 g; pork 207 g; pepper 1 g; wheat berry 28 g; mayonnaise 6 g; brussels sprouts 72 g; carrot 7 g; garlic 3 g; cabbage 28 g; salt 1 g; parsley 1 g; lemon juice 3 g; olive oil 2 g
+d0076,dish_1566502537,calib,cafe1,>40,5+,25,315.0,41.83,517.6,A,corn on the cob 55 g; vinegar 3 g; parsley 0 g; sun dried tomatoes 3 g; rosemary 0 g; carrot 3 g; salt 1 g; garlic 4 g; mustard 0 g; cucumbers 8 g; lemon juice 0 g; olive oil 7 g; chive 0 g; pork 104 g; chicken 32 g; spinach (raw) 38 g; pepper 0 g; bok choy 15 g; white rice 15 g; brown rice 3 g; soy sauce 6 g; chard 1 g; sugar 11 g; onions 5 g; basil 0 g
+d0077,dish_1567023161,teste,cafe1,15-25,2-4,3,134.0,16.52,141.7,A,chicken 50 g; kimchi 44 g; olives 40 g
+d0078,dish_1563898722,teste,cafe1,15-25,2-4,2,303.0,23.23,343.4,A,broccoli 93 g; scrambled eggs 210 g
+d0079,dish_1559845370,calib,cafe1,0-5,2-4,2,139.0,2.14,94.3,A,potatoes 86 g; mandarin oranges 53 g
+d0080,dish_1562614980,teste,cafe1,>40,5+,21,485.0,57.35,566.1,A,pineapple 3 g; chicken thighs 117 g; vinegar 2 g; mushroom 82 g; onions 7 g; lemon juice 1 g; basil 1 g; olive oil 1 g; jalapenos 0 g; kale 3 g; salt 0 g; radishes 2 g; white rice 12 g; brown rice 12 g; arugula 3 g; parsley 1 g; steak 89 g; thyme 1 g; cilantro 0 g; garlic 1 g; broccoli 148 g
+d0081,dish_1565813414,teste,cafe1,5-15,5+,9,179.0,12.94,139.7,A,garlic 0 g; salt 0 g; mustard 0 g; blueberries 2 g; olive oil 2 g; tofu 156 g; spinach (raw) 15 g; vinegar 1 g; radishes 2 g
+d0082,dish_1562787848,calib,cafe1,25-40,5+,21,248.0,26.5,416.8,A,cherry tomatoes 3 g; onions 1 g; pilaf 18 g; brown rice 11 g; lemon juice 1 g; parsley 2 g; cranberries 1 g; garlic 1 g; basil 0 g; salt 0 g; pepper 1 g; apple 7 g; pork 83 g; vinegar 1 g; arugula 14 g; mustard greens 20 g; olive oil 8 g; corn on the cob 64 g; broccoli 3 g; shallots 2 g; bulgur 7 g
+d0083,dish_1566316726,calib,cafe1,>40,2-4,3,685.0,57.49,409.5,A,egg whites 563 g; olive oil 3 g; sweet potato 119 g
+d0084,dish_1566838286,teste,cafe1,0-5,1,1,145.0,0.72,72.5,A,pineapple 145 g
+d0085,dish_1571932341,calib,cafe2,5-15,1,1,45.0,8.69,155.1,B,sausage 45 g
+d0086,dish_1567107049,calib,cafe1,0-5,1,1,23.0,1.43,107.2,A,brownies 23 g
+d0087,dish_1573848859,teste,cafe2,25-40,1,1,277.0,33.24,288.1,B,curries 277 g
+d0088,dish_1565637123,calib,cafe1,5-15,1,1,114.0,6.73,229.7,A,pasta salad 114 g
+d0089,dish_1565896745,teste,cafe1,25-40,5+,15,244.0,27.19,368.5,A,pepper 0 g; arugula 41 g; salt 1 g; garlic 1 g; walnuts 1 g; cauliflower 12 g; vinegar 1 g; steak 93 g; chard 36 g; blueberries 3 g; wheat berry 19 g; olive oil 6 g; kale 28 g; mustard 0 g; lime 1 g
+d0090,dish_1559246053,teste,cafe1,0-5,2-4,4,494.0,3.73,251.0,A,cauliflower 57 g; orange 127 g; berries 107 g; pears 203 g
+d0091,dish_1562959059,teste,cafe1,15-25,5+,14,216.0,22.95,365.8,A,garlic 0 g; cilantro 1 g; salt 0 g; pizza 79 g; onions 3 g; lemon juice 1 g; olive oil 3 g; jalapenos 0 g; pepper 3 g; fish 69 g; arugula 3 g; quinoa 14 g; tomatillo 7 g; roasted potatoes 33 g
+d0092,dish_1562691409,calib,cafe1,5-15,2-4,2,164.0,10.52,226.0,A,yam 70 g; scrambled eggs 94 g
+d0093,dish_1558458541,calib,cafe1,5-15,1,1,51.0,11.42,294.8,A,almonds 51 g
+d0094,dish_1558724723,calib,cafe1,0-5,1,1,112.0,2.69,39.2,A,broccoli 112 g
+d0095,dish_1571944214,teste,cafe2,>40,5+,8,225.0,47.15,458.8,B,celery 3 g; carrot 3 g; onions 3 g; apple cider 28 g; vinegar 2 g; broth 11 g; salt 0 g; pork 174 g
+d0096,dish_1564761488,calib,cafe1,15-25,2-4,4,336.0,21.74,328.0,A,turkey bacon 21 g; egg whites 105 g; fried rice 97 g; honeydew melons 113 g
+d0097,dish_1560526552,teste,cafe1,5-15,5+,18,319.0,14.59,359.2,A,salt 0 g; sausage 18 g; pineapple 56 g; blueberries 7 g; spinach (raw) 43 g; parsley 0 g; mustard greens 2 g; potatoes 54 g; berries 44 g; tomatoes 1 g; scrambled eggs 77 g; vinegar 2 g; mustard 0 g; cucumbers 2 g; almonds 1 g; olive oil 7 g; garlic 0 g; carrot 3 g
+d0098,dish_1558721757,calib,cafe1,25-40,1,1,133.0,29.79,768.9,A,almonds 133 g
+d0099,dish_1565711115,teste,cafe1,25-40,2-4,2,308.0,39.71,321.5,A,bacon 33 g; egg whites 275 g
+d0100,dish_1562614121,calib,cafe1,0-5,5+,9,155.0,3.4,123.5,A,broccoli 67 g; salt 0 g; olive oil 9 g; mustard 1 g; onions 9 g; cranberries 4 g; vinegar 4 g; spinach (raw) 56 g; apple 4 g
+d0101,dish_1573763139,teste,cafe2,15-25,5+,8,216.0,19.33,279.5,B,broccoli 47 g; brisket 80 g; olive oil 1 g; bread crumbs 1 g; mashed potatoes 80 g; salt 0 g; butter 8 g; jalapenos 1 g
+d0102,dish_1565021054,teste,cafe1,5-15,2-4,2,144.0,11.45,263.7,A,tofu 71 g; waffles 73 g
+d0103,dish_1559844366,teste,cafe1,15-25,2-4,3,192.0,19.23,529.2,A,almonds 80 g; broccoli 31 g; grapes 81 g
+d0104,dish_1559700851,teste,cafe1,0-5,5+,9,54.0,1.15,61.1,A,spinach (raw) 28 g; vinegar 3 g; tomatoes 4 g; salt 0 g; mustard 0 g; garlic 1 g; olive oil 6 g; mustard greens 7 g; cucumbers 6 g
+d0105,dish_1561737176,teste,cafe1,15-25,1,1,117.0,22.58,403.2,A,sausage 117 g
+d0106,dish_1563466280,teste,cafe1,15-25,1,1,66.0,24.42,357.1,A,bacon 66 g
+d0107,dish_1567526738,teste,cafe1,>40,1,1,433.0,43.3,225.2,A,egg whites 433 g
+d0108,dish_1575308389,teste,cafe2,15-25,1,1,146.0,15.18,224.8,B,omelets 146 g
+d0109,dish_1562871297,teste,cafe1,5-15,1,1,47.0,5.26,125.0,A,cheese pizza 47 g
+d0110,dish_1561405836,teste,cafe1,0-5,1,1,31.0,3.47,82.4,A,cheese pizza 31 g
+d0111,dish_1572365415,teste,cafe2,25-40,1,1,289.0,28.9,170.5,B,greek yogurt 289 g
+d0112,dish_1558630207,teste,cafe1,25-40,1,1,116.0,25.98,670.6,A,almonds 116 g
+d0113,dish_1563295360,teste,cafe1,15-25,2-4,4,181.0,17.53,275.9,A,bacon 22 g; scrambled eggs 74 g; olive oil 2 g; broccoli 83 g
+d0114,dish_1559242221,teste,cafe1,25-40,1,1,114.0,25.54,659.0,A,almonds 114 g
+d0115,dish_1565117429,teste,cafe1,15-25,1,1,147.0,16.46,390.9,A,cheese pizza 147 g
+d0116,dish_1563393366,teste,cafe1,5-15,5+,15,178.0,9.44,89.9,A,garlic 0 g; arugula 2 g; quinoa 8 g; pepper 2 g; jalapenos 0 g; squash 40 g; lemon juice 1 g; broccoli 40 g; fish 39 g; tomatillo 4 g; olive oil 2 g; zucchini 40 g; onions 2 g; salt 0 g; cilantro 0 g
+d0117,dish_1558639089,teste,cafe1,0-5,1,1,28.0,0.2,19.3,A,grapes 28 g
+d0118,dish_1562783691,teste,cafe1,>40,2-4,2,423.0,40.52,421.7,A,mixed greens 270 g; grilled chicken 153 g
+d0119,dish_1571932398,teste,cafe2,15-25,2-4,3,220.0,20.5,409.0,B,scrambled eggs 103 g; sausage 45 g; roasted potatoes 72 g
+d0120,dish_1563220171,teste,cafe1,>40,5+,13,363.0,50.02,465.5,A,olive oil 1 g; wheat berry 13 g; thyme 0 g; broccoli 46 g; salt 0 g; garlic 1 g; brown rice 36 g; parmesan cheese 3 g; cherry tomatoes 6 g; chicken breast 126 g; spinach (raw) 3 g; pepperoni pizza 52 g; squash 75 g
+d0121,dish_1568318316,teste,cafe1,>40,2-4,2,297.0,48.03,525.4,A,mixed greens 115 g; steak 182 g
+d0122,dish_1568401167,teste,cafe1,25-40,1,1,228.0,36.94,426.4,A,tuna salad 228 g
+d0123,dish_1565207815,teste,cafe1,0-5,2-4,4,80.0,2.68,40.8,A,brussels sprouts 79 g; salt 0 g; pepper 0 g; olive oil 1 g
+d0124,dish_1565194781,calib,cafe1,25-40,5+,6,568.0,39.6,351.4,A,sweet potato 129 g; salt 0 g; pepper 0 g; olive oil 4 g; carrot 57 g; egg whites 378 g
+d0125,dish_1564168739,teste,cafe1,25-40,2-4,2,164.0,27.48,585.3,A,pepperoni 78 g; sandwiches 86 g
+d0126,dish_1565711183,calib,cafe1,>40,5+,11,461.0,44.72,460.4,A,blackberries 5 g; vinaigrette 5 g; bacon 33 g; granola 12 g; mixed greens 50 g; egg whites 275 g; salt 0 g; raspberries 5 g; pepper 0 g; brussels sprouts 75 g; olive oil 1 g
+d0127,dish_1559581378,teste,cafe1,>40,5+,14,372.0,44.45,705.7,A,onions 3 g; cucumbers 7 g; olive oil 6 g; mixed greens 21 g; cherry tomatoes 6 g; lime 1 g; lettuce 14 g; eggs 152 g; salt 0 g; pepper 0 g; sausage 78 g; broccoli 60 g; vinegar 3 g; bacon 22 g
+d0128,dish_1562010085,teste,cafe1,>40,5+,13,264.0,41.17,440.3,A,wheat berry 19 g; lemon juice 2 g; jalapenos 0 g; mayonnaise 4 g; pepper 1 g; brussels sprouts 64 g; garlic 2 g; salt 1 g; carrot 5 g; cabbage 19 g; olive oil 2 g; parsley 1 g; pork 145 g
+d0129,dish_1562958563,teste,cafe1,5-15,2-4,2,68.0,8.16,130.8,A,olives 21 g; chicken salad 47 g
+d0130,dish_1558550218,calib,cafe1,5-15,2-4,3,206.0,5.65,230.0,A,almonds 22 g; grapes 42 g; apple 142 g
+d0131,dish_1575997268,calib,cafe2,5-15,2-4,4,136.0,7.73,139.1,B,scrambled eggs 72 g; berries 47 g; grapes 3 g; salsa 14 g
+d0132,dish_1565207631,teste,cafe1,0-5,5+,11,54.0,3.3,64.4,A,vinegar 1 g; chicken thighs 10 g; white rice 21 g; pineapple 5 g; salt 0 g; cilantro 1 g; garlic 1 g; kale 5 g; olive oil 1 g; onions 7 g; lemon juice 1 g
+d0133,dish_1564432094,teste,cafe1,5-15,1,1,63.0,7.56,177.7,A,pepperoni pizza 63 g
+d0134,dish_1565031338,calib,cafe1,25-40,5+,14,215.0,27.09,296.2,A,beef 89 g; orange juice 1 g; white rice 12 g; soy sauce 1 g; salt 0 g; vinegar 1 g; kale 3 g; olive oil 1 g; onions 1 g; caesar salad 99 g; garlic 1 g; chili 1 g; broccoli 6 g; green onions 1 g
+d0135,dish_1572548878,teste,cafe2,0-5,5+,18,105.0,4.08,197.0,B,squash 2 g; avocado 31 g; cheese 0 g; apple 2 g; radishes 5 g; coleslaw 3 g; onions 1 g; multigrain bread 1 g; olive oil 5 g; bread crumbs 1 g; eggs 0 g; salt 0 g; water 1 g; jalapenos 21 g; pistachios 5 g; flatbread 18 g; arugula 7 g; lemon juice 2 g
+d0136,dish_1561492703,teste,cafe1,5-15,5+,10,134.0,11.28,113.1,A,caesar salad 31 g; green onions 0 g; fried rice 15 g; country rice 10 g; olive oil 1 g; onions 2 g; squash 26 g; fish 49 g; salt 0 g; garlic 0 g
+d0137,dish_1564502063,teste,cafe1,25-40,1,1,92.0,34.04,497.7,A,bacon 92 g
+d0138,dish_1560973984,teste,cafe1,5-15,5+,11,195.0,6.09,171.2,A,mustard 0 g; arugula 23 g; orange 9 g; pepper 0 g; salt 0 g; lime 1 g; raisins 5 g; olive oil 4 g; broccoli 74 g; pecans 3 g; wheat berry 77 g
+d0139,dish_1562603569,teste,cafe1,5-15,2-4,3,62.0,5.65,121.7,A,bacon 14 g; olive oil 1 g; sweet potato 47 g
+d0140,dish_1573665025,teste,cafe2,15-25,1,1,177.0,17.7,262.0,B,scrambled eggs 177 g
+d0141,dish_1566316525,teste,cafe1,5-15,5+,9,83.0,7.66,223.9,A,olive oil 12 g; bacon 19 g; radishes 12 g; vinegar 6 g; bell peppers 16 g; garlic 1 g; salt 0 g; cucumbers 16 g; mustard 1 g
+d0142,dish_1566414611,teste,cafe1,15-25,1,1,64.0,19.84,105.6,A,chicken 64 g
+d0143,dish_1563565354,teste,cafe1,15-25,5+,22,193.0,20.04,272.3,A,shallots 1 g; fish 29 g; corn on the cob 88 g; mushroom 6 g; ground turkey 44 g; cream 1 g; olive oil 2 g; thyme 0 g; onions 1 g; lemon juice 1 g; salt 0 g; parsley 0 g; carrot 1 g; white rice 6 g; cherry tomatoes 1 g; eggs 2 g; chard 1 g; wheat berry 6 g; kale 3 g; celery 1 g; chive 0 g; garlic 0 g
+d0144,dish_1564514997,teste,cafe1,25-40,5+,16,396.0,31.07,381.1,A,onions 6 g; lime 2 g; bell peppers 2 g; salt 1 g; arugula 4 g; wheat berry 112 g; olive oil 9 g; parsley 0 g; snow peas 5 g; carrot 102 g; artichokes 6 g; chive 0 g; garlic 1 g; fish 122 g; pepper 0 g; white beans 24 g
+d0145,dish_1574281837,teste,cafe2,0-5,5+,17,42.0,3.1,93.0,B,cucumbers 0 g; corn 2 g; coleslaw 3 g; onions 0 g; garlic 0 g; eggs 0 g; cornmeal 1 g; salt 0 g; pepper 0 g; mangos 3 g; flatbread 29 g; zucchini 1 g; milk 1 g; cilantro 0 g; parsley 0 g; greek yogurt 3 g; oil 0 g
+d0146,dish_1563566725,teste,cafe1,5-15,2-4,4,206.0,7.72,241.3,A,olive oil 1 g; olives 54 g; wild rice 118 g; wheat berry 33 g
+d0147,dish_1558114441,teste,cafe1,5-15,1,1,75.0,14.47,258.5,A,sausage 75 g
+d0148,dish_1561393550,teste,cafe1,15-25,1,1,176.0,19.36,172.5,A,cottage cheese 176 g
+d0149,dish_1575653017,teste,cafe2,0-5,5+,6,71.0,3.11,72.1,B,pears 19 g; honey 6 g; quinoa 25 g; parsley 1 g; ginger 2 g; greek yogurt 19 g
+d0150,dish_1563475874,calib,cafe1,0-5,2-4,3,251.0,2.23,93.0,A,pineapple 78 g; honeydew melons 98 g; cauliflower 75 g
+d0151,dish_1560543505,teste,cafe1,0-5,2-4,2,172.0,3.13,66.2,A,tomatoes 95 g; caesar salad 77 g
+d0152,dish_1571944549,calib,cafe2,>40,5+,8,283.0,42.21,384.3,B,turkey 130 g; squash 97 g; cucumbers 20 g; olive oil 2 g; seeds 3 g; pita bread 30 g; salt 0 g; honey 1 g
+d0153,dish_1572031211,teste,cafe2,5-15,5+,5,80.0,8.31,187.6,B,olive oil 6 g; mozzarella cheese 22 g; basil 6 g; pizza dough 30 g; pizza sauce 17 g
+d0154,dish_1562875320,teste,cafe1,>40,5+,18,377.0,47.57,603.9,A,chicken 101 g; green beans 30 g; squash 5 g; spinach (raw) 3 g; lemon juice 1 g; garlic 1 g; caesar salad 49 g; thyme 0 g; olive oil 3 g; country rice 71 g; salt 0 g; pepper 0 g; wheat berry 10 g; parsley 1 g; basil 0 g; pizza 98 g; zucchini 5 g; rosemary 0 g
+d0155,dish_1563206409,teste,cafe1,25-40,2-4,2,277.0,29.68,443.5,A,scrambled eggs 264 g; cheese 13 g
+d0156,dish_1562168696,teste,cafe1,0-5,5+,7,141.0,1.71,95.1,A,raspberries 2 g; vinaigrette 2 g; berries 68 g; granola 5 g; blackberries 2 g; mixed greens 21 g; honeydew melons 41 g
+d0157,dish_1565021599,teste,cafe1,25-40,1,1,398.0,39.8,207.0,A,egg whites 398 g
+d0158,dish_1573243053,teste,cafe2,5-15,1,1,132.0,8.18,303.6,B,dumplings 132 g
+d0159,dish_1563305513,calib,cafe1,25-40,1,1,228.0,25.54,606.3,A,cheese pizza 228 g
+d0160,dish_1562874049,teste,cafe1,15-25,1,1,155.0,17.36,412.1,A,cheese pizza 155 g
+d0161,dish_1563913709,teste,cafe1,5-15,5+,12,263.0,13.82,337.9,A,olive oil 4 g; cucumbers 4 g; fried rice 35 g; caesar salad 119 g; salt 0 g; cheese pizza 68 g; figs 4 g; cherry tomatoes 4 g; mustard 0 g; chard 9 g; vinegar 2 g; spinach (raw) 13 g
+d0162,dish_1557853229,calib,cafe1,15-25,1,1,126.0,15.75,195.9,A,eggs 126 g
+d0163,dish_1560357297,teste,cafe1,>40,2-4,2,492.0,59.34,942.5,A,sausage 109 g; scrambled eggs 383 g
+d0164,dish_1576258613,calib,cafe2,5-15,1,1,35.0,12.95,189.3,B,bacon 35 g
+d0165,dish_1559668314,teste,cafe1,15-25,2-4,3,300.0,21.04,551.5,A,scrambled eggs 150 g; garden salad 61 g; hash browns 89 g
+d0166,dish_1560453132,calib,cafe1,0-5,5+,9,108.0,2.85,142.1,A,mustard 1 g; spinach (raw) 70 g; olive oil 11 g; almonds 3 g; carrot 6 g; salt 0 g; parsley 1 g; blueberries 14 g; vinegar 3 g
+d0167,dish_1564688969,teste,cafe1,5-15,1,1,90.0,10.08,239.3,A,cheese pizza 90 g
+d0168,dish_1573848236,teste,cafe2,0-5,5+,5,41.0,4.26,96.2,B,olive oil 3 g; mozzarella cheese 11 g; basil 3 g; pizza dough 15 g; pizza sauce 9 g
+d0169,dish_1563218031,calib,cafe1,>40,5+,26,426.0,47.79,419.8,A,salt 1 g; lime 1 g; broccoli 73 g; squash 92 g; wheat berry 7 g; jalapenos 1 g; rosemary 1 g; zucchini 5 g; onions 5 g; spinach (raw) 2 g; mustard greens 15 g; cilantro 1 g; parmesan cheese 2 g; thyme 0 g; mangos 7 g; cherry tomatoes 11 g; arugula 25 g; pork 75 g; chicken breast 73 g; cucumbers 7 g; lemon juice 1 g; parsley 0 g; olive oil 2 g; garlic 1 g; tomatoes 7 g; white rice 10 g
+d0170,dish_1575307845,calib,cafe2,5-15,2-4,2,143.0,13.69,528.5,B,bacon 29 g; hash browns 114 g
+d0171,dish_1559238993,teste,cafe1,0-5,1,1,108.0,0.76,61.6,A,berries 108 g
+d0172,dish_1563824406,teste,cafe1,25-40,5+,6,387.0,39.38,474.1,A,cherry tomatoes 53 g; carrot 49 g; bell peppers 43 g; olives 36 g; grilled chicken 163 g; onions 43 g
+d0173,dish_1558724658,teste,cafe1,5-15,2-4,3,364.0,7.03,138.4,A,brussels sprouts 118 g; honeydew melons 152 g; broccoli 94 g
+d0174,dish_1563823423,teste,cafe1,>40,5+,18,441.0,77.78,700.5,A,white rice 10 g; cauliflower 20 g; soy sauce 1 g; caesar salad 69 g; steak 152 g; spinach (raw) 3 g; tofu 39 g; garlic 3 g; green onions 1 g; broccoli 3 g; salt 1 g; chicken 103 g; ginger 1 g; green beans 3 g; wheat berry 30 g; vinegar 1 g; olive oil 1 g; lime 2 g
+d0175,dish_1560356627,teste,cafe1,>40,2-4,3,301.0,63.12,980.0,A,scrambled eggs 121 g; bacon 92 g; sausage 88 g
+d0176,dish_1563984729,calib,cafe1,25-40,2-4,2,321.0,38.98,495.7,A,scrambled eggs 149 g; chicken apple sausage 172 g
+d0177,dish_1565117990,teste,cafe1,>40,2-4,4,380.0,80.83,582.0,A,tuna 102 g; chicken breast 133 g; bell peppers 69 g; cheese pizza 76 g
+d0178,dish_1562010266,teste,cafe1,>40,5+,12,284.0,55.65,581.0,A,olive oil 1 g; mayonnaise 6 g; wheat berry 28 g; pork 207 g; pepper 1 g; salt 0 g; cabbage 28 g; carrot 7 g; garlic 3 g; lemon juice 3 g; parsley 1 g; jalapenos 0 g
+d0179,dish_1572278894,calib,cafe2,15-25,1,1,61.0,22.57,330.0,B,bacon 61 g
+d0180,dish_1559844063,teste,cafe1,0-5,2-4,2,277.0,1.34,139.8,A,strawberries 77 g; pears 200 g
+d0181,dish_1566417398,teste,cafe1,0-5,5+,7,46.0,0.79,56.9,A,mustard 0 g; vinegar 3 g; mixed greens 33 g; celery root 3 g; olive oil 5 g; salt 0 g; cherry tomatoes 3 g
+d0182,dish_1563984199,teste,cafe1,>40,2-4,3,670.0,48.6,322.7,A,egg whites 472 g; cantaloupe 136 g; pineapple 62 g
+d0183,dish_1562958445,teste,cafe1,0-5,1,1,21.0,0.17,24.1,A,olives 21 g
+d0184,dish_1559578551,teste,cafe1,5-15,1,1,23.0,8.51,124.4,A,bacon 23 g
+d0185,dish_1559589942,teste,cafe1,5-15,2-4,3,179.0,13.49,290.3,A,mushroom 54 g; asparagus 22 g; pizza 103 g
+d0186,dish_1562611853,teste,cafe1,5-15,5+,9,243.0,9.07,267.2,A,salt 0 g; broccoli 131 g; chickpeas 55 g; parsley 5 g; mustard greens 14 g; olive oil 14 g; arugula 14 g; vinegar 5 g; pepper 5 g
+d0187,dish_1565021675,teste,cafe1,>40,2-4,4,575.0,41.17,331.6,A,sweet potato 100 g; egg whites 398 g; honeydew melons 75 g; olive oil 2 g
+d0188,dish_1561579867,teste,cafe1,25-40,5+,24,217.0,37.05,369.4,A,lemon juice 0 g; basil 0 g; mushroom 3 g; vinegar 0 g; beef 67 g; chicken 58 g; millet 9 g; spinach (cooked) 2 g; olives 54 g; rosemary 0 g; onions 2 g; olive oil 1 g; oregano 0 g; cream 2 g; arugula 1 g; wheat berry 6 g; pepper 0 g; bok choy 2 g; garlic 1 g; shallots 5 g; salt 1 g; butter 1 g; white wine 0 g; thyme 0 g
+d0189,dish_1563208439,teste,cafe1,5-15,2-4,2,96.0,6.14,92.6,A,raspberries 57 g; chicken apple sausage 39 g
+d0190,dish_1574455483,teste,cafe2,25-40,5+,9,168.0,31.02,301.9,B,cucumbers 21 g; celery 2 g; carrot 2 g; onions 2 g; apple cider 18 g; vinegar 1 g; broth 7 g; salt 0 g; pork 114 g
+d0191,dish_1565109606,calib,cafe1,0-5,2-4,2,94.0,0.92,90.0,A,olive oil 2 g; sweet potato 92 g
+d0192,dish_1574443234,teste,cafe2,0-5,1,1,129.0,3.35,420.5,B,hash browns 129 g
+d0193,dish_1559242066,teste,cafe1,0-5,2-4,4,53.0,0.47,26.1,A,salt 0 g; pepper 0 g; carrot 52 g; olive oil 1 g
+d0194,dish_1568048018,calib,cafe1,25-40,2-4,4,287.0,34.61,496.8,A,turkey bacon 53 g; olive oil 1 g; scrambled eggs 179 g; broccoli 54 g
+d0195,dish_1571944531,teste,cafe2,25-40,5+,7,253.0,39.57,301.8,B,turkey 130 g; squash 97 g; cucumbers 20 g; olive oil 2 g; seeds 3 g; salt 0 g; honey 1 g
+d0196,dish_1563306039,calib,cafe1,>40,5+,28,326.0,44.06,493.6,A,chicken 61 g; orange juice 1 g; green onions 1 g; white rice 10 g; mushroom 30 g; shallots 0 g; lemon juice 0 g; garlic 1 g; cranberries 3 g; caesar dressing 2 g; olive oil 8 g; thyme 0 g; salt 0 g; parsley 1 g; roasted potatoes 47 g; croutons 0 g; apple 3 g; wheat berry 6 g; spinach (raw) 41 g; parmesan cheese 1 g; vinegar 4 g; kale 14 g; mustard 1 g; onions 7 g; beef 78 g; broccoli 5 g; soy sauce 1 g; chili 1 g
+d0197,dish_1562086740,teste,cafe1,25-40,2-4,2,215.0,30.41,447.9,A,scrambled eggs 182 g; bacon 33 g
+d0198,dish_1562876732,teste,cafe1,25-40,5+,18,291.0,27.64,350.6,A,parsley 0 g; cheese pizza 43 g; garlic 0 g; rosemary 0 g; zucchini 3 g; thyme 0 g; olive oil 2 g; caesar salad 105 g; spinach (raw) 1 g; green beans 28 g; salt 0 g; basil 0 g; lemon juice 0 g; country rice 45 g; squash 3 g; wheat berry 5 g; pepper 0 g; chicken 54 g
+d0199,dish_1560787817,teste,cafe1,5-15,5+,5,165.0,9.82,292.2,A,berries 61 g; yam 29 g; bagels 54 g; bacon 7 g; cream cheese 14 g
+d0200,dish_1565021965,teste,cafe1,15-25,1,1,177.0,17.7,92.0,A,egg whites 177 g
+d0201,dish_1560887408,calib,cafe1,5-15,1,1,122.0,13.42,324.5,A,pizza 122 g
+d0202,dish_1566416299,calib,cafe1,0-5,2-4,2,86.0,1.51,45.0,A,green beans 84 g; olive oil 2 g
+d0203,dish_1559240510,teste,cafe1,0-5,5+,7,213.0,3.13,73.5,A,salt 0 g; pepper 0 g; olive oil 0 g; cauliflower 58 g; strawberries 59 g; carrot 41 g; broccoli 54 g
+d0204,dish_1558641897,calib,cafe1,0-5,1,1,110.0,3.41,116.7,A,corn on the cob 110 g
+d0205,dish_1571946303,teste,cafe2,25-40,5+,13,189.0,28.3,366.2,B,celery 2 g; carrot 2 g; onions 11 g; apple cider 13 g; olive oil 4 g; vinegar 1 g; mozzarella cheese 18 g; broth 5 g; salt 0 g; eggplant 18 g; pork 80 g; pizza dough 24 g; pizza sauce 13 g
+d0206,dish_1559158354,teste,cafe1,0-5,1,1,60.0,1.44,21.0,A,broccoli 60 g
+d0207,dish_1576258685,teste,cafe2,25-40,2-4,4,267.0,26.94,682.6,B,bacon 35 g; scrambled eggs 111 g; hash browns 99 g; salsa 22 g
+d0208,dish_1565117962,teste,cafe1,>40,2-4,3,304.0,72.32,379.9,A,chicken breast 133 g; bell peppers 69 g; tuna 102 g
+d0209,dish_1571934154,calib,cafe2,15-25,2-4,3,288.0,18.37,381.7,B,scrambled eggs 158 g; roasted potatoes 98 g; salsa 32 g
+d0210,dish_1571931648,teste,cafe2,25-40,2-4,3,231.0,25.79,427.6,B,sausage 85 g; egg whites 80 g; roasted potatoes 66 g
+d0211,dish_1563207364,teste,cafe1,15-25,5+,6,271.0,15.01,309.3,A,scrambled eggs 68 g; yam 50 g; grapes 30 g; egg whites 67 g; olive oil 6 g; sweet potato 50 g
+d0212,dish_1566588066,teste,cafe1,>40,5+,9,562.0,43.87,566.2,A,carrot 148 g; pineapple 188 g; salt 1 g; thyme 0 g; olive oil 8 g; arugula 7 g; brown rice 34 g; pepper 9 g; salmon 168 g
+d0213,dish_1563221054,calib,cafe1,25-40,5+,20,170.0,26.9,298.9,A,chicken breast 11 g; cherry tomatoes 1 g; vinegar 2 g; white rice 11 g; pork 84 g; wheat berry 1 g; spinach (raw) 30 g; onions 9 g; zucchini 6 g; parsley 0 g; rosemary 1 g; olive oil 5 g; parmesan cheese 0 g; thyme 0 g; mustard 1 g; arugula 3 g; cranberries 2 g; garlic 1 g; salt 0 g; apple 2 g
+d0214,dish_1565118729,calib,cafe1,>40,5+,11,248.0,41.9,435.5,A,shallots 10 g; salt 0 g; kale 24 g; onions 5 g; olive oil 1 g; chard 24 g; vinegar 0 g; beef 152 g; spinach (cooked) 5 g; millet 20 g; bok choy 5 g
+d0215,dish_1564159520,teste,cafe1,15-25,1,1,42.0,15.54,227.2,A,bacon 42 g
+d0216,dish_1558379712,teste,cafe1,25-40,1,1,119.0,26.66,687.9,A,almonds 119 g
+d0217,dish_1558373008,teste,cafe1,5-15,1,1,73.0,14.09,251.6,A,sausage 73 g
+d0218,dish_1566402041,teste,cafe1,>40,1,1,446.0,44.6,231.9,A,egg whites 446 g
+d0219,dish_1565987081,calib,cafe1,>40,2-4,3,288.0,48.8,268.1,A,spinach (raw) 64 g; chicken 149 g; cucumbers 75 g
+d0220,dish_1562094877,teste,cafe1,25-40,5+,12,155.0,29.47,234.6,A,quinoa 12 g; squash 6 g; eggplant 6 g; mushroom 6 g; spinach (cooked) 3 g; shallots 1 g; garlic 1 g; wine 1 g; salt 0 g; lemon juice 0 g; olive oil 0 g; chicken thighs 119 g
+d0221,dish_1573159511,teste,cafe2,0-5,2-4,4,121.0,1.09,47.6,B,squash 117 g; olive oil 2 g; salt 0 g; dates 1 g
+d0222,dish_1561392459,teste,cafe1,15-25,2-4,4,275.0,23.69,395.2,A,strawberries 65 g; sausage 51 g; scrambled eggs 126 g; broccoli 33 g
+d0223,dish_1563205982,teste,cafe1,15-25,5+,6,469.0,16.15,316.2,A,egg whites 87 g; yam 30 g; berries 171 g; chicken apple sausage 35 g; sweet potato 30 g; pineapple 117 g
+d0224,dish_1561739954,teste,cafe1,15-25,2-4,2,225.0,15.39,276.1,A,sweet potato 79 g; scrambled eggs 146 g
+d0225,dish_1558376306,calib,cafe1,15-25,1,1,108.0,20.84,372.2,A,sausage 108 g
+d0226,dish_1561481634,teste,cafe1,25-40,2-4,3,228.0,25.48,462.1,A,scrambled eggs 104 g; bacon 37 g; yam 87 g
+d0227,dish_1559240987,calib,cafe1,0-5,2-4,4,51.0,0.45,25.1,A,carrot 50 g; salt 0 g; pepper 0 g; olive oil 1 g
+d0228,dish_1560455224,teste,cafe1,5-15,5+,12,244.0,5.39,181.7,A,arugula 19 g; mustard 0 g; vinegar 3 g; mixed greens 13 g; carrot 5 g; pumpkin seeds 3 g; lettuce 6 g; salt 0 g; honeydew melons 95 g; green beans 38 g; wild rice 56 g; olive oil 5 g
+d0229,dish_1571944507,teste,cafe2,25-40,2-4,2,150.0,37.9,247.7,B,turkey 130 g; cucumbers 20 g
+d0230,dish_1558724959,calib,cafe1,15-25,2-4,4,426.0,21.3,581.4,A,brussels sprouts 118 g; carrot 75 g; almonds 72 g; apple 161 g
+d0231,dish_1561576483,teste,cafe1,15-25,5+,10,371.0,18.41,209.6,A,vinegar 0 g; bok choy 2 g; millet 6 g; cauliflower 308 g; beef 48 g; salt 0 g; shallots 3 g; spinach (cooked) 2 g; olive oil 0 g; onions 2 g
+d0232,dish_1562698100,teste,cafe1,0-5,2-4,3,83.0,0.74,24.0,A,squash 82 g; olive oil 1 g; salt 0 g
+d0233,dish_1562688552,calib,cafe1,5-15,5+,5,304.0,11.74,235.8,A,grapes 81 g; roasted potatoes 17 g; watermelon 73 g; strawberries 62 g; chicken apple sausage 71 g
+d0234,dish_1562788794,teste,cafe1,25-40,5+,18,281.0,36.52,465.2,A,salt 0 g; broccoli 3 g; basil 0 g; lemon juice 1 g; parsley 0 g; onions 3 g; white rice 103 g; vinegar 1 g; pork 97 g; brown rice 13 g; pepper 1 g; country rice 8 g; shallots 1 g; cherry tomatoes 3 g; olive oil 3 g; garlic 2 g; fish 41 g; green onions 0 g
+d0235,dish_1558636388,teste,cafe1,0-5,1,1,96.0,1.73,24.0,A,cauliflower 96 g
+d0236,dish_1568060722,teste,cafe1,>40,2-4,4,359.0,64.4,460.6,A,avocado 64 g; mixed greens 61 g; onions 36 g; chicken 198 g
+d0237,dish_1568315988,teste,cafe1,5-15,1,1,69.0,5.52,50.4,A,tofu 69 g
+d0238,dish_1566413469,calib,cafe1,>40,5+,6,379.0,44.22,459.7,A,chicken 103 g; avocado 49 g; olives 80 g; parmesan cheese 19 g; spinach (raw) 61 g; broccoli 67 g
+d0239,dish_1560800836,calib,cafe1,15-25,1,1,170.0,20.4,479.4,A,pepperoni pizza 170 g
+d0240,dish_1561575951,teste,cafe1,5-15,5+,10,91.0,14.9,213.7,A,salt 0 g; onions 1 g; cheese pizza 40 g; spinach (cooked) 1 g; beef 39 g; millet 5 g; bok choy 1 g; shallots 3 g; vinegar 0 g; olive oil 0 g
+d0241,dish_1562173111,teste,cafe1,25-40,1,1,163.0,27.71,792.2,A,chia seeds 163 g
+d0242,dish_1563813308,calib,cafe1,15-25,5+,5,76.0,15.33,225.0,A,salt 0 g; pepper 0 g; brussels sprouts 37 g; olive oil 0 g; bacon 38 g
+d0243,dish_1560357267,teste,cafe1,25-40,1,1,383.0,38.3,566.8,A,scrambled eggs 383 g
+d0244,dish_1558380557,teste,cafe1,25-40,2-4,3,212.0,32.73,699.3,A,grapes 52 g; almonds 48 g; sausage 112 g
+d0245,dish_1574111587,teste,cafe2,>40,5+,9,161.0,47.8,271.6,B,brown rice 0 g; white rice 0 g; broccoli 4 g; chicken 154 g; spinach (raw) 0 g; salt 0 g; teriyaki sauce 0 g; green onions 1 g; oil 2 g
+d0246,dish_1565725188,teste,cafe1,>40,5+,7,521.0,69.8,543.1,A,carrot 66 g; bell peppers 80 g; chicken 187 g; parmesan cheese 21 g; onions 56 g; cherry tomatoes 67 g; olives 44 g
+d0247,dish_1573156961,calib,cafe2,5-15,5+,10,318.0,11.76,394.1,B,cauliflower 57 g; squash 119 g; pickles 10 g; coleslaw 19 g; barbecue sauce 5 g; olive oil 2 g; salt 0 g; dates 1 g; flatbread 103 g; oil 1 g
+d0248,dish_1558378553,teste,cafe1,15-25,1,1,68.0,15.23,393.1,A,almonds 68 g
+d0249,dish_1560357427,calib,cafe1,0-5,1,1,241.0,1.21,93.7,A,grapefruit juice 241 g
+d0250,dish_1559245697,teste,cafe1,0-5,5+,6,289.0,3.41,163.7,A,salt 0 g; olive oil 1 g; pepper 0 g; pears 202 g; garden salad 35 g; carrot 51 g
+d0251,dish_1558639335,teste,cafe1,0-5,1,1,116.0,0.35,60.3,A,apple 116 g
+d0252,dish_1572464329,teste,cafe2,5-15,5+,14,40.0,7.25,62.4,B,brown rice 6 g; spinach (raw) 1 g; onions 1 g; garlic 1 g; shallots 1 g; olive oil 0 g; chili 0 g; salt 0 g; salmon 29 g; lime 0 g; jalapenos 0 g; lemon juice 0 g; cilantro 0 g; ginger 0 g
+d0253,dish_1565884692,teste,cafe1,>40,1,1,408.0,40.8,212.2,A,egg whites 408 g
+d0254,dish_1573762622,teste,cafe2,>40,5+,8,477.0,51.5,764.7,B,brisket 202 g; olive oil 4 g; mozzarella cheese 15 g; mashed potatoes 202 g; butter 20 g; basil 4 g; pizza dough 19 g; pizza sauce 11 g
+d0255,dish_1565023182,teste,cafe1,>40,5+,7,308.0,41.58,638.7,A,granola 5 g; mixed greens 21 g; blackberries 2 g; raspberries 2 g; vinaigrette 2 g; scrambled eggs 228 g; bacon 48 g
+d0256,dish_1563984140,teste,cafe1,>40,1,1,472.0,47.2,245.4,A,egg whites 472 g
+d0257,dish_1567526814,teste,cafe1,>40,5+,5,639.0,45.2,408.2,A,egg whites 433 g; watermelon 100 g; yam 50 g; sweet potato 50 g; olive oil 6 g
+d0258,dish_1559149688,teste,cafe1,15-25,1,1,181.0,22.62,281.5,A,eggs 181 g
+d0259,dish_1564590254,teste,cafe1,0-5,5+,6,432.0,3.24,248.5,A,pineapple 56 g; watermelon 84 g; berries 93 g; cantaloupe 78 g; sweet potato 118 g; olive oil 3 g
+d0260,dish_1562700718,teste,cafe1,25-40,5+,10,255.0,33.03,329.4,A,bok choy 4 g; spinach (cooked) 4 g; salt 0 g; onions 4 g; olive oil 1 g; vinegar 0 g; mushroom 110 g; beef 111 g; shallots 7 g; millet 15 g
+d0261,dish_1561752535,calib,cafe1,25-40,5+,13,307.0,28.1,358.0,A,cilantro 1 g; garlic 1 g; chili 1 g; salt 0 g; tortilla 29 g; onions 0 g; tomatoes 7 g; olive oil 2 g; chicken thighs 73 g; squash 35 g; caesar salad 83 g; turnips 54 g; cheese 22 g
+d0262,dish_1568060461,teste,cafe1,25-40,5+,19,304.0,34.89,376.8,A,white rice 16 g; arugula 49 g; parsley 0 g; zucchini 8 g; olive oil 2 g; cherry tomatoes 15 g; lime 2 g; salt 0 g; mangos 15 g; pork 121 g; jalapenos 1 g; rosemary 1 g; cucumbers 15 g; lemon juice 2 g; onions 9 g; mustard greens 30 g; cilantro 1 g; garlic 1 g; tomatoes 15 g
+d0263,dish_1568318361,calib,cafe1,>40,2-4,3,341.0,49.09,540.8,A,steak 182 g; mixed greens 115 g; broccoli 44 g
+d0264,dish_1572453701,calib,cafe2,5-15,2-4,3,85.0,8.43,157.1,B,broccoli 46 g; sausage 38 g; olive oil 1 g
+d0265,dish_1571944487,calib,cafe2,25-40,1,1,130.0,37.7,245.7,B,turkey 130 g
+d0266,dish_1566328745,teste,cafe1,>40,2-4,2,203.0,52.09,282.0,A,chicken 167 g; cherry tomatoes 36 g
+d0267,dish_1559235815,teste,cafe1,15-25,2-4,4,268.0,19.63,352.4,A,cream cheese 11 g; bagels 43 g; strawberries 103 g; eggs 111 g
+d0268,dish_1565799565,teste,cafe1,25-40,2-4,3,396.0,32.56,240.0,A,sweet potato 76 g; olive oil 2 g; egg whites 318 g
+d0269,dish_1561060787,calib,cafe1,0-5,2-4,4,91.0,3.05,46.5,A,brussels sprouts 90 g; olive oil 1 g; pepper 0 g; salt 0 g
+d0270,dish_1567542813,teste,cafe1,5-15,5+,12,145.0,13.85,316.6,A,white rice 18 g; garlic 1 g; cilantro 0 g; cheese pizza 98 g; olive oil 1 g; onions 6 g; chicken thighs 9 g; vinegar 1 g; kale 5 g; salt 0 g; lemon juice 1 g; pineapple 5 g
+d0271,dish_1565194684,teste,cafe1,25-40,1,1,378.0,37.8,196.6,A,egg whites 378 g
+d0272,dish_1558718974,teste,cafe1,15-25,1,1,73.0,16.35,422.0,A,almonds 73 g
+d0273,dish_1561753371,teste,cafe1,15-25,5+,10,103.0,19.03,221.3,A,olive oil 0 g; chicken thighs 56 g; cheese 17 g; tomatoes 6 g; garlic 1 g; chili 0 g; salt 0 g; cilantro 1 g; tortilla 22 g; onions 0 g
+d0274,dish_1563392128,calib,cafe1,15-25,5+,12,162.0,21.13,169.9,A,garlic 1 g; cilantro 1 g; lemon juice 2 g; onions 4 g; olive oil 4 g; salt 0 g; arugula 5 g; quinoa 21 g; fish 107 g; tomatillo 11 g; pepper 4 g; jalapenos 0 g
+d0275,dish_1562613285,teste,cafe1,0-5,5+,8,84.0,2.13,111.7,A,figs 9 g; apple 9 g; arugula 9 g; lemon juice 4 g; olive oil 7 g; mustard greens 45 g; salt 0 g; goat cheese 2 g
+d0276,dish_1565898230,teste,cafe1,>40,5+,27,500.0,73.95,780.2,A,garlic 3 g; bell peppers 3 g; beef 177 g; cherry tomatoes 8 g; brown rice 19 g; ginger 0 g; olive oil 3 g; vinegar 0 g; spinach (cooked) 6 g; lime 0 g; shallots 15 g; bok choy 6 g; salmon 97 g; millet 24 g; vinaigrette 6 g; jalapenos 1 g; spinach (raw) 5 g; green beans 58 g; feta cheese 3 g; cucumbers 16 g; lettuce 31 g; cilantro 1 g; lemon juice 1 g; onions 11 g; salt 0 g; chili 0 g; olives 3 g
+d0277,dish_1558031566,calib,cafe1,5-15,1,1,26.0,9.62,140.7,A,bacon 26 g
+d0278,dish_1572376754,teste,cafe2,0-5,1,1,60.0,0.6,6.0,B,cucumbers 60 g
+d0279,dish_1562777566,calib,cafe1,5-15,1,1,84.0,10.92,263.0,A,toast 84 g
+d0280,dish_1565637162,teste,cafe1,>40,5+,11,286.0,41.84,581.5,A,garlic 1 g; salt 0 g; pasta salad 114 g; rosemary 1 g; zucchini 9 g; onions 6 g; parsley 0 g; olive oil 1 g; pork 132 g; arugula 4 g; white rice 18 g
+d0281,dish_1558719994,teste,cafe1,25-40,1,1,133.0,29.79,768.9,A,almonds 133 g
+d0282,dish_1574359199,teste,cafe2,15-25,2-4,3,329.0,19.48,495.7,B,scrambled eggs 111 g; roasted potatoes 118 g; crepes 100 g
+d0283,dish_1562788760,calib,cafe1,25-40,5+,17,178.0,33.74,331.3,A,green onions 0 g; vinegar 1 g; pork 97 g; brown rice 13 g; lemon juice 1 g; olive oil 3 g; garlic 2 g; fish 41 g; pepper 1 g; cherry tomatoes 3 g; basil 0 g; country rice 8 g; parsley 0 g; onions 3 g; broccoli 3 g; shallots 1 g; salt 0 g
+d0284,dish_1561741174,teste,cafe1,15-25,2-4,2,113.0,16.7,245.8,A,scrambled eggs 93 g; bacon 20 g
+d0285,dish_1573232499,calib,cafe2,>40,5+,5,474.0,47.05,811.5,B,bacon 36 g; scrambled eggs 269 g; broccoli 46 g; olive oil 1 g; fried rice 122 g
+d0286,dish_1560874751,calib,cafe1,5-15,5+,5,220.0,12.56,380.0,A,bacon 11 g; berries 72 g; bagels 60 g; cream cheese 15 g; yam 62 g
+d0287,dish_1562875159,teste,cafe1,5-15,1,1,98.0,10.78,260.7,A,pizza 98 g
+d0288,dish_1564073860,teste,cafe1,25-40,1,1,91.0,33.67,492.3,A,bacon 91 g
+d0289,dish_1573233271,teste,cafe2,5-15,1,1,122.0,12.69,187.9,B,omelets 122 g
+d0290,dish_1558640008,teste,cafe1,15-25,2-4,3,212.0,21.19,552.5,A,cherry tomatoes 58 g; cantaloupe 64 g; almonds 90 g
+d0291,dish_1560961012,teste,cafe1,5-15,2-4,2,71.0,6.62,191.7,A,cream cheese 14 g; bagels 57 g
+d0292,dish_1558549413,calib,cafe1,25-40,1,1,118.0,26.43,682.2,A,almonds 118 g
+d0293,dish_1572464692,teste,cafe2,0-5,1,1,56.0,4.42,93.0,B,hummus 56 g
+d0294,dish_1566934487,teste,cafe1,>40,5+,18,468.0,50.74,553.0,A,fish 212 g; white beans 42 g; cauliflower 34 g; garlic 1 g; parsley 1 g; olive oil 10 g; bell peppers 4 g; chive 1 g; lime 4 g; pepper 0 g; bok choy 71 g; cookies 17 g; arugula 6 g; snow peas 8 g; onions 11 g; artichokes 11 g; salt 1 g; cheese pizza 33 g
+d0295,dish_1566328988,teste,cafe1,>40,5+,18,398.0,56.31,747.7,A,bok choy 2 g; shallots 4 g; beef 58 g; vinegar 0 g; jalapenos 4 g; bell peppers 10 g; spinach (raw) 4 g; pepper 0 g; onions 6 g; olive oil 4 g; tomatoes 10 g; garlic 2 g; fried rice 90 g; chicken 81 g; cheese pizza 89 g; salt 2 g; spinach (cooked) 2 g; millet 28 g
+d0296,dish_1567020394,teste,cafe1,5-15,5+,15,265.0,13.63,176.2,A,fish 43 g; pepper 0 g; kale 2 g; parsley 0 g; olive oil 6 g; chive 0 g; broccoli 164 g; cherry tomatoes 2 g; wheat berry 9 g; chard 2 g; lemon juice 1 g; salt 0 g; shallots 1 g; garlic 0 g; brussels sprouts 34 g
+d0297,dish_1557861837,teste,cafe1,5-15,2-4,3,123.0,8.7,61.9,A,eggplant 53 g; caesar salad 31 g; fish 39 g
+d0298,dish_1562613010,teste,cafe1,15-25,2-4,2,128.0,18.85,90.3,A,mixed greens 32 g; cod 96 g
+d0299,dish_1571946737,calib,cafe2,25-40,5+,8,145.0,30.39,295.7,B,celery 2 g; carrot 2 g; onions 2 g; apple cider 18 g; vinegar 1 g; broth 7 g; salt 0 g; pork 112 g
+d0300,dish_1559590157,teste,cafe1,25-40,2-4,3,234.0,38.51,230.5,A,chicken 113 g; asparagus 39 g; caesar salad 82 g
+d0301,dish_1566316496,calib,cafe1,0-5,5+,8,64.0,0.63,121.1,A,vinegar 6 g; radishes 12 g; salt 0 g; bell peppers 16 g; olive oil 12 g; garlic 1 g; cucumbers 16 g; mustard 1 g
+d0302,dish_1572291722,teste,cafe2,25-40,5+,13,245.0,25.87,271.5,B,chicken 62 g; cucumbers 73 g; tomatoes 8 g; bell peppers 8 g; spinach (raw) 3 g; onions 3 g; garlic 2 g; olive oil 3 g; salt 2 g; pepper 0 g; hummus 64 g; jalapenos 3 g; millet 15 g
+d0303,dish_1573763118,calib,cafe2,15-25,2-4,3,167.0,18.12,252.6,B,brisket 80 g; mashed potatoes 80 g; butter 8 g
+d0304,dish_1562963648,calib,cafe1,5-15,5+,12,247.0,10.23,252.6,A,mixed greens 18 g; caesar salad 104 g; carrot 9 g; cabbage 18 g; pizza 52 g; rice noodles 35 g; garlic 1 g; soy sauce 1 g; olive oil 2 g; green onions 2 g; vinegar 4 g; radishes 4 g
+d0305,dish_1565711570,teste,cafe1,25-40,5+,7,324.0,26.62,603.8,A,salt 0 g; pepper 0 g; brussels sprouts 93 g; scrambled eggs 134 g; olive oil 1 g; hash browns 73 g; bacon 22 g
+d0306,dish_1558031675,teste,cafe1,5-15,2-4,3,180.0,11.35,248.9,A,yam 62 g; bacon 26 g; cantaloupe 92 g
+d0307,dish_1564429184,teste,cafe1,25-40,1,1,202.0,37.98,389.7,A,tempeh 202 g
+d0308,dish_1573762582,teste,cafe2,>40,2-4,3,425.0,46.1,642.8,B,brisket 202 g; mashed potatoes 202 g; butter 20 g
+d0309,dish_1558724932,teste,cafe1,15-25,1,1,72.0,16.13,416.2,A,almonds 72 g
+d0310,dish_1561060613,teste,cafe1,25-40,5+,19,304.0,25.29,323.7,A,bok choy 33 g; salmon 60 g; pineapple 64 g; jalapenos 1 g; olive oil 0 g; chili 0 g; cilantro 1 g; salt 0 g; cheese pizza 41 g; ginger 0 g; tofu 44 g; spinach (raw) 3 g; brown rice 12 g; lemon juice 1 g; onions 1 g; lime 0 g; brussels sprouts 39 g; shallots 2 g; garlic 2 g
+d0311,dish_1560455179,teste,cafe1,0-5,5+,10,150.0,1.91,103.3,A,carrot 5 g; honeydew melons 95 g; pumpkin seeds 3 g; lettuce 6 g; mustard 0 g; salt 0 g; olive oil 5 g; arugula 19 g; vinegar 3 g; mixed greens 13 g
+d0312,dish_1573060410,teste,cafe2,5-15,5+,5,152.0,10.36,250.6,B,figs 36 g; granola 18 g; grapes 24 g; chia seeds 2 g; greek yogurt 72 g
+d0313,dish_1576259732,teste,cafe2,15-25,1,1,174.0,18.1,268.0,B,omelets 174 g
+d0314,dish_1566413388,calib,cafe1,25-40,2-4,3,231.0,35.31,207.4,A,chicken 103 g; spinach (raw) 61 g; broccoli 67 g
+d0315,dish_1561739973,calib,cafe1,15-25,2-4,3,280.0,16.71,295.4,A,broccoli 55 g; scrambled eggs 146 g; sweet potato 79 g
+d0316,dish_1565370004,calib,cafe1,25-40,2-4,4,370.0,36.88,570.9,A,bacon 31 g; olive oil 3 g; scrambled eggs 236 g; green beans 100 g
+d0317,dish_1566332154,teste,cafe1,>40,2-4,4,425.0,50.26,401.0,A,spinach (raw) 65 g; cucumbers 98 g; olives 112 g; chicken 150 g
+d0318,dish_1558630072,calib,cafe1,5-15,2-4,4,295.0,7.92,294.4,A,apple 142 g; almonds 27 g; grapes 75 g; cauliflower 51 g
+d0319,dish_1562691383,teste,cafe1,0-5,1,1,70.0,1.12,86.9,A,yam 70 g
+d0320,dish_1562690074,teste,cafe1,5-15,5+,11,104.0,14.25,263.4,A,mixed greens 24 g; onions 3 g; lettuce 16 g; lime 1 g; cucumbers 8 g; olive oil 6 g; vinegar 3 g; pepper 0 g; cherry tomatoes 6 g; bacon 36 g; salt 0 g
+d0321,dish_1568315132,teste,cafe1,>40,5+,25,440.0,41.6,591.3,A,salt 0 g; quinoa 35 g; ginger 0 g; mushroom 39 g; green beans 17 g; olive oil 2 g; olives 23 g; shallots 6 g; lime 0 g; tomatoes 44 g; beef 55 g; millet 7 g; bok choy 2 g; salmon 86 g; avocado 90 g; vinegar 0 g; onions 4 g; spinach (raw) 4 g; brown rice 17 g; jalapenos 1 g; lemon juice 1 g; chili 0 g; garlic 3 g; spinach (cooked) 2 g; cilantro 1 g
+d0322,dish_1561752680,teste,cafe1,15-25,1,1,175.0,19.6,465.3,A,cheese pizza 175 g
+d0323,dish_1572462136,teste,cafe2,>40,5+,14,307.0,55.61,478.9,B,brown rice 45 g; spinach (raw) 11 g; onions 4 g; garlic 7 g; shallots 7 g; olive oil 2 g; chili 1 g; salt 1 g; salmon 223 g; lime 0 g; jalapenos 2 g; lemon juice 2 g; cilantro 2 g; ginger 1 g
+d0324,dish_1560441487,teste,cafe1,0-5,2-4,2,88.0,0.65,41.4,A,berries 50 g; cantaloupe 38 g
+d0325,dish_1561753168,teste,cafe1,25-40,5+,7,138.0,25.63,245.5,A,brown rice 21 g; arugula 4 g; salmon 104 g; thyme 0 g; olive oil 4 g; pepper 5 g; salt 0 g
+d0326,dish_1558380527,teste,cafe1,15-25,1,1,112.0,21.62,386.0,A,sausage 112 g
+d0327,dish_1566931650,teste,cafe1,>40,5+,6,488.0,58.4,610.9,A,mixed greens 91 g; olives 91 g; chicken 136 g; avocado 72 g; broccoli 71 g; parmesan cheese 27 g
+d0328,dish_1572278972,teste,cafe2,25-40,2-4,3,181.0,28.62,401.4,B,bacon 61 g; scrambled eggs 35 g; spinach (cooked) 85 g
+d0329,dish_1560801883,calib,cafe1,>40,5+,19,315.0,42.56,512.1,A,arugula 2 g; chicken breast 44 g; cherry tomatoes 2 g; spinach (raw) 1 g; squash 41 g; wheat berry 4 g; parmesan cheese 1 g; garlic 1 g; rosemary 0 g; zucchini 4 g; parsley 0 g; salt 0 g; cauliflower 54 g; white rice 9 g; thyme 0 g; pepperoni pizza 82 g; pork 64 g; olive oil 1 g; onions 3 g
+d0330,dish_1558722931,calib,cafe1,15-25,1,1,76.0,17.02,439.4,A,almonds 76 g
+d0331,dish_1561737200,calib,cafe1,25-40,2-4,2,262.0,37.08,478.6,A,egg whites 145 g; sausage 117 g
+d0332,dish_1574728229,teste,cafe2,15-25,5+,12,233.0,22.53,477.6,B,bacon 12 g; tomatoes 36 g; avocado 18 g; multigrain bread 0 g; olive oil 10 g; eggs 19 g; mozzarella cheese 41 g; salt 0 g; lemon juice 2 g; basil 10 g; pizza dough 54 g; pizza sauce 30 g
+d0333,dish_1558725193,teste,cafe1,25-40,1,1,132.0,29.57,763.1,A,almonds 132 g
+d0334,dish_1560539340,calib,cafe1,15-25,5+,13,228.0,22.85,196.5,A,pepper 4 g; garlic 1 g; cilantro 1 g; olive oil 4 g; caesar salad 70 g; onions 4 g; lemon juice 2 g; arugula 5 g; jalapenos 0 g; salt 0 g; tomatillo 10 g; quinoa 21 g; fish 105 g
+d0335,dish_1561747075,teste,cafe1,>40,5+,10,301.0,55.62,646.6,A,garlic 2 g; tomatoes 16 g; onions 0 g; salt 0 g; tortilla 65 g; chili 1 g; olive oil 1 g; chicken thighs 164 g; cilantro 2 g; cheese 49 g
+d0336,dish_1561578188,teste,cafe1,0-5,2-4,4,201.0,2.82,58.0,A,cauliflower 104 g; eggplant 95 g; salt 1 g; olive oil 1 g
+d0337,dish_1566488956,teste,cafe1,25-40,2-4,4,489.0,35.53,280.9,A,egg whites 342 g; olive oil 2 g; sweet potato 84 g; cantaloupe 61 g
+d0338,dish_1565107119,teste,cafe1,>40,2-4,4,562.0,45.55,426.4,A,sweet potato 115 g; scrambled eggs 86 g; olive oil 3 g; egg whites 358 g
+d0339,dish_1565195362,calib,cafe1,0-5,2-4,2,103.0,1.0,98.6,A,sweet potato 100 g; olive oil 3 g
+d0340,dish_1561393715,teste,cafe1,0-5,1,1,49.0,1.18,17.1,A,broccoli 49 g
+d0341,dish_1559849412,teste,cafe1,5-15,1,1,61.0,13.66,352.6,A,almonds 61 g
+d0342,dish_1562691674,teste,cafe1,25-40,5+,9,435.0,26.48,377.0,A,sweet potato 56 g; olive oil 2 g; broccoli 89 g; egg whites 96 g; yam 56 g; greek yogurt 39 g; chia seeds 10 g; chicken apple sausage 45 g; milk 42 g
+d0343,dish_1559751458,calib,cafe1,0-5,1,1,123.0,1.97,152.6,A,yam 123 g
+d0344,dish_1558373492,calib,cafe1,25-40,2-4,4,325.0,38.96,888.2,A,cantaloupe 40 g; almonds 72 g; sausage 113 g; grapes 100 g
+d0345,dish_1562700760,calib,cafe1,25-40,5+,11,418.0,35.97,370.1,A,beef 111 g; cauliflower 163 g; shallots 7 g; spinach (cooked) 4 g; olive oil 1 g; onions 4 g; vinegar 0 g; mushroom 110 g; millet 15 g; bok choy 4 g; salt 0 g
+d0346,dish_1573072479,teste,cafe2,15-25,5+,20,396.0,19.87,393.4,B,carrot 6 g; fish 15 g; onions 1 g; leeks 3 g; snow peas 57 g; garlic 0 g; cabbage 1 g; olive oil 4 g; mozzarella cheese 17 g; salt 0 g; butter 0 g; barley 79 g; milk 173 g; lemon juice 0 g; basil 4 g; cilantro 0 g; endive 0 g; pizza dough 22 g; pizza sauce 13 g; oil 0 g
+d0347,dish_1564169644,calib,cafe1,15-25,1,1,163.0,18.26,433.4,A,cheese pizza 163 g
+d0348,dish_1563218201,teste,cafe1,25-40,1,1,156.0,35.26,352.9,A,grilled chicken 156 g
+d0349,dish_1560360030,teste,cafe1,5-15,1,1,131.0,13.1,193.9,A,scrambled eggs 131 g
+d0350,dish_1558459395,teste,cafe1,5-15,1,1,36.0,8.06,208.1,A,almonds 36 g
+d0351,dish_1566502573,calib,cafe1,>40,5+,28,487.0,51.19,821.5,A,chive 0 g; bok choy 15 g; chicken 32 g; white rice 15 g; pork 104 g; arugula 22 g; spinach (raw) 38 g; brown rice 3 g; chard 1 g; mustard 0 g; olive oil 23 g; garlic 4 g; cucumbers 8 g; sugar 11 g; rosemary 0 g; pepper 9 g; sun dried tomatoes 3 g; lemon juice 0 g; mustard greens 22 g; parsley 9 g; vinegar 12 g; corn on the cob 55 g; basil 0 g; onions 5 g; carrot 3 g; soy sauce 6 g; salt 2 g; chickpeas 86 g
+d0352,dish_1573851651,teste,cafe2,15-25,5+,9,420.0,23.48,378.4,B,squash 60 g; fish 60 g; olive oil 2 g; collards 116 g; salt 0 g; cream 2 g; curries 60 g; sweet potato 107 g; oil 12 g
+d0353,dish_1565637578,calib,cafe1,15-25,5+,11,168.0,19.96,197.3,A,pineapple 56 g; parmesan cheese 1 g; salt 0 g; thyme 0 g; olive oil 2 g; wheat berry 5 g; garlic 1 g; spinach (raw) 1 g; cherry tomatoes 3 g; quinoa 45 g; chicken breast 54 g
+d0354,dish_1562172643,calib,cafe1,>40,2-4,3,457.0,62.87,734.3,A,egg whites 290 g; roasted potatoes 80 g; bacon 87 g
+d0355,dish_1565896039,teste,cafe1,15-25,5+,13,384.0,20.69,352.5,A,bok choy 1 g; vinegar 0 g; salt 0 g; onions 1 g; kale 66 g; olive oil 6 g; quinoa 94 g; shallots 3 g; spinach (cooked) 1 g; chard 66 g; green beans 97 g; beef 43 g; millet 6 g
+d0356,dish_1566402197,calib,cafe1,>40,5+,7,736.0,47.28,480.9,A,egg whites 446 g; watermelon 80 g; yam 62 g; berries 39 g; cantaloupe 40 g; sweet potato 62 g; olive oil 7 g
+d0357,dish_1560888849,calib,cafe1,15-25,5+,11,107.0,20.43,169.0,A,lemon juice 0 g; wheat berry 6 g; parsley 1 g; chicken 62 g; salt 0 g; olive oil 1 g; roasted potatoes 34 g; garlic 0 g; thyme 0 g; shallots 0 g; spinach (raw) 2 g
+d0358,dish_1565884738,teste,cafe1,>40,2-4,2,463.0,41.13,228.7,A,watermelon 55 g; egg whites 408 g
+d0359,dish_1560455203,teste,cafe1,0-5,5+,11,188.0,2.59,115.1,A,mixed greens 13 g; carrot 5 g; lettuce 6 g; pumpkin seeds 3 g; mustard 0 g; olive oil 5 g; vinegar 3 g; arugula 19 g; green beans 38 g; honeydew melons 95 g; salt 0 g
+d0360,dish_1562602589,teste,cafe1,15-25,1,1,106.0,20.46,365.3,A,sausage 106 g
+d0361,dish_1571944571,teste,cafe2,>40,5+,9,344.0,47.03,485.5,B,turkey 130 g; squash 97 g; cucumbers 20 g; olive oil 2 g; seeds 3 g; pita bread 30 g; salt 0 g; honey 1 g; hummus 61 g
+d0362,dish_1563464429,teste,cafe1,5-15,2-4,2,103.0,6.89,141.0,A,bacon 17 g; berries 86 g
+d0363,dish_1572379407,calib,cafe2,0-5,1,1,124.0,2.23,49.6,B,chili 124 g
+d0364,dish_1560975601,teste,cafe1,15-25,5+,16,253.0,22.79,233.9,A,broccoli 13 g; hominy 5 g; parsley 0 g; salt 0 g; chicken thighs 71 g; olive oil 0 g; chili 4 g; jalapenos 0 g; wheat berry 60 g; cabbage 7 g; garlic 0 g; tomatoes 5 g; lemon juice 0 g; caesar salad 86 g; lime 0 g; bell peppers 1 g
+d0365,dish_1561749711,teste,cafe1,25-40,5+,8,228.0,30.68,300.1,A,salmon 122 g; salt 0 g; thyme 0 g; olive oil 5 g; arugula 5 g; brown rice 24 g; cherry tomatoes 66 g; pepper 6 g
+d0366,dish_1559842274,teste,cafe1,5-15,1,1,53.0,11.87,306.4,A,almonds 53 g
+d0367,dish_1563305047,calib,cafe1,>40,5+,24,806.0,143.49,1032.3,A,salt 2 g; broccoli 3 g; parsley 4 g; lemon juice 2 g; kale 2 g; green onions 0 g; orange juice 0 g; wheat berry 38 g; eggplant 84 g; tofu 106 g; pepper 0 g; beef 48 g; soy sauce 0 g; garlic 2 g; shallots 0 g; chili 0 g; onions 1 g; thyme 1 g; olive oil 10 g; vinegar 0 g; spinach (raw) 10 g; carrot 104 g; chicken 382 g; white rice 6 g
+d0368,dish_1575664962,teste,cafe2,5-15,5+,11,82.0,11.19,85.0,B,fish 57 g; garlic 1 g; shallots 1 g; olive oil 2 g; salt 0 g; cherry tomatoes 2 g; wheat berry 11 g; chard 5 g; lemon juice 1 g; parsley 1 g; chive 0 g
+d0369,dish_1574098164,teste,cafe2,15-25,1,1,42.0,15.54,227.2,B,bacon 42 g
+d0370,dish_1562688524,teste,cafe1,5-15,2-4,4,242.0,11.3,215.4,A,chicken apple sausage 71 g; grapes 81 g; roasted potatoes 17 g; watermelon 73 g
+d0371,dish_1562085672,calib,cafe1,5-15,1,1,46.0,6.21,122.1,A,bread 46 g
+d0372,dish_1566838378,teste,cafe1,5-15,2-4,4,482.0,8.99,286.2,A,scrambled eggs 65 g; watermelon 139 g; berries 133 g; pineapple 145 g
+d0373,dish_1563826306,teste,cafe1,>40,5+,9,312.0,44.39,882.8,A,garlic 1 g; lime 1 g; salt 1 g; brownies 51 g; olive oil 0 g; wheat berry 20 g; steak 102 g; pepperoni pizza 122 g; cauliflower 14 g
+d0374,dish_1563813833,teste,cafe1,25-40,2-4,2,207.0,25.44,256.9,A,sausage 51 g; egg whites 156 g
+d0375,dish_1564518586,teste,cafe1,15-25,5+,24,315.0,19.96,361.4,A,cucumbers 8 g; vinegar 3 g; zucchini 27 g; carrot 45 g; spinach (cooked) 1 g; mixed greens 25 g; lettuce 17 g; quinoa 4 g; eggplant 2 g; wine 0 g; squash 29 g; mushroom 2 g; broccoli 27 g; lime 1 g; lemon juice 0 g; onions 3 g; olive oil 7 g; salt 1 g; cheese pizza 62 g; shallots 0 g; garlic 0 g; pepper 0 g; cherry tomatoes 7 g; chicken thighs 42 g
+d0376,dish_1562959190,teste,cafe1,25-40,5+,23,378.0,26.72,518.8,A,fish 69 g; pepper 3 g; blueberries 9 g; chard 18 g; mustard 0 g; olive oil 10 g; garlic 0 g; raspberries 9 g; roasted potatoes 33 g; carrot 9 g; quinoa 14 g; tomatillo 7 g; almonds 4 g; lemon juice 1 g; jalapenos 0 g; pizza 79 g; arugula 30 g; onions 3 g; artichokes 38 g; parsnips 39 g; cilantro 1 g; salt 0 g; vinegar 4 g
+d0377,dish_1565036821,teste,cafe1,15-25,5+,14,134.0,21.04,325.5,A,soy sauce 0 g; salt 0 g; vinegar 0 g; olive oil 0 g; beef 49 g; white rice 7 g; orange juice 0 g; chili 0 g; green onions 0 g; broccoli 3 g; garlic 0 g; kale 2 g; cheese pizza 70 g; onions 1 g
+d0378,dish_1564073716,calib,cafe1,15-25,2-4,4,295.0,24.81,214.5,A,scrambled eggs 40 g; olive oil 1 g; sweet potato 51 g; egg whites 203 g
+d0379,dish_1562873814,teste,cafe1,0-5,5+,11,134.0,2.06,106.6,A,cherry tomatoes 7 g; salt 0 g; pepper 0 g; green beans 58 g; vinegar 3 g; cucumbers 9 g; onions 3 g; olive oil 8 g; mixed greens 26 g; lime 1 g; lettuce 17 g
+d0380,dish_1563220143,teste,cafe1,>40,5+,12,327.0,49.08,425.5,A,spinach (raw) 3 g; pepperoni pizza 52 g; wheat berry 13 g; parmesan cheese 3 g; cherry tomatoes 6 g; chicken breast 126 g; broccoli 46 g; salt 0 g; garlic 1 g; thyme 0 g; squash 75 g; olive oil 1 g
+d0381,dish_1560802048,calib,cafe1,0-5,5+,7,83.0,3.07,47.2,A,squash 38 g; olive oil 0 g; salt 0 g; parmesan cheese 4 g; croutons 0 g; kale 34 g; caesar dressing 6 g
+d0382,dish_1565117892,calib,cafe1,25-40,1,1,102.0,29.58,132.6,A,tuna 102 g
+d0383,dish_1562168471,teste,cafe1,15-25,5+,8,490.0,17.22,312.7,A,berries 103 g; brussels sprouts 58 g; roasted potatoes 63 g; egg whites 125 g; olive oil 1 g; pepper 0 g; pineapple 140 g; salt 0 g
+d0384,dish_1558632080,teste,cafe1,0-5,1,1,68.0,2.11,72.1,A,corn on the cob 68 g
+d0385,dish_1561576449,calib,cafe1,5-15,1,1,308.0,5.54,77.0,A,cauliflower 308 g
+d0386,dish_1567542778,teste,cafe1,5-15,1,1,98.0,10.98,260.6,A,cheese pizza 98 g
+d0387,dish_1565209963,calib,cafe1,5-15,5+,13,253.0,13.15,244.5,A,vinegar 3 g; lemon juice 3 g; chicken thighs 31 g; white rice 66 g; pineapple 17 g; kale 17 g; pepper 0 g; salt 1 g; cilantro 2 g; garlic 3 g; olive oil 4 g; onions 23 g; brussels sprouts 83 g
+d0388,dish_1561740321,teste,cafe1,0-5,5+,8,28.0,0.28,53.0,A,bell peppers 7 g; garlic 0 g; salt 0 g; olive oil 5 g; cucumbers 7 g; mustard 0 g; vinegar 3 g; radishes 5 g
+d0389,dish_1562959129,teste,cafe1,15-25,5+,16,293.0,24.67,412.9,A,fish 69 g; garlic 0 g; salt 0 g; pizza 79 g; onions 3 g; pepper 3 g; quinoa 14 g; artichokes 38 g; lemon juice 1 g; olive oil 3 g; arugula 3 g; jalapenos 0 g; tomatillo 7 g; parsnips 39 g; cilantro 1 g; roasted potatoes 33 g
+d0390,dish_1562876531,teste,cafe1,5-15,5+,15,85.0,8.38,66.1,A,pepper 0 g; chicken 20 g; wheat berry 2 g; lemon juice 0 g; basil 0 g; parsley 0 g; garlic 0 g; squash 1 g; spinach (raw) 1 g; zucchini 1 g; rosemary 0 g; olive oil 0 g; thyme 0 g; caesar salad 59 g; salt 0 g
+d0391,dish_1564675193,calib,cafe1,>40,5+,5,803.0,54.25,478.8,A,grapes 46 g; watermelon 77 g; egg whites 519 g; sweet potato 157 g; olive oil 4 g
+d0392,dish_1565987116,teste,cafe1,>40,2-4,4,397.0,49.67,393.4,A,chicken 149 g; olives 109 g; spinach (raw) 64 g; cucumbers 75 g
+d0393,dish_1563389786,teste,cafe1,>40,5+,6,564.0,48.34,640.1,A,cherry tomatoes 70 g; carrot 119 g; grilled chicken 194 g; bell peppers 99 g; olive oil 8 g; onions 74 g
+d0394,dish_1559332418,teste,cafe1,>40,5+,7,271.0,50.33,482.1,A,thyme 0 g; salmon 203 g; olive oil 8 g; pepper 10 g; brown rice 41 g; arugula 8 g; salt 1 g
+d0395,dish_1565972363,teste,cafe1,>40,1,1,557.0,55.7,289.6,A,egg whites 557 g
+d0396,dish_1563996596,teste,cafe1,0-5,1,1,90.0,2.88,39.6,A,caesar salad 90 g
+d0397,dish_1565974375,calib,cafe1,25-40,1,1,85.0,31.45,459.8,A,bacon 85 g
+d0398,dish_1558637393,calib,cafe1,25-40,1,1,128.0,28.67,740.0,A,almonds 128 g
+d0399,dish_1566931586,teste,cafe1,>40,2-4,4,389.0,46.59,379.4,A,olives 91 g; mixed greens 91 g; chicken 136 g; broccoli 71 g
+d0400,dish_1564427406,teste,cafe1,25-40,1,1,135.0,30.51,305.4,A,grilled chicken 135 g

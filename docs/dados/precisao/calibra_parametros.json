@@ -1,0 +1,67 @@
+{
+  "n_pratos_calib": 120,
+  "n_pares": 214,
+  "mult_grupo": {
+    "_global": 0.9337165418297558,
+    "proteina_animal": 1.0410977835962485,
+    "proteina_animal|unico": 1.0410248060666611,
+    "proteina_animal|composto": 1.0401176272090598,
+    "misto": 0.8793639461979419,
+    "laticinio": 0.9337165418297558,
+    "gordura_molho": 0.9337165418297558,
+    "vegetal": 0.9062899266920253,
+    "vegetal|composto": 0.9014830446393718,
+    "leguminosa": 0.9337165418297558,
+    "outros": 1.3570228417289607,
+    "amido": 0.8286449301441124,
+    "amido|composto": 0.8251541544240124
+  },
+  "loglinear_grupo": {
+    "_global": {
+      "a": 0.13233808137809255,
+      "b": 0.9628843039940554
+    },
+    "proteina_animal": {
+      "a": -0.30705962450369473,
+      "b": 1.0861167827849703
+    },
+    "misto": {
+      "a": -0.43342405500747727,
+      "b": 1.0365107703734249
+    },
+    "vegetal": {
+      "a": 0.30283973634810124,
+      "b": 0.9223228627485592
+    },
+    "outros": {
+      "a": 1.1957395986213761,
+      "b": 0.7626310004544893
+    },
+    "amido": {
+      "a": 1.0741504578127121,
+      "b": 0.7135264968414796
+    }
+  },
+  "prior_ibge": {
+    "w": {
+      "proteina_animal": 1.1,
+      "misto": 0.8,
+      "vegetal": 0.9,
+      "outros": 1.0,
+      "amido": 0.8,
+      "_global": 0.9
+    },
+    "porcao_tipica_g": {
+      "amido": 90.0,
+      "outros": 42.0,
+      "leguminosa": 50.0,
+      "vegetal": 56.0,
+      "gordura_molho": 12.5,
+      "laticinio": 50.0,
+      "proteina_animal": 75.0,
+      "misto": 50.0,
+      "_global": 72.25
+    }
+  },
+  "melhor_no_calib": "mult_grupo"
+}

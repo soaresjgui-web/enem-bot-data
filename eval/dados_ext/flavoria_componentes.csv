@@ -1,0 +1,247 @@
+componente,traducao,pesagens,mediana_g,grupo,fonte,ref,proteina_100g,confianca,no_prato,nota
+American salad,alface americana (iceberg),2121,38,vegetal,sem_proteina,T_ALFACE,0.60,A,1,"""amerikansalaatti"" é a alface iceberg, não uma salada composta"
+Grated carrot,cenoura ralada,533,43,vegetal,sem_proteina,T_CENOURA,1.30,A,1,
+Boiled potato,batata cozida,432,120,amido,sem_proteina,T_BATATA,1.20,A,1,
+Rice,arroz cozido,372,118,amido,sem_proteina,T_ARROZ,2.50,A,1,
+Tomato,tomate,290,50,vegetal,sem_proteina,T_TOMATE,1.10,A,1,
+Parsakaali-kukkakaali,brócolis e couve-flor,241,55,vegetal,sem_proteina,0.5*T_BROCOLIS|0.5*T_COUVEFLOR,1.65,B,1,"parsakaali = brócolis, kukkakaali = couve-flor"
+Grated cabbage,repolho ralado,222,39,vegetal,sem_proteina,T_REPOLHO,0.90,A,1,
+Grated carrots and cabbage,cenoura e repolho ralados,211,43,vegetal,sem_proteina,0.5*T_CENOURA|0.5*T_REPOLHO,1.10,B,1,
+Kaali-porkkanaraaste,repolho e cenoura ralados,210,36,vegetal,sem_proteina,0.5*T_CENOURA|0.5*T_REPOLHO,1.10,B,1,"kaali = repolho, porkkana = cenoura, raaste = ralado"
+Kurkku-mandariini,pepino e tangerina,207,54,vegetal,sem_proteina,0.5*T_PEPINO|0.5*T_TANGERINA,0.85,B,1,kurkku = pepino
+Grated carrot and radish,cenoura e rabanete ralados,205,42,vegetal,sem_proteina,0.5*T_CENOURA|0.5*T_RABANETE,1.35,B,1,
+Maustekurkku,pepino em conserva (picles),183,30,vegetal,sem_proteina,n5k:pickles,0.30,A,1,maustekurkku = pepino temperado em conserva
+Cucumber,pepino,152,48,vegetal,sem_proteina,T_PEPINO,0.90,A,1,
+Herne-maissi-porkkana,"ervilha, milho e cenoura",144,40,vegetal,sem_proteina,0.34*T_ERVILHA|0.33*T_MILHO|0.33*T_CENOURA_COZ,2.88,B,1,"herne = ervilha; leguminosa é 1/3 da mistura, fica como vegetal"
+Tomato and onion,tomate e cebola,142,50,vegetal,sem_proteina,0.5*T_TOMATE|0.5*n5k:onions,1.10,B,1,
+Baked potato,batata assada,140,150,amido,sem_proteina,n5k:baked potatoes,2.50,A,1,
+Potato wedges,batata em gomos assada,138,122,amido,sem_proteina,n5k:roasted potatoes,2.10,A,1,
+Pastasalaatti,salada de macarrão,136,67,amido,sem_proteina,n5k:pasta salad,5.90,B,1,
+Mashed potatoes,purê de batata,132,222,amido,sem_proteina,n5k:mashed potatoes,1.70,A,1,
+Corn,milho,128,53,amido,sem_proteina,T_MILHO,3.20,A,1,milho é amido na nossa regra de grupos
+Kurkku-vesimeloni,pepino e melancia,128,44,vegetal,sem_proteina,0.5*T_PEPINO|0.5*T_MELANCIA,0.90,B,1,vesimeloni = melancia
+Grated carrot and swede,cenoura e rutabaga raladas,123,45,vegetal,sem_proteina,0.5*T_CENOURA|0.5*T_NABO,1.25,B,1,rutabaga sem linha própria: nabo cru
+Pasta,macarrão cozido,136,67,amido,sem_proteina,n5k:pasta,5.10,A,1,
+Tomaatti-punasipuli,tomate e cebola roxa,122,56,vegetal,sem_proteina,0.5*T_TOMATE|0.5*n5k:onions,1.10,B,1,punasipuli = cebola roxa
+Beetroot,beterraba,107,49,vegetal,sem_proteina,T_BETERRABA,1.30,A,1,
+Hedelmäsalaatti,salada de frutas,102,64,vegetal,sem_proteina,n5k:fruit salad,0.80,A,1,"servida no balcão de saladas, fica no prato"
+Maissi-retiisi,milho e rabanete,102,56,vegetal,sem_proteina,0.5*T_MILHO|0.5*T_RABANETE,2.30,B,1,"retiisi = rabanete; metade é milho (amido), fica como vegetal"
+Punakaali-porkkanaraaste,repolho roxo e cenoura ralados,102,36,vegetal,sem_proteina,0.5*T_REPOLHO_ROXO|0.5*T_CENOURA,1.60,B,1,punakaali = repolho roxo
+Boiled rice,arroz cozido,97,115,amido,sem_proteina,T_ARROZ,2.50,A,1,
+Herne-maissi-paprika,"ervilha, milho e pimentão",97,48,vegetal,sem_proteina,0.34*T_ERVILHA|0.33*T_MILHO|0.33*T_PIMENTAO,2.95,B,1,paprika = pimentão
+Sweet corn-bean-cauliflower,"milho, feijão e couve-flor",79,62,vegetal,sem_proteina,0.34*T_MILHO|0.33*T_FEIJAO|0.33*T_COUVEFLOR,3.07,B,1,"leguminosa é 1/3 da mistura, fica como vegetal"
+Tomaatti-papu,tomate e feijão,78,62,leguminosa,leguminosa_soja,0.5*T_TOMATE|0.5*T_FEIJAO,2.95,B,1,"papu = feijão; metade leguminosa, classificado pela fonte de proteína"
+porkkana,cenoura,77,42,vegetal,sem_proteina,T_CENOURA,1.30,A,1,
+PANEROITU BROILERLEIKE,filé de frango empanado,74,161,proteina_animal,frango_peru,n5k:chicken nuggets,16.00,C,1,"paneroitu = empanado, broilerleike = filé/escalope de frango; produto de cozinha industrial, densidade de empanado e não de peito puro"
+Papu,feijão (balcão de saladas),74,54,leguminosa,leguminosa_soja,0.5*T_FEIJAO|0.5*n5k:bean(seed),6.90,B,1,tipo de feijão desconhecido; média de feijão cozido com caldo (TACO) e grão escorrido (N5k)
+Kesäkurpitsa-paprika,abobrinha e pimentão,73,37,vegetal,sem_proteina,0.5*T_ABOBRINHA|0.5*T_PIMENTAO,1.05,B,1,kesäkurpitsa = abobrinha
+Marinated cabbage,repolho marinado,70,28,vegetal,sem_proteina,T_REPOLHO,0.90,B,1,
+Rapea kalapala,pedaço de peixe crocante (empanado),68,130,proteina_animal,peixe_marisco,EMPANADO_PEIXE,13.42,C,1,"rapea = crocante, kalapala = pedaço de peixe"
+Ananas-kesäkurpitsa,abacaxi e abobrinha,66,44,vegetal,sem_proteina,0.5*T_ABACAXI|0.5*T_ABOBRINHA,1.00,B,1,
+Parsakaali-tomaatti,brócolis e tomate,66,50,vegetal,sem_proteina,0.5*T_BROCOLIS|0.5*T_TOMATE,1.60,B,1,
+Southern fried chicken,frango frito empanado,65,135,proteina_animal,frango_peru,0.5*n5k:fried chicken|0.5*n5k:chicken nuggets,23.20,C,1,não dá para saber se é com osso ou em tiras
+Breaded flounder,linguado empanado,63,139,proteina_animal,peixe_marisco,EMPANADO_PEIXE,13.42,C,1,
+Marinoitu kaalisalaatti,salada de repolho marinado,63,36,vegetal,sem_proteina,T_REPOLHO,0.90,B,1,
+Punakaali,repolho roxo,102,36,vegetal,sem_proteina,T_REPOLHO_ROXO,1.90,A,1,
+minced meat patties,hambúrguer caseiro de carne moída,62,146,proteina_animal,bovina,n5k:hamburgers,16.80,B,1,jauhelihapihvi; na Finlândia a carne moída costuma ser mistura de boi e porco
+Fish sticks,palitos de peixe empanados,61,118,proteina_animal,peixe_marisco,EMPANADO_PEIXE,13.42,C,1,
+Olives,azeitonas,59,28,vegetal,sem_proteina,T_AZEITONA,0.90,A,1,
+Paella merenelävillä,paella de frutos do mar,59,291,misto,prato_misto,n5k:paella,10.40,C,1,merenelävillä = com frutos do mar
+Chicken and chorizo paella,paella de frango e chouriço,56,306,misto,prato_misto,n5k:paella,10.40,C,1,
+Lemon chicken,frango ao limão,56,172,proteina_animal,frango_peru,n5k:grilled chicken,22.60,B,1,"pedaços de frango marinado, sem molho à parte"
+Minced meat lasagnette,lasanha de carne moída,55,326,misto,prato_misto,n5k:lasagna,7.20,B,1,
+Onion sauce,molho de cebola,55,74,gordura_molho,sem_proteina,n5k:gravy,2.00,B,1,
+Paahdettuja kasviksia,legumes assados,55,62,vegetal,sem_proteina,n5k:mixed vegetables,1.70,B,1,"paahdettu = assado/tostado, kasviksia = legumes"
+Lanttu-appelsiiniraaste,rutabaga e laranja raladas,51,40,vegetal,sem_proteina,0.5*T_NABO|0.5*T_LARANJA,1.10,B,1,"lanttu = rutabaga, appelsiini = laranja"
+vegaani Falafeltäytteinen Pita,pita vegana recheada de falafel,51,142,misto,prato_misto,0.5*n5k:pita bread|0.5*n5k:falafel,11.05,C,1,"conferido em 3 fotos: o pão pita inteiro está no prato e o peso (148 a 169 g) é compatível com pita recheada, então o pão entra no peso"
+Pineapple,abacaxi,50,60,vegetal,sem_proteina,T_ABACAXI,0.90,A,1,
+vegaani Papusalsa,salsa vegana de feijão,50,141,leguminosa,leguminosa_soja,0.6*n5k:black beans|0.4*n5k:salsa,5.94,C,1,"servida na cuba quente da linha vegetariana, em porção de prato (141 g)"
+Cooked frankfurters,salsichas cozidas,49,136,proteina_animal,suina_embutido,n5k:hot dogs,9.80,B,1,"nakit; salsicha finlandesa tem ~10 g/100 g, por isso hot dogs e não sausage"
+CHICKEN CHILI NOODLE WOK,wok de frango com macarrão e pimenta,47,355,misto,prato_misto,0.5*n5k:chow mein|0.5*n5k:lo mein,7.80,C,1,
+Oven-baked sausage,linguiça assada,47,162,proteina_animal,suina_embutido,n5k:hot dogs,9.80,B,1,"uunimakkara, embutido emulsionado do tipo salsichão"
+hedelmiä,frutas,47,72,vegetal,sem_proteina,n5k:fruit salad,0.80,B,1,hedelmiä = frutas
+Hapanimelä broileria,frango agridoce,46,241,misto,prato_misto,0.5*n5k:grilled chicken|0.5*n5k:barbecue sauce,11.70,C,1,"hapanimelä = agridoce; frango em molho, tratado como prato pronto"
+Vegaani Soijapyöryköitä tomaattikastikeeessa,almôndegas veganas de soja em molho de tomate,45,210,leguminosa,leguminosa_soja,0.6*n5k:veggie burgers|0.4*n5k:pasta sauce,10.06,C,1,"soijapyörykkä = bolinha de soja; peça de proteína com molho, classificada pela fonte"
+Kesäkurpitsa-appelsiini,abobrinha e laranja,43,43,vegetal,sem_proteina,0.5*T_ABOBRINHA|0.5*T_LARANJA,1.05,B,1,
+Rapea kalafile,filé de peixe crocante (empanado),42,146,proteina_animal,peixe_marisco,EMPANADO_PEIXE,13.42,C,1,
+Bolognese,molho à bolonhesa (carne moída),41,174,misto,prato_misto,0.5*n5k:ground beef|0.5*n5k:pasta sauce,7.75,C,1,"carne cozida dentro do molho: prato pronto, não ""bovina"""
+Onion and cream sauce,molho de cebola e creme,41,60,gordura_molho,sem_proteina,n5k:gravy,2.00,B,1,
+Almond coated fish,peixe com crosta de amêndoa,39,149,proteina_animal,peixe_marisco,EMPANADO_PEIXE,13.42,C,1,
+Corn-Brussels sprouts,milho e couve-de-bruxelas,39,55,vegetal,sem_proteina,0.5*T_MILHO|0.5*n5k:brussels sprouts,3.30,B,1,
+Hawaijinleike,"escalope ""havaiano"" (porco empanado com abacaxi)",39,121,proteina_animal,suina_embutido,0.6*n5k:pork chops|0.25*n5k:bread crumbs|0.15*DILUENTE,17.64,C,1,"havaijinleike na Finlândia é escalope empanado de porco com presunto, queijo e abacaxi; pode ser de frango em algumas cozinhas"
+Salmon and penne casserole,gratinado de salmão com penne,39,307,misto,prato_misto,0.5*n5k:pasta|0.2*n5k:salmon|0.3*n5k:cream,8.19,C,1,
+Porkkana-lantturaaste,cenoura e rutabaga raladas,38,45,vegetal,sem_proteina,0.5*T_CENOURA|0.5*T_NABO,1.25,B,1,
+Herne-maissi-papu,"ervilha, milho e feijão",37,48,leguminosa,leguminosa_soja,0.34*T_ERVILHA|0.33*T_MILHO|0.33*T_FEIJAO,4.20,B,1,duas das três partes são leguminosas
+JUURES-PERUNASOSE,purê de batata com raízes,37,229,amido,sem_proteina,n5k:mashed potatoes,1.70,B,1,"juures = raiz, perunasose = purê de batata"
+Kebab-pyttipannu,"""pyttipannu"" de kebab (batata em cubos salteada com carne de kebab)",37,335,misto,prato_misto,0.7*n5k:roasted potatoes|0.3*n5k:ground beef,5.73,C,1,pyttipannu = salteado de batata em cubos com carne
+MAISSIPANEROITU SEI,saithe (escamudo) empanado em farinha de milho,36,138,proteina_animal,peixe_marisco,EMPANADO_PEIXE,13.42,C,1,"sei = escamudo, peixe branco"
+Sweet and salty pork belly,barriga de porco agridoce,36,160,proteina_animal,suina_embutido,n5k:ribs,22.70,C,1,corte gordo; costela como equivalente mais próximo
+Dill sauce,molho de endro,33,49,gordura_molho,sem_proteina,n5k:gravy,2.00,B,1,
+Cream potatoes,batatas ao creme,32,180,amido,sem_proteina,0.8*n5k:potatoes|0.2*n5k:cream,2.16,B,1,kermaperunat
+Papusalaatti,salada de feijão,32,58,leguminosa,leguminosa_soja,0.5*T_FEIJAO|0.5*n5k:bean(seed),6.90,B,1,
+vegan Stir fry,salteado vegano,32,255,misto,prato_misto,0.25*n5k:tofu|0.75*n5k:mixed vegetables,3.28,C,1,proteína vegetal desconhecida
+Kaali,repolho,210,36,vegetal,sem_proteina,T_REPOLHO,0.90,A,1,
+Pork sirloin steak  and green pepper sauce,bife de lombo de porco com molho de pimenta verde,31,138,proteina_animal,suina_embutido,0.8*n5k:pork chops|0.2*n5k:gravy,19.52,C,1,
+Basmati rice,arroz basmati,30,118,amido,sem_proteina,T_ARROZ,2.50,A,1,
+Lemon and thyme fish,peixe ao limão e tomilho,30,168,proteina_animal,peixe_marisco,n5k:fish,18.40,B,1,
+PORSAANKYLKI RUOTSALAISEEN TAPAAN,barriga de porco à moda sueca,30,173,proteina_animal,suina_embutido,n5k:ribs,22.70,C,1,porsaankylki = barriga/costela de porco
+Vegaani Bataattia lehtikaali-maapähkinäkastikkeessa,batata-doce em molho de couve kale e amendoim (vegano),30,276,misto,prato_misto,0.6*n5k:sweet potato|0.3*n5k:kale|0.1*n5k:peanut butter,4.10,C,1,"bataatti = batata-doce, lehtikaali = couve kale, maapähkinä = amendoim"
+Goalainen kalacurry,curry de peixe à moda de Goa,29,227,misto,prato_misto,n5k:curries,12.00,C,1,
+Metsästäjän leipä,"""pão do caçador"": pão com hambúrguer e molho de cogumelos",29,255,misto,prato_misto,0.4*n5k:hamburgers|0.3*n5k:white bread|0.3*n5k:gravy,10.05,C,1,"prato de cantina finlandês: fatia de pão tostado, bife de carne moída e molho de cogumelo"
+Peppery meat stew,ensopado de carne apimentado,29,241,misto,prato_misto,n5k:stews,11.00,C,1,
+Tomaatti-tofupasta,macarrão com tomate e tofu,29,256,misto,prato_misto,0.6*n5k:pasta|0.2*n5k:tofu|0.2*n5k:pasta sauce,4.92,C,1,
+Chicken lasagnette,lasanha de frango,28,256,misto,prato_misto,n5k:lasagna,7.20,B,1,
+Feta-sienitäytteinen paprika,pimentão recheado de feta e cogumelos,28,194,misto,prato_misto,0.5*n5k:bell peppers|0.2*n5k:feta cheese|0.3*n5k:mushroom,4.69,C,1,"sieni = cogumelo, täytteinen = recheado"
+Broilerinuggetit,nuggets de frango,27,111,proteina_animal,frango_peru,n5k:chicken nuggets,16.00,B,1,
+Country fries,batata rústica frita,27,122,amido,sem_proteina,n5k:roasted potatoes,2.10,B,1,
+KORIANTERI RIISI,arroz com coentro,26,94,amido,sem_proteina,T_ARROZ,2.50,A,1,
+Peruna,batata,26,142,amido,sem_proteina,T_BATATA,1.20,B,1,preparo não informado; cozida
+Vegan Dal lentil curry,dal de lentilha (vegano),26,256,misto,prato_misto,0.5*n5k:lentils|0.5*n5k:mixed vegetables,5.35,C,1,
+House made lentil patties,hambúrgueres de lentilha da casa,25,148,leguminosa,leguminosa_soja,0.5*n5k:veggie burgers|0.5*n5k:lentils,12.45,C,1,
+Kalapyörykät,bolinhos de peixe,25,125,proteina_animal,peixe_marisco,0.6*n5k:fish|0.2*n5k:bread crumbs|0.2*DILUENTE,13.68,C,1,kalapyörykkä = almôndega de peixe
+Kesäkurpitsa - paprika,abobrinha e pimentão,25,40,vegetal,sem_proteina,0.5*T_ABOBRINHA|0.5*T_PIMENTAO,1.05,B,1,
+Porkkana-retikkaraaste,cenoura e nabo daikon ralados,25,49,vegetal,sem_proteina,0.5*T_CENOURA|0.5*T_RABANETE,1.35,B,1,retikka = rabanete branco (daikon)
+Spinach and tofu sauce,molho de espinafre e tofu,25,210,misto,prato_misto,0.3*n5k:tofu|0.3*n5k:spinach (cooked)|0.4*n5k:cream,4.42,C,1,"porção de prato principal (210 g), não de molho"
+CLASSIC CHICKEN GUMBO,gumbo de frango,24,188,misto,prato_misto,0.3*n5k:grilled chicken|0.7*n5k:gravy,8.18,C,1,"a linha ""gumbo"" do N5k (4,1) parece sopa rala; aqui é servido como prato"
+Game casserole,ensopado de carne de caça,24,304,misto,prato_misto,n5k:stews,11.00,C,1,
+Paahdettu bataatti,batata-doce assada,24,85,amido,sem_proteina,n5k:sweet potato,1.00,A,1,
+Tortilla,tortilha de trigo,24,44,amido,sem_proteina,n5k:tortilla,6.00,A,1,
+BROILERIN RINTAFILEE,filé de peito de frango,23,95,proteina_animal,frango_peru,n5k:chicken breast,31.10,B,1,rintafilee = filé de peito
+Broilerin koipireisi,coxa com sobrecoxa de frango (com osso),23,255,proteina_animal,frango_peru,0.7*n5k:chicken drumsticks|0.3*DILUENTE,16.80,C,1,koipireisi = coxa + sobrecoxa; ~30% do peso é osso
+Fried egg,ovo frito,23,40,proteina_animal,ovo,T_OVO_FRITO,15.60,A,1,
+Katkarapu-tillitäytteinen kampelaleike,escalope de linguado recheado de camarão e endro (empanado),23,140,proteina_animal,peixe_marisco,EMPANADO_PEIXE,13.42,C,1,"katkarapu = camarão, tilli = endro, kampela = linguado"
+Kurkku-paprika,pepino e pimentão,23,39,vegetal,sem_proteina,0.5*T_PEPINO|0.5*T_PIMENTAO,0.95,B,1,
+SITRUUNA-TIMJAMIJOGURTTIKASTIKE,molho de iogurte com limão e tomilho,23,58,gordura_molho,sem_proteina,T_IOGURTE,4.10,B,1,jogurttikastike = molho de iogurte
+Lohkoperunoita,batata em gomos,22,166,amido,sem_proteina,n5k:roasted potatoes,2.10,A,1,lohkoperuna = batata em gomos assada
+Soya and vegetable lasagnette,lasanha de soja e legumes,22,258,misto,prato_misto,n5k:lasagna,7.20,C,1,
+Tikka Masala with chicken,frango tikka masala,22,283,misto,prato_misto,n5k:curries,12.00,C,1,frango em molho: prato pronto
+Chicken Kiev,"frango à Kiev (empanado, recheado de manteiga)",21,121,proteina_animal,frango_peru,n5k:chicken nuggets,16.00,C,1,
+Mushroom and goat,torta de cogumelos e queijo de cabra,21,264,misto,prato_misto,n5k:quiche,13.00,C,1,"o nome no CSV tem um apóstrofo corrompido (""goatâ€™s cheese pie""); casado pelo prefixo"
+Stir fry,salteado (linha de carne),21,214,misto,prato_misto,0.3*n5k:pork|0.7*n5k:mixed vegetables,8.99,C,1,carne não informada
+Suolakurkku,pepino em salmoura,21,58,vegetal,sem_proteina,n5k:pickles,0.30,A,1,suolakurkku = pepino salgado fermentado
+Ananas-appelsiini,abacaxi e laranja,20,28,vegetal,sem_proteina,0.5*T_ABACAXI|0.5*T_LARANJA,0.95,B,1,
+Feta and spinach quiche,quiche de feta e espinafre,20,229,misto,prato_misto,n5k:quiche,13.00,B,1,
+Feta-bolognesekastike,"molho ""bolonhesa"" vegetariano com feta",20,222,misto,prato_misto,0.15*n5k:feta cheese|0.25*n5k:lentils|0.6*n5k:pasta sauce,5.10,C,1,linha vegetariana: sem carne; base de proteína vegetal desconhecida
+MUNAKOISOA RAS EL HANOUT,berinjela com ras el hanout,20,150,vegetal,sem_proteina,T_BERINJELA,0.70,B,1,munakoiso = berinjela
+Papu-vuohenjuustokastike,molho de feijão e queijo de cabra,20,213,misto,prato_misto,0.4*n5k:white beans|0.1*n5k:goat cheese|0.5*n5k:cream,7.18,C,1,porção de prato principal (213 g)
+Peach,pêssego,20,47,vegetal,sem_proteina,T_PESSEGO,0.70,A,1,
+Salmon soup,sopa de salmão,20,450,misto,prato_misto,n5k:chowders,3.10,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Sweet corn and watermelon,milho e melancia,20,44,vegetal,sem_proteina,0.5*T_MILHO|0.5*T_MELANCIA,2.05,B,1,
+Vegaani Aurinkokuivattutomaatti-soijakastike,molho vegano de soja com tomate seco,20,182,misto,prato_misto,0.25*n5k:tofu|0.75*n5k:pasta sauce,2.98,C,1,"aurinkokuivattu tomaatti = tomate seco; molho com proteína de soja, porção de prato (182 g)"
+Vegaani Punajuuri-spelttipihvi,hambúrguer vegano de beterraba e espelta,20,136,misto,prato_misto,0.3*n5k:veggie burgers|0.7*n5k:mixed vegetables,5.96,C,1,"punajuuri = beterraba; base de cereal e legume, sem fonte de proteína clara"
+Couscous,cuscuz marroquino,19,107,amido,sem_proteina,n5k:couscous,3.80,A,1,
+Vegaani Paella savustetusta tofusta,paella vegana de tofu defumado,19,292,misto,prato_misto,0.7*n5k:rice|0.15*n5k:tofu|0.15*n5k:mixed vegetables,3.34,C,1,
+Vegan Chickpea and vegetable curry,curry vegano de grão-de-bico e legumes,19,249,misto,prato_misto,0.4*n5k:chickpeas|0.6*n5k:mixed vegetables,4.62,C,1,
+vegaani Savuinen kikhernehampurilainen,hambúrguer vegano defumado de grão-de-bico,19,146,misto,prato_misto,0.5*n5k:falafel|0.5*n5k:buns,11.55,C,1,hampurilainen = hambúrguer montado; não dá para saber se o pão foi pesado
+Avocado-kermaviilikastiketta,molho de abacate com creme azedo,18,43,gordura_molho,sem_proteina,n5k:sour cream,2.40,B,1,kermaviili = creme azedo
+Carrot pancakes,panquecas de cenoura,18,136,amido,sem_proteina,n5k:pancakes,6.30,B,1,porkkanaohukaiset
+Lihapyörykät ruskeakastikkeessa,almôndegas em molho escuro,18,227,proteina_animal,bovina,0.65*n5k:meatballs|0.35*n5k:gravy,9.80,C,1,"lihapyörykät = almôndegas; peça de proteína com molho, classificada pela fonte"
+Silakat kylmäsavulohikuorrutteella,arenque do Báltico com cobertura de salmão defumado,18,136,proteina_animal,peixe_marisco,n5k:fish,18.40,B,1,silakka = arenque do Báltico
+Soya and vegetable casserole,gratinado de soja e legumes,18,212,misto,prato_misto,0.25*n5k:tofu|0.75*n5k:mixed vegetables,3.28,C,1,
+Spaghetti and minced meat casserole,gratinado de espaguete com carne moída,18,156,misto,prato_misto,0.6*n5k:pasta|0.25*n5k:ground beef|0.15*n5k:milk,7.13,C,1,
+vegaani SOIJA-KAALILAATIKKO,gratinado vegano de repolho e soja,18,240,misto,prato_misto,0.6*n5k:cabbage|0.2*n5k:rice|0.2*n5k:tofu,2.92,C,1,kaalilaatikko = gratinado de repolho com arroz
+BATAATTI-PERUNASOSE,purê de batata-doce e batata,17,202,amido,sem_proteina,n5k:mashed potatoes,1.70,B,1,
+Kala-äyriäiskakku,bolinho de peixe e frutos do mar,16,122,proteina_animal,peixe_marisco,0.6*n5k:fish|0.2*n5k:bread crumbs|0.2*DILUENTE,13.68,C,1,äyriäinen = crustáceo
+PINAATTIOHUKAINEN itse tehty,panqueca de espinafre feita na casa,16,209,amido,sem_proteina,n5k:pancakes,6.30,B,1,pinaattiohukainen
+Vegaani Kasvis-papukroketti,croquete vegano de legumes e feijão,16,120,leguminosa,leguminosa_soja,n5k:falafel,13.30,C,1,
+Vegan Soya and vegetable wok,wok vegano de soja e legumes,16,249,misto,prato_misto,0.25*n5k:tofu|0.75*n5k:mixed vegetables,3.28,C,1,
+vegaani Tomaattimajoneesi,maionese vegana de tomate,16,42,gordura_molho,sem_proteina,n5k:mayonnaise,1.00,B,1,
+Piparjuurikastike,molho de raiz-forte,15,38,gordura_molho,sem_proteina,n5k:sour cream,2.40,B,1,piparjuuri = raiz-forte
+Seesame and bean sourcream sauce,molho de creme azedo com gergelim e feijão,15,76,gordura_molho,sem_proteina,0.7*n5k:sour cream|0.3*n5k:white beans,4.59,C,1,
+VEGETABLE JALFREZI,jalfrezi de legumes,15,191,misto,prato_misto,n5k:mixed vegetables,1.70,C,1,curry de legumes sem fonte de proteína declarada
+Vegaani Kasvis-tofu täyte,recheio vegano de legumes e tofu,15,220,misto,prato_misto,0.3*n5k:tofu|0.7*n5k:mixed vegetables,3.59,C,1,täyte = recheio (para pita ou tortilha)
+kaaliraaste,repolho ralado,15,44,vegetal,sem_proteina,T_REPOLHO,0.90,A,1,
+Minced meat and macaroni casserole,gratinado de macarrão com carne moída,14,284,misto,prato_misto,0.6*n5k:pasta|0.25*n5k:ground beef|0.15*n5k:milk,7.13,C,1,lihamakaronilaatikko
+Vegan tofu ratatouille,ratatouille vegano com tofu,14,222,misto,prato_misto,0.25*n5k:tofu|0.75*n5k:mixed vegetables,3.28,C,1,
+Vegan vegetable fingers,palitos veganos de legumes (empanados),14,136,misto,prato_misto,0.3*n5k:veggie burgers|0.7*n5k:mixed vegetables,5.96,C,1,
+Chili sin carne made with Mifu,chili sem carne com Mifu,13,222,misto,prato_misto,0.2*n5k:cottage cheese|0.3*n5k:kidney beans|0.5*n5k:pasta sauce,10.05,C,1,"Mifu é um produto finlandês de proteína do leite em grãos; a linha kidney beans do N5k (24 g) é de grão seco, por isso a densidade deve estar alta"
+Gratinated spinach and bean pasta bake,gratinado de macarrão com espinafre e feijão,13,234,misto,prato_misto,0.5*n5k:pasta|0.2*n5k:white beans|0.3*n5k:spinach (cooked),5.39,C,1,
+Pureed root vegetable soup,sopa-creme de raízes,13,417,misto,prato_misto,n5k:tomato soup,0.70,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Butter chicken,frango na manteiga (butter chicken),12,147,misto,prato_misto,n5k:curries,12.00,C,1,
+Pork kassler with bbq sauce,kassler de porco com molho barbecue,12,189,proteina_animal,suina_embutido,0.85*n5k:roast pork|0.15*n5k:barbecue sauce,20.09,C,1,kassler = pescoço de porco curado
+Seesam-kermaviilikastike,molho de creme azedo com gergelim,12,73,gordura_molho,sem_proteina,n5k:sour cream,2.40,B,1,
+Vegetable patties,hambúrgueres de legumes,12,156,misto,prato_misto,0.3*n5k:veggie burgers|0.7*n5k:mixed vegetables,5.96,C,1,
+Wasabi sour cream,creme azedo com wasabi,12,62,gordura_molho,sem_proteina,n5k:sour cream,2.40,A,1,
+vegaani Kasvis Empanadas,empanadas veganas de legumes,12,245,misto,prato_misto,0.5*n5k:empanadas|0.5*n5k:mixed vegetables,6.40,C,1,
+vegaani Papusalsa ja tsatsiki,salsa vegana de feijão com tzatziki,12,60,leguminosa,leguminosa_soja,0.5*n5k:black beans|0.5*n5k:salsa,5.20,C,1,ja = e; porção pequena (60 g)
+Kinkkukiusaus,"""tentação de presunto"": gratinado de batata, presunto e creme",11,97,misto,prato_misto,0.6*n5k:potatoes|0.15*n5k:ham|0.25*n5k:cream,5.05,C,1,"kinkku = presunto, kiusaus = gratinado de batata em tiras"
+Lantturaaste,rutabaga ralada,11,47,vegetal,sem_proteina,T_NABO,1.20,B,1,
+Pehmeä broilerikeitto,sopa cremosa de frango,11,556,misto,prato_misto,n5k:chicken soup,2.50,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Vegan Moroccan chickpea patty,hambúrguer vegano marroquino de grão-de-bico,11,125,leguminosa,leguminosa_soja,n5k:falafel,13.30,C,1,
+Vegan coconut and tofu wok,wok vegano de coco e tofu,11,317,misto,prato_misto,0.25*n5k:tofu|0.75*n5k:mixed vegetables,3.28,C,1,
+Vegan lentil and tartar sauce,molho tártaro vegano (com lentilha),11,79,gordura_molho,sem_proteina,n5k:mayonnaise,1.00,C,1,"conferido numa foto (tray320, 20/10/2020): é o molho branco servido sobre os palitos de legumes, não um prato de lentilha"
+pinaattiriisi,arroz com espinafre,11,127,amido,sem_proteina,T_ARROZ,2.50,B,1,
+Brussels sprout and bell pepper,couve-de-bruxelas e pimentão,10,58,vegetal,sem_proteina,0.5*n5k:brussels sprouts|0.5*T_PIMENTAO,2.20,B,1,
+Chicken in red curry,frango ao curry vermelho,10,323,misto,prato_misto,n5k:curries,12.00,C,1,
+Chicken stew with cheese,ensopado de frango com queijo,10,279,misto,prato_misto,n5k:stews,11.00,C,1,
+Chili con carne,chili com carne,10,68,misto,prato_misto,0.3*n5k:ground beef|0.3*n5k:pinto beans|0.4*n5k:pasta sauce,7.48,C,1,"a linha ""chili"" do N5k (1,8) é de pimenta, não do prato"
+Vegan root vegetable and soy bourguignon,bourguignon vegano de raízes e soja,10,348,misto,prato_misto,0.25*n5k:tofu|0.75*n5k:mixed vegetables,3.28,C,1,
+Yoghurt sauce,molho de iogurte,10,67,gordura_molho,sem_proteina,T_IOGURTE,4.10,B,1,
+Inkivääri-porkkanasosekeitto,sopa-creme de cenoura com gengibre,9,440,misto,prato_misto,n5k:tomato soup,0.70,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Kurkku-meloni,pepino e melão,9,63,vegetal,sem_proteina,0.5*T_PEPINO|0.5*T_MELAO,0.80,B,1,
+Meat stew,ensopado de carne,9,305,misto,prato_misto,n5k:stews,11.00,C,1,
+Pea soup,sopa de ervilha,9,458,misto,prato_misto,n5k:peas,5.40,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Vegaani Linssi Korma,korma vegano de lentilha,9,201,misto,prato_misto,0.5*n5k:lentils|0.5*n5k:mixed vegetables,5.35,C,1,
+Broileria herkkusienikastikkeessa,frango em molho de cogumelos,8,173,misto,prato_misto,0.5*n5k:grilled chicken|0.5*n5k:gravy,12.30,C,1,herkkusieni = champignon; frango em molho: prato pronto
+Kalkkunaa BBQ kastikkeessa,peru em molho barbecue,8,160,misto,prato_misto,0.5*n5k:roast turkey|0.5*n5k:barbecue sauce,14.90,C,1,kalkkuna = peru
+Karelian stew,ensopado da Carélia (boi e porco),8,164,misto,prato_misto,0.6*n5k:roast pork|0.4*DILUENTE,14.10,C,1,karjalanpaisti: quase só carne em caldo
+Pizza Härkäpapu-paprika,pizza de fava e pimentão,8,290,misto,prato_misto,n5k:pizza,11.00,C,1,härkäpapu = fava
+Vegan soy and pasta bake,gratinado vegano de soja e macarrão,8,266,misto,prato_misto,0.6*n5k:pasta|0.2*n5k:tofu|0.2*n5k:pasta sauce,4.92,C,1,
+Boiled egg,ovo cozido,7,53,proteina_animal,ovo,T_OVO_COZ,13.30,A,1,
+Pancake,panqueca de forno (sobremesa),7,120,outros,sem_proteina,n5k:pancakes,6.30,B,0,"pannukakku: sobremesa, em prato à parte"
+Paputäyte,recheio de feijão,7,166,leguminosa,leguminosa_soja,0.6*n5k:black beans|0.4*n5k:salsa,5.94,C,1,
+Roasted root vegetables,raízes assadas,7,79,vegetal,sem_proteina,n5k:mixed vegetables,1.70,B,1,
+Vegetable moussaka,moussaka de legumes,7,336,misto,prato_misto,0.5*n5k:eggplant|0.2*n5k:lentils|0.3*n5k:cream,3.14,C,1,
+Vegetables and rice,legumes com arroz,7,91,amido,sem_proteina,0.5*n5k:rice|0.5*n5k:mixed vegetables,2.20,B,1,
+potato salad,salada de batata,7,57,amido,sem_proteina,n5k:potato salad,2.80,A,1,
+vegaani Nyhtökaura-kaalilaatikko,"gratinado vegano de repolho com ""aveia desfiada""",7,80,misto,prato_misto,0.6*n5k:cabbage|0.2*n5k:rice|0.2*n5k:veggie burgers,4.50,C,1,nyhtökaura = proteína vegetal finlandesa de aveia e leguminosas
+Chili Con Carne,chili com carne,6,231,misto,prato_misto,0.3*n5k:ground beef|0.3*n5k:pinto beans|0.4*n5k:pasta sauce,7.48,C,1,
+Kalkkunaa herkkusienikastikkeessa,peru em molho de cogumelos,6,137,misto,prato_misto,0.5*n5k:roast turkey|0.5*n5k:gravy,15.50,C,1,
+Kevätsipuli-perunasosekeitto,sopa-creme de batata com cebolinha,6,143,misto,prato_misto,n5k:tomato soup,0.70,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Persilja-kermaviilikastiketta,molho de creme azedo com salsinha,6,38,gordura_molho,sem_proteina,n5k:sour cream,2.40,B,1,persilja = salsinha
+Pesto chicken,frango ao pesto,6,108,proteina_animal,frango_peru,0.85*n5k:grilled chicken|0.15*n5k:pesto,21.03,C,1,
+Vegan lentil and tomato pasta sauce,molho vegano de lentilha e tomate para massa,6,118,misto,prato_misto,0.4*n5k:lentils|0.6*n5k:pasta sauce,4.38,C,1,
+Coconut and chicken soup,sopa de frango com coco,5,665,misto,prato_misto,n5k:chicken soup,2.50,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Fish soup,sopa de peixe,5,293,misto,prato_misto,n5k:chowders,3.10,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Kasvis-soijatäyte,recheio de legumes e soja,5,130,misto,prato_misto,0.3*n5k:tofu|0.7*n5k:mixed vegetables,3.59,C,1,
+Porkkanaraaste ja lehtikaalia,cenoura ralada com couve kale,5,60,vegetal,sem_proteina,0.5*T_CENOURA|0.5*n5k:kale,2.30,B,1,
+Potato,batata,138,122,amido,sem_proteina,T_BATATA,1.20,B,1,preparo não informado
+Rainbow trout casserole,gratinado de truta-arco-íris com batata,5,434,misto,prato_misto,0.6*n5k:potatoes|0.2*n5k:trout|0.2*n5k:cream,5.78,C,1,kirjolohikiusaus
+Ranskalaiset,batata frita,5,119,amido,sem_proteina,n5k:french fries,3.40,A,1,ranskalaiset = batatas fritas
+Roasted bell pepper and mushroom salad,salada de pimentão assado e cogumelos,5,180,vegetal,sem_proteina,0.5*n5k:bell peppers|0.5*n5k:mushroom,2.55,B,1,
+Vegaani Intialainen linssi-kasvishöystö,guisado indiano vegano de lentilha e legumes,5,321,misto,prato_misto,0.5*n5k:lentils|0.5*n5k:mixed vegetables,5.35,C,1,höystö = guisado
+Vegaani Soija-pähkinäratatouille,ratatouille vegano de soja e castanhas,5,15,misto,prato_misto,0.2*n5k:tofu|0.1*n5k:nuts|0.7*n5k:mixed vegetables,4.79,C,1,
+Vegaani piparjuurimajoneesia,maionese vegana de raiz-forte,5,59,gordura_molho,sem_proteina,n5k:mayonnaise,1.00,B,1,
+Vegan broccoli and bean sauce,molho vegano de brócolis e feijão,5,54,misto,prato_misto,0.3*n5k:white beans|0.3*n5k:broccoli|0.4*n5k:cream,4.75,C,1,
+Yrtti-raejuustotäyte,recheio de queijo cottage com ervas,5,163,laticinio,laticinio,n5k:cottage cheese,11.00,B,1,raejuusto = queijo cottage
+Cooked pasta,macarrão cozido,4,56,amido,sem_proteina,n5k:pasta,5.10,A,1,
+Ebly salaatti,salada de trigo em grão (Ebly),4,118,amido,sem_proteina,n5k:wheat berry,4.20,B,1,Ebly é marca de trigo pré-cozido
+KEITETTY PASTA,macarrão cozido,4,240,amido,sem_proteina,n5k:pasta,5.10,A,1,keitetty = cozido
+Oven baked potatoes,batatas assadas,4,218,amido,sem_proteina,n5k:roasted potatoes,2.10,A,1,
+Vegaani Kikherne juurespata,ensopado vegano de grão-de-bico e raízes,4,152,misto,prato_misto,0.4*n5k:chickpeas|0.6*n5k:mixed vegetables,4.62,C,1,"kikherne = grão-de-bico, juurespata = ensopado de raízes"
+Vegan Chilli sin carne,chili vegano sem carne,4,204,misto,prato_misto,0.4*n5k:pinto beans|0.6*n5k:pasta sauce,4.38,C,1,
+Vegan vegetable arrabiata,molho arrabiata vegano de legumes,4,128,misto,prato_misto,0.5*n5k:pasta sauce|0.5*n5k:mixed vegetables,1.50,C,1,
+Vegetable pea soup,sopa de ervilha vegetariana,4,534,misto,prato_misto,n5k:peas,5.40,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Watermelon,melancia,4,100,vegetal,sem_proteina,T_MELANCIA,0.90,A,1,
+Apple and muesli bake,assado de maçã com muesli (sobremesa),3,292,outros,sem_proteina,0.7*n5k:apple|0.3*n5k:muesli,3.51,C,0,"sobremesa, em prato à parte"
+Basilikakastiketta,molho de manjericão,3,20,gordura_molho,sem_proteina,n5k:sour cream,2.40,C,1,base do molho desconhecida
+Couscous salad,salada de cuscuz,3,124,amido,sem_proteina,n5k:couscous,3.80,B,1,
+Paahdettua vehnäsalattia,salada de trigo tostado,3,137,amido,sem_proteina,n5k:wheat berry,4.20,B,1,vehnä = trigo
+Uuniomena,maçã assada (sobremesa),3,105,outros,sem_proteina,n5k:apple,0.30,B,0,"sobremesa, em prato à parte"
+Vesimeloni-kurkku,melancia e pepino,3,60,vegetal,sem_proteina,0.5*T_PEPINO|0.5*T_MELANCIA,0.90,B,1,
+vegaani Chili con alubia kikherneestä,chili vegano de grão-de-bico,3,96,misto,prato_misto,0.4*n5k:chickpeas|0.6*n5k:pasta sauce,4.38,C,1,
+KÖYHÄT RITARIT,rabanada (sobremesa),2,182,outros,sem_proteina,n5k:french toast,7.80,B,0,"""cavaleiros pobres"" = rabanada; sobremesa, em prato à parte"
+Paahdettu vehnä,trigo tostado em grão,2,116,amido,sem_proteina,n5k:wheat berry,4.20,B,1,
+Pureed sweet potato soup,sopa-creme de batata-doce,2,190,misto,prato_misto,n5k:tomato soup,0.70,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Sour cream,creme azedo,2,101,gordura_molho,sem_proteina,n5k:sour cream,2.40,A,1,
+Spinach soup,sopa de espinafre,2,408,misto,prato_misto,n5k:tomato soup,0.70,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Vegetable omelette,omelete de legumes,2,428,proteina_animal,ovo,n5k:omelets,10.40,B,1,
+Dill potatoes,batatas com endro,1,191,amido,sem_proteina,T_BATATA,1.20,A,1,
+Jasminiriisi,arroz jasmim,1,376,amido,sem_proteina,T_ARROZ,2.50,A,1,
+Omenahyve,crumble de maçã (sobremesa),1,236,outros,sem_proteina,n5k:cobbler,2.00,B,0,"sobremesa, em prato à parte"
+Pureed carrot soup,sopa-creme de cenoura,1,433,misto,prato_misto,n5k:tomato soup,0.70,C,0,"sopa: servida em tigela, fora do prato fotografado"
+Raparperihyve,crumble de ruibarbo (sobremesa),1,209,outros,sem_proteina,n5k:cobbler,2.00,B,0,"sobremesa, em prato à parte"
+Tomaatti-eblysalaatti,salada de trigo (Ebly) com tomate,1,123,amido,sem_proteina,0.7*n5k:wheat berry|0.3*T_TOMATE,3.27,B,1,
+herne-porkkana-kukkakaali,"ervilha, cenoura e couve-flor",1,60,vegetal,sem_proteina,0.34*T_ERVILHA|0.33*T_CENOURA_COZ|0.33*T_COUVEFLOR,2.22,B,1,
+teema intia VEGETABLE JALFREZI,jalfrezi de legumes (semana temática da Índia),1,767,misto,prato_misto,n5k:mixed vegetables,1.70,C,1,teema intia = tema Índia
+täysjyväohra,cevada integral em grão,1,110,amido,sem_proteina,n5k:barley,2.30,A,1,"täysjyvä = integral, ohra = cevada"

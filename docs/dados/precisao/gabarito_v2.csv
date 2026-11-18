@@ -1,0 +1,2912 @@
+prato_id,categoria,componente,gramas,proteina_100g
+b001,almoco_pf,prato inteiro,93.0,32.3978
+b002,jantar,prato inteiro,64.0,26.5938
+b003,almoco_pf,prato inteiro,163.0,6.2025
+b004,almoco_pf,prato inteiro,252.0,6.1984
+b005,lanche,prato inteiro,35.0,25.8
+b006,almoco_pf,prato inteiro,76.0,32.0
+b007,lanche,prato inteiro,92.0,25.8043
+b008,jantar,prato inteiro,70.0,4.9
+b009,jantar,prato inteiro,137.0,32.8029
+b010,jantar,prato inteiro,527.0,5.1006
+b011,restaurante,prato inteiro,59.0,19.0
+b012,almoco_pf,prato inteiro,153.0,32.3987
+b013,almoco_pf,prato inteiro,403.0,2.4988
+b014,jantar,prato inteiro,285.0,32.8
+b015,almoco_pf,prato inteiro,239.0,2.4979
+b016,cafe,prato inteiro,158.0,14.2975
+b017,jantar,prato inteiro,75.0,6.2933
+b018,jantar,prato inteiro,136.0,5.1029
+b019,lanche,prato inteiro,83.0,27.3012
+b020,almoco_pf,prato inteiro,402.0,8.699
+b021,cafe,prato inteiro,59.0,14.3051
+b022,almoco_pf,prato inteiro,734.0,8.7003
+b023,almoco_pf,prato inteiro,158.0,32.0
+b024,almoco_pf,prato inteiro,55.0,32.4
+b025,congelado,prato inteiro,300.0,6.0
+b026,lanche,prato inteiro,62.0,27.3065
+b027,almoco_pf,prato inteiro,100.0,17.6
+b028,almoco_pf,prato inteiro,37.0,6.1892
+b029,cafe,prato inteiro,97.0,14.299
+b030,congelado,prato inteiro,300.0,5.8
+b031,restaurante,prato inteiro,91.0,19.0
+b032,almoco_pf,prato inteiro,102.0,32.0
+b033,almoco_pf,prato inteiro,210.0,4.8
+b034,jantar,prato inteiro,199.0,26.598
+b035,almoco_pf,prato inteiro,310.0,32.4
+b036,restaurante,prato inteiro,223.0,19.0
+b037,almoco_pf,prato inteiro,360.0,4.8
+b038,almoco_pf,prato inteiro,68.0,6.2059
+b039,lanche,prato inteiro,33.0,27.303
+b040,almoco_pf,prato inteiro,115.0,6.2
+b041,lanche,prato inteiro,23.0,25.7826
+b042,jantar,prato inteiro,310.0,4.9
+b043,lanche,prato inteiro,149.0,25.7987
+b044,almoco_pf,prato inteiro,34.0,32.0
+b045,almoco_pf,prato inteiro,22.0,32.0
+b046,almoco_pf,prato inteiro,150.0,26.9
+b047,almoco_pf,prato inteiro,318.0,2.5
+b048,jantar,prato inteiro,140.0,4.9
+b049,jantar,prato inteiro,216.0,32.8009
+b050,almoco_pf,prato inteiro,172.0,32.0988
+b051,jantar,prato inteiro,151.0,26.6026
+b052,jantar,prato inteiro,285.0,26.6
+b053,almoco_pf,prato inteiro,80.0,4.8
+b054,jantar,prato inteiro,97.0,26.5979
+b055,restaurante,prato inteiro,120.0,19.0
+b056,almoco_pf,prato inteiro,236.0,8.6992
+b057,restaurante,prato inteiro,157.0,19.0
+b058,cafe,prato inteiro,34.0,14.2941
+b059,almoco_pf,prato inteiro,89.0,32.1011
+b060,jantar,prato inteiro,182.0,2.0989
+b061,almoco_pf,prato inteiro,180.0,32.4
+b062,almoco_pf,prato inteiro,568.0,8.7007
+b063,almoco_pf,prato inteiro,112.0,2.5
+b064,almoco_pf,prato inteiro,260.0,17.6
+b065,almoco_pf,prato inteiro,105.0,4.4952
+b066,restaurante,prato inteiro,273.0,19.0
+b067,cafe,prato inteiro,18.0,14.2778
+b068,congelado,prato inteiro,300.0,6.7
+b069,almoco_pf,prato inteiro,140.0,4.8
+b070,lanche,prato inteiro,118.0,25.7966
+b071,almoco_pf,prato inteiro,102.0,26.902
+b072,congelado,prato inteiro,300.0,6.2
+b073,almoco_pf,prato inteiro,174.0,4.5
+b074,lanche,prato inteiro,48.0,27.2917
+b075,restaurante,prato inteiro,187.0,19.0
+b076,congelado,prato inteiro,300.0,5.7
+b077,almoco_pf,prato inteiro,380.0,6.2
+b078,lanche,prato inteiro,106.0,27.3019
+b079,almoco_pf,prato inteiro,111.0,32.0991
+b080,almoco_pf,prato inteiro,63.0,26.9048
+b081,jantar,prato inteiro,189.0,6.3016
+b082,jantar,prato inteiro,163.0,32.7975
+b083,lanche,prato inteiro,56.0,25.8036
+b084,restaurante,prato inteiro,366.0,19.0
+b085,jantar,prato inteiro,400.0,4.9
+b086,almoco_pf,prato inteiro,149.0,0.5973
+b087,jantar,prato inteiro,220.0,4.9
+b088,almoco_pf,prato inteiro,49.0,32.0
+b089,lanche,prato inteiro,184.0,5.0
+b090,almoco_pf,prato inteiro,229.0,26.8996
+b091,almoco_pf,prato inteiro,225.0,32.0978
+b092,almoco_pf,prato inteiro,228.0,1.2018
+b093,congelado,prato inteiro,300.0,4.6
+b094,jantar,prato inteiro,288.0,5.1007
+b095,almoco_pf,prato inteiro,60.0,2.5
+b096,almoco_pf,prato inteiro,70.0,8.7
+b097,restaurante,prato inteiro,86.0,19.0
+b098,almoco_pf,prato inteiro,198.0,0.601
+b099,almoco_pf,prato inteiro,280.0,4.8
+b100,almoco_pf,prato inteiro,22.0,26.9091
+b101,restaurante,prato inteiro,289.0,19.0
+b102,lanche,prato inteiro,97.0,5.0
+b103,congelado,prato inteiro,300.0,6.3
+b104,almoco_pf,prato inteiro,171.0,2.5029
+b105,cafe,prato inteiro,200.0,14.3
+b106,almoco_pf,prato inteiro,53.0,32.0943
+b107,jantar,prato inteiro,48.0,32.7917
+b108,almoco_pf,prato inteiro,235.0,32.4
+b109,almoco_pf,prato inteiro,37.0,26.8919
+b110,jantar,prato inteiro,82.0,32.8049
+n001,n5k,apple,2.371,0.3
+n001,n5k,vinegar,0.474,0.0
+n001,n5k,parsley,0.269,2.9
+n001,n5k,onions,0.948,1.1
+n001,n5k,carrot,12.028,0.9
+n001,n5k,salt,0.661,0.0
+n001,n5k,chive,0.15,3.3
+n001,n5k,chicken,120.277,31.0
+n001,n5k,millet,1.897,3.5
+n001,n5k,garlic,0.601,6.4
+n001,n5k,chard,3.007,1.8
+n001,n5k,brown rice,12.028,2.6
+n001,n5k,lemon juice,0.925,0.4
+n001,n5k,rosemary,0.15,2.9
+n001,n5k,olive oil,4.208,0.0
+n001,n5k,basil,0.15,4.0
+n001,n5k,mixed greens,11.855,2.2
+n002,n5k,grilled chicken,194.0,22.6
+n003,n5k,lemon juice,2.843,0.4
+n003,n5k,wheat berry,28.432,4.2
+n003,n5k,parsley,1.422,2.9
+n003,n5k,cherry tomatoes,5.686,0.9
+n003,n5k,fish,142.16,18.4
+n003,n5k,salt,0.355,0.0
+n003,n5k,garlic,1.422,6.4
+n003,n5k,shallots,2.843,1.5
+n003,n5k,chive,0.355,3.3
+n003,n5k,olive oil,5.686,0.0
+n003,n5k,chard,12.794,1.8
+n004,n5k,white rice,7.615,2.7
+n004,n5k,mushroom,7.615,3.1
+n004,n5k,ground turkey,57.11,25.0
+n004,n5k,chard,12.794,1.8
+n004,n5k,celery,0.952,0.7
+n004,n5k,wheat berry,28.432,4.2
+n004,n5k,onions,1.904,1.1
+n004,n5k,olive oil,6.448,0.0
+n004,n5k,cream,1.523,2.8
+n004,n5k,chive,0.546,3.3
+n004,n5k,garlic,1.517,6.4
+n004,n5k,salt,0.546,0.0
+n004,n5k,shallots,2.843,1.5
+n004,n5k,carrot,0.952,0.9
+n004,n5k,cherry tomatoes,5.686,0.9
+n004,n5k,fish,142.16,18.4
+n004,n5k,eggs,2.142,12.5
+n004,n5k,thyme,0.048,6.0
+n004,n5k,kale,1.904,3.3
+n004,n5k,parsley,1.422,2.9
+n004,n5k,lemon juice,2.843,0.4
+n005,n5k,olive oil,1.802,0.0
+n005,n5k,salt,0.059,0.0
+n005,n5k,lemon juice,0.474,0.4
+n005,n5k,onions,0.948,1.1
+n005,n5k,parsley,0.119,2.9
+n005,n5k,mixed greens,11.855,2.2
+n005,n5k,apple,2.371,0.3
+n005,n5k,millet,1.897,3.5
+n005,n5k,vinegar,0.474,0.0
+n006,n5k,brownies,109.0,6.2
+n007,n5k,walnuts,1.399,15.1
+n007,n5k,pepper,0.195,2.0
+n007,n5k,chard,6.993,1.8
+n007,n5k,blueberries,2.797,0.7
+n007,n5k,cucumbers,6.064,1.0
+n007,n5k,lime,0.606,0.7
+n007,n5k,salt,0.565,0.0
+n007,n5k,lettuce,12.128,1.4
+n007,n5k,mustard,0.437,3.7
+n007,n5k,cheese pizza,36.0,11.2
+n007,n5k,cherry tomatoes,4.851,0.9
+n007,n5k,vinegar,3.737,0.0
+n007,n5k,arugula,39.162,2.6
+n007,n5k,olive oil,10.446,0.0
+n007,n5k,pizza,39.0,11.0
+n007,n5k,onions,2.426,1.1
+n007,n5k,mixed greens,18.192,2.2
+n008,n5k,carrot,47.0,0.9
+n008,n5k,goat cheese,47.0,19.0
+n008,n5k,olive oil,45.0,0.0
+n008,n5k,broccoli,52.0,2.4
+n008,n5k,spinach (raw),20.0,2.9
+n008,n5k,chicken,205.0,31.0
+n009,n5k,blueberries,6.602,0.7
+n009,n5k,parsley,0.33,2.9
+n009,n5k,mustard,0.33,3.7
+n009,n5k,salt,0.165,0.0
+n009,n5k,carrot,2.641,0.9
+n009,n5k,almonds,1.32,22.4
+n009,n5k,spinach (raw),33.01,2.9
+n009,n5k,vinegar,1.32,0.0
+n009,n5k,olive oil,5.282,0.0
+n010,n5k,quinoa,143.983,4.4
+n010,n5k,mixed greens,50.205,2.2
+n010,n5k,garlic,4.102,6.4
+n010,n5k,parsley,2.88,2.9
+n010,n5k,mustard,1.004,3.7
+n010,n5k,lemon juice,0.36,0.4
+n010,n5k,brown rice,108.0,2.6
+n010,n5k,arugula,14.398,2.6
+n010,n5k,vinegar,4.016,0.0
+n010,n5k,olives,10.041,0.8
+n010,n5k,shallots,0.72,1.5
+n010,n5k,pears,10.041,0.4
+n010,n5k,salt,1.745,0.0
+n010,n5k,goat cheese,8.033,19.0
+n010,n5k,thyme,0.72,6.0
+n010,n5k,olive oil,8.753,0.0
+n011,n5k,almonds,1.424,22.4
+n011,n5k,olive oil,5.696,0.0
+n011,n5k,mustard,0.356,3.7
+n011,n5k,parsley,0.356,2.9
+n011,n5k,carrot,2.848,0.9
+n011,n5k,salt,0.178,0.0
+n011,n5k,blueberries,7.12,0.7
+n011,n5k,spinach (raw),35.599,2.9
+n011,n5k,vinegar,1.424,0.0
+n012,n5k,caesar salad,314.0,3.2
+n012,n5k,olive oil,0.382,0.0
+n012,n5k,onions,1.909,1.1
+n012,n5k,cheese pizza,35.0,11.2
+n012,n5k,zucchini,45.5,1.1
+n012,n5k,spinach (cooked),1.909,3.0
+n012,n5k,millet,7.636,3.5
+n012,n5k,shallots,3.818,1.5
+n012,n5k,bok choy,1.909,1.5
+n012,n5k,salt,0.072,0.0
+n012,n5k,beef,57.27,26.0
+n012,n5k,chayote squash,45.5,0.6
+n012,n5k,vinegar,0.095,0.0
+n013,n5k,brown rice,19.438,2.6
+n013,n5k,jalapenos,0.972,0.9
+n013,n5k,green beans,58.5,1.8
+n013,n5k,salmon,97.189,24.0
+n013,n5k,vinaigrette,6.298,0.0
+n013,n5k,olives,3.149,0.8
+n013,n5k,cilantro,0.972,2.2
+n013,n5k,lime,0.121,0.7
+n013,n5k,garlic,2.916,6.4
+n013,n5k,lemon juice,0.972,0.4
+n013,n5k,bell peppers,3.149,2.0
+n013,n5k,olive oil,2.229,0.0
+n013,n5k,feta cheese,3.149,13.8
+n013,n5k,spinach (raw),4.859,2.9
+n013,n5k,ginger,0.486,1.8
+n013,n5k,cherry tomatoes,7.872,0.9
+n013,n5k,shallots,2.916,1.5
+n013,n5k,chili,0.243,1.8
+n013,n5k,salt,0.243,0.0
+n013,n5k,lettuce,31.489,1.4
+n013,n5k,onions,5.093,1.1
+n013,n5k,cucumbers,15.745,1.0
+n014,n5k,almonds,58.0,22.4
+n014,n5k,deprecated,143.0,14.0
+n014,n5k,sausage,60.0,19.3
+n014,n5k,mixed greens,15.0,2.2
+n014,n5k,grapes,74.0,0.7
+n015,n5k,caesar salad,86.0,3.2
+n015,n5k,wheat berry,60.0,4.2
+n015,n5k,broccoli,13.0,2.4
+n016,n5k,quinoa,40.895,4.4
+n016,n5k,broccoli,25.366,2.4
+n016,n5k,salt,0.46,0.0
+n016,n5k,arugula,4.089,2.6
+n016,n5k,parsley,0.818,2.9
+n016,n5k,lemon juice,0.102,0.4
+n016,n5k,garlic,1.022,6.4
+n016,n5k,olive oil,0.839,0.0
+n016,n5k,caesar salad,137.0,3.2
+n016,n5k,thyme,0.204,6.0
+n016,n5k,shallots,0.204,1.5
+n016,n5k,cheese pizza,85.0,11.2
+n017,n5k,almonds,58.0,22.4
+n018,n5k,pizza,58.0,11.0
+n019,n5k,salt,0.482,0.0
+n019,n5k,garlic,0.482,6.4
+n019,n5k,olive oil,10.282,0.0
+n019,n5k,mustard,0.803,3.7
+n019,n5k,pecans,2.571,9.0
+n019,n5k,chard,12.853,1.8
+n019,n5k,arugula,71.976,2.6
+n019,n5k,vinegar,2.41,0.0
+n019,n5k,blueberries,5.141,0.7
+n020,n5k,egg whites,570.0,10.0
+n020,n5k,sweet potato,156.098,1.0
+n020,n5k,olive oil,3.902,0.0
+n021,n5k,apple,160.0,0.3
+n022,n5k,egg whites,156.0,10.0
+n022,n5k,blueberries,89.0,0.7
+n022,n5k,greek yogurt,43.503,10.0
+n022,n5k,chia seeds,10.914,17.0
+n022,n5k,milk,46.583,3.5
+n023,n5k,berries,45.0,0.7
+n023,n5k,cantaloupe,42.0,0.8
+n024,n5k,egg whites,156.0,10.0
+n024,n5k,greek yogurt,43.503,10.0
+n024,n5k,milk,46.583,3.5
+n024,n5k,chia seeds,10.914,17.0
+n025,n5k,garlic,0.157,6.4
+n025,n5k,pilaf,82.0,2.5
+n025,n5k,green onions,0.313,1.8
+n025,n5k,onions,1.252,1.1
+n025,n5k,country rice,6.262,3.86
+n025,n5k,olive oil,0.626,0.0
+n025,n5k,salt,0.078,0.0
+n025,n5k,corn on the cob,108.0,3.1
+n025,n5k,fish,31.311,18.4
+n026,n5k,honeydew melons,39.0,0.5
+n027,n5k,garlic,0.95,6.4
+n027,n5k,mushroom,4.749,3.1
+n027,n5k,wheat berry,9.499,4.2
+n027,n5k,olive oil,0.95,0.0
+n027,n5k,butter,0.95,0.8
+n027,n5k,salt,0.95,0.0
+n027,n5k,shallots,0.475,1.5
+n027,n5k,white wine,0.237,0.1
+n027,n5k,pepper,0.475,2.0
+n027,n5k,arugula,2.375,2.6
+n027,n5k,cream,3.8,2.8
+n027,n5k,oregano,0.297,9.0
+n027,n5k,thyme,0.297,6.0
+n027,n5k,basil,0.475,4.0
+n027,n5k,rosemary,0.297,2.9
+n027,n5k,lemon juice,0.237,0.4
+n027,n5k,chicken,94.988,31.0
+n028,n5k,berries,85.0,0.7
+n028,n5k,olive oil,0.902,0.0
+n028,n5k,pineapple,80.0,0.5
+n028,n5k,scrambled eggs,147.0,10.0
+n028,n5k,roasted potatoes,66.0,2.1
+n028,n5k,broccoli,36.098,2.4
+n029,n5k,chicken,167.0,31.0
+n029,n5k,cherry tomatoes,36.0,0.9
+n029,n5k,pizza,233.0,11.0
+n030,n5k,strawberries,36.0,0.7
+n031,n5k,almonds,119.0,22.4
+n032,n5k,quinoa,40.895,4.4
+n032,n5k,cabbage,5.049,1.3
+n032,n5k,pork,37.864,26.0
+n032,n5k,lemon juice,0.607,0.4
+n032,n5k,thyme,0.204,6.0
+n032,n5k,broccoli,25.366,2.4
+n032,n5k,cheese pizza,85.0,11.2
+n032,n5k,pepper,0.126,2.0
+n032,n5k,wheat berry,5.049,4.2
+n032,n5k,mayonnaise,1.01,1.0
+n032,n5k,jalapenos,0.063,0.9
+n032,n5k,arugula,4.089,2.6
+n032,n5k,parsley,1.07,2.9
+n032,n5k,olive oil,1.091,0.0
+n032,n5k,carrot,1.262,0.9
+n032,n5k,salt,0.523,0.0
+n032,n5k,garlic,1.527,6.4
+n032,n5k,caesar salad,137.0,3.2
+n032,n5k,shallots,0.204,1.5
+n033,n5k,olive oil,2.842,0.0
+n033,n5k,brown rice,14.208,2.6
+n033,n5k,vinegar,0.71,0.0
+n033,n5k,cherry tomatoes,3.552,0.9
+n033,n5k,honeydew melons,137.0,0.5
+n033,n5k,shallots,0.71,1.5
+n033,n5k,parsley,0.355,2.9
+n033,n5k,basil,0.355,4.0
+n033,n5k,lemon juice,0.71,0.4
+n033,n5k,onions,1.421,1.1
+n033,n5k,pork,106.564,26.0
+n033,n5k,pepper,1.421,2.0
+n033,n5k,garlic,1.421,6.4
+n033,n5k,broccoli,3.552,2.4
+n033,n5k,salt,0.178,0.0
+n034,n5k,mustard greens,8.366,2.9
+n034,n5k,cucumbers,6.693,1.0
+n034,n5k,tomatoes,4.183,0.7
+n034,n5k,salt,0.209,0.0
+n034,n5k,mustard,0.418,3.7
+n034,n5k,garlic,0.627,6.4
+n034,n5k,fried rice,122.0,4.7
+n034,n5k,cheese pizza,88.0,11.2
+n034,n5k,vinegar,3.346,0.0
+n034,n5k,spinach (raw),33.464,2.9
+n034,n5k,green beans,84.825,1.8
+n034,n5k,olive oil,8.868,0.0
+n035,n5k,cilantro,0.972,2.2
+n035,n5k,ginger,0.486,1.8
+n035,n5k,spinach (raw),4.859,2.9
+n035,n5k,jalapenos,0.972,0.9
+n035,n5k,lemon juice,0.972,0.4
+n035,n5k,lime,0.121,0.7
+n035,n5k,salt,0.243,0.0
+n035,n5k,onions,1.944,1.1
+n035,n5k,shallots,2.916,1.5
+n035,n5k,garlic,2.916,6.4
+n035,n5k,salmon,97.189,24.0
+n035,n5k,green beans,58.5,1.8
+n035,n5k,brown rice,19.438,2.6
+n035,n5k,olive oil,2.229,0.0
+n035,n5k,chili,0.243,1.8
+n036,n5k,almonds,44.0,22.4
+n037,n5k,almonds,80.0,22.4
+n038,n5k,scrambled eggs,128.0,10.0
+n038,n5k,bacon,10.0,37.0
+n039,n5k,egg whites,71.0,10.0
+n039,n5k,hash browns,43.0,2.6
+n039,n5k,berries,61.0,0.7
+n039,n5k,sweet potato,82.0,1.0
+n040,n5k,chicken,154.303,31.0
+n040,n5k,chard,3.858,1.8
+n040,n5k,brown rice,127.43,2.6
+n040,n5k,salt,0.772,0.0
+n040,n5k,parsley,0.193,2.9
+n040,n5k,olive oil,3.086,0.0
+n040,n5k,rosemary,0.193,2.9
+n040,n5k,basil,0.193,4.0
+n040,n5k,lemon juice,0.579,0.4
+n040,n5k,chive,0.193,3.3
+n040,n5k,garlic,0.772,6.4
+n040,n5k,carrot,15.43,0.9
+n041,n5k,apple,143.0,0.3
+n041,n5k,carrot,74.0,0.9
+n041,n5k,cauliflower,57.0,1.8
+n041,n5k,almonds,133.0,22.4
+n042,n5k,egg whites,472.0,10.0
+n042,n5k,cantaloupe,136.0,0.8
+n043,n5k,chicken,63.0,31.0
+n044,n5k,walnuts,0.772,15.1
+n044,n5k,caesar salad,50.0,3.2
+n044,n5k,mustard,0.241,3.7
+n044,n5k,olive oil,3.087,0.0
+n044,n5k,vinegar,0.723,0.0
+n044,n5k,blueberries,1.543,0.7
+n044,n5k,chard,3.858,1.8
+n044,n5k,arugula,21.607,2.6
+n044,n5k,pepper,0.024,2.0
+n044,n5k,salt,0.145,0.0
+n045,n5k,bagels,57.6,10.1
+n045,n5k,sweet potato,94.634,1.0
+n045,n5k,olive oil,2.366,0.0
+n045,n5k,egg whites,101.0,10.0
+n045,n5k,cream cheese,14.4,6.2
+n046,n5k,cherry tomatoes,36.0,0.9
+n046,n5k,pizza,233.0,11.0
+n046,n5k,chicken,167.0,31.0
+n046,n5k,pineapple,52.0,0.5
+n047,n5k,garlic,0.772,6.4
+n047,n5k,carrot,15.43,0.9
+n047,n5k,parsley,0.193,2.9
+n047,n5k,olive oil,3.086,0.0
+n047,n5k,basil,0.193,4.0
+n047,n5k,rosemary,0.193,2.9
+n047,n5k,lemon juice,0.579,0.4
+n047,n5k,brown rice,127.43,2.6
+n047,n5k,chard,3.858,1.8
+n047,n5k,salt,0.772,0.0
+n047,n5k,corn on the cob,40.0,3.1
+n047,n5k,chicken,154.303,31.0
+n047,n5k,chive,0.193,3.3
+n048,n5k,olive oil,0.237,0.0
+n048,n5k,pepper,0.015,2.0
+n048,n5k,cheese pizza,37.0,11.2
+n048,n5k,salt,0.089,0.0
+n048,n5k,carrot,23.66,0.9
+n049,n5k,blackberries,2.968,1.4
+n049,n5k,mixed greens,29.677,2.2
+n049,n5k,raspberries,2.968,1.2
+n049,n5k,scrambled eggs,167.0,10.0
+n049,n5k,brussels sprouts,37.392,3.4
+n049,n5k,olive oil,0.374,0.0
+n049,n5k,pepper,0.047,2.0
+n049,n5k,salt,0.187,0.0
+n049,n5k,vinaigrette,2.968,0.0
+n049,n5k,granola,7.419,10.0
+n050,n5k,eggs,96.0,12.5
+c001,marmita,prato inteiro,300.0,9.2
+c002,marmita,prato inteiro,300.0,13.0
+c003,marmita,prato inteiro,300.0,11.0
+c004,marmita,prato inteiro,300.0,11.0
+c005,marmita,prato inteiro,300.0,7.9
+c006,marmita,prato inteiro,300.0,8.2
+c007,marmita,prato inteiro,370.0,7.6
+c008,marmita,prato inteiro,300.0,9.4
+c009,marmita,prato inteiro,300.0,12.0
+c010,marmita,prato inteiro,300.0,12.0
+c011,marmita,prato inteiro,300.0,11.0
+c012,marmita,prato inteiro,300.0,9.6
+c013,marmita,prato inteiro,300.0,14.0
+c014,marmita,prato inteiro,325.0,7.6985
+c015,marmita,prato inteiro,300.0,6.3
+c016,marmita,prato inteiro,300.0,5.6
+c017,marmita,prato inteiro,370.0,12.0
+c018,marmita,prato inteiro,300.0,8.3
+c019,marmita,prato inteiro,300.0,9.3
+c020,marmita,prato inteiro,300.0,7.6
+c021,marmita,prato inteiro,300.0,10.0
+c022,marmita,prato inteiro,300.0,4.1
+c023,marmita,prato inteiro,340.0,10.0
+c024,marmita,prato inteiro,300.0,7.6
+c025,marmita,prato inteiro,370.0,8.4
+c026,marmita,prato inteiro,300.0,7.7
+c027,marmita,prato inteiro,300.0,3.6
+c028,marmita,prato inteiro,300.0,8.0
+c029,marmita,prato inteiro,300.0,6.9
+c030,marmita,prato inteiro,300.0,10.0
+c031,marmita,prato inteiro,300.0,7.0
+c032,marmita,prato inteiro,300.0,4.6
+c033,marmita,prato inteiro,300.0,6.8
+c034,marmita,prato inteiro,300.0,7.7
+d0001,n5k,cantaloupe,70.0,0.8
+d0001,n5k,sweet potato,80.0,1.0
+d0001,n5k,eggs,111.0,12.5
+d0001,n5k,cauliflower,64.0,1.8
+d0002,n5k,kale,28.937,3.3
+d0002,n5k,croutons,0.226,12.0
+d0002,n5k,caesar dressing,4.823,3.2
+d0002,n5k,roasted potatoes,114.0,2.1
+d0002,n5k,parmesan cheese,3.014,38.4
+d0003,n5k,bell peppers,10.187,2.0
+d0003,n5k,cauliflower,89.0,1.8
+d0003,n5k,beef,58.034,26.0
+d0003,n5k,jalapenos,4.075,0.9
+d0003,n5k,spinach (raw),4.075,2.9
+d0003,n5k,brussels sprouts,86.593,3.4
+d0003,n5k,onions,6.009,1.1
+d0003,n5k,olive oil,5.328,0.0
+d0003,n5k,pepper,0.49,2.0
+d0003,n5k,garlic,2.037,6.4
+d0003,n5k,salt,2.543,0.0
+d0003,n5k,shallots,3.869,1.5
+d0003,n5k,spinach (cooked),1.934,3.0
+d0003,n5k,chicken,81.496,31.0
+d0003,n5k,bok choy,1.934,1.5
+d0003,n5k,millet,28.112,3.5
+d0003,n5k,vinegar,0.097,0.0
+d0003,n5k,cheese pizza,89.0,11.2
+d0003,n5k,tomatoes,10.187,0.7
+d0003,n5k,fried rice,90.0,4.7
+d0004,n5k,salt,0.753,0.0
+d0004,n5k,pepper,0.058,2.0
+d0004,n5k,brussels sprouts,46.248,3.4
+d0004,n5k,olive oil,1.853,0.0
+d0004,n5k,squash,139.088,0.9
+d0004,n5k,pineapple,91.0,0.5
+d0004,n5k,cheese pizza,55.0,11.2
+d0005,n5k,scrambled eggs,192.5,10.0
+d0005,n5k,salsa,38.5,1.5
+d0006,n5k,chicken,137.0,31.0
+d0006,n5k,mixed greens,54.0,2.2
+d0007,n5k,couscous,67.0,3.8
+d0007,n5k,pepper,0.085,2.0
+d0007,n5k,squash,22.0,0.9
+d0007,n5k,olive oil,0.679,0.0
+d0007,n5k,zucchini,22.0,1.1
+d0007,n5k,salt,0.339,0.0
+d0007,n5k,broccoli,22.0,2.4
+d0007,n5k,turnips,67.897,0.7
+d0008,n5k,grapes,94.0,0.7
+d0008,n5k,sausage,126.0,19.3
+d0008,n5k,potatoes,111.0,2.0
+d0009,n5k,almonds,119.0,22.4
+d0010,n5k,scrambled eggs,131.0,10.0
+d0011,n5k,olive oil,11.355,0.0
+d0011,n5k,mustard,0.824,3.7
+d0011,n5k,salt,1.308,0.0
+d0011,n5k,lettuce,13.176,1.4
+d0011,n5k,pumpkin seeds,5.271,19.0
+d0011,n5k,mixed greens,26.353,2.2
+d0011,n5k,carrot,10.541,0.9
+d0011,n5k,asparagus,30.0,2.2
+d0011,n5k,eggplant,81.373,1.0
+d0011,n5k,arugula,39.529,2.6
+d0011,n5k,vinegar,5.271,0.0
+d0012,n5k,brown rice,29.885,2.6
+d0012,n5k,arugula,5.977,2.6
+d0012,n5k,wheat berry,81.0,4.2
+d0012,n5k,pepper,7.471,2.0
+d0012,n5k,salmon,149.427,24.0
+d0012,n5k,salt,0.721,0.0
+d0012,n5k,thyme,0.187,6.0
+d0012,n5k,olive oil,6.605,0.0
+d0012,n5k,squash,92.725,0.9
+d0013,n5k,corn on the cob,67.0,3.1
+d0013,n5k,apple,154.0,0.3
+d0013,n5k,cauliflower,49.0,1.8
+d0013,n5k,grapes,123.0,0.7
+d0014,n5k,lettuce,83.83,1.4
+d0014,n5k,bell peppers,8.383,2.0
+d0014,n5k,cherry tomatoes,20.957,0.9
+d0014,n5k,onions,8.383,1.1
+d0014,n5k,cucumbers,41.915,1.0
+d0014,n5k,feta cheese,8.383,13.8
+d0014,n5k,vinaigrette,16.766,0.0
+d0014,n5k,olives,8.383,0.8
+d0014,n5k,cheese pizza,152.0,11.2
+d0015,n5k,cauliflower,92.0,1.8
+d0016,n5k,strawberries,91.0,0.7
+d0016,n5k,watermelon,79.0,0.6
+d0016,n5k,hash browns,55.0,2.6
+d0016,n5k,olive oil,4.075,0.0
+d0016,n5k,grapes,75.0,0.7
+d0016,n5k,sweet potato,33.962,1.0
+d0016,n5k,egg whites,107.0,10.0
+d0016,n5k,yam,33.962,1.6
+d0016,n5k,pineapple,83.0,0.5
+d0017,n5k,olive oil,2.799,0.0
+d0017,n5k,mozzarella cheese,11.196,28.0
+d0017,n5k,basil,2.799,4.0
+d0017,n5k,pizza dough,14.809,5.4
+d0017,n5k,pizza sauce,8.397,1.3
+d0018,n5k,olive oil,4.618,0.0
+d0018,n5k,mozzarella cheese,18.473,28.0
+d0018,n5k,basil,4.618,4.0
+d0018,n5k,pizza dough,24.436,5.4
+d0018,n5k,pizza sauce,13.855,1.3
+d0019,n5k,onions,57.0,1.1
+d0019,n5k,caesar dressing,45.0,3.2
+d0019,n5k,bell peppers,54.0,2.0
+d0019,n5k,carrot,34.0,0.9
+d0019,n5k,cherry tomatoes,74.0,0.9
+d0019,n5k,olives,35.0,0.8
+d0019,n5k,chicken,190.0,31.0
+d0019,n5k,parmesan cheese,19.0,38.4
+d0020,n5k,olive oil,1.121,0.0
+d0020,n5k,salt,0.013,0.0
+d0020,n5k,eggplant,119.622,1.0
+d0020,n5k,pesto,2.243,12.1
+d0021,n5k,olives,27.0,0.8
+d0021,n5k,cherry tomatoes,32.0,0.9
+d0022,n5k,broccoli,45.927,2.4
+d0022,n5k,brisket,161.905,21.0
+d0022,n5k,olive oil,0.861,0.0
+d0022,n5k,bread crumbs,0.633,13.2
+d0022,n5k,mashed potatoes,161.905,1.7
+d0022,n5k,salt,0.005,0.0
+d0022,n5k,butter,16.19,0.8
+d0022,n5k,jalapenos,0.574,0.9
+d0023,n5k,squash,119.26,0.9
+d0023,n5k,olive oil,2.236,0.0
+d0023,n5k,salt,0.013,0.0
+d0023,n5k,dates,1.491,2.5
+d0024,n5k,chard,21.0,1.8
+d0024,n5k,avocado,32.0,2.0
+d0024,n5k,kale,21.0,3.3
+d0025,n5k,honeydew melons,96.0,0.5
+d0025,n5k,yam,87.0,1.6
+d0025,n5k,bacon,37.0,37.0
+d0025,n5k,scrambled eggs,104.0,10.0
+d0026,n5k,cauliflower,77.0,1.8
+d0026,n5k,steak,118.0,25.0
+d0026,n5k,chicken,63.0,31.0
+d0027,n5k,bacon,36.0,37.0
+d0027,n5k,scrambled eggs,269.0,10.0
+d0027,n5k,broccoli,45.854,2.4
+d0027,n5k,olive oil,1.146,0.0
+d0028,n5k,mixed greens,9.0,2.2
+d0028,n5k,broccoli,68.0,2.4
+d0028,n5k,parmesan cheese,22.0,38.4
+d0029,n5k,cheese pizza,58.0,11.2
+d0029,n5k,bell peppers,1.638,2.0
+d0029,n5k,tomatoes,1.638,0.7
+d0029,n5k,zucchini,41.0,1.1
+d0029,n5k,lemon juice,1.736,0.4
+d0029,n5k,olive oil,0.98,0.0
+d0029,n5k,chayote squash,41.0,0.6
+d0029,n5k,jalapenos,0.655,0.9
+d0029,n5k,spinach (raw),0.655,2.9
+d0029,n5k,millet,3.277,3.5
+d0029,n5k,caesar salad,109.0,3.2
+d0029,n5k,garlic,0.545,6.4
+d0029,n5k,brussels sprouts,32.472,3.4
+d0029,n5k,onions,0.655,1.1
+d0029,n5k,salt,0.599,0.0
+d0029,n5k,parsley,0.163,2.9
+d0029,n5k,cucumbers,4.34,1.0
+d0029,n5k,tatsoi,17.36,2.2
+d0029,n5k,kale,4.34,3.3
+d0029,n5k,pepper,1.838,2.0
+d0029,n5k,chicken,13.108,31.0
+d0030,n5k,soy sauce,3.399,8.1
+d0030,n5k,garlic,2.124,6.4
+d0030,n5k,white rice,8.496,2.7
+d0030,n5k,parsley,0.213,2.9
+d0030,n5k,onions,1.707,1.1
+d0030,n5k,brown rice,68.0,2.6
+d0030,n5k,vinegar,0.854,0.0
+d0030,n5k,apple,4.268,0.3
+d0030,n5k,mixed greens,21.34,2.2
+d0030,n5k,sugar,6.372,0.0
+d0030,n5k,salt,0.532,0.0
+d0030,n5k,lemon juice,0.854,0.4
+d0030,n5k,olive oil,3.244,0.0
+d0030,n5k,pork,59.475,26.0
+d0030,n5k,bok choy,8.496,1.5
+d0030,n5k,pepper,0.212,2.0
+d0030,n5k,millet,3.414,3.5
+d0031,n5k,salt,0.128,0.0
+d0031,n5k,lettuce,3.412,1.4
+d0031,n5k,carrot,2.729,0.9
+d0031,n5k,olive oil,2.729,0.0
+d0031,n5k,mustard,0.213,3.7
+d0031,n5k,tofu,124.0,8.0
+d0031,n5k,vinegar,1.365,0.0
+d0031,n5k,arugula,10.235,2.6
+d0031,n5k,mixed greens,6.824,2.2
+d0031,n5k,pumpkin seeds,1.365,19.0
+d0032,n5k,chicken,205.0,31.0
+d0032,n5k,spinach (raw),20.0,2.9
+d0033,n5k,tofu,41.0,8.0
+d0033,n5k,cheese pizza,37.0,11.2
+d0034,n5k,garlic,2.745,6.4
+d0034,n5k,salt,0.549,0.0
+d0034,n5k,soy sauce,4.391,8.1
+d0034,n5k,sugar,8.234,0.0
+d0034,n5k,cucumbers,51.0,1.0
+d0034,n5k,pork,76.85,26.0
+d0034,n5k,pepper,0.274,2.0
+d0034,n5k,bok choy,10.979,1.5
+d0034,n5k,white rice,112.979,2.7
+d0035,n5k,egg whites,570.0,10.0
+d0036,n5k,apple,117.0,0.3
+d0037,n5k,ice cream cones,6.0,7.9
+d0037,n5k,frozen yogurt,93.0,4.1
+d0038,n5k,white rice,69.0,2.7
+d0038,n5k,tomatoes,30.974,0.7
+d0038,n5k,onions,11.263,1.1
+d0038,n5k,garlic,2.346,6.4
+d0038,n5k,chicken thighs,84.476,23.9
+d0038,n5k,chili,0.056,1.8
+d0038,n5k,salt,0.099,0.0
+d0038,n5k,water,45.701,0.0
+d0038,n5k,cream,17.149,2.8
+d0038,n5k,lemon juice,0.176,0.4
+d0038,n5k,cilantro,1.875,2.2
+d0038,n5k,ginger,1.408,1.8
+d0038,n5k,greek yogurt,6.336,10.0
+d0038,n5k,oil,0.141,0.0
+d0039,n5k,cheese,12.571,25.0
+d0039,n5k,scrambled eggs,251.429,10.0
+d0040,n5k,cheese pizza,38.0,11.2
+d0041,n5k,bacon,36.0,37.0
+d0041,n5k,broccoli,45.854,2.4
+d0041,n5k,olive oil,1.146,0.0
+d0042,n5k,cherry tomatoes,23.0,0.9
+d0042,n5k,apple,116.0,0.3
+d0042,n5k,cantaloupe,95.0,0.8
+d0043,n5k,sausage,69.0,19.3
+d0043,n5k,roasted potatoes,59.0,2.1
+d0043,n5k,watermelon,48.0,0.6
+d0044,n5k,cauliflower,26.554,1.8
+d0044,n5k,pickles,4.539,0.3
+d0044,n5k,coleslaw,9.078,1.0
+d0044,n5k,barbecue sauce,2.27,0.8
+d0044,n5k,salt,0.032,0.0
+d0044,n5k,flatbread,48.034,9.1
+d0044,n5k,oil,0.492,0.0
+d0045,n5k,raspberries,51.0,1.2
+d0045,n5k,cantaloupe,60.0,0.8
+d0045,n5k,scrambled eggs,127.0,10.0
+d0045,n5k,bacon,19.0,37.0
+d0046,n5k,caesar salad,58.0,3.2
+d0046,n5k,cheese pizza,122.0,11.2
+d0047,n5k,banana,14.305,1.1
+d0047,n5k,oats,15.981,16.9
+d0047,n5k,almond milk,59.569,0.4
+d0047,n5k,chia seeds,1.146,17.0
+d0048,n5k,chickpeas,20.852,9.0
+d0048,n5k,salt,0.439,0.0
+d0048,n5k,garlic,0.521,6.4
+d0048,n5k,blueberries,7.12,0.7
+d0048,n5k,pepper,6.256,2.0
+d0048,n5k,pears,10.426,0.4
+d0048,n5k,arugula,52.13,2.6
+d0048,n5k,mustard,0.356,3.7
+d0048,n5k,olive oil,14.037,0.0
+d0048,n5k,parsley,1.399,2.9
+d0048,n5k,almonds,1.424,22.4
+d0048,n5k,vinegar,1.424,0.0
+d0048,n5k,spinach (raw),35.599,2.9
+d0048,n5k,lemon juice,4.17,0.4
+d0048,n5k,carrot,2.848,0.9
+d0049,n5k,bacon,22.0,37.0
+d0049,n5k,olive oil,0.902,0.0
+d0049,n5k,scrambled eggs,110.0,10.0
+d0049,n5k,broccoli,36.098,2.4
+d0050,n5k,fish,267.953,18.4
+d0050,n5k,cherry tomatoes,10.718,0.9
+d0050,n5k,salt,0.67,0.0
+d0050,n5k,wheat berry,53.591,4.2
+d0050,n5k,chard,10.718,1.8
+d0050,n5k,kale,13.398,3.3
+d0050,n5k,lemon juice,5.359,0.4
+d0050,n5k,parsley,2.68,2.9
+d0050,n5k,garlic,0.167,6.4
+d0050,n5k,shallots,5.359,1.5
+d0050,n5k,olive oil,10.718,0.0
+d0050,n5k,chive,0.67,3.3
+d0051,n5k,croutons,0.086,12.0
+d0051,n5k,apple,3.185,0.3
+d0051,n5k,mushroom,30.0,3.1
+d0051,n5k,vinegar,3.185,0.0
+d0051,n5k,spinach (raw),39.81,2.9
+d0051,n5k,parmesan cheese,1.141,38.4
+d0051,n5k,mustard,0.796,3.7
+d0051,n5k,onions,6.37,1.1
+d0051,n5k,cranberries,3.185,0.5
+d0051,n5k,caesar dressing,1.825,3.2
+d0051,n5k,olive oil,6.37,0.0
+d0051,n5k,kale,10.949,3.3
+d0051,n5k,salt,0.1,0.0
+d0052,n5k,white rice,106.0,2.7
+d0052,n5k,broccoli,99.0,2.4
+d0053,n5k,bacon,22.0,37.0
+d0053,n5k,scrambled eggs,84.0,10.0
+d0053,n5k,pineapple,69.0,0.5
+d0053,n5k,hash browns,73.0,2.6
+d0054,n5k,bacon,92.0,37.0
+d0055,n5k,sweet potato,145.366,1.0
+d0055,n5k,olive oil,3.634,0.0
+d0055,n5k,egg whites,557.0,10.0
+d0056,n5k,scrambled eggs,70.0,10.0
+d0056,n5k,roasted potatoes,34.0,2.1
+d0057,n5k,yam,46.226,1.6
+d0057,n5k,sweet potato,46.226,1.0
+d0057,n5k,cottage cheese,83.0,11.0
+d0057,n5k,pineapple,107.0,0.5
+d0057,n5k,watermelon,132.0,0.6
+d0057,n5k,olive oil,5.547,0.0
+d0057,n5k,berries,63.0,0.7
+d0058,n5k,chicken,167.0,31.0
+d0059,n5k,olives,129.0,0.8
+d0059,n5k,chicken,116.0,31.0
+d0059,n5k,cucumbers,101.0,1.0
+d0059,n5k,spinach (raw),57.0,2.9
+d0060,n5k,apple,6.647,0.3
+d0060,n5k,shallots,1.329,1.5
+d0060,n5k,bulgur,6.647,12.0
+d0060,n5k,salt,0.333,0.0
+d0060,n5k,lemon juice,0.665,0.4
+d0060,n5k,cranberries,1.329,0.5
+d0060,n5k,mustard greens,19.942,2.9
+d0060,n5k,olive oil,5.762,0.0
+d0060,n5k,parsley,1.329,2.9
+d0060,n5k,arugula,13.294,2.6
+d0060,n5k,broccoli,105.0,2.4
+d0060,n5k,squash,44.39,0.9
+d0060,n5k,garlic,0.332,6.4
+d0061,n5k,strawberries,232.0,0.7
+d0062,n5k,olives,67.0,0.8
+d0063,n5k,almonds,71.0,22.4
+d0064,n5k,squash,117.247,0.9
+d0064,n5k,celery,3.482,0.7
+d0064,n5k,carrot,3.482,0.9
+d0064,n5k,onions,3.482,1.1
+d0064,n5k,apple cider,27.86,0.1
+d0064,n5k,olive oil,2.198,0.0
+d0064,n5k,vinegar,1.765,0.0
+d0064,n5k,seeds,3.076,30.9
+d0064,n5k,broth,10.665,16.5
+d0064,n5k,salt,0.151,0.0
+d0064,n5k,honey,1.466,0.3
+d0064,n5k,pork,174.124,26.0
+d0065,n5k,lasagna,128.0,7.2
+d0066,n5k,pineapple,83.0,0.5
+d0066,n5k,watermelon,79.0,0.6
+d0066,n5k,grapes,75.0,0.7
+d0067,n5k,broccoli,71.0,2.4
+d0067,n5k,chicken,334.0,31.0
+d0067,n5k,mixed greens,42.0,2.2
+d0068,n5k,mashed potatoes,100.476,1.7
+d0068,n5k,butter,10.048,0.8
+d0068,n5k,chard,50.238,1.8
+d0068,n5k,celery root,50.238,1.5
+d0069,n5k,chicken,61.549,31.0
+d0069,n5k,tomatoes,7.694,0.7
+d0069,n5k,bell peppers,7.694,2.0
+d0069,n5k,spinach (raw),3.077,2.9
+d0069,n5k,onions,3.077,1.1
+d0069,n5k,garlic,1.539,6.4
+d0069,n5k,olive oil,3.077,0.0
+d0069,n5k,salt,1.539,0.0
+d0069,n5k,pepper,0.289,2.0
+d0069,n5k,jalapenos,3.077,0.9
+d0069,n5k,millet,15.387,3.5
+d0070,n5k,roasted potatoes,17.0,2.1
+d0070,n5k,chicken apple sausage,71.0,14.0
+d0070,n5k,grapes,81.0,0.7
+d0071,n5k,bagels,45.6,10.1
+d0071,n5k,cream cheese,11.4,6.2
+d0071,n5k,scrambled eggs,122.0,10.0
+d0072,n5k,scrambled eggs,177.0,10.0
+d0072,n5k,sausage,100.0,19.3
+d0073,n5k,garlic,0.929,6.4
+d0073,n5k,salmon,92.923,24.0
+d0073,n5k,pickles,0.929,0.3
+d0073,n5k,pepper,1.858,2.0
+d0073,n5k,arugula,4.646,2.6
+d0073,n5k,mayonnaise,14.868,1.0
+d0073,n5k,lentils,18.585,9.0
+d0073,n5k,olive oil,7.111,0.0
+d0073,n5k,onions,1.604,1.1
+d0073,n5k,lemon juice,0.929,0.4
+d0073,n5k,chive,0.232,3.3
+d0073,n5k,salt,0.292,0.0
+d0073,n5k,broccoli,122.927,2.4
+d0073,n5k,spinach (cooked),1.604,3.0
+d0073,n5k,bok choy,1.604,1.5
+d0073,n5k,cherry tomatoes,4.646,0.9
+d0073,n5k,beef,48.107,26.0
+d0073,n5k,kale,4.646,3.3
+d0073,n5k,parsley,0.929,2.9
+d0073,n5k,vinegar,0.08,0.0
+d0073,n5k,millet,6.414,3.5
+d0073,n5k,shallots,4.136,1.5
+d0074,n5k,grapes,134.0,0.7
+d0074,n5k,almonds,68.0,22.4
+d0074,n5k,sausage,113.0,19.3
+d0075,n5k,caesar salad,120.0,3.2
+d0075,n5k,jalapenos,0.345,0.9
+d0075,n5k,pork,206.796,26.0
+d0075,n5k,pepper,0.779,2.0
+d0075,n5k,wheat berry,27.573,4.2
+d0075,n5k,mayonnaise,5.515,1.0
+d0075,n5k,brussels sprouts,71.833,3.4
+d0075,n5k,carrot,6.893,0.9
+d0075,n5k,garlic,2.757,6.4
+d0075,n5k,cabbage,27.573,1.3
+d0075,n5k,salt,0.704,0.0
+d0075,n5k,parsley,1.379,2.9
+d0075,n5k,lemon juice,2.757,0.4
+d0075,n5k,olive oil,2.097,0.0
+d0076,n5k,corn on the cob,55.0,3.1
+d0076,n5k,vinegar,3.075,0.0
+d0076,n5k,parsley,0.04,2.9
+d0076,n5k,sun dried tomatoes,3.075,14.0
+d0076,n5k,rosemary,0.04,2.9
+d0076,n5k,carrot,3.165,0.9
+d0076,n5k,salt,1.095,0.0
+d0076,n5k,garlic,4.266,6.4
+d0076,n5k,mustard,0.384,3.7
+d0076,n5k,cucumbers,7.688,1.0
+d0076,n5k,lemon juice,0.119,0.4
+d0076,n5k,olive oil,6.783,0.0
+d0076,n5k,chive,0.04,3.3
+d0076,n5k,pork,104.248,26.0
+d0076,n5k,chicken,31.652,31.0
+d0076,n5k,spinach (raw),38.438,2.9
+d0076,n5k,pepper,0.372,2.0
+d0076,n5k,bok choy,14.893,1.5
+d0076,n5k,white rice,14.893,2.7
+d0076,n5k,brown rice,3.165,2.6
+d0076,n5k,soy sauce,5.957,8.1
+d0076,n5k,chard,0.791,1.8
+d0076,n5k,sugar,11.169,0.0
+d0076,n5k,onions,4.613,1.1
+d0076,n5k,basil,0.04,4.0
+d0077,n5k,chicken,50.0,31.0
+d0077,n5k,kimchi,44.0,1.6
+d0077,n5k,olives,40.0,0.8
+d0078,n5k,broccoli,93.0,2.4
+d0078,n5k,scrambled eggs,210.0,10.0
+d0079,n5k,potatoes,86.0,2.0
+d0079,n5k,mandarin oranges,53.0,0.8
+d0080,n5k,pineapple,2.955,0.5
+d0080,n5k,chicken thighs,117.3,23.9
+d0080,n5k,vinegar,1.764,0.0
+d0080,n5k,mushroom,82.0,3.1
+d0080,n5k,onions,7.093,1.1
+d0080,n5k,lemon juice,0.738,0.4
+d0080,n5k,basil,0.586,4.0
+d0080,n5k,olive oil,1.173,0.0
+d0080,n5k,jalapenos,0.296,0.9
+d0080,n5k,kale,2.955,3.3
+d0080,n5k,salt,0.294,0.0
+d0080,n5k,radishes,2.346,0.7
+d0080,n5k,white rice,11.822,2.7
+d0080,n5k,brown rice,11.73,2.6
+d0080,n5k,arugula,2.932,2.6
+d0080,n5k,parsley,0.586,2.9
+d0080,n5k,steak,88.662,25.0
+d0080,n5k,thyme,0.586,6.0
+d0080,n5k,cilantro,0.296,2.2
+d0080,n5k,garlic,0.884,6.4
+d0080,n5k,broccoli,148.0,2.4
+d0081,n5k,garlic,0.073,6.4
+d0081,n5k,salt,0.073,0.0
+d0081,n5k,mustard,0.146,3.7
+d0081,n5k,blueberries,2.329,0.7
+d0081,n5k,olive oil,2.329,0.0
+d0081,n5k,tofu,156.0,8.0
+d0081,n5k,spinach (raw),14.557,2.9
+d0081,n5k,vinegar,1.165,0.0
+d0081,n5k,radishes,2.329,0.7
+d0082,n5k,cherry tomatoes,2.78,0.9
+d0082,n5k,onions,1.112,1.1
+d0082,n5k,pilaf,18.0,2.5
+d0082,n5k,brown rice,11.12,2.6
+d0082,n5k,lemon juice,1.232,0.4
+d0082,n5k,parsley,1.631,2.9
+d0082,n5k,cranberries,1.353,0.5
+d0082,n5k,garlic,1.45,6.4
+d0082,n5k,basil,0.278,4.0
+d0082,n5k,salt,0.308,0.0
+d0082,n5k,pepper,1.112,2.0
+d0082,n5k,apple,6.764,0.3
+d0082,n5k,pork,83.398,26.0
+d0082,n5k,vinegar,0.556,0.0
+d0082,n5k,arugula,13.528,2.6
+d0082,n5k,mustard greens,20.292,2.9
+d0082,n5k,olive oil,7.635,0.0
+d0082,n5k,corn on the cob,64.0,3.1
+d0082,n5k,broccoli,2.78,2.4
+d0082,n5k,shallots,1.909,1.5
+d0082,n5k,bulgur,6.764,12.0
+d0083,n5k,egg whites,563.0,10.0
+d0083,n5k,olive oil,2.976,0.0
+d0083,n5k,sweet potato,119.024,1.0
+d0084,n5k,pineapple,145.0,0.5
+d0085,n5k,sausage,45.0,19.3
+d0086,n5k,brownies,23.0,6.2
+d0087,n5k,curries,277.0,12.0
+d0088,n5k,pasta salad,114.0,5.9
+d0089,n5k,pepper,0.045,2.0
+d0089,n5k,arugula,40.512,2.6
+d0089,n5k,salt,0.89,0.0
+d0089,n5k,garlic,1.238,6.4
+d0089,n5k,walnuts,1.447,15.1
+d0089,n5k,cauliflower,12.375,1.8
+d0089,n5k,vinegar,1.356,0.0
+d0089,n5k,steak,92.814,25.0
+d0089,n5k,chard,35.734,1.8
+d0089,n5k,blueberries,2.894,0.7
+d0089,n5k,wheat berry,18.563,4.2
+d0089,n5k,olive oil,5.942,0.0
+d0089,n5k,kale,28.5,3.3
+d0089,n5k,mustard,0.452,3.7
+d0089,n5k,lime,1.238,0.7
+d0090,n5k,cauliflower,57.0,1.8
+d0090,n5k,orange,127.0,0.9
+d0090,n5k,berries,107.0,0.7
+d0090,n5k,pears,203.0,0.4
+d0091,n5k,garlic,0.344,6.4
+d0091,n5k,cilantro,0.689,2.2
+d0091,n5k,salt,0.172,0.0
+d0091,n5k,pizza,79.0,11.0
+d0091,n5k,onions,2.755,1.1
+d0091,n5k,lemon juice,1.377,0.4
+d0091,n5k,olive oil,2.755,0.0
+d0091,n5k,jalapenos,0.172,0.9
+d0091,n5k,pepper,2.755,2.0
+d0091,n5k,fish,68.874,18.4
+d0091,n5k,arugula,3.444,2.6
+d0091,n5k,quinoa,13.775,4.4
+d0091,n5k,tomatillo,6.887,1.0
+d0091,n5k,roasted potatoes,33.0,2.1
+d0092,n5k,yam,70.0,1.6
+d0092,n5k,scrambled eggs,94.0,10.0
+d0093,n5k,almonds,51.0,22.4
+d0094,n5k,broccoli,112.0,2.4
+d0095,n5k,celery,3.482,0.7
+d0095,n5k,carrot,3.482,0.9
+d0095,n5k,onions,3.482,1.1
+d0095,n5k,apple cider,27.86,0.1
+d0095,n5k,vinegar,1.765,0.0
+d0095,n5k,broth,10.665,16.5
+d0095,n5k,salt,0.138,0.0
+d0095,n5k,pork,174.124,26.0
+d0096,n5k,turkey bacon,21.0,29.1
+d0096,n5k,egg whites,105.0,10.0
+d0096,n5k,fried rice,97.0,4.7
+d0096,n5k,honeydew melons,113.0,0.5
+d0097,n5k,salt,0.227,0.0
+d0097,n5k,sausage,18.0,19.3
+d0097,n5k,pineapple,56.0,0.5
+d0097,n5k,blueberries,6.602,0.7
+d0097,n5k,spinach (raw),42.944,2.9
+d0097,n5k,parsley,0.33,2.9
+d0097,n5k,mustard greens,2.484,2.9
+d0097,n5k,potatoes,54.0,2.0
+d0097,n5k,berries,44.0,0.7
+d0097,n5k,tomatoes,1.242,0.7
+d0097,n5k,scrambled eggs,77.0,10.0
+d0097,n5k,vinegar,2.314,0.0
+d0097,n5k,mustard,0.454,3.7
+d0097,n5k,cucumbers,1.987,1.0
+d0097,n5k,almonds,1.32,22.4
+d0097,n5k,olive oil,7.268,0.0
+d0097,n5k,garlic,0.186,6.4
+d0097,n5k,carrot,2.641,0.9
+d0098,n5k,almonds,133.0,22.4
+d0099,n5k,bacon,33.0,37.0
+d0099,n5k,egg whites,275.0,10.0
+d0100,n5k,broccoli,67.0,2.4
+d0100,n5k,salt,0.139,0.0
+d0100,n5k,olive oil,8.897,0.0
+d0100,n5k,mustard,1.112,3.7
+d0100,n5k,onions,8.897,1.1
+d0100,n5k,cranberries,4.449,0.5
+d0100,n5k,vinegar,4.449,0.0
+d0100,n5k,spinach (raw),55.608,2.9
+d0100,n5k,apple,4.449,0.3
+d0101,n5k,broccoli,46.884,2.4
+d0101,n5k,brisket,79.524,21.0
+d0101,n5k,olive oil,0.879,0.0
+d0101,n5k,bread crumbs,0.646,13.2
+d0101,n5k,mashed potatoes,79.524,1.7
+d0101,n5k,salt,0.005,0.0
+d0101,n5k,butter,7.952,0.8
+d0101,n5k,jalapenos,0.586,0.9
+d0102,n5k,tofu,71.0,8.0
+d0102,n5k,waffles,73.0,7.9
+d0103,n5k,almonds,80.0,22.4
+d0103,n5k,broccoli,31.0,2.4
+d0103,n5k,grapes,81.0,0.7
+d0104,n5k,spinach (raw),28.235,2.9
+d0104,n5k,vinegar,2.824,0.0
+d0104,n5k,tomatoes,3.529,0.7
+d0104,n5k,salt,0.176,0.0
+d0104,n5k,mustard,0.353,3.7
+d0104,n5k,garlic,0.529,6.4
+d0104,n5k,olive oil,5.647,0.0
+d0104,n5k,mustard greens,7.059,2.9
+d0104,n5k,cucumbers,5.647,1.0
+d0105,n5k,sausage,117.0,19.3
+d0106,n5k,bacon,66.0,37.0
+d0107,n5k,egg whites,433.0,10.0
+d0108,n5k,omelets,146.0,10.4
+d0109,n5k,cheese pizza,47.0,11.2
+d0110,n5k,cheese pizza,31.0,11.2
+d0111,n5k,greek yogurt,289.0,10.0
+d0112,n5k,almonds,116.0,22.4
+d0113,n5k,bacon,22.0,37.0
+d0113,n5k,scrambled eggs,74.0,10.0
+d0113,n5k,olive oil,2.073,0.0
+d0113,n5k,broccoli,82.927,2.4
+d0114,n5k,almonds,114.0,22.4
+d0115,n5k,cheese pizza,147.0,11.2
+d0116,n5k,garlic,0.195,6.4
+d0116,n5k,arugula,1.954,2.6
+d0116,n5k,quinoa,7.815,4.4
+d0116,n5k,pepper,1.563,2.0
+d0116,n5k,jalapenos,0.098,0.9
+d0116,n5k,squash,39.667,0.9
+d0116,n5k,lemon juice,0.781,0.4
+d0116,n5k,broccoli,39.667,2.4
+d0116,n5k,fish,39.073,18.4
+d0116,n5k,tomatillo,3.907,1.0
+d0116,n5k,olive oil,1.563,0.0
+d0116,n5k,zucchini,39.667,1.1
+d0116,n5k,onions,1.563,1.1
+d0116,n5k,salt,0.098,0.0
+d0116,n5k,cilantro,0.391,2.2
+d0117,n5k,grapes,28.0,0.7
+d0118,n5k,mixed greens,270.0,2.2
+d0118,n5k,grilled chicken,153.0,22.6
+d0119,n5k,scrambled eggs,103.0,10.0
+d0119,n5k,sausage,45.0,19.3
+d0119,n5k,roasted potatoes,72.0,2.1
+d0120,n5k,olive oil,1.221,0.0
+d0120,n5k,wheat berry,12.567,4.2
+d0120,n5k,thyme,0.314,6.0
+d0120,n5k,broccoli,46.0,2.4
+d0120,n5k,salt,0.438,0.0
+d0120,n5k,garlic,1.257,6.4
+d0120,n5k,brown rice,36.0,2.6
+d0120,n5k,parmesan cheese,3.142,38.4
+d0120,n5k,cherry tomatoes,6.283,0.9
+d0120,n5k,chicken breast,125.667,31.1
+d0120,n5k,spinach (raw),3.142,2.9
+d0120,n5k,pepperoni pizza,52.0,12.0
+d0120,n5k,squash,74.969,0.9
+d0121,n5k,mixed greens,115.0,2.2
+d0121,n5k,steak,182.0,25.0
+d0122,n5k,tuna salad,228.0,16.2
+d0123,n5k,brussels sprouts,78.721,3.4
+d0123,n5k,salt,0.394,0.0
+d0123,n5k,pepper,0.098,2.0
+d0123,n5k,olive oil,0.787,0.0
+d0124,n5k,sweet potato,128.78,1.0
+d0124,n5k,salt,0.214,0.0
+d0124,n5k,pepper,0.036,2.0
+d0124,n5k,olive oil,3.791,0.0
+d0124,n5k,carrot,57.178,0.9
+d0124,n5k,egg whites,378.0,10.0
+d0125,n5k,pepperoni,78.0,23.1
+d0125,n5k,sandwiches,86.0,11.0
+d0126,n5k,blackberries,4.968,1.4
+d0126,n5k,vinaigrette,4.968,0.0
+d0126,n5k,bacon,33.0,37.0
+d0126,n5k,granola,12.419,10.0
+d0126,n5k,mixed greens,49.677,2.2
+d0126,n5k,egg whites,275.0,10.0
+d0126,n5k,salt,0.374,0.0
+d0126,n5k,raspberries,4.968,1.2
+d0126,n5k,pepper,0.093,2.0
+d0126,n5k,brussels sprouts,74.785,3.4
+d0126,n5k,olive oil,0.748,0.0
+d0127,n5k,onions,2.799,1.1
+d0127,n5k,cucumbers,6.997,1.0
+d0127,n5k,olive oil,5.598,0.0
+d0127,n5k,mixed greens,20.991,2.2
+d0127,n5k,cherry tomatoes,5.598,0.9
+d0127,n5k,lime,0.7,0.7
+d0127,n5k,lettuce,13.994,1.4
+d0127,n5k,eggs,152.0,12.5
+d0127,n5k,salt,0.35,0.0
+d0127,n5k,pepper,0.175,2.0
+d0127,n5k,sausage,78.0,19.3
+d0127,n5k,broccoli,60.0,2.4
+d0127,n5k,vinegar,2.799,0.0
+d0127,n5k,bacon,22.0,37.0
+d0128,n5k,wheat berry,19.32,4.2
+d0128,n5k,lemon juice,1.932,0.4
+d0128,n5k,jalapenos,0.242,0.9
+d0128,n5k,mayonnaise,3.864,1.0
+d0128,n5k,pepper,0.563,2.0
+d0128,n5k,brussels sprouts,63.961,3.4
+d0128,n5k,garlic,1.932,6.4
+d0128,n5k,salt,0.561,0.0
+d0128,n5k,carrot,4.83,0.9
+d0128,n5k,cabbage,19.32,1.3
+d0128,n5k,olive oil,1.606,0.0
+d0128,n5k,parsley,0.966,2.9
+d0128,n5k,pork,144.903,26.0
+d0129,n5k,olives,21.0,0.8
+d0129,n5k,chicken salad,47.0,17.0
+d0130,n5k,almonds,22.0,22.4
+d0130,n5k,grapes,42.0,0.7
+d0130,n5k,apple,142.0,0.3
+d0131,n5k,scrambled eggs,71.667,10.0
+d0131,n5k,berries,47.0,0.7
+d0131,n5k,grapes,3.0,0.7
+d0131,n5k,salsa,14.333,1.5
+d0132,n5k,vinegar,1.056,0.0
+d0132,n5k,chicken thighs,9.902,23.9
+d0132,n5k,white rice,21.125,2.7
+d0132,n5k,pineapple,5.281,0.5
+d0132,n5k,salt,0.264,0.0
+d0132,n5k,cilantro,0.528,2.2
+d0132,n5k,garlic,1.056,6.4
+d0132,n5k,kale,5.281,3.3
+d0132,n5k,olive oil,1.056,0.0
+d0132,n5k,onions,7.394,1.1
+d0132,n5k,lemon juice,1.056,0.4
+d0133,n5k,pepperoni pizza,63.0,12.0
+d0134,n5k,beef,89.345,26.0
+d0134,n5k,orange juice,0.596,0.7
+d0134,n5k,white rice,11.913,2.7
+d0134,n5k,soy sauce,0.596,8.1
+d0134,n5k,salt,0.149,0.0
+d0134,n5k,vinegar,0.596,0.0
+d0134,n5k,kale,2.978,3.3
+d0134,n5k,olive oil,0.893,0.0
+d0134,n5k,onions,1.191,1.1
+d0134,n5k,caesar salad,99.0,3.2
+d0134,n5k,garlic,0.596,6.4
+d0134,n5k,chili,0.596,1.8
+d0134,n5k,broccoli,5.956,2.4
+d0134,n5k,green onions,0.596,1.8
+d0135,n5k,squash,1.806,0.9
+d0135,n5k,avocado,31.15,2.0
+d0135,n5k,cheese,0.441,25.0
+d0135,n5k,apple,1.68,0.3
+d0135,n5k,radishes,5.192,0.7
+d0135,n5k,coleslaw,3.36,1.0
+d0135,n5k,onions,0.693,1.1
+d0135,n5k,multigrain bread,0.794,4.1
+d0135,n5k,olive oil,5.192,0.0
+d0135,n5k,bread crumbs,0.667,13.2
+d0135,n5k,eggs,0.396,12.5
+d0135,n5k,salt,0.061,0.0
+d0135,n5k,water,1.176,0.0
+d0135,n5k,jalapenos,20.767,0.9
+d0135,n5k,pistachios,5.192,21.0
+d0135,n5k,flatbread,17.78,9.1
+d0135,n5k,arugula,6.922,2.6
+d0135,n5k,lemon juice,1.731,0.4
+d0136,n5k,caesar salad,31.0,3.2
+d0136,n5k,green onions,0.485,1.8
+d0136,n5k,fried rice,15.0,4.7
+d0136,n5k,country rice,9.706,3.86
+d0136,n5k,olive oil,1.227,0.0
+d0136,n5k,onions,1.941,1.1
+d0136,n5k,squash,25.647,0.9
+d0136,n5k,fish,48.532,18.4
+d0136,n5k,salt,0.218,0.0
+d0136,n5k,garlic,0.243,6.4
+d0137,n5k,bacon,92.0,37.0
+d0138,n5k,mustard,0.228,3.7
+d0138,n5k,arugula,22.842,2.6
+d0138,n5k,orange,9.137,0.9
+d0138,n5k,pepper,0.029,2.0
+d0138,n5k,salt,0.114,0.0
+d0138,n5k,lime,0.685,0.7
+d0138,n5k,raisins,4.568,3.1
+d0138,n5k,olive oil,3.655,0.0
+d0138,n5k,broccoli,74.0,2.4
+d0138,n5k,pecans,2.741,9.0
+d0138,n5k,wheat berry,77.0,4.2
+d0139,n5k,bacon,14.0,37.0
+d0139,n5k,olive oil,1.171,0.0
+d0139,n5k,sweet potato,46.829,1.0
+d0140,n5k,scrambled eggs,177.0,10.0
+d0141,n5k,olive oil,12.412,0.0
+d0141,n5k,bacon,19.0,37.0
+d0141,n5k,radishes,12.412,0.7
+d0141,n5k,vinegar,6.206,0.0
+d0141,n5k,bell peppers,15.515,2.0
+d0141,n5k,garlic,0.776,6.4
+d0141,n5k,salt,0.388,0.0
+d0141,n5k,cucumbers,15.515,1.0
+d0141,n5k,mustard,0.776,3.7
+d0142,n5k,chicken,64.0,31.0
+d0143,n5k,shallots,0.575,1.5
+d0143,n5k,fish,28.759,18.4
+d0143,n5k,corn on the cob,88.0,3.1
+d0143,n5k,mushroom,5.872,3.1
+d0143,n5k,ground turkey,44.037,25.0
+d0143,n5k,cream,1.174,2.8
+d0143,n5k,olive oil,1.738,0.0
+d0143,n5k,thyme,0.037,6.0
+d0143,n5k,onions,1.468,1.1
+d0143,n5k,lemon juice,0.575,0.4
+d0143,n5k,salt,0.219,0.0
+d0143,n5k,parsley,0.288,2.9
+d0143,n5k,carrot,0.734,0.9
+d0143,n5k,white rice,5.872,2.7
+d0143,n5k,cherry tomatoes,1.15,0.9
+d0143,n5k,eggs,1.651,12.5
+d0143,n5k,chard,1.15,1.8
+d0143,n5k,wheat berry,5.752,4.2
+d0143,n5k,kale,2.906,3.3
+d0143,n5k,celery,0.734,0.7
+d0143,n5k,chive,0.219,3.3
+d0143,n5k,garlic,0.091,6.4
+d0144,n5k,onions,6.08,1.1
+d0144,n5k,lime,2.432,0.7
+d0144,n5k,bell peppers,2.432,2.0
+d0144,n5k,salt,0.685,0.0
+d0144,n5k,arugula,3.648,2.6
+d0144,n5k,wheat berry,111.65,4.2
+d0144,n5k,olive oil,9.229,0.0
+d0144,n5k,parsley,0.304,2.9
+d0144,n5k,snow peas,4.864,5.0
+d0144,n5k,carrot,101.54,0.9
+d0144,n5k,artichokes,6.08,3.3
+d0144,n5k,chive,0.304,3.3
+d0144,n5k,garlic,0.608,6.4
+d0144,n5k,fish,121.605,18.4
+d0144,n5k,pepper,0.215,2.0
+d0144,n5k,white beans,24.321,9.7
+d0145,n5k,cucumbers,0.118,1.0
+d0145,n5k,corn,1.755,3.4
+d0145,n5k,coleslaw,2.7,1.0
+d0145,n5k,onions,0.236,1.1
+d0145,n5k,garlic,0.03,6.4
+d0145,n5k,eggs,0.29,12.5
+d0145,n5k,cornmeal,0.742,7.0
+d0145,n5k,salt,0.02,0.0
+d0145,n5k,pepper,0.005,2.0
+d0145,n5k,mangos,2.7,0.8
+d0145,n5k,flatbread,28.571,9.1
+d0145,n5k,zucchini,1.316,1.1
+d0145,n5k,milk,0.675,3.5
+d0145,n5k,cilantro,0.034,2.2
+d0145,n5k,parsley,0.053,2.9
+d0145,n5k,greek yogurt,2.574,10.0
+d0145,n5k,oil,0.18,0.0
+d0146,n5k,olive oil,0.99,0.0
+d0146,n5k,olives,54.0,0.8
+d0146,n5k,wild rice,118.0,5.0
+d0146,n5k,wheat berry,33.01,4.2
+d0147,n5k,sausage,75.0,19.3
+d0148,n5k,cottage cheese,176.0,11.0
+d0149,n5k,pears,18.657,0.4
+d0149,n5k,honey,6.219,0.3
+d0149,n5k,quinoa,24.876,4.4
+d0149,n5k,parsley,1.036,2.9
+d0149,n5k,ginger,1.555,1.8
+d0149,n5k,greek yogurt,18.657,10.0
+d0150,n5k,pineapple,78.0,0.5
+d0150,n5k,honeydew melons,98.0,0.5
+d0150,n5k,cauliflower,75.0,1.8
+d0151,n5k,tomatoes,95.0,0.7
+d0151,n5k,caesar salad,77.0,3.2
+d0152,n5k,turkey,130.0,29.0
+d0152,n5k,squash,97.391,0.9
+d0152,n5k,cucumbers,20.0,1.0
+d0152,n5k,olive oil,1.826,0.0
+d0152,n5k,seeds,2.555,30.9
+d0152,n5k,pita bread,30.0,8.8
+d0152,n5k,salt,0.011,0.0
+d0152,n5k,honey,1.217,0.3
+d0153,n5k,olive oil,5.598,0.0
+d0153,n5k,mozzarella cheese,22.392,28.0
+d0153,n5k,basil,5.598,4.0
+d0153,n5k,pizza dough,29.619,5.4
+d0153,n5k,pizza sauce,16.794,1.3
+d0154,n5k,chicken,100.837,31.0
+d0154,n5k,green beans,30.225,1.8
+d0154,n5k,squash,5.042,0.9
+d0154,n5k,spinach (raw),2.521,2.9
+d0154,n5k,lemon juice,0.504,0.4
+d0154,n5k,garlic,0.504,6.4
+d0154,n5k,caesar salad,49.0,3.2
+d0154,n5k,thyme,0.252,6.0
+d0154,n5k,olive oil,2.792,0.0
+d0154,n5k,country rice,71.0,3.86
+d0154,n5k,salt,0.126,0.0
+d0154,n5k,pepper,0.063,2.0
+d0154,n5k,wheat berry,10.084,4.2
+d0154,n5k,parsley,0.504,2.9
+d0154,n5k,basil,0.252,4.0
+d0154,n5k,pizza,98.0,11.0
+d0154,n5k,zucchini,5.042,1.1
+d0154,n5k,rosemary,0.252,2.9
+d0155,n5k,scrambled eggs,263.81,10.0
+d0155,n5k,cheese,13.19,25.0
+d0156,n5k,raspberries,2.065,1.2
+d0156,n5k,vinaigrette,2.065,0.0
+d0156,n5k,berries,68.0,0.7
+d0156,n5k,granola,5.161,10.0
+d0156,n5k,blackberries,2.065,1.4
+d0156,n5k,mixed greens,20.645,2.2
+d0156,n5k,honeydew melons,41.0,0.5
+d0157,n5k,egg whites,398.0,10.0
+d0158,n5k,dumplings,132.0,6.2
+d0159,n5k,cheese pizza,228.0,11.2
+d0160,n5k,cheese pizza,155.0,11.2
+d0161,n5k,olive oil,3.536,0.0
+d0161,n5k,cucumbers,4.42,1.0
+d0161,n5k,fried rice,35.0,4.7
+d0161,n5k,caesar salad,119.0,3.2
+d0161,n5k,salt,0.111,0.0
+d0161,n5k,cheese pizza,68.0,11.2
+d0161,n5k,figs,4.42,2.5
+d0161,n5k,cherry tomatoes,4.42,0.9
+d0161,n5k,mustard,0.221,3.7
+d0161,n5k,chard,8.841,1.8
+d0161,n5k,vinegar,1.768,0.0
+d0161,n5k,spinach (raw),13.261,2.9
+d0162,n5k,eggs,126.0,12.5
+d0163,n5k,sausage,109.0,19.3
+d0163,n5k,scrambled eggs,383.0,10.0
+d0164,n5k,bacon,35.0,37.0
+d0165,n5k,scrambled eggs,150.0,10.0
+d0165,n5k,garden salad,61.0,6.1
+d0165,n5k,hash browns,89.0,2.6
+d0166,n5k,mustard,0.699,3.7
+d0166,n5k,spinach (raw),69.903,2.9
+d0166,n5k,olive oil,11.184,0.0
+d0166,n5k,almonds,2.796,22.4
+d0166,n5k,carrot,5.592,0.9
+d0166,n5k,salt,0.35,0.0
+d0166,n5k,parsley,0.699,2.9
+d0166,n5k,blueberries,13.981,0.7
+d0166,n5k,vinegar,2.796,0.0
+d0167,n5k,cheese pizza,90.0,11.2
+d0168,n5k,olive oil,2.869,0.0
+d0168,n5k,mozzarella cheese,11.476,28.0
+d0168,n5k,basil,2.869,4.0
+d0168,n5k,pizza dough,15.18,5.4
+d0168,n5k,pizza sauce,8.607,1.3
+d0169,n5k,salt,0.654,0.0
+d0169,n5k,lime,1.116,0.7
+d0169,n5k,broccoli,73.0,2.4
+d0169,n5k,squash,91.739,0.9
+d0169,n5k,wheat berry,7.31,4.2
+d0169,n5k,jalapenos,0.744,0.9
+d0169,n5k,rosemary,0.501,2.9
+d0169,n5k,zucchini,5.006,1.1
+d0169,n5k,onions,4.992,1.1
+d0169,n5k,spinach (raw),1.828,2.9
+d0169,n5k,mustard greens,14.879,2.9
+d0169,n5k,cilantro,0.744,2.2
+d0169,n5k,parmesan cheese,1.828,38.4
+d0169,n5k,thyme,0.183,6.0
+d0169,n5k,mangos,7.439,0.8
+d0169,n5k,cherry tomatoes,11.095,0.9
+d0169,n5k,arugula,24.822,2.6
+d0169,n5k,pork,75.096,26.0
+d0169,n5k,chicken breast,73.101,31.1
+d0169,n5k,cucumbers,7.439,1.0
+d0169,n5k,lemon juice,1.116,0.4
+d0169,n5k,parsley,0.25,2.9
+d0169,n5k,olive oil,2.436,0.0
+d0169,n5k,garlic,1.232,6.4
+d0169,n5k,tomatoes,7.439,0.7
+d0169,n5k,white rice,10.013,2.7
+d0170,n5k,bacon,29.0,37.0
+d0170,n5k,hash browns,114.0,2.6
+d0171,n5k,berries,108.0,0.7
+d0172,n5k,cherry tomatoes,53.0,0.9
+d0172,n5k,carrot,49.0,0.9
+d0172,n5k,bell peppers,43.0,2.0
+d0172,n5k,olives,36.0,0.8
+d0172,n5k,grilled chicken,163.0,22.6
+d0172,n5k,onions,43.0,1.1
+d0173,n5k,brussels sprouts,118.0,3.4
+d0173,n5k,honeydew melons,152.0,0.5
+d0173,n5k,broccoli,94.0,2.4
+d0174,n5k,white rice,10.347,2.7
+d0174,n5k,cauliflower,20.268,1.8
+d0174,n5k,soy sauce,0.517,8.1
+d0174,n5k,caesar salad,69.0,3.2
+d0174,n5k,steak,152.01,25.0
+d0174,n5k,spinach (raw),2.587,2.9
+d0174,n5k,tofu,39.0,8.0
+d0174,n5k,garlic,3.061,6.4
+d0174,n5k,green onions,0.517,1.8
+d0174,n5k,broccoli,2.587,2.4
+d0174,n5k,salt,1.078,0.0
+d0174,n5k,chicken,103.466,31.0
+d0174,n5k,ginger,0.517,1.8
+d0174,n5k,green beans,2.587,1.8
+d0174,n5k,wheat berry,30.402,4.2
+d0174,n5k,vinegar,0.517,0.0
+d0174,n5k,olive oil,0.512,0.0
+d0174,n5k,lime,2.027,0.7
+d0175,n5k,scrambled eggs,121.0,10.0
+d0175,n5k,bacon,92.0,37.0
+d0175,n5k,sausage,88.0,19.3
+d0176,n5k,scrambled eggs,149.0,10.0
+d0176,n5k,chicken apple sausage,172.0,14.0
+d0177,n5k,tuna,102.0,29.0
+d0177,n5k,chicken breast,133.0,31.1
+d0177,n5k,bell peppers,69.0,2.0
+d0177,n5k,cheese pizza,76.0,11.2
+d0178,n5k,olive oil,1.379,0.0
+d0178,n5k,mayonnaise,5.515,1.0
+d0178,n5k,wheat berry,27.573,4.2
+d0178,n5k,pork,206.796,26.0
+d0178,n5k,pepper,0.689,2.0
+d0178,n5k,salt,0.345,0.0
+d0178,n5k,cabbage,27.573,1.3
+d0178,n5k,carrot,6.893,0.9
+d0178,n5k,garlic,2.757,6.4
+d0178,n5k,lemon juice,2.757,0.4
+d0178,n5k,parsley,1.379,2.9
+d0178,n5k,jalapenos,0.345,0.9
+d0179,n5k,bacon,61.0,37.0
+d0180,n5k,strawberries,77.0,0.7
+d0180,n5k,pears,200.0,0.4
+d0181,n5k,mustard,0.406,3.7
+d0181,n5k,vinegar,2.601,0.0
+d0181,n5k,mixed greens,32.509,2.2
+d0181,n5k,celery root,2.601,1.5
+d0181,n5k,olive oil,5.201,0.0
+d0181,n5k,salt,0.081,0.0
+d0181,n5k,cherry tomatoes,2.601,0.9
+d0182,n5k,egg whites,472.0,10.0
+d0182,n5k,cantaloupe,136.0,0.8
+d0182,n5k,pineapple,62.0,0.5
+d0183,n5k,olives,21.0,0.8
+d0184,n5k,bacon,23.0,37.0
+d0185,n5k,mushroom,54.0,3.1
+d0185,n5k,asparagus,22.0,2.2
+d0185,n5k,pizza,103.0,11.0
+d0186,n5k,salt,0.341,0.0
+d0186,n5k,broccoli,130.732,2.4
+d0186,n5k,chickpeas,54.602,9.0
+d0186,n5k,parsley,5.46,2.9
+d0186,n5k,mustard greens,13.651,2.9
+d0186,n5k,olive oil,13.643,0.0
+d0186,n5k,arugula,13.651,2.6
+d0186,n5k,vinegar,5.46,0.0
+d0186,n5k,pepper,5.46,2.0
+d0187,n5k,sweet potato,99.512,1.0
+d0187,n5k,egg whites,398.0,10.0
+d0187,n5k,honeydew melons,75.0,0.5
+d0187,n5k,olive oil,2.488,0.0
+d0188,n5k,lemon juice,0.146,0.4
+d0188,n5k,basil,0.292,4.0
+d0188,n5k,mushroom,2.92,3.1
+d0188,n5k,vinegar,0.112,0.0
+d0188,n5k,beef,67.197,26.0
+d0188,n5k,chicken,58.394,31.0
+d0188,n5k,millet,8.96,3.5
+d0188,n5k,spinach (cooked),2.24,3.0
+d0188,n5k,olives,54.0,0.8
+d0188,n5k,rosemary,0.182,2.9
+d0188,n5k,onions,2.24,1.1
+d0188,n5k,olive oil,1.032,0.0
+d0188,n5k,oregano,0.182,9.0
+d0188,n5k,cream,2.336,2.8
+d0188,n5k,arugula,1.46,2.6
+d0188,n5k,wheat berry,5.839,4.2
+d0188,n5k,pepper,0.292,2.0
+d0188,n5k,bok choy,2.24,1.5
+d0188,n5k,garlic,0.584,6.4
+d0188,n5k,shallots,4.772,1.5
+d0188,n5k,salt,0.668,0.0
+d0188,n5k,butter,0.584,0.8
+d0188,n5k,white wine,0.146,0.1
+d0188,n5k,thyme,0.182,6.0
+d0189,n5k,raspberries,57.0,1.2
+d0189,n5k,chicken apple sausage,39.0,14.0
+d0190,n5k,cucumbers,21.0,1.0
+d0190,n5k,celery,2.275,0.7
+d0190,n5k,carrot,2.275,0.9
+d0190,n5k,onions,2.275,1.1
+d0190,n5k,apple cider,18.202,0.1
+d0190,n5k,vinegar,1.153,0.0
+d0190,n5k,broth,6.968,16.5
+d0190,n5k,salt,0.09,0.0
+d0190,n5k,pork,113.761,26.0
+d0191,n5k,olive oil,2.293,0.0
+d0191,n5k,sweet potato,91.707,1.0
+d0192,n5k,hash browns,129.0,2.6
+d0193,n5k,salt,0.196,0.0
+d0193,n5k,pepper,0.033,2.0
+d0193,n5k,carrot,52.249,0.9
+d0193,n5k,olive oil,0.522,0.0
+d0194,n5k,turkey bacon,53.0,29.1
+d0194,n5k,olive oil,1.341,0.0
+d0194,n5k,scrambled eggs,179.0,10.0
+d0194,n5k,broccoli,53.659,2.4
+d0195,n5k,turkey,130.0,29.0
+d0195,n5k,squash,97.391,0.9
+d0195,n5k,cucumbers,20.0,1.0
+d0195,n5k,olive oil,1.826,0.0
+d0195,n5k,seeds,2.555,30.9
+d0195,n5k,salt,0.011,0.0
+d0195,n5k,honey,1.217,0.3
+d0196,n5k,chicken,60.732,31.0
+d0196,n5k,orange juice,0.519,0.7
+d0196,n5k,green onions,0.519,1.8
+d0196,n5k,white rice,10.372,2.7
+d0196,n5k,mushroom,30.0,3.1
+d0196,n5k,shallots,0.019,1.5
+d0196,n5k,lemon juice,0.304,0.4
+d0196,n5k,garlic,0.822,6.4
+d0196,n5k,cranberries,3.185,0.5
+d0196,n5k,caesar dressing,1.825,3.2
+d0196,n5k,olive oil,8.362,0.0
+d0196,n5k,thyme,0.152,6.0
+d0196,n5k,salt,0.305,0.0
+d0196,n5k,parsley,0.607,2.9
+d0196,n5k,roasted potatoes,47.0,2.1
+d0196,n5k,croutons,0.086,12.0
+d0196,n5k,apple,3.185,0.3
+d0196,n5k,wheat berry,6.073,4.2
+d0196,n5k,spinach (raw),41.329,2.9
+d0196,n5k,parmesan cheese,1.141,38.4
+d0196,n5k,vinegar,3.703,0.0
+d0196,n5k,kale,13.542,3.3
+d0196,n5k,mustard,0.796,3.7
+d0196,n5k,onions,7.407,1.1
+d0196,n5k,beef,77.792,26.0
+d0196,n5k,broccoli,5.186,2.4
+d0196,n5k,soy sauce,0.519,8.1
+d0196,n5k,chili,0.519,1.8
+d0197,n5k,scrambled eggs,182.0,10.0
+d0197,n5k,bacon,33.0,37.0
+d0198,n5k,parsley,0.272,2.9
+d0198,n5k,cheese pizza,43.0,11.2
+d0198,n5k,garlic,0.272,6.4
+d0198,n5k,rosemary,0.136,2.9
+d0198,n5k,zucchini,2.718,1.1
+d0198,n5k,thyme,0.136,6.0
+d0198,n5k,olive oil,1.812,0.0
+d0198,n5k,caesar salad,105.0,3.2
+d0198,n5k,spinach (raw),1.359,2.9
+d0198,n5k,green beans,28.275,1.8
+d0198,n5k,salt,0.068,0.0
+d0198,n5k,basil,0.136,4.0
+d0198,n5k,lemon juice,0.272,0.4
+d0198,n5k,country rice,45.0,3.86
+d0198,n5k,squash,2.718,0.9
+d0198,n5k,wheat berry,5.436,4.2
+d0198,n5k,pepper,0.034,2.0
+d0198,n5k,chicken,54.357,31.0
+d0199,n5k,berries,61.0,0.7
+d0199,n5k,yam,29.0,1.6
+d0199,n5k,bagels,54.4,10.1
+d0199,n5k,bacon,7.0,37.0
+d0199,n5k,cream cheese,13.6,6.2
+d0200,n5k,egg whites,177.0,10.0
+d0201,n5k,pizza,122.0,11.0
+d0202,n5k,green beans,83.85,1.8
+d0202,n5k,olive oil,2.15,0.0
+d0203,n5k,salt,0.155,0.0
+d0203,n5k,pepper,0.026,2.0
+d0203,n5k,olive oil,0.414,0.0
+d0203,n5k,cauliflower,58.0,1.8
+d0203,n5k,strawberries,59.0,0.7
+d0203,n5k,carrot,41.405,0.9
+d0203,n5k,broccoli,54.0,2.4
+d0204,n5k,corn on the cob,110.0,3.1
+d0205,n5k,celery,1.594,0.7
+d0205,n5k,carrot,1.594,0.9
+d0205,n5k,onions,10.502,1.1
+d0205,n5k,apple cider,12.754,0.1
+d0205,n5k,olive oil,4.454,0.0
+d0205,n5k,vinegar,0.808,0.0
+d0205,n5k,mozzarella cheese,17.816,28.0
+d0205,n5k,broth,4.882,16.5
+d0205,n5k,salt,0.142,0.0
+d0205,n5k,eggplant,17.816,1.0
+d0205,n5k,pork,79.71,26.0
+d0205,n5k,pizza dough,23.566,5.4
+d0205,n5k,pizza sauce,13.362,1.3
+d0206,n5k,broccoli,60.0,2.4
+d0207,n5k,bacon,35.0,37.0
+d0207,n5k,scrambled eggs,110.833,10.0
+d0207,n5k,hash browns,99.0,2.6
+d0207,n5k,salsa,22.167,1.5
+d0208,n5k,chicken breast,133.0,31.1
+d0208,n5k,bell peppers,69.0,2.0
+d0208,n5k,tuna,102.0,29.0
+d0209,n5k,scrambled eggs,158.333,10.0
+d0209,n5k,roasted potatoes,98.0,2.1
+d0209,n5k,salsa,31.667,1.5
+d0210,n5k,sausage,85.0,19.3
+d0210,n5k,egg whites,80.0,10.0
+d0210,n5k,roasted potatoes,66.0,2.1
+d0211,n5k,scrambled eggs,68.0,10.0
+d0211,n5k,yam,50.0,1.6
+d0211,n5k,grapes,30.0,0.7
+d0211,n5k,egg whites,67.0,10.0
+d0211,n5k,olive oil,6.0,0.0
+d0211,n5k,sweet potato,50.0,1.0
+d0212,n5k,carrot,147.874,0.9
+d0212,n5k,pineapple,188.0,0.5
+d0212,n5k,salt,0.975,0.0
+d0212,n5k,thyme,0.21,6.0
+d0212,n5k,olive oil,7.87,0.0
+d0212,n5k,arugula,6.728,2.6
+d0212,n5k,brown rice,33.64,2.6
+d0212,n5k,pepper,8.502,2.0
+d0212,n5k,salmon,168.2,24.0
+d0213,n5k,chicken breast,10.678,31.1
+d0213,n5k,cherry tomatoes,0.534,0.9
+d0213,n5k,vinegar,2.376,0.0
+d0213,n5k,white rice,11.239,2.7
+d0213,n5k,pork,84.291,26.0
+d0213,n5k,wheat berry,1.068,4.2
+d0213,n5k,spinach (raw),29.967,2.9
+d0213,n5k,onions,8.686,1.1
+d0213,n5k,zucchini,5.619,1.1
+d0213,n5k,parsley,0.281,2.9
+d0213,n5k,rosemary,0.562,2.9
+d0213,n5k,olive oil,5.354,0.0
+d0213,n5k,parmesan cheese,0.267,38.4
+d0213,n5k,thyme,0.027,6.0
+d0213,n5k,mustard,0.594,3.7
+d0213,n5k,arugula,2.81,2.6
+d0213,n5k,cranberries,2.376,0.5
+d0213,n5k,garlic,0.669,6.4
+d0213,n5k,salt,0.228,0.0
+d0213,n5k,apple,2.376,0.3
+d0214,n5k,shallots,10.13,1.5
+d0214,n5k,salt,0.19,0.0
+d0214,n5k,kale,24.5,3.3
+d0214,n5k,onions,5.065,1.1
+d0214,n5k,olive oil,1.013,0.0
+d0214,n5k,chard,24.5,1.8
+d0214,n5k,vinegar,0.253,0.0
+d0214,n5k,beef,151.957,26.0
+d0214,n5k,spinach (cooked),5.065,3.0
+d0214,n5k,millet,20.261,3.5
+d0214,n5k,bok choy,5.065,1.5
+d0215,n5k,bacon,42.0,37.0
+d0216,n5k,almonds,119.0,22.4
+d0217,n5k,sausage,73.0,19.3
+d0218,n5k,egg whites,446.0,10.0
+d0219,n5k,spinach (raw),64.0,2.9
+d0219,n5k,chicken,149.0,31.0
+d0219,n5k,cucumbers,75.0,1.0
+d0220,n5k,quinoa,11.923,4.4
+d0220,n5k,squash,5.962,0.9
+d0220,n5k,eggplant,5.962,1.0
+d0220,n5k,mushroom,5.962,3.1
+d0220,n5k,spinach (cooked),2.981,3.0
+d0220,n5k,shallots,1.192,1.5
+d0220,n5k,garlic,0.596,6.4
+d0220,n5k,wine,0.596,0.1
+d0220,n5k,salt,0.149,0.0
+d0220,n5k,lemon juice,0.149,0.4
+d0220,n5k,olive oil,0.298,0.0
+d0220,n5k,chicken thighs,119.231,23.9
+d0221,n5k,squash,117.321,0.9
+d0221,n5k,olive oil,2.2,0.0
+d0221,n5k,salt,0.013,0.0
+d0221,n5k,dates,1.467,2.5
+d0222,n5k,strawberries,65.0,0.7
+d0222,n5k,sausage,51.0,19.3
+d0222,n5k,scrambled eggs,126.0,10.0
+d0222,n5k,broccoli,33.0,2.4
+d0223,n5k,egg whites,87.0,10.0
+d0223,n5k,yam,29.5,1.6
+d0223,n5k,berries,171.0,0.7
+d0223,n5k,chicken apple sausage,35.0,14.0
+d0223,n5k,sweet potato,29.5,1.0
+d0223,n5k,pineapple,117.0,0.5
+d0224,n5k,sweet potato,79.0,1.0
+d0224,n5k,scrambled eggs,146.0,10.0
+d0225,n5k,sausage,108.0,19.3
+d0226,n5k,scrambled eggs,104.0,10.0
+d0226,n5k,bacon,37.0,37.0
+d0226,n5k,yam,87.0,1.6
+d0227,n5k,carrot,50.277,0.9
+d0227,n5k,salt,0.189,0.0
+d0227,n5k,pepper,0.031,2.0
+d0227,n5k,olive oil,0.503,0.0
+d0228,n5k,arugula,19.412,2.6
+d0228,n5k,mustard,0.404,3.7
+d0228,n5k,vinegar,2.588,0.0
+d0228,n5k,mixed greens,12.941,2.2
+d0228,n5k,carrot,5.176,0.9
+d0228,n5k,pumpkin seeds,2.588,19.0
+d0228,n5k,lettuce,6.471,1.4
+d0228,n5k,salt,0.243,0.0
+d0228,n5k,honeydew melons,95.0,0.5
+d0228,n5k,green beans,38.0,1.8
+d0228,n5k,wild rice,56.0,5.0
+d0228,n5k,olive oil,5.176,0.0
+d0229,n5k,turkey,130.0,29.0
+d0229,n5k,cucumbers,20.0,1.0
+d0230,n5k,brussels sprouts,118.0,3.4
+d0230,n5k,carrot,75.0,0.9
+d0230,n5k,almonds,72.0,22.4
+d0230,n5k,apple,161.0,0.3
+d0231,n5k,vinegar,0.08,0.0
+d0231,n5k,bok choy,1.604,1.5
+d0231,n5k,millet,6.414,3.5
+d0231,n5k,cauliflower,308.0,1.8
+d0231,n5k,beef,48.107,26.0
+d0231,n5k,salt,0.06,0.0
+d0231,n5k,shallots,3.207,1.5
+d0231,n5k,spinach (cooked),1.604,3.0
+d0231,n5k,olive oil,0.321,0.0
+d0231,n5k,onions,1.604,1.1
+d0232,n5k,squash,81.874,0.9
+d0232,n5k,olive oil,0.819,0.0
+d0232,n5k,salt,0.307,0.0
+d0233,n5k,grapes,81.0,0.7
+d0233,n5k,roasted potatoes,17.0,2.1
+d0233,n5k,watermelon,73.0,0.6
+d0233,n5k,strawberries,62.0,0.7
+d0233,n5k,chicken apple sausage,71.0,14.0
+d0234,n5k,salt,0.264,0.0
+d0234,n5k,broccoli,3.243,2.4
+d0234,n5k,basil,0.324,4.0
+d0234,n5k,lemon juice,0.649,0.4
+d0234,n5k,parsley,0.324,2.9
+d0234,n5k,onions,2.925,1.1
+d0234,n5k,white rice,103.0,2.7
+d0234,n5k,vinegar,0.649,0.0
+d0234,n5k,pork,97.297,26.0
+d0234,n5k,brown rice,12.973,2.6
+d0234,n5k,pepper,1.297,2.0
+d0234,n5k,country rice,8.141,3.86
+d0234,n5k,shallots,0.649,1.5
+d0234,n5k,cherry tomatoes,3.243,0.9
+d0234,n5k,olive oil,3.409,0.0
+d0234,n5k,garlic,1.501,6.4
+d0234,n5k,fish,40.705,18.4
+d0234,n5k,green onions,0.407,1.8
+d0235,n5k,cauliflower,96.0,1.8
+d0236,n5k,avocado,64.0,2.0
+d0236,n5k,mixed greens,61.0,2.2
+d0236,n5k,onions,36.0,1.1
+d0236,n5k,chicken,198.0,31.0
+d0237,n5k,tofu,69.0,8.0
+d0238,n5k,chicken,103.0,31.0
+d0238,n5k,avocado,49.0,2.0
+d0238,n5k,olives,80.0,0.8
+d0238,n5k,parmesan cheese,19.0,38.4
+d0238,n5k,spinach (raw),61.0,2.9
+d0238,n5k,broccoli,67.0,2.4
+d0239,n5k,pepperoni pizza,170.0,12.0
+d0240,n5k,salt,0.049,0.0
+d0240,n5k,onions,1.298,1.1
+d0240,n5k,cheese pizza,40.0,11.2
+d0240,n5k,spinach (cooked),1.298,3.0
+d0240,n5k,beef,38.944,26.0
+d0240,n5k,millet,5.192,3.5
+d0240,n5k,bok choy,1.298,1.5
+d0240,n5k,shallots,2.596,1.5
+d0240,n5k,vinegar,0.065,0.0
+d0240,n5k,olive oil,0.26,0.0
+d0241,n5k,chia seeds,163.0,17.0
+d0242,n5k,salt,0.187,0.0
+d0242,n5k,pepper,0.047,2.0
+d0242,n5k,brussels sprouts,37.392,3.4
+d0242,n5k,olive oil,0.374,0.0
+d0242,n5k,bacon,38.0,37.0
+d0243,n5k,scrambled eggs,383.0,10.0
+d0244,n5k,grapes,52.0,0.7
+d0244,n5k,almonds,48.0,22.4
+d0244,n5k,sausage,112.0,19.3
+d0245,n5k,brown rice,0.001,2.6
+d0245,n5k,white rice,0.001,2.7
+d0245,n5k,broccoli,3.844,2.4
+d0245,n5k,chicken,153.749,31.0
+d0245,n5k,spinach (raw),0.24,2.9
+d0245,n5k,salt,0.036,0.0
+d0245,n5k,teriyaki sauce,0.24,5.9
+d0245,n5k,green onions,1.085,1.8
+d0245,n5k,oil,1.805,0.0
+d0246,n5k,carrot,66.0,0.9
+d0246,n5k,bell peppers,80.0,2.0
+d0246,n5k,chicken,187.0,31.0
+d0246,n5k,parmesan cheese,21.0,38.4
+d0246,n5k,onions,56.0,1.1
+d0246,n5k,cherry tomatoes,67.0,0.9
+d0246,n5k,olives,44.0,0.8
+d0247,n5k,cauliflower,56.902,1.8
+d0247,n5k,squash,119.26,0.9
+d0247,n5k,pickles,9.727,0.3
+d0247,n5k,coleslaw,19.454,1.0
+d0247,n5k,barbecue sauce,4.863,0.8
+d0247,n5k,olive oil,2.236,0.0
+d0247,n5k,salt,0.082,0.0
+d0247,n5k,dates,1.491,2.5
+d0247,n5k,flatbread,102.931,9.1
+d0247,n5k,oil,1.055,0.0
+d0248,n5k,almonds,68.0,22.4
+d0249,n5k,grapefruit juice,241.0,0.5
+d0250,n5k,salt,0.192,0.0
+d0250,n5k,olive oil,0.513,0.0
+d0250,n5k,pepper,0.032,2.0
+d0250,n5k,pears,202.0,0.4
+d0250,n5k,garden salad,35.0,6.1
+d0250,n5k,carrot,51.263,0.9
+d0251,n5k,apple,116.0,0.3
+d0252,n5k,brown rice,5.802,2.6
+d0252,n5k,spinach (raw),1.451,2.9
+d0252,n5k,onions,0.58,1.1
+d0252,n5k,garlic,0.87,6.4
+d0252,n5k,shallots,0.87,1.5
+d0252,n5k,olive oil,0.218,0.0
+d0252,n5k,chili,0.073,1.8
+d0252,n5k,salt,0.073,0.0
+d0252,n5k,salmon,29.012,24.0
+d0252,n5k,lime,0.036,0.7
+d0252,n5k,jalapenos,0.29,0.9
+d0252,n5k,lemon juice,0.29,0.4
+d0252,n5k,cilantro,0.29,2.2
+d0252,n5k,ginger,0.145,1.8
+d0253,n5k,egg whites,408.0,10.0
+d0254,n5k,brisket,202.381,21.0
+d0254,n5k,olive oil,3.639,0.0
+d0254,n5k,mozzarella cheese,14.555,28.0
+d0254,n5k,mashed potatoes,202.381,1.7
+d0254,n5k,butter,20.238,0.8
+d0254,n5k,basil,3.639,4.0
+d0254,n5k,pizza dough,19.252,5.4
+d0254,n5k,pizza sauce,10.916,1.3
+d0255,n5k,granola,5.161,10.0
+d0255,n5k,mixed greens,20.645,2.2
+d0255,n5k,blackberries,2.065,1.4
+d0255,n5k,raspberries,2.065,1.2
+d0255,n5k,vinaigrette,2.065,0.0
+d0255,n5k,scrambled eggs,228.0,10.0
+d0255,n5k,bacon,48.0,37.0
+d0256,n5k,egg whites,472.0,10.0
+d0257,n5k,egg whites,433.0,10.0
+d0257,n5k,watermelon,100.0,0.6
+d0257,n5k,yam,50.0,1.6
+d0257,n5k,sweet potato,50.0,1.0
+d0257,n5k,olive oil,6.0,0.0
+d0258,n5k,eggs,181.0,12.5
+d0259,n5k,pineapple,56.0,0.5
+d0259,n5k,watermelon,84.0,0.6
+d0259,n5k,berries,93.0,0.7
+d0259,n5k,cantaloupe,78.0,0.8
+d0259,n5k,sweet potato,118.049,1.0
+d0259,n5k,olive oil,2.951,0.0
+d0260,n5k,bok choy,3.691,1.5
+d0260,n5k,spinach (cooked),3.691,3.0
+d0260,n5k,salt,0.138,0.0
+d0260,n5k,onions,3.691,1.1
+d0260,n5k,olive oil,0.738,0.0
+d0260,n5k,vinegar,0.185,0.0
+d0260,n5k,mushroom,110.0,3.1
+d0260,n5k,beef,110.722,26.0
+d0260,n5k,shallots,7.381,1.5
+d0260,n5k,millet,14.763,3.5
+d0261,n5k,cilantro,0.729,2.2
+d0261,n5k,garlic,0.729,6.4
+d0261,n5k,chili,0.638,1.8
+d0261,n5k,salt,0.312,0.0
+d0261,n5k,tortilla,29.15,6.0
+d0261,n5k,onions,0.182,1.1
+d0261,n5k,tomatoes,7.288,0.7
+d0261,n5k,olive oil,2.051,0.0
+d0261,n5k,chicken thighs,72.876,23.9
+d0261,n5k,squash,34.525,0.9
+d0261,n5k,caesar salad,83.0,3.2
+d0261,n5k,turnips,53.659,0.7
+d0261,n5k,cheese,21.863,25.0
+d0262,n5k,white rice,16.143,2.7
+d0262,n5k,arugula,48.673,2.6
+d0262,n5k,parsley,0.404,2.9
+d0262,n5k,zucchini,8.072,1.1
+d0262,n5k,olive oil,2.295,0.0
+d0262,n5k,cherry tomatoes,14.879,0.9
+d0262,n5k,lime,2.232,0.7
+d0262,n5k,salt,0.388,0.0
+d0262,n5k,mangos,14.879,0.8
+d0262,n5k,pork,121.073,26.0
+d0262,n5k,jalapenos,1.488,0.9
+d0262,n5k,rosemary,0.807,2.9
+d0262,n5k,cucumbers,14.879,1.0
+d0262,n5k,lemon juice,2.232,0.4
+d0262,n5k,onions,8.626,1.1
+d0262,n5k,mustard greens,29.758,2.9
+d0262,n5k,cilantro,1.488,2.2
+d0262,n5k,garlic,0.807,6.4
+d0262,n5k,tomatoes,14.879,0.7
+d0263,n5k,steak,182.0,25.0
+d0263,n5k,mixed greens,115.0,2.2
+d0263,n5k,broccoli,44.0,2.4
+d0264,n5k,broccoli,45.854,2.4
+d0264,n5k,sausage,38.0,19.3
+d0264,n5k,olive oil,1.146,0.0
+d0265,n5k,turkey,130.0,29.0
+d0266,n5k,chicken,167.0,31.0
+d0266,n5k,cherry tomatoes,36.0,0.9
+d0267,n5k,cream cheese,10.8,6.2
+d0267,n5k,bagels,43.2,10.1
+d0267,n5k,strawberries,103.0,0.7
+d0267,n5k,eggs,111.0,12.5
+d0268,n5k,sweet potato,76.098,1.0
+d0268,n5k,olive oil,1.902,0.0
+d0268,n5k,egg whites,318.0,10.0
+d0269,n5k,brussels sprouts,89.545,3.4
+d0269,n5k,olive oil,0.895,0.0
+d0269,n5k,pepper,0.112,2.0
+d0269,n5k,salt,0.448,0.0
+d0270,n5k,white rice,18.386,2.7
+d0270,n5k,garlic,0.919,6.4
+d0270,n5k,cilantro,0.46,2.2
+d0270,n5k,cheese pizza,98.0,11.2
+d0270,n5k,olive oil,0.919,0.0
+d0270,n5k,onions,6.435,1.1
+d0270,n5k,chicken thighs,8.619,23.9
+d0270,n5k,vinegar,0.919,0.0
+d0270,n5k,kale,4.597,3.3
+d0270,n5k,salt,0.23,0.0
+d0270,n5k,lemon juice,0.919,0.4
+d0270,n5k,pineapple,4.597,0.5
+d0271,n5k,egg whites,378.0,10.0
+d0272,n5k,almonds,73.0,22.4
+d0273,n5k,olive oil,0.28,0.0
+d0273,n5k,chicken thighs,56.016,23.9
+d0273,n5k,cheese,16.805,25.0
+d0273,n5k,tomatoes,5.602,0.7
+d0273,n5k,garlic,0.56,6.4
+d0273,n5k,chili,0.49,1.8
+d0273,n5k,salt,0.14,0.0
+d0273,n5k,cilantro,0.56,2.2
+d0273,n5k,tortilla,22.407,6.0
+d0273,n5k,onions,0.14,1.1
+d0274,n5k,garlic,0.536,6.4
+d0274,n5k,cilantro,1.073,2.2
+d0274,n5k,lemon juice,2.146,0.4
+d0274,n5k,onions,4.291,1.1
+d0274,n5k,olive oil,4.291,0.0
+d0274,n5k,salt,0.268,0.0
+d0274,n5k,arugula,5.364,2.6
+d0274,n5k,quinoa,21.457,4.4
+d0274,n5k,fish,107.285,18.4
+d0274,n5k,tomatillo,10.728,1.0
+d0274,n5k,pepper,4.291,2.0
+d0274,n5k,jalapenos,0.268,0.9
+d0275,n5k,figs,8.912,2.5
+d0275,n5k,apple,8.912,0.3
+d0275,n5k,arugula,8.912,2.6
+d0275,n5k,lemon juice,3.565,0.4
+d0275,n5k,olive oil,7.13,0.0
+d0275,n5k,mustard greens,44.562,2.9
+d0275,n5k,salt,0.223,0.0
+d0275,n5k,goat cheese,1.782,19.0
+d0276,n5k,garlic,2.916,6.4
+d0276,n5k,bell peppers,3.149,2.0
+d0276,n5k,beef,177.156,26.0
+d0276,n5k,cherry tomatoes,7.872,0.9
+d0276,n5k,brown rice,19.438,2.6
+d0276,n5k,ginger,0.486,1.8
+d0276,n5k,olive oil,3.41,0.0
+d0276,n5k,vinegar,0.295,0.0
+d0276,n5k,spinach (cooked),5.905,3.0
+d0276,n5k,lime,0.121,0.7
+d0276,n5k,shallots,14.726,1.5
+d0276,n5k,bok choy,5.905,1.5
+d0276,n5k,salmon,97.189,24.0
+d0276,n5k,millet,23.621,3.5
+d0276,n5k,vinaigrette,6.298,0.0
+d0276,n5k,jalapenos,0.972,0.9
+d0276,n5k,spinach (raw),4.859,2.9
+d0276,n5k,green beans,58.5,1.8
+d0276,n5k,feta cheese,3.149,13.8
+d0276,n5k,cucumbers,15.745,1.0
+d0276,n5k,lettuce,31.489,1.4
+d0276,n5k,cilantro,0.972,2.2
+d0276,n5k,lemon juice,0.972,0.4
+d0276,n5k,onions,10.998,1.1
+d0276,n5k,salt,0.464,0.0
+d0276,n5k,chili,0.243,1.8
+d0276,n5k,olives,3.149,0.8
+d0277,n5k,bacon,26.0,37.0
+d0278,n5k,cucumbers,60.0,1.0
+d0279,n5k,toast,84.0,13.0
+d0280,n5k,garlic,0.879,6.4
+d0280,n5k,salt,0.22,0.0
+d0280,n5k,pasta salad,114.0,5.9
+d0280,n5k,rosemary,0.879,2.9
+d0280,n5k,zucchini,8.787,1.1
+d0280,n5k,onions,6.151,1.1
+d0280,n5k,parsley,0.439,2.9
+d0280,n5k,olive oil,0.879,0.0
+d0280,n5k,pork,131.801,26.0
+d0280,n5k,arugula,4.393,2.6
+d0280,n5k,white rice,17.573,2.7
+d0281,n5k,almonds,133.0,22.4
+d0282,n5k,scrambled eggs,111.0,10.0
+d0282,n5k,roasted potatoes,118.0,2.1
+d0282,n5k,crepes,100.0,5.9
+d0283,n5k,green onions,0.407,1.8
+d0283,n5k,vinegar,0.649,0.0
+d0283,n5k,pork,97.297,26.0
+d0283,n5k,brown rice,12.973,2.6
+d0283,n5k,lemon juice,0.649,0.4
+d0283,n5k,olive oil,3.409,0.0
+d0283,n5k,garlic,1.501,6.4
+d0283,n5k,fish,40.705,18.4
+d0283,n5k,pepper,1.297,2.0
+d0283,n5k,cherry tomatoes,3.243,0.9
+d0283,n5k,basil,0.324,4.0
+d0283,n5k,country rice,8.141,3.86
+d0283,n5k,parsley,0.324,2.9
+d0283,n5k,onions,2.925,1.1
+d0283,n5k,broccoli,3.243,2.4
+d0283,n5k,shallots,0.649,1.5
+d0283,n5k,salt,0.264,0.0
+d0284,n5k,scrambled eggs,93.0,10.0
+d0284,n5k,bacon,20.0,37.0
+d0285,n5k,bacon,36.0,37.0
+d0285,n5k,scrambled eggs,269.0,10.0
+d0285,n5k,broccoli,45.854,2.4
+d0285,n5k,olive oil,1.146,0.0
+d0285,n5k,fried rice,122.0,4.7
+d0286,n5k,bacon,11.0,37.0
+d0286,n5k,berries,72.0,0.7
+d0286,n5k,bagels,60.0,10.1
+d0286,n5k,cream cheese,15.0,6.2
+d0286,n5k,yam,62.0,1.6
+d0287,n5k,pizza,98.0,11.0
+d0288,n5k,bacon,91.0,37.0
+d0289,n5k,omelets,122.0,10.4
+d0290,n5k,cherry tomatoes,58.0,0.9
+d0290,n5k,cantaloupe,64.0,0.8
+d0290,n5k,almonds,90.0,22.4
+d0291,n5k,cream cheese,14.2,6.2
+d0291,n5k,bagels,56.8,10.1
+d0292,n5k,almonds,118.0,22.4
+d0293,n5k,hummus,56.0,7.9
+d0294,n5k,fish,212.468,18.4
+d0294,n5k,white beans,42.494,9.7
+d0294,n5k,cauliflower,34.0,1.8
+d0294,n5k,garlic,1.062,6.4
+d0294,n5k,parsley,0.531,2.9
+d0294,n5k,olive oil,10.279,0.0
+d0294,n5k,bell peppers,4.249,2.0
+d0294,n5k,chive,0.531,3.3
+d0294,n5k,lime,4.249,0.7
+d0294,n5k,pepper,0.266,2.0
+d0294,n5k,bok choy,71.22,1.5
+d0294,n5k,cookies,17.0,5.1
+d0294,n5k,arugula,6.374,2.6
+d0294,n5k,snow peas,8.499,5.0
+d0294,n5k,onions,10.623,1.1
+d0294,n5k,artichokes,10.623,3.3
+d0294,n5k,salt,0.531,0.0
+d0294,n5k,cheese pizza,33.0,11.2
+d0295,n5k,bok choy,1.934,1.5
+d0295,n5k,shallots,3.869,1.5
+d0295,n5k,beef,58.034,26.0
+d0295,n5k,vinegar,0.097,0.0
+d0295,n5k,jalapenos,4.075,0.9
+d0295,n5k,bell peppers,10.187,2.0
+d0295,n5k,spinach (raw),4.075,2.9
+d0295,n5k,pepper,0.382,2.0
+d0295,n5k,onions,6.009,1.1
+d0295,n5k,olive oil,4.462,0.0
+d0295,n5k,tomatoes,10.187,0.7
+d0295,n5k,garlic,2.037,6.4
+d0295,n5k,fried rice,90.0,4.7
+d0295,n5k,chicken,81.496,31.0
+d0295,n5k,cheese pizza,89.0,11.2
+d0295,n5k,salt,2.11,0.0
+d0295,n5k,spinach (cooked),1.934,3.0
+d0295,n5k,millet,28.112,3.5
+d0296,n5k,fish,43.49,18.4
+d0296,n5k,pepper,0.043,2.0
+d0296,n5k,kale,2.174,3.3
+d0296,n5k,parsley,0.435,2.9
+d0296,n5k,olive oil,6.182,0.0
+d0296,n5k,chive,0.109,3.3
+d0296,n5k,broccoli,163.902,2.4
+d0296,n5k,cherry tomatoes,1.74,0.9
+d0296,n5k,wheat berry,8.698,4.2
+d0296,n5k,chard,1.74,1.8
+d0296,n5k,lemon juice,0.87,0.4
+d0296,n5k,salt,0.281,0.0
+d0296,n5k,shallots,0.87,1.5
+d0296,n5k,garlic,0.027,6.4
+d0296,n5k,brussels sprouts,34.44,3.4
+d0297,n5k,eggplant,53.0,1.0
+d0297,n5k,caesar salad,31.0,3.2
+d0297,n5k,fish,39.0,18.4
+d0298,n5k,mixed greens,32.0,2.2
+d0298,n5k,cod,96.0,18.9
+d0299,n5k,celery,2.244,0.7
+d0299,n5k,carrot,2.244,0.9
+d0299,n5k,onions,2.244,1.1
+d0299,n5k,apple cider,17.954,0.1
+d0299,n5k,vinegar,1.138,0.0
+d0299,n5k,broth,6.873,16.5
+d0299,n5k,salt,0.089,0.0
+d0299,n5k,pork,112.213,26.0
+d0300,n5k,chicken,113.0,31.0
+d0300,n5k,asparagus,39.0,2.2
+d0300,n5k,caesar salad,82.0,3.2
+d0301,n5k,vinegar,6.206,0.0
+d0301,n5k,radishes,12.412,0.7
+d0301,n5k,salt,0.388,0.0
+d0301,n5k,bell peppers,15.515,2.0
+d0301,n5k,olive oil,12.412,0.0
+d0301,n5k,garlic,0.776,6.4
+d0301,n5k,cucumbers,15.515,1.0
+d0301,n5k,mustard,0.776,3.7
+d0302,n5k,chicken,61.549,31.0
+d0302,n5k,cucumbers,73.0,1.0
+d0302,n5k,tomatoes,7.694,0.7
+d0302,n5k,bell peppers,7.694,2.0
+d0302,n5k,spinach (raw),3.077,2.9
+d0302,n5k,onions,3.077,1.1
+d0302,n5k,garlic,1.539,6.4
+d0302,n5k,olive oil,3.077,0.0
+d0302,n5k,salt,1.539,0.0
+d0302,n5k,pepper,0.289,2.0
+d0302,n5k,hummus,64.0,7.9
+d0302,n5k,jalapenos,3.077,0.9
+d0302,n5k,millet,15.387,3.5
+d0303,n5k,brisket,79.524,21.0
+d0303,n5k,mashed potatoes,79.524,1.7
+d0303,n5k,butter,7.952,0.8
+d0304,n5k,mixed greens,17.542,2.2
+d0304,n5k,caesar salad,104.0,3.2
+d0304,n5k,carrot,8.771,0.9
+d0304,n5k,cabbage,17.542,1.3
+d0304,n5k,pizza,52.0,11.0
+d0304,n5k,rice noodles,35.084,0.9
+d0304,n5k,garlic,0.658,6.4
+d0304,n5k,soy sauce,0.877,8.1
+d0304,n5k,olive oil,1.754,0.0
+d0304,n5k,green onions,1.754,1.8
+d0304,n5k,vinegar,3.508,0.0
+d0304,n5k,radishes,3.508,0.7
+d0305,n5k,salt,0.467,0.0
+d0305,n5k,pepper,0.117,2.0
+d0305,n5k,brussels sprouts,93.481,3.4
+d0305,n5k,scrambled eggs,134.0,10.0
+d0305,n5k,olive oil,0.935,0.0
+d0305,n5k,hash browns,73.0,2.6
+d0305,n5k,bacon,22.0,37.0
+d0306,n5k,yam,62.0,1.6
+d0306,n5k,bacon,26.0,37.0
+d0306,n5k,cantaloupe,92.0,0.8
+d0307,n5k,tempeh,202.0,18.8
+d0308,n5k,brisket,202.381,21.0
+d0308,n5k,mashed potatoes,202.381,1.7
+d0308,n5k,butter,20.238,0.8
+d0309,n5k,almonds,72.0,22.4
+d0310,n5k,bok choy,33.0,1.5
+d0310,n5k,salmon,60.199,24.0
+d0310,n5k,pineapple,64.0,0.5
+d0310,n5k,jalapenos,0.602,0.9
+d0310,n5k,olive oil,0.451,0.0
+d0310,n5k,chili,0.15,1.8
+d0310,n5k,cilantro,0.602,2.2
+d0310,n5k,salt,0.15,0.0
+d0310,n5k,cheese pizza,41.0,11.2
+d0310,n5k,ginger,0.301,1.8
+d0310,n5k,tofu,44.0,8.0
+d0310,n5k,spinach (raw),3.01,2.9
+d0310,n5k,brown rice,12.04,2.6
+d0310,n5k,lemon juice,0.602,0.4
+d0310,n5k,onions,1.204,1.1
+d0310,n5k,lime,0.075,0.7
+d0310,n5k,brussels sprouts,39.0,3.4
+d0310,n5k,shallots,1.806,1.5
+d0310,n5k,garlic,1.806,6.4
+d0311,n5k,carrot,5.176,0.9
+d0311,n5k,honeydew melons,95.0,0.5
+d0311,n5k,pumpkin seeds,2.588,19.0
+d0311,n5k,lettuce,6.471,1.4
+d0311,n5k,mustard,0.404,3.7
+d0311,n5k,salt,0.243,0.0
+d0311,n5k,olive oil,5.176,0.0
+d0311,n5k,arugula,19.412,2.6
+d0311,n5k,vinegar,2.588,0.0
+d0311,n5k,mixed greens,12.941,2.2
+d0312,n5k,figs,36.119,2.5
+d0312,n5k,granola,18.059,10.0
+d0312,n5k,grapes,24.079,0.7
+d0312,n5k,chia seeds,1.505,17.0
+d0312,n5k,greek yogurt,72.238,10.0
+d0313,n5k,omelets,174.0,10.4
+d0314,n5k,chicken,103.0,31.0
+d0314,n5k,spinach (raw),61.0,2.9
+d0314,n5k,broccoli,67.0,2.4
+d0315,n5k,broccoli,55.0,2.4
+d0315,n5k,scrambled eggs,146.0,10.0
+d0315,n5k,sweet potato,79.0,1.0
+d0316,n5k,bacon,31.0,37.0
+d0316,n5k,olive oil,2.575,0.0
+d0316,n5k,scrambled eggs,236.0,10.0
+d0316,n5k,green beans,100.425,1.8
+d0317,n5k,spinach (raw),65.0,2.9
+d0317,n5k,cucumbers,98.0,1.0
+d0317,n5k,olives,112.0,0.8
+d0317,n5k,chicken,150.0,31.0
+d0318,n5k,apple,142.0,0.3
+d0318,n5k,almonds,27.0,22.4
+d0318,n5k,grapes,75.0,0.7
+d0318,n5k,cauliflower,51.0,1.8
+d0319,n5k,yam,70.0,1.6
+d0320,n5k,mixed greens,23.79,2.2
+d0320,n5k,onions,3.172,1.1
+d0320,n5k,lettuce,15.86,1.4
+d0320,n5k,lime,0.793,0.7
+d0320,n5k,cucumbers,7.93,1.0
+d0320,n5k,olive oil,6.344,0.0
+d0320,n5k,vinegar,3.172,0.0
+d0320,n5k,pepper,0.198,2.0
+d0320,n5k,cherry tomatoes,6.344,0.9
+d0320,n5k,bacon,36.0,37.0
+d0320,n5k,salt,0.397,0.0
+d0321,n5k,salt,0.284,0.0
+d0321,n5k,quinoa,34.951,4.4
+d0321,n5k,ginger,0.432,1.8
+d0321,n5k,mushroom,39.0,3.1
+d0321,n5k,green beans,16.575,1.8
+d0321,n5k,olive oil,2.487,0.0
+d0321,n5k,olives,23.0,0.8
+d0321,n5k,shallots,6.255,1.5
+d0321,n5k,lime,0.108,0.7
+d0321,n5k,tomatoes,44.0,0.7
+d0321,n5k,beef,54.979,26.0
+d0321,n5k,millet,7.331,3.5
+d0321,n5k,bok choy,1.833,1.5
+d0321,n5k,salmon,86.31,24.0
+d0321,n5k,avocado,90.0,2.0
+d0321,n5k,vinegar,0.092,0.0
+d0321,n5k,onions,3.559,1.1
+d0321,n5k,spinach (raw),4.316,2.9
+d0321,n5k,brown rice,17.262,2.6
+d0321,n5k,jalapenos,0.863,0.9
+d0321,n5k,lemon juice,0.863,0.4
+d0321,n5k,chili,0.216,1.8
+d0321,n5k,garlic,2.589,6.4
+d0321,n5k,spinach (cooked),1.833,3.0
+d0321,n5k,cilantro,0.863,2.2
+d0322,n5k,cheese pizza,175.0,11.2
+d0323,n5k,brown rice,44.533,2.6
+d0323,n5k,spinach (raw),11.133,2.9
+d0323,n5k,onions,4.453,1.1
+d0323,n5k,garlic,6.68,6.4
+d0323,n5k,shallots,6.68,1.5
+d0323,n5k,olive oil,1.67,0.0
+d0323,n5k,chili,0.557,1.8
+d0323,n5k,salt,0.557,0.0
+d0323,n5k,salmon,222.665,24.0
+d0323,n5k,lime,0.278,0.7
+d0323,n5k,jalapenos,2.227,0.9
+d0323,n5k,lemon juice,2.227,0.4
+d0323,n5k,cilantro,2.227,2.2
+d0323,n5k,ginger,1.113,1.8
+d0324,n5k,berries,50.0,0.7
+d0324,n5k,cantaloupe,38.0,0.8
+d0325,n5k,brown rice,20.725,2.6
+d0325,n5k,arugula,4.145,2.6
+d0325,n5k,salmon,103.623,24.0
+d0325,n5k,thyme,0.13,6.0
+d0325,n5k,olive oil,3.938,0.0
+d0325,n5k,pepper,5.181,2.0
+d0325,n5k,salt,0.259,0.0
+d0326,n5k,sausage,112.0,19.3
+d0327,n5k,mixed greens,91.0,2.2
+d0327,n5k,olives,91.0,0.8
+d0327,n5k,chicken,136.0,31.0
+d0327,n5k,avocado,72.0,2.0
+d0327,n5k,broccoli,71.0,2.4
+d0327,n5k,parmesan cheese,27.0,38.4
+d0328,n5k,bacon,61.0,37.0
+d0328,n5k,scrambled eggs,35.0,10.0
+d0328,n5k,spinach (cooked),85.0,3.0
+d0329,n5k,arugula,2.146,2.6
+d0329,n5k,chicken breast,43.532,31.1
+d0329,n5k,cherry tomatoes,2.177,0.9
+d0329,n5k,spinach (raw),1.088,2.9
+d0329,n5k,squash,41.43,0.9
+d0329,n5k,wheat berry,4.353,4.2
+d0329,n5k,parmesan cheese,1.088,38.4
+d0329,n5k,garlic,0.864,6.4
+d0329,n5k,rosemary,0.429,2.9
+d0329,n5k,zucchini,4.291,1.1
+d0329,n5k,parsley,0.215,2.9
+d0329,n5k,salt,0.317,0.0
+d0329,n5k,cauliflower,54.0,1.8
+d0329,n5k,white rice,8.582,2.7
+d0329,n5k,thyme,0.109,6.0
+d0329,n5k,pepperoni pizza,82.0,12.0
+d0329,n5k,pork,64.368,26.0
+d0329,n5k,olive oil,1.007,0.0
+d0329,n5k,onions,3.004,1.1
+d0330,n5k,almonds,76.0,22.4
+d0331,n5k,egg whites,145.0,10.0
+d0331,n5k,sausage,117.0,19.3
+d0332,n5k,bacon,12.091,37.0
+d0332,n5k,tomatoes,36.272,0.7
+d0332,n5k,avocado,18.136,2.0
+d0332,n5k,multigrain bread,0.426,4.1
+d0332,n5k,olive oil,10.146,0.0
+d0332,n5k,eggs,18.765,12.5
+d0332,n5k,mozzarella cheese,40.585,28.0
+d0332,n5k,salt,0.036,0.0
+d0332,n5k,lemon juice,2.275,0.4
+d0332,n5k,basil,10.146,4.0
+d0332,n5k,pizza dough,53.684,5.4
+d0332,n5k,pizza sauce,30.439,1.3
+d0333,n5k,almonds,132.0,22.4
+d0334,n5k,pepper,4.185,2.0
+d0334,n5k,garlic,0.523,6.4
+d0334,n5k,cilantro,1.046,2.2
+d0334,n5k,olive oil,4.185,0.0
+d0334,n5k,caesar salad,70.0,3.2
+d0334,n5k,onions,4.185,1.1
+d0334,n5k,lemon juice,2.093,0.4
+d0334,n5k,arugula,5.232,2.6
+d0334,n5k,jalapenos,0.262,0.9
+d0334,n5k,salt,0.262,0.0
+d0334,n5k,tomatillo,10.464,1.0
+d0334,n5k,quinoa,20.927,4.4
+d0334,n5k,fish,104.636,18.4
+d0335,n5k,garlic,1.637,6.4
+d0335,n5k,tomatoes,16.37,0.7
+d0335,n5k,onions,0.409,1.1
+d0335,n5k,salt,0.409,0.0
+d0335,n5k,tortilla,65.479,6.0
+d0335,n5k,chili,1.432,1.8
+d0335,n5k,olive oil,0.818,0.0
+d0335,n5k,chicken thighs,163.698,23.9
+d0335,n5k,cilantro,1.637,2.2
+d0335,n5k,cheese,49.109,25.0
+d0336,n5k,cauliflower,104.0,1.8
+d0336,n5k,eggplant,95.098,1.0
+d0336,n5k,salt,0.951,0.0
+d0336,n5k,olive oil,0.951,0.0
+d0337,n5k,egg whites,342.0,10.0
+d0337,n5k,olive oil,2.098,0.0
+d0337,n5k,sweet potato,83.902,1.0
+d0337,n5k,cantaloupe,61.0,0.8
+d0338,n5k,sweet potato,115.122,1.0
+d0338,n5k,scrambled eggs,86.0,10.0
+d0338,n5k,olive oil,2.878,0.0
+d0338,n5k,egg whites,358.0,10.0
+d0339,n5k,sweet potato,100.488,1.0
+d0339,n5k,olive oil,2.512,0.0
+d0340,n5k,broccoli,49.0,2.4
+d0341,n5k,almonds,61.0,22.4
+d0342,n5k,sweet potato,56.5,1.0
+d0342,n5k,olive oil,2.22,0.0
+d0342,n5k,broccoli,88.78,2.4
+d0342,n5k,egg whites,96.0,10.0
+d0342,n5k,yam,56.5,1.6
+d0342,n5k,greek yogurt,38.765,10.0
+d0342,n5k,chia seeds,9.725,17.0
+d0342,n5k,chicken apple sausage,45.0,14.0
+d0342,n5k,milk,41.51,3.5
+d0343,n5k,yam,123.0,1.6
+d0344,n5k,cantaloupe,40.0,0.8
+d0344,n5k,almonds,72.0,22.4
+d0344,n5k,sausage,113.0,19.3
+d0344,n5k,grapes,100.0,0.7
+d0345,n5k,beef,110.722,26.0
+d0345,n5k,cauliflower,163.0,1.8
+d0345,n5k,shallots,7.381,1.5
+d0345,n5k,spinach (cooked),3.691,3.0
+d0345,n5k,olive oil,0.738,0.0
+d0345,n5k,onions,3.691,1.1
+d0345,n5k,vinegar,0.185,0.0
+d0345,n5k,mushroom,110.0,3.1
+d0345,n5k,millet,14.763,3.5
+d0345,n5k,bok choy,3.691,1.5
+d0345,n5k,salt,0.138,0.0
+d0346,n5k,carrot,6.267,0.9
+d0346,n5k,fish,15.041,18.4
+d0346,n5k,onions,0.501,1.1
+d0346,n5k,leeks,2.507,1.5
+d0346,n5k,snow peas,57.0,5.0
+d0346,n5k,garlic,0.287,6.4
+d0346,n5k,cabbage,0.752,1.3
+d0346,n5k,olive oil,4.198,0.0
+d0346,n5k,mozzarella cheese,16.794,28.0
+d0346,n5k,salt,0.426,0.0
+d0346,n5k,butter,0.047,0.8
+d0346,n5k,barley,79.0,2.3
+d0346,n5k,milk,173.319,3.5
+d0346,n5k,lemon juice,0.008,0.4
+d0346,n5k,basil,4.198,4.0
+d0346,n5k,cilantro,0.133,2.2
+d0346,n5k,endive,0.47,1.3
+d0346,n5k,pizza dough,22.214,5.4
+d0346,n5k,pizza sauce,12.595,1.3
+d0346,n5k,oil,0.239,0.0
+d0347,n5k,cheese pizza,163.0,11.2
+d0348,n5k,grilled chicken,156.0,22.6
+d0349,n5k,scrambled eggs,131.0,10.0
+d0350,n5k,almonds,36.0,22.4
+d0351,n5k,chive,0.04,3.3
+d0351,n5k,bok choy,14.893,1.5
+d0351,n5k,chicken,31.652,31.0
+d0351,n5k,white rice,14.893,2.7
+d0351,n5k,pork,104.248,26.0
+d0351,n5k,arugula,21.54,2.6
+d0351,n5k,spinach (raw),38.438,2.9
+d0351,n5k,brown rice,3.165,2.6
+d0351,n5k,chard,0.791,1.8
+d0351,n5k,mustard,0.384,3.7
+d0351,n5k,olive oil,23.154,0.0
+d0351,n5k,garlic,4.266,6.4
+d0351,n5k,cucumbers,7.688,1.0
+d0351,n5k,sugar,11.169,0.0
+d0351,n5k,rosemary,0.04,2.9
+d0351,n5k,pepper,8.988,2.0
+d0351,n5k,sun dried tomatoes,3.075,14.0
+d0351,n5k,lemon juice,0.119,0.4
+d0351,n5k,mustard greens,21.54,2.9
+d0351,n5k,parsley,8.656,2.9
+d0351,n5k,vinegar,11.691,0.0
+d0351,n5k,corn on the cob,55.0,3.1
+d0351,n5k,basil,0.04,4.0
+d0351,n5k,onions,4.613,1.1
+d0351,n5k,carrot,3.165,0.9
+d0351,n5k,soy sauce,5.957,8.1
+d0351,n5k,salt,1.634,0.0
+d0351,n5k,chickpeas,86.162,9.0
+d0352,n5k,squash,60.312,0.9
+d0352,n5k,fish,60.312,18.4
+d0352,n5k,olive oil,2.006,0.0
+d0352,n5k,collards,116.0,3.0
+d0352,n5k,salt,0.012,0.0
+d0352,n5k,cream,2.006,2.8
+d0352,n5k,curries,60.312,12.0
+d0352,n5k,sweet potato,106.977,1.0
+d0352,n5k,oil,12.062,0.0
+d0353,n5k,pineapple,56.0,0.5
+d0353,n5k,parmesan cheese,1.355,38.4
+d0353,n5k,salt,0.068,0.0
+d0353,n5k,thyme,0.136,6.0
+d0353,n5k,olive oil,1.543,0.0
+d0353,n5k,wheat berry,5.421,4.2
+d0353,n5k,garlic,0.542,6.4
+d0353,n5k,spinach (raw),1.355,2.9
+d0353,n5k,cherry tomatoes,2.71,0.9
+d0353,n5k,quinoa,44.66,4.4
+d0353,n5k,chicken breast,54.209,31.1
+d0354,n5k,egg whites,290.0,10.0
+d0354,n5k,roasted potatoes,80.0,2.1
+d0354,n5k,bacon,87.0,37.0
+d0355,n5k,bok choy,1.425,1.5
+d0355,n5k,vinegar,0.071,0.0
+d0355,n5k,salt,0.053,0.0
+d0355,n5k,onions,1.425,1.1
+d0355,n5k,kale,66.0,3.3
+d0355,n5k,olive oil,5.585,0.0
+d0355,n5k,quinoa,94.175,4.4
+d0355,n5k,shallots,2.851,1.5
+d0355,n5k,spinach (cooked),1.425,3.0
+d0355,n5k,chard,66.0,1.8
+d0355,n5k,green beans,96.525,1.8
+d0355,n5k,beef,42.762,26.0
+d0355,n5k,millet,5.702,3.5
+d0356,n5k,egg whites,446.0,10.0
+d0356,n5k,watermelon,80.0,0.6
+d0356,n5k,yam,61.792,1.6
+d0356,n5k,berries,39.0,0.7
+d0356,n5k,cantaloupe,40.0,0.8
+d0356,n5k,sweet potato,61.792,1.0
+d0356,n5k,olive oil,7.415,0.0
+d0357,n5k,lemon juice,0.312,0.4
+d0357,n5k,wheat berry,6.244,4.2
+d0357,n5k,parsley,0.624,2.9
+d0357,n5k,chicken,62.443,31.0
+d0357,n5k,salt,0.078,0.0
+d0357,n5k,olive oil,1.249,0.0
+d0357,n5k,roasted potatoes,34.0,2.1
+d0357,n5k,garlic,0.312,6.4
+d0357,n5k,thyme,0.156,6.0
+d0357,n5k,shallots,0.02,1.5
+d0357,n5k,spinach (raw),1.561,2.9
+d0358,n5k,watermelon,55.0,0.6
+d0358,n5k,egg whites,408.0,10.0
+d0359,n5k,mixed greens,12.941,2.2
+d0359,n5k,carrot,5.176,0.9
+d0359,n5k,lettuce,6.471,1.4
+d0359,n5k,pumpkin seeds,2.588,19.0
+d0359,n5k,mustard,0.404,3.7
+d0359,n5k,olive oil,5.176,0.0
+d0359,n5k,vinegar,2.588,0.0
+d0359,n5k,arugula,19.412,2.6
+d0359,n5k,green beans,38.0,1.8
+d0359,n5k,honeydew melons,95.0,0.5
+d0359,n5k,salt,0.243,0.0
+d0360,n5k,sausage,106.0,19.3
+d0361,n5k,turkey,130.0,29.0
+d0361,n5k,squash,97.391,0.9
+d0361,n5k,cucumbers,20.0,1.0
+d0361,n5k,olive oil,1.826,0.0
+d0361,n5k,seeds,2.555,30.9
+d0361,n5k,pita bread,30.0,8.8
+d0361,n5k,salt,0.011,0.0
+d0361,n5k,honey,1.217,0.3
+d0361,n5k,hummus,61.0,7.9
+d0362,n5k,bacon,17.0,37.0
+d0362,n5k,berries,86.0,0.7
+d0363,n5k,chili,124.0,1.8
+d0364,n5k,broccoli,13.0,2.4
+d0364,n5k,hominy,4.813,1.5
+d0364,n5k,parsley,0.177,2.9
+d0364,n5k,salt,0.044,0.0
+d0364,n5k,chicken thighs,70.643,23.9
+d0364,n5k,olive oil,0.265,0.0
+d0364,n5k,chili,3.885,1.8
+d0364,n5k,jalapenos,0.177,0.9
+d0364,n5k,wheat berry,60.0,4.2
+d0364,n5k,cabbage,7.064,1.3
+d0364,n5k,garlic,0.353,6.4
+d0364,n5k,tomatoes,4.813,0.7
+d0364,n5k,lemon juice,0.265,0.4
+d0364,n5k,caesar salad,86.0,3.2
+d0364,n5k,lime,0.088,0.7
+d0364,n5k,bell peppers,1.413,2.0
+d0365,n5k,salmon,121.644,24.0
+d0365,n5k,salt,0.304,0.0
+d0365,n5k,thyme,0.152,6.0
+d0365,n5k,olive oil,4.622,0.0
+d0365,n5k,arugula,4.866,2.6
+d0365,n5k,brown rice,24.329,2.6
+d0365,n5k,cherry tomatoes,66.0,0.9
+d0365,n5k,pepper,6.082,2.0
+d0366,n5k,almonds,53.0,22.4
+d0367,n5k,salt,1.791,0.0
+d0367,n5k,broccoli,3.184,2.4
+d0367,n5k,parsley,3.815,2.9
+d0367,n5k,lemon juice,1.908,0.4
+d0367,n5k,kale,1.592,3.3
+d0367,n5k,green onions,0.318,1.8
+d0367,n5k,orange juice,0.318,0.7
+d0367,n5k,wheat berry,38.15,4.2
+d0367,n5k,eggplant,84.314,1.0
+d0367,n5k,tofu,106.0,8.0
+d0367,n5k,pepper,0.065,2.0
+d0367,n5k,beef,47.754,26.0
+d0367,n5k,soy sauce,0.318,8.1
+d0367,n5k,garlic,2.226,6.4
+d0367,n5k,shallots,0.119,1.5
+d0367,n5k,chili,0.318,1.8
+d0367,n5k,onions,0.637,1.1
+d0367,n5k,thyme,0.954,6.0
+d0367,n5k,olive oil,9.996,0.0
+d0367,n5k,vinegar,0.318,0.0
+d0367,n5k,spinach (raw),9.538,2.9
+d0367,n5k,carrot,104.498,0.9
+d0367,n5k,chicken,381.502,31.0
+d0367,n5k,white rice,6.367,2.7
+d0368,n5k,fish,57.143,18.4
+d0368,n5k,garlic,0.571,6.4
+d0368,n5k,shallots,1.143,1.5
+d0368,n5k,olive oil,2.286,0.0
+d0368,n5k,salt,0.143,0.0
+d0368,n5k,cherry tomatoes,2.286,0.9
+d0368,n5k,wheat berry,11.429,4.2
+d0368,n5k,chard,5.143,1.8
+d0368,n5k,lemon juice,1.143,0.4
+d0368,n5k,parsley,0.571,2.9
+d0368,n5k,chive,0.143,3.3
+d0369,n5k,bacon,42.0,37.0
+d0370,n5k,chicken apple sausage,71.0,14.0
+d0370,n5k,grapes,81.0,0.7
+d0370,n5k,roasted potatoes,17.0,2.1
+d0370,n5k,watermelon,73.0,0.6
+d0371,n5k,bread,46.0,13.5
+d0372,n5k,scrambled eggs,65.0,10.0
+d0372,n5k,watermelon,139.0,0.6
+d0372,n5k,berries,133.0,0.7
+d0372,n5k,pineapple,145.0,0.5
+d0373,n5k,garlic,1.354,6.4
+d0373,n5k,lime,1.354,0.7
+d0373,n5k,salt,0.677,0.0
+d0373,n5k,brownies,51.0,6.2
+d0373,n5k,olive oil,0.169,0.0
+d0373,n5k,wheat berry,20.317,4.2
+d0373,n5k,steak,101.583,25.0
+d0373,n5k,pepperoni pizza,122.0,12.0
+d0373,n5k,cauliflower,13.544,1.8
+d0374,n5k,sausage,51.0,19.3
+d0374,n5k,egg whites,156.0,10.0
+d0375,n5k,cucumbers,8.28,1.0
+d0375,n5k,vinegar,3.312,0.0
+d0375,n5k,zucchini,27.0,1.1
+d0375,n5k,carrot,45.348,0.9
+d0375,n5k,spinach (cooked),1.058,3.0
+d0375,n5k,mixed greens,24.84,2.2
+d0375,n5k,lettuce,16.56,1.4
+d0375,n5k,quinoa,4.231,4.4
+d0375,n5k,eggplant,2.115,1.0
+d0375,n5k,wine,0.212,0.1
+d0375,n5k,squash,29.115,0.9
+d0375,n5k,mushroom,2.115,3.1
+d0375,n5k,broccoli,27.0,2.4
+d0375,n5k,lime,0.828,0.7
+d0375,n5k,lemon juice,0.053,0.4
+d0375,n5k,onions,3.312,1.1
+d0375,n5k,olive oil,7.183,0.0
+d0375,n5k,salt,0.637,0.0
+d0375,n5k,cheese pizza,62.0,11.2
+d0375,n5k,shallots,0.423,1.5
+d0375,n5k,garlic,0.212,6.4
+d0375,n5k,pepper,0.235,2.0
+d0375,n5k,cherry tomatoes,6.624,0.9
+d0375,n5k,chicken thighs,42.308,23.9
+d0376,n5k,fish,68.874,18.4
+d0376,n5k,pepper,2.755,2.0
+d0376,n5k,blueberries,8.786,0.7
+d0376,n5k,chard,17.571,1.8
+d0376,n5k,mustard,0.439,3.7
+d0376,n5k,olive oil,9.783,0.0
+d0376,n5k,garlic,0.344,6.4
+d0376,n5k,raspberries,8.786,1.2
+d0376,n5k,roasted potatoes,33.0,2.1
+d0376,n5k,carrot,8.786,0.9
+d0376,n5k,quinoa,13.775,4.4
+d0376,n5k,tomatillo,6.887,1.0
+d0376,n5k,almonds,3.514,22.4
+d0376,n5k,lemon juice,1.377,0.4
+d0376,n5k,jalapenos,0.172,0.9
+d0376,n5k,pizza,79.0,11.0
+d0376,n5k,arugula,29.8,2.6
+d0376,n5k,onions,2.755,1.1
+d0376,n5k,artichokes,38.0,3.3
+d0376,n5k,parsnips,39.0,1.2
+d0376,n5k,cilantro,0.689,2.2
+d0376,n5k,salt,0.392,0.0
+d0376,n5k,vinegar,3.514,0.0
+d0377,n5k,soy sauce,0.329,8.1
+d0377,n5k,salt,0.082,0.0
+d0377,n5k,vinegar,0.329,0.0
+d0377,n5k,olive oil,0.493,0.0
+d0377,n5k,beef,49.294,26.0
+d0377,n5k,white rice,6.573,2.7
+d0377,n5k,orange juice,0.329,0.7
+d0377,n5k,chili,0.329,1.8
+d0377,n5k,green onions,0.329,1.8
+d0377,n5k,broccoli,3.286,2.4
+d0377,n5k,garlic,0.329,6.4
+d0377,n5k,kale,1.643,3.3
+d0377,n5k,cheese pizza,70.0,11.2
+d0377,n5k,onions,0.657,1.1
+d0378,n5k,scrambled eggs,40.0,10.0
+d0378,n5k,olive oil,1.268,0.0
+d0378,n5k,sweet potato,50.732,1.0
+d0378,n5k,egg whites,203.0,10.0
+d0379,n5k,cherry tomatoes,6.997,0.9
+d0379,n5k,salt,0.437,0.0
+d0379,n5k,pepper,0.219,2.0
+d0379,n5k,green beans,57.525,1.8
+d0379,n5k,vinegar,3.499,0.0
+d0379,n5k,cucumbers,8.746,1.0
+d0379,n5k,onions,3.499,1.1
+d0379,n5k,olive oil,8.472,0.0
+d0379,n5k,mixed greens,26.239,2.2
+d0379,n5k,lime,0.875,0.7
+d0379,n5k,lettuce,17.493,1.4
+d0380,n5k,spinach (raw),3.142,2.9
+d0380,n5k,pepperoni pizza,52.0,12.0
+d0380,n5k,wheat berry,12.567,4.2
+d0380,n5k,parmesan cheese,3.142,38.4
+d0380,n5k,cherry tomatoes,6.283,0.9
+d0380,n5k,chicken breast,125.667,31.1
+d0380,n5k,broccoli,46.0,2.4
+d0380,n5k,salt,0.438,0.0
+d0380,n5k,garlic,1.257,6.4
+d0380,n5k,thyme,0.314,6.0
+d0380,n5k,squash,74.969,0.9
+d0380,n5k,olive oil,1.221,0.0
+d0381,n5k,squash,38.471,0.9
+d0381,n5k,olive oil,0.385,0.0
+d0381,n5k,salt,0.144,0.0
+d0381,n5k,parmesan cheese,3.585,38.4
+d0381,n5k,croutons,0.269,12.0
+d0381,n5k,kale,34.411,3.3
+d0381,n5k,caesar dressing,5.735,3.2
+d0382,n5k,tuna,102.0,29.0
+d0383,n5k,berries,103.0,0.7
+d0383,n5k,brussels sprouts,58.057,3.4
+d0383,n5k,roasted potatoes,63.0,2.1
+d0383,n5k,egg whites,125.0,10.0
+d0383,n5k,olive oil,0.581,0.0
+d0383,n5k,pepper,0.073,2.0
+d0383,n5k,pineapple,140.0,0.5
+d0383,n5k,salt,0.29,0.0
+d0384,n5k,corn on the cob,68.0,3.1
+d0385,n5k,cauliflower,308.0,1.8
+d0386,n5k,cheese pizza,98.0,11.2
+d0387,n5k,vinegar,3.306,0.0
+d0387,n5k,lemon juice,3.306,0.4
+d0387,n5k,chicken thighs,30.99,23.9
+d0387,n5k,white rice,66.112,2.7
+d0387,n5k,pineapple,16.528,0.5
+d0387,n5k,kale,16.528,3.3
+d0387,n5k,pepper,0.103,2.0
+d0387,n5k,salt,1.24,0.0
+d0387,n5k,cilantro,1.653,2.2
+d0387,n5k,garlic,3.306,6.4
+d0387,n5k,olive oil,4.132,0.0
+d0387,n5k,onions,23.139,1.1
+d0387,n5k,brussels sprouts,82.657,3.4
+d0388,n5k,bell peppers,6.788,2.0
+d0388,n5k,garlic,0.339,6.4
+d0388,n5k,salt,0.17,0.0
+d0388,n5k,olive oil,5.43,0.0
+d0388,n5k,cucumbers,6.788,1.0
+d0388,n5k,mustard,0.339,3.7
+d0388,n5k,vinegar,2.715,0.0
+d0388,n5k,radishes,5.43,0.7
+d0389,n5k,fish,68.874,18.4
+d0389,n5k,garlic,0.344,6.4
+d0389,n5k,salt,0.172,0.0
+d0389,n5k,pizza,79.0,11.0
+d0389,n5k,onions,2.755,1.1
+d0389,n5k,pepper,2.755,2.0
+d0389,n5k,quinoa,13.775,4.4
+d0389,n5k,artichokes,38.0,3.3
+d0389,n5k,lemon juice,1.377,0.4
+d0389,n5k,olive oil,2.755,0.0
+d0389,n5k,arugula,3.444,2.6
+d0389,n5k,jalapenos,0.172,0.9
+d0389,n5k,tomatillo,6.887,1.0
+d0389,n5k,parsnips,39.0,1.2
+d0389,n5k,cilantro,0.689,2.2
+d0389,n5k,roasted potatoes,33.0,2.1
+d0390,n5k,pepper,0.013,2.0
+d0390,n5k,chicken,20.483,31.0
+d0390,n5k,wheat berry,2.048,4.2
+d0390,n5k,lemon juice,0.102,0.4
+d0390,n5k,basil,0.051,4.0
+d0390,n5k,parsley,0.102,2.9
+d0390,n5k,garlic,0.102,6.4
+d0390,n5k,squash,1.024,0.9
+d0390,n5k,spinach (raw),0.512,2.9
+d0390,n5k,zucchini,1.024,1.1
+d0390,n5k,rosemary,0.051,2.9
+d0390,n5k,olive oil,0.41,0.0
+d0390,n5k,thyme,0.051,6.0
+d0390,n5k,caesar salad,59.0,3.2
+d0390,n5k,salt,0.026,0.0
+d0391,n5k,grapes,46.0,0.7
+d0391,n5k,watermelon,77.0,0.6
+d0391,n5k,egg whites,519.0,10.0
+d0391,n5k,sweet potato,157.073,1.0
+d0391,n5k,olive oil,3.927,0.0
+d0392,n5k,chicken,149.0,31.0
+d0392,n5k,olives,109.0,0.8
+d0392,n5k,spinach (raw),64.0,2.9
+d0392,n5k,cucumbers,75.0,1.0
+d0393,n5k,cherry tomatoes,70.0,0.9
+d0393,n5k,carrot,119.0,0.9
+d0393,n5k,grilled chicken,194.0,22.6
+d0393,n5k,bell peppers,99.0,2.0
+d0393,n5k,olive oil,8.0,0.0
+d0393,n5k,onions,74.0,1.1
+d0394,n5k,thyme,0.254,6.0
+d0394,n5k,salmon,203.492,24.0
+d0394,n5k,olive oil,7.733,0.0
+d0394,n5k,pepper,10.175,2.0
+d0394,n5k,brown rice,40.698,2.6
+d0394,n5k,arugula,8.14,2.6
+d0394,n5k,salt,0.509,0.0
+d0395,n5k,egg whites,557.0,10.0
+d0396,n5k,caesar salad,90.0,3.2
+d0397,n5k,bacon,85.0,37.0
+d0398,n5k,almonds,128.0,22.4
+d0399,n5k,olives,91.0,0.8
+d0399,n5k,mixed greens,91.0,2.2
+d0399,n5k,chicken,136.0,31.0
+d0399,n5k,broccoli,71.0,2.4
+d0400,n5k,grilled chicken,135.0,22.6

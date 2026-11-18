@@ -1,0 +1,102 @@
+food_id,nome_zh,nome_en,traducao_en,nome_pt,linhas_foto_prato,linhas_foto_item,grupo,fonte,fonte_principal,proteina_100g,kcal_100g,gordura_100g,carbo_100g,nota
+0,米饭,Rice,Rice,arroz branco cozido,401,12,amido,sem_proteina,,2.60,116.0,0.30,25.90,米饭 = arroz cozido
+1,卤鹅,Spiced goose,Spiced goose,ganso temperado (cozido no molho de especiarias),4,0,proteina_animal,frango_peru,frango_peru,13.95,236.6,17.47,5.88,卤鹅: ave; frango_peru cobre aves
+2,生菜,Sauteed lettuce,Sauteed lettuce,alface refogada,48,0,vegetal,sem_proteina,,1.21,26.3,1.60,3.64,生菜 = alface
+3,菠菜,Spinach,Spinach,espinafre,33,0,vegetal,sem_proteina,,2.60,28.0,0.30,4.50,菠菜
+4,酱鸭,Braised duck with soy sauce,Braised duck with soy sauce,pato no molho de soja,8,0,proteina_animal,frango_peru,frango_peru,18.90,266.0,18.40,6.30,酱鸭: ave
+5,荞麦馒头,Buckwheat bread,Steamed buckwheat bun (mantou),pão de trigo-sarraceno no vapor (mantou),400,134,amido,sem_proteina,,9.11,228.4,1.73,45.63,"荞麦馒头: pão chinês no vapor; o inglês diz ""bread"""
+6,鸡蛋,Egg,Egg,ovo cozido,404,133,proteina_animal,ovo,ovo,13.10,139.0,8.60,2.40,"鸡蛋; nas fotos é ovo cozido inteiro com casca, pesado com casca (a tabela não desconta)"
+7,海参,Sea cucumber,Sea cucumber,pepino-do-mar,7,0,proteina_animal,peixe_marisco,peixe_marisco,16.50,78.0,0.20,2.50,海参
+8,地瓜叶,Sweet potato leaves,Sweet potato leaves,folha de batata-doce refogada,45,0,vegetal,sem_proteina,,3.10,27.0,0.00,5.10,地瓜叶
+9,菜包,Steamed vegetable bun,Steamed vegetable bun,pão no vapor recheado de legumes (baozi),3,1,amido,sem_proteina,,6.32,139.9,1.79,25.89,菜包: recheio só de verdura
+10,菜肉馄饨,Pork and vegetable wonton,Pork and vegetable wonton,wonton de porco e legumes,0,4,misto,prato_misto,suina_embutido,7.30,223.0,9.10,31.10,菜肉馄饨: massa recheada; fonte misturada
+11,回锅肉,Double cooked pork,Twice-cooked pork,porco cozido duas vezes (huiguorou),3,0,proteina_animal,suina_embutido,suina_embutido,7.56,287.4,44.08,2.83,回锅肉: fatias de barriga de porco com pimentão; a carne domina
+12,青椒,Green pepper,Green pepper,pimentão verde,1,0,vegetal,sem_proteina,,0.80,22.0,0.30,5.20,青椒
+14,茄子,Eggplant,Eggplant,berinjela,6,2,vegetal,sem_proteina,,3.82,78.0,3.62,8.75,"茄子; nas planilhas o nome vem como ""Eggplant with mince pork"" (id 26): divergência marcada"
+15,杂粮饭,Coarse grain,Mixed-grain rice (with black rice),arroz integral misto (grãos variados),986,258,amido,sem_proteina,,3.22,117.5,0.71,30.40,杂粮饭: arroz com grãos integrais e arroz preto (roxo nas fotos)
+16,蒸南瓜,Pumpkin,Pumpkin,abóbora no vapor,25,0,vegetal,sem_proteina,,0.64,20.9,0.09,4.82,蒸南瓜
+17,莴笋肉丝,Lettuce shredded meat,Celtuce with shredded pork,talo de alface (celtuce) com tiras de porco,138,16,misto,prato_misto,suina_embutido,6.97,76.6,4.03,3.29,莴笋肉丝: legume e carne juntos
+18,青菜,Sauteed vegetable,Stir-fried greens (bok choy),"verdura refogada (acelga chinesa, pak choi)",638,157,vegetal,sem_proteina,,1.70,18.0,0.20,3.55,青菜: folha verde genérica
+19,炒豆芽,Sauteed bean sprouts,Sauteed bean sprouts,broto de feijão refogado,115,28,vegetal,sem_proteina,,1.68,34.2,2.04,2.84,炒豆芽: broto de soja ou moyashi; conta como verdura
+20,清蒸鸡,Steamed chicken,Steamed chicken,frango no vapor,44,10,proteina_animal,frango_peru,frango_peru,17.96,235.9,15.59,6.06,清蒸鸡
+21,黄瓜炒肉,Cucumber fried pork,Cucumber fried pork,pepino refogado com porco,96,12,misto,prato_misto,suina_embutido,5.24,175.8,15.18,4.77,黄瓜炒肉
+22,馒头,Steamed bun,Steamed bun (mantou),pão no vapor (mantou),1,0,amido,sem_proteina,,7.00,223.0,1.10,47.00,馒头
+23,大排,Grilled pork ribs,Grilled pork chop,bisteca de porco grelhada,49,14,proteina_animal,suina_embutido,suina_embutido,14.55,237.9,17.84,3.98,大排: bisteca grande de porco (com osso)
+24,红烧鱼块,Braised fish fillets,Braised fish fillets,posta de peixe ensopada,31,7,proteina_animal,peixe_marisco,peixe_marisco,17.09,125.2,5.84,1.35,红烧鱼块
+25,清蒸鳊鱼段,Steamed bream,Steamed bream,brema no vapor,6,0,proteina_animal,peixe_marisco,peixe_marisco,12.14,114.2,6.00,3.13,清蒸鳊鱼段
+26,肉糜茄子,Eggplant with mince pork,Eggplant with minced pork,berinjela com carne de porco moída,82,8,misto,prato_misto,suina_embutido,4.79,158.3,13.90,4.44,肉糜茄子: a berinjela domina a massa
+27,农家小炒肉,Shredded Pork with Vegetables,Shredded Pork with Vegetables,porco refogado com pimenta (xiaochaorou),26,0,misto,prato_misto,suina_embutido,6.38,194.3,17.28,3.95,农家小炒肉: porco com pimenta verde
+28,胡萝卜烩小排,Carrot Braised Short Ribs,Pork short ribs braised with carrot,costelinha ensopada com cenoura,69,10,misto,prato_misto,suina_embutido,5.72,99.3,7.68,2.06,"胡萝卜烩小排: costelinha de porco com osso e cenoura; proteína da tabela baixa (5,7%)"
+29,炒西葫芦,Squash,Stir-fried zucchini,abobrinha refogada,181,56,vegetal,sem_proteina,,0.90,35.7,1.78,4.44,"炒西葫芦; o inglês diz ""Squash"""
+30,葱油冬瓜,Scallion oil winter melon,Scallion oil winter melon,melão-de-inverno com óleo de cebolinha,198,56,vegetal,sem_proteina,,0.64,24.7,1.64,4.09,葱油冬瓜
+31,京酱肉丝,Shredded pork in Beijing sauce,Shredded pork in Beijing sauce,tiras de porco ao molho de Pequim,40,8,proteina_animal,suina_embutido,suina_embutido,15.33,169.9,10.09,5.29,京酱肉丝: a carne domina
+32,茭白胡萝卜肉丝,Zizania carrot shredded pork,Shredded pork with water bamboo and carrot,tiras de porco com broto de bambu-d'água e cenoura,50,2,misto,prato_misto,suina_embutido,8.55,91.0,4.20,4.96,茭白胡萝卜肉丝
+33,油麦菜,Leaf lettuce,Stir-fried leaf lettuce (youmaicai),alface-de-folha (youmaicai) refogada,91,5,vegetal,sem_proteina,,1.31,41.8,3.56,2.25,油麦菜
+34,荠菜肉圆,Shepherd,Pork meatballs with shepherd's purse,almôndega de porco com bolsa-de-pastor,38,8,proteina_animal,suina_embutido,suina_embutido,6.74,332.6,28.88,12.54,"荠菜肉圆; o inglês corta para ""Shepherd"" (shepherd's purse = bolsa-de-pastor, a erva)"
+35,白切鸭,Cut white duck,Cut white duck,pato cozido fatiado (frio),40,8,proteina_animal,frango_peru,frango_peru,14.73,251.3,20.33,3.55,白切鸭: ave
+36,白萝卜烧肉,Roast meat with white radish,Pork braised with daikon,porco ensopado com nabo branco,60,11,misto,prato_misto,suina_embutido,6.60,429.4,42.68,5.06,白萝卜烧肉
+37,青椒肉丝,Shredded pork and green pepper,Shredded pork and green pepper,tiras de porco com pimentão,69,2,misto,prato_misto,suina_embutido,6.62,92.3,4.79,6.40,青椒肉丝
+38,炒花菜,fried cauliflower,Fried cauliflower,couve-flor refogada,123,21,vegetal,sem_proteina,,1.46,53.5,3.18,5.87,炒花菜
+39,清蒸肉丸,Steamed meatball,Steamed pork meatball,almôndega de porco no vapor,111,31,proteina_animal,suina_embutido,suina_embutido,8.93,259.2,20.10,10.98,"清蒸肉丸: nas fotos tem milho; proteína da tabela baixa (8,9%)"
+40,西红柿炒鸡蛋,Scrambled egg with tomato,Scrambled egg with tomato,ovo mexido com tomate,22,6,misto,prato_misto,ovo,4.77,71.1,4.46,3.58,西红柿炒鸡蛋: o tomate domina a massa
+41,清炒虾仁,Sauteed Shrimp meat,Sauteed Shrimp meat,camarão refogado,24,2,proteina_animal,peixe_marisco,peixe_marisco,18.87,208.7,3.13,28.68,"清炒虾仁; numa foto olhada (414) o prato é milho, ervilha e cenoura com poucos camarões, e a tabela traz 28,7% de carboidrato: rótulo duvidoso"
+42,白菜,Chinese cabbage,Napa cabbage,acelga (repolho chinês),825,215,vegetal,sem_proteina,,1.83,45.5,2.12,5.44,白菜; nas fotos de café é repolho com cenoura ralada
+43,青椒塞肉,Pork stuffed green pepper,Pork stuffed green pepper,pimentão recheado com porco,37,6,misto,prato_misto,suina_embutido,6.62,92.3,4.79,6.40,青椒塞肉
+44,青椒肉片,Green pepper meat,Green pepper meat,fatias de porco com pimentão,53,9,misto,prato_misto,suina_embutido,6.62,92.3,4.79,6.40,青椒肉片
+45,香菇蒸鸡,Steamed Chicken with Mushroom,Steamed Chicken with Mushroom,frango no vapor com cogumelo,51,6,proteina_animal,frango_peru,frango_peru,17.68,186.3,10.10,7.54,香菇蒸鸡: a carne domina
+46,空心菜,tumis kangkung,Stir-fried water spinach (kangkong),espinafre-d'água (kangkong) refogado,19,0,vegetal,sem_proteina,,2.16,30.9,2.59,4.17,"空心菜; o inglês usa o nome malaio ""tumis kangkung"""
+47,炒芹菜,Stir-fry celery,Stir-fry celery,salsão refogado,71,8,vegetal,sem_proteina,,0.60,17.0,0.10,3.33,炒芹菜
+48,木须肉,Stir-fried pork with egg and fungus,Stir-fried pork with egg and fungus,porco com ovo e orelha-de-judas (muxurou),5,0,misto,prato_misto,suina_embutido,9.88,120.5,5.74,8.45,"木须肉: porco, ovo e cogumelo"
+49,白米虾,White rice shrimp,Small white shrimp,camarão branco,3,0,proteina_animal,peixe_marisco,peixe_marisco,17.30,81.0,0.40,2.00,白米虾
+50,炒卷心菜,Fried cabbage,Fried cabbage,repolho refogado,34,11,vegetal,sem_proteina,,1.50,34.8,2.27,4.99,炒卷心菜
+51,清蒸鲳鱼,Steamed pomfret,Steamed pomfret,pampo no vapor,22,2,proteina_animal,peixe_marisco,peixe_marisco,17.80,135.5,6.99,0.39,清蒸鲳鱼 (pomfret)
+52,木耳炒肉丝,Braised Fungus with pork slice,Braised Fungus with pork slice,orelha-de-judas com fatias de porco,60,4,misto,prato_misto,suina_embutido,6.95,94.4,5.31,4.76,木耳炒肉丝
+53,清蒸鱼片,Steamed Perch,Steamed fish fillet,filé de peixe no vapor,52,7,proteina_animal,peixe_marisco,peixe_marisco,16.51,112.7,4.75,0.99,"清蒸鱼片: o inglês diz ""Steamed Perch"" (perca), mas o chinês é só ""filé de peixe"""
+54,炒荷兰豆,Fry pea,Stir-fried snow peas,ervilha-torta refogada,36,7,vegetal,sem_proteina,,2.24,25.6,0.27,3.71,"炒荷兰豆: vagem inteira, verdura"
+55,豇豆,cowpea,Yardlong beans,feijão-de-corda (vagem longa),46,0,vegetal,sem_proteina,,2.20,32.0,0.30,7.30,"豇豆: vagem verde, verdura"
+56,油焖大虾,Braised Shrimp in chili oil,Braised Shrimp in chili oil,camarão refogado no óleo de pimenta,19,3,proteina_animal,peixe_marisco,peixe_marisco,10.88,93.6,3.54,4.56,油焖大虾: camarão com casca
+57,番茄烩肉片,Sirloin tomatoes,Pork slices stewed with tomato,fatias de porco com tomate,46,12,misto,prato_misto,suina_embutido,9.08,84.1,3.39,5.35,"番茄烩肉片: o inglês diz ""Sirloin"", mas 肉片 é fatia de carne (porco, por padrão)"
+58,啤酒鸭,Beer duck,Beer duck,pato na cerveja,4,0,proteina_animal,frango_peru,frango_peru,13.32,225.2,18.34,1.69,啤酒鸭: ave
+59,百叶结烧肉,Braised pork with tofu skin knot,Braised pork belly with tofu-skin knots,porco ensopado com nó de pele de tofu,42,7,misto,prato_misto,suina_embutido,8.98,448.2,44.42,3.26,百叶结烧肉: barriga de porco e pele de tofu (yuba)
+60,炒丝瓜,Fried towel gourd,Stir-fried loofah,bucha refogada,14,0,vegetal,sem_proteina,,1.42,30.3,0.58,5.89,炒丝瓜 (towel gourd = bucha/lufa)
+61,黄焖鸡,chicken braised with brown sauce,Chicken braised in brown sauce (huangmenji),frango ensopado ao molho escuro (huangmenji),50,19,proteina_animal,frango_peru,frango_peru,12.63,119.6,6.16,3.34,黄焖鸡: a carne domina; pode ter batata e cogumelo
+62,白菜肉丸,Chinese cabbage meatballs,Pork meatballs with napa cabbage,almôndegas de porco com acelga,75,27,misto,prato_misto,suina_embutido,5.41,161.9,13.11,5.86,白菜肉丸
+63,苋菜,Amaranth,Stir-fried amaranth greens,amaranto refogado,23,0,vegetal,sem_proteina,,2.74,51.9,2.69,5.00,"苋菜; em 8 linhas o nome é ""Chinese cabbage meatballs"" (id 62): divergência marcada"
+64,炒莲藕,Fried lotus root,Fried lotus root,raiz de lótus refogada,9,0,vegetal,sem_proteina,,1.20,47.0,0.20,11.50,炒莲藕
+65,红烧鲫鱼,Braise in soy sauce carp,Crucian carp braised in soy sauce,carpa ensopada no molho de soja,18,4,proteina_animal,peixe_marisco,peixe_marisco,13.72,120.8,4.81,5.73,"红烧鲫鱼 (carpa-cruciana, com espinha)"
+66,清蒸鲈鱼,Steamed Perch,Steamed Chinese perch (sea bass),robalo no vapor,6,1,proteina_animal,peixe_marisco,peixe_marisco,16.40,115.5,4.92,0.78,清蒸鲈鱼 (perca/robalo chinês)
+67,葱油白萝卜,White radish with scallion oil,White radish with scallion oil,nabo branco com óleo de cebolinha,78,16,vegetal,sem_proteina,,1.01,44.6,2.78,4.75,葱油白萝卜
+68,杭椒牛柳,Sauteed Beef Fillet with Hot Green Pepper,Beef strips with mild green chili,tiras de carne bovina com pimenta verde,3,0,misto,prato_misto,bovina,11.40,81.0,1.90,4.50,杭椒牛柳: carne e pimenta juntas
+69,三杯鸡,Stewed Chicken with Three Cups Sauce,Stewed Chicken with Three Cups Sauce,frango três xícaras (sanbeiji),8,3,proteina_animal,frango_peru,frango_peru,4.80,127.9,10.10,4.50,三杯鸡
+71,鸡腿,Chicken drumsticks,Chicken drumsticks,coxa de frango,7,3,proteina_animal,frango_peru,frango_peru,18.69,177.1,10.29,2.36,鸡腿 (com osso)
+72,口水黄瓜,Cucumber in sauce,Cucumber in sauce,pepino ao molho picante,11,5,vegetal,sem_proteina,,1.06,42.0,2.53,3.86,口水黄瓜
+73,豉汁蒸排骨,Steamed spare ribs in black bean sauce,Steamed spare ribs in black bean sauce,costelinha no vapor com molho de feijão preto fermentado,2,0,proteina_animal,suina_embutido,suina_embutido,14.11,265.1,17.47,6.41,豉汁蒸排骨
+75,炒菌菇,Fried fungus mushroom,Fried fungus mushroom,cogumelos refogados,27,1,vegetal,sem_proteina,,4.90,75.0,4.10,5.40,炒菌菇
+76,豆干,Dried bean curd,Dried tofu,tofu seco,3,0,leguminosa,leguminosa_soja,leguminosa_soja,14.90,197.0,11.30,9.60,豆干
+77,姜片,Ginger slice,Ginger slice,fatia de gengibre,2,0,vegetal,sem_proteina,,1.30,34.4,0.80,4.80,姜片: guarnição
+78,南瓜饼,Pumpkin pie,Fried pumpkin glutinous-rice cake,bolinho de abóbora frito,1,0,outros,sem_proteina,,7.81,183.3,1.24,36.29,南瓜饼: doce de farinha de arroz glutinoso com abóbora
+79,葱花手抓饼,Pine cake with Diced Scallion,Scallion flaky pancake,panqueca de massa folhada com cebolinha,1,0,amido,sem_proteina,,5.60,333.0,16.10,41.30,葱花手抓饼
+80,坚果,Nuts,Nuts,castanhas e nozes,2,0,outros,nozes_sementes,nozes_sementes,12.80,542.3,40.40,28.90,坚果
+81,剁椒鱼头,Steamed Fish Head with Diced Hot Red Peppers,Steamed Fish Head with Diced Hot Red Peppers,cabeça de peixe no vapor com pimenta picada,4,1,proteina_animal,peixe_marisco,peixe_marisco,15.20,107.2,3.14,6.80,剁椒鱼头: muito osso; a tabela é por peso total
+84,梨,Pear,Pear,pera,2,0,vegetal,sem_proteina,,0.30,51.0,0.10,13.10,"梨; nas 2 linhas com este id o nome é ""Braised pork in brown sauce"" (id 83): divergência marcada"
+85,水果沙拉,Fruit salad,Fruit salad,salada de frutas,2,1,vegetal,sem_proteina,,0.43,137.8,9.34,6.86,"水果沙拉; nas 3 linhas com este id o nome é ""Fried meat with onion"" (id 86): divergência marcada"
+86,洋葱炒肉,Fried meat with onion,Pork stir-fried with onion,porco refogado com cebola,71,31,misto,prato_misto,suina_embutido,10.38,115.3,5.26,6.88,"洋葱炒肉: o inglês diz ""meat""; 肉 é porco por padrão"
+87,萝卜排骨汤,Pork ribs soup with radish,Pork rib and radish soup,sopa de costela de porco com nabo,1,0,misto,prato_misto,suina_embutido,5.41,98.7,7.74,2.02,萝卜排骨汤
+97,炒鸡蛋,Scrambled eggs,Scrambled eggs,ovos mexidos,1,0,proteina_animal,ovo,ovo,12.15,155.7,11.01,2.32,炒鸡蛋
+100,芹菜香干,Celery and tofu,Celery with dried tofu,salsão com tofu seco,2,0,misto,prato_misto,leguminosa_soja,2.95,74.2,5.26,4.36,芹菜香干
+101,白斩鸡,Boiled chicken,Poached chicken (baiqieji),frango cozido fatiado (baiqieji),2,1,proteina_animal,frango_peru,frango_peru,7.55,90.2,4.23,2.67,"白斩鸡; proteína da tabela baixa (7,5%) para frango"
+107,红烧牛肉,Braised beef,Braised beef,carne bovina ensopada,16,5,proteina_animal,bovina,bovina,17.39,162.2,8.78,3.63,红烧牛肉
+110,清炒山药,Fried Yam,Stir-fried Chinese yam,inhame chinês refogado,21,4,amido,sem_proteina,,1.76,68.3,1.97,11.40,清炒山药 (yam)
+121,烤鸡肉串,Grilled chicken kebab,Grilled chicken kebab,espetinho de frango grelhado,2,1,proteina_animal,frango_peru,frango_peru,19.23,191.8,10.97,3.73,烤鸡肉串
+133,松仁玉米,Sauteed Sweet Corn with Pine Nuts,Sauteed Sweet Corn with Pine Nuts,milho refogado com pinhão,45,10,amido,sem_proteina,nozes_sementes,5.71,256.2,17.87,20.63,松仁玉米: milho domina; pinhão é pouco
+134,糖醋里脊,Fried Sweet and Sour Tenderloin,Fried Sweet and Sour Tenderloin,lombo de porco frito agridoce,4,2,proteina_animal,suina_embutido,suina_embutido,12.66,146.5,7.62,5.93,糖醋里脊
+135,炒苦瓜,sauteed bitter melon,Stir-fried bitter melon,melão-de-são-caetano refogado,16,0,vegetal,sem_proteina,,1.03,39.0,2.13,5.01,炒苦瓜 (bitter melon)
+136,蚝油西兰花,Broccoli with Oyster Sauce,Broccoli with Oyster Sauce,brócolis ao molho de ostra,52,12,vegetal,sem_proteina,,3.94,47.4,2.29,5.29,蚝油西兰花
+137,蚝油杏鲍菇,Oyster mushroom,King oyster mushroom in oyster sauce,cogumelo-ostra-rei ao molho de ostra,8,0,vegetal,sem_proteina,,4.10,124.9,9.04,7.36,蚝油杏鲍菇 (king oyster)
+140,手撕包菜,Shredded cabbage,Shredded cabbage,repolho rasgado refogado,8,0,vegetal,sem_proteina,,1.68,42.1,1.97,5.18,手撕包菜
+159,春卷,Spring rolls,Spring rolls,rolinho primavera,2,0,misto,prato_misto,,6.10,465.0,33.70,34.80,春卷: frito; recheio não informado
+160,糖醋排骨,Sweet and sour spare ribs,Sweet and sour spare ribs,costelinha agridoce,14,5,proteina_animal,suina_embutido,suina_embutido,7.01,431.3,42.95,4.21,糖醋排骨 (com osso)
+161,土豆炖牛腩,Stewed sirloin potatoes,Beef brisket stewed with potato,carne bovina (peito) ensopada com batata,6,3,misto,prato_misto,bovina,7.79,183.8,15.29,4.14,"土豆炖牛腩: o inglês diz ""sirloin""; 牛腩 é peito/acém"
+185,酸辣土豆丝,Potato silk,Hot and sour shredded potato,batata em tiras agridoce e picante,9,0,amido,sem_proteina,,2.80,86.1,2.64,16.91,酸辣土豆丝
+186,鱼香肉丝,Fish-flavored shredded pork,Yu-xiang shredded pork,"tiras de porco ao molho ""sabor de peixe"" (yuxiang)",5,1,misto,prato_misto,suina_embutido,11.62,109.4,5.33,3.50,"鱼香肉丝: porco com orelha-de-judas, cenoura e broto de bambu; sem peixe"
+222,猪肝,Pork liver,Pork liver,fígado de porco,8,4,proteina_animal,suina_embutido,suina_embutido,18.19,124.0,4.50,2.98,"猪肝: miúdo; as planilhas usam 10,73% de proteína e a tabela 18,2%"

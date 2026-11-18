@@ -1,0 +1,5 @@
+prato_id,componente,alimento_taco,preparo,gramas,proteina_100g_rotulo
+br0001,arroz branco,"Arroz, tipo 1, cozido",cozido,140,
+br0001,feijão carioca,"Feijão, carioca, cozido",cozido,90,
+br0001,filé de frango,"Frango, peito, sem pele, grelhado",grelhado,120,
+br0001,alface,"Alface, crespa, crua",cru,20,
