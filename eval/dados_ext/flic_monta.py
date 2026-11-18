@@ -19,6 +19,7 @@ posição e por nome exato, e o script confere os dois.
 
 Uso:
   python3 -I flic_monta.py monta <FLIC_grams.csv> <FLIC_menu.csv> [--saida <csv>]
+  python3 -I flic_monta.py cursos <FLIC_grams.csv> <FLIC_menu.csv> [--saida <csv>]    # seção 19: uma linha por curso
 Os arquivos vêm da pasta do Drive; as imagens são baixadas pelo identificador em flic_arquivos.csv
 (https://drive.usercontent.google.com/download?id=<id>&export=download). Nada de imagem é lido aqui.
 
@@ -35,11 +36,17 @@ sys.path.insert(0, AQUI)
 from flavoria_monta import FONTES, GRUPOS, confere_esquema, densidade, tabelas  # noqa: E402
 
 ARQUIVOS = os.path.join(AQUI, "flic_arquivos.csv")
+FOTOS = os.path.join(AQUI, "flic_fotos.csv")          # tamanho e sha256 de cada PNG baixado (flic_cursos.py confere)
 SAIDA = os.path.join(AQUI, "..", "treino", "kaggle", "listas", "externo_flic.csv")
+SAIDA_CURSOS = os.path.join(AQUI, "..", "treino", "kaggle", "listas", "externo_flic_curso.csv")
 URL = "https://drive.usercontent.google.com/download?export=download&id="
 LICENCA, USO = "CC BY 4.0", "comercial_ok"
 MASSA_MIN_G = 10.0
 PROTEINA_FRACA_ALTA_G = 25.0
+PIXELS_MIN_CURSO = 200      # 19.2 b: curso pesado e invisível na máscara não entra
+# cor de cada curso nas máscaras (conferida: a contagem de pixels de cada cor é a coluna *_pixels de FLIC_grams.csv)
+CORES = {"First": (50, 183, 250), "Second": (184, 61, 245), "Side": (170, 240, 209), "Bread": (250, 250, 55)}
+CURSOS_PRATO = ("First", "Second", "Side")     # 19.2 a: o pão vem num saquinho e não entra
 
 MASSA_MOLHO = "0.8*n5k:pasta|0.2*n5k:pasta sauce"
 GRATINADO = "0.85*{}|0.15*n5k:bread crumbs"
@@ -154,7 +161,7 @@ def cmd_monta(grams, menu_csv, saida):
             img = f"{pasta_img}/{r[col_arq]}"; msk = f"{pasta_msk}/{r[col_arq]}"
             assert img in ids and msk in ids, img
             grupo_dia = "flic_" + dia
-            split = "teste_ext" if int(hashlib.sha1(grupo_dia.encode()).hexdigest(), 16) % 5 == 0 else "treino_ext"
+            split = split_dia(grupo_dia)
             avisos = [a for a, s in (("sobra", fase == "left"), ("um_item_so", len(comp) == 1), ("tem_embalado", emb > 0)) if s]
             linhas.append([f"flic_{dia}_{r['QR_code']}_{fase}", -1, -1, "", f"{massa:.1f}", "", "", "", ""]
                           + [f"{mg[g]:.1f}" for g in GRUPOS] + [""] * len(GRUPOS) + [f"{ff[k] / massa:.4f}" for k in FONTES]
@@ -181,8 +188,72 @@ def cmd_monta(grams, menu_csv, saida):
     print("gravado:", os.path.relpath(saida), f"({len(cab)} colunas)")
 
 
+def espelho(arquivo):
+    """Nome do arquivo na pasta plana do espelho do Kaggle: 'full_images/x.png' -> 'full_images__x.png'."""
+    return arquivo.replace("/", "__")
+
+
+def split_dia(grupo_dia):
+    """A divisão por dia da lista por bandeja (hash do dia): 2 dias de teste."""
+    return "teste_ext" if int(hashlib.sha1(grupo_dia.encode()).hexdigest(), 16) % 5 == 0 else "treino_ext"
+
+
+def cmd_cursos(grams, menu_csv, saida):
+    """Seção 19.2 b: uma linha por (foto, curso) — primeiro, segundo e acompanhamento, antes e depois da refeição —
+    com a massa pesada do curso naquela foto. Entra o curso com MASSA_MIN_G ou mais e PIXELS_MIN_CURSO ou mais na
+    máscara. `arquivo` é o nome na pasta plana do espelho; `url`, o do Google Drive; `sha256` e `bytes`, os da
+    conferência (flic_fotos.csv). A proteína é só a FRACA (prato do cardápio -> tabela)."""
+    tab = tabelas()
+    dens = {p: densidade(v[3], tab) for p, v in PRATOS.items()}
+    menu = ler_menu(menu_csv); ids = ler_ids()
+    with open(FOTOS, encoding="utf-8", newline="") as f:
+        fotos = {r["arquivo"]: r for r in csv.DictReader(f)}
+    base = confere_esquema()
+    cab = base + ["dominio", "grupo", "vista", "split_ext", "arquivo", "url", "sha256", "bytes", "arquivo_original", "curso", "cor_mascara",
+                  "mascara", "pixels_curso", "prato", "proteina_fraca_g", "densidade_proteina_fraca_g100", "proteina_fraca_conf", "par",
+                  "bandeja", "fase", "licenca", "uso_declarado"]
+    with open(grams, encoding="utf-8", newline="") as f:
+        linhas_g = list(csv.DictReader(f))
+    linhas, fora = [], Counter()
+    for r in linhas_g:
+        dia = r["Date"]
+        nomes = {"First": menu[dia]["First"], "Second": menu[dia]["Second"], "Side": "Side (unnamed vegetable)"}
+        for fase, pasta_img, pasta_msk, col_arq in (("full", "full_images", "full_masks", "Filename_full"),
+                                                 ("left", "left_images", "left_masks", "Filename_left")):
+            img, msk = f"{pasta_img}/{r[col_arq]}", f"{pasta_msk}/{r[col_arq]}"
+            assert img in ids and msk in ids and img in fotos and msk in fotos, img
+            for curso in CURSOS_PRATO:
+                g = float(r[col(curso, fase, "grams")]); px = int(r[col(curso, fase, "pixels")])
+                if g < MASSA_MIN_G:
+                    fora[f"{fase}_menos_de_{MASSA_MIN_G:.0f}g"] += 1; continue
+                if px < PIXELS_MIN_CURSO:
+                    fora[f"{fase}_sem_mascara"] += 1; continue
+                nome = nomes[curso]; regra, grupo, fonte, ref, conf, tipo = PRATOS[nome]
+                mg = dict.fromkeys(GRUPOS, 0.0); mg[grupo] = g
+                ff = dict.fromkeys(FONTES, 0.0); ff[fonte] = 1.0
+                grupo_dia = "flic_" + dia
+                linhas.append([f"flic_{dia}_{r['QR_code']}_{fase}_{curso.lower()}", -1, -1, "", f"{g:.1f}", "", "", "", ""]
+                              + [f"{mg[k]:.1f}" for k in GRUPOS] + [""] * len(GRUPOS) + [f"{ff[k]:.4f}" for k in FONTES]
+                              + ["flic", grupo_dia, "zenital_curso", split_dia(grupo_dia), espelho(img), URL + ids[img], fotos[img]["sha256"],
+                                 fotos[img]["bytes"], img, curso.lower(), "%d,%d,%d" % CORES[curso], espelho(msk), px, nome,
+                                 f"{g * dens[nome] / 100:.2f}", f"{dens[nome]:.3f}", conf, f"flic_{dia}_{r['QR_code']}_{curso.lower()}",
+                                 f"flic_{dia}_{r['QR_code']}", fase, LICENCA, USO])
+    assert len({l[0] for l in linhas}) == len(linhas)
+    os.makedirs(os.path.dirname(saida), exist_ok=True)
+    with open(saida, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\n"); w.writerow(cab); w.writerows(linhas)
+    i = {k: cab.index(k) for k in cab}
+    print(f"linhas (foto x curso): {len(linhas)} | fora: {dict(fora)}")
+    print("  por fase e curso:", dict(Counter((l[i['fase']], l[i['curso']]) for l in linhas)))
+    print("  split:", dict(Counter(l[i['split_ext']] for l in linhas)), "| pratos:", len({l[i['par']] for l in linhas}),
+          "| bandejas:", len({l[i['bandeja']] for l in linhas}), "| dias:", len({l[i['grupo']] for l in linhas}))
+    print("gravado:", os.path.relpath(saida), f"({len(cab)} colunas)")
+
+
 if __name__ == "__main__":
     if len(sys.argv) >= 4 and sys.argv[1] == "monta":
         cmd_monta(sys.argv[2], sys.argv[3], sys.argv[sys.argv.index("--saida") + 1] if "--saida" in sys.argv else SAIDA)
+    elif len(sys.argv) >= 4 and sys.argv[1] == "cursos":
+        cmd_cursos(sys.argv[2], sys.argv[3], sys.argv[sys.argv.index("--saida") + 1] if "--saida" in sys.argv else SAIDA_CURSOS)
     else:
         sys.exit(__doc__)

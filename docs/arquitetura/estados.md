@@ -118,6 +118,13 @@ Mudanças da sétima execução (seção 17); a máquina de estados das partes e
 - **Prioridade = ordem da lista** (17.3: features e paridade, ACETADA, receitas, FoodBD, capacidade), sem GPU preferida; o corte por orçamento cai na de menor prioridade que não cabe, como antes.
 - **Paridade:** `paridade_d1` com a R4c7 e a semente 0 da H0c-m7 contra a sexta execução (`listas/ref_r6_prato.csv`, critério 68,12 ± 0,3).
 
+Mudanças da décima primeira execução (seção 19); a máquina de estados das partes e as funções do escalonador não mudam:
+
+- **Base com janela pronta (`TABELA_PRONTA11`):** o FLIC por curso não passa pelo detector no kernel; a tabela das janelas vem nas listas e `carrega_caixas5` a usa como está (uma linha `sem_prato` nela é erro: a divisão já a tirou). A etapa `externo flic_curso` prepara o cache do recorte como as outras.
+- **Espelho antes da rede:** a etapa `externo flic_curso` procura o espelho privado anexado e confere cada foto pelo tamanho e sha256; se faltar ou diferir qualquer foto, tudo vem pela rede. Sucesso e falha são os mesmos eventos de antes (`concluiu`, `falhou`).
+- **Sem fase de serviço:** a rodada 11 liga `--sem-servico` (o custo é o do S7); as partes `servico` ficam `pendente` e não rodam.
+- **Paridade:** `paridade_d1` com a R4c11 e a H-cap11 (média das 3 sementes) contra a sétima (`listas/ref_r7_prato.csv`, critério 68,21 ± 0,3).
+
 Detalhes em `eval/treino/kaggle/LEIA-ME.md`.
 
 ## 3. Próximas máquinas a modelar

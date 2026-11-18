@@ -18,7 +18,29 @@ Roda, sem interação, os treinos em GPU do modelo de proteína pela foto, descr
 
 - **Execução 10 (18.12), só segmentação com o SETR-MLA do FoodSeg103: pronta para o push e ainda não rodou.** Kernel próprio, `nutrelle-geom-r10` (`geom_r10.py`, notebook em `geom_r10/`), descrito logo abaixo. O notebook da nona fica congelado como rodou.
 
+- **Execução 11 (seção 19), o FLIC por curso no treino do modelo de servidor.** `treino_gpu.py --rodada 11`, kernel `nutrelle-treino-gpu-r11` (notebook em `treino_r11/`), descrito logo abaixo. **Pronta e não rodou:** a conferência a olho do recorte do FLIC reprovou (19.8); depende de uma emenda do coordenador.
+
 Para baixar a saída é preciso acesso a `www.kaggleusercontent.com`.
+
+## Décima primeira execução: o FLIC por curso (19.2 e 19.3)
+
+`treino_gpu.py --rodada 11`, no kernel `nutrelle-treino-gpu-r11` (`treino_r11/nutrelle_treino_gpu_r11.ipynb`). É a sétima reduzida às cabeças do S7, mais o FLIC: **só cabeças sobre features congeladas do So400m no recorte; nenhum ajuste fino, nenhuma fase de serviço, nenhuma parte segurada pontuada.** A regra R11 (19.4) roda depois, na CPU (`eval/treino/r11_avalia.py`).
+
+| Apelido | Configuração | O que é |
+|---|---|---|
+| R0c11, R1c11, R4c11 | `gpu11 ridge so400m prato`, `+ok`, `+tudo` | refeitas; R4c11 confere a paridade com a R4c7 |
+| H-cap11 | `gpu11 fracoes so400m prato +massa cap` | a H-cap (3 sementes, 2 × 1.024) com a massa aninhada da R4c11; confere a paridade com a H-cap7 (média das sementes; `listas/ref_r7_prato.csv`, critério r1 de 68,21 ± 0,3) |
+| R4c+F, R1c+F | `… +tudo +flic`, `… +ok +flic` | + a massa dos recortes por curso do FLIC (sem viés; fração fixa de 0,15, todas as externas reescaladas pelo mesmo fator) |
+| H-cap/F | `… +massa cap mF` | a H-cap com a massa aninhada da R4c+F (o FLIC só na massa) |
+| H-cap+F | `… +massa +flic cap mF` | + a log-densidade fraca do FLIC (prato do cardápio → tabela), só nas linhas de treino |
+
+- **FLIC por curso:** `listas/externo_flic_curso.csv` (`eval/dados_ext/flic_monta.py cursos`; uma linha por foto × curso, primeiro, segundo e acompanhamento, com 10 g ou mais e 200 pixels ou mais na máscara; CC BY 4.0) e `listas/divisao_r4_flic_curso.csv` (`eval/treino/externo_r11_divide.py`: os 2 dias de teste da lista por bandeja ficam como registro; folds por dia; `grupo_metrica` = o prato, antes e depois; linhas sem janela ficam `fora`).
+- **Recorte:** a janela do guia de cada curso vem pronta em `listas/caixas_r5_flic_curso.csv` (`eval/dados_ext/flic_cursos.py detecta`, OWLv2 da etapa 0 na CPU, regra de 19.2 c com a emenda: a união das caixas de prato e tigela que tocam a comida do curso). O kernel **não refaz a regra** nessa base (`TABELA_PRONTA11`) e confere o sha256 de cada foto contra a tabela.
+- **Fotos:** do espelho privado `<você>/nutrelle-flic-fotos` (pasta plana `<pasta>__<arquivo>.png`, CC BY 4.0, montado por `flic_cursos.py espelho` e conferido por `flic_fotos.csv`); cada foto conferida pelo tamanho e sha256 da lista antes de usar. Sem o espelho, o Google Drive, foto a foto.
+- **Saída:** como a sétima (pred, parte, cabeça, servir, log), as features do FLIC (`feat11__flic_curso__recorte.npy` e ids), sem `servico.json`.
+- **Teste:** `python3 treino_gpu.py --autoteste` (inclui `teste_rodada11`); em CPU, `python3 treino_gpu.py --rodada 11 --smoke --listas <fix>/listas --externo-imagens <fix>/img --caixas <fix>/caixas --espelho <pasta do espelho do FLIC> --saida <pasta> --cache <pasta>`.
+- **Push:** `python3 monta_pacote.py notebook --kernel r11`; `NUTRELLE_SCRATCH=<scratchpad> python3 monta_pacote.py push <pasta fora do repositório> --kernel r11 --usuario <você> --espelho-flic <você>/nutrelle-flic-fotos`; `NUTRELLE_SCRATCH=<scratchpad> python3 monta_pacote.py confere <pasta>`; `kaggle kernels push -p <pasta>`.
+- **Trazer:** `python3 ingere_kaggle.py <pasta baixada> --so-confere --divisoes <scratchpad>/listas_r4`; depois `python3 eval/treino/r11_avalia.py <pasta> <scratchpad>/listas_r4 --so-cv`.
 
 ## Décima execução: só segmentação, com o SETR-MLA do FoodSeg103 (18.12)
 

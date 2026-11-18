@@ -437,20 +437,21 @@ def rodada4(a, M, raiz, rod="4"):
             "iguais às desta máquina" if bate else "NÃO CONFERIDAS (sem a lista aqui)" if aqui is None else "DIFERENTES das desta máquina") if "sha256_lista" in v else ""))
         if aqui is not None and not bate:
             raise SystemExit(f"a lista ou a divisão de {ch} usada no Kaggle não é a desta máquina")
-    if rod in ("5", "6", "7"):
+    if rod in ("5", "6", "7", "11"):
         confere_prato5(a, M, raiz)
     parcial = bool(M["smoke"])
     if parcial and not (a.ensaio or a.so_confere):
         raise SystemExit("Saída de --smoke: use --so-confere ou --ensaio DIR.")
     cfgs = {c["nome"]: c for c in G.todas_as_configs()}
     comerciais = {"4": {"R0", "R1", "H0", "F1", "F2", "P1"}, "5": {"R0c", "R1c", "H0c", "F4", "F4c", "P2"}, "6": {"R0c6", "H0c6"},
-                  "7": {"R0c7", "R1c7", "H0c7", "H0c+B", "H0c+Bi"}}[rod]
+                  "7": {"R0c7", "R1c7", "H0c7", "H0c+B", "H0c+Bi"}, "11": {"R0c11", "R1c11", "R1c+F"}}[rod]
     entradas, problemas = {}, []
     for arq in sorted(glob.glob(os.path.join(raiz, "pred__*.npz"))):
         z = dict(np.load(arq, allow_pickle=False))
         nome = str(z["nome"]); c = cfgs.get(nome, {})
         try:
-            assert c.get("v4") and bool(c.get("v5")) == (rod in ("5", "6", "7")) and bool(c.get("v6")) == (rod == "6") and bool(c.get("v7")) == (rod == "7"), \
+            assert c.get("v4") and bool(c.get("v5")) == (rod in ("5", "6", "7", "11")) and bool(c.get("v6")) == (rod == "6") and bool(c.get("v7")) == (rod in ("7", "11")) \
+                and bool(c.get("v11")) == (rod == "11"), \
                 f"configuração fora da rodada {rod}"
             assert str(z["listas_hash"]) == L.hash and str(z["listas2_hash"]) == str(L.hash2 or ""), "hash das listas"
             assert list(z["ids_treino"]) == L.ids and np.array_equal(z["fold"], L.fold) and list(z["ids_" + av]) == L.conj[av], "ids, ordem ou folds"
@@ -519,17 +520,18 @@ def rodada4(a, M, raiz, rod="4"):
     if faltam:
         print("  não vieram (orçamento, falha, base ausente):", faltam)
     # paridade refeita aqui: execução 4, com o D1 da execução 3; execução 6, R4c e H0c refeitas com as da quinta (15.4); a 5 não tem (14.5)
-    par_ap = {"4": ("R0", "H0"), "6": ("R4c6", "H0c6"), "7": ("R4c7", "H0c-m7")}.get(rod)
+    par_ap = {"4": ("R0", "H0"), "6": ("R4c6", "H0c6"), "7": ("R4c7", "H0c-m7"), "11": ("R4c11", "H-cap11")}.get(rod)
     r0, h0 = (next((nm for nm in entradas if cfgs[nm].get("apelido") == x), None) for x in (par_ap or ("", "")))
     par = dict(passou=False, motivo=f"{par_ap} não vieram") if par_ap else dict(passou=True, situacao="não se aplica (14.5)")
     if par_ap and r0 and h0:
         ref = {r["dish_id"]: [float(r[k]) for k in ("log_massa_o1", "log_massa_o8", "log_dens_regressao_o1", "log_dens_fracoes_o1")]
-               for r in csv.DictReader(open(os.path.join(AQUI, "listas", {"4": G.REF_D1, "6": G.REF_R5, "7": G.REF_R6}[rod])))}
+               for r in csv.DictReader(open(os.path.join(AQUI, "listas", {"4": G.REF_D1, "6": G.REF_R5, "7": G.REF_R6, "11": G.REF_R7}[rod])))}
         zh = entradas[h0] if rod != "7" else {"oof_o1": entradas[h0]["oof_s0_o1"], "oof_dens_ff_o1": entradas[h0]["oof_s0_dens_ff_o1"]}    # 17.3: a semente 0
         par = G.paridade_d1(L, entradas[r0], zh, ref, **({} if rod == "4" else dict(esperado=G.REF_R5_CV, contra="quinta execução: R4c e H0c") if rod == "6"
-                                                          else dict(esperado=G.REF_R6_CV, contra="sexta execução: R4c e H0c-m (semente 0)")))
+                                                          else dict(esperado=G.REF_R6_CV, contra="sexta execução: R4c e H0c-m (semente 0)") if rod == "7"
+                                                          else dict(esperado=G.REF_R7_CV, contra="sétima execução: R4c e H-cap (média das 3 sementes)")))
     if par_ap:
-        print(f"\nparidade com {dict([('4', 'o D1 da execução 3 (13.7)'), ('6', 'a R4c e a H0c da quinta execução (15.4)'), ('7', 'a R4c e a H0c-m da sexta execução (17.3)')])[rod]}, refeita aqui: {'OK' if par['passou'] else 'FALHOU: ' + str(par.get('motivo'))}"
+        print(f"\nparidade com {dict([('4', 'o D1 da execução 3 (13.7)'), ('6', 'a R4c e a H0c da quinta execução (15.4)'), ('7', 'a R4c e a H0c-m da sexta execução (17.3)'), ('11', 'a R4c e a H-cap da sétima execução (19.3)')])[rod]}, refeita aqui: {'OK' if par['passou'] else 'FALHOU: ' + str(par.get('motivo'))}"
               + (f" | correlações {', '.join(f'{k} {v:.5f}' for k, v in par['corr'].items())} | critério de CV {par['criterio_cv_d1']:.2f}% ({par['esperado']} ± {par['tolerancia']})" if "corr" in par else "")
               + f" | no kernel: {(M.get('paridade_d1') or {}).get('passou')}")
     if a.so_confere:
@@ -547,7 +549,7 @@ def rodada4(a, M, raiz, rod="4"):
                    configs={nm: {k: M["configs"][nm].get(k) for k in ("apelido", "estado", "cv_treino", "treinado_com", "so_comercial_ok", "confiavel")} for nm in M["configs"]}),
               open(os.path.join(res, f"ingestao_kaggle_r{rod}.json"), "w"), indent=1, ensure_ascii=False)
     print(f"\n{len(entradas)} configurações gravadas em {dest} (todas as chaves de pred__*.npz). Nada foi pontuado nem escolhido aqui "
-          + ("(13.9 roda depois)." if rod == "4" else f"(a leitura de {dict([('5', '14.7'), ('6', '15.5'), ('7', '17.4')])[rod]} roda depois, na CPU; as previsões das partes seguradas não foram pontuadas)."))
+          + ("(13.9 roda depois)." if rod == "4" else f"(a leitura de {dict([('5', '14.7'), ('6', '15.5'), ('7', '17.4'), ('11', '19.4')])[rod]} roda depois, na CPU; as previsões das partes seguradas não foram pontuadas)."))
 
 
 def confere_prato5(a, M, raiz=None):
@@ -586,7 +588,7 @@ def main():
     ap.add_argument("--caixas", help="execução 5: pasta com as tabelas da etapa 0 (caixas_r5_<base>.csv) para conferir o sha256")
     a = ap.parse_args()
     man = sorted(glob.glob(os.path.join(a.pasta, "**", "manifesto.json"), recursive=True))
-    if man and json.load(open(man[0])).get("rodada") in ("4", "5", "6", "7"):     # execuções 4 a 6: treino_v2 + bases externas (5 e 6: recorte pelo prato)
+    if man and json.load(open(man[0])).get("rodada") in ("4", "5", "6", "7", "11"):     # execuções 4 a 6: treino_v2 + bases externas (5 e 6: recorte pelo prato)
         return rodada4(a, json.load(open(man[0])), os.path.dirname(man[0]), json.load(open(man[0]))["rodada"])
     if man and json.load(open(man[0])).get("rodada") == "3":       # execução 3: treino_v2, só teste2
         return rodada3(a, json.load(open(man[0])), os.path.dirname(man[0]))

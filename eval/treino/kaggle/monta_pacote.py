@@ -69,7 +69,8 @@ KERNELS = {
     "r8": dict(nome="oitava execução (16.6 f): teste de registro DFood-TJ, só previsões cruas", pasta=os.path.join(AQUI, "teste_r8"),
                notebook="nutrelle_teste_dfoodtj_r8.ipynb", slug="nutrelle-teste-dfoodtj-r8", script="teste_r8.py",
                basicos=["teste_r8.py", "treino_gpu.py", "deteccao_r5.py"], args="[]", orcamento=1.5, manifesto="manifesto_r8.json",
-               fontes_kernel=["nutrelle-deteccao-r5", "nutrelle-treino-gpu-r5", "nutrelle-treino-gpu-r6", "nutrelle-treino-gpu-r7"]),
+               fontes_kernel=["nutrelle-deteccao-r5", "nutrelle-treino-gpu-r5", "nutrelle-treino-gpu-r6", "nutrelle-treino-gpu-r7"],
+               congelado="rodou em 17/11/2026 (8b); o notebook do repositório fica como rodou (o treino_gpu.py embutido é o daquele dia)"),
     "r9": dict(nome="nona execução (18.10 d): máscaras do pipeline geométrico (OWLv2 + SAM 2.1), sem rótulo", pasta=os.path.join(AQUI, "geom_r9"),
                notebook="nutrelle_geom_r9.ipynb", slug="nutrelle-geom-r9", script="geom_r9.py",
                basicos=["geom_r9.py", "teste_r8.py", "treino_gpu.py", "deteccao_r5.py"], args="[]", orcamento=1.5, manifesto="geom_r9.json", fontes_kernel=[],
@@ -77,8 +78,14 @@ KERNELS = {
     "r10": dict(nome="décima execução (18.12): só segmentação, SETR-MLA do FoodSeg103, sem rótulo", pasta=os.path.join(AQUI, "geom_r10"),
                 notebook="nutrelle_geom_r10.ipynb", slug="nutrelle-geom-r10", script="geom_r10.py",
                 basicos=["geom_r10.py", "geom_r9.py", "teste_r8.py", "treino_gpu.py", "deteccao_r5.py"], args="[]", orcamento=2.5, manifesto="geom_r10.json",
-                fontes_kernel=[]),
+                fontes_kernel=[], congelado="rodou em 17/11/2026; o notebook do repositório fica como rodou (o treino_gpu.py embutido é o daquele dia)"),
+    "r11": dict(nome="décima primeira execução (seção 19): o FLIC por curso no treino do modelo de servidor (cabeças sobre features congeladas)",
+                pasta=os.path.join(AQUI, "treino_r11"), notebook="nutrelle_treino_gpu_r11.ipynb", slug="nutrelle-treino-gpu-r11", script="treino_gpu.py",
+                basicos=["treino_gpu.py", "deteccao_r5.py", "listas/treino_v2.csv", "listas/conferencia_r5.json", "listas/ref_r7_prato.csv",
+                         "listas/caixas_r5_flic_curso.csv"],
+                args="['--rodada', '11']", orcamento=2.5, manifesto="manifesto.json", fontes_kernel=["nutrelle-deteccao-r5"]),     # sem o teste2 nem o SNAPMe
 }
+ESPELHO11 = "nutrelle-flic-fotos"       # slug do dataset privado com as fotos e máscaras do FLIC (CC BY 4.0, pasta plana)
 GEOM = {"r9": dict(voc="listas/vocabulario_r9.csv", push=["TESTE8", "FOTOS8", "FPB9"]),
         "r10": dict(voc="listas/vocabulario_r10.csv", push=["TESTE8", "FOTOS8", "FPB9", "POP10"])}
 TESTE8, GABARITO8 = "teste_r8_dfoodtj.csv", "gabarito_r8_dfoodtj.csv"      # a tabela SEM rótulo vai só no notebook do push; o gabarito, nunca
@@ -103,9 +110,11 @@ LIBERADAS = ["flavoria", "lefood", "mensa"]                  # uso_declarado = c
 FECHADAS = ["omnifood", "fpb", "snapme"]                     # nao_comercial / autores_pedem_nao_treinar: só no notebook do push
 # sétima execução (seção 17): sem o SNAPMe; o FoodBD (CC BY) entra no notebook do repositório; ACETADA e receitas, só no do push
 BASES7 = (["flavoria", "lefood", "mensa", "foodbd"], ["omnifood", "fpb", "acetada", "receitas_datahive"])
+BASES11 = (["flavoria", "lefood", "mensa", "flic_curso"], ["omnifood", "fpb"])     # 19: as cinco da seção 13 e o FLIC por curso (CC BY 4.0)
 TODAS_FECHADAS = ["omnifood", "fpb", "snapme", "acetada", "receitas_datahive"]
 PREFIXO_FECHADAS = ("omn_", "fpb_", "snp_", "act_", "dhv_")
-FRACAS7 = dict(receitas_datahive=("densidade_proteina_fraca_g100",), foodbd=("proteina_fraca_g",))     # = treino_gpu.FRACAS7 (o confere compara)
+FRACAS7 = dict(receitas_datahive=("densidade_proteina_fraca_g100",), foodbd=("proteina_fraca_g",),
+               flic_curso=("densidade_proteina_fraca_g100",))     # = treino_gpu.FRACAS7 (o confere compara)
 DESTINO = "/tmp/nutrelle_codigo"     # fora da pasta de saída do Kaggle
 HASH_TESTE2 = "4aad94d89dc2440e"     # conteúdo de aval2_ids.csv (treino_gpu.Dados.hash2) desde a execução 2: o teste2 não muda
 N_TESTE2 = 829
@@ -114,7 +123,7 @@ COLS_LISTA = ["dominio", "grupo", "vista", "arquivo", "arquivo_base", "quadros",
 
 def bases(k=None):
     """(liberadas, fechadas) do kernel: as liberadas vão no notebook do repositório; as fechadas, só no do push."""
-    return BASES7 if (k or KERNEL) == "r7" else ([], []) if (k or KERNEL) in ("r8", "r9", "r10") else (LIBERADAS, FECHADAS)
+    return BASES7 if (k or KERNEL) == "r7" else BASES11 if (k or KERNEL) == "r11" else ([], []) if (k or KERNEL) in ("r8", "r9", "r10") else (LIBERADAS, FECHADAS)
 COLS_DIV = ["dish_id", "dominio", "grupo", "papel", "fold_ext", "folds_proibidos", "quadro_metrica", "quadro_metrica_nome", "quadros_treino",
             "grupo_metrica", "peso_nutricao"]
 ASPAS3 = "'" * 3
@@ -224,7 +233,7 @@ def conteudo(variante):
     proc, pastas = {}, ([] if variante == "repo" else extras())
     lib, fec = bases()
     for ch in lib + (fec if variante == "push" else []):
-        lst, div, proc[ch] = enxuta(acha(f"externo_{ch}.csv", pastas), acha(f"divisao_r4_{ch}.csv", pastas), FRACAS7.get(ch, ()) if KERNEL == "r7" else ())
+        lst, div, proc[ch] = enxuta(acha(f"externo_{ch}.csv", pastas), acha(f"divisao_r4_{ch}.csv", pastas), FRACAS7.get(ch, ()) if KERNEL in ("r7", "r11") else ())
         arqs[f"listas/externo_{ch}.csv"], arqs[f"listas/divisao_r4_{ch}.csv"] = lst, div
     arqs["listas/procedencia_r4.json"] = (json.dumps(proc, indent=1, ensure_ascii=False, sort_keys=True) + "\n").encode()
     return arqs
@@ -280,7 +289,12 @@ def monta(variante):
     doms = bases()[0] + (bases()[1] if variante == "push" else [])
     md = lambda t: dict(cell_type="markdown", metadata={}, source=t)
     code = lambda t: dict(cell_type="code", metadata={}, execution_count=None, outputs=[], source=t)
-    aviso = ("**Versão do repositório: só bases liberadas** (Nutrition5k, Flavoria, LeFood-Set, GT Mensa e FoodBD). As configurações que usam "
+    aviso = ("**Versão do repositório: só bases liberadas** (Nutrition5k, Flavoria, LeFood-Set, GT Mensa e o FLIC por curso). As configurações que "
+             "dependem do OmniFood8K ou do FPB (a R4c e tudo o que recebe a massa dela) ficam de fora e o manifesto diz por quê. A versão completa é "
+             "montada fora do repositório com `python3 monta_pacote.py push <pasta> --kernel r11`." if variante == "repo" and KERNEL == "r11" else
+             "**Versão completa, montada fora do repositório.** Contém listas derivadas de bases sem licença comercial (OmniFood8K e FPB, CC BY-NC 4.0): "
+             "**não commitar, não publicar**." if KERNEL == "r11" else
+             "**Versão do repositório: só bases liberadas** (Nutrition5k, Flavoria, LeFood-Set, GT Mensa e FoodBD). As configurações que usam "
              "OmniFood8K, FPB, ACETADA ou as receitas ficam de fora e o manifesto diz por quê. A versão completa é montada fora do repositório "
              "com `python3 monta_pacote.py push <pasta>`." if variante == "repo" and KERNEL == "r7" else
              "**Versão completa, montada fora do repositório.** Contém listas derivadas de bases sem licença comercial (OmniFood8K, FPB, ACETADA "
@@ -294,7 +308,8 @@ def monta(variante):
         md(("# Nutrelle — treino em GPU, quarta execução (seção 13: mais bases de treino; uma única foto de cima)\n\n" if KERNEL == "r4" else
             "# Nutrelle — treino em GPU, quinta execução (seção 14: recorte pelo prato e receitas corrigidas; uma única foto de cima)\n\n" if KERNEL == "r5" else
             "# Nutrelle — treino em GPU, sexta execução (seção 15: protocolo no recorte; uma única foto de cima)\n\n" if KERNEL == "r6" else
-            "# Nutrelle — sétima execução (seção 17: a faixa acima de 25 g e a densidade; só cabeças sobre features congeladas)\n\n")
+            "# Nutrelle — sétima execução (seção 17: a faixa acima de 25 g e a densidade; só cabeças sobre features congeladas)\n\n" if KERNEL == "r7" else
+            "# Nutrelle — décima primeira execução (seção 19: o FLIC por curso no treino; só cabeças sobre features congeladas)\n\n")
            + "Notebook gerado por `eval/treino/kaggle/monta_pacote.py`; **não edite à mão** (edite `treino_gpu.py` e gere de novo). "
            + ("Roda sem interação: baixa as fotos zenitais do Nutrition5k e as das bases externas (em paralelo, desde o início), extrai as "
               "features do SigLIP 2 So400m, treina as configurações da seção 13.6 até o orçamento de tempo e grava previsões cruas "
@@ -311,6 +326,13 @@ def monta(variante):
               "treina as cabeças de 17.3 (sem ajuste fino; cada cabeça de densidade com 3 sementes) e grava previsões cruas (fora-do-fold no treino e nas "
               "partes seguradas, **sem pontuar nada; nenhuma do teste2**), as features de todas as bases (`feat7__*.npy`), os arquivos para servir e `servico.json`."
               if KERNEL == "r7" else
+              "Lê a saída do kernel da etapa 0 (`nutrelle-deteccao-r5`, anexada em *Input*), `listas/conferencia_r5.json`, `listas/ref_r7_prato.csv` (R4c e "
+              "H-cap fora-do-fold da sétima execução, para a paridade) e `listas/caixas_r5_flic_curso.csv` (a janela do guia de cada curso do FLIC, regra de "
+              "19.2 c, feita e conferida a olho antes do kernel). As fotos do FLIC vêm do espelho privado `nutrelle-flic-fotos` (anexado em *Input*; cada uma "
+              "conferida pelo tamanho e sha256 da lista), ou do Google Drive. Refaz as features do So400m no recorte (Nutrition5k, as cinco bases da seção 13 e "
+              "o FLIC por curso), a R4c e a H-cap (paridade), e treina a R4c+F, a H-cap/F e a H-cap+F de 19.3 (sem ajuste fino, 3 sementes por cabeça de "
+              "densidade); grava previsões cruas (fora-do-fold no treino e nas partes seguradas, **sem pontuar nada**) e as features do FLIC (`feat11__*.npy`). "
+              "Sem fase de serviço." if KERNEL == "r11" else
               "Lê a saída do kernel da etapa 0 (`nutrelle-deteccao-r5`, anexada em *Input*) e `listas/conferencia_r5.json` (regra e bases reprovadas na "
               "conferência a olho; sem `\"conferida\": true` o kernel não começa). Baixa as fotos, recorta cada uma na janela do guia, extrai as features do "
               "So400m sobre o recorte, treina as configurações de 14.5 até o orçamento e grava previsões cruas (fora-do-fold no treino e nas partes de "
@@ -349,6 +371,7 @@ def monta(variante):
         + ("    print('paridade com o D1:', m.get('paridade_d1'))\n" if KERNEL == "r4" else
            "    print('paridade (sexta execução: R4c e H0c refeitas × quinta):', m.get('paridade_d1'))\n" if KERNEL == "r6" else
            "    print('paridade (sétima execução: R4c e H0c-m refeitas × sexta):', m.get('paridade_d1'))\n" if KERNEL == "r7" else
+           "    print('paridade (décima primeira: R4c e H-cap refeitas × sétima):', m.get('paridade_d1'))\n" if KERNEL == "r11" else
            "    print('paridade:', m.get('paridade_d1'))\n")
         + "    print('recorte pelo prato:', {k: v for k, v in (m.get('prato') or {}).items() if k in ('regra', 'consultas', 'reprovados', 'n5k_ok')})\n"
         "    print('confiança:', m.get('confianca'))\n"
@@ -684,7 +707,11 @@ def confere_r8(pasta):
     nb = json.load(open(NOTEBOOK))
     emb = _embutidos(nb)
     esp = conteudo("repo")
-    assert emb == esp and nb["metadata"]["nutrelle"]["sha256"] == _hash(esp), "o notebook do repositório está desatualizado (rode `monta_pacote.py notebook --kernel r8`)"
+    if KERNELS["r8"].get("congelado"):      # já rodou: o notebook fica como rodou; só o código pode ter mudado desde então
+        assert set(emb) == set(esp) and all(emb[n] == esp[n] for n in esp if not n.endswith(".py")), "o notebook congelado da oitava perdeu ou mudou um arquivo que não é código"
+        print(f"  r8: notebook congelado ({KERNELS['r8']['congelado']}); scripts embutidos que mudaram desde então: {[n for n in esp if emb[n] != esp[n]] or 'nenhum'}")
+    else:
+        assert emb == esp and nb["metadata"]["nutrelle"]["sha256"] == _hash(esp), "o notebook do repositório está desatualizado (rode `monta_pacote.py notebook --kernel r8`)"
     assert not any(TESTE8 in n or FOTOS8 in n for n in emb), "as tabelas do teste não vão no notebook do repositório"
     sem_gabarito(nb, emb)
     meta = json.load(open(os.path.join(os.path.dirname(NOTEBOOK), "kernel-metadata.json")))
@@ -764,6 +791,9 @@ def push():
     meta.update(id=f"{usuario}/{SLUG}", title=SLUG, kernel_sources=[f"{usuario}/{k}" for k in KERNELS[KERNEL].get("fontes_kernel", [])])
     if _opcao("--espelho-omnifood"):
         meta["dataset_sources"] = [_opcao("--espelho-omnifood")]
+    if _opcao("--espelho-flic"):         # r11: as fotos do FLIC num dataset privado (pasta plana; o Google Drive limita downloads)
+        assert KERNEL == "r11" and _opcao("--espelho-flic").endswith("/" + ESPELHO11), f"--espelho-flic U/{ESPELHO11}, só no r11"
+        meta["dataset_sources"] = meta.get("dataset_sources", []) + [_opcao("--espelho-flic")]
     if _opcao("--espelho-dfoodtj"):      # r8: as fotos do teste num dataset privado (a rede Kaggle→china.scidb.cn falha)
         assert KERNEL in ("r8", "r9", "r10") and _opcao("--espelho-dfoodtj").endswith("/" + ESPELHO8), f"--espelho-dfoodtj U/{ESPELHO8}, só no r8, r9 e r10"
         meta["dataset_sources"] = [_opcao("--espelho-dfoodtj")]
@@ -856,7 +886,7 @@ def confere_nb(nb, variante):
             for r, v in zip(L, V):
                 if v["papel"] != "treino":
                     assert not any(r[c] for c in r if _alvo(c)) and not v["peso_nutricao"], f"{n}: rótulo numa linha de {v['papel']}"
-            fr_ok = FRACAS7.get(ch, ()) if KERNEL == "r7" else ()
+            fr_ok = FRACAS7.get(ch, ()) if KERNEL in ("r7", "r11") else ()
             for r, v in zip(L, V):
                 if v["papel"] != "treino":
                     assert not any(r.get(c) for c in fr_ok), f"{n}: rótulo fraco numa linha de {v['papel']}"
@@ -929,7 +959,7 @@ def confere_kernel(pasta):
             for n, b in emb.items():
                 if n.startswith("listas/"):
                     open(os.path.join(t, n), "wb").write(b)
-            E = G.Dados(os.path.join(t, "listas"), rodada="7" if KERNEL == "r7" else "4")
+            E = G.Dados(os.path.join(t, "listas"), rodada="7" if KERNEL == "r7" else "11" if KERNEL == "r11" else "4")
             assert sorted(E.dom) == sorted(esperadas) and sorted(E.dom_fora) == sorted(set(E.chaves_dom) - set(esperadas)), E.dom_fora
             assert E.hash == D.hash and (E.hash2 == HASH_TESTE2 and E.todos == D.todos if KERNEL == "r4" else E.hash2 is None), "o pacote mudou as listas do Nutrition5k ou o teste2"
             for ch, d in E.dom.items():
@@ -940,6 +970,14 @@ def confere_kernel(pasta):
         ref = list(csv.DictReader(io.StringIO(emb["listas/ref_r6_prato.csv"].decode())))
         assert [r["dish_id"] for r in ref] == [r["dish_id"] for r in v2], "ref_r6_prato.csv fora da ordem do treino_v2"
         assert json.loads(emb["listas/conferencia_r5.json"])["conferida"], "a conferência a olho da etapa 0 tem de estar marcada"
+    if KERNEL == "r11":     # 19.3: a paridade com a sétima (ordem do treino_v2) e a tabela pronta do FLIC (janelas de 19.2 c, sem `sem_prato` nas linhas que entram)
+        ref = list(csv.DictReader(io.StringIO(emb["listas/ref_r7_prato.csv"].decode())))
+        assert [r["dish_id"] for r in ref] == [r["dish_id"] for r in v2], "ref_r7_prato.csv fora da ordem do treino_v2"
+        assert json.loads(emb["listas/conferencia_r5.json"])["conferida"], "a conferência a olho da etapa 0 tem de estar marcada"
+        cx = {r["id"]: r for r in csv.DictReader(io.StringIO(emb["listas/caixas_r5_flic_curso.csv"].decode()))}
+        dv = list(csv.DictReader(io.StringIO(emb["listas/divisao_r4_flic_curso.csv"].decode())))
+        assert all(cx[f"ext:flic_curso:{v['dish_id']}"]["metodo"] == "owlv2_curso" for v in dv), "linha do FLIC sem janela aceita no pacote"
+        assert G.REF_R7_CV and G.TABELA_PRONTA11 == ("flic_curso",)
     le_como_no_kaggle(emb, bases()[0])
     print(f"listas: treino {len(tr)}, avaliação {len(av)}, teste2 {len(av2)} (hash {D.hash2}, intocado), treino_v2 {len(v2)} em {len(cad)} cadeias; interseções com o teste2 vazias")
     print(f"notebook do repositório: {os.path.getsize(NOTEBOOK) / 1e3:.0f} kB, só bases liberadas {bases()[0]}; nenhum arquivo ignorado pelo git, nenhum id nem licença das bases fechadas")
@@ -947,7 +985,7 @@ def confere_kernel(pasta):
         pasta = os.path.abspath(pasta)
         assert not dentro_do_repo(pasta), "a pasta do push está dentro do repositório"
         emb_p = confere_nb(json.load(open(os.path.join(pasta, os.path.basename(NOTEBOOK)))), "push")
-        assert os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) < (4_000_000 if KERNEL == "r7" else 1_000_000), "notebook do push grande demais"
+        assert os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) < (4_000_000 if KERNEL == "r7" else 2_000_000 if KERNEL == "r11" else 1_000_000), "notebook do push grande demais"
         nbp = json.load(open(os.path.join(pasta, os.path.basename(NOTEBOOK))))
         for n, h in nbp["metadata"]["nutrelle"].get("fora_do_notebook", {}).items():     # o dataset das receitas, ao lado da pasta
             arq = os.path.join(pasta.rstrip("/") + "_receitas", os.path.basename(n))
@@ -957,6 +995,8 @@ def confere_kernel(pasta):
         assert mp["id"].endswith("/" + SLUG) and mp["code_file"] == os.path.basename(NOTEBOOK)
         dono = mp["id"].split("/")[0]
         assert sorted(mp.get("kernel_sources", [])) == sorted(f"{dono}/{k}" for k in KERNELS[KERNEL].get("fontes_kernel", [])), "kernel_sources do push"
+        if KERNEL == "r11":
+            assert mp.get("dataset_sources") == [f"{dono}/{ESPELHO11}"], "dataset_sources do push: só o espelho do FLIC (--espelho-flic)"
         print(f"notebook do push em {pasta}: em dia, todas as bases, {os.path.getsize(os.path.join(pasta, os.path.basename(NOTEBOOK))) / 1e6:.2f} MB; "
               f"id {mp['id']}, dataset_sources {mp['dataset_sources']}")
     elif meta["id"].startswith("USUARIO_KAGGLE/"):
